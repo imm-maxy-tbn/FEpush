@@ -45,7 +45,7 @@
         <div class="informasi-pribadi">
             <table>
                 <tr>
-                    <td><span class="input-icon"><i class="fas fa-user"></i></span></td>
+                    <td><span class="input-icon"><i class="fas fa-building"></i></span></td>
                     <td><input type="text" placeholder="Nama Perusahaan" id="nama" name="nama" required /></td>
                 </tr>
                 <tr>
@@ -53,15 +53,15 @@
                     <td><input type="text" placeholder="Profil Perusahaan" id="nik" name="nik" required /></td>
                 </tr>
                 <tr>
-                    <td><span class="input-icon"><i class="fas fa-envelope"></i></span></td>
+                    <td><span class="input-icon"><i class="fas fa-user"></i></span></td>
                     <td><input type="email" placeholder="Nama PIC" id="email" name="email" required /></td>
                 </tr>
                 <tr>
-                    <td><span class="input-icon"><i class="fas fa-lock"></i></span></td>
+                    <td><span class="input-icon"><i class="fas fa-user-tie"></i></span></td>
                     <td><input type="password" placeholder="Posisi PIC" id="password" name="password" required /></td>
                 </tr>
                 <tr>
-                    <td><span class="input-icon"><i class="fas fa-lock"></i></span></td>
+                    <td><span class="input-icon"><i class="fas fa-phone"></i></span></td>
                     <td><input type="password" placeholder="Nomor Telepon" id="password" name="password" required /></td>
                 </tr>
             </table>
@@ -109,22 +109,23 @@
                     </td>
                 </tr>
                 <tr>
-                    <td><span class="input-icon"><i class="fas fa-phone"></i></span></td>
+                    <td><span class="input-icon"><i class="fas fa-users"></i></span></td>
                     <td><input type="text" placeholder="Jumlah Karyawan" id="telfon" name="telfon" required /></td>
                 </tr>
                 <tr>
-                    <td><span class="input-icon"><i class="fas fa-phone"></i></span></td>
+                    <td><span class="input-icon"><i class="fas fa-industry"></i></span></td>
                     <td><input type="text" placeholder="Tipe Perusahaan" id="telfon" name="telfon" required /></td>
                 </tr>
                 <tr>
                     <td>
-                    <button class="btn btn-primary" id="simpanBtn" onclick="window.location.href='home'">Simpan Data</button>
+                    <button class="btn btn-primary" id="simpanBtn" onclick="window.location.href='homepage'">Simpan Data</button>
                     </td>
                 </tr>
             </table>
         </div>
     </div>
 </div>
+
 
 
 <footer class="footer">

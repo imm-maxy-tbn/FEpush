@@ -48,7 +48,7 @@
                     <td><input type="email" placeholder="Masukkan Email" /></td>
                 </tr>
                 <tr>
-                    <td><span class="input-icon"><i class="fas fa-lock"></i></span></td>
+                    <td><span class="input-icon"><i class="fas fa-phone"></i></span></td>
                     <td><input type="telepon" placeholder="Masukkan telepon" /></td>
                 </tr>
                 <tr>

@@ -36,6 +36,18 @@ Route::get('/imm4', function () {
     return view('imm4');
 }); 
 
-Route::get('/home', function () {
-    return view('home');
+Route::get('/homepage', function () {
+    return view('homepage');
+}); 
+
+Route::get('/myproject', function () {
+    return view('myproject');
+}); 
+
+Route::get('/survey', function () {
+    return view('survey');
+}); 
+
+Route::get('/creatp', function () {
+    return view('creatp');
 }); 

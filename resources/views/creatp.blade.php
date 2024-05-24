@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/home.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/creatp.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -39,44 +39,59 @@
     </div>
 </nav>
 
-<div class="notification-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <p id="notificationText">
-                        <i class="fas fa-bell" style="color: #ffcc00;"></i> Notifikasi
-                    </p>
-                    <div id="dropdownContent" class="dropdown-content">
-                        <a href="#">Teks 1</a>
-                        <a href="#">Teks 2</a>
-                        <a href="#">Teks 3</a>
+<div class="container mt-4">
+        <h1 class="project-title">Proyek Terbaru</h1>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card project-card">
+                    <img src="images/J.png" class="card-img-top" alt="Project Image">
+                    <div class="card-body">
+                        <h5 class="card-title">XYZ Proyek</h5>
+                        <p class="card-text">Mengembangkan Platform Digital Yang Memungkinkan Pengguna Untuk Berbagi Dan Menyebarkan Ide-Ide Kreatif Secara Kolaboratif.</p>
+                        <p class="card-date"><i class="far fa-clock"></i> Mei 24</p>
+                        <a href="#" class="btn btn-link card-link"><i class="fas fa-arrow-right"></i></a>
                     </div>
                 </div>
-                <div class="col-6 text-right">
-                    <i id="dropdownIcon" class="fas fa-chevron-down"></i>
+            </div>
+            <div class="col-md-6">
+                <div class="card project-card">
+                    <img src="images/J.png" class="card-img-top" alt="Project Image">
+                    <div class="card-body">
+                        <h5 class="card-title">XYZ Proyek</h5>
+                        <p class="card-text">Mengembangkan Platform Digital Yang Memungkinkan Pengguna Untuk Berbagi Dan Menyebarkan Ide-Ide Kreatif Secara Kolaboratif.</p>
+                        <p class="card-date"><i class="far fa-clock"></i> Mei 24</p>
+                        <a href="#" class="btn btn-link card-link"><i class="fas fa-arrow-right"></i></a>
+                    </div>
                 </div>
             </div>
+        </div>
+        <div class="text-center mt-4">
+            <button class="btn btn-primary btn-create-project" data-toggle="modal" data-target="#projectModal">Buat Proyek</button>
+            <button class="btn btn-secondary btn-update-report">Perbarui Laporan</button>
         </div>
     </div>
 
-    <div class="container mt-5">
-        <h2>Dashboard</h2>
-        <div class="row">
-            <div class="col-4">
-                <div class="process-circle absensi">
-                    <span class="process-text">Absensi</span>
-                    <span class="process-text1">Absensi</span>
-                    <span class="process-text2">Absensi</span>
-                    <span class="process-text3">Absensi</span>
-                    <div class="progress-circle">
-                        <span class="progress-percent">50%</span>
-                    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="projectModal" tabindex="-1" aria-labelledby="projectModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="projectModalLabel">XYZ Proyek</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="your-image-path.jpg" class="img-fluid" alt="Project Image">
+                    <p class="mt-3">Mengembangkan Platform Digital Yang Memungkinkan Pengguna Untuk Berbagi Dan Menyebarkan Ide-Ide Kreatif Secara Kolaboratif.</p>
+                    <p class="card-date"><i class="far fa-clock"></i> Mei 24</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary">Mulai Proyek</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="text-center mt-4">
-        <img src="images/3.png" alt="Gambar" class="dashboard-image">
     </div>
 
 <footer class="footer">
