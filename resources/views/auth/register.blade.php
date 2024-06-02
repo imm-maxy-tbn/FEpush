@@ -44,113 +44,60 @@
         <form method="POST" action="{{ route('register') }}">
             @csrf
             <div class="register-form">
-                <div class="informasi-pribadi">
-                    <h3>Informasi Pribadi</h3>
-                    <table>
-                        <tr>
-                            <td><span class="input-icon"><i class="fas fa-user"></i></span></td>
-                            <td><input type="text" placeholder="Nama Lengkap" id="nama" name="nama"
-                                    required /></td>
-                        </tr>
-                        <tr>
-                            <td><span class="input-icon"><i class="fas fa-id-card"></i></span></td>
-                            <td><input type="text" placeholder="NIK" id="nik" name="nik" required /></td>
-                        </tr>
-                        <tr>
-                            <td><span class="input-icon"><i class="fas fa-envelope"></i></span></td>
-                            <td><input type="email" placeholder="Email" id="email" name="email" required /></td>
-                        </tr>
-                        <tr>
-                            <td><span class="input-icon"><i class="fas fa-lock"></i></span></td>
-                            <td><input type="password" placeholder="Password" id="password" name="password" required />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span class="input-icon"><i class="fas fa-lock"></i></span></td>
-                            <td><input id="password-confirm" placeholder="Konfirmasi Password" type="password"
-                                    class="form-control" name="password_confirmation" required
-                                    autocomplete="new-password"></td>
-                        </tr>
-                    </table>
+                <img src="images/imm.png" alt="Brand Logo" class="brand-logo">
+                <h2>Daftarkan akun</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="fullName">Nama Lengkap</label>
+                        <input type="text" id="fullName" name="nama" placeholder="isi disini" />
+                    </div>
+                    <div class="form-group">
+                        <label for="country">Negara</label>
+                        <input type="text" id="country" name="negara" placeholder="isi disini" />
+                    </div>
                 </div>
-
-                <div class="informasi-alamat">
-                    <h3>Informasi Alamat</h3>
-                    <table>
-                        <tr>
-                            <td><span class="input-icon"><i class="fas fa-globe"></i></span></td>
-                            <td>
-                                <div class="dropdown">
-                                    <input type="text" placeholder="Negara" id="negara" name="negara" required />
-                                    <div class="dropdown-content">
-                                        <a href="#">Negara 1</a>
-                                        <a href="#">Negara 2</a>
-                                        <a href="#">Negara 3</a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span class="input-icon"><i class="fas fa-map-marker-alt"></i></span></td>
-                            <td>
-                                <div class="dropdown">
-                                    <input type="text" placeholder="Provinsi" id="provinsi" name="provinsi"
-                                        required />
-                                    <div class="dropdown-content">
-                                        <a href="#">Provinsi 1</a>
-                                        <a href="#">Provinsi 2</a>
-                                        <a href="#">Provinsi 3</a>
-                                    </div>
-                                </div>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td><span class="input-icon"><i class="fas fa-address-card"></i></span></td>
-                            <td><input type="text" placeholder="Alamat Lengkap" id="alamat" name="alamat"
-                                    required /></td>
-                        </tr>
-                        <tr>
-                            <td><span class="input-icon"><i class="fas fa-phone"></i></span></td>
-                            <td><input type="text" placeholder="Nomor Telepon" id="telepon" name="telepon"
-                                    required /></td>
-                        </tr>
-                        <tr>
-                            <button class="btn btn-primary" type="submit" id="simpanBtn">Simpan Data</button>
-                            <pa>Sudah punya akun? <a href="login">Masuk</a></pa>
-                        </tr>
-                    </table>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="nik">NIK</label>
+                        <input type="text" id="nik" name="nik" placeholder="Masukkan disini" />
+                    </div>
+                    <div class="form-group">
+                        <label for="province">Provinsi</label>
+                        <input type="text" id="province" name="provinsi" placeholder="isi disini" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Isi disini" />
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Alamat Lengkap</label>
+                        <input type="text" id="address" name="alamat" placeholder="Masukkan alamat lengkap" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <input type="password" id="password" name="password" placeholder="Isi disini" />
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Nomor Telepon</label>
+                        <input type="text" id="phone" name="telepon" placeholder="Isi disini" />
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="confirmPassword">Konfirmasi Password</label>
+                        <input type="password" id="confirmPassword" name="password_confirmation"
+                            placeholder="Isi disini" />
+                    </div>
+                </div>
+                <button class="btn-register" type="submit" id="simpanBtn">Simpan Data</button>
+                <div class="login-link">Sudah punya akun? <a href="login">Masuk</a></div>
+            </div>
         </form>
     </div>
-
-
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="brand-info">
-                    <h3>IMM</h3>
-                    <p>(TBN INDONESIA X MAXY ACADEMY)</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-nav">
-                        <ul>
-                            <li><a href="welcome">Home</a></li>
-                            <li><a href="#">Bootcamp</a></li>
-                            <li><a href="#">IMM</a></li>
-                            <li><a href="#">Community</a></li>
-                            <li><a href="#">Profile</a></li>
-                        </ul>
-                    </div>
-                    <div class="social-media">
-                        <p class="footer-social-media">Social Media</p>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

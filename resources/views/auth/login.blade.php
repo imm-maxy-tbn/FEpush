@@ -45,24 +45,17 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <div class="login-form">
-                <h2>Masuk ke akun Anda</h2>
+                <img src="images/imm.png" alt="Brand Logo" class="brand-logo">
+                <h2>Masuk ke akun anda</h2>
                 <div class="input-group">
+                    <label for="email">Email</label>
                     <span class="input-icon"><i class="fas fa-envelope"></i></span>
-                    <input id="email" type="email" placeholder="email"
-                        class="form-control @error('email') is-invalid @enderror" name="email"
-                        value="{{ old('email') }}" required autocomplete="email" autofocus>
-
-                    @error('email')
-                        <span class="invalid-feedback" role="alert">
-                            <strong>{{ $message }}</strong>
-                        </span>
-                    @enderror
+                    <input id="email" type="email" placeholder="email" name="email" required />
                 </div>
                 <div class="input-group">
+                    <label for="password">Password</label>
                     <span class="input-icon"><i class="fas fa-lock"></i></span>
-                    <input id="password" type="password" placeholder='password'
-                        class="form-control @error('password') is-invalid @enderror" name="password" required
-                        autocomplete="current-password">
+                    <input id="password" type="password" placeholder='password' name="password" required />
 
                     @error('password')
                         <span class="invalid-feedback" role="alert">
@@ -72,49 +65,20 @@
                 </div>
                 <button class="btn-login" type="submit" id="masukBtn">Masuk</button>
                 @if (Route::has('password.request'))
-                <div class="register-link">
-                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                        {{ __('Lupa Password Anda?') }}
-                    </a>
+                    <div class="register-link">
+                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                            {{ __('Lupa Password Anda?') }}
+                        </a>
                     </div>
                 @endif
-                <div class="register-link">Belum punya akun? <a href="register">Daftar</a>
-                </div>
+                <div class="register-link">Belum punya akun? <a href="register">Daftar</a></div>
+            </div>
         </form>
     </div>
 
     <div class="image-container">
         <img src="images/6.png" alt="Your Image" />
     </div>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="brand-info">
-                    <h3>IMM</h3>
-                    <p>(TBN INDONESIA X MAXY ACADEMY)</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-nav">
-                        <ul>
-                            <li><a href="welcome">Home</a></li>
-                            <li><a href="#">Bootcamp</a></li>
-                            <li><a href="#">IMM</a></li>
-                            <li><a href="#">Community</a></li>
-                            <li><a href="#">Profile</a></li>
-                        </ul>
-                    </div>
-                    <div class="social-media">
-                        <p class="footer-social-media">Social Media</p>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
