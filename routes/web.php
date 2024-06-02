@@ -54,4 +54,13 @@ Route::get('/creatp', function () {
     return view('creatp');
 });
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+use App\Http\Controllers\HomeController;
+Route::get('/home', [HomeController::class, 'index'])->name('home');
+
+use App\Http\Controllers\CompanyController;
+Route::post('/register-company', [CompanyController::class, 'store']);
+
+use App\Http\Controllers\OTPController;
+
+Route::post('/send-otp', [OTPController::class, 'sendOTP']);
+Route::post('/verify-otp', [OTPController::class, 'verifyOTP']);
