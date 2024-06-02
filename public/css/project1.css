@@ -1,0 +1,751 @@
+html,
+body {
+    height: 204%;
+    margin: 0;
+    font-family: "Roboto", sans-serif;
+
+    max-width: 100%; /* Ensure the width does not exceed 100% */
+}
+
+/* Navbar */
+.navbar {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 1px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom: 1px solid #cccccc;
+}
+
+.navbar-brand {
+    margin-right: 14px;
+    margin-left: 20px; /* Adjusted for better alignment */
+}
+
+.navbar-nav {
+    margin-left: 10px;
+    margin-right: auto;
+}
+
+.navbar-links {
+    list-style-type: none;
+    display: flex;
+    margin-left: auto; /* Center alignment */
+}
+
+.navbar-links li {
+    margin-right: 20px;
+}
+
+.navbar-links li:last-child {
+    margin-right: 0;
+}
+
+.navbar-links a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.navbar-links a:hover {
+    text-decoration: underline;
+}
+
+.navbar-actions {
+    display: flex;
+    margin-right: 20px;
+}
+
+/* Footer */
+.footer {
+    background-color: #5940cb;
+    color: #ffffff;
+    padding: 48px 0;
+    text-align: center;
+    position: absolute;
+    bottom: -2258px;
+    width: 80%;
+    left: 10%;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    z-index: 1000;
+}
+
+.footer-container {
+    max-width: 594px;
+    margin: 0 auto;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand-info h3 {
+    margin: 0;
+    font-size: 20px;
+    position: absolute;
+    right: 860px;
+    top: 20px;
+}
+
+.brand-info p {
+    margin-top: 5px;
+    font-size: 14px;
+    position: absolute;
+    top: 50px;
+    right: 750px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    top: 40px;
+    right: 280px;
+}
+
+.footer-nav ul li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.footer-nav ul li:last-child {
+    margin-right: 0;
+}
+
+.footer-nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.footer-nav ul li a:hover {
+    text-decoration: underline;
+}
+
+.social-media {
+    margin-right: auto;
+    position: absolute;
+    top: 29px;
+    right: 23px;
+}
+
+.social-media a {
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 20px;
+    margin-left: 10px;
+}
+
+.footer-description {
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.footer-social-media {
+    margin-bottom: -10px; /* Jarak antara teks Social Media dan ikon */
+    position: relative;
+    top: -19px;
+    right: -5px;
+}
+
+/* General Styles */
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #050505;
+    margin-top: 100px; /* Adjusted for better spacing from navbar */
+}
+
+/* Project Title */
+.project-title,
+.project-titlee,
+.done-projects-title {
+    font-weight: bold;
+    border-left: 4px solid #6c63ff;
+    padding-left: 10px;
+    color: #333;
+    margin-bottom: 20px;
+    position: relative;
+    top: 18px;
+    right: -15px;
+}
+.done-projects-titlee {
+    font-weight: bold;
+    border-left: 4px solid #6c63ff;
+    padding-left: 10px;
+    color: #333;
+    margin-bottom: 20px;
+    position: relative;
+    top: -33px;
+    right: -100px;
+}
+/* Input Group */
+.input-group {
+    border-radius: 12px;
+    position: relative;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+    width: 71%;
+    margin-top: 20px;
+    right: -10px;
+}
+
+.search-input {
+    border: 1px solid #c5c5f7;
+    border-right: none;
+    border-radius: 5px 0 0 5px;
+}
+
+.search-icon {
+    background-color: #ffffff;
+    border: 1px solid #c5c5f7;
+    border-left: none;
+    color: #948d8d;
+    border-radius: 0 5px 5px 0;
+    display: flex;
+    align-items: center; /* Centering icon */
+    justify-content: center; /* Centering icon */
+}
+
+/* Create Project Button */
+.btn-create-project {
+    background-color: #6c63ff;
+    border: none;
+    border-radius: 14px;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin-top: 20px; /* Adjusted for better spacing */
+}
+
+.btn-create-project:hover {
+    background-color: #574dcf;
+}
+
+/* No Projects Section */
+.no-projects {
+    background-color: #f6f6ff;
+    border: 1px solid #e2e2f7;
+    border-radius: 28px;
+    padding: 55px;
+    text-align: center;
+    color: #555;
+    width: 88%;
+    margin: 0 auto;
+    position: relative;
+    top: -40px;
+    right: -4px;
+    flex: 0 0 96%;
+}
+
+.no-projects p {
+    margin: 0;
+    font-weight: bold;
+}
+
+/* See All Link */
+.see-all {
+    color: #333;
+    font-weight: bold;
+    text-decoration: none;
+    position: absolute;
+    top: -28px;
+    right: 145px;
+}
+
+.see-all:hover {
+    text-decoration: underline;
+}
+
+/* All Projects Title */
+.all-projects-title {
+    font-weight: bold;
+    margin-top: 100px;
+    font-size: 20px;
+    position: relative;
+    top: -32px;
+    right: -89px;
+}
+
+/* Table */
+.table thead th {
+    background-color: #c5c5f7;
+    border: none;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+}
+
+.table {
+    width: 88%;
+    margin-bottom: 1rem;
+    color: #212529;
+    position: relative;
+    top: -10px;
+    right: -90px;
+}
+
+.tablee {
+    width: 90%;
+    margin-bottom: 1rem;
+    color: #212529;
+    position: relative;
+    top: 0px;
+    right: -50px;
+}
+
+.table tbody tr td {
+    background-color: #f6f6ff;
+    padding: 20px;
+    color: #555;
+    text-align: center;
+}
+
+/* Dropdown Toggle */
+.dropdown-toggle {
+    border-radius: 30px;
+    padding: 5px 15px;
+    color: #6c63ff;
+    border: 1px solid #6c63ff;
+}
+
+/* Pagination */
+.pagination .page-item.active .page-link {
+    background-color: #6c63ff;
+    border-color: #6c63ff;
+    color: #fff;
+}
+
+.pagination {
+    display: -ms-flexbox;
+    display: flex;
+    padding-left: 0;
+    list-style: none;
+    border-radius: 0.25rem;
+    position: relative;
+    top: -20px;
+}
+
+.pagination .page-link {
+    color: #6c63ff;
+}
+
+.pagination .page-link:hover {
+    background-color: #f0f0f0;
+}
+
+/* Done Projects Card */
+.done-projects-card {
+    width: 88%;
+    position: relative;
+    right: -91px;
+    top: -18px;
+    padding: 20px;
+    border-radius: 28px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f8f9fa;
+}
+
+.done-projects-header {
+    background-color: #f8f9fa;
+    border-bottom: none;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.done-projects-table thead th {
+    background-color: #c5c5f7;
+    color: #333;
+    font-weight: bold;
+    text-align: center;
+}
+
+.done-projects-table tbody tr td {
+    background-color: #e7e7ff7a;
+    padding: 15px;
+    color: #555;
+    text-align: center;
+}
+
+.done-projects-dropdown-toggle {
+    border-radius: 30px;
+    padding: 10px 20px;
+    color: #6c63ff;
+    border: 1px solid #6c63ff;
+    font-size: 18px;
+}
+
+.done-projects-dropdown-toggle .fas {
+    font-size: 20px;
+}
+
+/* Media Queries */
+@media only screen and (max-width: 768px) {
+    .brand-info,
+    .footer-links,
+    .social-media {
+        flex-basis: 100%;
+        text-align: center;
+    }
+
+    .footer {
+        border-top-left-radius: 60px;
+        border-top-right-radius: 60px;
+    }
+
+    .footer-nav ul {
+        position: relative;
+        top: auto;
+        right: auto;
+    }
+}
+
+/* Style for ongoing projects title */
+.ongoing-projects-title {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-size: 24px;
+    color: #333;
+    position: relative;
+    top: -22px;
+    right: -100px;
+    border-left: 4px solid #6c63ff;
+    padding-left: 10px;
+}
+
+.ongoing-projects-filters {
+    margin-top: 3rem; /* Adjust the top margin as needed */
+    position: relative; /* Required for top property to work */
+    top: -1px; /* Adjust the top position as needed */
+}
+
+/* Targeting the buttons inside ongoing-projects-filters */
+.ongoing-projects-filters .btn {
+    margin-left: 101px;
+    margin-right: 70px;
+}
+
+.banner {
+    background: url("images/26.png") no-repeat center center;
+    background-size: cover;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-family: "Montserrat", sans-serif;
+    font-size: 2rem;
+    font-weight: bold;
+    position: relative;
+}
+
+.banner::after {
+    content: "";
+    position: absolute;
+    top: 19px;
+    right: 0;
+    bottom: 0;
+    left: 94px;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+    width: 88%;
+}
+
+.banner h1 {
+    z-index: 2;
+}
+
+.container {
+    padding: 10px;
+}
+
+.stats-box {
+    border: 1px solid #e2e2f7;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: #f8f9fa;
+}
+
+.stats-box h4 {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.stats-box .number {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+.text-success {
+    color: #28a745 !important;
+}
+
+.text-warning {
+    color: #ffc107 !important;
+}
+
+.stats-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.stats-header {
+    background-color: #3b6978;
+    color: white;
+    padding: 15px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+}
+
+.stats-value {
+    font-size: 1.5rem;
+}
+
+.completion-circle {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #e0e0e0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+}
+
+.total-responses {
+    font-size: 3rem;
+    color: #28a745;
+    margin-top: 103px;
+    position: relative;
+    top: -50px;
+}
+
+.responses-text {
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.responses-line {
+    width: 80%;
+    height: 2px;
+    background-color: #6c63ff;
+    margin: 10px auto 0;
+}
+
+/* Performance Card */
+.performance-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.performance-header {
+    background-color: #ffffff;
+    color: #333;
+    padding: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+#performance-chart {
+    width: 100%;
+    height: 150px;
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+.start-survey-btn {
+    background-color: #6c63ff;
+    color: white;
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    text-decoration: none;
+}
+
+.start-survey-btn:hover {
+    background-color: #574dcf;
+}
+
+.schedule-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+    border-left: 4px solid #6c63ff;
+    padding-left: 10px;
+}
+
+/* Schedule Box */
+.schedule-box {
+    background-color: #ffffff;
+    border: 1px solid #cccccc;
+    border-radius: 10px;
+    padding: 20px;
+    font-size: 1.2rem;
+    color: #555;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Calendar */
+.calendar {
+    background-color: #e6e6fa;
+    border-radius: 10px;
+    padding: 13px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-header .month {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.calendar-header .view-options a {
+    margin-right: 10px;
+    color: #333;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.calendar-header .view-options a.active {
+    color: #6c63ff;
+}
+
+.tableee {
+    width: 89%;
+    background-color: #e6e6fa;
+    position: relative;
+    right: -1px;
+    top: 19px;
+    font-size: 11px;
+}
+
+.tableee th,
+.tableee td {
+    padding: 10px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.tableee th {
+    font-weight: bold;
+    color: #333;
+}
+
+.tableee td {
+    background-color: #ffffff;
+    border-radius: 5px;
+}
+
+.project-card {
+    margin-bottom: 20px;
+}
+
+.project-card .card-title {
+    font-weight: bold;
+    color: #333;
+}
+
+.project-card .progress {
+    height: 10px;
+    border-radius: 5px;
+    background-color: #e9ecef;
+}
+
+.project-card .progress-bar {
+    background-color: #6c63ff;
+}
+
+.btn-secondary {
+    background-color: #6c63ff;
+    border: none;
+    margin-right: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: #574dcf;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.project-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #050505;
+}
+
+.download-icon {
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+}
+
+.present {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.absent {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-create-new-project,
+.btn-create-project {
+    background-color: #6c63ff;
+    border: none;
+    border-radius: 14px;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin: 5px;
+}
+
+.btn-create-new-project:hover {
+    background-color: #574dcf;
+}
