@@ -6,6 +6,7 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/imm3.css') }}">
+    <script src="{{ asset('js/otp.js') }}" defer></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -45,17 +46,19 @@
             <h3 class="font-weight-bold">Masukan Kode Verifikasi</h3>
             <p>Cek email Anda untuk menerima kode verifikasi.</p>
             <div class="verification-code">
-                <input type="text" maxlength="1" />
-                <input type="text" maxlength="1" />
-                <input type="text" maxlength="1" />
-                <input type="text" maxlength="1" />
-                <input type="text" maxlength="1" />
+                <input type="text" id="digit1" maxlength="1" />
+                <input type="text" id="digit2" maxlength="1" />
+                <input type="text" id="digit3" maxlength="1" />
+                <input type="text" id="digit4" maxlength="1" />
+                <input type="text" id="digit5" maxlength="1" />
             </div>
             <p>Belum menerima kode? Tunggu <span id="countdown">1:00</span> menit.</p>
             <button class="btn-resend">Kirim ulang kode</button>
+            <button id="verifyOtpBtn">Verifikasi</button>
         </div>
     </div>
 </div>
+
 
 
 

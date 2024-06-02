@@ -95,7 +95,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="container mt-5">
         <h1 class="survey-title">Survey Anda</h1>
         <div class="survey-box">
@@ -111,7 +111,7 @@
             <span>dari 123</span>
         </div>
     </div>
-    
+
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-content">
