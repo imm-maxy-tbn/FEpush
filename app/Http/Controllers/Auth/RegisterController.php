@@ -8,6 +8,7 @@ use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 class RegisterController extends Controller
 {
@@ -49,7 +50,7 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        $validator = Validator::make($data, [
             'nama' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'confirmed'], //add minimum
@@ -59,7 +60,26 @@ class RegisterController extends Controller
             'alamat' => ['required', 'string', 'max:255'],
             'telepon' => ['required', 'string', 'max:13'],
         ]);
+
+        if ($validator->fails()) {
+            // Mendapatkan daftar atribut yang tidak valid
+            $invalidAttributes = $validator->failed();
+
+            // Loop melalui daftar atribut yang tidak valid
+            foreach ($invalidAttributes as $attribute => $rules) {
+                // Mendapatkan pesan kesalahan validasi untuk atribut tersebut
+                $errors = $validator->errors()->get($attribute);
+
+                // Menyimpan pesan kesalahan validasi dalam log
+                foreach ($errors as $error) {
+                    Log::error('Kesalahan validasi pada atribut ' . $attribute . ': ' . $error);
+                }
+            }
+        }
+
+        return $validator;
     }
+
 
     /**
      * Create a new user instance after a valid registration.
