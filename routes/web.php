@@ -62,9 +62,9 @@ use App\Http\Controllers\HomeController;
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 use App\Http\Controllers\CompanyController;
-Route::post('/register-company', [CompanyController::class, 'store']);
+Route::post('/companies/store', [CompanyController::class, 'store'])->name('companies.store');
 
 use App\Http\Controllers\OTPController;
 
-Route::post('/send-otp', [OTPController::class, 'sendOTP']);
+Route::post('/send-otp', [OTPController::class, 'sendOTP'])->name('send-otp');
 Route::post('/verify-otp', [OTPController::class, 'verifyOTP']);

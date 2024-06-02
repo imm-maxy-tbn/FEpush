@@ -5,29 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Validator;
 
 class CompanyController extends Controller
 {
-    /**
-     * Display a listing of the companies.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        $companies = Company::all();
-        return view('companies.index', compact('companies'));
-    }
-
-    /**
-     * Show the form for creating a new Company.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        return view('companies.create');
-    }
     public function view($id)
     {
         $company = Company::findOrFail($id);
@@ -42,26 +24,42 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-            'nama' => 'required',
-            'profile' => 'required',
-            'tipe' => 'required',
-            'nama_pic' => 'required',
-            'posisi_pic' => 'required',
-            'telepon' => 'required',
-            'negara' => 'required',
-            'provinsi' => 'required',
-            'kabupaten' => 'required',
-            'jumlah_karyawan' => 'required',
-        ]);
+        try {
+            $validated = $request->validate([
+                'nama' => 'required',
+                'profile' => 'required',
+                'tipe' => 'required',
+                'nama_pic' => 'required',
+                'posisi_pic' => 'required',
+                'telepon' => 'required',
+                'negara' => 'required',
+                'provinsi' => 'required',
+                'kabupaten' => 'required',
+                'jumlah_karyawan' => 'required',
+            ]);
 
-        $validated['user_id'] = Auth::id();
+            $validated['user_id'] = Auth::id();
 
-        Company::create($validated);
+            Company::create($validated);
 
-        return redirect()->route('companies.index')
-            ->with('success', 'Company created successfully.');
+            return redirect()->route('home')
+                ->with('success', 'Company created successfully.');
+        } catch (\Exception $e) {
+            Log::error('Error while storing company: ' . $e->getMessage());
+
+            $validator = Validator::make([], []);
+            $validator->errors()->add('error', 'Failed to create company. Please try again.');
+            $errors = $validator->errors();
+
+            foreach ($errors->all() as $error) {
+                Log::error('Kesalahan validasi: ' . $error);
+            }
+
+            // Redirect kembali ke halaman sebelumnya dengan pesan error
+            return back()->withInput()->withErrors($errors);
+        }
     }
+
 
     /**
      * Display the specified Company.
