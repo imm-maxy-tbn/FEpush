@@ -1,10 +1,9 @@
 html,
 body {
-    height: 200%;
+    height: 145%;
     margin: 0;
     font-family: "Roboto", sans-serif;
-    background: linear-gradient(270deg, #ffffff, #a191e7cc);
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+
     max-width: 100%; /* Ensure the width does not exceed 100% */
 }
 
@@ -19,7 +18,6 @@ body {
     left: 0;
     z-index: 1000;
     border-bottom: 1px solid #cccccc;
-    background: linear-gradient(270deg, #ffffff, #a191e7cc);
 }
 
 .navbar-brand {
@@ -66,15 +64,14 @@ body {
     color: #ffffff;
     padding: 48px 0;
     text-align: center;
-    position: fixed;
-    bottom: 0;
+    position: absolute;
+    bottom: -907px;
     width: 80%;
     left: 10%;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    z-index: 1000;
 }
 
 .footer-container {
@@ -405,11 +402,15 @@ body {
     font-size: 1.5rem;
     color: #c0c0c0;
     font-weight: bold;
+    position: relative;
+    right: -160px;
 }
 
 .survey-submessage {
     font-size: 1rem;
     color: #b0b0b0;
+    position: relative;
+    right: -220px;
 }
 
 .start-survey-button {

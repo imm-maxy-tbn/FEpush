@@ -1,6 +1,5 @@
 body {
     font-family: "Roboto", sans-serif;
-    background: linear-gradient(270deg, #ffffff, #a191e7cc);
 }
 
 /* Navbar */
@@ -13,8 +12,7 @@ body {
     right: 0;
     left: 0;
     z-index: 1000;
-    border-bottom: 1px solid #cccccc;
-    background: linear-gradient(270deg, #ffffff, #a191e7cc);
+    border-bottom: 3px solid #5940cb;
 }
 
 .navbar-brand {
@@ -247,5 +245,4 @@ body {
 }
 
 .btn:hover {
-    background: linear-gradient(270deg, #ffffff, #a191e7cc);
 }

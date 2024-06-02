@@ -101,3 +101,51 @@ document.addEventListener("DOMContentLoaded", function () {
     // Set initial state
     updateProgressBar(yearSelector.value);
 });
+
+document.addEventListener("DOMContentLoaded", function () {
+    const notificationSection = document.querySelector(".notification-section");
+    const dropdownContent = document.getElementById("dropdownContent");
+
+    notificationSection.addEventListener("click", function () {
+        this.classList.toggle("active");
+    });
+
+    window.addEventListener("click", function (event) {
+        if (!notificationSection.contains(event.target)) {
+            notificationSection.classList.remove("active");
+        }
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const gridItems = document.querySelectorAll(".grid-item");
+
+    gridItems.forEach((item) => {
+        item.addEventListener("click", function () {
+            this.classList.toggle("active");
+        });
+    });
+
+    const submitButton = document.querySelector(".submit-button");
+    submitButton.addEventListener("click", function () {
+        const selectedItems = document.querySelectorAll(".grid-item.active");
+        const selectedIndexes = Array.from(selectedItems).map((item) =>
+            item.getAttribute("data-index")
+        );
+        alert("Selected SDGs: " + selectedIndexes.join(", "));
+    });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    const cityOverlays = document.querySelectorAll(".city-overlay");
+    const locationInfo = document.getElementById("location-info");
+
+    cityOverlays.forEach((overlay) => {
+        overlay.addEventListener("click", function () {
+            cityOverlays.forEach((o) => o.classList.remove("active"));
+            this.classList.add("active");
+            const cityName = this.getAttribute("data-city");
+            locationInfo.textContent = cityName;
+        });
+    });
+});

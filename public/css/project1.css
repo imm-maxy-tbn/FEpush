@@ -1,10 +1,9 @@
 html,
 body {
-    height: 200%;
+    height: 204%;
     margin: 0;
     font-family: "Roboto", sans-serif;
-    background: linear-gradient(270deg, #ffffff, #a191e7cc);
-    overflow-x: hidden; /* Prevent horizontal scrolling */
+
     max-width: 100%; /* Ensure the width does not exceed 100% */
 }
 
@@ -19,7 +18,6 @@ body {
     left: 0;
     z-index: 1000;
     border-bottom: 1px solid #cccccc;
-    background: linear-gradient(270deg, #ffffff, #a191e7cc);
 }
 
 .navbar-brand {
@@ -67,7 +65,7 @@ body {
     padding: 48px 0;
     text-align: center;
     position: absolute;
-    bottom: -2144px;
+    bottom: -2258px;
     width: 80%;
     left: 10%;
     border-top-left-radius: 40px;
@@ -252,6 +250,7 @@ h2 {
     position: relative;
     top: -40px;
     right: -4px;
+    flex: 0 0 96%;
 }
 
 .no-projects p {
@@ -442,7 +441,7 @@ h2 {
 }
 
 .banner {
-    background: url("path/to/your/image.jpg") no-repeat center center;
+    background: url("images/26.png") no-repeat center center;
     background-size: cover;
     height: 200px;
     display: flex;
@@ -617,7 +616,7 @@ h2 {
 .calendar {
     background-color: #e6e6fa;
     border-radius: 10px;
-    padding: 20px;
+    padding: 13px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -646,11 +645,12 @@ h2 {
 }
 
 .tableee {
-    width: 100%;
+    width: 89%;
     background-color: #e6e6fa;
     position: relative;
-    right: -2px;
-    top: 14px;
+    right: -1px;
+    top: 19px;
+    font-size: 11px;
 }
 
 .tableee th,
@@ -668,4 +668,84 @@ h2 {
 .tableee td {
     background-color: #ffffff;
     border-radius: 5px;
+}
+
+.project-card {
+    margin-bottom: 20px;
+}
+
+.project-card .card-title {
+    font-weight: bold;
+    color: #333;
+}
+
+.project-card .progress {
+    height: 10px;
+    border-radius: 5px;
+    background-color: #e9ecef;
+}
+
+.project-card .progress-bar {
+    background-color: #6c63ff;
+}
+
+.btn-secondary {
+    background-color: #6c63ff;
+    border: none;
+    margin-right: 10px;
+}
+
+.btn-secondary:hover {
+    background-color: #574dcf;
+}
+
+.btn-danger {
+    background-color: #dc3545;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+}
+
+.project-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #050505;
+}
+
+.download-icon {
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+}
+
+.present {
+    background-color: #28a745;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.absent {
+    background-color: #dc3545;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.btn-create-new-project,
+.btn-create-project {
+    background-color: #6c63ff;
+    border: none;
+    border-radius: 14px;
+    color: #fff;
+    font-weight: bold;
+    padding: 10px 20px;
+    margin: 5px;
+}
+
+.btn-create-new-project:hover {
+    background-color: #574dcf;
 }

@@ -1,6 +1,5 @@
 body {
     font-family: "Roboto", sans-serif;
-    background: linear-gradient(270deg, #ffffff, #a191e7cc);
 }
 
 * {
@@ -19,8 +18,7 @@ body {
     right: 0;
     left: 0;
     z-index: 1000;
-    border-bottom: 1px solid #cccccc;
-    background: linear-gradient(270deg, #ffffff, #a191e7cc);
+    border-bottom: 3px solid #5940cb;
 }
 
 .container {
@@ -62,157 +60,6 @@ body {
     margin-right: 20px;
 }
 
-/* Footer */
-.footer {
-    background-color: #5940cb;
-    color: #ffffff;
-    padding: 48px 0;
-    text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 80%;
-    left: 10%;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    z-index: 1000;
-}
-
-.footer-container {
-    max-width: 594px;
-    margin: 0 auto;
-}
-
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.brand-info h3 {
-    margin: 0;
-    font-size: 20px;
-    position: absolute;
-    right: 860px;
-    top: 20px;
-}
-
-.brand-info p {
-    margin-top: 5px;
-    font-size: 14px;
-    position: absolute;
-    top: 50px;
-    right: 750px;
-}
-
-.footer-links {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.footer-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    top: 40px;
-    right: 280px;
-}
-
-.footer-nav ul li {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-.footer-nav ul li:last-child {
-    margin-right: 0;
-}
-
-.footer-nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.footer-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-.social-media {
-    margin-right: auto;
-    position: absolute;
-    top: 29px;
-    right: 23px;
-}
-
-.social-media a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 20px;
-    margin-left: 10px;
-}
-
-.footer-description {
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-.footer-social-media {
-    margin-bottom: -10px; /* Jarak antara teks Social Media dan ikon */
-    position: relative;
-    top: -19px;
-    right: -5px;
-}
-
-/* Media query for responsiveness */
-@media only screen and (max-width: 768px) {
-    .brand-info,
-    .footer-links,
-    .social-media {
-        flex-basis: 100%; /* Set width to 100% on small screens */
-        text-align: center;
-    }
-    .footer {
-        background-color: #5940cb;
-        color: #ffffff;
-        padding: 48px 0;
-        text-align: center;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        left: 0%;
-        border-top-left-radius: 60px;
-        border-top-right-radius: 60px;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        z-index: 1000;
-    }
-
-    .social-media {
-        margin-right: auto;
-        position: absolute;
-        top: 29px;
-        right: 23px;
-    }
-
-    .social-media a {
-        color: #ffffff;
-        text-decoration: none;
-        font-size: 20px;
-        margin-left: 10px;
-    }
-    .footer-nav ul {
-        list-style-type: none;
-        padding: 0px;
-        margin: 0;
-        position: absolute;
-        top: 30px;
-        right: 86px;
-    }
-}
-
 .navbar-collapse {
     display: flex;
     justify-content: space-between; /* Atur agar konten navbar berada di antara bagian kiri dan kanan */
@@ -233,12 +80,14 @@ body {
 
 /* Form styling */
 .register-form {
-    width: 924px;
-    padding: 88px;
-    background-color: #ffffff;
+    width: 944px;
+    padding: 130px;
+    /* background-color: #ffffff; */
     border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
     display: flex;
+    top: 110px;
+    position: absolute;
     justify-content: space-between;
 }
 
@@ -310,7 +159,7 @@ textarea {
 
 .btn {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 12px 70px;
     border-radius: 5px;
     background-color: #5940cb;
     color: #ffffff;
@@ -319,8 +168,8 @@ textarea {
     transition: background-color 0.3s;
     border: none;
     position: absolute;
-    left: 581px;
-    top: 495px;
+    left: 373px;
+    top: 428px;
 }
 
 .btn:hover {
