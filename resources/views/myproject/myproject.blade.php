@@ -52,7 +52,7 @@
                 </div>
             </div>
             <div class="col-md-4 text-right">
-    <button class="btn btn-primary btn-create-new-project" data-toggle="modal" data-target="#newProjectModal">Create New Project</button>
+            <a href="creatproject" class="btn btn-primary btn-create-new-project">Create New Project</a>
     <button class="btn btn-primary btn-create-project" data-toggle="modal" data-target="#projectModal">Create Project</button>
 </div>
 
