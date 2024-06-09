@@ -78,6 +78,18 @@ Route::get('/edit', function () {
     return view('profile.edit');
 });
 
+Route::get('/creatproject', function () {
+    return view('myproject.creatproject.creatproject');
+});
+
+Route::get('/pemilihansdgs', function () {
+    return view('myproject.creatproject.pemilihansdgs');
+});
+
+Route::get('/indicator', function () {
+    return view('myproject.creatproject.indicator');
+});
+
 use App\Http\Controllers\HomeController;
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 

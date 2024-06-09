@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
+    <title>Green Future Initiative</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/profile/profiledit.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/indicator.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -13,7 +13,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-    <a class="navbar-brand" href="#">IMM</a>
+        <a class="navbar-brand" href="#">IMM</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -39,50 +39,15 @@
     </div>
 </nav>
 
-<div class="profile-container">
-    <h1>Profile</h1>
-    <p>Kelola pengaturan profil Anda</p>
-    <div class="profile-picture-container">
-        <img src="https://via.placeholder.com/150" alt="Profile Picture">
-        <div class="edit-icon">
-            <i class="fas fa-edit"></i>
-        </div>
+<div class="container mt-5">
+    <h2>Green Future Initiative</h2>
+    <h3>Goals SDGs project anda</h3>
+    <div id="selected-sdgs">
+        <!-- SDGs yang dipilih akan ditampilkan di sini -->
     </div>
-    <form id="profileForm">
-        <div class="form-group">
-            <label for="fullName">Nama Lengkap</label>
-            <input type="text" id="fullName" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="address">Alamat Lengkap</label>
-            <input type="text" id="address" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="phone">Nomor Handphone</label>
-            <div class="phone-input">
-                <img src="https://flagcdn.com/id.svg" alt="ID Flag">
-                <span>(+62)</span>
-                <input type="text" id="phone" class="form-control">
-            </div>
-        </div>
-        <div class="form-group">
-            <label for="city">Kota / Kabupaten</label>
-            <input type="text" id="city" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" class="form-control">
-        </div>
-        <div class="form-group">
-            <label for="province">Provinsi</label>
-            <input type="text" id="province" class="form-control">
-        </div>
-        <div class="form-buttons">
-    <a href="profile" class="btn btn-back">Kembali</a>
-    <button type="submit" class="btn btn-save">Simpan</button>
 </div>
-    </form>
-</div>
+
+<a href="#" class="btn-continue">Simpan dan Lanjutkan</a>
 
 <footer class="footer">
     <div class="footer-container">
@@ -113,18 +78,10 @@
     </div>
 </footer>
 
+<script src="{{ asset('js/imm/indicator.js') }}"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="{{ asset('js/welcome/script.js') }}"></script>
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
-<script>
-    document.getElementById('profileForm').addEventListener('submit', function(event) {
-        event.preventDefault();
-        alert('Profil berhasil disimpan!');
-        window.location.href = 'profile'; // Ubah 'profile' dengan URL halaman profil Anda
-    });
-</script>
 
 </body>
 </html>

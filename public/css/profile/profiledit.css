@@ -1,5 +1,118 @@
 body {
-    font-family: "Roboto", sans-serif;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150vh;
+    margin: 0;
+}
+
+.profile-container {
+    background-color: white;
+    padding: 17px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    top: -32px;
+    text-align: center;
+    width: 586px;
+    position: relative;
+}
+
+.profile-container h1 {
+    margin-top: 0;
+    font-size: 24px;
+}
+
+.profile-container p {
+    color: #777;
+}
+
+.profile-picture-container {
+    position: relative;
+    display: inline-block;
+    margin: 20px 0;
+}
+
+.profile-picture-container img {
+    border-radius: 50%;
+    border: 5px solid #ddd;
+    width: 150px;
+    height: 150px;
+}
+
+.edit-icon {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    padding: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.edit-icon i {
+    color: #6a0dad;
+}
+
+form {
+    text-align: left;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: calc(102% - 9px);
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.phone-input {
+    display: flex;
+    align-items: center;
+}
+
+.phone-input img {
+    width: 24px;
+    margin-right: 5px;
+}
+
+.phone-input span {
+    margin-right: 5px;
+}
+
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.btn-back {
+    background-color: #6a0dad;
+    color: white;
+}
+
+.btn-save {
+    background-color: #4caf50;
+    color: white;
 }
 
 /* Navbar */
@@ -59,8 +172,8 @@ body {
     color: #ffffff;
     padding: 48px 0;
     text-align: center;
-    position: fixed;
-    bottom: 0;
+    position: absolute;
+    bottom: -369px;
     width: 80%;
     left: 10%;
     border-top-left-radius: 40px;

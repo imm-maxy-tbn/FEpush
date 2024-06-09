@@ -25,14 +25,14 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Bootcamp</a>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">IMM <span class="sr-only">(current)</span></a>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">IMM</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Community</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="profile">Profile</a>
+                    <a class="nav-link active" href="profile">Profile</a>
                 </li>
             </ul>
         </div>
@@ -142,7 +142,7 @@
     <div class="row">
         <div class="col-12">
             <div class="bootcamp-header d-flex align-items-center mb-4">
-                <img src="/mnt/data/Jepretan Layar 2024-06-09 pukul 00.44.07.png" class="bootcamp-icon mr-3" alt="Marketing Bootcamp Icon">
+                <img src="images/2.png" class="bootcamp-icon mr-3" alt="Marketing Bootcamp Icon">
                 <h2>Marketing Bootcamp</h2>
                 <i class="fas fa-chevron-down ml-2"></i>
             </div>
