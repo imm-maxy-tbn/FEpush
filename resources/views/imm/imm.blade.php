@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/imm.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/imm/imm.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -40,34 +40,15 @@
 </nav>
 
 
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-content">
-            <div class="brand-info">
-                <h3>IMM</h3>
-                <p>(TBN INDONESIA X MAXY ACADEMY)</p>
-            </div>
-            <div class="footer-links">
-                <div class="footer-nav">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Bootcamp</a></li>
-                        <li><a href="#">IMM</a></li>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">Profile</a></li>
-                    </ul>
-                </div>
-                <div class="social-media">
-                    <p class="footer-social-media">Social Media</p>
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
+<div class="content">
+    <img src="images/6.png" alt="Your Image" class="content-image">
+    <div class="content-text">
+        <h1>Selamat Datang di IMM</h1>
+        <p>IMM (Impact Mate) adalah platform yang...</p>
+        <a href="verifikasidiri" class="btn">Mulai Sekarang</a>
+
     </div>
-</footer>
+</div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

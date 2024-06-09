@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/imm.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/homepageimm/repotbulanan.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
@@ -17,28 +17,23 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-                <a class="nav-link" href="welcome">Home</a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="#">Bootcamp</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">IMM</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Community</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="profile">Profile</a>
-            </li>
-        </ul>
-        </div>
     </div>
 </nav>
 
+<div class="container mt-5">
+<a class="navbar-brand" href="#"><i class="fas fa-arrow-left"></i> Laporan Project Bulan Pertama</a>
+    <h1>Laporan Project Bulan Pertama</h1>
+    <form id="laporanForm">
+        <div class="form-group">
+            <textarea class="form-control" rows="5" placeholder="Ceritakan program apa yang sedang kamu lakukan dan bagaimana rencanamu untuk berdampak melalui program"></textarea>
+        </div>
+        <div class="form-group">
+            <textarea class="form-control" rows="3" placeholder="Unggah dokumen yang dibutuhkan sebagai laporan disini"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Simpan Laporan</button>
+        <div id="notification" class="mt-3"></div>
+    </form>
+</div>
 
 <footer class="footer">
     <div class="footer-container">
@@ -68,11 +63,21 @@
         </div>
     </div>
 </footer>
-
+<script>
+    document.getElementById('laporanForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        const notification = document.getElementById('notification');
+        notification.textContent = 'Project kamu berhasil disimpan!';
+        notification.classList.add('alert', 'alert-success');
+        
+        setTimeout(function() {
+            window.location.href = 'homepage';
+        }, 2000); // Redirect after 2 seconds
+    });
+</script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="{{ asset('js/script.js') }}"></script>
 
 </body>
 </html>

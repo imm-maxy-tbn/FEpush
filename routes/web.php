@@ -7,11 +7,11 @@ use Illuminate\Support\Facades\Auth;
 Auth::routes();
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('tampilanawalhome.welcome');
 });
 
 Route::get('/welcome', function () {
-    return view('welcome');
+    return view('tampilanawalhome.welcome');
 })->name('home'); /* ini befungsi untuk memindahkan dari login ke home */
 
 // Route::get('/login', function () {
@@ -23,39 +23,59 @@ Route::get('/welcome', function () {
 // });
 
 Route::get('/imm', function () {
-    return view('imm');
+    return view('imm.imm');
 });
 
-Route::get('/imm2', function () {
-    return view('imm2');
+Route::get('/verifikasidiri', function () {
+    return view('imm.verifikasidiri');
 });
 
-Route::get('/imm3', function () {
-    return view('imm3');
+Route::get('/blog', function () {
+    return view('blog.blog');
 });
 
-Route::get('/imm4', function () {
-    return view('imm4');
+Route::get('/kodeotp', function () {
+    return view('imm.kodeotp');
+});
+
+Route::get('/pendaftaranperusahaan', function () {
+    return view('imm.pendaftaranperusahaan');
 });
 
 Route::get('/homepage', function () {
-    return view('homepage');
+    return view('homepageimm.homepage');
 });
 
 Route::get('/myproject', function () {
-    return view('myproject');
+    return view('myproject.myproject');
 });
 
 Route::get('/survey', function () {
-    return view('survey');
+    return view('myproject.survey');
 });
 
-Route::get('/creatp', function () {
-    return view('creatp');
+Route::get('/blogarticle', function () {
+    return view('blog.blogarticle');
 });
 
-Route::get('/creatp1', function () {
-    return view('creatp1');
+Route::get('/laporanproject', function () {
+    return view('homepageimm.laporanproject');
+});
+
+Route::get('/reportbulanpertama', function () {
+    return view('homepageimm.reportbulanpertama');
+});
+
+Route::get('/detail', function () {
+    return view('myproject.detail');
+});
+
+Route::get('/profile', function () {
+    return view('profile.profile');
+});
+
+Route::get('/edit', function () {
+    return view('profile.edit');
 });
 
 use App\Http\Controllers\HomeController;
