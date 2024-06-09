@@ -2,7 +2,6 @@ body {
     font-family: "Roboto", sans-serif;
     padding-top: 70px; /* Add padding to avoid content being hidden behind fixed navbar */
     background-color: #f8f9fa;
-    height: 300vh;
 }
 
 .navbar {
@@ -156,36 +155,76 @@ body {
     right: -5px;
 }
 
-.sdg-goal {
-    transition: all 0.3s ease;
+.chart-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.metric-progress {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.metric-item {
+    flex: 1;
+    text-align: center;
+}
+
+.metric-values {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+.metric-values input {
+    flex: 1;
+    text-align: center;
+    border: none;
+    background-color: #f8f9fa;
+}
+
+.document-validation,
+.survey-support {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.document-tab,
+.survey-tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 2px solid #ccc;
     cursor: pointer;
 }
 
-.sdg-goal:hover {
-    filter: brightness(0.7);
-    transform: scale(1.05);
+.document-tab:hover,
+.survey-tab:hover {
+    background-color: #f8f9fa;
 }
 
-.sdg-description {
-    display: none;
-    opacity: 0;
-    transition: all 0.3s ease;
+.document-files,
+.survey-files,
+.report-files {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
 }
 
-.sdg-description.show {
-    display: block;
-    opacity: 1;
+.document-file,
+.survey-file,
+.report-file {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.sdg-description.hide {
-    display: none;
-    opacity: 0;
-}
-
-.btn-continue {
-    background-color: #5940cb;
-}
-
-.btn-continue:hover {
-    background-color: #432b9b;
+.document-file:hover,
+.survey-file:hover,
+.report-file:hover {
+    background-color: #f8f9fa;
 }

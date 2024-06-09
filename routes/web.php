@@ -90,6 +90,13 @@ Route::get('/indicator', function () {
     return view('myproject.creatproject.indicator');
 });
 
+Route::get('/metrix', function () {
+    return view('myproject.creatproject.metrix');
+});
+
+Route::get('/impact', function () {
+    return view('myproject.impact');
+});
 use App\Http\Controllers\HomeController;
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 

@@ -1,13 +1,20 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var selectedSDGs = JSON.parse(localStorage.getItem("selectedSDGs")) || [];
-    var sdgContainer = document.getElementById("selected-sdgs");
+    var sdgGoals = document.querySelectorAll(".sdg-goal");
 
-    selectedSDGs.forEach(function (sdg) {
-        var sdgItem = document.querySelector(`.sdg-item[data-sdg="${sdg}"]`);
-        if (sdgItem) {
-            var clonedItem = sdgItem.cloneNode(true);
-            clonedItem.querySelector(".sdg-checkbox").remove();
-            sdgContainer.appendChild(clonedItem);
-        }
+    sdgGoals.forEach(function (goal) {
+        goal.addEventListener("click", function () {
+            var target = document.querySelector(
+                goal.getAttribute("data-target")
+            );
+            var descriptionVisible = target.classList.contains("show");
+
+            if (!descriptionVisible) {
+                target.classList.remove("hide");
+                target.classList.add("show");
+            } else {
+                target.classList.remove("show");
+                target.classList.add("hide");
+            }
+        });
     });
 });

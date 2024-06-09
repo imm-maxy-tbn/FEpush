@@ -156,36 +156,15 @@ body {
     right: -5px;
 }
 
-.sdg-goal {
-    transition: all 0.3s ease;
-    cursor: pointer;
+.metric-item:hover {
+    filter: brightness(0.95);
 }
 
-.sdg-goal:hover {
-    filter: brightness(0.7);
-    transform: scale(1.05);
+.metric-checkbox {
+    width: 20px;
+    height: 20px;
 }
 
-.sdg-description {
-    display: none;
-    opacity: 0;
-    transition: all 0.3s ease;
-}
-
-.sdg-description.show {
-    display: block;
-    opacity: 1;
-}
-
-.sdg-description.hide {
-    display: none;
-    opacity: 0;
-}
-
-.btn-continue {
-    background-color: #5940cb;
-}
-
-.btn-continue:hover {
-    background-color: #432b9b;
+.text-primary {
+    color: #5940cb !important;
 }
