@@ -78,9 +78,9 @@ Route::get('/edit', function () {
     return view('profile.edit');
 });
 
-Route::get('/creatproject', function () {
-    return view('myproject.creatproject.creatproject');
-});
+// Route::get('/creatproject', function () {
+//     return view('myproject.creatproject.creatproject');
+// });
 
 Route::get('/pemilihansdgs', function () {
     return view('myproject.creatproject.pemilihansdgs');
@@ -105,3 +105,9 @@ use App\Http\Controllers\VerificationController;
 Route::get('/imm3', [VerificationController::class, 'showVerificationForm'])->name('imm3');
 Route::post('/send-otp', [VerificationController::class, 'sendVerificationEmail'])->name('send-otp');
 Route::post('/verify-code', [VerificationController::class, 'verifyCode'])->name('verify-code');
+
+use App\Http\Controllers\ProjectController;
+
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('/creatproject', [ProjectController::class, 'create'])->name('projects.create');
+Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');

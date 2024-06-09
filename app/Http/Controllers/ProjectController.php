@@ -30,20 +30,20 @@ class ProjectController extends Controller
         $targetPelanggan = TargetPelanggan::all();
         $dana = Dana::all();
 
-        return view('projects.create', compact('companies', 'tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana'));
+        return view('myproject.creatproject.creatproject', compact('companies', 'tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana'));
     }
 
     public function filterMetrics(Request $request)
     {
         $tagIds = $request->input('tag_ids', []);
         $indicatorIds = $request->input('indicator_ids', []);
-        
+
         $metrics = Metric::orWhereHas('tags', function($query) use ($tagIds) {
             $query->whereIn('tags.id', $tagIds);
         })->orWhereHas('indicators', function($query) use ($indicatorIds) {
             $query->whereIn('indicators.id', $indicatorIds);
         })->with('relatedMetrics')->get();
-        
+
         return response()->json($metrics);
     }
 
@@ -53,7 +53,7 @@ class ProjectController extends Controller
         $validatedData = $request->validate([
             'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10000',
             'nama' => 'required|string',
-            'deskripsi' => 'required|string',   
+            'deskripsi' => 'required|string',
             'tujuan' => 'required|string',
             'start_date' => 'required|date',
             'end_date' => 'required|date',
@@ -84,9 +84,9 @@ class ProjectController extends Controller
             $request->img->move(public_path('images'), $imageName);
             $validatedData['img'] = $imageName;
         }
-        
+
         $project = Project::create($validatedData);
-        
+
         $project->tags()->attach($request->input('tag_ids'));
         $project->sdgs()->attach($request->input('sdg_ids'));
         $project->indicators()->attach($request->input('indicator_ids'));
@@ -132,7 +132,7 @@ class ProjectController extends Controller
         $project = Project::with('tags', 'indicators')->findOrFail($id);
         return view('projects.view', compact('project'));
     }
-     
+
     public function update(Request $request, $id)
     {
         $project = Project::findOrFail($id);
@@ -140,7 +140,7 @@ class ProjectController extends Controller
         $validatedData = $request->validate([
             'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10000',
             'nama' => 'required|string',
-            'deskripsi' => 'required|string',   
+            'deskripsi' => 'required|string',
             'tujuan' => 'required|string',
             'start_date' => 'required|date',
             'end_date' => 'required|date',
