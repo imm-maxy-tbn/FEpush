@@ -94,6 +94,34 @@ Route::get('/metrix', function () {
     return view('myproject.creatproject.metrix');
 });
 
+Route::get('/responden', function () {
+    return view('survey.responden.responden');
+});
+
+Route::get('/responden-data-diri', function () {
+    return view('survey.responden.responden-data-diri');
+});
+
+Route::get('/responden-esay', function () {
+    return view('survey.responden.responden-esay');
+});
+
+Route::get('/responden-pilihan-ganda', function () {
+    return view('survey.responden.responden-pilihan-ganda');
+});
+
+Route::get('/responden-skala', function () {
+    return view('survey.responden.responden-skala');
+});
+
+Route::get('/responden-penutup-survey', function () {
+    return view('survey.responden.responden-penutup-survey');
+});
+
+Route::get('/edit-survey', function () {
+    return view('survey.edit-survey.edit-survey');
+});
+
 Route::get('/impact', function () {
     return view('myproject.impact');
 });
