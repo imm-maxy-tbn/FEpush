@@ -16,7 +16,12 @@ class PostController extends Controller
         $posts = Post::all();
         $tags = Tag::all();
         $categories = Category::all();
-        return view('creatp', compact('posts', 'tags', 'categories'));
+        foreach ($posts as $post) {
+            $post->content = \Illuminate\Support\Str::limit($post->content, 100, $end='...');
+            $post->img = env('APP_BACKEND_URL') . '/images/' . $post->img;
+        }
+        $backendUrl = env('APP_BACKEND_URL');
+        return view('blog.blog', compact('posts', 'tags', 'categories','backendUrl'));
     }
 
     public function create()
@@ -33,23 +38,26 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:10000',
             'content' => 'required',
             'user_id' => 'required|exists:users,id',
             'published_at' => 'nullable|date',
             'category_id' => 'required|exists:categories,id',
             'tags.*' => 'required|exists:tags,id',
-            'imgupload' => 'nullable|image|max:5000',
         ]);
 
-        $data = $request->all();
 
-        if ($request->hasFile('imgupload')) {
-            $imageName = time() . '.' . $request->imgupload->extension();
-            $request->imgupload->storeAs('public/images', $imageName);
-            $data['imgupload'] = 'storage/images/' . $imageName;
-        }
+        $imageName = time() . '.' . $request->img->extension();
+        $request->img->move(public_path('images'), $imageName);
 
-        $post = Post::create($data);
+        $post = Post::create([
+            'title' => $request->input('title'),
+            'img' => $imageName, 
+            'content' => $request->input('content'),
+            'user_id' => $request->input('user_id'),
+            'published_at' => $request->input('published_at'),
+            'category_id' => $request->input('category_id'),
+        ]);
 
         if ($request->has('tags')) {
             $post->tags()->sync($request->input('tags'));
@@ -65,8 +73,7 @@ class PostController extends Controller
         $categories = Category::all();
         $users = User::all();
         $currentUserId = Auth::id();
-
-        return view('posts.view', compact('post', 'tags', 'categories', 'users', 'currentUserId'));
+        return view('blog.blog', compact('post', 'tags', 'categories', 'users', 'currentUserId'));
     }
 
     public function edit($id)
@@ -84,24 +91,32 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:10000', 
             'content' => 'required',
             'user_id' => 'required|exists:users,id',
             'published_at' => 'nullable|date',
             'category_id' => 'required|exists:categories,id',
             'tags.*' => 'required|exists:tags,id',
-            'imgupload' => 'nullable|image|max:5000',
         ]);
 
         $post = Post::findOrFail($id);
-        $data = $request->all();
 
-        if ($request->hasFile('imgupload')) {
-            $imageName = time() . '.' . $request->imgupload->extension();
-            $request->imgupload->storeAs('public/images', $imageName);
-            $data['imgupload'] = 'storage/images/' . $imageName;
+        if ($request->hasFile('img')) {
+            if ($post->img && file_exists(public_path('images/' . $post->img))) {
+                unlink(public_path('images/' . $post->img));
+            }
+            
+            $imageName = time() . '.' . $request->img->extension();
+            $request->img->move(public_path('images'), $imageName);
+            $post->img = $imageName;
         }
 
-        $post->update($data);
+        $post->title = $request->input('title');
+        $post->content = $request->input('content');
+        $post->user_id = $request->input('user_id');
+        $post->published_at = $request->input('published_at');
+        $post->category_id = $request->input('category_id');
+        $post->save();
 
         if ($request->has('tags')) {
             $post->tags()->sync($request->input('tags'));
@@ -109,6 +124,7 @@ class PostController extends Controller
 
         return redirect()->route('posts.index')->with('success', 'Post updated successfully.');
     }
+
 
     public function destroy($id)
     {
@@ -119,15 +135,15 @@ class PostController extends Controller
     }
 
     public function uploadImage(Request $request)
-{
-    $request->validate([
-        'imgupload' => 'required|image|max:5000',
-    ]);
+    {
+        $request->validate([
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:10000',
+        ]);
 
-    $imageName = time() . '.' . $request->imgupload->extension();
-    $request->imgupload->storeAs('public/images', $imageName);
+        $imageName = time() . '.' . $request->imgupload->extension();
+        $request->imgupload->storeAs('public/images', $imageName);
 
-    return response()->json(['url' => asset('storage/images/' . $imageName)]);
-}
+        return response()->json(['url' => asset('storage/images/' . $imageName)]);
+    }
 
 }

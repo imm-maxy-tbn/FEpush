@@ -97,8 +97,8 @@ use App\Http\Controllers\CompanyController;
 Route::post('/companies/store', [CompanyController::class, 'store'])->name('companies.store');
 
 use App\Http\Controllers\PostController;
-Route::get('/creatp', [PostController::class, 'index'])->name('creatp');
-Route::get('/creatp1', [PostController::class, 'view'])->name('posts.view');
+Route::get('/blog', [PostController::class, 'index'])->name('blog');
+Route::get('/blogarticle', [PostController::class, 'view'])->name('posts.view');
 
 use App\Http\Controllers\VerificationController;
 
@@ -111,3 +111,4 @@ use App\Http\Controllers\ProjectController;
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/creatproject', [ProjectController::class, 'create'])->name('projects.create');
 Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+
