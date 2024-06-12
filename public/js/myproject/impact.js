@@ -1,6 +1,6 @@
-document.addEventListener("DOMContentLoaded", function () {
-    var ctx = document.getElementById("metrixChart").getContext("2d");
-    var chart = new Chart(ctx, {
+document.addEventListener("DOMContentLoaded", (event) => {
+    const ctx = document.getElementById("myChart").getContext("2d");
+    const myChart = new Chart(ctx, {
         type: "bar",
         data: {
             labels: [
@@ -14,10 +14,10 @@ document.addEventListener("DOMContentLoaded", function () {
             ],
             datasets: [
                 {
-                    label: "Bias-Reducing Investment Practices",
-                    data: [2500, 4100, 6100, 4200, 7000, 6500, 6000],
-                    backgroundColor: "rgba(89, 64, 203, 0.6)",
-                    borderColor: "rgba(89, 64, 203, 1)",
+                    label: "Metrix : Bias-Reducing Investment Practices",
+                    data: [2300, 4100, 6100, 4200, 7000, 6500, 6000],
+                    backgroundColor: "rgba(103, 58, 183, 0.6)",
+                    borderColor: "rgba(103, 58, 183, 1)",
                     borderWidth: 1,
                 },
             ],
@@ -31,23 +31,17 @@ document.addEventListener("DOMContentLoaded", function () {
         },
     });
 
-    document.querySelectorAll(".document-tab").forEach(function (tab) {
-        tab.addEventListener("click", function () {
-            document.querySelectorAll(".document-tab").forEach(function (t) {
-                t.classList.remove("active");
-            });
-            tab.classList.add("active");
-            // You can add functionality to change document files here
+    // Add event listeners for Reset Data and Simpan Data buttons
+    document
+        .querySelector(".btn-outline-primary")
+        .addEventListener("click", () => {
+            document
+                .querySelectorAll('.metric-inputs input[type="number"]')
+                .forEach((input) => (input.value = ""));
+            document.querySelector(".form-range").value = 50;
         });
-    });
 
-    document.querySelectorAll(".survey-tab").forEach(function (tab) {
-        tab.addEventListener("click", function () {
-            document.querySelectorAll(".survey-tab").forEach(function (t) {
-                t.classList.remove("active");
-            });
-            tab.classList.add("active");
-            // You can add functionality to change survey files here
-        });
+    document.querySelector(".btn-primary").addEventListener("click", () => {
+        alert("Data berhasil disimpan!");
     });
 });

@@ -40,91 +40,11 @@
 </nav>
 
 <div class="container mt-5">
-    <h2 class="text-center">Metrix detail</h2>
-    <h3 class="text-center">Metrix : Bias-Reducing Investment Practices</h3>
+    <h2>Metrix detail</h2>
     <div class="chart-container">
-        <canvas id="metrixChart"></canvas>
+        <canvas id="myChart"></canvas>
     </div>
-    <h4 class="mt-4">Perkembangan Metrix</h4>
-    <div class="metric-progress">
-        <div class="metric-item">Januari</div>
-        <div class="metric-item">Februari</div>
-        <div class="metric-item">Maret</div>
-        <div class="metric-item">April</div>
-        <div class="metric-item">Mei</div>
-        <div class="metric-item">Juni</div>
-        <div class="metric-item">Juli</div>
-        <div class="metric-item">Agustus</div>
-        <div class="metric-item">September</div>
-        <div class="metric-item">Oktober</div>
-        <div class="metric-item">November</div>
-        <div class="metric-item">Desember</div>
-    </div>
-    <div class="metric-values">
-        <input type="text" value="2500" readonly>
-        <input type="text" value="4100" readonly>
-        <input type="text" value="6100" readonly>
-        <input type="text" value="4200" readonly>
-        <input type="text" value="7000" readonly>
-        <input type="text" value="6500" readonly>
-        <input type="text" value="6000" readonly>
-        <input type="text" readonly>
-    </div>
-    <div class="d-flex justify-content-between mt-4">
-        <button class="btn btn-secondary">Reset Data</button>
-        <button class="btn btn-primary">Simpan Data</button>
-    </div>
-    <h4 class="mt-4">Dokumen Validitas Data</h4>
-    <div class="document-validation">
-        <div class="document-tab active">Januari</div>
-        <div class="document-tab">Februari</div>
-        <div class="document-tab">Maret</div>
-        <div class="document-tab">April</div>
-        <div class="document-tab">Mei</div>
-        <div class="document-tab">Juni</div>
-        <div class="document-tab">Juli</div>
-        <div class="document-tab">Agustus</div>
-        <div class="document-tab">September</div>
-        <div class="document-tab">Oktober</div>
-        <div class="document-tab">November</div>
-        <div class="document-tab">Desember</div>
-    </div>
-    <div class="document-files">
-        <div class="document-file">File a.csv</div>
-        <div class="document-file">File b.csv</div>
-        <div class="document-file">File c.csv</div>
-        <div class="document-file">File d.csv</div>
-    </div>
-    <button class="btn btn-primary mt-3">Tambah Dokumen</button>
-    <h4 class="mt-4">Survey Pendukung</h4>
-    <div class="survey-support">
-        <div class="survey-tab active">Januari</div>
-        <div class="survey-tab">Februari</div>
-        <div class="survey-tab">Maret</div>
-        <div class="survey-tab">April</div>
-        <div class="survey-tab">Mei</div>
-        <div class="survey-tab">Juni</div>
-        <div class="survey-tab">Juli</div>
-        <div class="survey-tab">Agustus</div>
-        <div class="survey-tab">September</div>
-        <div class="survey-tab">Oktober</div>
-        <div class="survey-tab">November</div>
-        <div class="survey-tab">Desember</div>
-    </div>
-    <div class="survey-files">
-        <div class="survey-file">Survey Lorem Ipsum</div>
-        <div class="survey-file">Survey Lorem Ipsum</div>
-        <div class="survey-file">Survey Lorem Ipsum</div>
-        <div class="survey-file">Survey Lorem Ipsum</div>
-    </div>
-    <button class="btn btn-primary mt-3">Mulai Survey</button>
-    <h4 class="mt-4">Matrix Report</h4>
-    <div class="report-files">
-        <div class="report-file">Lorem Ipsum</div>
-        <div class="report-file">Lorem Ipsum</div>
-        <div class="report-file">Lorem Ipsum</div>
-    </div>
-    <button class="btn btn-primary mt-3">Tambah Laporan</button>
+    <p class="text-center mt-3">Perkembangan Metrix</p>
 </div>
 
 <footer class="footer">

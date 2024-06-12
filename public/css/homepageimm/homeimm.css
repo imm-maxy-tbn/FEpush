@@ -343,7 +343,7 @@ p {
     margin-left: 69px;
     margin-right: 114px;
     position: relative;
-    top: 243px;
+    top: 259px;
 }
 
 .report-container .text-content {
@@ -513,8 +513,8 @@ h4 {
     border-radius: 7px;
     box-shadow: 0 0 10px rgb(0 0 0 / 46%);
     position: absolute;
-    top: 1473px;
-    right: 130px;
+    top: 1500px;
+    right: 150px;
 }
 
 .grid {
