@@ -90,6 +90,55 @@ Route::get('/indicator', function () {
     return view('myproject.creatproject.indicator');
 });
 
+Route::get('/metrix', function () {
+    return view('myproject.creatproject.metrix');
+});
+
+Route::get('/responden', function () {
+    return view('survey.responden.responden');
+});
+
+Route::get('/responden-data-diri', function () {
+    return view('survey.responden.responden-data-diri');
+});
+
+Route::get('/responden-esay', function () {
+    return view('survey.responden.responden-esay');
+});
+
+Route::get('/responden-pilihan-ganda', function () {
+    return view('survey.responden.responden-pilihan-ganda');
+});
+
+Route::get('/responden-skala', function () {
+    return view('survey.responden.responden-skala');
+});
+
+Route::get('/responden-penutup-survey', function () {
+    return view('survey.responden.responden-penutup-survey');
+});
+
+Route::get('/edit-survey', function () {
+    return view('survey.edit-survey.edit-survey');
+});
+
+Route::get('/event', function () {
+    return view('event.event');
+});
+
+Route::get('/event-detail', function () {
+    return view('event.event-detail');
+});
+
+Route::get('/event-register', function () {
+    return view('event.event-register');
+});
+
+Route::get('/succes', function () {
+    return view('event.succes');
+});
+
+
 use App\Http\Controllers\HomeController;
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 

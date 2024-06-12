@@ -148,7 +148,6 @@
         <div class="grid-item" data-index="16"><img src="images/E-WEB-Goal-16.png" alt="Goal 16"></div>
         <div class="grid-item" data-index="17"><img src="images/E-WEB-Goal-17.png" alt="Goal 17"></div>
     </div>
-    <button class="submit-button">Submit</button>
 </div>
 
 

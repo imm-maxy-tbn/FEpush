@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
 body {
     font-family: "Roboto", sans-serif;
-    padding-top: 70px; /* Add padding to avoid content being hidden behind fixed navbar */
-    background-color: #f8f9fa;
-    height: 300vh;
+    padding-top: 70px;
+    padding-bottom: 140px;
+    /* Add padding to avoid content being hidden behind fixed navbar */
+    background-color: #ffffff;
+    font-family: "Quicksand", sans-serif;
 }
 
 .navbar {
@@ -15,11 +18,6 @@ body {
     left: 0;
     z-index: 1000;
     border-bottom: 3px solid #5940cb;
-}
-
-.navbar-brand {
-    margin-right: 14px;
-    margin-left: 342px;
 }
 
 .navbar-nav {
@@ -72,6 +70,42 @@ body {
 .footer-container {
     max-width: 594px;
     margin: 0 auto;
+}
+
+.content {
+    background-color: #F7F6FB;
+    height: 742px;
+    width: 1220px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    text-align: justify;
+}
+
+.sub-content {
+    background-color: #E5E2F2;
+    width: 100%;
+    height: 182px;
+    margin-top: 50px;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.btn {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+button {
+    width: 399px;
+    height: 49px;
+    background-color: #5940cb;
+    border: none;
+    border-radius: 6px;
+    color: white;
 }
 
 .footer-content {
@@ -150,42 +184,22 @@ body {
 }
 
 .footer-social-media {
-    margin-bottom: -10px; /* Jarak antara teks Social Media dan ikon */
+    margin-bottom: -10px;
+    /* Jarak antara teks Social Media dan ikon */
     position: relative;
     top: -19px;
     right: -5px;
 }
 
-.sdg-goal {
-    transition: all 0.3s ease;
-    cursor: pointer;
+.metric-item:hover {
+    filter: brightness(0.95);
 }
 
-.sdg-goal:hover {
-    filter: brightness(0.7);
-    transform: scale(1.05);
+.metric-checkbox {
+    width: 20px;
+    height: 20px;
 }
 
-.sdg-description {
-    display: none;
-    opacity: 0;
-    transition: all 0.3s ease;
-}
-
-.sdg-description.show {
-    display: block;
-    opacity: 1;
-}
-
-.sdg-description.hide {
-    display: none;
-    opacity: 0;
-}
-
-.btn-continue {
-    background-color: #5940cb;
-}
-
-.btn-continue:hover {
-    background-color: #432b9b;
+.text-primary {
+    color: #5940cb !important;
 }

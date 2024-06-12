@@ -4,9 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>Event</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/blog/blog.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/event/eventt.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -44,7 +44,7 @@
 <div class="container mt-5">
     <div class="btn">
     <a href="/blog"><button class="btn-blog">Blog Artikel</button></a>
-    <a href="/event"><button class="btn-event">Event</button></a>
+   <a href="/event"> <button class="btn-event">Event</button></a>
     </div>
     <div class="search-container mt-4">
         <input type="text" class="form-control" placeholder="cari disini" id="searchInput">
@@ -104,44 +104,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="{{ asset('js/blog/blog.js') }}"></script>
-<script>
-    const backendUrl = @json($backendUrl);
-    const posts = @json($posts);
 
-    document.addEventListener("DOMContentLoaded", function () {
-        const blogContainer = document.getElementById("blogContainer");
-
-        posts.forEach((post) => {
-            const blogCard = document.createElement("div");
-            blogCard.className = "blog-card";
-            blogCard.innerHTML = `
-                <a href="/blogarticle/${post.id}/view">
-                    <div class="blog-image" style="background-image: url(${post.img});"></div>
-                    <h3>${post.title}</h3>
-                    <p>${post.content}</p>
-                </a>
-            `;
-            blogContainer.appendChild(blogCard);
-        });
-
-        document.getElementById("searchInput").addEventListener("input", searchBlog);
-    });
-
-    function searchBlog() {
-        const input = document.getElementById("searchInput").value.toLowerCase();
-        const blogCards = document.querySelectorAll(".blog-card");
-
-        blogCards.forEach((card) => {
-            const title = card.querySelector("h3").textContent.toLowerCase();
-            const content = card.querySelector("p").textContent.toLowerCase();
-            if (title.includes(input) || content.includes(input)) {
-                card.style.display = "block";
-            } else {
-                card.style.display = "none";
-            }
-        });
-    }
-</script>
 </body>
 
 </html>

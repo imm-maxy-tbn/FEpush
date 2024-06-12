@@ -68,23 +68,24 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <h5 class="card-title">Metrix Anda</h5>
-                    <button class="btn btn-primary">Cari yang berkaitan dengan Metrix Anda</button>
-                    <ul class="list-group mt-3">
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Assets Under Management: Total
-                            <span class="badge badge-primary badge-pill"><i class="fas fa-check"></i></span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Bias-Reducing Investment Practices
-                            <span class="badge badge-primary badge-pill"><i class="fas fa-check"></i></span>
-                        </li>
-                        <li class="list-group-item d-flex justify-content-between align-items-center">
-                            Bias-Reducing Investment Practices
-                            <span class="badge badge-primary badge-pill"><i class="fas fa-check"></i></span>
-                        </li>
-                    </ul>
-                </div>
+        <h5 class="card-title">Metrix Anda</h5>
+            <button class="btn btn-primary">Cari yang berkaitan dengan Metrix Anda</button>
+            <ul class="list-group mt-3">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="impact" class="text-dark">Assets Under Management: Total</a>
+                <span class="badge badge-primary badge-pill"><i class="fas fa-check"></i></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="impact" class="text-dark">Bias-Reducing Investment Practices</a>
+                <span class="badge badge-primary badge-pill"><i class="fas fa-check"></i></span>
+            </li>
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+                <a href="impact" class="text-dark">Bias-Reducing Investment Practices</a>
+                <span class="badge badge-primary badge-pill"><i class="fas fa-check"></i></span>
+            </li>
+            </ul>
+        </div>
+
             </div>
         </div>
     </div>

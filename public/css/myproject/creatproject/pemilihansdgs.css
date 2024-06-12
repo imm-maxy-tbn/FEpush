@@ -1,6 +1,6 @@
 body {
     font-family: "Roboto", sans-serif;
-    height: 260vh;
+    height: 300vh;
     padding-top: 70px; /* Add padding to avoid content being hidden behind fixed navbar */
 }
 
@@ -63,6 +63,12 @@ body {
     position: relative;
     display: flex;
     align-items: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.sdg-item:hover {
+    background-color: #f0f0f0;
+    transform: translateY(-5px);
 }
 
 .sdg-item img {
@@ -82,6 +88,16 @@ body {
     background-color: #f8f8f8;
     border-top: 1px solid #ccc;
     margin-top: 10px;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
 
 .sdg-item.active .sdg-description {
@@ -97,6 +113,11 @@ body {
     right: 50px;
     font-size: 20px;
     color: #333;
+    transition: transform 0.3s ease;
+}
+
+.sdg-item.active .sdg-toggle {
+    transform: rotate(180deg);
 }
 
 .sdg-checkbox {
@@ -221,4 +242,5 @@ body {
 
 .btn-continue:hover {
     background-color: #432b9b;
+    text-decoration: none;
 }
