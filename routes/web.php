@@ -122,9 +122,23 @@ Route::get('/edit-survey', function () {
     return view('survey.edit-survey.edit-survey');
 });
 
-Route::get('/impact', function () {
-    return view('myproject.impact');
+Route::get('/event', function () {
+    return view('event.event');
 });
+
+Route::get('/event-detail', function () {
+    return view('event.event-detail');
+});
+
+Route::get('/event-register', function () {
+    return view('event.event-register');
+});
+
+Route::get('/succes', function () {
+    return view('event.succes');
+});
+
+
 use App\Http\Controllers\HomeController;
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 

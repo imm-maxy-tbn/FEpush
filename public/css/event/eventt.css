@@ -64,8 +64,7 @@ html {
 .btn-blog {
     width: 189px;
     height: 62px;
-    background-color: #5940cb;
-    color: white;
+    background-color: transparent;
     border-radius: 5px;
     font-size: 28px;
     font-weight: bold;
@@ -75,7 +74,8 @@ html {
 .btn-event {
     width: 189px;
     height: 62px;
-    background-color: transparent;
+    background-color: #5940cb;
+    color: white;
     border-radius: 5px;
     font-size: 28px;
     font-weight: bold;
