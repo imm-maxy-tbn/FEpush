@@ -112,7 +112,7 @@
             const blogCard = document.createElement("div");
             blogCard.className = "blog-card";
             blogCard.innerHTML = `
-                <a href="${backendUrl}/posts/view/${post.id}">
+                <a href="/blogarticle/${post.id}/view">
                     <div class="blog-image" style="background-image: url(${post.img});"></div>
                     <h3>${post.title}</h3>
                     <p>${post.content}</p>

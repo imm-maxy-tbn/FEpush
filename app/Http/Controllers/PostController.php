@@ -21,6 +21,7 @@ class PostController extends Controller
             $post->img = env('APP_BACKEND_URL') . '/images/' . $post->img;
         }
         $backendUrl = env('APP_BACKEND_URL');
+        $frontendUrl = env('APP_URL');
         return view('blog.blog', compact('posts', 'tags', 'categories','backendUrl'));
     }
 
@@ -73,7 +74,7 @@ class PostController extends Controller
         $categories = Category::all();
         $users = User::all();
         $currentUserId = Auth::id();
-        return view('blog.blog', compact('post', 'tags', 'categories', 'users', 'currentUserId'));
+        return view('blog.blogarticle', compact('post', 'tags', 'categories', 'users', 'currentUserId'));
     }
 
     public function edit($id)

@@ -97,8 +97,9 @@ use App\Http\Controllers\CompanyController;
 Route::post('/companies/store', [CompanyController::class, 'store'])->name('companies.store');
 
 use App\Http\Controllers\PostController;
-Route::get('/blog', [PostController::class, 'index'])->name('blog');
-Route::get('/blogarticle', [PostController::class, 'view'])->name('posts.view');
+Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
+Route::get('/blogarticle/{id}/view', [PostController::class, 'view'])->name('blog.view');
+
 
 use App\Http\Controllers\VerificationController;
 
