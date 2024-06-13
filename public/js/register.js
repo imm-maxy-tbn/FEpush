@@ -9,3 +9,10 @@ function simpanData() {
 
 // Tambahkan event listener untuk tombol "Simpan Data"
 document.getElementById("simpanBtn").addEventListener("click", simpanData);
+
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+        var loading = document.getElementById("loading");
+        loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
+    }, 1000); // 3000 milidetik = 3 detik
+});

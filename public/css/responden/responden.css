@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 body {
     font-family: "Roboto", sans-serif;
     padding-top: 70px;
@@ -73,7 +73,7 @@ body {
 }
 
 .content {
-    background-color: #F7F6FB;
+    background-color: #f7f6fb;
     height: 742px;
     width: 1220px;
     border-radius: 20px;
@@ -84,7 +84,7 @@ body {
 }
 
 .sub-content {
-    background-color: #E5E2F2;
+    background-color: #e5e2f2;
     width: 100%;
     height: 182px;
     margin-top: 50px;
@@ -202,4 +202,60 @@ button {
 
 .text-primary {
     color: #5940cb !important;
+}
+
+/* Efek loading */
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 5px;
+}
+
+#loading img {
+    width: 100px; /* Ukuran gambar loading */
+    height: 100px; /* Ukuran gambar loading */
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animasi umum untuk elemen lainnya */
+.content-container h1,
+.date-box,
+.chart-container,
+.analysis-matrix .content-box,
+.target-check .target-check-box,
+.icon-box .icon-item,
+.btn {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.content-container h1:hover,
+.date-box:hover,
+.chart-container:hover,
+.analysis-matrix .content-box:hover,
+.target-check .target-check-box:hover,
+.icon-box .icon-item:hover,
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Menambahkan transisi pada navbar */
+.navbar {
+    transition: background-color 0.3s ease;
+}
+
+.navbar:hover {
+    background-color: #e3e3e3;
 }

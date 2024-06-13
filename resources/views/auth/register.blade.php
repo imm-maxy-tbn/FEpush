@@ -14,6 +14,9 @@
 </head>
 
 <body>
+<div id="loading">
+        <img src="images/imm.png" alt="Loading...">
+    </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">IMM Impact Mate</a>
