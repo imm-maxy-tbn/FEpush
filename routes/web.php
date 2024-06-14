@@ -130,6 +130,14 @@ Route::get('/event-detail', function () {
     return view('event.event-detail');
 });
 
+Route::get('/detail-kelas', function () {
+    return view('kelas.detail-kelas');
+});
+
+Route::get('/bootcamp', function () {
+    return view('bootcamp.bootcamp');
+});
+
 Route::get('/event-register', function () {
     return view('event.event-register');
 });

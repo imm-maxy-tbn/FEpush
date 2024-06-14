@@ -50,8 +50,9 @@
             <p style="font-size: 20px">Tambahkan deskripsi</p>
         </span>
         <span>
-            <select id="projectSelect" class="form-control-select">
+            <select id="projectSelect" class="form-control-select ">
           
+                <option value="Pilih disini" >Pilih disini</option>
                 <option value="Teks Isian">Teks Isian</option>
                 <option value="Pilihan Ganda">Pilihan Ganda</option>
                 <option value="Skala">Skala</option>
@@ -68,7 +69,7 @@
                     <span class="angka d-flex justify-content-center align-items-center">
                         1
                     </span>
-                    <div class="mb-4 mt-4">
+                    <div class="mb-2 mt-2">
                         <label for="nama_depan_1" class="form-label">Tambahkan pertanyaan</label>
                         <input type="text" id="nama_depan_1" class="form-control" placeholder="Isi disini">
                     </div>
@@ -80,7 +81,7 @@
                     <span class="angka d-flex justify-content-center align-items-center">
                         1
                     </span>
-                    <div class="mb-4 d-flex flex-column">
+                    <div class="mb-2 d-flex flex-column">
                         <label>
                             <input type="radio" class="mb-3" name="optionsRadios" id="optionsRadios1" value="option1" checked="">Lorem ipsum 
                         </label>
@@ -104,7 +105,7 @@
                     </span>
                     <div class="row d-flex flex-column">
                         <label>Lorem ipsum dolor sit amet consectetur adipiscing elit, mus eu faucibus dui platea libero ?</label>
-                        <div class="mb-5 d-flex" style="gap: 125px">
+                        <div class="mb-2 d-flex" style="gap: 125px">
                             <div class="radio-item">
                                 <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
                                 <label for="optionsRadios1">1</label>
@@ -140,7 +141,7 @@
     <div class="container d-flex justify-content-center">
         <span class="btn-tambah-bagian" id="add-section-btn">Tambah Bagian Survey +</span>
     </div>
-</div>
+{{-- </div>
 <footer class="footer">
     <div class="footer-container">
         <div class="footer-content">
@@ -168,7 +169,7 @@
             </div>
         </div>
     </div>
-</footer>
+</footer> --}}
 
 <script>
     let questionCount = 1;
@@ -219,7 +220,7 @@
                     <span class="angka d-flex justify-content-center align-items-center">
                         ${questionCount}
                     </span>
-                    <div class="mb-4 mt-4">
+                    <div class="">
                         <label for="nama_depan_${questionCount}" class="form-label">Tambahkan pertanyaan</label>
                         <input type="text" id="nama_depan_${questionCount}" class="form-control" placeholder="Isi disini">
                     </div>
@@ -234,7 +235,7 @@
                     <span class="angka d-flex justify-content-center align-items-center">
                         ${questionCount}
                     </span>
-                    <div class="mb-4 d-flex flex-column">
+                    <div class="d-flex flex-column">
                         <label>
                             <input type="radio" class="mb-3" name="optionsRadios_${questionCount}" value="option1" checked="">Lorem ipsum 
                         </label>
