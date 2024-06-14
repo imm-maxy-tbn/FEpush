@@ -10,6 +10,10 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    
+<div id="loading">
+        <img src="images/imm.png" alt="Loading...">
+    </div>
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
@@ -40,12 +44,135 @@
 </nav>
 
 <div class="container mt-5">
-    <h2>Metrix detail</h2>
+    <h2>Metrix Detail</h2>
     <div class="chart-container">
         <canvas id="myChart"></canvas>
     </div>
     <p class="text-center mt-3">Perkembangan Metrix</p>
 </div>
+
+<div class="container">
+    <div class="label">Bahan baku yang diolah kembali (kg)</div>
+    <div class="month-row">
+        <div>Januari</div>
+        <div>Februari</div>
+        <div>Maret</div>
+        <div>April</div>
+        <div>Mei</div>
+        <div>Juni</div>
+        <div>Juli</div>
+        <div>Agustus</div>
+        <div>September</div>
+    </div>
+    <div class="input-row">
+        <input type="text" value="2300" id="jan">
+        <input type="text" value="4100" id="feb">
+        <input type="text" value="6100" id="mar">
+        <input type="text" value="4200" id="apr">
+        <input type="text" value="7000" id="may">
+        <input type="text" value="6500" id="jun">
+        <input type="text" value="6000" id="jul">
+        <input type="text" id="aug">
+        <input type="text" id="sep">
+    </div>
+    <input type="range" min="0" max="10000" value="5000" class="slider" id="myRange">
+    <div class="chart-containerr">
+        <canvas id="myChart"></canvas>
+    </div>
+    <button class="btn btn-outline-primary btn-reset">Reset Data</button>
+    <button class="btn btn-primary btn-save">Simpan Data</button>
+</div>
+
+<div class="container mt-5">
+    <h3>Dokumen Validitas Data</h3>
+    <div class="months-new d-flex justify-content-between">
+        <span>Januari</span>
+        <span>Februari</span>
+        <span>Maret</span>
+        <span>April</span>
+        <span>Mei</span>
+        <span>Juni</span>
+        <span>Juli</span>
+        <span>Agustus</span>
+        <span>September</span>
+        <span>Oktober</span>
+        <span>November</span>
+        <span>Desember</span>
+    </div>
+    <div class="files-new d-flex justify-content-between mt-4">
+        <div class="file-item text-center">
+            <i class="fas fa-file-alt fa-3x"></i>
+            <p>File a.csv</p>
+        </div>
+        <div class="file-item text-center">
+            <i class="fas fa-file-alt fa-3x"></i>
+            <p>File b.csv</p>
+        </div>
+        <div class="file-item text-center">
+            <i class="fas fa-file-alt fa-3x"></i>
+            <p>File c.csv</p>
+        </div>
+        <div class="file-item text-center">
+            <i class="fas fa-trash fa-3x"></i>
+            <p>File d.csv</p>
+        </div>
+    </div>
+    <button class="btn btn-primary mt-4 btn-dokumen">Tambah Dokumen</button>
+</div>
+
+<div class="container mt-5 survey-support-container">
+    <h3>Survey Pendukung</h3>
+    <div class="months-new d-flex justify-content-between">
+        <span>Januari</span>
+        <span>Februari</span>
+        <span>Maret</span>
+        <span>April</span>
+        <span>Mei</span>
+        <span>Juni</span>
+        <span>Juli</span>
+        <span>Agustus</span>
+        <span>September</span>
+        <span>Oktober</span>
+        <span>November</span>
+        <span>Desember</span>
+    </div>
+    <div class="files-survey d-flex justify-content-between mt-4">
+        <div class="file-item-survey text-center">
+            <i class="fas fa-file-alt fa-3x"></i>
+            <p>Survey</p>
+            <p>Lorem Ipsum</p>
+        </div>
+        <div class="file-item-survey text-center">
+            <i class="fas fa-file-alt fa-3x"></i>
+            <p>Survey</p>
+            <p>Lorem Ipsum</p>
+        </div>
+        <div class="file-item-survey text-center">
+            <i class="fas fa-file-alt fa-3x"></i>
+            <p>Survey</p>
+            <p>Lorem Ipsum</p>
+        </div>
+        <div class="file-item-survey text-center">
+            <i class="fas fa-trash fa-3x"></i>
+            <p>Survey</p>
+            <p>Lorem Ipsum</p>
+        </div>
+    </div>
+</div>
+<button class="btn start-survey-btn">Mulai Survey</button>
+
+<div class="container mt-5 matrix-report-container">
+    <h3>Matrix Report</h3>
+    <a href="matrixreport" class="btn add-report-btn">Tambah Laporan</a>
+    <div class="file-report mt-4">
+        <div class="file-item-report text-center">
+            <i class="fas fa-file-alt fa-3x"></i>
+            <p>10/06/24</p>
+        </div>
+    </div>
+</div>
+
+
 
 <footer class="footer">
     <div class="footer-container">

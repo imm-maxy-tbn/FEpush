@@ -1,21 +1,23 @@
 document.addEventListener("DOMContentLoaded", (event) => {
+    const initialData = [2300, 4100, 6100, 4200, 7000, 6500, 6000];
+
     const ctx = document.getElementById("myChart").getContext("2d");
     const myChart = new Chart(ctx, {
         type: "bar",
         data: {
             labels: [
-                "Bulan Januari",
-                "Bulan Februari",
-                "Bulan Maret",
-                "Bulan April",
-                "Bulan Mei",
-                "Bulan Juni",
-                "Bulan Juli",
+                "Januari",
+                "Februari",
+                "Maret",
+                "April",
+                "Mei",
+                "Juni",
+                "Juli",
             ],
             datasets: [
                 {
-                    label: "Metrix : Bias-Reducing Investment Practices",
-                    data: [2300, 4100, 6100, 4200, 7000, 6500, 6000],
+                    label: "Bahan baku yang diolah kembali (kg)",
+                    data: initialData.slice(),
                     backgroundColor: "rgba(103, 58, 183, 0.6)",
                     borderColor: "rgba(103, 58, 183, 1)",
                     borderWidth: 1,
@@ -31,17 +33,53 @@ document.addEventListener("DOMContentLoaded", (event) => {
         },
     });
 
-    // Add event listeners for Reset Data and Simpan Data buttons
+    // Fungsi untuk memperbarui data grafik
+    const updateChartData = () => {
+        const inputs = document.querySelectorAll(".input-row input");
+        const newData = Array.from(inputs).map(
+            (input) => parseInt(input.value) || 0
+        );
+        myChart.data.datasets[0].data = newData;
+        myChart.update();
+    };
+
+    // Menambahkan event listener pada input
+    document.querySelectorAll(".input-row input").forEach((input) => {
+        input.addEventListener("input", updateChartData);
+    });
+
+    // Menambahkan event listener untuk slider
+    const slider = document.getElementById("myRange");
+    slider.addEventListener("input", function () {
+        const value = slider.value;
+        document.querySelectorAll(".input-row input").forEach((input) => {
+            input.value = value;
+        });
+        updateChartData();
+    });
+
+    // Menambahkan event listener untuk tombol Reset Data
     document
         .querySelector(".btn-outline-primary")
         .addEventListener("click", () => {
             document
-                .querySelectorAll('.metric-inputs input[type="number"]')
-                .forEach((input) => (input.value = ""));
-            document.querySelector(".form-range").value = 50;
+                .querySelectorAll(".input-row input")
+                .forEach((input, index) => {
+                    input.value = initialData[index] || 0;
+                });
+            slider.value = 5000; // Mengatur slider ke nilai default
+            updateChartData();
         });
 
+    // Menambahkan event listener untuk tombol Simpan Data
     document.querySelector(".btn-primary").addEventListener("click", () => {
         alert("Data berhasil disimpan!");
     });
+});
+
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+        var loading = document.getElementById("loading");
+        loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
+    }, 1000); // 3000 milidetik = 3 detik
 });

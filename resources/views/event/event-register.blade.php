@@ -12,6 +12,9 @@
 </head>
 
 <body>
+<div id="loading">
+        <img src="images/imm.png" alt="Loading...">
+    </div>
     <header>
         <nav class="w-100">
             <div class="row w-100 d-flex justify-content-between align-items-center">

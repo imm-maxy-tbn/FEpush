@@ -11,6 +11,10 @@
 </head>
 <body>
 
+    <div id="loading">
+        <img src="images/imm.png" alt="Loading...">
+    </div>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
     <a class="navbar-brand" href="#">IMM</a>
@@ -73,6 +77,13 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="{{ asset('js/script.js') }}"></script>
-
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+        var loading = document.getElementById("loading");
+        loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
+    }, 2000); // 3000 milidetik = 3 detik
+});
+</script>
 </body>
 </html>

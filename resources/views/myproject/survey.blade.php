@@ -14,6 +14,10 @@
 </head>
 <body>
 
+    <div id="loading">
+        <img src="images/imm.png" alt="Loading...">
+    </div>
+
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="#">IMM</a>
@@ -142,7 +146,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" async></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" async></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" async></script>
-<script src="{{ asset('js/myproject/project1.js') }}" async></script>
+<script src="{{ asset('js/script.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </body>
 </html>
