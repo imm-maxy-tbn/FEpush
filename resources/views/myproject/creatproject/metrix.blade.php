@@ -136,7 +136,8 @@
     </div>
     <div class="d-flex justify-content-between">
         <button class="btn btn-secondary">Back</button>
-        <button class="btn btn-primary">Next</button>
+        <a href="review" class="btn btn-primary">Next</a>
+
     </div>
     <div class="pagination mt-4">
         <ul class="pagination">
