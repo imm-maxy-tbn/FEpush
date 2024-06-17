@@ -14,9 +14,7 @@
 </head>
 
 <body>
-<div id="loading">
-        <img src="images/imm.png" alt="Loading...">
-    </div>
+ 
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -27,9 +25,12 @@
 
     <div class="container content mt-5">
         <div class="container">
-            <div class="sub-content">
-
+            <div class="sub-content  d-flex justify-content-center align-items-center">
+                <img src="" alt="img">
             </div>
+
+            <input type="file" id="gambar" name="gambar" accept="image/*" style="display: none;">
+
 
             <p style="font-size: 40px;font-weight: bold;">Survey Dampak Bisnis Ternak Lele</p>
 
@@ -91,8 +92,8 @@
     </div>
     <div class="container mt-5">
         <div class="row gap d-flex justify-content-center">
-            <button class="btn-kembali">Kembali</button>
-            <button class="btn-selanjutnya">Lanjutkan</button>
+         <a href="/responden-esay"> <button class="btn-kembali">Kembali</button></a> 
+           <a href="/responden-skala"> <button class="btn-selanjutnya">Lanjutkan</button></a>
         </div>
     </div>
 

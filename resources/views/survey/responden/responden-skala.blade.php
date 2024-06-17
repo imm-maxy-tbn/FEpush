@@ -14,9 +14,7 @@
 </head>
 
 <body>
-<div id="loading">
-        <img src="images/imm.png" alt="Loading...">
-    </div>
+
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -27,8 +25,8 @@
 
     <div class="container content mt-5">
         <div class="container">
-            <div class="sub-content">
-
+            <div class="sub-content  d-flex justify-content-center align-items-center">
+                <img src="" alt="img">
             </div>
 
             <p style="font-size: 40px;font-weight: bold;">Survey Dampak Bisnis Ternak Lele</p>
@@ -44,93 +42,100 @@
                         1
                     </span>
                     <div class="row d-flex flex-column">
-                        <label>Lorem ipsum dolor sit amet consectetur adipiscing elit, mus eu faucibus dui platea libero ?</label>
-                    
-                    <div class="mb-5 d-flex " style="gap: 125px">
-                
-                        <div class="radio-item">
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                            <label for="optionsRadios1">1</label>
+                        <label>Lorem ipsum dolor sit amet consectetur adipiscing elit, mus eu faucibus dui platea libero
+                            ?</label>
+
+                        <div class="mb-5 d-flex " style="gap: 125px">
+
+                            <div class="radio-item">
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                <label for="optionsRadios1">1</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                <label for="optionsRadios2">2</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                                <label for="optionsRadios3">3</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
+                                <label for="optionsRadios4">4</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="optionsRadios" id="optionsRadios5" value="option5">
+                                <label for="optionsRadios5">5</label>
+                            </div>
                         </div>
-                        <div class="radio-item">
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                            <label for="optionsRadios2">2</label>
-                        </div>
-                        <div class="radio-item">
-                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                            <label for="optionsRadios3">3</label>
-                        </div>
-                        <div class="radio-item">
-                            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
-                            <label for="optionsRadios4">4</label>
-                        </div>
-                        <div class="radio-item">
-                            <input type="radio" name="optionsRadios" id="optionsRadios5" value="option5">
-                            <label for="optionsRadios5">5</label>
-                        </div>
-                    </div></div>
+                    </div>
                 </div>
                 <div class="row d-flex " style="gap: 45px">
                     <span class="angka d-flex justify-content-center align-items-center">
                         2
                     </span>
                     <div class="row d-flex flex-column">
-                        <label>Lorem ipsum dolor sit amet consectetur adipiscing elit, mus eu faucibus dui platea libero ?</label>
-                    
-                    <div class="mb-5 d-flex " style="gap: 125px">
-                
-                        <div class="radio-item">
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                            <label for="optionsRadios1">1</label>
+                        <label>Lorem ipsum dolor sit amet consectetur adipiscing elit, mus eu faucibus dui platea libero
+                            ?</label>
+
+                        <div class="mb-5 d-flex " style="gap: 125px">
+
+                            <div class="radio-item">
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
+                                <label for="optionsRadios1">1</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                <label for="optionsRadios2">2</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                                <label for="optionsRadios3">3</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
+                                <label for="optionsRadios4">4</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="optionsRadios" id="optionsRadios5" value="option5">
+                                <label for="optionsRadios5">5</label>
+                            </div>
                         </div>
-                        <div class="radio-item">
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                            <label for="optionsRadios2">2</label>
-                        </div>
-                        <div class="radio-item">
-                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                            <label for="optionsRadios3">3</label>
-                        </div>
-                        <div class="radio-item">
-                            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
-                            <label for="optionsRadios4">4</label>
-                        </div>
-                        <div class="radio-item">
-                            <input type="radio" name="optionsRadios" id="optionsRadios5" value="option5">
-                            <label for="optionsRadios5">5</label>
-                        </div>
-                    </div></div>
+                    </div>
                 </div>
                 <div class="row d-flex " style="gap: 45px">
                     <span class="angka d-flex justify-content-center align-items-center">
-                      3
+                        3
                     </span>
                     <div class="row d-flex flex-column">
-                        <label>Lorem ipsum dolor sit amet consectetur adipiscing elit, mus eu faucibus dui platea libero ?</label>
-                    
-                    <div class="mb-5 d-flex " style="gap: 125px">
-                
-                        <div class="radio-item">
-                            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                            <label for="optionsRadios1">1</label>
+                        <label>Lorem ipsum dolor sit amet consectetur adipiscing elit, mus eu faucibus dui platea libero
+                            ?</label>
+
+                        <div class="mb-5 d-flex " style="gap: 125px">
+
+                            <div class="radio-item">
+                                <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1"
+                                    checked>
+                                <label for="optionsRadios1">1</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+                                <label for="optionsRadios2">2</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
+                                <label for="optionsRadios3">3</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
+                                <label for="optionsRadios4">4</label>
+                            </div>
+                            <div class="radio-item">
+                                <input type="radio" name="optionsRadios" id="optionsRadios5" value="option5">
+                                <label for="optionsRadios5">5</label>
+                            </div>
                         </div>
-                        <div class="radio-item">
-                            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
-                            <label for="optionsRadios2">2</label>
-                        </div>
-                        <div class="radio-item">
-                            <input type="radio" name="optionsRadios" id="optionsRadios3" value="option3">
-                            <label for="optionsRadios3">3</label>
-                        </div>
-                        <div class="radio-item">
-                            <input type="radio" name="optionsRadios" id="optionsRadios4" value="option4">
-                            <label for="optionsRadios4">4</label>
-                        </div>
-                        <div class="radio-item">
-                            <input type="radio" name="optionsRadios" id="optionsRadios5" value="option5">
-                            <label for="optionsRadios5">5</label>
-                        </div>
-                    </div></div>
+                    </div>
                 </div>
 
 
@@ -139,8 +144,8 @@
     </div>
     <div class="container mt-5">
         <div class="row gap d-flex justify-content-center">
-            <button class="btn-kembali">Kembali</button>
-            <button class="btn-selanjutnya">Lanjutkan</button>
+          <a href="/responden-pilihan-ganda"> <button class="btn-kembali">Kembali</button></a> 
+            <a href="/responden-penutup-survey"><button class="btn-selanjutnya">Lanjutkan</button></a>
         </div>
     </div>
 

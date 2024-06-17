@@ -187,7 +187,7 @@
                 <h5 class="indicator-title">Average Client Agricultural Yield: Total</h5>
                 <p class="indicator-description">Average agricultural yield per hectare of clients (who were farmers) of the organization during the reporting period.</p>
             </div>
-            <input type="checkbox" class="indicator-checkbox">
+           
         </div>
     </div>
     <div class="indicator-item mt-4">

@@ -311,7 +311,9 @@ button {
     color: #5940cb !important;
 }
 
+
 /* Efek loading */
+
 #loading {
     position: fixed;
     width: 100%;
@@ -325,8 +327,10 @@ button {
 }
 
 #loading img {
-    width: 100px; /* Ukuran gambar loading */
-    height: 100px; /* Ukuran gambar loading */
+    width: 100px;
+    /* Ukuran gambar loading */
+    height: 100px;
+    /* Ukuran gambar loading */
     animation: spin 1s linear infinite;
 }
 
@@ -336,7 +340,9 @@ button {
     }
 }
 
+
 /* Animasi umum untuk elemen lainnya */
+
 .content-container h1,
 .date-box,
 .chart-container,
@@ -358,7 +364,9 @@ button {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+
 /* Menambahkan transisi pada navbar */
+
 .navbar {
     transition: background-color 0.3s ease;
 }

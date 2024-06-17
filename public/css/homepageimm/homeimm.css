@@ -4,7 +4,10 @@ body {
     margin: 0;
     font-family: "Roboto", sans-serif;
 }
+
+
 /* Navbar */
+
 .navbar {
     background-color: #ffffff;
     color: #000000;
@@ -61,7 +64,9 @@ body {
     align-items: center;
 }
 
+
 /* Footer */
+
 .footer {
     background-color: #5940cb;
     color: #ffffff;
@@ -159,18 +164,22 @@ body {
 }
 
 .footer-social-media {
-    margin-bottom: -10px; /* Jarak antara teks Social Media dan ikon */
+    margin-bottom: -10px;
+    /* Jarak antara teks Social Media dan ikon */
     position: relative;
     top: -19px;
     right: -5px;
 }
 
+
 /* Media query for responsiveness */
+
 @media only screen and (max-width: 768px) {
     .brand-info,
     .footer-links,
     .social-media {
-        flex-basis: 100%; /* Set width to 100% on small screens */
+        flex-basis: 100%;
+        /* Set width to 100% on small screens */
         text-align: center;
     }
     .footer {
@@ -188,14 +197,12 @@ body {
         border-bottom-right-radius: 0;
         z-index: 1000;
     }
-
     .social-media {
         margin-right: auto;
         position: absolute;
         top: 29px;
         right: 23px;
     }
-
     .social-media a {
         color: #ffffff;
         text-decoration: none;
@@ -348,7 +355,8 @@ p {
 
 .report-container .text-content {
     flex-grow: 1;
-    margin-right: 20px; /* Menambahkan margin kanan */
+    margin-right: 20px;
+    /* Menambahkan margin kanan */
 }
 
 .report-container .btn-report {
@@ -361,34 +369,41 @@ p {
     top: 75px;
     display: flex;
     align-items: center;
-    transition: all 0.3s ease; /* Animasi transisi yang halus untuk semua properti */
+    transition: all 0.3s ease;
+    /* Animasi transisi yang halus untuk semua properti */
 }
 
 .report-container .btn-report:hover,
 .report-container .btn-report:focus {
-    background-color: rgb(
-        126,
-        110,
-        225
-    ); /* Menerangkan warna latar saat hover atau fokus */
-    transform: scale(1.05); /* Membesar sedikit saat di-hover atau di-focus */
-    box-shadow: 0 8px 16px rgba(106, 90, 205, 0.2); /* Menambah bayangan untuk efek "mengangkat" */
+    background-color: rgb( 126, 110, 225);
+    /* Menerangkan warna latar saat hover atau fokus */
+    transform: scale(1.05);
+    /* Membesar sedikit saat di-hover atau di-focus */
+    box-shadow: 0 8px 16px rgba(106, 90, 205, 0.2);
+    /* Menambah bayangan untuk efek "mengangkat" */
 }
 
 .report-container .btn-report:active {
-    transform: scale(0.95); /* Mengecil sedikit saat diklik */
+    transform: scale(0.95);
+    /* Mengecil sedikit saat diklik */
 }
 
 .report-container .btn-report i {
-    margin-right: 10px; /* Jarak antara ikon dan teks */
+    margin-right: 10px;
+    /* Jarak antara ikon dan teks */
 }
 
 h4 {
-    font-size: 39px; /* Ukuran font yang lebih besar */
-    color: #ffffff; /* Warna teks putih untuk kontras yang baik pada latar belakang gelap */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Bayangan teks untuk meningkatkan keterbacaan */
-    font-weight: bold; /* Membuat font tebal */
-    line-height: 1.2; /* Menyesuaikan tinggi baris untuk penampilan yang lebih baik */
+    font-size: 39px;
+    /* Ukuran font yang lebih besar */
+    color: #ffffff;
+    /* Warna teks putih untuk kontras yang baik pada latar belakang gelap */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    /* Bayangan teks untuk meningkatkan keterbacaan */
+    font-weight: bold;
+    /* Membuat font tebal */
+    line-height: 1.2;
+    /* Menyesuaikan tinggi baris untuk penampilan yang lebih baik */
 }
 
 .notification-section {
@@ -398,7 +413,7 @@ h4 {
     background-color: #fff;
     display: flex;
     align-items: center;
-    position: relative;
+    justify-content: center;
     top: 90px;
     width: 1130px;
     right: -70px;
@@ -407,7 +422,8 @@ h4 {
 
 .row {
     display: flex;
-    width: 100%; /* Ensure the row takes full width */
+    width: 100%;
+    /* Ensure the row takes full width */
     justify-content: space-between;
     align-items: center;
 }
@@ -469,11 +485,13 @@ h4 {
 }
 
 .notification-section i:hover {
-    color: #007bff; /* Change icon color on hover */
+    color: #007bff;
+    /* Change icon color on hover */
 }
 
 .dropdown-content {
-    display: none; /* Initially hide the dropdown content */
+    display: none;
+    /* Initially hide the dropdown content */
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
@@ -498,11 +516,13 @@ h4 {
 }
 
 .notification-section #notificationText .fa-bell {
-    font-size: 20px; /* Ukuran ikon lonceng */
+    font-size: 20px;
+    /* Ukuran ikon lonceng */
 }
 
 .notification-section #notificationText .fa-bell {
-    color: #ffcc00; /* Warna ikon lonceng */
+    color: #ffcc00;
+    /* Warna ikon lonceng */
 }
 
 .sdg-container {
@@ -582,8 +602,10 @@ h4 {
 }
 
 #bandung {
-    top: 55%; /* Sesuaikan posisi berdasarkan peta */
-    left: 43%; /* Sesuaikan posisi berdasarkan peta */
+    top: 55%;
+    /* Sesuaikan posisi berdasarkan peta */
+    left: 43%;
+    /* Sesuaikan posisi berdasarkan peta */
 }
 
 .city-overlay.active {
@@ -597,7 +619,9 @@ h4 {
     font-weight: bold;
 }
 
+
 /* Efek loading */
+
 #loading {
     position: fixed;
     width: 100%;
@@ -611,8 +635,10 @@ h4 {
 }
 
 #loading img {
-    width: 100px; /* Ukuran gambar loading */
-    height: 100px; /* Ukuran gambar loading */
+    width: 100px;
+    /* Ukuran gambar loading */
+    height: 100px;
+    /* Ukuran gambar loading */
     animation: spin 1s linear infinite;
 }
 
@@ -622,7 +648,9 @@ h4 {
     }
 }
 
+
 /* Animasi umum untuk elemen lainnya */
+
 .content-container h1,
 .date-box,
 .chart-container,
@@ -644,7 +672,9 @@ h4 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+
 /* Menambahkan transisi pada navbar */
+
 .navbar {
     transition: background-color 0.3s ease;
 }

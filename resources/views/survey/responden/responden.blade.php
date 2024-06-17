@@ -32,7 +32,7 @@
         <p style="font-weight: bold; font-size:20px;" >Komitmen dalam menjaga privasi anda</p>
         <p style="font-size: 20px">Saya sangat berkomitmen untuk menjalankan survei dengan hati-hati dan jujur serta menjaga kerahasiaan data yang dikumpulkan. Saya selalu menghormati privasi dan kepentingan peserta survei, serta memastikan bahwa hasil survei saya digunakan dengan bertanggung jawab demi kebaikan semua orang yang terlibat. </p>
 <div class="btn">
-        <button>Mulai Survey</button>
+        <a href="/responden-data-diri"><button type="">Mulai Survey</button></a>
     </div>
   </div>
 </div>
