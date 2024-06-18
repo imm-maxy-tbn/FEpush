@@ -63,7 +63,7 @@
                         </tr>
                         <tr>
                             <td><span class="input-icon"><i class="fas fa-user"></i></span></td>
-                            <td><input type="email" placeholder="Nama PIC" id="nama_pic" name="nama_pic" required />
+                            <td><input type="text" placeholder="Nama PIC" id="nama_pic" name="nama_pic" required />
                             </td>
                         </tr>
                         <tr>
