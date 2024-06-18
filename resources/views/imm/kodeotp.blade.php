@@ -48,11 +48,11 @@
             <h3 class="font-weight-bold">Masukan Kode Verifikasi</h3>
             <p>Cek email Anda untuk menerima kode verifikasi.</p>
             <div class="verification-code">
-                <input type="text" id="digit1" maxlength="1" />
-                <input type="text" id="digit2" maxlength="1" />
-                <input type="text" id="digit3" maxlength="1" />
-                <input type="text" id="digit4" maxlength="1" />
-                <input type="text" id="digit5" maxlength="1" />
+                <input type="number" id="digit1" maxlength="1" />
+                <input type="number" id="digit2" maxlength="1" />
+                <input type="number" id="digit3" maxlength="1" />
+                <input type="number" id="digit4" maxlength="1" />
+                <input type="number" id="digit5" maxlength="1" />
             </div>
             <p>Belum menerima kode? Tunggu <span id="countdown">1:00</span> menit.</p>
             <button class="btn-resend">Kirim ulang kode</button>
@@ -74,13 +74,13 @@
             </div>
             <div class="footer-links">
                 <div class="footer-nav">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Bootcamp</a></li>
-                        <li><a href="#">IMM</a></li>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">Profile</a></li>
-                    </ul>
+                         <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="bootcamp">Bootcamp</a></li>
+                            <li><a href="imm">IMM</a></li>
+                            <li><a href="comunity">Community</a></li>
+                            <li><a href="profile">Profile</a></li>
+                        </ul>
                 </div>
                 <div class="social-media">
                     <p class="footer-social-media">Social Media</p>

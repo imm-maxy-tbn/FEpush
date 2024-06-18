@@ -353,14 +353,9 @@
     <div class="container content mt-5 mb-5">
         <div class="container"><label for="gambar" style="cursor: pointer;">
                 <div class="sub-content d-flex justify-content-center align-items-center">
-
-
                     <img src="images/upload.png" width="42">
             </label>
-
             <input type="file" id="gambar" name="gambar" accept="image/*" style="display: none;">
-
-
         </div>
         <div class="mb-2 mt-2">
             <input type="text" name="" class="form-control" placeholder="Judul Survey anda"
@@ -436,11 +431,11 @@
                 <div class="footer-links">
                     <div class="footer-nav">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Bootcamp</a></li>
-                            <li><a href="#">IMM</a></li>
-                            <li><a href="#">Community</a></li>
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="bootcamp">Bootcamp</a></li>
+                            <li><a href="imm">IMM</a></li>
+                            <li><a href="comunity">Community</a></li>
+                            <li><a href="profile">Profile</a></li>
                         </ul>
                     </div>
                     <div class="social-media">

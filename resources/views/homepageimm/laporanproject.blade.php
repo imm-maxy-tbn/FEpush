@@ -21,35 +21,46 @@
     </div>
 </nav>
 
-<div class="report-section">
-    <h2>Laporan Project</h2>
-    <p>Lengkapi laporan Bulanan dan pastikan laporan diselesaikan tepat waktu dengan melampirkan dokumen yang dibutuhkan</p>
+<div class="container report-section ">
+    <a class="navbar-brand" href="homepage"><i class="fas fa-arrow-left"></i> Laporan Project</a>
+    
+    <p class="deskripsi">Lengkapi laporan Bulanan dan pastikan laporan diselesaikan tepat waktu dengan melampirkan dokumen yang dibutuhkan</p>
     <div class="report-card">
+        <div class="section d-flex justify-content-between align-content-center">
         <h3>Bulan Pertama</h3>
-        <a href="reportbulanpertama" class="btn btn-report">Isi Laporan</a>
+        <img src="images/succes.png" width="30" height="30" alt=""></div>
+        <a href="reportbulanpertama" class="btn btn-report form-control">Isi Laporan</a>
+        <p class="mt-3">Telah disetujui oleh Mentor</p>
     </div>
     <div class="report-card">
+        <div class="section d-flex justify-content-between align-content-center">
         <h3>Bulan Kedua</h3>
-        <a href="reportbulanpertama" class="btn btn-report">Isi Laporan</a>
+        <img src="images/warning.png" width="30" height="30" alt=""></div>
+        <a href="reportbulanpertama" class="btn btn-report form-control">Isi Laporan</a>
+        <p class="mt-3">Perlu tindakan revisi ~ Mentor</p>
     </div>
     <div class="report-card">
+        <div class="section d-flex justify-content-between align-content-center">
         <h3>Bulan Ketiga</h3>
-        <a href="reportbulanpertama" class="btn btn-report">Isi Laporan</a>
-        
+        <img src="images/tolak.png" width="30" height="30" alt=""></div>
+        <a href="reportbulanpertama" class="btn btn-report form-control">Isi Laporan</a>
+        <p class="mt-3">Laporan bulan ketiga belum dibuat</p>
     </div>
     <div class="report-card">
+        <div class="section d-flex justify-content-between align-content-center">
         <h3>Bulan Keempat</h3>
-        <a href="reportbulanpertama" class="btn btn-report">Isi Laporan</a>
+        <img src="images/succes.png" width="30" height="30" alt=""></div>
+        <a href="reportbulanpertama" class="btn btn-report form-control">Isi Laporan</a>
+        <p class="mt-3">Telah disetujui oleh Mentor</p>
     </div>
     <div class="report-card">
+        <div class="section d-flex justify-content-between align-content-center">
         <h3>Bulan Kelima</h3>
-        <a href="reportbulanpertama" class="btn btn-report">Isi Laporan</a>
-        
+        <img src="images/succes.png" width="30" height="30" alt=""></div>
+        <a href="reportbulanpertama" class="btn btn-report form-control">Isi Laporan</a>
+        <p class="mt-3">Telah disetujui oleh Mentor</p>
     </div>
-    <div class="report-card">
-        <h3>Bulan Keenam</h3>
-        <a href="laporan-url" class="btn btn-report">Isi Laporan</a>
-    </div>
+    
 </div>
 
 <footer class="footer">
@@ -61,13 +72,13 @@
             </div>
             <div class="footer-links">
                 <div class="footer-nav">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li><a href="#">Bootcamp</a></li>
-                        <li><a href="#">IMM</a></li>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">Profile</a></li>
-                    </ul>
+                         <ul>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="bootcamp">Bootcamp</a></li>
+                            <li><a href="imm">IMM</a></li>
+                            <li><a href="comunity">Community</a></li>
+                            <li><a href="profile">Profile</a></li>
+                        </ul>
                 </div>
                 <div class="social-media">
                     <p class="footer-social-media">Social Media</p>

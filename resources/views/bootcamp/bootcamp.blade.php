@@ -25,13 +25,13 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">Home</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Bootcamp</a>
+                        <a class="nav-link" href="bootcamp">Bootcamp</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Community</a>
+                        <a class="nav-link" href="comunity">Community</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="imm">IMM</a>
@@ -151,7 +151,7 @@
                                             <p class="mt-3" id="ratingText"> <span id="ratingValue"></span></p>
                                         </div>
 
-                                        <div class="col"> <a href="#" class="btn text-white"
+                                        <div class="col"> <a href="detail-kelas" class="btn text-white"
                                                 style="background-color: #5940CB; ">Buy Now</a></div>
                                     </div>
 
@@ -528,10 +528,10 @@
                 <div class="footer-links">
                     <div class="footer-nav">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Bootcamp</a></li>
-                            <li><a href="#">IMM</a></li>
-                            <li><a href="#">Community</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="bootcamp">Bootcamp</a></li>
+                            <li><a href="imm">IMM</a></li>
+                            <li><a href="comunity">Community</a></li>
                             <li><a href="profile">Profile</a></li>
                         </ul>
                     </div>

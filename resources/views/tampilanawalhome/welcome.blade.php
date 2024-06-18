@@ -24,10 +24,10 @@
                         <a class="nav-link" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Bootcamp</a>
+                        <a class="nav-link" href="bootcamp">Bootcamp</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Community</a>
+                        <a class="nav-link" href="comunity">Community</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="imm">IMM</a>

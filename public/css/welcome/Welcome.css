@@ -2,7 +2,9 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+
 /* Navbar */
+
 .navbar {
     background-color: #ffffff;
     color: #000000;
@@ -61,15 +63,19 @@ body {
 }
 
 .navbar-actions .btn-primary {
-    background-color: #ffffff21; /* Warna latar biru */
+    background-color: #ffffff21;
+    /* Warna latar biru */
     border-color: #6d4ff3cc;
 }
 
 .navbar-actions .btn-primary:hover,
 .navbar-actions .btn-primary:focus {
-    background-color: #a191e7cc; /* Warna latar saat hover atau fokus */
-    box-shadow: 0 2px 8px rgba(101, 58, 241, 0.6); /* Menambah bayangan */
-    transform: translateY(-2px); /* Bergerak sedikit ke atas saat hover */
+    background-color: #a191e7cc;
+    /* Warna latar saat hover atau fokus */
+    box-shadow: 0 2px 8px rgba(101, 58, 241, 0.6);
+    /* Menambah bayangan */
+    transform: translateY(-2px);
+    /* Bergerak sedikit ke atas saat hover */
 }
 
 .navbar-actions .btn-outline-primary {
@@ -80,17 +86,24 @@ body {
 
 .navbar-actions .btn-outline-primary:hover,
 .navbar-actions .btn-outline-primary:focus {
-    color: white; /* Warna teks saat hover atau fokus */
-    background-color: #5940cb; /* Latar belakang biru saat hover atau fokus */
-    transform: translateY(-2px); /* Bergerak sedikit ke atas saat hover */
-    box-shadow: 0 2px 8px rgba(108, 52, 211, 0.6); /* Menambah bayangan */
+    color: white;
+    /* Warna teks saat hover atau fokus */
+    background-color: #5940cb;
+    /* Latar belakang biru saat hover atau fokus */
+    transform: translateY(-2px);
+    /* Bergerak sedikit ke atas saat hover */
+    box-shadow: 0 2px 8px rgba(108, 52, 211, 0.6);
+    /* Menambah bayangan */
 }
 
 .navbar-actions .btn:active {
-    transform: translateY(1px); /* Bergerak sedikit ke bawah saat diklik */
+    transform: translateY(1px);
+    /* Bergerak sedikit ke bawah saat diklik */
 }
 
+
 /* Footer */
+
 .footer {
     background-color: #5940cb;
     color: #ffffff;
@@ -183,18 +196,22 @@ body {
 }
 
 .footer-social-media {
-    margin-bottom: -10px; /* Jarak antara teks Social Media dan ikon */
+    margin-bottom: -10px;
+    /* Jarak antara teks Social Media dan ikon */
     position: relative;
     top: -19px;
     right: -5px;
 }
 
+
 /* Media query for responsiveness */
+
 @media only screen and (max-width: 768px) {
     .brand-info,
     .footer-links,
     .social-media {
-        flex-basis: 100%; /* Set width to 100% on small screens */
+        flex-basis: 100%;
+        /* Set width to 100% on small screens */
         text-align: center;
     }
     .footer {
@@ -208,14 +225,12 @@ body {
         left: 5%;
         top: 600px;
     }
-
     .social-media {
         margin-right: auto;
         position: absolute;
         top: 29px;
         right: 23px;
     }
-
     .social-media a {
         color: #ffffff;
         text-decoration: none;
@@ -248,7 +263,8 @@ body {
 
 .row {
     display: flex;
-    width: 100%; /* Ensure the row takes full width */
+    width: 100%;
+    /* Ensure the row takes full width */
     justify-content: space-between;
     align-items: center;
 }
@@ -310,11 +326,13 @@ body {
 }
 
 .notification-section i:hover {
-    color: #007bff; /* Change icon color on hover */
+    color: #007bff;
+    /* Change icon color on hover */
 }
 
 .dropdown-content {
-    display: none; /* Initially hide the dropdown content */
+    display: none;
+    /* Initially hide the dropdown content */
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
@@ -344,15 +362,16 @@ body {
         width: 100%;
         max-width: 255px;
     }
-
     .notification-section p {
-        margin: 0; /* Remove default margin */
-        font-weight: bold; /* Make the text bold */
-        position: absolute; /* Position the text absolutely */
+        margin: 0;
+        /* Remove default margin */
+        font-weight: bold;
+        /* Make the text bold */
+        position: absolute;
+        /* Position the text absolutely */
         top: -11px;
         right: -61px;
     }
-
     .notification-section i {
         font-size: 16px;
         color: #6c757d;
@@ -361,27 +380,25 @@ body {
         top: -11px;
         right: -177px;
     }
-
     .notification-section i:hover {
-        color: #007bff; /* Change icon color on hover */
+        color: #007bff;
+        /* Change icon color on hover */
     }
-
     .dropdown-content {
-        display: none; /* Initially hide the dropdown content */
+        display: none;
+        /* Initially hide the dropdown content */
         position: absolute;
         background-color: #f9f9f9;
         min-width: 160px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         z-index: 1;
     }
-
     .dropdown-content a {
         color: black;
         padding: 12px 16px;
         text-decoration: none;
         display: block;
     }
-
     .dropdown-content a:hover {
         background-color: #ddd;
     }
@@ -393,11 +410,13 @@ body {
 }
 
 .notification-section #notificationText .fa-bell {
-    font-size: 20px; /* Ukuran ikon lonceng */
+    font-size: 20px;
+    /* Ukuran ikon lonceng */
 }
 
 .notification-section #notificationText .fa-bell {
-    color: #ffcc00; /* Warna ikon lonceng */
+    color: #ffcc00;
+    /* Warna ikon lonceng */
 }
 
 @media only screen and (max-width: 768px) {
@@ -406,16 +425,15 @@ body {
         margin-top: 13px;
     }
     .notification-section #notificationText .fa-bell {
-        font-size: 20px; /* Ukuran ikon lonceng */
+        font-size: 20px;
+        /* Ukuran ikon lonceng */
     }
-
     #notificationText {
         display: flex;
         align-items: center;
         font-size: 13px;
         font-weight: bold;
     }
-
     .notification-section #notificationText .fa-bell {
         font-size: 14px;
         position: absolute;
@@ -439,15 +457,18 @@ body {
 }
 
 .process-circle.absensi::before {
-    background-color: #5940cb; /* Warna untuk Absensi */
+    background-color: #5940cb;
+    /* Warna untuk Absensi */
 }
 
 .process-circle.assignment::before {
-    background-color: #5940cb; /* Warna untuk Assignment */
+    background-color: #5940cb;
+    /* Warna untuk Assignment */
 }
 
 .process-circle.progress::before {
-    background-color: #5940cb; /* Warna untuk Progress */
+    background-color: #5940cb;
+    /* Warna untuk Progress */
 }
 
 .process-circle::before {
@@ -461,7 +482,8 @@ body {
 
 .process-text {
     z-index: 1;
-    color: #fff; /* Warna teks */
+    color: #fff;
+    /* Warna teks */
     font-weight: bold;
     font-size: 16px;
     position: absolute;
@@ -474,9 +496,12 @@ body {
     width: 70px;
     height: 70px;
     border-radius: 50%;
-    border: 5px solid rgba(255, 255, 255, 0.3); /* Warna border */
-    border-top-color: #fff; /* Warna lingkaran */
-    animation: spin 2s linear infinite; /* Animasi putar */
+    border: 5px solid rgba(255, 255, 255, 0.3);
+    /* Warna border */
+    border-top-color: #fff;
+    /* Warna lingkaran */
+    animation: spin 2s linear infinite;
+    /* Animasi putar */
     top: 39px;
     left: 135px;
 }
@@ -487,7 +512,9 @@ body {
     }
 }
 
+
 /* Memberikan jarak antara setiap kotak */
+
 .col-4 {
     padding: 0 61px;
 }
@@ -501,17 +528,17 @@ h2 {
 
 @media only screen and (max-width: 768px) {
     .process-circle.absensi::before {
-        background-color: #5940cb; /* Warna untuk Absensi */
+        background-color: #5940cb;
+        /* Warna untuk Absensi */
     }
-
     .process-circle.assignment::before {
-        background-color: #5940cb; /* Warna untuk Assignment */
+        background-color: #5940cb;
+        /* Warna untuk Assignment */
     }
-
     .process-circle.progress::before {
-        background-color: #5940cb; /* Warna untuk Progress */
+        background-color: #5940cb;
+        /* Warna untuk Progress */
     }
-
     .process-circle::before {
         width: 90px;
         height: 90px;
@@ -520,7 +547,6 @@ h2 {
         top: 15px;
         left: 15px;
     }
-
     .process-text {
         z-index: 1;
         color: #ffffff;
@@ -530,7 +556,6 @@ h2 {
         top: 9px;
         left: 19px;
     }
-
     .progress-circle {
         position: absolute;
         width: 27px;
@@ -542,20 +567,17 @@ h2 {
         top: 36px;
         left: 64px;
     }
-
     @keyframes spin {
         100% {
             transform: rotate(360deg);
         }
     }
-
     /* Memberikan jarak antara setiap kotak */
     .col-4 {
         padding: 0 15px;
         margin-right: -57px;
         margin-left: -92px;
     }
-
     h2 {
         font-size: 16px;
         font-weight: bold;
@@ -566,6 +588,7 @@ h2 {
         right: -5px;
     }
 }
+
 .progress-circle {
     width: 100px;
     height: 100px;
@@ -582,7 +605,8 @@ h2 {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    color: #fff; /* Warna teks persentase */
+    color: #fff;
+    /* Warna teks persentase */
     font-size: 20px;
 }
 
@@ -597,13 +621,13 @@ h2 {
         left: 69%;
         margin: 0 auto;
     }
-
     .progress-percent {
         position: absolute;
         top: 50%;
         left: 50%;
         transform: translate(-50%, -50%);
-        color: #fff; /* Warna teks persentase */
+        color: #fff;
+        /* Warna teks persentase */
         font-size: 12px;
     }
 }
@@ -631,6 +655,7 @@ h2 {
     top: -201px;
     right: -288px;
 }
+
 @media only screen and (max-width: 768px) {
     .dashboard-image {
         width: 38px;
@@ -639,7 +664,6 @@ h2 {
         top: -150px;
         right: 109px;
     }
-
     .dashboard-image2 {
         width: 35px;
         height: auto;
@@ -647,7 +671,6 @@ h2 {
         top: -189px;
         right: 10px;
     }
-
     .dashboard-image3 {
         width: 37px;
         height: auto;
@@ -712,8 +735,10 @@ h2 {
     top: 0;
     left: 0;
     height: 100%;
-    width: 50%; /* Bagian yang selesai (putih) setelah 50% */
-    background-color: #fff; /* Warna putih untuk bagian yang sudah selesai */
+    width: 50%;
+    /* Bagian yang selesai (putih) setelah 50% */
+    background-color: #fff;
+    /* Warna putih untuk bagian yang sudah selesai */
     border-radius: 37px;
 }
 
@@ -794,7 +819,8 @@ h2 {
 }
 
 .calendar-day:nth-child(7n) {
-    color: red; /* Hari Minggu berwarna merah */
+    color: red;
+    /* Hari Minggu berwarna merah */
 }
 
 .calendar-day:hover {
@@ -810,12 +836,16 @@ h2 {
     display: block;
     width: 6px;
     height: 6px;
-    background-color: #312a2a; /* Warna titik merah */
+    background-color: #312a2a;
+    /* Warna titik merah */
     border-radius: 50%;
-    margin: 4px auto 0; /* Jarak antara tanggal dan titik */
+    margin: 4px auto 0;
+    /* Jarak antara tanggal dan titik */
 }
 
+
 /* Gaya untuk tabel Hari Raya */
+
 .table-hari-raya {
     border-collapse: collapse;
     width: 51%;
@@ -830,17 +860,22 @@ h2 {
 
 .table-hari-raya th,
 .table-hari-raya td {
-    border: 2px solid #5940cb; /* Warna border untuk setiap sel */
+    border: 2px solid #5940cb;
+    /* Warna border untuk setiap sel */
     padding: 8px;
     text-align: center;
 }
 
 .table-hari-raya th {
-    background-color: #5940cb; /* Warna latar belakang header */
-    color: white; /* Warna teks header */
+    background-color: #5940cb;
+    /* Warna latar belakang header */
+    color: white;
+    /* Warna teks header */
 }
 
+
 /* Gaya untuk tabel Catatan */
+
 .table-catatan {
     border-collapse: collapse;
     width: 35%;
@@ -855,23 +890,31 @@ h2 {
 
 .table-catatan th,
 .table-catatan td {
-    border: 2px solid #5940cb; /* Warna border untuk setiap sel */
+    border: 2px solid #5940cb;
+    /* Warna border untuk setiap sel */
     padding: 8px;
     text-align: center;
 }
 
 .table-catatan th {
-    background-color: #5940cb; /* Warna latar belakang header */
-    color: white; /* Warna teks header */
+    background-color: #5940cb;
+    /* Warna latar belakang header */
+    color: white;
+    /* Warna teks header */
 }
+
+
 /* Gaya untuk kontainer tabel */
+
 .table-container {
     position: absolute;
     top: 671px;
     right: 543px;
 }
 
+
 /* Gaya untuk tabel kotak */
+
 .box-table {
     width: 646px;
     height: 108px;
@@ -881,21 +924,27 @@ h2 {
     margin-bottom: 14px;
 }
 
+
 /* Gaya untuk teks atas */
+
 .box-table .top-text {
     position: relative;
     top: 18px;
     right: -162px;
 }
 
+
 /* Gaya untuk teks bawah */
+
 .box-table .bottom-text {
     position: relative;
     top: -10px;
     right: -161px;
 }
 
+
 /* Gaya untuk judul tabel */
+
 .table-title {
     text-align: left;
     color: #000000;
@@ -903,10 +952,13 @@ h2 {
     margin-bottom: 0px;
 }
 
+
 /* CSS untuk gaya placeholder */
+
 [data-placeholder]::before {
     content: attr(data-placeholder);
-    color: #999; /* warna placeholder */
+    color: #999;
+    /* warna placeholder */
     font-style: italic;
 }
 
@@ -914,11 +966,9 @@ h2 {
     .navbar-logo {
         margin-left: 20px;
     }
-
     .navbar-links {
         margin-left: 0;
     }
-
     .brand-info h3,
     .brand-info p,
     .footer-nav ul,
@@ -926,17 +976,14 @@ h2 {
         position: static;
         text-align: center;
     }
-
     .footer-nav ul {
         display: flex;
         flex-direction: column;
         align-items: center;
     }
-
     .footer-nav ul li {
         margin-bottom: 10px;
     }
-
     .notification-section {
         width: auto;
         max-width: none;
@@ -945,13 +992,11 @@ h2 {
         top: 23px;
         margin: 70px 10px;
     }
-
     .notification-section p,
     .notification-section i {
         position: static;
         margin-right: -23px;
     }
-
     .process-circle {
         width: 77px;
         height: 55px;
@@ -959,34 +1004,29 @@ h2 {
         top: -46px;
         left: -45px;
     }
-
     .process-text {
         font-size: 9px;
         top: 3px;
         left: 13px;
     }
-
     .progress-circle {
         width: 34px;
         height: 34px;
         top: 23px;
         left: 52px;
     }
-
     .col-4 {
         width: 100%;
         max-width: 100%;
         padding: 0 10px;
         margin: 0 auto;
     }
-
     .image-container img {
         top: -264px;
         right: -11px;
         height: auto;
         max-width: 100%;
     }
-
     .loading-overlay {
         position: absolute;
         top: 32%;
@@ -998,7 +1038,6 @@ h2 {
         align-items: center;
         overflow: hidden;
     }
-
     .image-text {
         position: absolute;
         bottom: 286px;
@@ -1007,7 +1046,6 @@ h2 {
         color: #fff;
         font-weight: bold;
     }
-
     .third-image {
         width: 28px;
         height: auto;
@@ -1015,7 +1053,6 @@ h2 {
         position: relative;
         right: -44px;
     }
-
     .calendar {
         width: 157px;
         border-radius: 10px;
@@ -1026,7 +1063,6 @@ h2 {
         right: 28px;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     }
-
     .calendar-header {
         background-color: #5940cb;
         color: #ffffff;
@@ -1036,13 +1072,11 @@ h2 {
         text-align: center;
         font-size: 13px;
     }
-
     .calendar-days {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         padding: 10px;
     }
-
     .calendar-day {
         text-align: center;
         padding: 1px;
@@ -1050,30 +1084,28 @@ h2 {
         cursor: pointer;
         transition: background-color 0.3s;
     }
-
     .calendar-day:nth-child(7n) {
-        color: red; /* Hari Minggu berwarna merah */
+        color: red;
+        /* Hari Minggu berwarna merah */
     }
-
     .calendar-day:hover {
         background-color: #f0f0f0;
     }
-
     .calendar-footer {
         padding: 2px;
         text-align: center;
         font-size: 11px;
     }
-
     .dot {
         display: block;
         width: 6px;
         height: 6px;
-        background-color: #312a2a; /* Warna titik merah */
+        background-color: #312a2a;
+        /* Warna titik merah */
         border-radius: 50%;
-        margin: 4px auto 0; /* Jarak antara tanggal dan titik */
+        margin: 4px auto 0;
+        /* Jarak antara tanggal dan titik */
     }
-
     .table-hari-raya {
         width: 43%;
         margin: 31px auto;
@@ -1081,13 +1113,11 @@ h2 {
         position: relative;
         top: -194px;
     }
-
     .navbar-light .navbar-brand {
         color: rgba(0, 0, 0, 0.9);
         position: relative;
         right: -20px;
     }
-
     .table-catatan {
         border-collapse: collapse;
         width: 40%;
@@ -1098,7 +1128,6 @@ h2 {
         top: -196px;
         right: 580px;
     }
-
     .table-hari-raya th,
     .table-hari-raya td {
         border: 2px solid #5940cb;
@@ -1106,13 +1135,11 @@ h2 {
         text-align: center;
         font-size: 7px;
     }
-
     .table thead th {
         vertical-align: bottom;
         border-bottom: 2px solid #dee2e6;
         font-size: 8px;
     }
-
     .table-container {
         width: 90%;
         margin: 20px auto;
@@ -1120,7 +1147,6 @@ h2 {
         right: 0;
         left: 0;
     }
-
     .box-table {
         width: 48%;
         height: 42px;
@@ -1129,7 +1155,6 @@ h2 {
         top: -612px;
         border-radius: 8px;
     }
-
     .table-title {
         text-align: left;
         color: #000000;
@@ -1151,7 +1176,6 @@ h2 {
         font-size: 7px;
         right: -7px;
     }
-
     .navbar-light .navbar-toggler {
         position: relative;
         color: rgba(0, 0, 0, 0.5);
@@ -1160,7 +1184,9 @@ h2 {
     }
 }
 
+
 /* Efek loading */
+
 #loading {
     position: fixed;
     width: 100%;
@@ -1173,8 +1199,10 @@ h2 {
 }
 
 #loading img {
-    width: 100px; /* Ukuran gambar loading */
-    height: 100px; /* Ukuran gambar loading */
+    width: 100px;
+    /* Ukuran gambar loading */
+    height: 100px;
+    /* Ukuran gambar loading */
     animation: spin 1s linear infinite;
 }
 
@@ -1184,7 +1212,9 @@ h2 {
     }
 }
 
+
 /* Animasi umum untuk elemen lainnya */
+
 .content-container h1,
 .date-box,
 .chart-container,
@@ -1206,7 +1236,9 @@ h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+
 /* Menambahkan transisi pada navbar */
+
 .navbar {
     transition: background-color 0.3s ease;
 }

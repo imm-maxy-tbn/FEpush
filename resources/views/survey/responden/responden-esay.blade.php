@@ -97,11 +97,11 @@
                 <div class="footer-links">
                     <div class="footer-nav">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Bootcamp</a></li>
-                            <li><a href="#">IMM</a></li>
-                            <li><a href="#">Community</a></li>
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="bootcamp">Bootcamp</a></li>
+                            <li><a href="imm">IMM</a></li>
+                            <li><a href="comunity">Community</a></li>
+                            <li><a href="profile">Profile</a></li>
                         </ul>
                     </div>
                     <div class="social-media">

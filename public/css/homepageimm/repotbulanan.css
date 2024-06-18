@@ -2,7 +2,9 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+
 /* Navbar */
+
 .navbar {
     background-color: #ffffff;
     color: #000000;
@@ -19,9 +21,11 @@ body {
     margin-right: 34px;
     margin-left: 2px;
 }
+
 a {
     color: #010101;
 }
+
 .navbar-nav {
     margin-left: 10px;
     margin-right: auto;
@@ -55,7 +59,9 @@ a {
     margin-right: 20px;
 }
 
+
 /* Footer */
+
 .footer {
     background-color: #5940cb;
     color: #ffffff;
@@ -153,18 +159,22 @@ a {
 }
 
 .footer-social-media {
-    margin-bottom: -10px; /* Jarak antara teks Social Media dan ikon */
+    margin-bottom: -10px;
+    /* Jarak antara teks Social Media dan ikon */
     position: relative;
     top: -19px;
     right: -5px;
 }
 
+
 /* Media query for responsiveness */
+
 @media only screen and (max-width: 768px) {
     .brand-info,
     .footer-links,
     .social-media {
-        flex-basis: 100%; /* Set width to 100% on small screens */
+        flex-basis: 100%;
+        /* Set width to 100% on small screens */
         text-align: center;
     }
     .footer {
@@ -182,14 +192,12 @@ a {
         border-bottom-right-radius: 0;
         z-index: 1000;
     }
-
     .social-media {
         margin-right: auto;
         position: absolute;
         top: 29px;
         right: 23px;
     }
-
     .social-media a {
         color: #ffffff;
         text-decoration: none;
@@ -218,7 +226,7 @@ form {
     background-color: #f9f9f9;
     border: 1px solid #ddd;
     border-radius: 8px;
-    padding: 15px;
+    padding: 25px;
     font-size: 1rem;
     color: #333;
 }
@@ -230,10 +238,118 @@ form {
 .btn-primary {
     background-color: #6c63ff;
     border: none;
-    padding: 15px 30px;
-    font-size: 1rem;
+    padding: 10px 30px;
+    font-size: 1.4rem;
     border-radius: 8px;
     color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.berita {
+    height: 192px;
+    width: 100%;
+    border-radius: 8px;
+}
+
+.text-orang {
+    width: 335px;
+    height: 49px;
+}
+
+.tombol {
+    margin-bottom: 190px;
+}
+
+.number {
+    width: 30px;
+    height: 38px;
+    background-color: #524eff;
+    color: white;
+    font-size: 24;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    margin-right: 25px;
+}
+
+.unggah {
+    width: 129px;
+    height: 42px;
+    background-color: #5940cb;
+    border-radius: 5px;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.preview-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.preview {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    width: 120px;
+    /* Set a fixed width to keep previews consistent */
+}
+
+.preview img {
+    max-width: 100px;
+    max-height: 100px;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.preview p {
+    margin: 0;
+    font-size: 12px;
+    /* Reduced font size to fit better within the fixed width */
+    text-align: center;
+    /* Center the file name text */
+}
+
+.remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.report {
+    margin-bottom: 20px;
+}
+
+.btntambah {
+    background-color: transparent;
+    border: 3px solid #524eff;
+    padding: 10px 30px;
+    font-size: 1.4rem;
+    border-radius: 8px;
+    color: #000;
     cursor: pointer;
     transition: background-color 0.3s;
 }
@@ -247,7 +363,9 @@ form {
     margin-top: 7rem !important;
 }
 
+
 /* Efek loading */
+
 #loading {
     position: fixed;
     width: 100%;
@@ -261,8 +379,10 @@ form {
 }
 
 #loading img {
-    width: 100px; /* Ukuran gambar loading */
-    height: 100px; /* Ukuran gambar loading */
+    width: 100px;
+    /* Ukuran gambar loading */
+    height: 100px;
+    /* Ukuran gambar loading */
     animation: spin 1s linear infinite;
 }
 
@@ -272,7 +392,9 @@ form {
     }
 }
 
+
 /* Animasi umum untuk elemen lainnya */
+
 .content-container h1,
 .date-box,
 .chart-container,
@@ -294,7 +416,9 @@ form {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+
 /* Menambahkan transisi pada navbar */
+
 .navbar {
     transition: background-color 0.3s ease;
 }

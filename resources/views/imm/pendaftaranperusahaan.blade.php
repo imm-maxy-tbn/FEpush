@@ -73,7 +73,7 @@
                         </tr>
                         <tr>
                             <td><span class="input-icon"><i class="fas fa-phone"></i></span></td>
-                            <td><input type="text" placeholder="Nomor Telepon" id="telepon" name="telepon"
+                            <td><input type="number" placeholder="Nomor Telepon" id="telepon" name="telepon"
                                     required /></td>
                         </tr>
                     </table>
@@ -124,7 +124,7 @@
                         </tr>
                         <tr>
                             <td><span class="input-icon"><i class="fas fa-users"></i></span></td>
-                            <td><input type="text" placeholder="Jumlah Karyawan" id="jumlah_karyawan"
+                            <td><input type="number" placeholder="Jumlah Karyawan" id="jumlah_karyawan"
                                     name="jumlah_karyawan" required /></td>
                         </tr>
                         <tr>
