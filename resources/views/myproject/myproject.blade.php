@@ -19,7 +19,7 @@
 <body>
 
 
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">IMM</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -27,18 +27,20 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
-                <ul class="navbar-nav >
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                    <a class="nav-link active" href="homepage">Home</a>
+                    <a class="nav-link active" href="/homepage">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="myproject">My Project</a>
+                        <a class="nav-link" href="/myproject">My Project</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="homepage">My Company</a>
                     </li>
 
                 </ul>
+                
+
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}"
@@ -53,9 +55,10 @@
     </nav>
 
 
+
     <div class="container">
         <h2 class="project-title">Draft Project</h2>
-        <div class="row mt-3">
+        <div class="row mt-5">
             <div class="col-md-8">
                 <div class="input-group">
                     <input type="text" class="form-control search-input" placeholder="Search..." aria-label="Search">

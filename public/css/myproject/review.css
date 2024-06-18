@@ -3,7 +3,9 @@ body {
     height: 480vh;
 }
 
+
 /* Navbar */
+
 .navbar {
     background-color: #ffffff;
     color: #000000;
@@ -14,16 +16,6 @@ body {
     left: 0;
     z-index: 1000;
     border-bottom: 3px solid #5940cb;
-    transition: background-color 0.3s ease;
-}
-
-.navbar:hover {
-    background-color: #e3e3e3;
-}
-
-.navbar-brand {
-    margin-right: 14px;
-    margin-left: 342px;
 }
 
 .navbar-nav {
@@ -59,7 +51,9 @@ body {
     margin-right: 20px;
 }
 
+
 /* Footer */
+
 .footer {
     background-color: #5940cb;
     color: #ffffff;
@@ -155,18 +149,22 @@ body {
 }
 
 .footer-social-media {
-    margin-bottom: -10px; /* Jarak antara teks Social Media dan ikon */
+    margin-bottom: -10px;
+    /* Jarak antara teks Social Media dan ikon */
     position: relative;
     top: -19px;
     right: -5px;
 }
 
+
 /* Media query for responsiveness */
+
 @media only screen and (max-width: 768px) {
     .brand-info,
     .footer-links,
     .social-media {
-        flex-basis: 100%; /* Set width to 100% on small screens */
+        flex-basis: 100%;
+        /* Set width to 100% on small screens */
         text-align: center;
     }
     .footer {
@@ -207,10 +205,6 @@ body {
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 5px;
-}
-
-.indicator-checkbox {
-    margin-right: 10px;
 }
 
 .indicator-icon {
@@ -273,6 +267,7 @@ body {
     color: #333;
 }
 
+
 /* Tambahan gaya lain yang Anda butuhkan untuk .urbanisasi-text */
 
 input[type="checkbox"],
@@ -280,8 +275,8 @@ input[type="radio"] {
     box-sizing: border-box;
     padding: 0;
     position: relative;
-    right: -80px;
 }
+
 .indicator-item {
     margin-bottom: 20px;
 }
@@ -313,7 +308,7 @@ input[type="radio"] {
     background-color: #5940cb;
     border-color: #5940cb;
     color: white;
-    padding: 10px 20px;
+    padding: 10px 70px;
     font-size: 16px;
     border-radius: 5px;
 }

@@ -34,7 +34,7 @@
                     </ul>
                 </div>
                 <div class="col-auto d-flex justify-content-end">
-                    <button class="btn">Login</button>
+                    <a href="login"><button class="btn">Login</button></a>
                 </div>
             </div>
         </nav>
