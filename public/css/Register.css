@@ -62,18 +62,18 @@ body {
 
 .navbar-collapse {
     display: flex;
-    justify-content: space-between; /* Atur agar konten navbar berada di antara bagian kiri dan kanan */
-    align-items: center; /* Untuk mengatur vertikalnya ke tengah */
+    justify-content: space-between;
+    align-items: center;
 }
 
 /* Atur posisi menu navbar */
 .navbar-nav {
-    margin-left: 675px; /* Menggeser menu ke kanan */
+    margin-left: 52px;
 }
 
 .register-container {
     background-color: #fff;
-    padding: 1px;
+    padding: 20px;
     width: 727px;
     position: absolute;
     top: 78px;
@@ -89,7 +89,7 @@ body {
 .brand-logo {
     width: 137px;
     position: absolute;
-    top: 405px;
+    top: 426px;
     right: 103px;
 }
 
@@ -162,4 +162,143 @@ body {
 
 .login-link a:hover {
     text-decoration: underline;
+}
+
+/* Media query for responsiveness */
+@media (max-width: 768px) {
+    .navbar {
+        position: relative;
+    }
+
+    .navbar-links {
+        flex-direction: column;
+        margin-left: 0;
+        margin-top: 10px;
+    }
+
+    .navbar-links li {
+        margin: 10px 0;
+    }
+
+    .navbar-actions {
+        flex-direction: column;
+        margin-right: 0;
+        margin-top: 10px;
+    }
+
+    .btn {
+        width: 100%;
+        text-align: center;
+        margin: 5px 0;
+    }
+
+    .register-container {
+        width: 100%;
+        padding: 10px;
+        top: auto;
+        right: auto;
+        margin-top: 70px;
+    }
+
+    .brand-logo {
+        width: 100px;
+        position: relative;
+        top: 0;
+        right: 0;
+        margin-top: 20px;
+    }
+
+    .register-form h2 {
+        font-size: 22px;
+        position: relative;
+        top: 0;
+        right: 0;
+        text-align: center;
+    }
+
+    .form-row {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .form-group {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .form-group input,
+    .form-group select {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .btn-register {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    .login-link {
+        font-size: 12px;
+        text-align: center;
+    }
+}
+
+/* Efek loading */
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 5px;
+}
+
+#loading img {
+    width: 100px; /* Ukuran gambar loading */
+    height: 100px; /* Ukuran gambar loading */
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+/* Animasi umum untuk elemen lainnya */
+.content-container h1,
+.date-box,
+.chart-container,
+.analysis-matrix .content-box,
+.target-check .target-check-box,
+.icon-box .icon-item,
+.btn {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.content-container h1:hover,
+.date-box:hover,
+.chart-container:hover,
+.analysis-matrix .content-box:hover,
+.target-check .target-check-box:hover,
+.icon-box .icon-item:hover,
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Menambahkan transisi pada navbar */
+.navbar {
+    transition: background-color 0.3s ease;
+}
+
+.navbar:hover {
+    background-color: #e3e3e3;
 }

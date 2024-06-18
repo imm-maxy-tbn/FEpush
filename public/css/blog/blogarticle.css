@@ -1,0 +1,246 @@
+body,
+html {
+    font-family: "Roboto", sans-serif;
+    height: 164%;
+}
+
+
+/* Navbar */
+
+.navbar {
+    background-color: #ffffff;
+    color: #000000;
+    padding: 15px 0;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 1000;
+    border-bottom: 3px solid #5940cb;
+}
+
+.navbar-brand {
+    margin-right: 14px;
+    margin-left: 342px;
+}
+
+.navbar-nav {
+    margin-left: 10px;
+    margin-right: auto;
+}
+
+.navbar-links {
+    list-style-type: none;
+    display: flex;
+    margin-left: -580px;
+}
+
+.navbar-links li {
+    margin-right: 20px;
+}
+
+.navbar-links li:last-child {
+    margin-right: 0;
+}
+
+.navbar-links a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.navbar-links a:hover {
+    text-decoration: underline;
+}
+
+.navbar-actions {
+    display: flex;
+    margin-right: 20px;
+}
+
+.footer {
+    background-color: #5940cb;
+    color: #ffffff;
+    height: 167px;
+    text-align: center;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    width: 100%;
+}
+
+.footer ul {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.footer ul li {
+    color: #fff;
+    font-size: 12px;
+}
+
+.span-footer {
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.sosmed {
+    gap: 10px;
+}
+
+.sosmed a {
+    color: #fff;
+    gap: 30px;
+    margin: 0 10px;
+}
+
+.col-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+
+/* Media query for responsiveness */
+
+@media only screen and (max-width: 768px) {
+    .brand-info,
+    .footer-links,
+    .social-media {
+        flex-basis: 100%;
+        /* Set width to 100% on small screens */
+        text-align: center;
+    }
+    .footer {
+        width: 100%;
+        left: 0;
+        border-top-left-radius: 60px;
+        border-top-right-radius: 60px;
+    }
+    .footer-nav ul {
+        top: 30px;
+        right: 86px;
+    }
+}
+
+.ad-container {
+    background: #d3d3d3;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 63px;
+    position: relative;
+    top: 50px;
+}
+
+.ad-content {
+    font-size: 1.5rem;
+    color: #4b0082;
+}
+
+.back-link {
+    font-size: 1.2rem;
+    color: #4b0082;
+    margin-bottom: 20px;
+}
+
+.back-link a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    align-items: center;
+}
+
+.blog-detail {
+    font-family: "Roboto", sans-serif;
+    text-align: center;
+    /* Center align text */
+    margin: 0 auto;
+    /* Center align container */
+    max-width: 800px;
+    /* Adjust the width as needed */
+}
+
+.blog-title {
+    font-size: 32px;
+    font-weight: bold;
+    color: #4b0082;
+    margin-bottom: 10px;
+}
+
+.blog-author,
+.blog-date {
+    font-size: 16px;
+    color: #4b0082;
+}
+
+.blog-author {
+    margin-bottom: 5px;
+}
+
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #4b0082;
+    margin-top: 20px;
+}
+
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    text-align: left;
+    /* Align list items to the left */
+}
+
+.subscribe-container {
+    background: #f0f0ff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    margin-top: 30px;
+}
+
+.subscribe-container p {
+    margin: 0;
+    font-size: 1.2rem;
+    color: #333;
+}
+
+
+/* Efek loading */
+
+
+/* Animasi umum untuk elemen lainnya */
+
+.content-container h1,
+.date-box,
+.chart-container,
+.analysis-matrix .content-box,
+.target-check .target-check-box,
+.icon-box .icon-item,
+.btn {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.content-container h1:hover,
+.date-box:hover,
+.chart-container:hover,
+.analysis-matrix .content-box:hover,
+.target-check .target-check-box:hover,
+.icon-box .icon-item:hover,
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Menambahkan transisi pada navbar */
+
+.navbar {
+    transition: background-color 0.3s ease;
+}
+
+.navbar:hover {
+    background-color: #e3e3e3;
+}
