@@ -15,6 +15,8 @@
 
 <body>
 
+     
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">IMM</a>
@@ -56,7 +58,7 @@
                     </tr>
                     <tr>
                         <td><span class="input-icon"><i class="fas fa-phone"></i></span></td>
-                        <td><input type="telepon" placeholder="Masukkan telepon" id="telepon" name="telepon" /></td>
+                        <td><input type="number" class="telepon" placeholder="Masukkan telepon" id="telepon" name="telepon" /></td>
                     </tr>
                     <tr>
                         <td></td>
@@ -79,11 +81,11 @@
                 <div class="footer-links">
                     <div class="footer-nav">
                         <ul>
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Bootcamp</a></li>
-                            <li><a href="#">IMM</a></li>
-                            <li><a href="#">Community</a></li>
-                            <li><a href="#">Profile</a></li>
+                            <li><a href="/">Home</a></li>
+                            <li><a href="bootcamp">Bootcamp</a></li>
+                            <li><a href="imm">IMM</a></li>
+                            <li><a href="comunity">Community</a></li>
+                            <li><a href="profile">Profile</a></li>
                         </ul>
                     </div>
                     <div class="social-media">

@@ -70,8 +70,20 @@ Route::get('/detail', function () {
     return view('myproject.detail');
 });
 
+Route::get('/impact', function () {
+    return view('myproject.impact');
+});
+
 Route::get('/profile', function () {
     return view('profile.profile');
+});
+
+Route::get('/matrixreport', function () {
+    return view('myproject.creatproject.matrixreport');
+});
+
+Route::get('/review', function () {
+    return view('myproject.creatproject.review');
 });
 
 Route::get('/edit', function () {
@@ -92,6 +104,10 @@ Route::get('/indicator', function () {
 
 Route::get('/metrix', function () {
     return view('myproject.creatproject.metrix');
+});
+
+Route::get('/detailreview', function () {
+    return view('myproject.creatproject.detailreview');
 });
 
 Route::get('/responden', function () {
@@ -128,6 +144,14 @@ Route::get('/event', function () {
 
 Route::get('/event-detail', function () {
     return view('event.event-detail');
+});
+
+Route::get('/detail-kelas', function () {
+    return view('kelas.detail-kelas');
+});
+
+Route::get('/bootcamp', function () {
+    return view('bootcamp.bootcamp');
 });
 
 Route::get('/event-register', function () {

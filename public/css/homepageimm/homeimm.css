@@ -1,216 +1,91 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap");
 html,
 body {
-    height: 178%;
     margin: 0;
-    font-family: "Roboto", sans-serif;
+    font-family: "Poppins", sans-serif;
 }
+
+* {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+
 /* Navbar */
+
 .navbar {
     background-color: #ffffff;
     color: #000000;
     padding: 15px 0;
     position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
+    width: 100%;
     z-index: 1000;
     border-bottom: 3px solid #5940cb;
 }
 
-.navbar-brand {
-    margin-right: 14px;
-    margin-left: 342px;
+.navbar-nav .nav-item .nav-link {
+    color: #000000;
 }
 
-.navbar-nav {
-    margin-left: 10px;
-    margin-right: auto;
-}
-
-.navbar-links {
-    list-style-type: none;
-    display: flex;
-    margin-left: -580px;
-}
-
-.navbar-links li {
-    margin-right: 20px;
-}
-
-.navbar-links li:last-child {
-    margin-right: 0;
-}
-
-.navbar-links a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.navbar-links a:hover {
+.navbar-nav .nav-item .nav-link:hover {
+    color: #5940cb;
     text-decoration: underline;
-}
-
-.navbar-actions {
-    display: flex;
-    margin-right: 20px;
 }
 
 .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
 }
 
+
 /* Footer */
+
 .footer {
     background-color: #5940cb;
     color: #ffffff;
-    padding: 48px 0;
+    height: 167px;
     text-align: center;
-    position: absolute;
-    bottom: -1561px;
-    width: 80%;
-    left: 10%;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    z-index: 1000;
+    width: 100%;
 }
 
-.footer-container {
-    max-width: 594px;
-    margin: 0 auto;
+.footer ul {
+    text-decoration: none;
+    list-style-type: none;
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.footer ul li {
+    color: #fff;
+    font-size: 12px;
 }
 
-.brand-info h3 {
-    margin: 0;
-    font-size: 20px;
-    position: absolute;
-    right: 860px;
-    top: 20px;
+.span-footer {
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
 }
 
-.brand-info p {
-    margin-top: 5px;
-    font-size: 14px;
-    position: absolute;
-    top: 50px;
-    right: 750px;
+.sosmed {
+    gap: 15px;
 }
 
-.footer-links {
+.sosmed a {
+    color: #fff;
+    gap: 30px;
+    margin: 0 10px;
+}
+
+.col-footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-.footer-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    top: 40px;
-    right: 280px;
-}
 
-.footer-nav ul li {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-.footer-nav ul li:last-child {
-    margin-right: 0;
-}
-
-.footer-nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.footer-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-.social-media {
-    margin-right: auto;
-    position: absolute;
-    top: 29px;
-    right: 23px;
-}
-
-.social-media a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 20px;
-    margin-left: 10px;
-}
-
-.footer-description {
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-.footer-social-media {
-    margin-bottom: -10px; /* Jarak antara teks Social Media dan ikon */
-    position: relative;
-    top: -19px;
-    right: -5px;
-}
-
-/* Media query for responsiveness */
-@media only screen and (max-width: 768px) {
-    .brand-info,
-    .footer-links,
-    .social-media {
-        flex-basis: 100%; /* Set width to 100% on small screens */
-        text-align: center;
-    }
-    .footer {
-        background-color: #5940cb;
-        color: #ffffff;
-        padding: 48px 0;
-        text-align: center;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        left: 0%;
-        border-top-left-radius: 60px;
-        border-top-right-radius: 60px;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        z-index: 1000;
-    }
-
-    .social-media {
-        margin-right: auto;
-        position: absolute;
-        top: 29px;
-        right: 23px;
-    }
-
-    .social-media a {
-        color: #ffffff;
-        text-decoration: none;
-        font-size: 20px;
-        margin-left: 10px;
-    }
-    .footer-nav ul {
-        list-style-type: none;
-        padding: 0px;
-        margin: 0;
-        position: absolute;
-        top: 30px;
-        right: 86px;
-    }
-}
+/* end footer */
 
 .dashboard-image {
     width: 219px;
@@ -220,64 +95,43 @@ body {
     right: -445px;
 }
 
-.box-container {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
-    padding: 20px;
-}
-
 .box {
-    background-color: #f0f0f0;
+    background-color: white;
     border-radius: 4px;
-    box-shadow: 0 0 13px rgba(0, 0, 0, 0.1);
     text-align: center;
-    position: absolute;
-    top: 692px;
-    right: 466px;
-    width: 684px;
     padding: 14px;
+    border: 1px solid #d1d1d1;
 }
 
 .box1 {
-    background-color: #f0f0f0;
+    background-color: white;
     padding: 10px;
     border-radius: 17px;
-    box-shadow: 0 0 13px rgba(0, 0, 0, 0.1);
     text-align: center;
-    position: absolute;
-    top: 693px;
-    right: 100px;
-    width: 287px;
+    width: 246px;
+    border: 1px solid #d1d1d1;
 }
 
 .box2 {
-    background-color: #f0f0f0;
+    border: 1px solid #d1d1d1;
+    background-color: white;
     padding: 10px;
     border-radius: 14px;
-    box-shadow: 0 0 13px rgba(0, 0, 0, 0.1);
     text-align: center;
-    position: absolute;
-    top: 839px;
-    right: 100px;
-    width: 287px;
+    width: 246px;
 }
 
 .balance-card,
 .outcome-card {
     display: flex;
-    align-items: center;
-    gap: 10px;
+    flex-direction: column;
+    align-items: start;
     margin-top: 20px;
 }
 
 .balance-card i,
 .outcome-card i {
     font-size: 24px;
-    position: relative;
-    right: -13px;
-    top: -35px;
 }
 
 .balance-card {
@@ -288,12 +142,14 @@ body {
     color: #ff6347;
 }
 
-h3 {
-    margin: 0;
-    font-size: 26px;
-    position: relative;
-    top: -6px;
-    right: -22px;
+span {
+    color: #acacac;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: 500;
+    color: black;
 }
 
 p {
@@ -331,24 +187,11 @@ p {
 }
 
 .report-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     background-size: cover;
     background-position: center;
-    padding: 72px;
-    border-radius: 11px;
-    margin: 380px 20px 0;
-    color: #fff;
-    margin-left: 69px;
-    margin-right: 114px;
-    position: relative;
-    top: 259px;
-}
-
-.report-container .text-content {
-    flex-grow: 1;
-    margin-right: 20px; /* Menambahkan margin kanan */
+    width: 100%;
+    height: 336px;
+    border-radius: 20px;
 }
 
 .report-container .btn-report {
@@ -361,34 +204,40 @@ p {
     top: 75px;
     display: flex;
     align-items: center;
-    transition: all 0.3s ease; /* Animasi transisi yang halus untuk semua properti */
+    transition: all 0.3s ease;
+    /* Animasi transisi yang halus untuk semua properti */
 }
 
 .report-container .btn-report:hover,
 .report-container .btn-report:focus {
-    background-color: rgb(
-        126,
-        110,
-        225
-    ); /* Menerangkan warna latar saat hover atau fokus */
-    transform: scale(1.05); /* Membesar sedikit saat di-hover atau di-focus */
-    box-shadow: 0 8px 16px rgba(106, 90, 205, 0.2); /* Menambah bayangan untuk efek "mengangkat" */
+    background-color: rgb(126, 110, 225);
+    /* Menerangkan warna latar saat hover atau fokus */
+    transform: scale(1.05);
+    /* Membesar sedikit saat di-hover atau di-focus */
+    box-shadow: 0 8px 16px rgba(106, 90, 205, 0.2);
+    /* Menambah bayangan untuk efek "mengangkat" */
 }
 
 .report-container .btn-report:active {
-    transform: scale(0.95); /* Mengecil sedikit saat diklik */
+    transform: scale(0.95);
+    /* Mengecil sedikit saat diklik */
 }
 
 .report-container .btn-report i {
-    margin-right: 10px; /* Jarak antara ikon dan teks */
+    margin-right: 10px;
+    /* Jarak antara ikon dan teks */
 }
 
 h4 {
-    font-size: 39px; /* Ukuran font yang lebih besar */
-    color: #ffffff; /* Warna teks putih untuk kontras yang baik pada latar belakang gelap */
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Bayangan teks untuk meningkatkan keterbacaan */
-    font-weight: bold; /* Membuat font tebal */
-    line-height: 1.2; /* Menyesuaikan tinggi baris untuk penampilan yang lebih baik */
+    font-size: 39px;
+    /* Ukuran font yang lebih besar */
+    color: #ffffff;
+    /* Warna teks putih untuk kontras yang baik pada latar belakang gelap */
+    /* Bayangan teks untuk meningkatkan keterbacaan */
+    font-weight: bold;
+    /* Membuat font tebal */
+    line-height: 1.2;
+    /* Menyesuaikan tinggi baris untuk penampilan yang lebih baik */
 }
 
 .notification-section {
@@ -401,13 +250,13 @@ h4 {
     position: relative;
     top: 90px;
     width: 1130px;
-    right: -70px;
     cursor: pointer;
 }
 
 .row {
     display: flex;
-    width: 100%; /* Ensure the row takes full width */
+    width: 100%;
+    /* Ensure the row takes full width */
     justify-content: space-between;
     align-items: center;
 }
@@ -469,11 +318,13 @@ h4 {
 }
 
 .notification-section i:hover {
-    color: #007bff; /* Change icon color on hover */
+    color: #007bff;
+    /* Change icon color on hover */
 }
 
 .dropdown-content {
-    display: none; /* Initially hide the dropdown content */
+    display: none;
+    /* Initially hide the dropdown content */
     position: absolute;
     background-color: #f9f9f9;
     min-width: 160px;
@@ -498,23 +349,20 @@ h4 {
 }
 
 .notification-section #notificationText .fa-bell {
-    font-size: 20px; /* Ukuran ikon lonceng */
+    font-size: 20px;
+    /* Ukuran ikon lonceng */
 }
 
 .notification-section #notificationText .fa-bell {
-    color: #ffcc00; /* Warna ikon lonceng */
+    color: #ffcc00;
+    /* Warna ikon lonceng */
 }
 
 .sdg-container {
-    max-width: 1017px;
-    margin: auto;
+    width: 100%;
     padding: 35px;
     background-color: #5940cb0f;
     border-radius: 7px;
-    box-shadow: 0 0 10px rgb(0 0 0 / 46%);
-    position: absolute;
-    top: 1500px;
-    right: 150px;
 }
 
 .grid {
@@ -558,8 +406,8 @@ h4 {
     text-align: left;
     position: relative;
     top: 119px;
+    margin-bottom: 300px;
     width: 78%;
-    right: -121px;
 }
 
 .map {
@@ -582,8 +430,10 @@ h4 {
 }
 
 #bandung {
-    top: 55%; /* Sesuaikan posisi berdasarkan peta */
-    left: 43%; /* Sesuaikan posisi berdasarkan peta */
+    top: 55%;
+    /* Sesuaikan posisi berdasarkan peta */
+    left: 43%;
+    /* Sesuaikan posisi berdasarkan peta */
 }
 
 .city-overlay.active {
@@ -595,4 +445,15 @@ h4 {
     margin-top: 20px;
     font-size: 1.2em;
     font-weight: bold;
+}
+
+
+/* Menambahkan transisi pada navbar */
+
+.navbar {
+    transition: background-color 0.3s ease;
+}
+
+.navbar:hover {
+    background-color: #e3e3e3;
 }

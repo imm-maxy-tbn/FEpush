@@ -2,7 +2,9 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
+
 /* Navbar */
+
 .navbar {
     background-color: #ffffff;
     color: #000000;
@@ -53,7 +55,9 @@ body {
     margin-right: 20px;
 }
 
+
 /* Footer */
+
 .footer {
     background-color: #5940cb;
     color: #ffffff;
@@ -151,18 +155,22 @@ body {
 }
 
 .footer-social-media {
-    margin-bottom: -10px; /* Jarak antara teks Social Media dan ikon */
+    margin-bottom: -10px;
+    /* Jarak antara teks Social Media dan ikon */
     position: relative;
     top: -19px;
     right: -5px;
 }
 
+
 /* Media query for responsiveness */
+
 @media only screen and (max-width: 768px) {
     .brand-info,
     .footer-links,
     .social-media {
-        flex-basis: 100%; /* Set width to 100% on small screens */
+        flex-basis: 100%;
+        /* Set width to 100% on small screens */
         text-align: center;
     }
     .footer {
@@ -180,14 +188,12 @@ body {
         border-bottom-right-radius: 0;
         z-index: 1000;
     }
-
     .social-media {
         margin-right: auto;
         position: absolute;
         top: 29px;
         right: 23px;
     }
-
     .social-media a {
         color: #ffffff;
         text-decoration: none;
@@ -249,13 +255,18 @@ body {
     margin-bottom: 20px;
 }
 
-.verification-code input[type="text"] {
+.verification-code input[type="number"] {
     width: 52px;
     height: 50px;
     font-size: 24px;
     text-align: center;
     margin: 0 5px;
     border-radius: 12px;
+}
+
+.verification-code input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
 }
 
 .btn-resend {
@@ -266,4 +277,67 @@ body {
     border-radius: 5px;
     cursor: pointer;
     transition: background 0.3s;
+}
+
+
+/* Efek loading */
+
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#loading img {
+    width: 100px;
+    /* Ukuran gambar loading */
+    height: 100px;
+    /* Ukuran gambar loading */
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* Animasi umum untuk elemen lainnya */
+
+.content-container h1,
+.date-box,
+.chart-container,
+.analysis-matrix .content-box,
+.target-check .target-check-box,
+.icon-box .icon-item,
+.btn {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.content-container h1:hover,
+.date-box:hover,
+.chart-container:hover,
+.analysis-matrix .content-box:hover,
+.target-check .target-check-box:hover,
+.icon-box .icon-item:hover,
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+
+/* Menambahkan transisi pada navbar */
+
+.navbar {
+    transition: background-color 0.3s ease;
+}
+
+.navbar:hover {
+    background-color: #e3e3e3;
 }

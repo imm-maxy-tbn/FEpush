@@ -1,13 +1,18 @@
 html,
 body {
-    height: 204%;
+    height: 4%;
     margin: 0;
     font-family: "Roboto", sans-serif;
-
-    max-width: 100%; /* Ensure the width does not exceed 100% */
 }
 
+* {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+
 /* Navbar */
+
 .navbar {
     background-color: #ffffff;
     color: #000000;
@@ -22,7 +27,8 @@ body {
 
 .navbar-brand {
     margin-right: 14px;
-    margin-left: 20px; /* Adjusted for better alignment */
+    margin-left: 20px;
+    /* Adjusted for better alignment */
 }
 
 .navbar-nav {
@@ -33,7 +39,8 @@ body {
 .navbar-links {
     list-style-type: none;
     display: flex;
-    margin-left: auto; /* Center alignment */
+    margin-left: auto;
+    /* Center alignment */
 }
 
 .navbar-links li {
@@ -58,119 +65,66 @@ body {
     margin-right: 20px;
 }
 
+
 /* Footer */
+
 .footer {
     background-color: #5940cb;
     color: #ffffff;
-    padding: 48px 0;
+    height: 167px;
     text-align: center;
-    position: absolute;
-    bottom: -2258px;
-    width: 80%;
-    left: 10%;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    z-index: 1000;
+    width: 100%;
 }
 
-.footer-container {
-    max-width: 594px;
-    margin: 0 auto;
+.footer ul {
+    text-decoration: none;
+    list-style-type: none;
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.footer ul li {
+    color: #fff;
+    font-size: 12px;
 }
 
-.brand-info h3 {
-    margin: 0;
-    font-size: 20px;
-    position: absolute;
-    right: 860px;
-    top: 20px;
+.span-footer {
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
 }
 
-.brand-info p {
-    margin-top: 5px;
-    font-size: 14px;
-    position: absolute;
-    top: 50px;
-    right: 750px;
+.sosmed {
+    gap: 15px;
 }
 
-.footer-links {
+.sosmed a {
+    color: #fff;
+    gap: 30px;
+    margin: 0 10px;
+}
+
+.col-footer {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
 }
 
-.footer-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    top: 40px;
-    right: 280px;
-}
-
-.footer-nav ul li {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-.footer-nav ul li:last-child {
-    margin-right: 0;
-}
-
-.footer-nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.footer-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-.social-media {
-    margin-right: auto;
-    position: absolute;
-    top: 29px;
-    right: 23px;
-}
-
-.social-media a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 20px;
-    margin-left: 10px;
-}
-
-.footer-description {
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-.footer-social-media {
-    margin-bottom: -10px; /* Jarak antara teks Social Media dan ikon */
-    position: relative;
-    top: -19px;
-    right: -5px;
-}
 
 /* General Styles */
+
 h2 {
     font-size: 24px;
     font-weight: bold;
     color: #050505;
-    margin-top: 100px; /* Adjusted for better spacing from navbar */
+    margin-top: 100px;
+    /* Adjusted for better spacing from navbar */
 }
 
+
 /* Project Title */
+
 .project-title,
 .project-titlee,
 .done-projects-title {
@@ -183,6 +137,7 @@ h2 {
     top: 18px;
     right: -15px;
 }
+
 .done-projects-titlee {
     font-weight: bold;
     border-left: 4px solid #6c63ff;
@@ -193,7 +148,10 @@ h2 {
     top: -33px;
     right: -100px;
 }
+
+
 /* Input Group */
+
 .input-group {
     border-radius: 12px;
     position: relative;
@@ -218,11 +176,15 @@ h2 {
     color: #948d8d;
     border-radius: 0 5px 5px 0;
     display: flex;
-    align-items: center; /* Centering icon */
-    justify-content: center; /* Centering icon */
+    align-items: center;
+    /* Centering icon */
+    justify-content: center;
+    /* Centering icon */
 }
 
+
 /* Create Project Button */
+
 .btn-create-project {
     background-color: #6c63ff;
     border: none;
@@ -230,14 +192,17 @@ h2 {
     color: #fff;
     font-weight: bold;
     padding: 10px 20px;
-    margin-top: 20px; /* Adjusted for better spacing */
+    margin-top: 20px;
+    /* Adjusted for better spacing */
 }
 
 .btn-create-project:hover {
     background-color: #574dcf;
 }
 
+
 /* No Projects Section */
+
 .no-projects {
     background-color: #f6f6ff;
     border: 1px solid #e2e2f7;
@@ -258,7 +223,9 @@ h2 {
     font-weight: bold;
 }
 
+
 /* See All Link */
+
 .see-all {
     color: #333;
     font-weight: bold;
@@ -272,7 +239,9 @@ h2 {
     text-decoration: underline;
 }
 
+
 /* All Projects Title */
+
 .all-projects-title {
     font-weight: bold;
     margin-top: 100px;
@@ -282,7 +251,9 @@ h2 {
     right: -89px;
 }
 
+
 /* Table */
+
 .table thead th {
     background-color: #c5c5f7;
     border: none;
@@ -292,31 +263,29 @@ h2 {
 }
 
 .table {
-    width: 88%;
+    width: 100%;
     margin-bottom: 1rem;
     color: #212529;
     position: relative;
-    top: -10px;
-    right: -90px;
 }
 
 .tablee {
-    width: 90%;
+    width: 100%;
     margin-bottom: 1rem;
     color: #212529;
     position: relative;
-    top: 0px;
-    right: -50px;
 }
 
 .table tbody tr td {
     background-color: #f6f6ff;
-    padding: 20px;
+    padding: 10px;
     color: #555;
     text-align: center;
 }
 
+
 /* Dropdown Toggle */
+
 .dropdown-toggle {
     border-radius: 30px;
     padding: 5px 15px;
@@ -324,7 +293,9 @@ h2 {
     border: 1px solid #6c63ff;
 }
 
+
 /* Pagination */
+
 .pagination .page-item.active .page-link {
     background-color: #6c63ff;
     border-color: #6c63ff;
@@ -349,7 +320,9 @@ h2 {
     background-color: #f0f0f0;
 }
 
+
 /* Done Projects Card */
+
 .done-projects-card {
     width: 88%;
     position: relative;
@@ -394,7 +367,9 @@ h2 {
     font-size: 20px;
 }
 
+
 /* Media Queries */
+
 @media only screen and (max-width: 768px) {
     .brand-info,
     .footer-links,
@@ -402,12 +377,10 @@ h2 {
         flex-basis: 100%;
         text-align: center;
     }
-
     .footer {
         border-top-left-radius: 60px;
         border-top-right-radius: 60px;
     }
-
     .footer-nav ul {
         position: relative;
         top: auto;
@@ -415,7 +388,9 @@ h2 {
     }
 }
 
+
 /* Style for ongoing projects title */
+
 .ongoing-projects-title {
     font-family: "Montserrat", sans-serif;
     font-weight: 700;
@@ -429,12 +404,17 @@ h2 {
 }
 
 .ongoing-projects-filters {
-    margin-top: 3rem; /* Adjust the top margin as needed */
-    position: relative; /* Required for top property to work */
-    top: -1px; /* Adjust the top position as needed */
+    margin-top: 3rem;
+    /* Adjust the top margin as needed */
+    position: relative;
+    /* Required for top property to work */
+    top: -1px;
+    /* Adjust the top position as needed */
 }
 
+
 /* Targeting the buttons inside ongoing-projects-filters */
+
 .ongoing-projects-filters .btn {
     margin-left: 101px;
     margin-right: 70px;
@@ -551,7 +531,9 @@ h2 {
     margin: 10px auto 0;
 }
 
+
 /* Performance Card */
+
 .performance-card {
     border: none;
     border-radius: 10px;
@@ -600,7 +582,9 @@ h2 {
     padding-left: 10px;
 }
 
+
 /* Schedule Box */
+
 .schedule-box {
     background-color: #ffffff;
     border: 1px solid #cccccc;
@@ -612,12 +596,12 @@ h2 {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+
 /* Calendar */
+
 .calendar {
     background-color: #e6e6fa;
     border-radius: 10px;
-    padding: 13px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .calendar-header {
@@ -645,12 +629,8 @@ h2 {
 }
 
 .tableee {
-    width: 89%;
     background-color: #e6e6fa;
-    position: relative;
-    right: -1px;
-    top: 19px;
-    font-size: 11px;
+    font-size: 3px;
 }
 
 .tableee th,
@@ -751,12 +731,92 @@ h2 {
 }
 
 .btn-detail {
-    background-color: #6c757d; /* Warna abu-abu */
-    border-color: #6c757d; /* Warna border abu-abu */
-    color: #ffffff; /* Warna teks putih */
+    background-color: #6c757d;
+    /* Warna abu-abu */
+    border-color: #6c757d;
+    /* Warna border abu-abu */
+    color: #ffffff;
+    /* Warna teks putih */
 }
 
 .btn-detail:hover {
-    background-color: #5a6268; /* Warna abu-abu lebih gelap saat hover */
-    border-color: #545b62; /* Warna border abu-abu lebih gelap saat hover */
+    background-color: #5a6268;
+    /* Warna abu-abu lebih gelap saat hover */
+    border-color: #545b62;
+    /* Warna border abu-abu lebih gelap saat hover */
+}
+
+
+/* 
+/* Efek loading */
+
+
+/* 
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 5px;
+}
+
+#loading img {
+    width: 100px;
+    /* Ukuran gambar loading */
+
+
+/* 
+height: 100px;
+
+/* Ukuran gambar loading */
+
+
+/* animation: spin 1s linear infinite;
+
+}
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+} */
+
+*/ */
+/* Animasi umum untuk elemen lainnya */
+
+
+/* 
+.content-container h1,
+.date-box,
+.chart-container,
+.analysis-matrix .content-box,
+.target-check .target-check-box,
+.icon-box .icon-item,
+.btn {
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.content-container h1:hover,
+.date-box:hover,
+.chart-container:hover,
+.analysis-matrix .content-box:hover,
+.target-check .target-check-box:hover,
+.icon-box .icon-item:hover,
+.btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+} */
+
+
+/* Menambahkan transisi pada navbar */
+
+.navbar {
+    transition: background-color 0.3s ease;
+}
+
+.navbar:hover {
+    background-color: #e3e3e3;
 }

@@ -12,11 +12,12 @@
 </head>
 
 <body>
+ 
     <header>
         <nav class="w-100">
             <div class="row w-100 d-flex justify-content-between align-items-center">
                 <div class="col-auto">
-                    <img src="css/event/logo-maxy.png" width="120" height="41" alt="img">
+                    <img src="images/logo-maxy.png" width="120" height="41" alt="img">
                 </div>
                 <div class="col-auto h-100 d-flex align-items-center">
                     <ul class="d-flex justify-content-center"
@@ -41,7 +42,9 @@
     </header>
 
 
-    <section class="banner" style=""></section>
+    <section class="banner" style="">
+        <img src="images/bg-event.png" class="w-100 h-auto" alt="">
+    </section>
 
     <div class="container content d-flex flex-column justify-content-center">
         <p class="text-center" style="font-size:32px; font-weight:500">Selamat Anda telah terdaftar! <br>
@@ -61,14 +64,14 @@
                 " style="font-size:32px; font-weight:500">Tertarik menjadi
                     sponsor</div>
                 <div class="col">
-                    <button class="btn-daftar ">Hubunggi Sekarang</button>
+                   <a href="#"> <button class="btn-daftar ">Hubunggi Sekarang</button></a>
                 </div>
                 <div class="col d-flex justify-content-between" style="">
 
                     <div class="col d-flex justify-content-start" style="gap:50px">
-                        <a href=""></a><img src="css/event/icon-yt.png" alt=""></a>
-                        <a href=""> <img src="css/event/icon-ig.png" alt=""></a>
-                        <a href=""> <img src="css/event/icon-fb.png" alt=""></a>
+                        <a href=""></a><img src="images/icon-yt.png" alt=""></a>
+                        <a href=""> <img src="images/icon-ig.png" alt=""></a>
+                        <a href=""> <img src="images/icon-fb.png" alt=""></a>
                     </div>
                     <div class="col-text">
                         <div class="row d-flex flex-column align-items-center " style="gap: 30px">
@@ -87,7 +90,9 @@
         </div>
     </footer>
 
-
+<script>
+    
+</script>
 </body>
 
 </html>

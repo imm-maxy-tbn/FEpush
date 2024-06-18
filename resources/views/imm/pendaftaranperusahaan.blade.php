@@ -12,8 +12,9 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
+
+     
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
@@ -72,7 +73,7 @@
                         </tr>
                         <tr>
                             <td><span class="input-icon"><i class="fas fa-phone"></i></span></td>
-                            <td><input type="text" placeholder="Nomor Telepon" id="telepon" name="telepon"
+                            <td><input type="number" placeholder="Nomor Telepon" id="telepon" name="telepon"
                                     required /></td>
                         </tr>
                     </table>
@@ -123,7 +124,7 @@
                         </tr>
                         <tr>
                             <td><span class="input-icon"><i class="fas fa-users"></i></span></td>
-                            <td><input type="text" placeholder="Jumlah Karyawan" id="jumlah_karyawan"
+                            <td><input type="number" placeholder="Jumlah Karyawan" id="jumlah_karyawan"
                                     name="jumlah_karyawan" required /></td>
                         </tr>
                         <tr>
@@ -144,7 +145,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/imm/verifikasidiri.js') }}"></script>
+    <script src="{{ asset('js/imm/pendaftaran.js') }}"></script>
 
 </body>
 
