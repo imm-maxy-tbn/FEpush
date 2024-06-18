@@ -16,7 +16,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">IMM</a>
+            <a class="navbar-brand" href="homepage">IMM</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -30,7 +30,7 @@
         <form id="laporanForm">
             <div class="form-group">
                 <textarea class="form-control" rows="5"
-                    placeholder="Ceritakan program apa yang sedang kamu lakukan dan bagaimana rencanamu untuk berdampak melalui program"></textarea>
+                    placeholder="Bulan Juni 2024 merupakan bulan yang produktif bagi organisasi kami dengan berbagai kegiatan yang berfokus pada peningkatan dampak sosial dan lingkungan. Berikut adalah rangkuman aktivitas yang telah dilakukan:"></textarea>
             </div>
 
             <div id="notification" class="mt-3"></div>
@@ -55,7 +55,7 @@
                     </div>
                     <div class="section d-flex align-items-center justify-content-between">
                         <span style="font-size: 20px; font-weight:500">Jumlah peserta aktivitas/program</span>
-                        <input type="number" class="text-orang form-control" placeholder="Isi jumlah orang" name="" id="">
+                        <input type="text" class="text-orang form-control" placeholder="Isi jumlah orang" name="" id="">
                     </div>
                     <div class="section d-flex mt-3 align-items-center justify-content-between">
                         <span style="font-size: 20px; font-weight:500">Unggah dokumentasi aktivitas/program</span>
