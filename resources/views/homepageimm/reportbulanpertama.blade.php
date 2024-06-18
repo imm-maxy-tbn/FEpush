@@ -55,7 +55,7 @@
                     </div>
                     <div class="section d-flex align-items-center justify-content-between">
                         <span style="font-size: 20px; font-weight:500">Jumlah peserta aktivitas/program</span>
-                        <input type="text" class="text-orang form-control" placeholder="Isi jumlah orang" name="" id="">
+                        <input type="number" class="text-orang form-control" placeholder="Isi jumlah orang" name="" id="">
                     </div>
                     <div class="section d-flex mt-3 align-items-center justify-content-between">
                         <span style="font-size: 20px; font-weight:500">Unggah dokumentasi aktivitas/program</span>
