@@ -24,18 +24,20 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
-                <ul class="navbar-nav >
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                    <a class="nav-link active" href="homepage">Home</a>
+                    <a class="nav-link active" href="/homepage">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="myproject">My Project</a>
+                        <a class="nav-link" href="/myproject">My Project</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="homepage">My Company</a>
                     </li>
 
                 </ul>
+                
+
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}"
@@ -189,45 +191,35 @@
     {{-- end sdg --}}
 
     <footer>
-        <div class="container footer mt-5  d-flex justify-content-center align-items-center  ">
-            <div class="row d-flex justify-content-center align-items-center">
-                <div class="col-4 d-flex flex-column" style="gap: 20px">
-                    <h5 class=" text-white  text-left">IMM</h5>
-                    <span class="span-footer text-left">Impact Measurement and Management
-                        (TBN INDONESIA X MAXY ACADEMY)</span>
-                </div>
-                <div class="col-5 d-flex justify-content-center align-items-center">
-                    <ul class=" d-flex " style="gap: 30px">
-                        <a href="">
-                            <li>HomePage</li>
-                        </a>
-                        <a href="">
-                            <li>Bootcamp</li>
-                        </a>
-                        <a href="">
-                            <li>IMM</li>
-                        </a>
-                        <a href="">
-                            <li>Comunity</li>
-                        </a>
-                        <a href="">
-                            <li>Profile</li>
-                        </a>
-                    </ul>
-                </div>
-                <div class="col-3 d-flex flex-column justify-content-center">
-                    <span class="span-footer text-center">Sosial Media</span>
-                    <div class="sosmed d-flex justify-content-end  ">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+    <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
+        <div class="row d-flex  justify-content-center align-items-center">
+            <div class="col-4 d-flex flex-column" style="gap: 20px">
+                <h5 class=" text-white  text-left">IMM</h5>
+                <span class="span-footer text-left">Impact Measurement and Management
+                        <br> (TBN INDONESIA X MAXY ACADEMY)</span>
+            </div>
+            <div class="col-5 d-flex justify-content-center align-items-center">
+                <ul class=" d-flex " style="gap: 30px">
+                    <a href=""><li>HomePage</li></a>
+                    <a href=""><li>Bootcamp</li></a>
+                    <a href=""><li>IMM</li></a>
+                    <a href=""><li>Comunity</li></a>
+                    <a href=""><li>Profile</li></a>
+                </ul>
+            </div>
+            <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
+                <span class="span-footer text-center">Sosial Media</span>
+                <div class="sosmed d-flex justify-content-end  ">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-
         </div>
-    </footer>
+
+ </div>
+</footer>
 
    
 

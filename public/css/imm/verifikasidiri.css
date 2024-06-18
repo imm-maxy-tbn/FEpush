@@ -17,11 +17,6 @@ body {
     border-bottom: 3px solid #5940cb;
 }
 
-.navbar-brand {
-    margin-right: 14px;
-    margin-left: 342px;
-}
-
 .navbar-nav {
     margin-left: 10px;
     margin-right: auto;

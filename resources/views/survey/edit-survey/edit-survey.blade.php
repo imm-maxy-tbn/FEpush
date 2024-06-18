@@ -10,336 +10,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="{{ asset('css/responden/edit-survey.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
-        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap");
 
-        body {
-            font-family: "Roboto", sans-serif;
-            padding-top: 70px;
-            padding-bottom: 140px;
-            /* Add padding to avoid content being hidden behind fixed navbar */
-            background-color: #ffffff;
-            font-family: "Quicksand", sans-serif;
-        }
-
-        .navbar {
-            background-color: #ffffff;
-            color: #000000;
-            padding: 15px 0;
-            position: fixed;
-            top: 0;
-            right: 0;
-            left: 0;
-            z-index: 1000;
-            border-bottom: 3px solid #5940cb;
-        }
-
-        .navbar-nav {
-            margin-left: 10px;
-            margin-right: auto;
-        }
-
-        .navbar-links {
-            list-style-type: none;
-            display: flex;
-            margin-left: -580px;
-        }
-
-        .navbar-links li {
-            margin-right: 20px;
-        }
-
-        .navbar-links li:last-child {
-            margin-right: 0;
-        }
-
-        .navbar-links a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        .navbar-links a:hover {
-            text-decoration: underline;
-        }
-
-        .navbar-actions {
-            display: flex;
-            margin-right: 20px;
-        }
-
-        .footer {
-            background-color: #5940cb;
-            color: #ffffff;
-            padding: 48px 0;
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 80%;
-            left: 10%;
-            border-top-left-radius: 40px;
-            border-top-right-radius: 40px;
-            z-index: 1000;
-        }
-
-        .footer-container {
-            max-width: 594px;
-            margin: 0 auto;
-        }
-
-        .content {
-            background-color: #f7f6fb;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            padding: 50px;
-            text-align: justify;
-            /* Add some space between each section */
-        }
-
-        .form-control-select {
-            width: 315px;
-            height: 49px;
-            background-color: #5940cb;
-            color: white;
-            font-size: 20px;
-            font-family: "Poppins", sans-serif;
-            font-weight: bold;
-        }
-
-        .form-control {
-            height: 47px;
-            width: 702px;
-            border: 2px solid #5940cb;
-        }
-
-        .btn-tambah-bagian {
-            cursor: pointer;
-            color: white;
-            background-color: #5940cb;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 5px;
-            font-size: 32px;
-            font-family: "Quicksand", sans-serif;
-            font-weight: bold;
-        }
-
-        .btn-tambah {
-            width: 315px;
-            height: 49px;
-            background-color: #5940cb;
-            border: 3px solid #5940cb;
-            border-radius: 6px;
-            color: white;
-            font-size: 20px;
-            font-family: "Quicksand", sans-serif;
-            font-weight: bold;
-        }
-
-        .form-esay,
-        .form-pilihan-ganda,
-        .form-skala {
-            padding: 20px;
-            border-radius: 5px;
-        }
-
-        .radio-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .radio-item input {
-            margin-bottom: 5px;
-        }
-
-        .btn-tambah.hidden {
-            display: none;
-        }
-
-        .angka {
-            height: 54px;
-            width: 35px;
-            background-color: #5940cb;
-            font-size: 20px;
-            font-family: "Poppins", sans-serif;
-            font-weight: 500;
-            color: white;
-        }
-
-        .radio-item {
-            display: flex;
-            align-items: center;
-        }
-
-        .radio-item input[type="radio"] {
-            margin-right: 5px;
-        }
-
-        .form-container {
-            display: flex;
-            flex-wrap: wrap;
-        }
-
-        .form-container>div {
-            flex: 1 1 30%;
-            /* Adjust the percentage as needed to control the width */
-            margin: 10px;
-        }
-
-        .btn {
-            display: flex;
-            justify-content: center;
-            margin-top: 30px;
-        }
-
-        .btn-lihat {
-            width: 226px;
-            height: 49px;
-            background-color: white;
-            border: 3px solid #5940cb;
-            border-radius: 6px;
-            color: #5940cb;
-            font-size: 20px;
-            font-family: "Poppins", sans-serif;
-            font-weight: bold;
-        }
-
-        .btn-mulai,
-        .btn-akhiri {
-            width: 379px;
-            height: 49px;
-            background-color: #5940cb;
-            border: 3px solid #5940cb;
-            border-radius: 6px;
-            color: white;
-            font-size: 20px;
-            font-family: "Poppins", sans-serif;
-            font-weight: bold;
-        }
-
-        .btn-simpan {
-            width: 240px;
-            height: 49px;
-            background-color: #5940cb;
-            border: 3px solid #5940cb;
-            border-radius: 6px;
-            color: white;
-            font-size: 20px;
-            font-family: "Quicksand", sans-serif;
-            font-weight: bold;
-            margin-top: 55px;
-        }
-
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .brand-info h3 {
-            margin: 0;
-            font-size: 20px;
-            position: absolute;
-            right: 860px;
-            top: 20px;
-        }
-
-        .brand-info p {
-            margin-top: 5px;
-            font-size: 14px;
-            position: absolute;
-            top: 50px;
-            right: 750px;
-        }
-
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .footer-nav ul {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-            position: absolute;
-            top: 40px;
-            right: 280px;
-        }
-
-        .footer-nav ul li {
-            display: inline-block;
-            margin-right: 20px;
-        }
-
-        .footer-nav ul li:last-child {
-            margin-right: 0;
-        }
-
-        .footer-nav ul li a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 16px;
-        }
-
-        .footer-nav ul li a:hover {
-            text-decoration: underline;
-        }
-
-        .social-media {
-            margin-right: auto;
-            position: absolute;
-            top: 29px;
-            right: 23px;
-        }
-
-        .social-media a {
-            color: #ffffff;
-            text-decoration: none;
-            font-size: 20px;
-            margin-left: 10px;
-        }
-
-        .footer-description {
-            margin-top: 20px;
-            font-size: 14px;
-        }
-
-        .footer-social-media {
-            margin-bottom: -10px;
-            /* Jarak antara teks Social Media dan ikon */
-            position: relative;
-            top: -19px;
-            right: -5px;
-        }
-
-        .metric-item:hover {
-            filter: brightness(0.95);
-        }
-
-        .metric-checkbox {
-            width: 20px;
-            height: 20px;
-        }
-
-        .text-primary {
-            color: #5940cb !important;
-        }
-
-        .sub-content {
-            background-color: #e5e2f2;
-            width: 100%;
-            height: 182px;
-            justify-content: center;
-            display: flex;
-            margin-bottom: 30px;
-        }
-    </style>
 </head>
 
 <body>
@@ -419,27 +92,26 @@
 
     <div class="container d-flex justify-content-center">
         <span class="btn-tambah-bagian" id="add-section-btn">Tambah Bagian Survey +</span>
-    </div>
-
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="brand-info">
-                    <h3>IMM</h3>
-                    <p>(TBN INDONESIA X MAXY ACADEMY)</p>
+    </div>   <footer>
+        <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
+            <div class="row d-flex  justify-content-center align-items-center">
+                <div class="col-4 d-flex flex-column" style="gap: 20px">
+                    <h5 class=" text-white  text-left">IMM</h5>
+                    <span class="span-footer text-left">Impact Measurement and Management
+                            <br> (TBN INDONESIA X MAXY ACADEMY)</span>
                 </div>
-                <div class="footer-links">
-                    <div class="footer-nav">
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="bootcamp">Bootcamp</a></li>
-                            <li><a href="imm">IMM</a></li>
-                            <li><a href="comunity">Community</a></li>
-                            <li><a href="profile">Profile</a></li>
-                        </ul>
-                    </div>
-                    <div class="social-media">
-                        <p class="footer-social-media">Social Media</p>
+                <div class="col-5 d-flex justify-content-center align-items-center">
+                    <ul class=" d-flex " style="gap: 30px">
+                        <a href=""><li>HomePage</li></a>
+                        <a href=""><li>Bootcamp</li></a>
+                        <a href=""><li>IMM</li></a>
+                        <a href=""><li>Comunity</li></a>
+                        <a href=""><li>Profile</li></a>
+                    </ul>
+                </div>
+                <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
+                    <span class="span-footer text-center">Sosial Media</span>
+                    <div class="sosmed d-flex justify-content-end  ">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -447,7 +119,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+    
+     </div>
     </footer>
 
     <script>

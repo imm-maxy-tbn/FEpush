@@ -5,40 +5,47 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Homepage</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/creatp1.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/blog/blogarticle.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <div>
 <body>
  
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand" href="#">IMM</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link " href="welcome">Home</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="myproject">My Project</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Status</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active" href="creatp">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">My Company</a>
-                </li>
-            </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="imm">IMM</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="welcome">Home</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="bootcamp">Bootcamp</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="imm">IMM</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="community">Community</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog">Explore</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile">Profile</a>
+                    </li>
+                </ul>                <div class="navbar-actions">
+                    <a href="login" class="btn btn-primary">Login</a>
+                    <a href="register" class="btn btn-outline-primary">Register</a>
+                </div>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <div class="container mt-5">
         <div class="ad-container">
@@ -47,7 +54,7 @@
             </div>
         </div>
         <div class="back-link">
-            <a href="creatp"><i class="fas fa-arrow-left"></i> Blog/Lorem Ipsum Dolor Sit Amet</a>
+            <a href="/blog"><i class="fas fa-arrow-left"></i> Blog</a>
         </div>
     </div>
 

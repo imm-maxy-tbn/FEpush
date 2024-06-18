@@ -11,38 +11,44 @@
 </head>
 <body>
 
-<div id="loading">
-    <img src="images/imm.png" alt="Loading...">
-</div>
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-    <a class="navbar-brand" href="#">IMM</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="welcome">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Bootcamp</a>
-                </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">IMM</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Community</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="profile">Profile</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
 
-<div class="profile-container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="imm">IMM</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="welcome">Home</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="bootcamp">Bootcamp</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="imm">IMM</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="community">Community</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog">Explore</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile">Profile</a>
+                    </li>
+                </ul>                <div class="navbar-actions">
+                    <a href="login" class="btn btn-primary">Login</a>
+                    <a href="register" class="btn btn-outline-primary">Register</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<div class="container d-flex justify-content-center">
+<div class="profile-container"  style="margin-top:130px">
     <h1>Profile</h1>
     <p>Kelola pengaturan profil Anda</p>
     <div class="profile-picture-container">
@@ -83,9 +89,10 @@
         <div class="form-buttons">
     <a href="profile" class="btn btn-back">Kembali</a>
     <button type="submit" class="btn btn-save">Simpan</button>
-</div>
+</div></div>
     </form>
 </div>
+
 
 
 <footer>

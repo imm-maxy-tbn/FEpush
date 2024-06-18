@@ -18,13 +18,9 @@
      
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
+        <div class="container d-flex align-items-center justify-content-center">
             <a class="navbar-brand" href="/">IMM</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <div class="justify-content-center" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item ">
                         <a class="nav-link" href="welcome">Home</a>
@@ -68,7 +64,7 @@
                         <td><button class="btn-login" id="loginBtn" type="submit">Verifikasi</button></td>
                     </tr>
                 </table>
-                <div class="notification" id="notification">Kode OTP telah dikirim ke email Anda.</div>
+                <div class="notification" id="notification">Kode OTP telah dikirim ke WhatsApp Anda.</div>
             <!-- </form> -->
         </div>
     </div>

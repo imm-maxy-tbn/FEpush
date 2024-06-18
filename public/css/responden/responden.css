@@ -1,77 +1,71 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 body {
     font-family: "Roboto", sans-serif;
-    padding-top: 70px;
-    padding-bottom: 140px;
     /* Add padding to avoid content being hidden behind fixed navbar */
     background-color: #ffffff;
     font-family: "Quicksand", sans-serif;
 }
 
-.navbar {
-    background-color: #ffffff;
-    color: #000000;
-    padding: 15px 0;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1000;
-    border-bottom: 3px solid #5940cb;
-}
-
-.navbar-nav {
-    margin-left: 10px;
-    margin-right: auto;
-}
-
-.navbar-links {
-    list-style-type: none;
-    display: flex;
-    margin-left: -580px;
-}
-
-.navbar-links li {
-    margin-right: 20px;
-}
-
-.navbar-links li:last-child {
-    margin-right: 0;
-}
-
-.navbar-links a {
-    color: inherit;
-    text-decoration: none;
-}
-
-.navbar-links a:hover {
-    text-decoration: underline;
-}
-
-.navbar-actions {
-    display: flex;
-    margin-right: 20px;
-}
-
 .footer {
     background-color: #5940cb;
     color: #ffffff;
-    padding: 48px 0;
+    height: 167px;
     text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 80%;
-    left: 10%;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
-    z-index: 1000;
+    width: 100%;
 }
 
+.footer ul {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.footer ul li {
+    color: #fff;
+    font-size: 12px;
+}
+
+.span-footer {
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.sosmed {
+    gap: 10px;
+}
+
+.sosmed a {
+    color: #fff;
+    gap: 30px;
+    margin: 0 10px;
+}
+
+.col-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+background-color: #5940cb;
+color: #ffffff;
+padding: 48px 0;
+text-align: center;
+position: fixed;
+bottom: 0;
+width: 80%;
+left: 10%;
+border-top-left-radius: 40px;
+border-top-right-radius: 40px;
+z-index: 1000;
+
+}
 .footer-container {
     max-width: 594px;
     margin: 0 auto;
 }
-
 .content {
     background-color: #f7f6fb;
     height: 742px;
@@ -82,7 +76,6 @@ body {
     padding: 0 50px;
     text-align: justify;
 }
-
 .sub-content {
     background-color: #e5e2f2;
     width: 100%;
@@ -92,13 +85,11 @@ body {
     display: flex;
     margin-bottom: 30px;
 }
-
 .btn {
     display: flex;
     justify-content: center;
     margin-top: 30px;
 }
-
 button {
     width: 399px;
     height: 49px;
@@ -107,13 +98,11 @@ button {
     border-radius: 6px;
     color: white;
 }
-
 .footer-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-
 .brand-info h3 {
     margin: 0;
     font-size: 20px;
@@ -121,7 +110,6 @@ button {
     right: 860px;
     top: 20px;
 }
-
 .brand-info p {
     margin-top: 5px;
     font-size: 14px;
@@ -129,13 +117,11 @@ button {
     top: 50px;
     right: 750px;
 }
-
 .footer-links {
     display: flex;
     justify-content: center;
     align-items: center;
 }
-
 .footer-nav ul {
     list-style-type: none;
     padding: 0;
@@ -144,62 +130,52 @@ button {
     top: 40px;
     right: 280px;
 }
-
 .footer-nav ul li {
     display: inline-block;
     margin-right: 20px;
 }
-
 .footer-nav ul li:last-child {
     margin-right: 0;
 }
-
 .footer-nav ul li a {
     color: #ffffff;
     text-decoration: none;
     font-size: 16px;
 }
-
 .footer-nav ul li a:hover {
     text-decoration: underline;
 }
-
 .social-media {
     margin-right: auto;
     position: absolute;
     top: 29px;
     right: 23px;
 }
-
 .social-media a {
     color: #ffffff;
     text-decoration: none;
     font-size: 20px;
     margin-left: 10px;
 }
-
 .footer-description {
     margin-top: 20px;
     font-size: 14px;
 }
-
 .footer-social-media {
     margin-bottom: -10px;
     /* Jarak antara teks Social Media dan ikon */
+    
     position: relative;
     top: -19px;
     right: -5px;
 }
-
 .metric-item:hover {
     filter: brightness(0.95);
 }
-
 .metric-checkbox {
     width: 20px;
     height: 20px;
 }
-
 .text-primary {
     color: #5940cb !important;
 }
@@ -216,13 +192,15 @@ button {
     align-items: center;
     top: 5px;
 }
-
 #loading img {
-    width: 100px; /* Ukuran gambar loading */
-    height: 100px; /* Ukuran gambar loading */
+    width: 100px;
+    /* Ukuran gambar loading */
+    
+    height: 100px;
+    /* Ukuran gambar loading */
+    
     animation: spin 1s linear infinite;
 }
-
 @keyframes spin {
     100% {
         transform: rotate(360deg);
@@ -239,7 +217,6 @@ button {
 .btn {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
-
 .content-container h1:hover,
 .date-box:hover,
 .chart-container:hover,
@@ -255,7 +232,6 @@ button {
 .navbar {
     transition: background-color 0.3s ease;
 }
-
 .navbar:hover {
     background-color: #e3e3e3;
 }

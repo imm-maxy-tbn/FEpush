@@ -15,32 +15,40 @@
 
 <body>
 
-
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        <a class="navbar-brand" href="#">IMM</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link " href="welcome">Home</a>
-                </li>
-                <li class="nav-item ">
-                    <a class="nav-link" href="myproject">My Project</a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link active" href="blog">Blog</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="homepage">My Company</a>
-                </li>
-            </ul>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">IMM</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item ">
+                        <a class="nav-link" href="welcome">Home</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="bootcamp">Bootcamp</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="imm">IMM</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="community">Community</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog">Explore</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile">Profile</a>
+                    </li>
+                </ul>                <div class="navbar-actions">
+                    <a href="login" class="btn btn-primary">Login</a>
+                    <a href="register" class="btn btn-outline-primary">Register</a>
+                </div>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
 <div class="container mt-5">
     <div class="btn">
@@ -57,14 +65,13 @@
     <div class="pagination-container">
         <p>Halaman <span id="currentPage">1</span> dari 123</p>
     </div>
-    <div class="subscribe-container">
+    <div class="subscribe-container d-flex flex-column align-items-center justify-content-center">
         <p>Jangan tertinggal artikel seputar gerakan berdampak!</p>
-        <p><strong>Langganan melalui e-mail sekarang GRATIS</strong></p>
-        <div class="input-group mb-3">
+        <p class=" mt-2 mb-2"><strong>Langganan melalui e-mail sekarang GRATIS</strong></p>
+        <div class="input-group mb-3 d-flex justify-content-center">
             <input type="text" class="form-control" placeholder="masukkan e-mail anda disini">
-            <div class="input-group-append">
-                <button class="btn btn-primary" type="button"><i class="fas fa-envelope"></i></button>
-            </div>
+            <button class="btnn btn-primary" type="button"><i class="fas fa-envelope"></i></button>
+
         </div>
     </div>
 </div>

@@ -17,12 +17,6 @@ body {
     border-bottom: 3px solid #5940cb;
 }
 
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
 .navbar-logo {
     font-size: 24px;
     margin-left: 60px;

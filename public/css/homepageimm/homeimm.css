@@ -32,12 +32,6 @@ body {
     text-decoration: underline;
 }
 
-.container {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-}
-
 
 /* Footer */
 
@@ -68,7 +62,7 @@ body {
 }
 
 .sosmed {
-    gap: 15px;
+    gap: 10px;
 }
 
 .sosmed a {
