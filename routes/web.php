@@ -186,3 +186,6 @@ Route::get('/projects', [ProjectController::class, 'index'])->name('projects.ind
 Route::get('/creatproject', [ProjectController::class, 'create'])->name('projects.create');
 Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
 
+
+
+
