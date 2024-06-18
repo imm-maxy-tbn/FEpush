@@ -121,8 +121,8 @@
                                     required /></td>
                         </tr>
                         <tr>
-                            <button class="btn btn-primary" type="submit" id="simpanBtn">Simpan Data
-                            </button>
+                           <a href="homepage"> <button class="btn btn-primary" type="submit" id="simpanBtn">Simpan Data
+                            </button></a>
                         </tr>
                     </table>
                 </div>
