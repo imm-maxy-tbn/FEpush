@@ -15,7 +15,7 @@ class UpdateUserAttribute extends Migration
     {
         Schema::table('users', function (Blueprint $table) {
             $table->renameColumn('name', 'nama_depan');
-            $table->renameColumn('last_name', 'nama_belakang');
+            $table->string('nama_belakang')->nullable();
             $table->string('nik')->nullable();
             $table->string('negara')->nullable();
             $table->string('provinsi')->nullable();

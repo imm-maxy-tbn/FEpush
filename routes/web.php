@@ -34,9 +34,9 @@ Route::get('/blog', function () {
     return view('blog.blog');
 });
 
-Route::get('/kodeotp', function () {
-    return view('imm.kodeotp');
-});
+// Route::get('/kodeotp', function () {
+//     return view('imm.kodeotp');
+// });
 
 Route::get('/pendaftaranperusahaan', function () {
     return view('imm.pendaftaranperusahaan');
@@ -174,9 +174,11 @@ Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
 Route::get('/blogarticle/{id}/view', [PostController::class, 'view'])->name('blog.view');
 
 
+
 use App\Http\Controllers\VerificationController;
 
 Route::get('/imm3', [VerificationController::class, 'showVerificationForm'])->name('imm3');
+Route::get('/kodeotp', [VerificationController::class, 'showOtpVerification'])->name('kodeotp');
 Route::post('/send-otp', [VerificationController::class, 'sendVerificationEmail'])->name('send-otp');
 Route::post('/verify-code', [VerificationController::class, 'verifyCode'])->name('verify-code');
 
