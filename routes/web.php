@@ -138,9 +138,9 @@ Route::get('/edit-survey', function () {
     return view('survey.edit-survey.edit-survey');
 });
 
-Route::get('/event', function () {
-    return view('event.event');
-});
+// Route::get('/event', function () {
+//     return view('event.event');
+// });
 
 Route::get('/event-detail', function () {
     return view('event.event-detail');
@@ -185,4 +185,11 @@ use App\Http\Controllers\ProjectController;
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/creatproject', [ProjectController::class, 'create'])->name('projects.create');
 Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+
+use App\Http\Controllers\EventController;
+
+Route::get('event', [EventController::class, 'index'])->name('events.index');
+Route::get('event/{id}', [EventController::class, 'view'])->name('events.view');
+Route::get('event-register/{id}', [EventController::class, 'edit'])->name('events.edit');
+Route::put('event/{id}', [EventController::class, 'update'])->name('events.update');
 
