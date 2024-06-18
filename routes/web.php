@@ -90,9 +90,9 @@ Route::get('/edit', function () {
     return view('profile.edit');
 });
 
-Route::get('/creatproject', function () {
-    return view('myproject.creatproject.creatproject');
-});
+// Route::get('/creatproject', function () {
+//     return view('myproject.creatproject.creatproject');
+// });
 
 Route::get('/pemilihansdgs', function () {
     return view('myproject.creatproject.pemilihansdgs');
@@ -169,7 +169,20 @@ Route::get('/home', [HomeController::class, 'index'])->name('home');
 use App\Http\Controllers\CompanyController;
 Route::post('/companies/store', [CompanyController::class, 'store'])->name('companies.store');
 
-use App\Http\Controllers\OTPController;
+use App\Http\Controllers\PostController;
+Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
+Route::get('/blogarticle/{id}/view', [PostController::class, 'view'])->name('blog.view');
 
-Route::post('/send-otp', [OTPController::class, 'sendOTP'])->name('send-otp');
-Route::post('/verify-otp', [OTPController::class, 'verifyOTP']);
+
+use App\Http\Controllers\VerificationController;
+
+Route::get('/imm3', [VerificationController::class, 'showVerificationForm'])->name('imm3');
+Route::post('/send-otp', [VerificationController::class, 'sendVerificationEmail'])->name('send-otp');
+Route::post('/verify-code', [VerificationController::class, 'verifyCode'])->name('verify-code');
+
+use App\Http\Controllers\ProjectController;
+
+Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('/creatproject', [ProjectController::class, 'create'])->name('projects.create');
+Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+

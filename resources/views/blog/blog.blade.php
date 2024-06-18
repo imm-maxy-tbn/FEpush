@@ -14,7 +14,7 @@
 </head>
 
 <body>
- 
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
@@ -106,8 +106,45 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="{{ asset('js/blog-event/blog.js') }}"></script>
+<script src="{{ asset('js/blog/blog.js') }}"></script>
+<script>
+    const backendUrl = @json($backendUrl);
+    const posts = @json($posts);
 
+    document.addEventListener("DOMContentLoaded", function () {
+        const blogContainer = document.getElementById("blogContainer");
+
+        posts.forEach((post) => {
+            const blogCard = document.createElement("div");
+            blogCard.className = "blog-card";
+            blogCard.innerHTML = `
+                <a href="/blogarticle/${post.id}/view">
+                    <div class="blog-image" style="background-image: url(${post.img});"></div>
+                    <h3>${post.title}</h3>
+                    <p>${post.content}</p>
+                </a>
+            `;
+            blogContainer.appendChild(blogCard);
+        });
+
+        document.getElementById("searchInput").addEventListener("input", searchBlog);
+    });
+
+    function searchBlog() {
+        const input = document.getElementById("searchInput").value.toLowerCase();
+        const blogCards = document.querySelectorAll(".blog-card");
+
+        blogCards.forEach((card) => {
+            const title = card.querySelector("h3").textContent.toLowerCase();
+            const content = card.querySelector("p").textContent.toLowerCase();
+            if (title.includes(input) || content.includes(input)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+</script>
 </body>
 
 </html>
