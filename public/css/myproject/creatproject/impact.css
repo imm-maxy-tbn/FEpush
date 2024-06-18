@@ -1,8 +1,10 @@
 body {
     font-family: "Roboto", sans-serif;
-    padding-top: 70px; /* Add padding to avoid content being hidden behind fixed navbar */
+    padding-top: 70px;
+    /* Add padding to avoid content being hidden behind fixed navbar */
     background-color: #f8f9fa;
-    min-height: 280vh; /* Adjusted height */
+    min-height: 280vh;
+    /* Adjusted height */
 }
 
 .navbar {
@@ -58,102 +60,44 @@ body {
 .footer {
     background-color: #5940cb;
     color: #ffffff;
-    padding: 48px 0;
+    height: 167px;
     text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 80%;
-    left: 10%;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
-    z-index: 1000;
+    width: 100%;
 }
 
-.footer-container {
-    max-width: 594px;
-    margin: 0 auto;
+.footer ul {
+    text-decoration: none;
+    list-style-type: none;
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.footer ul li {
+    color: #fff;
+    font-size: 12px;
 }
 
-.brand-info h3 {
-    margin: 0;
-    font-size: 20px;
-    position: absolute;
-    right: 860px;
-    top: 20px;
+.span-footer {
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
 }
 
-.brand-info p {
-    margin-top: 5px;
-    font-size: 14px;
-    position: absolute;
-    top: 50px;
-    right: 750px;
+.sosmed {
+    gap: 15px;
 }
 
-.footer-links {
+.sosmed a {
+    color: #fff;
+    gap: 30px;
+    margin: 0 10px;
+}
+
+.col-footer {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.footer-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    top: 40px;
-    right: 280px;
-}
-
-.footer-nav ul li {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-.footer-nav ul li:last-child {
-    margin-right: 0;
-}
-
-.footer-nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.footer-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-.social-media {
-    margin-right: auto;
-    position: absolute;
-    top: 29px;
-    right: 23px;
-}
-
-.social-media a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 20px;
-    margin-left: 10px;
-}
-
-.footer-description {
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-.footer-social-media {
-    margin-bottom: -10px; /* Jarak antara teks Social Media dan ikon */
-    position: relative;
-    top: -19px;
-    right: -5px;
+    flex-direction: column;
 }
 
 .chart-container {
@@ -217,12 +161,15 @@ button {
     border: none;
     border-radius: 4px;
     cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Add animation */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    /* Add animation */
 }
 
 button:hover {
-    transform: scale(1.05); /* Grow slightly on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    transform: scale(1.05);
+    /* Grow slightly on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add shadow on hover */
 }
 
 .btn-outline-primary {
@@ -244,6 +191,7 @@ button:hover {
 .btn-primary:hover {
     background-color: #0056b3;
 }
+
 
 /* Additional CSS for new content */
 
@@ -269,18 +217,22 @@ button:hover {
 .files-new .file-item {
     border: 1px solid #ddd;
     padding: 20px;
-    width: 22%; /* Adjust width for better spacing */
+    width: 22%;
+    /* Adjust width for better spacing */
     margin: 10px 0;
     border-radius: 8px;
     background-color: #f8f9fa;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Add animation */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    /* Add animation */
 }
 
 .files-new .file-item:hover {
     background-color: #f1f1f1;
     cursor: pointer;
-    transform: scale(1.05); /* Grow slightly on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    transform: scale(1.05);
+    /* Grow slightly on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add shadow on hover */
 }
 
 .files-new .file-item i {
@@ -296,50 +248,75 @@ button:hover {
     position: relative;
     top: -10px;
     right: -810px;
-    background-color: #5940cb; /* Outline button color */
-    border: 1px solid #007bff; /* Outline color */
-    color: #ffffff; /* Text color */
-    padding: 10px 20px; /* Padding for the button */
-    border-radius: 4px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
+    background-color: #5940cb;
+    /* Outline button color */
+    border: 1px solid #007bff;
+    /* Outline color */
+    color: #ffffff;
+    /* Text color */
+    padding: 10px 20px;
+    /* Padding for the button */
+    border-radius: 4px;
+    /* Rounded corners */
+    cursor: pointer;
+    /* Pointer cursor on hover */
 }
 
 .btn-reset:hover {
-    background-color: #0056b3; /* Background color on hover */
-    color: #ffffff; /* Text color on hover */
+    background-color: #0056b3;
+    /* Background color on hover */
+    color: #ffffff;
+    /* Text color on hover */
 }
 
 .btn-save {
     position: relative;
-    top: -10px; /* Adjust the value as needed */
-    right: -835px; /* Adjust the value as needed */
-    background-color: #5940cb; /* Primary button color */
-    border: none; /* Remove border */
-    color: #ffffff; /* Text color */
-    padding: 10px 20px; /* Padding for the button */
-    border-radius: 4px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
+    top: -10px;
+    /* Adjust the value as needed */
+    right: -835px;
+    /* Adjust the value as needed */
+    background-color: #5940cb;
+    /* Primary button color */
+    border: none;
+    /* Remove border */
+    color: #ffffff;
+    /* Text color */
+    padding: 10px 20px;
+    /* Padding for the button */
+    border-radius: 4px;
+    /* Rounded corners */
+    cursor: pointer;
+    /* Pointer cursor on hover */
 }
 
 .btn-save:hover {
-    background-color: #0056b3; /* Background color on hover */
+    background-color: #0056b3;
+    /* Background color on hover */
 }
 
 .btn-dokumen {
     position: relative;
     top: -10px;
     right: -940px;
-    background-color: #5940cb; /* Outline button color */
-    border: 1px solid #007bff; /* Outline color */
-    color: #ffffff; /* Text color */
-    padding: 10px 20px; /* Padding for the button */
-    border-radius: 4px; /* Rounded corners */
-    cursor: pointer; /* Pointer cursor on hover */
+    background-color: #5940cb;
+    /* Outline button color */
+    border: 1px solid #007bff;
+    /* Outline color */
+    color: #ffffff;
+    /* Text color */
+    padding: 10px 20px;
+    /* Padding for the button */
+    border-radius: 4px;
+    /* Rounded corners */
+    cursor: pointer;
+    /* Pointer cursor on hover */
 }
 
 .btn-dokumen:hover {
-    background-color: #0056b3; /* Background color on hover */
-    color: #ffffff; /* Text color on hover */
+    background-color: #0056b3;
+    /* Background color on hover */
+    color: #ffffff;
+    /* Text color on hover */
 }
 
 .survey-support-container {
@@ -354,8 +331,8 @@ button:hover {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease-in-out,
-        box-shadow 0.2s ease-in-out; /* Add animation */
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    /* Add animation */
     float: right;
     position: relative;
     top: 10px;
@@ -363,9 +340,12 @@ button:hover {
 }
 
 .start-survey-btn:hover {
-    background-color: #0056b3; /* Warna lebih gelap saat hover */
-    transform: scale(1.05); /* Grow slightly on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    background-color: #0056b3;
+    /* Warna lebih gelap saat hover */
+    transform: scale(1.05);
+    /* Grow slightly on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add shadow on hover */
 }
 
 .months-survey {
@@ -390,18 +370,22 @@ button:hover {
 .file-item-survey {
     border: 1px solid #ddd;
     padding: 20px;
-    width: 22%; /* Adjust width for better spacing */
+    width: 22%;
+    /* Adjust width for better spacing */
     margin: 10px 0;
     border-radius: 8px;
     background-color: #f8f9fa;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Add animation */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    /* Add animation */
 }
 
 .file-item-survey:hover {
     background-color: #f1f1f1;
     cursor: pointer;
-    transform: scale(1.05); /* Grow slightly on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    transform: scale(1.05);
+    /* Grow slightly on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add shadow on hover */
 }
 
 .file-item-survey i {
@@ -425,20 +409,25 @@ button:hover {
     padding: 10px 20px;
     font-size: 16px;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.2s ease-in-out,
-        box-shadow 0.2s ease-in-out; /* Add animation */
+    transition: background-color 0.3s ease, transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    /* Add animation */
     float: right;
     position: relative;
     top: 160px;
     right: 10px;
-    text-decoration: none; /* Remove underline for link */
-    display: inline-block; /* Ensure it behaves like a button */
+    text-decoration: none;
+    /* Remove underline for link */
+    display: inline-block;
+    /* Ensure it behaves like a button */
 }
 
 .add-report-btn:hover {
-    background-color: #434190; /* Warna lebih gelap saat hover */
-    transform: scale(1.05); /* Grow slightly on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    background-color: #434190;
+    /* Warna lebih gelap saat hover */
+    transform: scale(1.05);
+    /* Grow slightly on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add shadow on hover */
 }
 
 .file-report {
@@ -455,14 +444,17 @@ button:hover {
     position: relative;
     background-color: #f8f9fa;
     right: -362px;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out; /* Add animation */
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+    /* Add animation */
 }
 
 .file-item-report:hover {
     background-color: #f1f1f1;
     cursor: pointer;
-    transform: scale(1.05); /* Grow slightly on hover */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+    transform: scale(1.05);
+    /* Grow slightly on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    /* Add shadow on hover */
 }
 
 .file-item-report i {
@@ -474,32 +466,11 @@ button:hover {
     color: #888;
 }
 
-/* Efek loading */
-#loading {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 5px;
-}
-
-#loading img {
-    width: 100px; /* Ukuran gambar loading */
-    height: 100px; /* Ukuran gambar loading */
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    100% {
-        transform: rotate(360deg);
-    }
-}
 
 /* Animasi umum untuk elemen lainnya */
+
+
+/* 
 .content-container h1,
 .date-box,
 .chart-container,
@@ -519,9 +490,11 @@ button:hover {
 .btn:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+} */
+
 
 /* Menambahkan transisi pada navbar */
+
 .navbar {
     transition: background-color 0.3s ease;
 }

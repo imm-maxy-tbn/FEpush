@@ -83,25 +83,27 @@
         </div>
     </div> 
 
-<footer class="footer">
-    <div class="footer-container">
-        <div class="footer-content">
-            <div class="brand-info">
-                <h3>IMM</h3>
-                <p>(TBN INDONESIA X MAXY ACADEMY)</p>
+
+<footer>
+    <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
+        <div class="row d-flex  justify-content-center align-items-center">
+            <div class="col-4 d-flex flex-column" style="gap: 20px">
+                <h5 class=" text-white  text-left">IMM</h5>
+                <span class="span-footer text-left">Impact Measurement and Management
+                        <br> (TBN INDONESIA X MAXY ACADEMY)</span>
             </div>
-            <div class="footer-links">
-                <div class="footer-nav">
-                         <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="bootcamp">Bootcamp</a></li>
-                            <li><a href="imm">IMM</a></li>
-                            <li><a href="comunity">Community</a></li>
-                            <li><a href="profile">Profile</a></li>
-                        </ul>
-                </div>
-                <div class="social-media">
-                    <p class="footer-social-media">Social Media</p>
+            <div class="col-5 d-flex justify-content-center align-items-center">
+                <ul class=" d-flex " style="gap: 30px">
+                    <a href=""><li>HomePage</li></a>
+                    <a href=""><li>Bootcamp</li></a>
+                    <a href=""><li>IMM</li></a>
+                    <a href=""><li>Comunity</li></a>
+                    <a href=""><li>Profile</li></a>
+                </ul>
+            </div>
+            <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
+                <span class="span-footer text-center">Sosial Media</span>
+                <div class="sosmed d-flex justify-content-end  ">
                     <a href="#"><i class="fab fa-facebook-f"></i></a>
                     <a href="#"><i class="fab fa-twitter"></i></a>
                     <a href="#"><i class="fab fa-instagram"></i></a>
@@ -109,7 +111,8 @@
                 </div>
             </div>
         </div>
-    </div>
+
+ </div>
 </footer>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

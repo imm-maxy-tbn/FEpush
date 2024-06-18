@@ -5,6 +5,11 @@ body {
     font-family: "Poppins", sans-serif;
 }
 
+* {
+    text-decoration: none;
+    list-style-type: none;
+}
+
 
 /* Navbar */
 
@@ -13,9 +18,7 @@ body {
     color: #000000;
     padding: 15px 0;
     position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
+    width: 100%;
     z-index: 1000;
     border-bottom: 3px solid #5940cb;
 }
@@ -31,7 +34,7 @@ body {
 
 .container {
     display: flex;
-    justify-content: space-between;
+    justify-content: start;
     align-items: center;
 }
 
@@ -80,6 +83,9 @@ body {
     align-items: center;
     flex-direction: column;
 }
+
+
+/* end footer */
 
 .dashboard-image {
     width: 219px;
@@ -439,30 +445,6 @@ h4 {
     margin-top: 20px;
     font-size: 1.2em;
     font-weight: bold;
-}
-
-
-/* Animasi umum untuk elemen lainnya */
-
-.content-container h1,
-.date-box,
-.chart-container,
-.analysis-matrix .content-box,
-.target-check .target-check-box,
-.icon-box .icon-item,
-.btn {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.content-container h1:hover,
-.date-box:hover,
-.chart-container:hover,
-.analysis-matrix .content-box:hover,
-.target-check .target-check-box:hover,
-.icon-box .icon-item:hover,
-.btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
 

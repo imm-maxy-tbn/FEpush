@@ -4,7 +4,7 @@ function showNotification() {
     notification.style.display = "block";
 
     // Sembunyikan notifikasi setelah beberapa detik
-    setTimeout(function () {
+    setTimeout(function() {
         notification.style.display = "none";
     }, 5000); // Notifikasi akan disembunyikan setelah 5 detik (5000 milidetik)
 }
@@ -18,7 +18,7 @@ function showNotification() {
     notification.style.display = "block";
 
     // Sembunyikan notifikasi setelah beberapa detik
-    setTimeout(function () {
+    setTimeout(function() {
         notification.style.display = "none";
 
         // Arahkan ke halaman baru setelah notifikasi disembunyikan
@@ -29,8 +29,8 @@ function showNotification() {
 // Menambahkan event listener untuk tombol "Masuk"
 document.getElementById("loginBtn").addEventListener("click", showNotification);
 
-document.addEventListener("DOMContentLoaded", function () {
-    setTimeout(function () {
+document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
         var loading = document.getElementById("loading");
         loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
     }, 2000); // 3000 milidetik = 3 detik
