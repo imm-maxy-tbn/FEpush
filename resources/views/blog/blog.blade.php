@@ -75,7 +75,6 @@
         </div>
     </div>
 </div>
-
 <footer>
     <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
         <div class="row d-flex  justify-content-center align-items-center">
@@ -86,11 +85,11 @@
             </div>
             <div class="col-5 d-flex justify-content-center align-items-center">
                 <ul class=" d-flex " style="gap: 30px">
-                    <a href=""><li>HomePage</li></a>
-                    <a href=""><li>Bootcamp</li></a>
-                    <a href=""><li>IMM</li></a>
-                    <a href=""><li>Comunity</li></a>
-                    <a href=""><li>Profile</li></a>
+                    <a href="/"><li>HomePage</li></a>
+                    <a href="bootcamp"><li>Bootcamp</li></a>
+                    <a href="imm"><li>IMM</li></a>
+                    <a href="#"><li>Comunity</li></a>
+                    <a href="profile"><li>Profile</li></a>
                 </ul>
             </div>
             <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
