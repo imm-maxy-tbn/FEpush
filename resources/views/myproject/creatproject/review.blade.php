@@ -25,13 +25,13 @@
                         <a class="nav-link" href="welcome">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Bootcamp</a>
+                        <a class="nav-link" href="bootcamp">Bootcamp</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="#">IMM</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Community</a>
+                        <a class="nav-link" href="comunity">Community</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="profile">Profile</a>
