@@ -22,11 +22,8 @@
                 <div class="col-auto h-100 d-flex align-items-center">
                     <ul class="d-flex justify-content-center"
                         style="gap: 70px; margin: 0; padding: 0; list-style: none;">
-                        <a href="/event">
+                        <a href="/event/{{ $event->id }}">
                             <li>Kegiatan</li>
-                        </a>
-                        <a href="/event-register">
-                            <li>Daftar</li>
                         </a>
                         <a href="/">
                             <li>Sponsor</li>
@@ -64,7 +61,7 @@
                 " style="font-size:32px; font-weight:500">Tertarik menjadi
                     sponsor</div>
                 <div class="col">
-                   <a href="#"> <button class="btn-daftar ">Hubunggi Sekarang</button></a>
+                   <a href="#"> <button class="btn-daftar ">Hubungi Sekarang</button></a>
                 </div>
                 <div class="col d-flex justify-content-between" style="">
 
