@@ -34,7 +34,7 @@ body {
 }
 
 .sosmed {
-    gap: 10px;
+    gap: 15px;
 }
 
 .sosmed a {
@@ -91,6 +91,13 @@ label {
     justify-content: center;
     display: flex;
     margin-bottom: 30px;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    background-size: cover;
 }
 
 .btn-kembali {
@@ -103,10 +110,6 @@ label {
     font-size: 20px;
     font-family: "Poppins", sans-serif;
     font-weight: bold;
-}
-
-.row {
-    gap: 24px;
 }
 
 .btn-selanjutnya {

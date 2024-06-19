@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>IMM | Membuat Projek</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/indicator.css') }}">
     <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/creatproject.css') }}">
     <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/pemilihansdgs.css') }}">
@@ -23,25 +23,31 @@
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="welcome">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Bootcamp</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">IMM</a>
+                    <a class="nav-link active" href="/homepage">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Community</a>
+                        <a class="nav-link" href="/myproject">My Project</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="profile">Profile</a>
+                        <a class="nav-link" href="homepage">My Company</a>
                     </li>
+
                 </ul>
+                
+
             </div>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
         </div>
     </nav>
 
@@ -413,7 +419,7 @@
                     </div>
                 </div>          <div class="d-flex justify-content-between mt-3">
                     <button type="button" class="btn btn-secondary" id="back-to-indicator-section">Back</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <a href="/myproject"><button type="submit" class="btn btn-primary">Submit</button></a>
                 </div>
                 </div>
 

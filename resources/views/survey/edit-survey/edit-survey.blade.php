@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responde</title>
+    <title>IMM | Edit Survey</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     {{-- <link rel="stylesheet" href="{{ asset('css/responden/edit-survey.css') }}"> --}}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -44,11 +44,11 @@
             <button type="" class="btn-mulai">Mulai Survey</button>
             <button type="" class="btn-akhiri">Akhiri Survey</button>
             <button type="" class="btn-lihat d-flex justify-content-around align-items-center">
-                <span>Lihat Survey</span>
+                <a href="responden" class="text-dark"><span>Lihat Survey</span></a>
                 <img src="images/mata-icon.png" width="25" height="20" alt="">
             </button>
             <button class="btn-simpan d-flex justify-content-around align-items-center">
-                <span>Simpan Survey</span>
+                <a href="impact" class="text-white"><span>Simpan Survey</span></a>
                 <img src="images/simpan-icon.png" width="29" height="auto" alt="">
             </button>
         </div>

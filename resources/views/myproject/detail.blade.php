@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>IMM | Detail Projek</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/homepageimm/detail.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -227,6 +227,11 @@
             </div>
         </div>
     </div>
+</div>
+
+<div class="container d-flex justify-content-center" style="gap: 20px; ">
+    <a href="detail" class=""><button type="button" style="font-weight:bold; border: 1px solid #000" class="btn w-25 ">Reset</a></button>
+    <a href="myproject" class="text-white"><button type="button" style="font-weight:bold"  class="btn w-25 btn-primary">Simpan</a></button>
 </div>
 
 <footer>

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>IMM | Laporan Bulanan</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/homepageimm/repotbulanan.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -48,7 +48,8 @@
                         <div class="number">
                             1
                         </div>
-                        <span class="" style="font-size: 24; font-weight:500">Masukkan nama aktivitas/program</span>
+                        <input type="text" class="form-control" name="" style="font-size: 24px; font-weight:500; background:transparent; border:none" placeholder="Masukkan nama aktivitas/program" id="">
+                     
                     </div>
                     <div class="form-group">
                         <textarea class="form-control berita" rows="3" placeholder="Berita acara kegiatan"></textarea>
@@ -77,7 +78,7 @@
     <div class="container tombol mt-5 mb-5">
         <div class="section d-flex tombol justify-content-center flex-column align-items-center">
             <button type="button" class="btntambah w-75" onclick="addReport()">Tambahkan Activity/Program</button>
-          <a href="homepage"><button type="submit" class=" btn-primary w-75 mt-3">Simpan Laporan</a></button>
+          <a href="laporanproject"><button type="submit" class=" btn-primary w-75 mt-3">Simpan Laporan</a></button>
         </div>
     </div>
 
