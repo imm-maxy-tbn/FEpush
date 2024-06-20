@@ -14,7 +14,7 @@
 </head>
 
 <body>
- 
+
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -26,10 +26,10 @@
     <div class="container content mt-5">
         <div class="container">
             <div class="sub-content  d-flex justify-content-center align-items-center">
-                <img src="" alt="img">
+                {{-- <img src="" alt="img"> --}}
             </div>
 
-            <p style="font-size: 40px;font-weight: bold;">Survey Dampak Bisnis Ternak Lele</p>
+            <p style="font-size: 40px;font-weight: bold;">{{$survey->name}}</p>
 
         </div>
     </div>
@@ -40,29 +40,25 @@
                 <p style="font-size: 40px;font-weight: bold;">Isi data diri anda</p>
                 <p style="font-size: 20px; margin-top:-10px;">Data diri anda terjamin kerahasiaannya</p>
                 <div class="register-container">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('surveys.register-user', $survey->id) }}">
                         @csrf
                         <div class="mb-4 mt-4">
                             <label for="nama_depan" class="form-label">Nama Depan</label>
-                            <input type="text" name="" id="nama_depan" class="form-control"  placeholder="Isi disini">
+                            <input type="text" name="nama_depan" id="nama_depan" class="form-control"  placeholder="Isi disini" required>
                           </div>
                         <div class="mb-4">
                             <label for="nama_belakang" class="form-label">Nama Belakang</label>
-                            <input type="text" name="" id="nama_belakang" class="form-control"  placeholder="Isi disini">
+                            <input type="text" name="nama_belakang" id="nama_belakang" class="form-control"  placeholder="Isi disini" required>
                           </div>
                         <div class="mb-4">
                             <label for="no_telp" class="form-label">Nomor yang bisa dihubunggi </label>
-                            <input type="number" name="" id="no_telp" class="form-control" placeholder="+62123456789">
+                            <input type="number" name="telepon" id="no_telp" class="form-control" placeholder="0812345678" required>
                           </div>
                         <div class="mb-4">
                             <label for="email" class="form-label">Email yang bisa dihubunggi</label>
-                            <input type="email" name="" id="email" class="form-control"  placeholder="imm@gmail.com">
+                            <input type="email" name="email" id="email" class="form-control"  placeholder="imm@gmail.com" required>
                           </div>
-                        <div class="mb-4">
-                            <label for="date" class="form-label">Tanggal mengisi</label>
-                            <input type="date" name="" id="date" class="form-control" placeholder="Example input placeholder">
-                          </div>
-                    </form>
+
                 </div>
 
             </div>
@@ -73,10 +69,11 @@
     </div>
     <div class="container mt-5">
         <div class="row gap d-flex justify-content-center">
-           <a href="/responden"> <button class="btn-kembali">Kembali</button></a>
-           <a href="/responden-esay"><button class="btn-selanjutnya">Lanjutkan</button></a>
+           <a href="/responden/{{$survey->id}}"> <button class="btn-kembali">Kembali</button></a>
+          <button type="submit" class="btn-selanjutnya">Lanjutkan</button>
         </div>
     </div>
+                    </form>
 
     <footer class="footer">
         <div class="footer-container">

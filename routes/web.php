@@ -110,9 +110,9 @@ Route::get('/detailreview', function () {
     return view('myproject.creatproject.detailreview');
 });
 
-Route::get('/responden', function () {
-    return view('survey.responden.responden');
-});
+// Route::get('/responden', function () {
+//     return view('survey.responden.responden');
+// });
 
 Route::get('/responden-data-diri', function () {
     return view('survey.responden.responden-data-diri');
@@ -130,9 +130,6 @@ Route::get('/responden-skala', function () {
     return view('survey.responden.responden-skala');
 });
 
-Route::get('/responden-penutup-survey', function () {
-    return view('survey.responden.responden-penutup-survey');
-});
 
 Route::get('/edit-survey', function () {
     return view('survey.edit-survey.edit-survey');
@@ -193,3 +190,9 @@ Route::get('event/{id}', [EventController::class, 'view'])->name('events.view');
 Route::get('event-register/{id}', [EventController::class, 'edit'])->name('events.edit');
 Route::put('event/{id}', [EventController::class, 'update'])->name('events.update');
 
+use App\Http\Controllers\SurveyController;
+
+Route::get('responden/{id}', [SurveyController::class, 'view'])->name('surveys.view');
+Route::get('responden-data-diri/{id}', [SurveyController::class, 'dataDiri'])->name('surveys.data-diri');
+Route::post('responden/{id}', [SurveyController::class, 'registerUser'])->name('surveys.register-user');
+Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submit'])->name('surveys.submit');

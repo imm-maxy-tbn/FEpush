@@ -14,7 +14,7 @@
 </head>
 
 <body>
- 
+
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -25,19 +25,25 @@
 
     <div class="container content mt-5">
         <div class="container">
-            <div class="sub-content  d-flex justify-content-center align-items-center">
+            {{-- <div class="sub-content  d-flex justify-content-center align-items-center">
                 <img src="" alt="img">
-            </div>
+            </div> --}}
 
-            <p style="font-size: 40px;font-weight: bold;">Survey Dampak Bisnis Ternak Lele</p>
+            <p style="font-size: 40px;font-weight: bold;">{{ $survey->name }}</p>
 
         </div>
     </div>
 
     <div class="container content2 mt-5">
         <div class="container">
+            @if ($alreadySubmitted)
+                <p style="font-size: 20px; color: red;">Anda sudah pernah mengisi survei ini sebelumnya.</p>
+            @endif
+
             <p style="font-size: 40px;font-weight: bold;">Terimakasih</p>
-            <p style="font-size: 20px">Atas waktu dan partisipasi Anda dalam survei ini. Kami memastikan bahwa data yang Anda berikan akan dijaga dengan kerahasiaan yang tinggi sesuai dengan komitmen kami terhadap privasi Anda. Kontribusi Anda sangat berarti bagi kami dalam memahami topik ini dengan lebih baik</p>
+            <p style="font-size: 20px">Atas waktu dan partisipasi Anda dalam survei ini. Kami memastikan bahwa data yang
+                Anda berikan akan dijaga dengan kerahasiaan yang tinggi sesuai dengan komitmen kami terhadap privasi
+                Anda. Kontribusi Anda sangat berarti bagi kami dalam memahami topik ini dengan lebih baik</p>
         </div>
     </div>
     {{-- <div class="container mt-5">

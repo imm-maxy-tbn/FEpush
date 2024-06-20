@@ -14,6 +14,7 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
+        "matt-daneshvar/laravel-survey": "^0.4.0",
         "nesbot/carbon": "^2.72",
         "psr/cache": "^1.0"
     },
@@ -30,7 +31,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/SurveyHelper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

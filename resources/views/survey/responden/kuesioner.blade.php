@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Responde</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/responden/responden.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responden/responden-esay.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -14,9 +14,7 @@
 </head>
 
 <body>
-    <div id="loading">
-        <img src="{{ asset('images/imm.png') }}" alt="Loading...">
-    </div>
+
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -27,33 +25,49 @@
 
     <div class="container content mt-5">
         <div class="container">
-            <div class="sub-content">
+            {{-- <div class="sub-content  d-flex justify-content-center align-items-center">
+                <img src="" alt="img">
+            </div> --}}
 
-            </div>
+            <p style="font-size: 40px;font-weight: bold;">{{$survey->name}}</p>
 
-            <p style="font-size: 40px;font-weight: bold;">{{ $survey->name }}</p>
-            {{-- <p style="font-size: 20px">Survey ini bertujuan untuk mengevaluasi dampak bisnis ternak lele terhadap
-                berbagai aspek ekonomi, sosial, dan lingkungan. Dengan memperhatikan pertumbuhan industri ternak lele,
-                kami akan menganalisis kontribusinya terhadap pendapatan peternak, kesejahteraan masyarakat lokal, serta
-                efeknya terhadap ekosistem air dan lahan. Data yang dikumpulkan dari survei ini diharapkan dapat
-                memberikan wawasan yang mendalam untuk memandu kebijakan dan praktik yang berkelanjutan dalam industri
-                ternak lele.</p> --}}
-            <p style="font-weight: bold; font-size:20px;">Komitmen dalam menjaga privasi anda</p>
-            <p style="font-size: 20px">Saya sangat berkomitmen untuk menjalankan survei dengan hati-hati dan jujur serta
-                menjaga kerahasiaan data yang dikumpulkan. Saya selalu menghormati privasi dan kepentingan peserta
-                survei, serta memastikan bahwa hasil survei saya digunakan dengan bertanggung jawab demi kebaikan semua
-                orang yang terlibat. </p>
-            <div class="btn">
-                @if (!$lastEntry)
-                    <!-- Check if $lastEntry is null -->
-                    <a href="/responden-data-diri/{{ $survey->id }}"><button type="">Mulai Survey</button></a>
-                @else
-                    <!-- Disable the button -->
-                    <button type="" disabled>Anda sudah mengisi survey</button>
-                @endif
-            </div>
         </div>
     </div>
+
+<form action="{{ route('surveys.submit', ['survey' => $survey->id, 'user' => $user->id]) }}" method="POST">
+        @csrf
+        <div class="container content2 mt-5">
+    <div class="container">
+        <div class="form-esay">
+            @foreach ($survey->sections as $section)
+                <h3 class="px-4 py-2" style="background:#efefef; border-top:solid 1px #dadada">{{ $section->name }}</h3>
+                @foreach ($section->questions as $question)
+                    <div class="row d-flex align-items-center">
+                        <span class="angka d-flex justify-content-center align-items-center">
+                            {{ $loop->parent->iteration }}.{{ $loop->iteration }}
+                        </span>
+                        @include('survey::questions.single', ['question' => $question, 'lastEntry' => $lastEntry])
+                    </div>
+                @endforeach
+            @endforeach
+        </div>
+    </div>
+</div>
+
+        <div class="container mt-5">
+            <div class="row gap d-flex justify-content-center">
+                {{-- <a href="{{ route('survey.responden.responden') }}"><button class="btn-kembali" type="button">Kembali</button></a> --}}
+                <button type="submit" class="btn-selanjutnya">Submit</button>
+            </div>
+        </div>
+    </form>
+
+    {{-- <div class="container mt-5">
+        <div class="row gap d-flex justify-content-center">
+           <a href="/responden-data-diri"><button class="btn-kembali">Kembali</button></a>
+           <a href="/responden-pilihan-ganda"> <button class="btn-selanjutnya">Lanjutkan</button></a>
+        </div>
+    </div> --}}
 
     <footer class="footer">
         <div class="footer-container">
