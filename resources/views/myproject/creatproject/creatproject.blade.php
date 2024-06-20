@@ -49,7 +49,7 @@
     <div class="container mt-5">
         <h1>Buat Projek Baru</h1>
     </div>
-
+    
     <div class="container mt-5">
         <form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">
             <div id="form-section">
@@ -172,7 +172,7 @@
                     </div>
                 </div>
             </div>
-
+    
             <div class="container mt-5">
                 <div class="form-group">
                     <div id="sdg-section" style="display: none;">
@@ -195,17 +195,49 @@
                     </div>
                 </div>
             </div>
-
+    
             <div id="indicator-section" style="display: none;">
                 <div class="container mt-5">
-                    <h1 class="text-center" id="project-name"></h1>
-                    <div id="selected-sdgs" class="d-flex justify-content-center mb-4">
-                        <!-- Selected SDGs will be displayed here -->
+                    <h1 class="text-center" id="project-title"></h1>
+                    <p class="text-center">Goals SDGs project anda</p>
+                    <div class="d-flex justify-content-center mb-4" id="sdg-images-container"></div>
+                    <div class="text-center bg-light p-3 mb-4" id="project-long-description"></div>
+                    <h5 class="text-center mb-4">Tentukan indikator SDGs sebagai target project anda! Anda dapat memilih lebih dari satu indikator</h5>
+            
+                    @foreach ($sdgs as $sdg)
+                    <div class="goal-description mb-4 p-3 bg-white shadow-sm rounded" id="goal{{ $sdg->id }}-description">
+                        <div class="d-flex align-items-center">
+                            <img src="{{ env('APP_BACKEND_URL') . '/images/' . $sdg->img }}" alt="SDG {{ $sdg->id }}" class="mr-3" width="50">
+                            <div>
+                                <h5 class="mb-0">SDGs Goals {{ $sdg->id }}</h5>
+                                <p class="mb-0">{{ $sdg->name }}</p>
+                            </div>
+                        </div>
+                        @foreach ($sdg->indicators as $indicator)
+                            @if ($indicator->level == 1)
+                            <div class="mt-3 d-flex align-items-center level-1-indicator" style="gap: 15px">
+                                <label for="indicator-{{ $indicator->id }}">
+                                    <input type="checkbox" class="indicator-checkbox" id="indicator-{{ $indicator->id }}" value="{{ $indicator->order }}">
+                                    <span>{{ $indicator->order }} </span><span>{{ $indicator->name }}</span>
+                                </label>
+                            </div>
+                            @endif
+                        @endforeach
+            
+                        @foreach ($sdg->indicators as $indicator)
+                        @if ($indicator->level == 2)
+                        <div class="sub-container" id="sub-container-{{ $indicator->order }}" style="display: none; margin-top: 10px;">
+                            <div class="d-flex align-items-center" style="gap: 15px; margin-left: 70px;">
+                                <span>{{ $indicator->order }} </span><span>{{ $indicator->name }}</span>
+                            </div>
+                        </div>
+                        @endif
+                        @endforeach
+            
                     </div>
-                    <p class="text-center" id="project-description"></p>
-                    <div id="sdg-indicators" class="text-center bg-light p-3 mb-4">
-                        <!-- SDG indicators will be displayed here -->
-                    </div>
+                    @endforeach
+            
+            
                     <div class="d-flex justify-content-between mt-3">
                         <button type="button" class="btn btn-secondary" id="back-to-sdg-section">Back</button>
                         <button type="button" class="btn btn-primary" id="next-to-metric-section">Next</button>
@@ -300,13 +332,11 @@
                 $('.target-pelanggan tbody').append(newRow);
                 index++;
             });
-
-            document.querySelector('.target-pelanggan').addEventListener('click', function(e) {
-                if (e.target.classList.contains('btn-remove-pelanggan')) {
-                    e.target.closest('tr').remove();
-                }
+    
+            $(document).on('click', '.btn-remove-pelanggan', function() {
+                $(this).closest('tr').remove();
             });
-
+    
             var indexDana = 1;
             $(".btn-add-dana").click(function() {
                 var selectedOptions = $('.spesifikasi-pendanaan select').map(function() {
@@ -328,94 +358,96 @@
                     '</tr>';
                 $('.spesifikasi-pendanaan tbody').append(newRow);
                 indexDana++;
-
+    
                 if (availableOptions.length === 1) {
                     $(".btn-add-dana").prop('disabled', true);
                 }
             });
-
-            document.querySelector('.spesifikasi-pendanaan').addEventListener('click', function(e) {
-                if (e.target.classList.contains('btn-remove-dana')) {
-                    e.target.closest('tr').remove();
-                    $(".btn-add-dana").prop('disabled', false);
-                }
+    
+            $(document).on('click', '.btn-remove-dana', function() {
+                $(this).closest('tr').remove();
+                $(".btn-add-dana").prop('disabled', false);
             });
-
-            var nextButtonToSdg = document.getElementById("next-to-sdg-section");
-            var nextButtonToIndicator = document.getElementById("next-to-indicator-section");
-            var nextButtonToMetric = document.getElementById("next-to-metric-section");
-
-            var backButtonToForm = document.getElementById("back-to-form-section");
-            var backButtonToSdg = document.getElementById("back-to-sdg-section");
-            var backButtonToIndicator = document.getElementById("back-to-indicator-section");
-
-            var formSection = document.getElementById("form-section");
-            var sdgSection = document.getElementById("sdg-section");
-            var indicatorSection = document.getElementById("indicator-section");
-            var metricSection = document.getElementById("metric-section");
-
-            nextButtonToSdg.addEventListener("click", function() {
-                formSection.style.display = "none";
-                sdgSection.style.display = "block";
+    
+            $('#next-to-sdg-section').on('click', function() {
+                $('#form-section').hide();
+                $('#sdg-section').show();
             });
-
-            nextButtonToIndicator.addEventListener("click", function() {
-                updateSelectedSdgs();
-                document.getElementById("project-name").innerText = document.getElementById("nama").value;
-                document.getElementById("project-description").innerText = document.getElementById("deskripsi").value;
-                sdgSection.style.display = "none";
-                indicatorSection.style.display = "block";
+    
+            $('#back-to-form-section').on('click', function() {
+                $('#sdg-section').hide();
+                $('#form-section').show();
             });
-
-            nextButtonToMetric.addEventListener("click", function() {
-                indicatorSection.style.display = "none";
-                metricSection.style.display = "block";
-            });
-
-            backButtonToForm.addEventListener("click", function() {
-                sdgSection.style.display = "none";
-                formSection.style.display = "block";
-            });
-
-            backButtonToSdg.addEventListener("click", function() {
-                indicatorSection.style.display = "none";
-                sdgSection.style.display = "block";
-            });
-
-            backButtonToIndicator.addEventListener("click", function() {
-                metricSection.style.display = "none";
-                indicatorSection.style.display = "block";
-            });
-
-            function updateSelectedSdgs() {
-                var selectedSdgs = [];
-                $('.sdg-checkbox:checked').each(function() {
-                    selectedSdgs.push($(this).val());
+    
+            $('#next-to-indicator-section').on('click', function() {
+                const projectName = $('#nama').val();
+                const projectDescription = $('#deskripsi').val();
+                const selectedSdgImages = $('.sdg-checkbox:checked').map(function() {
+                    return $(this).closest('.sdg-item').find('img').attr('src');
+                }).get();
+    
+                $('#project-title').text(projectName);
+                $('#project-long-description').text(projectDescription);
+    
+                $('#sdg-images-container').html('');
+                selectedSdgImages.forEach(function(src) {
+                    $('#sdg-images-container').append('<img src="'+src+'" alt="SDG" class="img-fluid mx-2 sdg-goal" data-target="#goal15-description">');
                 });
-                $('#selected-sdgs').empty();
-                selectedSdgs.forEach(function(sdg) {
-                    var sdgElement = $('[data-sdg="' + sdg + '"] img').clone();
-                    sdgElement.addClass('selected-sdg');
-                    sdgElement.attr('data-sdg', sdg);
-                    sdgElement.click(function() {
-                        showSdgIndicators(sdg);
-                    });
-                    $('#selected-sdgs').append(sdgElement);
-                });
-            }
+    
+                $('#sdg-section').hide();
+                $('#indicator-section').show();
+            });
+    
+            $('#back-to-sdg-section').on('click', function() {
+                $('#indicator-section').hide();
+                $('#sdg-section').show();
+            });
+    
+            $('.sdg-checkbox').on('change', function() {
+                var sdgId = $(this).val();
+                $('.goal-description').hide();
+                $('#goal' + sdgId + '-description').show();
+                $('#goal' + sdgId + '-description .sub-container').hide();
+                $('#goal' + sdgId + '-description .sub-container[data-level="2"]').show();
+            });
 
-            function showSdgIndicators(sdgId) {
-                $('#sdg-indicators').empty();
-                var indicators = getIndicatorsBySdg(sdgId);
-                indicators.forEach(function(indicator) {
-                    var indicatorElement = $('<div class="indicator-item"></div>');
-                    indicatorElement.text(indicator);
-                    $('#sdg-indicators').append(indicatorElement);
+            
+    var checkbox = document.getElementById("subscribe");
+    var subContainer = document.getElementById("sub-container");
+
+    checkbox.addEventListener("change", function() {
+        if (checkbox.checked) {
+            subContainer.style.display = "block";
+        } else {
+            subContainer.style.display = "none"; // Corrected to hide when not checked
+        }
+    });
+
+    
+            var sdgGoals = document.querySelectorAll(".sdg-goal");
+    
+            sdgGoals.forEach(function(goal) {
+                goal.addEventListener("click", function() {
+                    var target = document.querySelector(goal.getAttribute("data-target"));
+                    var descriptionVisible = target.classList.contains("show");
+    
+                    if (!descriptionVisible) {
+                        target.classList.remove("hide");
+                        target.classList.add("show");
+                    } else {
+                        target.classList.remove("show");
+                        target.classList.add("hide");
+                    }
                 });
-            }
+            });
+    
+            setTimeout(function() {
+                var loading = document.getElementById("loading");
+                loading.style.display = "none";
+            }, 1000);
         });
     </script>
-
+    
 </body>
 
 </html>
