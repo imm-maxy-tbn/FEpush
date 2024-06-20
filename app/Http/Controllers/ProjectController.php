@@ -17,6 +17,7 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::with('tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana')->get();
+
         return view('projects.index', compact('projects'));
     }
     
@@ -32,31 +33,6 @@ class ProjectController extends Controller
 
         return view('myproject.creatproject.creatproject', compact('companies', 'tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana'));
     }
-
-    public function fetchIndicators(Request $request)
-{
-    $sdgId = $request->input('sdg_id');
-
-    // Ambil indikator level 1 dari SDG yang dipilih
-    $indicatorLevel1 = Indicator::where('sdg_id', $sdgId)
-                                ->where('level', 1)
-                                ->first();
-
-    // Ambil indikator level 2 yang memiliki parent_indicator_id dari SDG yang dipilih
-    $indicatorLevel2 = Indicator::whereHas('parentIndicator', function($query) use ($sdgId) {
-                                    $query->where('sdg_id', $sdgId);
-                                })
-                                ->where('level', 2)
-                                ->first();
-
-    // Contoh response JSON yang dapat Anda kirimkan
-    return response()->json([
-        'success' => true,
-        'indicatorLevel1' => $indicatorLevel1 ? $indicatorLevel1->description : '',
-        'indicatorLevel2' => $indicatorLevel2 ? $indicatorLevel2->description : '',
-        'hasSubIndicators' => $indicatorLevel2 ? true : false,
-    ]);
-}
 
     public function filterMetrics(Request $request)
     {
@@ -135,8 +111,9 @@ class ProjectController extends Controller
                 ]);
             }
         }
+        dd($request->all());
 
-        return redirect()->route('projects.index')->with('success', 'Project created successfully');
+        return redirect()->route('myproject.creatproject.creatproject')->with('success', 'Project created successfully');
     }
 
     public function edit($id)

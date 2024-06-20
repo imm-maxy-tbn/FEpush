@@ -224,6 +224,7 @@
                             @endif
                         @endforeach
             
+                        {{-- Sub-container untuk indikator level 2 --}}
                         @foreach ($sdg->indicators as $indicator)
                         @if ($indicator->level == 2)
                         <div class="sub-container" id="sub-container-{{ $indicator->order }}" style="display: none; margin-top: 10px;">
@@ -248,27 +249,10 @@
             <div id="metric-section" style="display: none;">
                 <div class="container mt-5">
                     <h1 class="text-center">Select Metrics Based on Your Chosen Indicator</h1>
-                    <div class="metric-item mb-4 p-3 bg-white shadow-sm rounded">
-                        <div class="d-flex align-items-center justify-content-between">
-                            <div>
-                                <h5 class="text-primary">Assets Under Management: Total</h5>
-                                <p class="mb-0">Indicates whether the organization provides support to its clients after a sale of its product/service.</p>
-                            </div>
-                            <input type="checkbox" class="metric-checkbox">
-                        </div>
-                    </div>
+                    <div id="metrics" class="metric-item mb-4 p-3 bg-white shadow-sm rounded"></div>
                     <div class="pagination mt-4">
                         <ul class="pagination">
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item"><a class="page-link" href="#">4</a></li>
-                            <li class="page-item"><a class="page-link" href="#">5</a></li>
-                            <li class="page-item"><a class="page-link" href="#">6</a></li>
-                            <li class="page-item"><a class="page-link" href="#">7</a></li>
-                            <li class="page-item"><a class="page-link" href="#">8</a></li>
-                            <li class="page-item"><a class="page-link" href="#">9</a></li>
-                            <li class="page-item"><a class="page-link" href="#">10</a></li>
+                            <!-- Pagination links -->
                         </ul>
                     </div>
                     <div class="d-flex justify-content-between mt-3">
@@ -311,6 +295,8 @@
     </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script src="{{ asset('js/imm/indicator.js') }}"></script>
@@ -380,23 +366,35 @@
             });
     
             $('#next-to-indicator-section').on('click', function() {
-                const projectName = $('#nama').val();
-                const projectDescription = $('#deskripsi').val();
-                const selectedSdgImages = $('.sdg-checkbox:checked').map(function() {
-                    return $(this).closest('.sdg-item').find('img').attr('src');
-                }).get();
-    
-                $('#project-title').text(projectName);
-                $('#project-long-description').text(projectDescription);
-    
-                $('#sdg-images-container').html('');
-                selectedSdgImages.forEach(function(src) {
-                    $('#sdg-images-container').append('<img src="'+src+'" alt="SDG" class="img-fluid mx-2 sdg-goal" data-target="#goal15-description">');
-                });
-    
-                $('#sdg-section').hide();
-                $('#indicator-section').show();
-            });
+    const projectName = $('#nama').val();
+    const projectDescription = $('#deskripsi').val();
+    const selectedSdgImages = $('.sdg-checkbox:checked').map(function() {
+        return $(this).closest('.sdg-item').find('img').attr('src');
+    }).get();
+
+    $('#project-title').text(projectName);
+    $('#project-long-description').text(projectDescription);
+
+    $('#sdg-images-container').html('');
+    selectedSdgImages.forEach(function(src) {
+        $('#sdg-images-container').append('<img src="'+src+'" alt="SDG" class="img-fluid mx-2 sdg-goal" data-target="#goal15-description">');
+    });
+
+    // Simpan selectedTags (tag_ids yang dipilih)
+    var selectedTags = $('input[name="tag_ids[]"]:checked').map(function() {
+        return $(this).val();
+    }).get();
+
+    // Simpan selectedIndicators (indicator_ids yang dipilih)
+    var selectedIndicators = $('.indicator-checkbox:checked').map(function() {
+        return $(this).val();
+    }).get();
+
+    // Menyembunyikan SDG Section dan menampilkan Indicator Section
+    $('#sdg-section').hide();
+    $('#indicator-section').show();
+});
+
     
             $('#back-to-sdg-section').on('click', function() {
                 $('#indicator-section').hide();
@@ -445,6 +443,79 @@
                 var loading = document.getElementById("loading");
                 loading.style.display = "none";
             }, 1000);
+        });
+        document.addEventListener("DOMContentLoaded", function() {
+    var checkbox = document.getElementById("subscribe");
+    var subContainer = document.getElementById("sub-container");
+
+    checkbox.addEventListener("change", function() {
+        if (checkbox.checked) {
+            subContainer.style.display = "block"; // Show sub-container when checkbox is checked
+        } else {
+            subContainer.style.display = "none"; // Hide sub-container when checkbox is unchecked
+        }
+    });
+});
+$(document).ready(function() {
+    $('.sdg-checkbox').on('change', function() {
+        // Semua checkbox SDG yang dipilih
+        var selectedSdgs = $('.sdg-checkbox:checked');
+        
+        // Sembunyikan semua deskripsi SDG terlebih dahulu
+        $('.goal-description').hide();
+
+        // Tampilkan deskripsi untuk setiap SDG yang diceklis
+        selectedSdgs.each(function() {
+            var sdgId = $(this).val();
+            $('#goal' + sdgId + '-description').show();
+        });
+    });
+});
+$('#next-to-metric-section').on('click', function() {
+    var selectedTags = $('input[name="tag_ids[]"]:checked').map(function() {
+        return $(this).val();
+    }).get();
+    var selectedIndicators = $('.indicator-checkbox:checked').map(function() {
+        return $(this).val();
+    }).get();
+
+    $.ajax({
+        url: '{{ route("projects.filterMetrics") }}',
+        method: 'POST',
+        data: {
+            _token: '{{ csrf_token() }}',
+            tag_ids: selectedTags,
+            indicator_ids: selectedIndicators
+        },
+        success: function(response) {
+            // Memproses respons dari server (response berisi metrik yang sesuai)
+            $('#metrics').empty();
+            $.each(response, function(index, metric) {
+                var metricHtml = `
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div>
+                            <h5 class="text-primary">(${metric.code}) ${metric.name}</h5>
+                            <p class="mb-0">${metric.definition}</p>
+                        </div>
+                        <input type="checkbox" class="metric-checkbox" name="metrics[]" value="${metric.id}">
+                    </div>
+                `;
+                $('#metrics').append(metricHtml);
+            });
+
+            // Menyembunyikan Indicator Section dan menampilkan Metric Section
+            $('#indicator-section').hide();
+            $('#metric-section').show();
+        },
+        error: function(xhr) {
+            console.log(xhr.responseText);
+        }
+    });
+});
+
+        $('#back-to-indicator-section').on('click', function() {
+            $('#metric-section').hide();
+            $('#indicator-section').show();
         });
     </script>
     
