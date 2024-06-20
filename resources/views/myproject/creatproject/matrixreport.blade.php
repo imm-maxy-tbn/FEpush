@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bias-Reducing Investment Practices</title>
+    <title>IMM | Laporan Matrik</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/matrixreport.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -84,13 +84,13 @@
                 </div>
             </div>
             <div class="d-flex justify-content-between mt-4">
-                <button class="btn export-btn">Export</button>
-                <a href="myproject"<button class="btn save-btn">Save</button>></a>
+                
+                <button type="" class="btn export-btn">Export</button>
+                <a href="impact" ><button class="btn save-btn">Save</button></a>
             </div>
         </div>
     </div>
 </div>
-
 
 <footer>
     <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
@@ -102,11 +102,11 @@
             </div>
             <div class="col-5 d-flex justify-content-center align-items-center">
                 <ul class=" d-flex " style="gap: 30px">
-                    <a href=""><li>HomePage</li></a>
-                    <a href=""><li>Bootcamp</li></a>
-                    <a href=""><li>IMM</li></a>
-                    <a href=""><li>Comunity</li></a>
-                    <a href=""><li>Profile</li></a>
+                    <a href="/"><li>HomePage</li></a>
+                    <a href="bootcamp"><li>Bootcamp</li></a>
+                    <a href="imm"><li>IMM</li></a>
+                    <a href="#"><li>Comunity</li></a>
+                    <a href="profile"><li>Profile</li></a>
                 </ul>
             </div>
             <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">

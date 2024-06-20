@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Responde</title>
+    <title>IMM | Responden Pilihan Ganda</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/responden/responden-pilihan-ganda.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -18,7 +18,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">IMM</a>
+            <a class="navbar-brand" href="homepage">IMM</a>
 
         </div>
     </nav>
@@ -91,13 +91,11 @@
         </div>
     </div>
     <div class="container mt-5">
-        <div class="row gap d-flex justify-content-center">
+        <div class="row gap d-flex justify-content-center"style="gap: 24px">
          <a href="/responden-esay"> <button class="btn-kembali">Kembali</button></a> 
            <a href="/responden-skala"> <button class="btn-selanjutnya">Lanjutkan</button></a>
         </div>
-    </div>
-
-   <footer>
+    </div><footer>
     <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
         <div class="row d-flex  justify-content-center align-items-center">
             <div class="col-4 d-flex flex-column" style="gap: 20px">
@@ -107,11 +105,11 @@
             </div>
             <div class="col-5 d-flex justify-content-center align-items-center">
                 <ul class=" d-flex " style="gap: 30px">
-                    <a href=""><li>HomePage</li></a>
-                    <a href=""><li>Bootcamp</li></a>
-                    <a href=""><li>IMM</li></a>
-                    <a href=""><li>Comunity</li></a>
-                    <a href=""><li>Profile</li></a>
+                    <a href="/"><li>HomePage</li></a>
+                    <a href="bootcamp"><li>Bootcamp</li></a>
+                    <a href="imm"><li>IMM</li></a>
+                    <a href="#"><li>Comunity</li></a>
+                    <a href="profile"><li>Profile</li></a>
                 </ul>
             </div>
             <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">

@@ -33,7 +33,7 @@ body {
 }
 
 .sosmed {
-    gap: 10px;
+    gap: 15px;
 }
 
 .sosmed a {
@@ -49,23 +49,11 @@ body {
     flex-direction: column;
 }
 
-background-color: #5940cb;
-color: #ffffff;
-padding: 48px 0;
-text-align: center;
-position: fixed;
-bottom: 0;
-width: 80%;
-left: 10%;
-border-top-left-radius: 40px;
-border-top-right-radius: 40px;
-z-index: 1000;
-
-}
 .footer-container {
     max-width: 594px;
     margin: 0 auto;
 }
+
 .content {
     background-color: #f7f6fb;
     height: 742px;
@@ -76,6 +64,7 @@ z-index: 1000;
     padding: 0 50px;
     text-align: justify;
 }
+
 .sub-content {
     background-color: #e5e2f2;
     width: 100%;
@@ -84,12 +73,21 @@ z-index: 1000;
     justify-content: center;
     display: flex;
     margin-bottom: 30px;
+    overflow: hidden;
 }
+
+img {
+    width: 100%;
+    height: auto;
+    background-size: cover;
+}
+
 .btn {
     display: flex;
     justify-content: center;
     margin-top: 30px;
 }
+
 button {
     width: 399px;
     height: 49px;
@@ -98,11 +96,13 @@ button {
     border-radius: 6px;
     color: white;
 }
+
 .footer-content {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
+
 .brand-info h3 {
     margin: 0;
     font-size: 20px;
@@ -110,6 +110,7 @@ button {
     right: 860px;
     top: 20px;
 }
+
 .brand-info p {
     margin-top: 5px;
     font-size: 14px;
@@ -117,11 +118,13 @@ button {
     top: 50px;
     right: 750px;
 }
+
 .footer-links {
     display: flex;
     justify-content: center;
     align-items: center;
 }
+
 .footer-nav ul {
     list-style-type: none;
     padding: 0;
@@ -130,57 +133,69 @@ button {
     top: 40px;
     right: 280px;
 }
+
 .footer-nav ul li {
     display: inline-block;
     margin-right: 20px;
 }
+
 .footer-nav ul li:last-child {
     margin-right: 0;
 }
+
 .footer-nav ul li a {
     color: #ffffff;
     text-decoration: none;
     font-size: 16px;
 }
+
 .footer-nav ul li a:hover {
     text-decoration: underline;
 }
+
 .social-media {
     margin-right: auto;
     position: absolute;
     top: 29px;
     right: 23px;
 }
+
 .social-media a {
     color: #ffffff;
     text-decoration: none;
     font-size: 20px;
     margin-left: 10px;
 }
+
 .footer-description {
     margin-top: 20px;
     font-size: 14px;
 }
+
 .footer-social-media {
     margin-bottom: -10px;
     /* Jarak antara teks Social Media dan ikon */
-    
     position: relative;
     top: -19px;
     right: -5px;
 }
+
 .metric-item:hover {
     filter: brightness(0.95);
 }
+
 .metric-checkbox {
     width: 20px;
     height: 20px;
 }
+
 .text-primary {
     color: #5940cb !important;
 }
 
+
 /* Efek loading */
+
 #loading {
     position: fixed;
     width: 100%;
@@ -192,22 +207,24 @@ button {
     align-items: center;
     top: 5px;
 }
+
 #loading img {
     width: 100px;
     /* Ukuran gambar loading */
-    
     height: 100px;
     /* Ukuran gambar loading */
-    
     animation: spin 1s linear infinite;
 }
+
 @keyframes spin {
     100% {
         transform: rotate(360deg);
     }
 }
 
+
 /* Animasi umum untuk elemen lainnya */
+
 .content-container h1,
 .date-box,
 .chart-container,
@@ -217,6 +234,7 @@ button {
 .btn {
     transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
+
 .content-container h1:hover,
 .date-box:hover,
 .chart-container:hover,
@@ -228,10 +246,13 @@ button {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+
 /* Menambahkan transisi pada navbar */
+
 .navbar {
     transition: background-color 0.3s ease;
 }
+
 .navbar:hover {
     background-color: #e3e3e3;
 }

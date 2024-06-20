@@ -12,17 +12,18 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         body {
-    font-family: "Roboto", sans-serif;
-}
+            font-family: "Roboto", sans-serif;
+        }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-/* Navbar */
-.navbar {
+        /* Navbar */
+
+        .navbar {
     background-color: #ffffff;
     color: #000000;
     padding: 15px 0;
@@ -31,7 +32,7 @@
     right: 0;
     left: 0;
     z-index: 1000;
-    border-bottom: 3px solid #5940cb;
+    border-bottom: 3px solid #4834a9;
 }
 
 .container {
@@ -73,253 +74,273 @@
     margin-right: 20px;
 }
 
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #ffffff;
+    color: #0e0d13;
+    border: 2px solid #5940cb;
+}
+
+.btn-outline-primary {
+    background-color: #5940cb;
+    color: #ffffff;
+    border: 2px solid #5940cb8a;
+    margin-left: 10px;
+}
+
+.btn-primary:hover,
+.btn-outline-primary:hover {
+    background-color: #5940cb8a;
+}
+
 .navbar-collapse {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Atur posisi menu navbar */
 .navbar-nav {
     margin-left: 52px;
 }
 
-.register-container {
-    background-color: #fff;
-    padding: 20px;
-    width: 727px;
-    position: absolute;
-    top: 78px;
-    right: 290px;
+.navbar-brand {
+    margin-right: auto;
 }
 
-.register-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
+        .register-container {
+            background-color: #fff;
+          
+            width: 727px;
+            margin: 0 auto;     margin-top: 50px
+     
+        }
 
-.brand-logo {
-    width: 137px;
-    position: absolute;
-    top: 426px;
-    right: 103px;
-}
+        .register-form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
 
-.register-form h2 {
-    margin-bottom: 20px;
-    font-size: 26px;
-    color: #000000;
-    font-weight: bold;
-    position: relative;
-    top: 2px;
-    right: 271px;
-}
+        .brand-logo {
+            width: 137px;
+            
+        }
 
-.form-row {
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    margin-bottom: 15px;
-}
+        .register-form h2 {
+          
+            font-size: 26px;
+            color: #000000;
+            font-weight: bold;
+        }
 
-.form-group {
-    display: flex;
-    flex-direction: column;
-    width: 48%;
-}
+        .form-row {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+         
+        }
 
-.form-group label {
-    font-weight: bold;
-    margin-bottom: 2px;
-    color: #000000;
-}
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            width: 48%;
+        }
 
-.form-group input,
-.form-group select {
-    width: 100%;
-    padding: 6px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background-color: #f8f9fa;
-    font-size: 16px;
-}
+        .form-group label {
+            font-weight: bold;
+            margin-bottom: 2px;
+            color: #000000;
+        }
 
-.btn-register {
-    padding: 10px 20px;
-    background-color: #6c63ff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-    margin-top: 20px;
-}
+        .form-group input,
+        .form-group select {
+            width: 100%;
+            padding: 6px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f8f9fa;
+            font-size: 16px;
+        }
 
-.btn-register:hover {
-    background-color: #524eff;
-}
+        .btn-register {
+            padding: 10px 20px;
+            background-color: #6c63ff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
 
-.login-link {
-    margin-top: 15px;
-    font-size: 14px;
-    color: #000000;
-}
+        .btn-register:hover {
+            background-color: #524eff;
+            transform: scale(1.05);
+        }
 
-.login-link a {
-    color: #000000;
-    text-decoration: none;
-    font-weight: bold;
-}
+        .login-link {
+            margin-top: 15px;
+            font-size: 14px;
+            color: #000000;
+        }
 
-.login-link a:hover {
-    text-decoration: underline;
-}
+        .login-link a {
+            color: #000000;
+            text-decoration: none;
+            font-weight: bold;
+        }
 
-/* Media query for responsiveness */
-@media (max-width: 768px) {
-    .navbar {
-        position: relative;
-    }
+        .login-link a:hover {
+            text-decoration: underline;
+        }
 
-    .navbar-links {
-        flex-direction: column;
-        margin-left: 0;
-        margin-top: 10px;
-    }
+        /* Media query for responsiveness */
+        @media (max-width: 768px) {
+            .navbar {
+                position: relative;
+            }
 
-    .navbar-links li {
-        margin: 10px 0;
-    }
+            .navbar-links {
+                flex-direction: column;
+                margin-left: 0;
+                margin-top: 10px;
+            }
 
-    .navbar-actions {
-        flex-direction: column;
-        margin-right: 0;
-        margin-top: 10px;
-    }
+            .navbar-links li {
+                margin: 10px 0;
+            }
 
-    .btn {
-        width: 100%;
-        text-align: center;
-        margin: 5px 0;
-    }
+            .navbar-actions {
+                flex-direction: column;
+                margin-right: 0;
+                margin-top: 10px;
+            }
 
-    .register-container {
-        width: 100%;
-        padding: 10px;
-        top: auto;
-        right: auto;
-        margin-top: 70px;
-    }
+            .btn {
+                width: 100%;
+                text-align: center;
+                margin: 5px 0;
+            }
 
-    .brand-logo {
-        width: 100px;
-        position: relative;
-        top: 0;
-        right: 0;
-        margin-top: 20px;
-    }
+            .register-container {
+           
+                width: 100%;
+                padding: 10px;
+         
+       
+            }
 
-    .register-form h2 {
-        font-size: 22px;
-        position: relative;
-        top: 0;
-        right: 0;
-        text-align: center;
-    }
+            .brand-logo {
+                width: 100px;
+                position: relative;
+                top: 0;
+                right: 0;
 
-    .form-row {
-        flex-direction: column;
-        width: 100%;
-    }
+            }
 
-    .form-group {
-        width: 100%;
-        margin-bottom: 10px;
-    }
+            .register-form h2 {
+                font-size: 22px;
+                position: relative;
+                top: 0;
+                right: 0;
+                text-align: center;
+            }
 
-    .form-group label {
-        font-size: 14px;
-    }
+            .form-row {
+                flex-direction: column;
+                width: 100%;
+            }
 
-    .form-group input,
-    .form-group select {
-        font-size: 14px;
-        padding: 10px;
-    }
+            .form-group {
+                width: 100%;
+            
+            }
 
-    .btn-register {
-        font-size: 14px;
-        padding: 10px;
-    }
+            .form-group label {
+                font-size: 14px;
+            }
 
-    .login-link {
-        font-size: 12px;
-        text-align: center;
-    }
-}
+            .form-group input,
+            .form-group select {
+                font-size: 14px;
+                padding: 10px;
+            }
 
-/* Efek loading */
-#loading {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    top: 5px;
-}
+            .btn-register {
+                font-size: 14px;
+                padding: 10px;
+            }
 
-#loading img {
-    width: 100px; /* Ukuran gambar loading */
-    height: 100px; /* Ukuran gambar loading */
-    animation: spin 1s linear infinite;
-}
+            .login-link {
+                font-size: 12px;
+                text-align: center;
+            }
+        }
 
-@keyframes spin {
-    100% {
-        transform: rotate(360deg);
-    }
-}
+        /* Efek loading */
+        #loading {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            background: #fff;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            top: 5px;
+        }
 
-/* Animasi umum untuk elemen lainnya */
-.content-container h1,
-.date-box,
-.chart-container,
-.analysis-matrix .content-box,
-.target-check .target-check-box,
-.icon-box .icon-item,
-.btn {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
+        #loading img {
+            width: 100px;
+            height: 100px;
+            animation: spin 1s linear infinite;
+        }
 
-.content-container h1:hover,
-.date-box:hover,
-.chart-container:hover,
-.analysis-matrix .content-box:hover,
-.target-check .target-check-box:hover,
-.icon-box .icon-item:hover,
-.btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+        @keyframes spin {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
 
-/* Menambahkan transisi pada navbar */
-.navbar {
-    transition: background-color 0.3s ease;
-}
+        /* Animasi umum untuk elemen lainnya */
+        .content-container h1,
+        .date-box,
+        .chart-container,
+        .analysis-matrix .content-box,
+        .target-check .target-check-box,
+        .icon-box .icon-item,
+        .btn {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
 
-.navbar:hover {
-    background-color: #e3e3e3;
-}
-
+        .content-container h1:hover,
+        .date-box:hover,
+        .chart-container:hover,
+        .analysis-matrix .content-box:hover,
+        .target-check .target-check-box:hover,
+        .icon-box .icon-item:hover,
+        .btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 
 <body>
+    <div id="loading">
+        <img src="images/imm.png" alt="Loading">
+    </div>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="#">IMM Impact Mate</a>
@@ -352,7 +373,7 @@
             </div>
         </div>
     </nav>
-
+<div class="container">
     <div class="register-container">
         <form method="POST" action="{{ route('register') }}">
             @csrf
@@ -410,31 +431,30 @@
                 <div class="login-link">Sudah punya akun? <a href="login">Masuk</a></div>
             </div>
         </form>
-    </div>
+    </div></div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         // Fungsi untuk menampilkan notifikasi dan mengarahkan ke halaman login
-function simpanData() {
-    // Tampilkan notifikasi
-    alert("Data berhasil disimpan!");
+        function simpanData() {
+            // Tampilkan notifikasi
+            alert("Data berhasil disimpan!");
 
-    // Arahkan ke halaman login
-    window.location.href = "login"; // Ganti "halaman-login.html" dengan URL halaman login Anda
-}
+            // Arahkan ke halaman login
+            window.location.href = "login"; // Ganti "halaman-login.html" dengan URL halaman login Anda
+        }
 
-// Tambahkan event listener untuk tombol "Simpan Data"
-document.getElementById("simpanBtn").addEventListener("click", simpanData);
+        // Tambahkan event listener untuk tombol "Simpan Data"
+        document.getElementById("simpanBtn").addEventListener("click", simpanData);
 
-document.addEventListener("DOMContentLoaded", function () {
-    setTimeout(function () {
-        var loading = document.getElementById("loading");
-        loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
-    }, 1000); // 3000 milidetik = 3 detik
-});
-
+        document.addEventListener("DOMContentLoaded", function () {
+            setTimeout(function () {
+                var loading = document.getElementById("loading");
+                loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
+            }, 1000); // 3000 milidetik = 3 detik
+        });
     </script>
 </body>
 

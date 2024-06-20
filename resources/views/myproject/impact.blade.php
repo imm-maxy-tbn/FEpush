@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Metrix Detail</title>
+    <title>IMM | Impact</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/impact.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -132,20 +132,20 @@
             <p>Lorem Ipsum</p>
         </div>
     </div>
-    <button class="btn start-survey-btn">Mulai Survey</button> 
+    <a href="edit-survey"><button class="btn start-survey-btn">Mulai Survey</button> </a>
     <!-- <button class="btn btn-primary mt-4 btn-dokumen">Mulai Survey</button> -->
 </div> 
  
 
 <div class="container mt-5 matrix-report-container">
     <h3>Matrix Report</h3>
-    <a href="matrixreport" class="btn add-report-btn">Tambah Laporan</a>
-    <div class="file-report mt-4">
+    <a href="laporanproject" class="btn add-report-btn">Tambah Laporan</a>
+    <a href="matrixreport"><div class="file-report mt-4">
         <div class="file-item-report text-center">
             <i class="fas fa-file-alt fa-3x"></i>
             <p>10/06/24</p>
         </div>
-    </div>
+    </div></a>
 </div>
 
 
@@ -161,11 +161,11 @@
             </div>
             <div class="col-5 d-flex justify-content-center align-items-center">
                 <ul class=" d-flex " style="gap: 30px">
-                    <a href=""><li>HomePage</li></a>
-                    <a href=""><li>Bootcamp</li></a>
-                    <a href=""><li>IMM</li></a>
-                    <a href=""><li>Comunity</li></a>
-                    <a href=""><li>Profile</li></a>
+                    <a href="/"><li>HomePage</li></a>
+                    <a href="bootcamp"><li>Bootcamp</li></a>
+                    <a href="imm"><li>IMM</li></a>
+                    <a href="#"><li>Comunity</li></a>
+                    <a href="profile"><li>Profile</li></a>
                 </ul>
             </div>
             <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
