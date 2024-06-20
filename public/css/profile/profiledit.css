@@ -110,7 +110,6 @@ form {
     color: white;
 }
 
-
 /* Navbar */
 
 .navbar {
@@ -203,7 +202,6 @@ form {
     /* Bergerak sedikit ke bawah saat diklik */
 }
 
-
 /* Footer */
 
 .footer {
@@ -248,7 +246,6 @@ form {
     align-items: center;
     flex-direction: column;
 }
-
 
 /* Media query for responsiveness */
 
@@ -324,7 +321,6 @@ form {
     }
 }
 
-
 /* Animasi umum untuk elemen lainnya */
 
 .content-container h1,
@@ -348,7 +344,6 @@ form {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
 /* Menambahkan transisi pada navbar */
 
 .navbar {
@@ -357,4 +352,20 @@ form {
 
 .navbar:hover {
     background-color: #e3e3e3;
+}
+
+.navbar-button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Menghapus underline pada teks tautan */
+    display: inline-block; /* Membuat tautan tampil sebagai blok inline */
+}
+
+.navbar-button:hover {
+    background-color: #333333;
 }

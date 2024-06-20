@@ -2,7 +2,6 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-
 /* Navbar */
 
 .navbar {
@@ -50,7 +49,6 @@ body {
     margin-right: 20px;
 }
 
-
 /* Container styling */
 
 .register-container {
@@ -59,7 +57,6 @@ body {
     align-items: center;
     height: 100vh;
 }
-
 
 /* Form styling */
 
@@ -75,7 +72,6 @@ body {
     justify-content: space-between;
 }
 
-
 /* Left section (Informasi Pribadi) styling */
 
 .informasi-pribadi {
@@ -83,14 +79,12 @@ body {
     /* Lebar informasi pribadi */
 }
 
-
 /* Right section (Informasi Alamat) styling */
 
 .informasi-alamat {
     width: 45%;
     /* Lebar informasi alamat */
 }
-
 
 /* Table styling */
 
@@ -104,7 +98,6 @@ table td {
     border-bottom: 1px solid #ddd;
     /* Garis pemisah antar baris */
 }
-
 
 /* Input styling */
 
@@ -196,7 +189,6 @@ a {
     background-color: transparent;
 }
 
-
 /* CSS for "Daftarkan Perusahaan Anda" */
 
 .h2,
@@ -205,7 +197,6 @@ h2 {
     position: absolute;
     top: 137px;
 }
-
 
 /* Media query for responsiveness */
 
@@ -394,9 +385,7 @@ h2 {
     }
 }
 
-
 /* Animasi umum untuk elemen lainnya */
-
 
 /* Menambahkan transisi pada navbar */
 
@@ -406,4 +395,20 @@ h2 {
 
 .navbar:hover {
     background-color: #e3e3e3;
+}
+
+.navbar-button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Menghapus underline pada teks tautan */
+    display: inline-block; /* Membuat tautan tampil sebagai blok inline */
+}
+
+.navbar-button:hover {
+    background-color: #333333;
 }

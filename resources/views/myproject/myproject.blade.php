@@ -32,7 +32,7 @@
                     <a class="nav-link active" href="/homepage">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/myproject">My Project</a>
+                    <a href="/myproject" class="navbar-button">Myproject</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="homepage">My Company</a>

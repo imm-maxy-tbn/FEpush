@@ -3,7 +3,6 @@ body {
     height: 480vh;
 }
 
-
 /* Navbar */
 
 .navbar {
@@ -50,7 +49,6 @@ body {
     display: flex;
     margin-right: 20px;
 }
-
 
 /* Footer */
 
@@ -155,7 +153,6 @@ body {
     top: -19px;
     right: -5px;
 }
-
 
 /* Media query for responsiveness */
 
@@ -267,7 +264,6 @@ body {
     color: #333;
 }
 
-
 /* Tambahan gaya lain yang Anda butuhkan untuk .urbanisasi-text */
 
 input[type="checkbox"],
@@ -316,4 +312,20 @@ input[type="radio"] {
 .btn-primary:hover {
     background-color: #0056b3;
     border-color: #004085;
+}
+
+.navbar-button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Menghapus underline pada teks tautan */
+    display: inline-block; /* Membuat tautan tampil sebagai blok inline */
+}
+
+.navbar-button:hover {
+    background-color: #333333;
 }

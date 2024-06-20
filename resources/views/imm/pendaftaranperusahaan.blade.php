@@ -28,7 +28,7 @@
                         <a class="nav-link" href="bootcamp">Bootcamp</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="imm">IMM</a>
+                    <a href="imm" class="navbar-button">IMM</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="community">Community</a>

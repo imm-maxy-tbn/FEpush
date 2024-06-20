@@ -25,12 +25,12 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item ">
-                        <a class="nav-link" href="welcome">Home</a>
+                        <button class="navbar-button">Home</button>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="bootcamp">Bootcamp</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="imm">IMM</a>
                     </li>
                     <li class="nav-item">

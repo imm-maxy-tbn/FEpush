@@ -9,7 +9,6 @@ body {
     list-style-type: none;
 }
 
-
 /* Navbar */
 
 .navbar {
@@ -30,7 +29,6 @@ body {
     color: #5940cb;
     text-decoration: underline;
 }
-
 
 /* Footer */
 
@@ -77,9 +75,7 @@ body {
     flex-direction: column;
 }
 
-
 /* General Styles */
-
 
 /* Project Title */
 
@@ -105,7 +101,6 @@ body {
     top: -33px;
     right: -100px;
 }
-
 
 /* Input Group */
 
@@ -139,7 +134,6 @@ body {
     /* Centering icon */
 }
 
-
 /* Create Project Button */
 
 .btn-create-project {
@@ -156,7 +150,6 @@ body {
 .btn-create-project:hover {
     background-color: #574dcf;
 }
-
 
 /* No Projects Section */
 
@@ -180,7 +173,6 @@ body {
     font-weight: bold;
 }
 
-
 /* See All Link */
 
 .see-all {
@@ -196,7 +188,6 @@ body {
     text-decoration: underline;
 }
 
-
 /* All Projects Title */
 
 .all-projects-title {
@@ -207,7 +198,6 @@ body {
     top: -32px;
     right: -89px;
 }
-
 
 /* Table */
 
@@ -240,7 +230,6 @@ body {
     text-align: center;
 }
 
-
 /* Dropdown Toggle */
 
 .dropdown-toggle {
@@ -249,7 +238,6 @@ body {
     color: #6c63ff;
     border: 1px solid #6c63ff;
 }
-
 
 /* Pagination */
 
@@ -276,7 +264,6 @@ body {
 .pagination .page-link:hover {
     background-color: #f0f0f0;
 }
-
 
 /* Done Projects Card */
 
@@ -324,7 +311,6 @@ body {
     font-size: 20px;
 }
 
-
 /* Media Queries */
 
 @media only screen and (max-width: 768px) {
@@ -344,7 +330,6 @@ body {
         right: auto;
     }
 }
-
 
 /* Style for ongoing projects title */
 
@@ -368,7 +353,6 @@ body {
     top: -1px;
     /* Adjust the top position as needed */
 }
-
 
 /* Targeting the buttons inside ongoing-projects-filters */
 
@@ -484,7 +468,6 @@ body {
     margin: 10px auto 0;
 }
 
-
 /* Performance Card */
 
 .performance-card {
@@ -535,7 +518,6 @@ body {
     padding-left: 10px;
 }
 
-
 /* Schedule Box */
 
 .schedule-box {
@@ -548,7 +530,6 @@ body {
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
 
 /* Calendar */
 
@@ -699,10 +680,8 @@ body {
     /* Warna border abu-abu lebih gelap saat hover */
 }
 
-
 /* 
 /* Efek loading */
-
 
 /* 
 #loading {
@@ -721,12 +700,10 @@ body {
     width: 100px;
     /* Ukuran gambar loading */
 
-
 /* 
 height: 100px;
 
 /* Ukuran gambar loading */
-
 
 /* animation: spin 1s linear infinite;
 
@@ -772,4 +749,20 @@ height: 100px;
 
 .navbar:hover {
     background-color: #e3e3e3;
+}
+
+.navbar-button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Menghapus underline pada teks tautan */
+    display: inline-block; /* Membuat tautan tampil sebagai blok inline */
+}
+
+.navbar-button:hover {
+    background-color: #333333;
 }

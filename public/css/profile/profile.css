@@ -5,7 +5,6 @@ body {
     background-color: #f8f9fa;
 }
 
-
 /* Menambahkan transisi pada navbar */
 
 .navbar {
@@ -15,7 +14,6 @@ body {
 .navbar:hover {
     background-color: #e3e3e3;
 }
-
 
 /* Navbar */
 
@@ -109,7 +107,6 @@ body {
     /* Bergerak sedikit ke bawah saat diklik */
 }
 
-
 /* Profile Section */
 
 .profile-section {
@@ -148,7 +145,6 @@ body {
     background-color: #6f42c1;
     color: #ffffff;
 }
-
 
 /* Tasks Section */
 
@@ -201,7 +197,6 @@ body {
 .task-card p {
     margin: 5px 0;
 }
-
 
 /* Marketing Bootcamp Section */
 
@@ -324,7 +319,6 @@ body {
     flex-direction: column;
 }
 
-
 /* Media query for responsiveness */
 
 @media only screen and (max-width: 768px) {
@@ -374,4 +368,20 @@ body {
 
 .rounded-circle {
     border-radius: 10% !important;
+}
+
+.navbar-button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Menghapus underline pada teks tautan */
+    display: inline-block; /* Membuat tautan tampil sebagai blok inline */
+}
+
+.navbar-button:hover {
+    background-color: #333333;
 }

@@ -32,7 +32,7 @@
                         <a class="nav-link" href="/myproject">My Project</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="homepage">My Company</a>
+                    <a href="homepage" class="navbar-button">My Company</a>
                     </li>
 
                 </ul>
@@ -168,15 +168,15 @@
     <div class="container mt-5">
         <div class="sdg-container">
             <div class="grid">
-                <div class="grid-item" data-index="1"><img src="images/E-WEB-Goal-01.png" alt="Goal 1"></div>
-                <div class="grid-item" data-index="2"><img src="images/E-WEB-Goal-02.png" alt="Goal 2"></div>
-                <div class="grid-item" data-index="3"><img src="images/E-WEB-Goal-03.png" alt="Goal 3"></div>
-                <div class="grid-item" data-index="4"><img src="images/E-WEB-Goal-04.png" alt="Goal 4"></div>
-                <div class="grid-item" data-index="5"><img src="images/E-WEB-Goal-05.png" alt="Goal 5"></div>
-                <div class="grid-item" data-index="6"><img src="images/E-WEB-Goal-06.png" alt="Goal 6"></div>
-                <div class="grid-item" data-index="7"><img src="images/E-WEB-Goal-07.png" alt="Goal 7"></div>
-                <div class="grid-item" data-index="8"><img src="images/E-WEB-Goal-08.png" alt="Goal 8"></div>
-                <div class="grid-item" data-index="9"><img src="images/E-WEB-Goal-09.png" alt="Goal 9"></div>
+                <div class="grid-item" data-index="1"><img src="images/E-WEB-Goal-1.png" alt="Goal 1"></div>
+                <div class="grid-item" data-index="2"><img src="images/E-WEB-Goal-2.png" alt="Goal 2"></div>
+                <div class="grid-item" data-index="3"><img src="images/E-WEB-Goal-3.png" alt="Goal 3"></div>
+                <div class="grid-item" data-index="4"><img src="images/E-WEB-Goal-4.png" alt="Goal 4"></div>
+                <div class="grid-item" data-index="5"><img src="images/E-WEB-Goal-5.png" alt="Goal 5"></div>
+                <div class="grid-item" data-index="6"><img src="images/E-WEB-Goal-6.png" alt="Goal 6"></div>
+                <div class="grid-item" data-index="7"><img src="images/E-WEB-Goal-7.png" alt="Goal 7"></div>
+                <div class="grid-item" data-index="8"><img src="images/E-WEB-Goal-8.png" alt="Goal 8"></div>
+                <div class="grid-item" data-index="9"><img src="images/E-WEB-Goal-9.png" alt="Goal 9"></div>
                 <div class="grid-item" data-index="10"><img src="images/E-WEB-Goal-10.png" alt="Goal 10"></div>
                 <div class="grid-item" data-index="11"><img src="images/E-WEB-Goal-11.png" alt="Goal 11"></div>
                 <div class="grid-item" data-index="12"><img src="images/E-WEB-Goal-12.png" alt="Goal 12"></div>
