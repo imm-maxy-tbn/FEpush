@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     const inputs = document.querySelectorAll(".verification-code input");
     inputs.forEach((input, index) => {
         input.addEventListener("input", () => {
@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Function to handle the resend button click
     document
         .querySelector(".btn-resend")
-        .addEventListener("click", function () {
+        .addEventListener("click", function() {
             // Implement here the logic to resend the verification code
             // For now, let's just reset the countdown timer to 1 minute
             timeLeft = 60;
@@ -68,11 +68,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }, 1000);
             document.getElementById("notification").textContent =
-                "Kode OTP berhasil dikirim ke email Anda!";
+                "Kode OTP berhasil dikirim ke WhatsApp Anda!";
         });
 
     inputs.forEach((input) => {
-        input.addEventListener("input", function () {
+        input.addEventListener("input", function() {
             if (checkVerificationCode()) {
                 document.getElementById("notification").textContent =
                     "Verifikasi berhasil!";
@@ -85,8 +85,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    setTimeout(function () {
+document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
         var loading = document.getElementById("loading");
         loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
     }, 1000);

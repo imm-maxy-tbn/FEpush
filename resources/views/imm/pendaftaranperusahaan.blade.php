@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>IMM | Pendaftaran</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/imm/pendaftaranperusahaan.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -16,33 +16,33 @@
 
      
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-    <a class="navbar-brand" href="#">IMM</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container d-flex align-items-center justify-content-center">
+            <a class="navbar-brand" href="/">IMM</a>
+            <div class="justify-content-center" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-                <a class="nav-link" href="welcome">Home</a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="#">Bootcamp</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="#">IMM</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Community</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="profile">Profile</a>
-            </li>
-        </ul>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="welcome">Home</a>
+                    </li>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="bootcamp">Bootcamp</a>
+                    </li>
+                    <li class="nav-item active">
+                    <a href="imm" class="navbar-button">IMM</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="community">Community</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog">Explore</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile">Profile</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
     <form action="{{ route('companies.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
@@ -63,7 +63,7 @@
                         </tr>
                         <tr>
                             <td><span class="input-icon"><i class="fas fa-user"></i></span></td>
-                            <td><input type="email" placeholder="Nama PIC" id="nama_pic" name="nama_pic" required />
+                            <td><input type="text" placeholder="Nama PIC" id="nama_pic" name="nama_pic" required />
                             </td>
                         </tr>
                         <tr>
@@ -86,11 +86,7 @@
                             <td>
                                 <div class="dropdown">
                                     <input type="text" placeholder="Negara" id="negara" name="negara" required />
-                                    <div class="dropdown-content">
-                                        <a href="#">Negara 1</a>
-                                        <a href="#">Negara 2</a>
-                                        <a href="#">Negara 3</a>
-                                    </div>
+                     
                                 </div>
                             </td>
                         </tr>
@@ -100,11 +96,7 @@
                                 <div class="dropdown">
                                     <input type="text" placeholder="Provinsi" id="provinsi" name="provinsi"
                                         required />
-                                    <div class="dropdown-content">
-                                        <a href="#">Provinsi 1</a>
-                                        <a href="#">Provinsi 2</a>
-                                        <a href="#">Provinsi 3</a>
-                                    </div>
+                       
                                 </div>
                             </td>
                         </tr>
@@ -114,11 +106,7 @@
                                 <div class="dropdown">
                                     <input type="text" placeholder="Kabupaten" id="kabupaten" name="kabupaten"
                                         required />
-                                    <div class="dropdown-content">
-                                        <a href="#">Kabupaten 1</a>
-                                        <a href="#">Kabupaten 2</a>
-                                        <a href="#">Kabupaten 3</a>
-                                    </div>
+                      
                                 </div>
                             </td>
                         </tr>
@@ -133,8 +121,8 @@
                                     required /></td>
                         </tr>
                         <tr>
-                            <button class="btn btn-primary" type="submit" id="simpanBtn">Simpan Data
-                            </button>
+                           <a href="homepage"> <button class="btn btn-primary" type="submit" id="simpanBtn">Simpan Data
+                            </button></a>
                         </tr>
                     </table>
                 </div>

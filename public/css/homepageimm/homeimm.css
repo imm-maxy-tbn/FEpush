@@ -10,7 +10,6 @@ body {
     list-style-type: none;
 }
 
-
 /* Navbar */
 
 .navbar {
@@ -31,13 +30,6 @@ body {
     color: #5940cb;
     text-decoration: underline;
 }
-
-.container {
-    display: flex;
-    justify-content: start;
-    align-items: center;
-}
-
 
 /* Footer */
 
@@ -68,7 +60,7 @@ body {
 }
 
 .sosmed {
-    gap: 15px;
+    gap: 10px;
 }
 
 .sosmed a {
@@ -83,7 +75,6 @@ body {
     align-items: center;
     flex-direction: column;
 }
-
 
 /* end footer */
 
@@ -447,7 +438,6 @@ h4 {
     font-weight: bold;
 }
 
-
 /* Menambahkan transisi pada navbar */
 
 .navbar {
@@ -456,4 +446,20 @@ h4 {
 
 .navbar:hover {
     background-color: #e3e3e3;
+}
+
+.navbar-button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Menghapus underline pada teks tautan */
+    display: inline-block; /* Membuat tautan tampil sebagai blok inline */
+}
+
+.navbar-button:hover {
+    background-color: #333333;
 }

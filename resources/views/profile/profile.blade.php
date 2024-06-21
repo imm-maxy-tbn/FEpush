@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile Page</title>
+    <title>IMM | Profile</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/profile/profile.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -20,34 +20,42 @@
     </div>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">IMM</a>
+            <a class="navbar-brand" href="imm">IMM</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <a class="nav-link" href="welcome">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Bootcamp</a>
+                    <li class="nav-item ">
+                        <a class="nav-link" href="bootcamp">Bootcamp</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="imm">IMM</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">IMM</a>
+                        <a class="nav-link" href="community">Community</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#">Community</a>
+                        <a class="nav-link" href="blog">Explore</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="profile">Profile</a>
+                        <a href="profile" class="navbar-button">Profile</a>
                     </li>
                 </ul>
+                <div class="navbar-actions">
+                    <a href="login" class="btn btn-primary">Login</a>
+                    <a href="register" class="btn btn-outline-primary">Register</a>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Profile Section -->
+
+<!-- Profile Section -->
     <div class="container mt-5 pt-5">
         <div class="row">
             <div class="col-md-4 text-center">
@@ -196,7 +204,7 @@
         </div>
     </div>
 
-    <!--
+<!--
 <footer>
     <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
         <div class="row d-flex  justify-content-center align-items-center">
@@ -207,11 +215,11 @@
             </div>
             <div class="col-5 d-flex justify-content-center align-items-center">
                 <ul class=" d-flex " style="gap: 30px">
-                    <a href=""><li>HomePage</li></a>
-                    <a href=""><li>Bootcamp</li></a>
-                    <a href=""><li>IMM</li></a>
-                    <a href=""><li>Comunity</li></a>
-                    <a href=""><li>Profile</li></a>
+                    <a href="/"><li>HomePage</li></a>
+                    <a href="bootcamp"><li>Bootcamp</li></a>
+                    <a href="imm"><li>IMM</li></a>
+                    <a href="#"><li>Comunity</li></a>
+                    <a href="profile"><li>Profile</li></a>
                 </ul>
             </div>
             <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">

@@ -2,7 +2,6 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-
 /* Navbar */
 
 .navbar {
@@ -15,12 +14,6 @@ body {
     left: 0;
     z-index: 1000;
     border-bottom: 3px solid #5940cb;
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 .navbar-logo {
@@ -100,7 +93,6 @@ body {
     transform: translateY(1px);
     /* Bergerak sedikit ke bawah saat diklik */
 }
-
 
 /* Footer */
 
@@ -228,7 +220,7 @@ img {
 }
 
 .star::before {
-    content: '\2605';
+    content: "\2605";
     /* Unicode for a filled star */
 }
 
@@ -271,7 +263,6 @@ img {
     align-items: center;
 }
 
-
 /* .subclas{
     height: ;
 } */
@@ -284,4 +275,20 @@ img {
     background-color: transparent;
     width: 259px;
     height: 55px;
+}
+
+.navbar-button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Menghapus underline pada teks tautan */
+    display: inline-block; /* Membuat tautan tampil sebagai blok inline */
+}
+
+.navbar-button:hover {
+    background-color: #333333;
 }
