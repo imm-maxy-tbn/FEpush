@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>IMM | Laporan Bulanan</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/homepageimm/repotbulanan.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -48,7 +48,8 @@
                         <div class="number">
                             1
                         </div>
-                        <span class="" style="font-size: 24; font-weight:500">Masukkan nama aktivitas/program</span>
+                        <input type="text" class="form-control" name="" style="font-size: 24px; font-weight:500; background:transparent; border:none" placeholder="Masukkan nama aktivitas/program" id="">
+                     
                     </div>
                     <div class="form-group">
                         <textarea class="form-control berita" rows="3" placeholder="Berita acara kegiatan"></textarea>
@@ -77,29 +78,30 @@
     <div class="container tombol mt-5 mb-5">
         <div class="section d-flex tombol justify-content-center flex-column align-items-center">
             <button type="button" class="btntambah w-75" onclick="addReport()">Tambahkan Activity/Program</button>
-          <button type="submit" class=" btn-primary w-75 mt-3">Simpan Laporan</button>
+          <a href="laporanproject"><button type="submit" class=" btn-primary w-75 mt-3">Simpan Laporan</a></button>
         </div>
     </div>
 
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="brand-info">
-                    <h3>IMM</h3>
-                    <p>(TBN INDONESIA X MAXY ACADEMY)</p>
+    <footer>
+        <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
+            <div class="row d-flex  justify-content-center align-items-center">
+                <div class="col-4 d-flex flex-column" style="gap: 20px">
+                    <h5 class=" text-white  text-left">IMM</h5>
+                    <span class="span-footer text-left">Impact Measurement and Management
+                            <br> (TBN INDONESIA X MAXY ACADEMY)</span>
                 </div>
-                <div class="footer-links">
-                    <div class="footer-nav">
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="bootcamp">Bootcamp</a></li>
-                            <li><a href="imm">IMM</a></li>
-                            <li><a href="comunity">Community</a></li>
-                            <li><a href="profile">Profile</a></li>
-                        </ul>
-                    </div>
-                    <div class="social-media">
-                        <p class="footer-social-media">Social Media</p>
+                <div class="col-5 d-flex justify-content-center align-items-center">
+                    <ul class=" d-flex " style="gap: 30px">
+                        <a href=""><li>HomePage</li></a>
+                        <a href=""><li>Bootcamp</li></a>
+                        <a href=""><li>IMM</li></a>
+                        <a href=""><li>Comunity</li></a>
+                        <a href=""><li>Profile</li></a>
+                    </ul>
+                </div>
+                <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
+                    <span class="span-footer text-center">Sosial Media</span>
+                    <div class="sosmed d-flex justify-content-end  ">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
                         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -107,7 +109,8 @@
                     </div>
                 </div>
             </div>
-        </div>
+    
+     </div>
     </footer>
 
     <script>
