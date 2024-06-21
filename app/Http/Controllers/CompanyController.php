@@ -25,6 +25,7 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         try {
+            dd($request->all());
             $validated = $request->validate([
                 'nama' => 'required',
                 'profile' => 'required',
@@ -35,14 +36,24 @@ class CompanyController extends Controller
                 'negara' => 'required',
                 'provinsi' => 'required',
                 'kabupaten' => 'required',
-                'jumlah_karyawan' => 'required',
+                'jumlah_karyawan' => 'required|integer',
             ]);
 
-            $validated['user_id'] = Auth::id();
+            Company::create([
+                'user_id' => Auth::id(), // Mengisi user_id dengan ID pengguna yang sedang login
+                'nama' => $validated['nama'],
+                'profile' => $validated['profile'],
+                'tipe' => $validated['tipe'],
+                'nama_pic' => $validated['nama_pic'],
+                'posisi_pic' => $validated['posisi_pic'],
+                'telepon' => $validated['telepon'],
+                'negara' => $validated['negara'],
+                'provinsi' => $validated['provinsi'],
+                'kabupaten' => $validated['kabupaten'],
+                'jumlah_karyawan' => $validated['jumlah_karyawan'],
+            ]);
 
-            Company::create($validated);
-
-            return redirect()->route('home')
+            return redirect()->route('homepageimm.homepage')
                 ->with('success', 'Company created successfully.');
         } catch (\Exception $e) {
             Log::error('Error while storing company: ' . $e->getMessage());
@@ -59,7 +70,6 @@ class CompanyController extends Controller
             return back()->withInput()->withErrors($errors);
         }
     }
-
 
     /**
      * Display the specified Company.
@@ -111,7 +121,6 @@ class CompanyController extends Controller
 
         return redirect()->route('companies.index')->with('success', 'Company updated successfully.');
     }
-
 
     /**
      * Remove the specified Company from storage.

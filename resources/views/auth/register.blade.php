@@ -314,31 +314,6 @@
         <img src="images/imm.png" alt="Loading">
     </div>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">IMM Impact Mate</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="welcome">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="bootcamp">Bootcamp</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="comunity">Community</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profile">Profile</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
 
     <div class="register-container">
         <form method="POST" action="{{ route('register') }}">
