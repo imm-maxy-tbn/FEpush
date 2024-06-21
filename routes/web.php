@@ -151,9 +151,9 @@ Route::get('/bootcamp', function () {
     return view('bootcamp.bootcamp');
 });
 
-Route::get('/event-register', function () {
-    return view('event.event-register');
-});
+// Route::get('/event-register', function () {
+//     return view('event.event-register');
+// });
 
 Route::get('/succes', function () {
     return view('event.succes');
