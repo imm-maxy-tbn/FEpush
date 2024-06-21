@@ -71,7 +71,6 @@
         <div class="indicators mt-5">
             <h2 class="text-center">Indicators</h2>
             <div class="indicator-item mt-4">
-                <div class="d-flex align-items-center">
                     <input type="checkbox" id="indicator-11.1" class="indicator-checkbox">
                     <label for="indicator-11.1" class="d-flex align-items-center">
                         <img src="images/E-WEB-Goal-11.png" alt="SDG 11" class="indicator-icon">

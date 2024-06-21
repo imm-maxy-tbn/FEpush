@@ -57,6 +57,9 @@
                     <div class="col-md-6">
                         <h2 class="project-title">Tentang Proyek Anda</h2>
                         @csrf
+                        <div class="form-group" >
+                            <input type="file" class="form-control-file" id="img" name="img" hidden>
+                        </div>
                         <div class="form-group">
                             <label for="nama">Nama Proyek</label>
                             <input type="text" class="form-control" name="nama" id="nama" required>
@@ -195,56 +198,66 @@
                     </div>
                 </div>
             </div>
-    
-            <div id="indicator-section" style="display: none;">
+            {{-- Indikator --}}
+            <div id="indicator-section" style="display: none">
                 <div class="container mt-5">
                     <h1 class="text-center" id="project-title"></h1>
                     <p class="text-center">Goals SDGs project anda</p>
                     <div class="d-flex justify-content-center mb-4" id="sdg-images-container"></div>
                     <div class="text-center bg-light p-3 mb-4" id="project-long-description"></div>
-                    <h5 class="text-center mb-4">Tentukan indikator SDGs sebagai target project anda! Anda dapat memilih lebih dari satu indikator</h5>
-            
-                    @foreach ($sdgs as $sdg)
-                    <div class="goal-description mb-4 p-3 bg-white shadow-sm rounded" id="goal{{ $sdg->id }}-description">
-                        <div class="d-flex align-items-center">
-                            <img src="{{ env('APP_BACKEND_URL') . '/images/' . $sdg->img }}" alt="SDG {{ $sdg->id }}" class="mr-3" width="50">
-                            <div>
-                                <h5 class="mb-0">SDGs Goals {{ $sdg->id }}</h5>
-                                <p class="mb-0">{{ $sdg->name }}</p>
+                    <h5 class="text-center mb-4">Tentukan indikator SDGs sebagai target project anda! Anda dapat memilih
+                        lebih dari satu indikator</h5>
+    
+                        @foreach ($sdgs as $sdg)
+                        <div class="goal-description mb-4 p-3 bg-white shadow-sm rounded" id="goal{{ $sdg->id }}-description">
+                            <div class="d-flex align-items-center">
+                                <img src="{{ env('APP_BACKEND_URL') . '/images/' . $sdg->img }}" alt="SDG {{ $sdg->id }}"
+                                    class="mr-3" width="50">
+                                <div>
+                                    <h5 class="mb-0">SDGs Goals {{ $sdg->id }}</h5>
+                                    <p class="mb-0">{{ $sdg->name }}</p>
+                                </div>
                             </div>
-                        </div>
-                        @foreach ($sdg->indicators as $indicator)
-                            @if ($indicator->level == 1)
-                            <div class="mt-3 d-flex align-items-center level-1-indicator" style="gap: 15px">
-                                <label for="indicator-{{ $indicator->id }}">
-                                    <input type="checkbox" class="indicator-checkbox" id="indicator-{{ $indicator->id }}" value="{{ $indicator->order }}">
-                                    <span>{{ $indicator->order }} </span><span>{{ $indicator->name }}</span>
-                                </label>
-                            </div>
+                    
+                            @foreach ($sdg->indicators as $indicator)
+                                @if ($indicator->level == 1)
+                                    <div class="mt-3 d-flex align-items-center level-1-indicator" style="gap: 15px">
+                                        <label for="indicator-{{ $indicator->id }}">
+                                            <input type="checkbox" class="indicator-checkbox"
+                                                id="indicator-{{ $indicator->id }}" value="{{ $indicator->order }}"
+                                                data-target="sub-container-{{ $indicator->id }}">
+                                            <span>{{ $indicator->order }} </span><span>{{ $indicator->name }}</span>
+                                        </label>
+                                    </div>
+                                @endif
+                    
+                                {{-- Sub-container untuk indikator level 2 --}}
+                                @if ($indicator->level == 1)
+                                <div class="sub-container" id="sub-container-{{ $indicator->id }}"
+                                    style="display: none; margin-top: 10px;">
+                                    <div class="d-flex flex-column" style="gap: 15px; margin-left: 50px;">
+                                        @foreach ($indicator->childIndicators as $childIndicator)
+                                        <div class=" d-flex">
+                                            <span>{{ $childIndicator->order }} </span><span>{{ $childIndicator->name }}</span><br>
+                                        </div>
+                                        @endforeach
+                                    </div>
+                                </div>
                             @endif
-                        @endforeach
-            
-                        {{-- Sub-container untuk indikator level 2 --}}
-                        @foreach ($sdg->indicators as $indicator)
-                        @if ($indicator->level == 2)
-                        <div class="sub-container" id="sub-container-{{ $indicator->order }}" style="display: none; margin-top: 10px;">
-                            <div class="d-flex align-items-center" style="gap: 15px; margin-left: 70px;">
-                                <span>{{ $indicator->order }} </span><span>{{ $indicator->name }}</span>
-                            </div>
+                            
+                            @endforeach
                         </div>
-                        @endif
-                        @endforeach
-            
-                    </div>
                     @endforeach
-            
-            
+                    
+    
                     <div class="d-flex justify-content-between mt-3">
                         <button type="button" class="btn btn-secondary" id="back-to-sdg-section">Back</button>
                         <button type="button" class="btn btn-primary" id="next-to-metric-section">Next</button>
                     </div>
                 </div>
-            </div>
+            </div>
+            
+            
 
             <div id="metric-section" style="display: none;">
                 <div class="container mt-5">
@@ -257,10 +270,54 @@
                     </div>
                     <div class="d-flex justify-content-between mt-3">
                         <button type="button" class="btn btn-secondary" id="back-to-indicator-section">Back</button>
+                        <button type="button" class="btn btn-primary" id="next-to-review-section">Next</button>
+                    </div>
+                </div>
+            </div>
+                    
+            <div id="review-section" style="display: none;">
+                <div class="container mt-5 pt-5">
+                    <h1 class="text-center">Detail Review: SDGs Goals, Indicators, dan Metrix</h1>
+                    <p class="text-center">Goals SDGs project anda</p>
+                    <div class="d-flex justify-content-center mb-4" id="sdg-images-container"></div>
+                        <div class="goals-text mt-4">
+                            <div class="goal-description">
+                            </div>
+                        </div>
+                    </div>
+                {{-- Bagian Indicator --}}
+                <div class="indicators mt-5">
+                    <h2 class="text-center">Indicators</h2>
+                    <div class="indicator-item mt-4">
+                        <label for="indicator-11.1" class="d-flex align-items-center">
+                            <img src="{{ env('APP_BACKEND_URL') . '/images/' . $sdg->img }}" alt="SDG {{ $sdg->id }}" class="indicator-icon">
+                            <h5>{{$indicator->order }} {{ $indicator->name }}</h5>
+                        </label>
+                    </div>
+                    <ul class="mt-2 ml-4">
+                        <li>{{ $childIndicator->order }} {{ $childIndicator->name }}</li>
+                    </ul>
+                </div>
+
+            
+                {{-- Bagian metrix --}}
+                <div class="indicators mt-5">
+                    <h2 class="text-center">Metrix</h2>
+                    <div class="indicator-item mt-4">
+                        <div class="d-flex justify-content-between align-items-center p-3 border">
+                            <div>
+                                <h5 class="indicator-title"></h5>
+                                <p class="indicator-description"></p>
+                            </div>
+                        </div>
+            
+                    <div class="d-flex justify-content-between mt-3">
+                        <button type="button" class="btn btn-secondary" id="back-to-metric-section">Back</button>
                         <button type="submit" class="btn btn-primary">Submit</button>
                     </div>
                 </div>
             </div>
+            
         </form>
     </div>
 
@@ -304,8 +361,23 @@
     <script src="{{ asset('js/imm/pemilihansdgs.js') }}"></script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
-
     <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    var checkboxes = document.querySelectorAll(".indicator-checkbox");
+
+    checkboxes.forEach(function(checkbox) {
+        checkbox.addEventListener("change", function() {
+            var subContainerId = this.getAttribute("data-target");
+            var subContainer = document.getElementById(subContainerId);
+
+            if (this.checked) {
+                subContainer.style.display = "block"; // Menampilkan sub-container
+            } else {
+                subContainer.style.display = "none"; // Menyembunyikan sub-container
+            }
+        });
+    });
+});
         $(document).ready(function() {
             var index = 1;
             $(".btn-add-pelanggan").click(function() {
@@ -360,6 +432,23 @@
                 $('#sdg-section').show();
             });
     
+            $('#next-to-metric-section').on('click', function() {
+                $('#indicator-section').hide();
+                $('#metric-section').show();
+            });
+    
+    
+            $('#next-to-review-section').on('click', function() {
+                $('#metric-section').hide();
+                $('#review-section').show();
+            });
+    
+    
+            $('#back-to-metric-section').on('click', function() {
+                $('#review-section').hide();
+                $('#metric-section').show();
+            });
+    
             $('#back-to-form-section').on('click', function() {
                 $('#sdg-section').hide();
                 $('#form-section').show();
@@ -408,7 +497,17 @@
                 $('#goal' + sdgId + '-description .sub-container').hide();
                 $('#goal' + sdgId + '-description .sub-container[data-level="2"]').show();
             });
-
+            
+            $(document).on('change', '.indicator-checkbox', function() {
+        var indicatorId = $(this).val();
+        var subContainer = $('#sub-container-' + indicatorId);
+        if ($(this).is(':checked')) {
+            subContainer.insertAfter($(this).closest('.level-1-indicator')).show();
+        } else {
+            subContainer.hide();
+            subContainer.find('input[type="checkbox"]').prop('checked', false);
+        }
+    });
             
     var checkbox = document.getElementById("subscribe");
     var subContainer = document.getElementById("sub-container");
@@ -517,6 +616,82 @@ $('#next-to-metric-section').on('click', function() {
             $('#metric-section').hide();
             $('#indicator-section').show();
         });
+        $(document).ready(function() {
+    // Function to update review section with selected project details
+    function updateReviewSection() {
+        // Project Name
+        var projectName = $('#nama').val();
+        $('#project-title').text(projectName);
+
+        // Selected SDG Images
+        var selectedSdgImages = $('.sdg-checkbox:checked').map(function() {
+            return $(this).closest('.sdg-item').find('img').attr('src');
+        }).get();
+        $('#sdg-images-container').html('');
+        selectedSdgImages.forEach(function(src) {
+            $('#sdg-images-container').append('<img src="' + src + '" alt="SDG" class="img-fluid mx-2 sdg-goal">');
+        });
+
+        // Project Description
+        var projectDescription = $('#deskripsi').val();
+        $('#project-long-description').text(projectDescription);
+
+        // Selected SDGs and Indicators
+        var selectedSdgs = $('.sdg-checkbox:checked').map(function() {
+            var sdgId = $(this).val();
+            var sdgName = $(this).closest('.sdg-item').find('.sdg-name').text().trim();
+            var sdgImage = $(this).closest('.sdg-item').find('img').attr('src');
+            var selectedIndicators = $('#sub-container-' + sdgId + ' input:checked').map(function() {
+                var indicatorId = $(this).val();
+                var indicatorName = $(this).next().text().trim();
+                return {
+                    name: indicatorName
+                };
+            }).get();
+            return {
+                name: sdgName,
+                image: sdgImage,
+                indicators: selectedIndicators
+            };
+        }).get();
+
+        var sdgsHtml = '';
+        selectedSdgs.forEach(function(sdg) {
+            sdgsHtml += '<div class="mb-4">';
+            sdgsHtml += '<h3>' + sdg.name + '</h3>';
+            sdgsHtml += '<img src="' + sdg.image + '" alt="' + sdg.name + '" class="img-fluid mx-2 sdg-goal">';
+            sdgsHtml += '<div class="ml-4 mt-2">';
+            sdg.indicators.forEach(function(indicator) {
+                sdgsHtml += '<h5>' + indicator.name + '</h5>';
+            });
+            sdgsHtml += '</div></div>';
+        });
+        $('#selected-sdgs-container').html(sdgsHtml);
+
+        // Selected Metrics
+        var selectedMetrics = $('.metric-checkbox:checked').map(function() {
+            return $(this).closest('.d-flex').find('h5').text().trim();
+        }).get();
+        var metricsHtml = '<div>';
+        selectedMetrics.forEach(function(metric) {
+            metricsHtml += '<h5 class="text-primary">' + metric + '</h5>';
+        });
+        metricsHtml += '</div>';
+        $('#review-selected-metrics').html(metricsHtml);
+    }
+
+    // Update review section when the Next or Back buttons are clicked
+    $('#next-to-review-section, #back-to-metric-section').on('click', function() {
+        updateReviewSection();
+    });
+
+    // Submit form action
+    $('#submit-project').on('click', function() {
+        // Perform form submission or AJAX request here
+        $('form').submit(); // Assuming your form has an action attribute defined
+    });
+});
+
     </script>
     
 </body>

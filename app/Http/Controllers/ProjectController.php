@@ -111,7 +111,6 @@ class ProjectController extends Controller
                 ]);
             }
         }
-        dd($request->all());
 
         return redirect()->route('myproject.creatproject.creatproject')->with('success', 'Project created successfully');
     }
