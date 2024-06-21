@@ -23,8 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function saveSelectedSDGs() {
     var selectedSDGs = [];
-    document
-        .querySelectorAll(".sdg-checkbox:checked")
+    document.querySelectorAll(".sdg-checkbox:checked")
         .forEach(function (checkbox) {
             selectedSDGs.push(checkbox.value);
         });

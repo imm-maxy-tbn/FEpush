@@ -129,7 +129,7 @@ body {
 }
 
 .sosmed {
-    gap: 10px;
+    gap: 15px;
 }
 
 .sosmed a {
@@ -843,6 +843,13 @@ h2 {
 }
 
 /* Gaya untuk kontainer tabel */
+
+.table-container {
+    position: absolute;
+    top: 671px;
+    right: 543px;
+}
+
 
 /* Gaya untuk tabel kotak */
 

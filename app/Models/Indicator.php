@@ -27,6 +27,6 @@ class Indicator extends Model
 
     public function metrics()
     {
-        return $this->belongsToMany(Metric::class);
+        return $this->belongsToMany(Metric::class,'metric_indicator');
     }
 }
