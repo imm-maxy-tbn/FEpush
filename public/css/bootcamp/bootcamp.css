@@ -221,6 +221,7 @@ img {
 
 .star::before {
     content: "\2605";
+    content: "\2605";
     /* Unicode for a filled star */
 }
 
@@ -276,6 +277,32 @@ img {
     width: 259px;
     height: 55px;
 }
+
+/* Efek loading */
+#loading {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 5px;
+}
+
+#loading img {
+    width: 100px;
+    height: 100px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
 
 .navbar-button {
     background-color: #000000;

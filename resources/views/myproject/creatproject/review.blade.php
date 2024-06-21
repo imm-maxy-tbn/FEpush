@@ -58,7 +58,7 @@
             <h2 class="text-center">Indicators</h2>
 
             {{-- integrate sdgs --}}
-            
+
             <div class="indicator-item mt-4">
                 <div class="d-flex align-items-center">
                     <label for="indicator-11.3" class="d-flex align-items-center">
@@ -70,7 +70,7 @@
                                 <label for="subscribe">
                                     <input type="checkbox" id="subscribe" name="subscribe" value="yes">
                                 </label>
-                     
+
                                 <span>11.1</span>   <div class=" d-flex flex-column justify-content-center align-items-center">
                                 <span>Pada tahun 2030, menjamin akses bagi semua orang terhadap
                                     perumahan dan layanan dasar yang layak, aman dan terjangkau serta memperbaiki

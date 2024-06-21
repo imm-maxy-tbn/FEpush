@@ -1,11 +1,12 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Otp;
 
-class VerificationController extends Controller
+class OtpController extends Controller
 {
     private $otp;
 
@@ -14,17 +15,12 @@ class VerificationController extends Controller
         $this->otp = new Otp;
     }
 
-    public function sendVerificationEmail(Request $request)
+    public function GetloginOtp(Request $request)
     {
         /* Generate OTP */
         $otp = $this->otp->generate($request->email, 'numeric', 6, 10);
 
         $data = [$request->email, $request->no_hp];
-
-        $email = $request->email;
-        $newotp = $otp->token;
-        $message = $otp->message;
-
         /* Prepare email content */
         $emailData = [
             'email' => $request->email,
@@ -37,10 +33,6 @@ class VerificationController extends Controller
             Mail::send('mailVerification', ['data' => $emailData], function ($message) use ($emailData) {
                 $message->to($emailData['email'])->subject($emailData['title']);
             });
-
-            // return view('imm.kodeotp', compact('email', 'newotp', 'message'));
-            // return redirect()->route('imm.kodeotp')->with('success', 'Project created successfully');
-            // return view('imm.kodeotp', compact('posts', 'tags', 'categories','backendUrl'));
             return response([
                 'email' => $emailData['email'],
                 'success' => $otp->status,
@@ -60,13 +52,7 @@ class VerificationController extends Controller
         }
     }
 
-    public function showVerificationForm(Request $request)
-    {
-        $email = session('email');
-        return view('imm3', compact('email'));
-    }
-
-    public function verifyCode(Request $request)
+    public function VerifyOtp(Request $request)
     {
         $email = $request->email;
         $otpCode = $request->otp_code;
@@ -94,10 +80,11 @@ class VerificationController extends Controller
         }
     }
 
-    public function showOtpVerification(Request $request)
+    public function index(Request $request)
     {
-        $email = $request->query('email');
-        $telepon = $request->query('telepon');
-        return view('imm.kodeotp', compact('email', 'telepon'));
+        return view('otp', [
+            'email' => $request->query('email'),
+            'no_hp' => $request->query('no_hp'),
+        ]);
     }
 }

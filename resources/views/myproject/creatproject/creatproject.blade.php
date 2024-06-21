@@ -36,7 +36,7 @@
                     </li>
 
                 </ul>
-                
+
 
             </div>
             <li class="nav-item">
@@ -53,7 +53,7 @@
 
     <div class="container mt-5">
         <h1>Buat Projek Baru</h1>
-       
+
     </div>
 
 
@@ -249,7 +249,7 @@
                         <p>Kota dan Permukiman yang Inklusif, Aman, Tahan Lama: Membuat kota dan permukiman manusia menjadi inklusif, aman, tangguh, dan berkelanjutan</p>
                     </div>
                     <h5 class="text-center mb-4">Tentukan indikator SDGs sebagai target project anda! Anda dapat memilih lebih dari satu indikator</h5>
-                
+
                     <div id="goal11-description" class="sdg-description mb-4 p-3 bg-white shadow-sm rounded">
                         <div class="d-flex align-items-center">
                             <img src="images/E-WEB-Goal-11.png" alt="SDG 11" class="mr-3" width="50">
@@ -263,10 +263,10 @@
                                 <input type="checkbox" id="subscribe" name="subscribe" value="yes">
                             </label>
                             <span>11.1</span><span>Pada tahun 2030, menjamin akses bagi semua orang terhadap perumahan dan layanan dasar yang layak, aman dan terjangkau serta memperbaiki kawasan kumuh</span>
-                
+
                         </div>
                     </div>
-                
+
                     <div id="goal13-description" class="sdg-description mb-4 p-3 bg-white shadow-sm rounded">
                         <div class="d-flex align-items-center">
                             <img src="images/E-WEB-Goal-13.png" alt="SDG 13" class="mr-3" width="50">
@@ -280,10 +280,10 @@
                                 <input type="checkbox" id="subscribe" name="subscribe" value="yes">
                             </label>
                             <span>11.1</span><span>Pada tahun 2030, menjamin akses bagi semua orang terhadap perumahan dan layanan dasar yang layak, aman dan terjangkau serta memperbaiki kawasan kumuh</span>
-                
+
                         </div>
                     </div>
-                
+
                     <div id="goal15-description" class="sdg-description mb-4 p-3 bg-white shadow-sm rounded">
                         <div class="d-flex align-items-center">
                             <img src="images/E-WEB-Goal-15.png" alt="SDG 15" class="mr-3" width="50">
@@ -297,10 +297,10 @@
                                 <input type="checkbox" id="subscribe" name="subscribe" value="yes">
                             </label>
                             <span>11.1</span><span>Pada tahun 2030, menjamin akses bagi semua orang terhadap perumahan dan layanan dasar yang layak, aman dan terjangkau serta memperbaiki kawasan kumuh</span>
-                
+
                         </div>
                     </div>
-                
+
                     <div class="d-flex justify-content-between mt-3">
                         <button type="button" class="btn btn-secondary" id="back-to-sdg-section">Back</button>
                         <button type="button" class="btn btn-primary" id="next-to-metric-section">Next</button>

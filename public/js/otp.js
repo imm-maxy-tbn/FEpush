@@ -8,17 +8,15 @@ document.getElementById("sendOtpBtn").addEventListener("click", function () {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
-            "X-CSRF-TOKEN": document
-                .querySelector('meta[name="csrf-token"]')
-                .getAttribute("content"),
+            "X-CSRF-TOKEN": document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
         },
         body: JSON.stringify({ email: email, telepon: telepon }),
     })
-        .then((response) => response.json())
-        .then((data) => {
-            document.getElementById("notification").innerText = data.message;
-        })
-        .catch((error) => console.error("Error:", error));
+    .then((response) => response.json())
+    .then((data) => {
+        document.getElementById("notification").innerText = data.message;
+    })
+    .catch((error) => console.error("Error:", error));
 });
 
 document.getElementById("verifyOtpBtn").addEventListener("click", function () {

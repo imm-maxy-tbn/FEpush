@@ -30,6 +30,11 @@ body {
     text-decoration: underline;
 }
 
+.navbar-actions {
+    display: flex;
+    margin-right: 20px;
+}
+
 /* Footer */
 
 .footer {
@@ -76,6 +81,14 @@ body {
 }
 
 /* General Styles */
+
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #050505;
+    margin-top: 100px;
+    /* Adjusted for better spacing from navbar */
+}
 
 /* Project Title */
 
@@ -680,10 +693,7 @@ body {
     /* Warna border abu-abu lebih gelap saat hover */
 }
 
-/* 
 /* Efek loading */
-
-/* 
 #loading {
     position: fixed;
     width: 100%;
@@ -698,27 +708,21 @@ body {
 
 #loading img {
     width: 100px;
-    /* Ukuran gambar loading */
-
-/* 
-height: 100px;
-
-/* Ukuran gambar loading */
-
-/* animation: spin 1s linear infinite;
-
+    height: 100px;
+    animation: spin 1s linear infinite;
 }
+
 @keyframes spin {
     100% {
         transform: rotate(360deg);
     }
-} */
+}
 
 */ */
 /* Animasi umum untuk elemen lainnya */
 
 
-/* 
+/*
 .content-container h1,
 .date-box,
 .chart-container,
@@ -766,3 +770,4 @@ height: 100px;
 .navbar-button:hover {
     background-color: #333333;
 }
+

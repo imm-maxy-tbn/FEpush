@@ -15,6 +15,7 @@
 
 <body>
 
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="/">IMM</a>
@@ -141,14 +142,14 @@
     <div class="container mt-5">
 
             <div class="col-7  d-flex flex-column justify-content-center" style="margin-top: -60px">
-    
+
                     <table class="box-table">
                         <h2 class="table-title mb-3">New Assignment</h2>
                         <tr>
-                            
+
                             <td class="top-text ">Analisis Data Menggunakan Metode Machine Learning:</td>
                         </tr>
-                        
+
                         <tr>
                             <td class="bottom-text">Studi Kasus pada Industri Retail</td>
                         </tr>
@@ -162,7 +163,7 @@
                             <td class="bottom-text">dan Analisis Data Besar</td>
                         </tr>
                     </table>
-          
+
             </div>
             <div class="col-5">
 <div class="table">
@@ -213,7 +214,7 @@
                 <div class="container"></div>
             </div>
         </div>
-  
+
         <footer>
             <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
                 <div class="row d-flex  justify-content-center align-items-center">
@@ -241,7 +242,7 @@
                         </div>
                     </div>
                 </div>
-        
+
          </div>
         </footer>
 

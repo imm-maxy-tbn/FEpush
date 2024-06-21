@@ -11,98 +11,40 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        .content-wrapper {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-        }
 
-        .left-content,
-        .right-content {
-            padding: 10px;
-        }
-
-        .left-content {
-            max-width: 60%;
-            flex: 1;
-        }
-
-        .right-content {
-            max-width: 40%;
-            flex: 1;
-        }
-
-        .img-fluid {
-            max-width: 100%;
-            height: auto;
-        }
-
-        .progress {
-            width: 100%;
-        }
-
-        .header-image {
-            width: 100%;
-            height: auto;
-        }
-
-        .input-container {
-            display: flex;
-            flex-direction: column;
-            /* Mengatur elemen menjadi kolom (atas-bawah) */
-            align-items: flex-start;
-            /* Mengatur elemen untuk rata kiri */
-            gap: 10px;
-            /* Memberi jarak antara elemen */
-            margin: 0;
-        }
-
-        .input-container .left {
-            margin: 0;
-        }
-
-        .input-container .right {
-            margin: 0;
-            text-align: left;
-            /* Menyelaraskan teks tombol ke kiri */
-            width: 100%;
-            /* Memastikan tombol memiliki lebar 100% */
-        }
-
-        .input-container .right button {
-            width: 100%;
-            /* Memastikan tombol memiliki lebar 100% */
-            margin-top: 0;
-        }
-
-        .card-title,
-        .card-subtitle {
-            margin-bottom: 15px;
-        }
-
-        .list-group-item {
-            border: 1px solid #e9ecef;
-            margin-bottom: 5px;
-            border-radius: 4px;
-        }
-
-        .badge-pill {
-            padding: 5px 10px;
-        }
-
-        .progress {
-            height: 15px;
-        }
-    </style>
 </head>
 
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="homepage">IMM</a>
+
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="#">IMM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="welcome">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Bootcamp</a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#">IMM <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Community</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="profile">Profile</a>
+                </li>
+            </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <!-- Image Section -->
     <div class="container mt-5 pt-5">
@@ -244,6 +186,69 @@
                         </div>
                         <p class="mt-3 text-center">Total Dana Untuk Proyek Ini Telah Terpenuhi</p>
                     </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="right-content">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="input-container">
+                        <div class="left">
+                            <h5 class="card-title">Metrix Anda</h5>
+                        </div>
+                        <div class="right">
+                            <button class="btn btn-primary">Cari yang berkaitan dengan Metrix Anda</button>
+                        </div>
+                    </div>
+                    <ul class="list-group mt-3">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="impact" class="text-dark">Assets Under Management: Total</a>
+                            <span class="badge badge-primary badge-pill"><i class="fas fa-check"></i></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="impact" class="text-dark">Bias-Reducing Investment Practices</a>
+                            <span class="badge badge-primary badge-pill"><i class="fas fa-check"></i></span>
+                        </li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">
+                            <a href="impact" class="text-dark">Bias-Reducing Investment Practices</a>
+                            <span class="badge badge-primary badge-pill"><i class="fas fa-check"></i></span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Penggunaan Dana</h5>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span>Dana Hibah/Grant</span>
+                            <span class="font-weight-bold">5.000.000</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex justify-content-between">
+                            <span>Dana Pribadi</span>
+                            <span class="font-weight-bold">15.000.000</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 75%;" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="d-flex justify-content-between">
+                            <span>Total Dana</span>
+                            <span class="font-weight-bold">20.000.000</span>
+                        </div>
+                        <div class="progress">
+                            <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                        </div>
+                    </div>
+                    <p class="mt-3 text-center">Total Dana Untuk Proyek Ini Telah Terpenuhi</p>
                 </div>
             </div>
         </div>
