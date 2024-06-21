@@ -56,12 +56,12 @@ class SurveyController extends Controller
                         'content' => $questionData['content'],
                         'type' => $questionData['type'],
                         'rules' => isset($questionData['rules']) ? explode(',', $questionData['rules']) : [],
-                        'options' => isset($questionData['options']) ? explode(',', $questionData['options']) : null,
+                        'options' => isset($questionData['options']) ? $questionData['options'] : null,
                     ]);
                 }
             }
 
-            return redirect()->route('surveys.index')->with('success', 'Survey created successfully.');
+            return redirect()->route('impact.impact')->with('success', 'Survey created successfully.');
         } catch (\Exception $e) {
             Log::error('Survey creation failed: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Failed to create survey. Please try again later.');
@@ -135,7 +135,10 @@ class SurveyController extends Controller
 
             $lastEntry = null;
         } else {
-            $lastEntry = Entry::where('participant_id', $user->id)->latest()->first();
+            $lastEntry = Entry::where('participant_id', $user->id)
+                  ->where('survey_id', $survey->id)
+                  ->latest()
+                  ->first();
         }
 
         return $this->createEntry($survey, $user, $lastEntry);
@@ -147,7 +150,10 @@ class SurveyController extends Controller
             Log::info('Incoming request data:', $request->all());
 
             // Check if the user has already submitted the survey
-            $lastEntry = Entry::where('participant_id', $user->id)->latest()->first();
+            $lastEntry = Entry::where('participant_id', $user->id)
+                  ->where('survey_id', $survey->id)
+                  ->latest()
+                  ->first();
             $alreadySubmitted = $lastEntry !== null;
 
             // Validate the request data against the survey's rules
@@ -157,7 +163,7 @@ class SurveyController extends Controller
             if (!$alreadySubmitted) {
                 (new Entry)->for($survey)->by($user)->fromArray($answers)->push();
             }
-            
+
             return view('survey.responden.responden-penutup-survey', compact('survey', 'alreadySubmitted'));
         } catch (ValidationException $e) {
             // Log the validation error details

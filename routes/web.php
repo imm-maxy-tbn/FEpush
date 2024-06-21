@@ -72,7 +72,7 @@ Route::get('/detail', function () {
 
 Route::get('/impact', function () {
     return view('myproject.impact');
-});
+})->name('impact.impact');;
 
 Route::get('/profile', function () {
     return view('profile.profile');
@@ -130,9 +130,9 @@ Route::get('/responden-skala', function () {
     return view('survey.responden.responden-skala');
 });
 
-
 Route::get('/edit-survey', function () {
-    return view('survey.edit-survey.edit-survey');
+    // return view('survey.edit-survey.edit-survey');
+    return view('survey.edit-survey.edit-survey-new');
 });
 
 // Route::get('/event', function () {
@@ -196,3 +196,4 @@ Route::get('responden/{id}', [SurveyController::class, 'view'])->name('surveys.v
 Route::get('responden-data-diri/{id}', [SurveyController::class, 'dataDiri'])->name('surveys.data-diri');
 Route::post('responden/{id}', [SurveyController::class, 'registerUser'])->name('surveys.register-user');
 Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submit'])->name('surveys.submit');
+Route::post('survey', [SurveyController::class, 'store'])->name('surveys.store');

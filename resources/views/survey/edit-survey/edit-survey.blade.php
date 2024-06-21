@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="{{ asset('css/responden/edit-survey.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/responden/edit-survey.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
 </head>
@@ -24,29 +24,39 @@
     </nav>
 
     <div class="container content mt-5 mb-5">
-        <div class="container"><label for="gambar" style="cursor: pointer;">
+        {{-- <div class="container">
+            <label for="gambar" style="cursor: pointer;">
                 <div class="sub-content d-flex justify-content-center align-items-center">
                     <img src="images/upload.png" width="42">
             </label>
             <input type="file" id="gambar" name="gambar" accept="image/*" style="display: none;">
-        </div>
+        </div> --}}
         <div class="mb-2 mt-2">
-            <input type="text" name="" class="form-control" placeholder="Judul Survey anda"
+            <input type="text" name="name" class="form-control" placeholder="Judul Survey anda"
                 style="border: none; background:transparent; font-size: 40px;font-weight: bold;">
         </div>
-        <div class="mb-2 mt-2">
+        {{-- <div class="mb-2 mt-2">
             <textarea type="text" name="" class="form-control "
                 style="font-size: 20px; border: none; background:transparent;" placeholder="Desksipsi survey anda"> Deskripsi Survey anda</textarea>
+        </div> --}}
+        <div class="form-group" style="display: none;">
+            <label for="accept-guest-entries">Accept Guest Entries</label>
+            <input type="hidden" name="settings[accept-guest-entries]" id="accept-guest-entries" value="true"
+                class="form-control">
+        </div>
+        <div class="form-group" style="display: none;">
+            <label for="limit-per-participant">Limit Per Participant</label>
+            <input type="hidden" name="settings[limit-per-participant]" id="limit-per-participant" class="form-control"
+                value="-1">
         </div>
 
-
         <div class="row d-flex justify-content-between">
-            <button type="" class="btn-mulai">Mulai Survey</button>
+            {{-- <button type="" class="btn-mulai">Mulai Survey</button>
             <button type="" class="btn-akhiri">Akhiri Survey</button>
             <button type="" class="btn-lihat d-flex justify-content-around align-items-center">
                 <a href="responden" class="text-dark"><span>Lihat Survey</span></a>
                 <img src="images/mata-icon.png" width="25" height="20" alt="">
-            </button>
+            </button> --}}
             <button class="btn-simpan d-flex justify-content-around align-items-center">
                 <a href="impact" class="text-white"><span>Simpan Survey</span></a>
                 <img src="images/simpan-icon.png" width="29" height="auto" alt="">
@@ -92,21 +102,32 @@
 
     <div class="container d-flex justify-content-center">
         <span class="btn-tambah-bagian" id="add-section-btn">Tambah Bagian Survey +</span>
-    </div>   <footer>
+    </div>
+    <footer>
         <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
             <div class="row d-flex  justify-content-center align-items-center">
                 <div class="col-4 d-flex flex-column" style="gap: 20px">
                     <h5 class=" text-white  text-left">IMM</h5>
                     <span class="span-footer text-left">Impact Measurement and Management
-                            <br> (TBN INDONESIA X MAXY ACADEMY)</span>
+                        <br> (TBN INDONESIA X MAXY ACADEMY)</span>
                 </div>
                 <div class="col-5 d-flex justify-content-center align-items-center">
                     <ul class=" d-flex " style="gap: 30px">
-                        <a href=""><li>HomePage</li></a>
-                        <a href=""><li>Bootcamp</li></a>
-                        <a href=""><li>IMM</li></a>
-                        <a href=""><li>Comunity</li></a>
-                        <a href=""><li>Profile</li></a>
+                        <a href="">
+                            <li>HomePage</li>
+                        </a>
+                        <a href="">
+                            <li>Bootcamp</li>
+                        </a>
+                        <a href="">
+                            <li>IMM</li>
+                        </a>
+                        <a href="">
+                            <li>Comunity</li>
+                        </a>
+                        <a href="">
+                            <li>Profile</li>
+                        </a>
                     </ul>
                 </div>
                 <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
@@ -119,8 +140,8 @@
                     </div>
                 </div>
             </div>
-    
-     </div>
+
+        </div>
     </footer>
 
     <script>
@@ -219,14 +240,14 @@
                 </label>
                 <label>
                     <input type="radio" class="mb-3" name="optionsRadios_${questionNumber}" value="option2"><input type="text" name="" class="" placeholder="Isi jawaban disini"
-                    style="border: none; background:transparent; font-size: 5px;"> 
+                    style="border: none; background:transparent; font-size: 5px;">
                 </label>
                 <label>
                     <input type="radio" class="mb-3" name="optionsRadios_${questionNumber}" value="option3"><input type="text" name="" class="" placeholder="Isi jawaban disini"
                     style="border: none; background:transparent; font-size: 5px;">
                 <label>
                     <input type="radio" class="mb-3" name="optionsRadios_${questionNumber}" value="option4"><input type="text" name="" class="" placeholder="Isi jawaban disini"
-                    style="border: none; background:transparent; font-size: 5px;"> 
+                    style="border: none; background:transparent; font-size: 5px;">
                 </label>
             </div>
         </div>
