@@ -12,15 +12,7 @@ Route::get('/', function () {
 
 Route::get('/welcome', function () {
     return view('tampilanawalhome.welcome');
-})->name('home'); /* ini befungsi untuk memindahkan dari login ke home */
-
-// Route::get('/login', function () {
-//     return view('login');
-// }); /* ini befungsi untuk memindahkan ke halaman login  */
-
-// Route::get('/register', function () {
-//     return view('register');
-// });
+})->name('home');
 
 Route::get('/imm', function () {
     return view('imm.imm');
@@ -110,37 +102,9 @@ Route::get('/detailreview', function () {
     return view('myproject.creatproject.detailreview');
 });
 
-// Route::get('/responden', function () {
-//     return view('survey.responden.responden');
-// });
-
-Route::get('/responden-data-diri', function () {
-    return view('survey.responden.responden-data-diri');
-});
-
-Route::get('/responden-esay', function () {
-    return view('survey.responden.responden-esay');
-});
-
-Route::get('/responden-pilihan-ganda', function () {
-    return view('survey.responden.responden-pilihan-ganda');
-});
-
-Route::get('/responden-skala', function () {
-    return view('survey.responden.responden-skala');
-});
-
 Route::get('/edit-survey', function () {
     // return view('survey.edit-survey.edit-survey');
     return view('survey.edit-survey.edit-survey-new');
-});
-
-// Route::get('/event', function () {
-//     return view('event.event');
-// });
-
-Route::get('/event-detail', function () {
-    return view('event.event-detail');
 });
 
 Route::get('/detail-kelas', function () {
@@ -151,14 +115,9 @@ Route::get('/bootcamp', function () {
     return view('bootcamp.bootcamp');
 });
 
-// Route::get('/event-register', function () {
-//     return view('event.event-register');
-// });
-
 Route::get('/succes', function () {
     return view('event.succes');
 });
-
 
 use App\Http\Controllers\HomeController;
 Route::get('/home', [HomeController::class, 'index'])->name('home');
