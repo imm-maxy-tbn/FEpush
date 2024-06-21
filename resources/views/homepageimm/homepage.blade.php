@@ -36,7 +36,7 @@
                     </li>
 
                 </ul>
-                
+
 
             </div>
             <li class="nav-item">
@@ -221,7 +221,7 @@
  </div>
 </footer>
 
-   
+
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -380,7 +380,7 @@
             });
         });
 
-        // 
+        //
     </script>
 </body>
 

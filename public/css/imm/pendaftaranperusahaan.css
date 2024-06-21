@@ -16,6 +16,11 @@ body {
     border-bottom: 3px solid #5940cb;
 }
 
+.navbar-brand {
+    margin-right: 14px;
+    margin-left: 260px;
+}
+
 .navbar-nav {
     margin-left: 10px;
     margin-right: auto;
@@ -48,6 +53,23 @@ body {
     display: flex;
     margin-right: 20px;
 }
+
+.navbar-collapse {
+    display: flex;
+    justify-content: space-between;
+    /* Atur agar konten navbar berada di antara bagian kiri dan kanan */
+    align-items: center;
+    /* Untuk mengatur vertikalnya ke tengah */
+}
+
+
+/* Atur posisi menu navbar */
+
+.navbar-nav {
+    margin-left: 675px;
+    /* Menggeser menu ke kanan */
+}
+
 
 /* Container styling */
 

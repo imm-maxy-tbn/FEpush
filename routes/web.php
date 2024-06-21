@@ -148,9 +148,11 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/send-otp', [VerificationController::class, 'sendVerificationEmail'])->name('send-otp');
     Route::post('/verify-code', [VerificationController::class, 'verifyCode'])->name('verify-code');
 
+    Route::resource('projects', ProjectController::class);
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
     Route::get('/creatproject', [ProjectController::class, 'create'])->name('projects.create');
     Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
+    Route::post('/projects/filter-metrics', [ProjectController::class, 'filterMetrics'])->name('projects.filterMetrics');
 
     Route::resource('companies', 'CompanyController');
     Route::post('/companies/store', [CompanyController::class, 'store'])->name('companies.store');
