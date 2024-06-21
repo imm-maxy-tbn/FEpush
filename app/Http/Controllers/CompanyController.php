@@ -25,22 +25,23 @@ class CompanyController extends Controller
     public function store(Request $request)
     {
         try {
-            dd($request->all());
+            // Validate the request data
             $validated = $request->validate([
-                'nama' => 'required',
-                'profile' => 'required',
-                'tipe' => 'required',
-                'nama_pic' => 'required',
-                'posisi_pic' => 'required',
-                'telepon' => 'required',
-                'negara' => 'required',
-                'provinsi' => 'required',
-                'kabupaten' => 'required',
+                'nama' => 'required|string|max:255',
+                'profile' => 'required|string|max:255',
+                'tipe' => 'required|string|max:255',
+                'nama_pic' => 'required|string|max:255',
+                'posisi_pic' => 'required|string|max:255',
+                'telepon' => 'required|string|max:20',
+                'negara' => 'required|string|max:255',
+                'provinsi' => 'required|string|max:255',
+                'kabupaten' => 'required|string|max:255',
                 'jumlah_karyawan' => 'required|integer',
             ]);
 
+            // Create the company
             Company::create([
-                'user_id' => Auth::id(), // Mengisi user_id dengan ID pengguna yang sedang login
+                'user_id' => Auth::id(), // Assign the currently logged-in user ID
                 'nama' => $validated['nama'],
                 'profile' => $validated['profile'],
                 'tipe' => $validated['tipe'],
@@ -53,7 +54,7 @@ class CompanyController extends Controller
                 'jumlah_karyawan' => $validated['jumlah_karyawan'],
             ]);
 
-            return redirect()->route('homepageimm.homepage')
+            return view('homepageimm.homepage')
                 ->with('success', 'Company created successfully.');
         } catch (\Exception $e) {
             Log::error('Error while storing company: ' . $e->getMessage());
@@ -63,10 +64,9 @@ class CompanyController extends Controller
             $errors = $validator->errors();
 
             foreach ($errors->all() as $error) {
-                Log::error('Kesalahan validasi: ' . $error);
+                Log::error('Validation error: ' . $error);
             }
 
-            // Redirect kembali ke halaman sebelumnya dengan pesan error
             return back()->withInput()->withErrors($errors);
         }
     }
