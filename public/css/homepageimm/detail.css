@@ -1,6 +1,9 @@
 body {
     font-family: "Roboto", sans-serif;
-    padding-top: 70px;
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style-type: none;
     /* Add padding to avoid content being hidden behind fixed navbar */
 }
 
@@ -17,11 +20,6 @@ body {
     left: 0;
     z-index: 1000;
     border-bottom: 3px solid #5940cb;
-}
-
-.navbar-brand {
-    margin-right: 14px;
-    margin-left: 342px;
 }
 
 .navbar-nav {
@@ -98,10 +96,6 @@ body {
     padding: 10px 20px;
 }
 
-.card-footer .btn-primary:hover {
-    background-color: #472cbb;
-}
-
 .list-group-item {
     border: 1px solid #5940cb;
     border-radius: 5px;
@@ -149,10 +143,6 @@ h5.font-weight-bold {
     padding: 10px 20px;
 }
 
-.btn-secondary:hover {
-    background-color: #b3b3b3;
-}
-
 .btn-primary {
     background-color: #5940cb;
     border: none;
@@ -160,9 +150,11 @@ h5.font-weight-bold {
     padding: 10px 20px;
 }
 
+
+/* 
 .btn-primary:hover {
     background-color: #472cbb;
-}
+} */
 
 .footer {
     background-color: #5940cb;
@@ -251,6 +243,8 @@ h5.font-weight-bold {
 
 /* Animasi umum untuk elemen lainnya */
 
+
+/* 
 .content-container h1,
 .date-box,
 .chart-container,
@@ -270,7 +264,7 @@ h5.font-weight-bold {
 .btn:hover {
     transform: scale(1.05);
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+} */
 
 
 /* Menambahkan transisi pada navbar */

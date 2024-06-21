@@ -8,14 +8,13 @@ body {
     box-sizing: border-box;
 }
 
-
 /* Navbar */
 
 .navbar {
     background-color: #ffffff;
     color: #000000;
     padding: 15px 0;
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     left: 0;
@@ -23,24 +22,9 @@ body {
     border-bottom: 3px solid #5940cb;
 }
 
-.navbar-brand {
-    margin-right: 14px;
-}
-
 .navbar-nav {
     margin-left: 10px;
     margin-right: auto;
-}
-
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.navbar-logo {
-    font-size: 24px;
-    margin-left: 60px;
 }
 
 .navbar-links {
@@ -69,49 +53,6 @@ body {
 .navbar-actions {
     display: flex;
     margin-right: 20px;
-}
-
-.footer {
-    background-color: #5940cb;
-    color: #ffffff;
-    height: 167px;
-    text-align: center;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-    width: 100%;
-}
-
-.footer ul {
-    text-decoration: none;
-    list-style-type: none;
-}
-
-.footer ul li {
-    color: #fff;
-    font-size: 12px;
-}
-
-.span-footer {
-    font-size: 15px;
-    font-weight: bold;
-    color: #fff;
-}
-
-.sosmed {
-    gap: 10px;
-}
-
-.sosmed a {
-    color: #fff;
-    gap: 30px;
-    margin: 0 10px;
-}
-
-.col-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 }
 
 .content {
@@ -146,7 +87,6 @@ body {
 .btn:hover {
     background-color: #4834a9;
 }
-
 
 /* Media query for responsiveness */
 
@@ -206,7 +146,6 @@ body {
     }
 }
 
-
 /* Efek loading */
 
 #loading {
@@ -234,7 +173,6 @@ body {
     }
 }
 
-
 /* Animasi umum untuk elemen lainnya */
 
 .content-container h1,
@@ -258,7 +196,6 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
 /* Menambahkan transisi pada navbar */
 
 .navbar {
@@ -267,4 +204,20 @@ body {
 
 .navbar:hover {
     background-color: #e3e3e3;
+}
+
+.navbar-button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Menghapus underline pada teks tautan */
+    display: inline-block; /* Membuat tautan tampil sebagai blok inline */
+}
+
+.navbar-button:hover {
+    background-color: #333333;
 }

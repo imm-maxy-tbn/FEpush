@@ -1,6 +1,7 @@
 body {
     font-family: "Roboto", sans-serif;
-    padding-top: 70px; /* Add padding to avoid content being hidden behind fixed navbar */
+    padding-top: 70px;
+    /* Add padding to avoid content being hidden behind fixed navbar */
     background-color: #f8f9fa;
     height: 300vh;
 }
@@ -15,11 +16,6 @@ body {
     left: 0;
     z-index: 1000;
     border-bottom: 3px solid #5940cb;
-}
-
-.navbar-brand {
-    margin-right: 14px;
-    margin-left: 342px;
 }
 
 .navbar-nav {
@@ -150,7 +146,8 @@ body {
 }
 
 .footer-social-media {
-    margin-bottom: -10px; /* Jarak antara teks Social Media dan ikon */
+    margin-bottom: -10px;
+    /* Jarak antara teks Social Media dan ikon */
     position: relative;
     top: -19px;
     right: -5px;
@@ -169,7 +166,9 @@ body {
     color: #5940cb !important;
 }
 
+
 /* Efek loading */
+
 #loading {
     position: fixed;
     width: 100%;
@@ -183,8 +182,10 @@ body {
 }
 
 #loading img {
-    width: 100px; /* Ukuran gambar loading */
-    height: 100px; /* Ukuran gambar loading */
+    width: 100px;
+    /* Ukuran gambar loading */
+    height: 100px;
+    /* Ukuran gambar loading */
     animation: spin 1s linear infinite;
 }
 
@@ -194,7 +195,9 @@ body {
     }
 }
 
+
 /* Animasi umum untuk elemen lainnya */
+
 .content-container h1,
 .date-box,
 .chart-container,
@@ -216,7 +219,9 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+
 /* Menambahkan transisi pada navbar */
+
 .navbar {
     transition: background-color 0.3s ease;
 }

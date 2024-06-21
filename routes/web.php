@@ -12,15 +12,7 @@ Route::get('/', function () {
 
 Route::get('/welcome', function () {
     return view('tampilanawalhome.welcome');
-})->name('home'); /* ini befungsi untuk memindahkan dari login ke home */
-
-// Route::get('/login', function () {
-//     return view('login');
-// }); /* ini befungsi untuk memindahkan ke halaman login  */
-
-// Route::get('/register', function () {
-//     return view('register');
-// });
+})->name('home');
 
 Route::get('/imm', function () {
     return view('imm.imm');
@@ -72,7 +64,7 @@ Route::get('/detail', function () {
 
 Route::get('/impact', function () {
     return view('myproject.impact');
-});
+})->name('impact.impact');;
 
 Route::get('/profile', function () {
     return view('profile.profile');
@@ -110,40 +102,9 @@ Route::get('/detailreview', function () {
     return view('myproject.creatproject.detailreview');
 });
 
-Route::get('/responden', function () {
-    return view('survey.responden.responden');
-});
-
-Route::get('/responden-data-diri', function () {
-    return view('survey.responden.responden-data-diri');
-});
-
-Route::get('/responden-esay', function () {
-    return view('survey.responden.responden-esay');
-});
-
-Route::get('/responden-pilihan-ganda', function () {
-    return view('survey.responden.responden-pilihan-ganda');
-});
-
-Route::get('/responden-skala', function () {
-    return view('survey.responden.responden-skala');
-});
-
-Route::get('/responden-penutup-survey', function () {
-    return view('survey.responden.responden-penutup-survey');
-});
-
 Route::get('/edit-survey', function () {
-    return view('survey.edit-survey.edit-survey');
-});
-
-Route::get('/event', function () {
-    return view('event.event');
-});
-
-Route::get('/event-detail', function () {
-    return view('event.event-detail');
+    // return view('survey.edit-survey.edit-survey');
+    return view('survey.edit-survey.edit-survey-new');
 });
 
 Route::get('/detail-kelas', function () {
@@ -154,14 +115,9 @@ Route::get('/bootcamp', function () {
     return view('bootcamp.bootcamp');
 });
 
-Route::get('/event-register', function () {
-    return view('event.event-register');
-});
-
 Route::get('/succes', function () {
     return view('event.succes');
 });
-
 
 use App\Http\Controllers\HomeController;
 Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -188,3 +144,17 @@ Route::get('/projects', [ProjectController::class, 'index'])->name('projects.ind
 Route::get('/creatproject', [ProjectController::class, 'create'])->name('projects.create');
 Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
 
+use App\Http\Controllers\EventController;
+
+Route::get('event', [EventController::class, 'index'])->name('events.index');
+Route::get('event/{id}', [EventController::class, 'view'])->name('events.view');
+Route::get('event-register/{id}', [EventController::class, 'edit'])->name('events.edit');
+Route::put('event/{id}', [EventController::class, 'update'])->name('events.update');
+
+use App\Http\Controllers\SurveyController;
+
+Route::get('responden/{id}', [SurveyController::class, 'view'])->name('surveys.view');
+Route::get('responden-data-diri/{id}', [SurveyController::class, 'dataDiri'])->name('surveys.data-diri');
+Route::post('responden/{id}', [SurveyController::class, 'registerUser'])->name('surveys.register-user');
+Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submit'])->name('surveys.submit');
+Route::post('survey', [SurveyController::class, 'store'])->name('surveys.store');

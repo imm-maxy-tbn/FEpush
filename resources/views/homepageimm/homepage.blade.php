@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>IMM | Homepage</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/homepageimm/homeimm.css') }}">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
@@ -16,26 +16,28 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">IMM</a>
+            <a class="navbar-brand" href="homepage">IMM</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
-                <ul class="navbar-nav >
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                    <a class="nav-link active" href="homepage">Home</a>
+                    <a class="nav-link active" href="/homepage">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="myproject">My Project</a>
+                        <a class="nav-link" href="/myproject">My Project</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="homepage">My Company</a>
+                    <a href="homepage" class="navbar-button">My Company</a>
                     </li>
 
                 </ul>
+                
+
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}"
@@ -166,15 +168,15 @@
     <div class="container mt-5">
         <div class="sdg-container">
             <div class="grid">
-                <div class="grid-item" data-index="1"><img src="images/E-WEB-Goal-01.png" alt="Goal 1"></div>
-                <div class="grid-item" data-index="2"><img src="images/E-WEB-Goal-02.png" alt="Goal 2"></div>
-                <div class="grid-item" data-index="3"><img src="images/E-WEB-Goal-03.png" alt="Goal 3"></div>
-                <div class="grid-item" data-index="4"><img src="images/E-WEB-Goal-04.png" alt="Goal 4"></div>
-                <div class="grid-item" data-index="5"><img src="images/E-WEB-Goal-05.png" alt="Goal 5"></div>
-                <div class="grid-item" data-index="6"><img src="images/E-WEB-Goal-06.png" alt="Goal 6"></div>
-                <div class="grid-item" data-index="7"><img src="images/E-WEB-Goal-07.png" alt="Goal 7"></div>
-                <div class="grid-item" data-index="8"><img src="images/E-WEB-Goal-08.png" alt="Goal 8"></div>
-                <div class="grid-item" data-index="9"><img src="images/E-WEB-Goal-09.png" alt="Goal 9"></div>
+                <div class="grid-item" data-index="1"><img src="images/E-WEB-Goal-1.png" alt="Goal 1"></div>
+                <div class="grid-item" data-index="2"><img src="images/E-WEB-Goal-2.png" alt="Goal 2"></div>
+                <div class="grid-item" data-index="3"><img src="images/E-WEB-Goal-3.png" alt="Goal 3"></div>
+                <div class="grid-item" data-index="4"><img src="images/E-WEB-Goal-4.png" alt="Goal 4"></div>
+                <div class="grid-item" data-index="5"><img src="images/E-WEB-Goal-5.png" alt="Goal 5"></div>
+                <div class="grid-item" data-index="6"><img src="images/E-WEB-Goal-6.png" alt="Goal 6"></div>
+                <div class="grid-item" data-index="7"><img src="images/E-WEB-Goal-7.png" alt="Goal 7"></div>
+                <div class="grid-item" data-index="8"><img src="images/E-WEB-Goal-8.png" alt="Goal 8"></div>
+                <div class="grid-item" data-index="9"><img src="images/E-WEB-Goal-9.png" alt="Goal 9"></div>
                 <div class="grid-item" data-index="10"><img src="images/E-WEB-Goal-10.png" alt="Goal 10"></div>
                 <div class="grid-item" data-index="11"><img src="images/E-WEB-Goal-11.png" alt="Goal 11"></div>
                 <div class="grid-item" data-index="12"><img src="images/E-WEB-Goal-12.png" alt="Goal 12"></div>
@@ -189,74 +191,37 @@
     {{-- end sdg --}}
 
     <footer>
-        <div class="container footer mt-5  d-flex justify-content-center align-items-center  ">
-            <div class="row d-flex justify-content-center align-items-center">
-                <div class="col-4 d-flex flex-column" style="gap: 20px">
-                    <h5 class=" text-white  text-left">IMM</h5>
-                    <span class="span-footer text-left">Impact Measurement and Management
-                        (TBN INDONESIA X MAXY ACADEMY)</span>
-                </div>
-                <div class="col-5 d-flex justify-content-center align-items-center">
-                    <ul class=" d-flex " style="gap: 30px">
-                        <a href="">
-                            <li>HomePage</li>
-                        </a>
-                        <a href="">
-                            <li>Bootcamp</li>
-                        </a>
-                        <a href="">
-                            <li>IMM</li>
-                        </a>
-                        <a href="">
-                            <li>Comunity</li>
-                        </a>
-                        <a href="">
-                            <li>Profile</li>
-                        </a>
-                    </ul>
-                </div>
-                <div class="col-3 d-flex flex-column justify-content-center">
-                    <span class="span-footer text-center">Sosial Media</span>
-                    <div class="sosmed d-flex justify-content-end  ">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
+    <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
+        <div class="row d-flex  justify-content-center align-items-center">
+            <div class="col-4 d-flex flex-column" style="gap: 20px">
+                <h5 class=" text-white  text-left">IMM</h5>
+                <span class="span-footer text-left">Impact Measurement and Management
+                        <br> (TBN INDONESIA X MAXY ACADEMY)</span>
             </div>
-
-        </div>
-    </footer>
-
-    {{-- <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="brand-info">
-                    <h3>IMM</h3>
-                    <p>(TBN INDONESIA X MAXY ACADEMY)</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-nav">
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="bootcamp">Bootcamp</a></li>
-                            <li><a href="imm">IMM</a></li>
-                            <li><a href="comunity">Community</a></li>
-                            <li><a href="profile">Profile</a></li>
-                        </ul>
-                    </div>
-                    <div class="social-media">
-                        <p class="footer-social-media">Social Media</p>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+            <div class="col-5 d-flex justify-content-center align-items-center">
+                <ul class=" d-flex " style="gap: 30px">
+                    <a href="/"><li>HomePage</li></a>
+                    <a href="bootcamp"><li>Bootcamp</li></a>
+                    <a href="imm"><li>IMM</li></a>
+                    <a href="#"><li>Comunity</li></a>
+                    <a href="profile"><li>Profile</li></a>
+                </ul>
+            </div>
+            <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
+                <span class="span-footer text-center">Sosial Media</span>
+                <div class="sosmed d-flex justify-content-end  ">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
         </div>
-    </footer> --}}
+
+ </div>
+</footer>
+
+   
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
