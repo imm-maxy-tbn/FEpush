@@ -59,7 +59,7 @@
                 </p>
                 <form id="otp-form">
                     @csrf
-                    <!-- <input type="hidden" name="email" value="{{ $email }}"> -->
+               
                     <div class="form-group d-flex justify-content-between">
                         @for ($i = 0; $i < 6; $i++)
                             <input type="text" class="form-control text-center" name="otp_code[]" maxlength="1"
