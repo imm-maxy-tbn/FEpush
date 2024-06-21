@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>IMM | OTP</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <<<<<<< HEAD
     <link rel="stylesheet" href="{{ asset('css/imm3.css') }}">
@@ -38,13 +38,16 @@
                         <a class="nav-link" href="welcome">Home</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="#">Bootcamp</a>
+                        <a class="nav-link" href="bootcamp">Bootcamp</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">IMM</a>
+                        <a href="imm" class="navbar-button">IMM</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="comunity">Community</a>
+                        <a class="nav-link" href="community">Community</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog">Explore</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="profile">Profile</a>
@@ -123,7 +126,7 @@
             </div>
         </div>
     </nav>
-
+    
     <div class="container min-vh-100 d-flex flex-column justify-content-center">
         <div class="card mx-auto" style="max-width: 400px;">
             <div class="card-body">
@@ -133,7 +136,7 @@
                 </p>
                 <form id="otp-form">
                     @csrf
-                    <!-- <input type="hidden" name="email" value="{{ $email }}"> -->
+               
                     <div class="form-group d-flex justify-content-between">
                         @for ($i = 0; $i < 6; $i++)
                             <input type="text" class="form-control text-center" name="otp_code[]" maxlength="1"

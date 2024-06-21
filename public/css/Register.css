@@ -8,7 +8,6 @@ body {
     box-sizing: border-box;
 }
 
-/* Navbar */
 .navbar {
     background-color: #ffffff;
     color: #000000;
@@ -18,7 +17,7 @@ body {
     right: 0;
     left: 0;
     z-index: 1000;
-    border-bottom: 3px solid #5940cb;
+    border-bottom: 3px solid #4834a9;
 }
 
 .container {
@@ -60,15 +59,46 @@ body {
     margin-right: 20px;
 }
 
+.btn {
+    display: inline-block;
+    padding: 8px 16px;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.btn-primary {
+    background-color: #ffffff;
+    color: #0e0d13;
+    border: 2px solid #5940cb;
+}
+
+.btn-outline-primary {
+    background-color: #5940cb;
+    color: #ffffff;
+    border: 2px solid #5940cb8a;
+    margin-left: 10px;
+}
+
+.btn-primary:hover,
+.btn-outline-primary:hover {
+    background-color: #5940cb8a;
+}
+
 .navbar-collapse {
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-/* Atur posisi menu navbar */
 .navbar-nav {
     margin-left: 52px;
+}
+
+.navbar-brand {
+    margin-right: auto;
 }
 
 .register-container {
@@ -164,34 +194,31 @@ body {
     text-decoration: underline;
 }
 
+
 /* Media query for responsiveness */
+
 @media (max-width: 768px) {
     .navbar {
         position: relative;
     }
-
     .navbar-links {
         flex-direction: column;
         margin-left: 0;
         margin-top: 10px;
     }
-
     .navbar-links li {
         margin: 10px 0;
     }
-
     .navbar-actions {
         flex-direction: column;
         margin-right: 0;
         margin-top: 10px;
     }
-
     .btn {
         width: 100%;
         text-align: center;
         margin: 5px 0;
     }
-
     .register-container {
         width: 100%;
         padding: 10px;
@@ -199,7 +226,6 @@ body {
         right: auto;
         margin-top: 70px;
     }
-
     .brand-logo {
         width: 100px;
         position: relative;
@@ -207,7 +233,6 @@ body {
         right: 0;
         margin-top: 20px;
     }
-
     .register-form h2 {
         font-size: 22px;
         position: relative;
@@ -215,39 +240,35 @@ body {
         right: 0;
         text-align: center;
     }
-
     .form-row {
         flex-direction: column;
         width: 100%;
     }
-
     .form-group {
         width: 100%;
         margin-bottom: 10px;
     }
-
     .form-group label {
         font-size: 14px;
     }
-
     .form-group input,
     .form-group select {
         font-size: 14px;
         padding: 10px;
     }
-
     .btn-register {
         font-size: 14px;
         padding: 10px;
     }
-
     .login-link {
         font-size: 12px;
         text-align: center;
     }
 }
 
+
 /* Efek loading */
+
 #loading {
     position: fixed;
     width: 100%;
@@ -261,8 +282,10 @@ body {
 }
 
 #loading img {
-    width: 100px; /* Ukuran gambar loading */
-    height: 100px; /* Ukuran gambar loading */
+    width: 100px;
+    /* Ukuran gambar loading */
+    height: 100px;
+    /* Ukuran gambar loading */
     animation: spin 1s linear infinite;
 }
 
@@ -272,7 +295,9 @@ body {
     }
 }
 
+
 /* Animasi umum untuk elemen lainnya */
+
 .content-container h1,
 .date-box,
 .chart-container,
@@ -294,7 +319,9 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+
 /* Menambahkan transisi pada navbar */
+
 .navbar {
     transition: background-color 0.3s ease;
 }

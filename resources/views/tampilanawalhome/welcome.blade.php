@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
+    <title>IMM</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/welcome/Welcome.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -14,39 +14,45 @@
 </head>
 
 <body>
+<div id="loading">
+        <img src="images/imm.png" alt="Loading">
+    </div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">IMM</a>
+            <a class="navbar-brand" href="/">IMM</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="welcome">Home</a>
+                    <li class="nav-item ">
+                        <button class="navbar-button">Home</button>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item ">
                         <a class="nav-link" href="bootcamp">Bootcamp</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="comunity">Community</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="imm">IMM</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="community">Community</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog">Explore</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="profile">Profile</a>
                     </li>
-                </ul>
-                <div class="navbar-actions">
+                </ul>                <div class="navbar-actions">
                     <a href="login" class="btn btn-primary">Login</a>
                     <a href="register" class="btn btn-outline-primary">Register</a>
                 </div>
             </div>
         </div>
     </nav>
+
     <div class="container">
         <div class="notification-section">
             <div class="container">
@@ -138,14 +144,14 @@
     <div class="container mt-5">
 
             <div class="col-7  d-flex flex-column justify-content-center" style="margin-top: -60px">
-    
+
                     <table class="box-table">
                         <h2 class="table-title mb-3">New Assignment</h2>
                         <tr>
-                            
+
                             <td class="top-text ">Analisis Data Menggunakan Metode Machine Learning:</td>
                         </tr>
-                        
+
                         <tr>
                             <td class="bottom-text">Studi Kasus pada Industri Retail</td>
                         </tr>
@@ -159,7 +165,7 @@
                             <td class="bottom-text">dan Analisis Data Besar</td>
                         </tr>
                     </table>
-          
+
             </div>
             <div class="col-5">
 <div class="table">
@@ -210,7 +216,7 @@
                 <div class="container"></div>
             </div>
         </div>
-  
+
         <footer>
             <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
                 <div class="row d-flex  justify-content-center align-items-center">
@@ -238,7 +244,7 @@
                         </div>
                     </div>
                 </div>
-        
+
          </div>
         </footer>
 

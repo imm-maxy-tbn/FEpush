@@ -1,7 +1,7 @@
 body {
     font-family: "Roboto", sans-serif;
-    height: 300vh;
-    padding-top: 70px; /* Add padding to avoid content being hidden behind fixed navbar */
+    padding-top: 70px;
+    /* Add padding to avoid content being hidden behind fixed navbar */
 }
 
 .navbar {
@@ -14,11 +14,6 @@ body {
     left: 0;
     z-index: 1000;
     border-bottom: 3px solid #5940cb;
-}
-
-.navbar-brand {
-    margin-right: 14px;
-    margin-left: 342px;
 }
 
 .navbar-nav {
@@ -52,6 +47,49 @@ body {
 .navbar-actions {
     display: flex;
     margin-right: 20px;
+}
+
+.footer {
+    background-color: #5940cb;
+    color: #ffffff;
+    height: 167px;
+    text-align: center;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    width: 100%;
+}
+
+.footer ul {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.footer ul li {
+    color: #fff;
+    font-size: 12px;
+}
+
+.span-footer {
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.sosmed {
+    gap: 10px;
+}
+
+.sosmed a {
+    color: #fff;
+    gap: 30px;
+    margin: 0 10px;
+}
+
+.col-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 .sdg-item {
@@ -130,102 +168,44 @@ body {
 .footer {
     background-color: #5940cb;
     color: #ffffff;
-    padding: 48px 0;
+    height: 167px;
     text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 80%;
-    left: 10%;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
-    z-index: 1000;
+    width: 100%;
 }
 
-.footer-container {
-    max-width: 594px;
-    margin: 0 auto;
+.footer ul {
+    text-decoration: none;
+    list-style-type: none;
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.footer ul li {
+    color: #fff;
+    font-size: 12px;
 }
 
-.brand-info h3 {
-    margin: 0;
-    font-size: 20px;
-    position: absolute;
-    right: 860px;
-    top: 20px;
+.span-footer {
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
 }
 
-.brand-info p {
-    margin-top: 5px;
-    font-size: 14px;
-    position: absolute;
-    top: 50px;
-    right: 750px;
+.sosmed {
+    gap: 10px;
 }
 
-.footer-links {
+.sosmed a {
+    color: #fff;
+    gap: 30px;
+    margin: 0 10px;
+}
+
+.col-footer {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.footer-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    top: 40px;
-    right: 280px;
-}
-
-.footer-nav ul li {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-.footer-nav ul li:last-child {
-    margin-right: 0;
-}
-
-.footer-nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.footer-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-.social-media {
-    margin-right: auto;
-    position: absolute;
-    top: 29px;
-    right: 23px;
-}
-
-.social-media a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 20px;
-    margin-left: 10px;
-}
-
-.footer-description {
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-.footer-social-media {
-    margin-bottom: -10px; /* Jarak antara teks Social Media dan ikon */
-    position: relative;
-    top: -19px;
-    right: -5px;
+    flex-direction: column;
 }
 
 .btn-continue {
@@ -245,7 +225,9 @@ body {
     text-decoration: none;
 }
 
+
 /* Efek loading */
+
 #loading {
     position: fixed;
     width: 100%;
@@ -259,8 +241,10 @@ body {
 }
 
 #loading img {
-    width: 100px; /* Ukuran gambar loading */
-    height: 100px; /* Ukuran gambar loading */
+    width: 100px;
+    /* Ukuran gambar loading */
+    height: 100px;
+    /* Ukuran gambar loading */
     animation: spin 1s linear infinite;
 }
 
@@ -270,7 +254,9 @@ body {
     }
 }
 
+
 /* Animasi umum untuk elemen lainnya */
+
 .content-container h1,
 .date-box,
 .chart-container,
@@ -292,7 +278,9 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+
 /* Menambahkan transisi pada navbar */
+
 .navbar {
     transition: background-color 0.3s ease;
 }

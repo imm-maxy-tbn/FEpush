@@ -2,20 +2,13 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-
 /* Navbar */
 
 .navbar {
     background-color: #ffffff;
     color: #000000;
     padding: 15px 0;
-    position: fixed;
+    position: absolute;
     top: 0;
     right: 0;
     left: 0;
@@ -61,6 +54,22 @@ body {
     margin-right: 20px;
 }
 
+.navbar-collapse {
+    display: flex;
+    justify-content: space-between;
+    /* Atur agar konten navbar berada di antara bagian kiri dan kanan */
+    align-items: center;
+    /* Untuk mengatur vertikalnya ke tengah */
+}
+
+
+/* Atur posisi menu navbar */
+
+.navbar-nav {
+    margin-left: 675px;
+    /* Menggeser menu ke kanan */
+}
+
 
 /* Container styling */
 
@@ -70,7 +79,6 @@ body {
     align-items: center;
     height: 100vh;
 }
-
 
 /* Form styling */
 
@@ -86,7 +94,6 @@ body {
     justify-content: space-between;
 }
 
-
 /* Left section (Informasi Pribadi) styling */
 
 .informasi-pribadi {
@@ -94,14 +101,12 @@ body {
     /* Lebar informasi pribadi */
 }
 
-
 /* Right section (Informasi Alamat) styling */
 
 .informasi-alamat {
     width: 45%;
     /* Lebar informasi alamat */
 }
-
 
 /* Table styling */
 
@@ -115,7 +120,6 @@ table td {
     border-bottom: 1px solid #ddd;
     /* Garis pemisah antar baris */
 }
-
 
 /* Input styling */
 
@@ -207,15 +211,7 @@ a {
     background-color: transparent;
 }
 
-
 /* CSS for "Daftarkan Perusahaan Anda" */
-
-.daftar-perusahaan {
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-    margin-bottom: 20px;
-}
 
 .h2,
 h2 {
@@ -223,7 +219,6 @@ h2 {
     position: absolute;
     top: 137px;
 }
-
 
 /* Media query for responsiveness */
 
@@ -412,58 +407,7 @@ h2 {
     }
 }
 
-
-/* Efek loading */
-
-#loading {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    background: #fff;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#loading img {
-    width: 100px;
-    /* Ukuran gambar loading */
-    height: 100px;
-    /* Ukuran gambar loading */
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-
 /* Animasi umum untuk elemen lainnya */
-
-.content-container h1,
-.date-box,
-.chart-container,
-.analysis-matrix .content-box,
-.target-check .target-check-box,
-.icon-box .icon-item,
-.btn {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.content-container h1:hover,
-.date-box:hover,
-.chart-container:hover,
-.analysis-matrix .content-box:hover,
-.target-check .target-check-box:hover,
-.icon-box .icon-item:hover,
-.btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
 
 /* Menambahkan transisi pada navbar */
 
@@ -473,4 +417,20 @@ h2 {
 
 .navbar:hover {
     background-color: #e3e3e3;
+}
+
+.navbar-button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Menghapus underline pada teks tautan */
+    display: inline-block; /* Membuat tautan tampil sebagai blok inline */
+}
+
+.navbar-button:hover {
+    background-color: #333333;
 }

@@ -4,9 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
-    <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/indicator.css') }}">
+    <title>IMM | Membuat Projek</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/indicator.css') }}">
     <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/creatproject.css') }}">
     <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/pemilihansdgs.css') }}">
 
@@ -18,39 +17,45 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">IMM</a>
+            <a class="navbar-brand" href="homepage">IMM</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
+            <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
+                <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="welcome">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="bootcamp">Bootcamp</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">IMM</a>
+                    <a class="nav-link active" href="/homepage">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="comunity">Community</a>
+                        <a class="nav-link" href="/myproject">My Project</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="profile">Profile</a>
+                        <a class="nav-link" href="homepage">My Company</a>
                     </li>
+
                 </ul>
+
+
             </div>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('logout') }}"
+                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    {{ __('Logout') }}
+                </a>
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                    @csrf
+                </form>
+            </li>
         </div>
     </nav>
 
     <div class="container mt-5">
         <h1>Buat Projek Baru</h1>
     </div>
-    
+
     <div class="container mt-5">
         <form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">
             <div id="form-section">
@@ -139,7 +144,7 @@
                                             <label class="form-check-label" for="tag{{ $tag->id }}">{{ $tag->nama }}</label>
                                         </div>
                                     </div>
-                                @endforeach
+                                </div>
                             </div>
                         </div>
                         <div class="form-group">
@@ -176,7 +181,7 @@
                     </div>
                 </div>
             </div>
-    
+
             <div class="container mt-5">
                 <div class="form-group">
                     <div id="sdg-section" style="display: none;">
@@ -208,7 +213,7 @@
                     <div class="text-center bg-light p-3 mb-4" id="project-long-description"></div>
                     <h5 class="text-center mb-4">Tentukan indikator SDGs sebagai target project anda! Anda dapat memilih
                         lebih dari satu indikator</h5>
-    
+
                         @foreach ($sdgs as $sdg)
                         <div class="goal-description mb-4 p-3 bg-white shadow-sm rounded" id="goal{{ $sdg->id }}-description">
                             <div class="d-flex align-items-center">
@@ -219,7 +224,7 @@
                                     <p class="mb-0">{{ $sdg->name }}</p>
                                 </div>
                             </div>
-                    
+
                             @foreach ($sdg->indicators as $indicator)
                                 @if ($indicator->level == 1)
                                     <div class="mt-3 d-flex align-items-center level-1-indicator" style="gap: 15px">
@@ -231,7 +236,7 @@
                                         </label>
                                     </div>
                                 @endif
-                    
+
                                 {{-- Sub-container untuk indikator level 2 --}}
                                 @if ($indicator->level == 1)
                                 <div class="sub-container" id="sub-container-{{ $indicator->id }}"
@@ -245,20 +250,20 @@
                                     </div>
                                 </div>
                             @endif
-                            
+
                             @endforeach
                         </div>
                     @endforeach
-                    
-    
+
+
                     <div class="d-flex justify-content-between mt-3">
                         <button type="button" class="btn btn-secondary" id="back-to-sdg-section">Back</button>
                         <button type="button" class="btn btn-primary" id="next-to-metric-section">Next</button>
                     </div>
                 </div>
             </div>
-            
-            
+
+
 
             <div id="metric-section" style="display: none;">
                 <div class="container mt-5">
@@ -275,7 +280,7 @@
                     </div>
                 </div>
             </div>
-                    
+
             <div id="review-section" style="display: none;">
                 <div class="container mt-5 pt-5">
                     <h1 class="text-center">Detail Review: SDGs Goals, Indicators, dan Metrix</h1>
@@ -300,8 +305,8 @@
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </div>
             </div>
-            
-            
+
+
         </form>
     </div>
 
@@ -374,11 +379,11 @@
                 $('.target-pelanggan tbody').append(newRow);
                 index++;
             });
-    
+
             $(document).on('click', '.btn-remove-pelanggan', function() {
                 $(this).closest('tr').remove();
             });
-    
+
             var indexDana = 1;
             $(".btn-add-dana").click(function() {
                 var selectedOptions = $('.spesifikasi-pendanaan select').map(function() {
@@ -400,44 +405,44 @@
                     '</tr>';
                 $('.spesifikasi-pendanaan tbody').append(newRow);
                 indexDana++;
-    
+
                 if (availableOptions.length === 1) {
                     $(".btn-add-dana").prop('disabled', true);
                 }
             });
-    
+
             $(document).on('click', '.btn-remove-dana', function() {
                 $(this).closest('tr').remove();
                 $(".btn-add-dana").prop('disabled', false);
             });
-    
+
             $('#next-to-sdg-section').on('click', function() {
                 $('#form-section').hide();
                 $('#sdg-section').show();
             });
-    
+
             $('#next-to-metric-section').on('click', function() {
                 $('#indicator-section').hide();
                 $('#metric-section').show();
             });
-    
-    
+
+
             $('#next-to-review-section').on('click', function() {
                 $('#metric-section').hide();
                 $('#review-section').show();
             });
-    
-    
+
+
             $('#back-to-metric-section').on('click', function() {
                 $('#review-section').hide();
                 $('#metric-section').show();
             });
-    
+
             $('#back-to-form-section').on('click', function() {
                 $('#sdg-section').hide();
                 $('#form-section').show();
             });
-    
+
             $('#next-to-indicator-section').on('click', function() {
     const projectName = $('#nama').val();
     const projectDescription = $('#deskripsi').val();
@@ -468,12 +473,12 @@
     $('#indicator-section').show();
 });
 
-    
+
             $('#back-to-sdg-section').on('click', function() {
                 $('#indicator-section').hide();
                 $('#sdg-section').show();
             });
-    
+
             $('.sdg-checkbox').on('change', function() {
                 var sdgId = $(this).val();
                 $('.goal-description').hide();
@@ -481,7 +486,7 @@
                 $('#goal' + sdgId + '-description .sub-container').hide();
                 $('#goal' + sdgId + '-description .sub-container[data-level="2"]').show();
             });
-            
+
             $(document).on('change', '.indicator-checkbox', function() {
         var indicatorId = $(this).val();
         var subContainer = $('#sub-container-' + indicatorId);
@@ -492,7 +497,7 @@
             subContainer.find('input[type="checkbox"]').prop('checked', false);
         }
     });
-            
+
     var checkbox = document.getElementById("subscribe");
     var subContainer = document.getElementById("sub-container");
 
@@ -504,14 +509,14 @@
         }
     });
 
-    
+
             var sdgGoals = document.querySelectorAll(".sdg-goal");
-    
+
             sdgGoals.forEach(function(goal) {
                 goal.addEventListener("click", function() {
                     var target = document.querySelector(goal.getAttribute("data-target"));
                     var descriptionVisible = target.classList.contains("show");
-    
+
                     if (!descriptionVisible) {
                         target.classList.remove("hide");
                         target.classList.add("show");
@@ -521,7 +526,7 @@
                     }
                 });
             });
-    
+
             setTimeout(function() {
                 var loading = document.getElementById("loading");
                 loading.style.display = "none";
@@ -543,7 +548,7 @@ $(document).ready(function() {
     $('.sdg-checkbox').on('change', function() {
         // Semua checkbox SDG yang dipilih
         var selectedSdgs = $('.sdg-checkbox:checked');
-        
+
         // Sembunyikan semua deskripsi SDG terlebih dahulu
         $('.goal-description').hide();
 
@@ -798,7 +803,7 @@ $(document).ready(function() {
     });
 });
     </script>
-    
+
 </body>
 
 </html>

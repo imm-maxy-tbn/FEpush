@@ -2,7 +2,6 @@ body {
     font-family: "Roboto", sans-serif;
 }
 
-
 /* Navbar */
 
 .navbar {
@@ -15,11 +14,6 @@ body {
     left: 0;
     z-index: 1000;
     border-bottom: 3px solid #5940cb;
-}
-
-.navbar-brand {
-    margin-right: 14px;
-    margin-left: 342px;
 }
 
 .navbar-nav {
@@ -54,7 +48,6 @@ body {
     display: flex;
     margin-right: 20px;
 }
-
 
 /* Footer */
 
@@ -100,7 +93,6 @@ body {
     align-items: center;
     flex-direction: column;
 }
-
 
 /* Media query for responsiveness */
 
@@ -221,7 +213,6 @@ input[type="number"] {
     border-radius: 5px;
 }
 
-
 /* Efek loading */
 
 #loading {
@@ -249,7 +240,6 @@ input[type="number"] {
     }
 }
 
-
 /* Animasi umum untuk elemen lainnya */
 
 .content-container h1,
@@ -273,7 +263,6 @@ input[type="number"] {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-
 /* Menambahkan transisi pada navbar */
 
 .navbar {
@@ -282,4 +271,19 @@ input[type="number"] {
 
 .navbar:hover {
     background-color: #e3e3e3;
+}
+.navbar-button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none; /* Menghapus underline pada teks tautan */
+    display: inline-block; /* Membuat tautan tampil sebagai blok inline */
+}
+
+.navbar-button:hover {
+    background-color: #333333;
 }
