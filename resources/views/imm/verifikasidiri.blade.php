@@ -20,7 +20,7 @@
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="#">IMM</a>
+            <a class="navbar-brand" href="/">IMM</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -31,13 +31,20 @@
                         <a class="nav-link" href="welcome">Home</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="#">Bootcamp</a>
+                        <a class="nav-link" href="bootcamp">Bootcamp</a>
                     </li>
                     <li class="nav-item active">
-                        <a class="nav-link" href="#">IMM</a>
+                        <a class="nav-link" href="imm">IMM</a>
                     </li>
                     <li class="nav-item">
+<<<<<<< HEAD
                         <a class="nav-link" href="comunity">Community</a>
+=======
+                        <a class="nav-link" href="community">Community</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="blog">Explore</a>
+>>>>>>> 6f2bbf42ea5aa0b1b8cd2a6dac3e985fb14e1ba1
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="profile">Profile</a>
@@ -72,34 +79,6 @@
     </div>
 
 
-    <footer class="footer">
-        <div class="footer-container">
-            <div class="footer-content">
-                <div class="brand-info">
-                    <h3>IMM</h3>
-                    <p>(TBN INDONESIA X MAXY ACADEMY)</p>
-                </div>
-                <div class="footer-links">
-                    <div class="footer-nav">
-                        <ul>
-                            <li><a href="/">Home</a></li>
-                            <li><a href="bootcamp">Bootcamp</a></li>
-                            <li><a href="imm">IMM</a></li>
-                            <li><a href="comunity">Community</a></li>
-                            <li><a href="profile">Profile</a></li>
-                        </ul>
-                    </div>
-                    <div class="social-media">
-                        <p class="footer-social-media">Social Media</p>
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

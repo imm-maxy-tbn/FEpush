@@ -71,7 +71,6 @@
         <div class="indicators mt-5">
             <h2 class="text-center">Indicators</h2>
             <div class="indicator-item mt-4">
-                <div class="d-flex align-items-center">
                     <input type="checkbox" id="indicator-11.1" class="indicator-checkbox">
                     <label for="indicator-11.1" class="d-flex align-items-center">
                         <img src="images/E-WEB-Goal-11.png" alt="SDG 11" class="indicator-icon">
@@ -104,9 +103,10 @@
                     <input type="checkbox" id="indicator-11.3" class="indicator-checkbox">
                     <label for="indicator-11.3" class="d-flex align-items-center">
                         <img src="images/E-WEB-Goal-13.png" alt="SDG 11" class="indicator-icon">
-                        <h5><div class="sultan" ></div>11.3 Pada tahun 2030, meningkatkan urbanisasi yang inklusif dan berkelanjutan serta kapasitas perencanaan dan pengelolaan pemukiman manusia yang partisipatif, terpadu dan berkelanjutan di semua negara</h5>
+                        <h5>11.3 Pada tahun 2030, meningkatkan urbanisasi yang inklusif dan berkelanjutan serta kapasitas perencanaan dan pengelolaan pemukiman manusia yang partisipatif, terpadu dan berkelanjutan di semua negara</h5>
                     </label>
                 </div>
+                {{ env('APP_BACKEND_URL') . '/images/' . $sdg->img }}
                 <ul class="mt-2 ml-4">
                     <li>11.1.1.(a) Persentase rumah tangga yang memiliki akses terhadap hunian yang layak dan terjangkau</li>
                     <li>11.2.1.(a) Proporsi populasi yang mendapatkan akses yang nyaman pada transportasi publik</li>

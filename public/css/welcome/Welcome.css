@@ -107,100 +107,44 @@ body {
 .footer {
     background-color: #5940cb;
     color: #ffffff;
-    padding: 48px 0;
+    height: 167px;
     text-align: center;
-    position: fixed;
-    bottom: 0;
-    width: 80%;
-    left: 10%;
     border-top-left-radius: 40px;
     border-top-right-radius: 40px;
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    z-index: 1000;
+    width: 100%;
 }
 
-.footer-content {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.footer ul {
+    text-decoration: none;
+    list-style-type: none;
 }
 
-.brand-info h3 {
-    margin: 0;
-    font-size: 20px;
-    position: absolute;
-    right: 860px;
-    top: 20px;
+.footer ul li {
+    color: #fff;
+    font-size: 12px;
 }
 
-.brand-info p {
-    margin-top: 5px;
-    font-size: 14px;
-    position: absolute;
-    top: 50px;
-    right: 750px;
+.span-footer {
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
 }
 
-.footer-links {
+.sosmed {
+    gap: 15px;
+}
+
+.sosmed a {
+    color: #fff;
+    gap: 30px;
+    margin: 0 10px;
+}
+
+.col-footer {
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-.footer-nav ul {
-    list-style-type: none;
-    padding: 0;
-    margin: 0;
-    position: absolute;
-    top: 40px;
-    right: 280px;
-}
-
-.footer-nav ul li {
-    display: inline-block;
-    margin-right: 20px;
-}
-
-.footer-nav ul li:last-child {
-    margin-right: 0;
-}
-
-.footer-nav ul li a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 16px;
-}
-
-.footer-nav ul li a:hover {
-    text-decoration: underline;
-}
-
-.social-media {
-    margin-right: auto;
-    position: absolute;
-    top: 29px;
-    right: 23px;
-}
-
-.social-media a {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 20px;
-    margin-left: 10px;
-}
-
-.footer-description {
-    margin-top: 20px;
-    font-size: 14px;
-}
-
-.footer-social-media {
-    margin-bottom: -10px;
-    /* Jarak antara teks Social Media dan ikon */
-    position: relative;
-    top: -19px;
-    right: -5px;
+    flex-direction: column;
 }
 
 
@@ -257,7 +201,6 @@ body {
     position: relative;
     top: 90px;
     width: 1130px;
-    right: -70px;
     cursor: pointer;
 }
 
@@ -500,7 +443,7 @@ body {
     /* Warna border */
     border-top-color: #fff;
     /* Warna lingkaran */
-    animation: spin 2s linear infinite;
+    /* animation: spin 2s linear infinite; */
     /* Animasi putar */
     top: 39px;
     left: 135px;
@@ -702,11 +645,6 @@ h2 {
     font-weight: bold;
 }
 
-.image-container {
-    position: relative;
-    display: inline-block;
-}
-
 .loading-overlay {
     position: absolute;
     top: 32%;
@@ -721,8 +659,6 @@ h2 {
 
 .loader {
     position: relative;
-    top: -74px;
-    right: -213px;
     width: 61%;
     height: 9px;
     background-color: #ffffff;
@@ -767,15 +703,19 @@ h2 {
     }
 }
 
+.section-img {
+    width: 100%;
+    height: 255px;
+    border-radius: 20px;
+    background-image: url("/images/bg-homee.png");
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
 .third-image {
-    position: absolute;
-    top: 417px;
-    right: 1044px;
     width: 145px;
     height: auto;
-    border-radius: 77px;
-    z-index: 1;
-    box-shadow: 0 0 0 5px rgb(255 255 255);
 }
 
 .containerr {
@@ -846,6 +786,11 @@ h2 {
 
 /* Gaya untuk tabel Hari Raya */
 
+.table {
+    border: 1px solid black;
+    border-radius: 15px;
+}
+
 .table-hari-raya {
     border-collapse: collapse;
     width: 51%;
@@ -906,17 +851,11 @@ h2 {
 
 /* Gaya untuk kontainer tabel */
 
-.table-container {
-    position: absolute;
-    top: 671px;
-    right: 543px;
-}
-
 
 /* Gaya untuk tabel kotak */
 
 .box-table {
-    width: 646px;
+    width: 100%;
     height: 108px;
     background-color: #5940cb;
     color: #ffffff;
@@ -1028,9 +967,6 @@ h2 {
         max-width: 100%;
     }
     .loading-overlay {
-        position: absolute;
-        top: 32%;
-        left: 17px;
         transform: translateY(-50%);
         width: 100%;
         height: 100%;
@@ -1054,13 +990,6 @@ h2 {
         right: -44px;
     }
     .calendar {
-        width: 157px;
-        border-radius: 10px;
-        background-color: #ffffff;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        position: absolute;
-        top: 312px;
-        right: 28px;
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     }
     .calendar-header {
@@ -1076,6 +1005,7 @@ h2 {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
         padding: 10px;
+        border: 3px solid #000000;
     }
     .calendar-day {
         text-align: center;
