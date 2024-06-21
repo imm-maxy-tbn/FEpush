@@ -12,7 +12,7 @@
 </head>
 
 <body>
- 
+
     <header>
         <nav class="w-100">
             <div class="row w-100 d-flex justify-content-between align-items-center">
@@ -22,11 +22,8 @@
                 <div class="col-auto h-100 d-flex align-items-center">
                     <ul class="d-flex justify-content-center"
                         style="gap: 70px; margin: 0; padding: 0; list-style: none;">
-                        <a href="/event">
+                        <a href="/event/{{ $event->id }}">
                             <li>Kegiatan</li>
-                        </a>
-                        <a href="/event-register">
-                            <li>Daftar</li>
                         </a>
                         <a href="/">
                             <li>Sponsor</li>
@@ -48,9 +45,9 @@
 
     <div class="container content d-flex flex-column justify-content-center">
         <p class="text-center" style="font-size:32px; font-weight:500">Selamat Anda telah terdaftar! <br>
-            pada event “Ignitting Innovation and Growth : One Day One Bootcamp for Entrepreneur”</p>
-        
-       
+            pada event {{$event->title}}</p>
+
+
     </div>
 
     <div class="container content text-center">
@@ -64,7 +61,7 @@
                 " style="font-size:32px; font-weight:500">Tertarik menjadi
                     sponsor</div>
                 <div class="col">
-                   <a href="#"> <button class="btn-daftar ">Hubunggi Sekarang</button></a>
+                   <a href="#"> <button class="btn-daftar ">Hubungi Sekarang</button></a>
                 </div>
                 <div class="col d-flex justify-content-between" style="">
 
@@ -76,7 +73,7 @@
                     <div class="col-text">
                         <div class="row d-flex flex-column align-items-center " style="gap: 30px">
                             <div class="col text-left  d-flex justify-content-start" style="gap: 30px">
-                                
+
                                 <a href="" class="text-white">Term of Reference</a>
                                 <a href="" class="text-white">Contact</a>
 
@@ -91,7 +88,7 @@
     </footer>
 
 <script>
-    
+
 </script>
 </body>
 

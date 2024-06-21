@@ -14,7 +14,7 @@
 </head>
 
 <body>
- 
+
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -53,7 +53,7 @@
 
 <div class="container mt-5">
     <div class="btn">
-    <a href="/blog"><button class="btn-blog">Blog Artikel</button></a>
+    <a href="/blog"><button class="btn-blog">Event Artikel</button></a>
    <a href="/event"> <button class="btn-event">Event</button></a>
     </div>
     <div class="search-container mt-4">
@@ -113,7 +113,45 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="{{ asset('js/blog-event/event.js') }}"></script>
+{{-- <script src="{{ asset('js/blog-event/event.js') }}"></script> --}}
+<script>
+    const backendUrl = @json($backendUrl);
+    const events = @json($events);
+
+    document.addEventListener("DOMContentLoaded", function () {
+        const eventContainer = document.getElementById("blogContainer");
+
+        events.forEach((event) => {
+            const eventCard = document.createElement("div");
+            eventCard.className = "blog-card";
+            eventCard.innerHTML = `
+                <a href="/event/${event.id}">
+                    <div class="blog-image" style="background-image: url(${event.img});"></div>
+                    <h3>${event.title}</h3>
+                    <p>${event.description}</p>
+                </a>
+            `;
+            blogContainer.appendChild(eventCard);
+        });
+
+        document.getElementById("searchInput").addEventListener("input", searchBlog);
+    });
+
+    function searchBlog() {
+        const input = document.getElementById("searchInput").value.toLowerCase();
+        const eventCards = document.querySelectorAll(".blog-card");
+
+        eventCards.forEach((card) => {
+            const title = card.querySelector("h3").textContent.toLowerCase();
+            const content = card.querySelector("p").textContent.toLowerCase();
+            if (title.includes(input) || content.includes(input)) {
+                card.style.display = "block";
+            } else {
+                card.style.display = "none";
+            }
+        });
+    }
+</script>
 
 </body>
 
