@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/imm', function () {
         return view('imm.imm');
-    });
+    })->middleware('check.company.registration');
 
     Route::get('/verifikasidiri', function () {
         return view('imm.verifikasidiri');
@@ -87,7 +87,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/impact', function () {
         return view('myproject.impact');
-    })->name('impact.impact');;
+    })->name('impact.impact');
 
     Route::get('/profile', function () {
         return view('profile.profile');
@@ -152,7 +152,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/creatproject', [ProjectController::class, 'create'])->name('projects.create');
     Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
 
-    Route::resource('companies', 'CompanyController');
+    Route::resource('companies', CompanyController::class);
     Route::post('/companies/store', [CompanyController::class, 'store'])->name('companies.store');
 
     Route::get('event', [EventController::class, 'index'])->name('events.index');
