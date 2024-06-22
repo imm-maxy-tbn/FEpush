@@ -59,6 +59,25 @@
                 gap: 20px;
             }
         }
+
+        @media (max-width: 576px) {
+            .input-group {
+                flex-direction: column;
+            }
+
+            .input-group input {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+
+            .input-group-append {
+                width: 100%;
+            }
+
+            .input-group-append button {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
@@ -107,10 +126,12 @@
         <div class="subscribe-container text-center mt-4">
             <p>Jangan tertinggal artikel seputar gerakan berdampak!</p>
             <p><strong>Langganan melalui e-mail sekarang GRATIS</strong></p>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="masukkan e-mail anda disini">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button"><i class="fas fa-envelope"></i></button>
+            <div class="d-flex justify-content-center">
+                <div class="input-group" style="max-width: 500px;">
+                    <input type="text" class="form-control" placeholder="masukkan e-mail anda disini">
+                    <div class="input-group-append">
+                    <button class="btnn btn-primary" type="button"><i class="fas fa-envelope"></i></button>
+                </div>
                 </div>
             </div>
         </div>
