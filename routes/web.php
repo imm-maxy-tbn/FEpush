@@ -150,6 +150,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('projects', ProjectController::class);
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
+    Route::get('/detail/{id}', [ProjectController::class, 'view'])->name('projects.view');
     Route::get('/creatproject', [ProjectController::class, 'create'])->name('projects.create');
     Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
     Route::post('/projects/filter-metrics', [ProjectController::class, 'filterMetrics'])->name('projects.filterMetrics');
