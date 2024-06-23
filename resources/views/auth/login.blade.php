@@ -14,10 +14,7 @@
 </head>
 
 <body>
-<div id="loading">
-        <img src="images/imm.png" alt="Loading">
-    </div>
-
+ 
 
     <div class="container-fluid d-flex justify-content-between" style="max-height: 100vh">
         <div class="col-6 w-100 d-flex justify-content-center">

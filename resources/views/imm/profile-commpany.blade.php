@@ -32,7 +32,7 @@
                         <a class="nav-link" href="/myproject">My Project</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/profile-commpany">My Company</a>
+                        <a class=" navbar-button" href="/profile-commpany">My Company</a>
                     </li>
                 </ul>
             </div>
@@ -55,10 +55,10 @@
     </div>
     <!-- content form -->
     <div class="container "  >
-        <form method="POST" action="{{ route('profile-company.update', ['id' => $company->id]) }}">
+        <form method="POST" action="{{ route('profile-commpany', ['id' => $company->id]) }}">
             @csrf
             @method('PUT')
-            <section>
+            <section> 
                 <div class="row propil mx-5 py-3 px-4 border border-dark">
                     <div class="col-2">
                         <h5>Basic Details</h5>
@@ -133,7 +133,7 @@
                             <input type="text" name="kabupaten" class="form-control" id="formGroupExampleInput10" placeholder="Kabupaten" value="{{$company->kabupaten}}">
                         </div>
         
-                        <button type="submit" class="btn btn-primary">Update</button>
+                        {{-- <button type="submit" class="btn btn-primary">Update</button> --}}
                     </div>
                 </div>
             </section>
@@ -166,17 +166,9 @@
 </div>
     <section>
         <div class="row my-3 mx-5 justify-content-center align-items-center " style="gap: 50px">
-            <div class="row border border-dark rounded px-5 py-1 flex align-items-center">
-                <span>Exit</span>
-                <div class="mx-2"></div>
-                <img src="images/icon-exit.svg" height="20" width="20" alt="Exit Icon">
-            </div>
-            <div class="row border border-dark rounded px-5 py-1 flex align-items-center">
-                <button type="submit">Simpan
-                <div class="mx-2"></div>
-                <img src="images/icon-exit.svg" height="20" width="20" alt="Exit Icon"></button>
-            </div>
-            
+          <a href="/homepage"><button type="submit" class=" btn btn-primary">Exit</button>
+
+          </a> 
         </div>
         </div>
     </section>
@@ -238,59 +230,6 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
 </body>
-<script>
-    let reportCount = 1;
 
-    function addReport() {
-        const template = document.getElementById('report-template').content.cloneNode(true);
-        const reportContainer = document.getElementById('report-container');
-
-        // Update the number in the new report container
-        template.querySelector('.number').textContent = reportCount;
-
-        // Add event listener to the new file input
-        const fileInput = template.querySelector('.gambar');
-        fileInput.addEventListener('change', previewImages);
-
-        reportCount++;
-        reportContainer.appendChild(template);
-    }
-
-    function previewImages(event) {
-        const files = event.target.files;
-        const container = event.target.closest('.report');
-        const previewContainer = container.querySelector('.preview-container');
-
-        // Loop through each file and add a preview
-        Array.from(files).forEach((file) => {
-            const reader = new FileReader();
-
-            reader.onload = function() {
-                const previewDiv = document.createElement('div');
-                previewDiv.className = 'preview';
-
-                const img = document.createElement('img');
-                img.src = reader.result;
-
-                const fileName = document.createElement('p');
-                fileName.textContent = file.name;
-
-                const removeBtn = document.createElement('button');
-                removeBtn.innerHTML = 'X';
-                removeBtn.className = 'remove-btn';
-                removeBtn.onclick = function() {
-                    previewDiv.remove();
-                };
-
-                previewDiv.appendChild(img);
-                previewDiv.appendChild(fileName);
-                previewDiv.appendChild(removeBtn);
-                previewContainer.appendChild(previewDiv);
-            };
-
-            reader.readAsDataURL(file);
-        });
-    }
-</script>
 
 </html>

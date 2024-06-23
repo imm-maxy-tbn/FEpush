@@ -66,7 +66,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/homepage', function () {
         return view('homepageimm.homepage');
-    });
+    })->name('homepage');
 
     Route::get('/myproject', function () {
         return view('myproject.myproject');
@@ -314,14 +314,12 @@ Route::get('/profile-commpany', function () {
 
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::get('/profile-company/{id}', function ($id) {
-    $company = Company::findOrFail($id);
-    $user = User::findOrFail($id);
+Route::get('/profile-commpany', function () {
+    $user = auth()->user(); // Mengambil data user yang sedang login
+    $company = $user->company; // Mengambil data perusahaan yang terkait dengan user
+
     return view('imm.profile-commpany', compact('company', 'user'));
-})->name('profile-company');
-
-Route::put('/profile-company/{id}', [CompanyController::class, 'update'])->name('profile-company.update');
-
+})->name('profile-commpany');
 Route::get('/profile', function ($id) {
     $user = User::findOrFail($id);
     return view('profile.profile', compact('user'));
@@ -358,3 +356,4 @@ Route::get('responden/{id}', [SurveyController::class, 'view'])->name('surveys.v
 Route::get('responden-data-diri/{id}', [SurveyController::class, 'dataDiri'])->name('surveys.data-diri');
 Route::post('responden/{id}', [SurveyController::class, 'registerUser'])->name('surveys.register-user');
 Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submit'])->name('surveys.submit');
+

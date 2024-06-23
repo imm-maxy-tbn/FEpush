@@ -142,55 +142,6 @@ class SurveyController extends Controller
         }
 
         return $this->createEntry($survey, $user, $lastEntry);
-<<<<<<< HEAD
-=======
-    }
-
-    public function submit(Survey $survey, Request $request, User $user)
-    {
-        try {
-            Log::info('Incoming request data:', $request->all());
-
-            // Check if the user has already submitted the survey
-            $lastEntry = Entry::where('participant_id', $user->id)
-                  ->where('survey_id', $survey->id)
-                  ->latest()
-                  ->first();
-            $alreadySubmitted = $lastEntry !== null;
-
-            // Validate the request data against the survey's rules
-            $answers = $request->validate($survey->rules);
-
-            // Create a new entry for the survey with the validated answers
-            if (!$alreadySubmitted) {
-                (new Entry)->for($survey)->by($user)->fromArray($answers)->push();
-            }
-
-            return view('survey.responden.responden-penutup-survey', compact('survey', 'alreadySubmitted'));
-        } catch (ValidationException $e) {
-            // Log the validation error details
-            Log::error('Validation error submitting survey:', [
-                'survey_id' => $survey->id,
-                'user_id' => $user->id,
-                'error_message' => $e->getMessage(),
-                'errors' => $e->errors(),
-            ]);
-
-            // Redirect back with validation error messages
-            return redirect()->back()->withErrors($e->errors())->withInput();
-        } catch (\Exception $e) {
-            // Log any other errors
-            Log::error('Error submitting survey:', [
-                'survey_id' => $survey->id,
-                'user_id' => $user->id,
-                'error_message' => $e->getMessage(),
-                'trace' => $e->getTraceAsString(),
-            ]);
-
-            // Redirect back with a general error message
-            return redirect()->back()->with('error', 'An error occurred while submitting your responses. Please try again.');
-        }
->>>>>>> 6727a490c701fb6c76a1b56899fa99c7d3590ec2
     }
 
     public function submit(Survey $survey, Request $request, User $user)

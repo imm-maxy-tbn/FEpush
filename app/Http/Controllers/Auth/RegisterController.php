@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Validation\ValidationException;
-
+use App\Http\Controllers\Auth\Auth;
 class RegisterController extends Controller
 {
     /*
@@ -43,6 +43,21 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    
+    public function index()
+    {
+        $user = auth()->user(); // Mendapatkan user yang sedang terautentikasi
+    
+        // Cek apakah user memiliki company
+        if ($user->company) {
+            $company = $user->company;
+            return view('homepageimm.homepage', compact('user', 'company'));
+        } else {
+            // Jika user tidak memiliki company, tindakan selanjutnya sesuai kebutuhan aplikasi Anda
+            return redirect()->route('buat-company'); // Contoh pengalihan ke halaman membuat company baru
+        }
+    }
+    
     /**
      * Get a validator for an incoming registration request.
      *

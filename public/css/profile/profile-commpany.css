@@ -10,6 +10,24 @@ body {
     list-style-type: none;
 }
 
+.navbar-button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    /* Menghapus underline pada teks tautan */
+    display: inline-block;
+    /* Membuat tautan tampil sebagai blok inline */
+}
+
+.navbar-button:hover {
+    background-color: #333333;
+}
+
 
 /* Navbar */
 
