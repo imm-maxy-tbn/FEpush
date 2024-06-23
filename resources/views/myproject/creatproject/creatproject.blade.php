@@ -32,7 +32,7 @@
                         <a class="nav-link" href="/myproject">My Project</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="homepage">My Company</a>
+                        <a class="nav-link" href="/profile-commpany">My Company</a>
                     </li>
 
                 </ul>
@@ -241,8 +241,7 @@
                     <h1 class="text-center">Green Future Initiative</h1>
                     <p class="text-center">Goals SDGs project anda</p>
                     <div class="d-flex justify-content-center mb-4">
-                        <img src="images/E-WEB-Goal-11.png" alt="SDG 11" class="img-fluid mx-2 sdg-goal" data-target="#goal11-description">
-                        <img src="images/E-WEB-Goal-13.png" alt="SDG 13" class="img-fluid mx-2 sdg-goal" data-target="#goal13-description">
+
                         <img src="images/E-WEB-Goal-15.png" alt="SDG 15" class="img-fluid mx-2 sdg-goal" data-target="#goal15-description">
                     </div>
                     <div class="text-center bg-light p-3 mb-4">
@@ -250,41 +249,9 @@
                     </div>
                     <h5 class="text-center mb-4">Tentukan indikator SDGs sebagai target project anda! Anda dapat memilih lebih dari satu indikator</h5>
                 
-                    <div id="goal11-description" class="sdg-description mb-4 p-3 bg-white shadow-sm rounded">
-                        <div class="d-flex align-items-center">
-                            <img src="images/E-WEB-Goal-11.png" alt="SDG 11" class="mr-3" width="50">
-                            <div>
-                                <h5 class="mb-0">SDGs Goals 11</h5>
-                                <p class="mb-0">Kota dan Komunitas yang Berkelanjutan (Sustainable Cities and Communities)</p>
-                            </div>
-                        </div>
-                        <div class="mt-3 d-flex align-items-center" style="gap: 15px">
-                            <label for="subscribe">
-                                <input type="checkbox" id="subscribe" name="subscribe" value="yes">
-                            </label>
-                            <span>11.1</span><span>Pada tahun 2030, menjamin akses bagi semua orang terhadap perumahan dan layanan dasar yang layak, aman dan terjangkau serta memperbaiki kawasan kumuh</span>
-                
-                        </div>
-                    </div>
-                
-                    <div id="goal13-description" class="sdg-description mb-4 p-3 bg-white shadow-sm rounded">
-                        <div class="d-flex align-items-center">
-                            <img src="images/E-WEB-Goal-13.png" alt="SDG 13" class="mr-3" width="50">
-                            <div>
-                                <h5 class="mb-0">SDGs Goals 13</h5>
-                                <p class="mb-0">Penanganan Perubahan Iklim (Climate Action)</p>
-                            </div>
-                        </div>
-                        <div class="mt-3 d-flex align-items-center" style="gap: 15px">
-                            <label for="subscribe">
-                                <input type="checkbox" id="subscribe" name="subscribe" value="yes">
-                            </label>
-                            <span>11.1</span><span>Pada tahun 2030, menjamin akses bagi semua orang terhadap perumahan dan layanan dasar yang layak, aman dan terjangkau serta memperbaiki kawasan kumuh</span>
-                
-                        </div>
-                    </div>
-                
-                    <div id="goal15-description" class="sdg-description mb-4 p-3 bg-white shadow-sm rounded">
+                  
+                   
+                    <div id="goal15-description" class=" mb-4 p-3 bg-white shadow-sm rounded">
                         <div class="d-flex align-items-center">
                             <img src="images/E-WEB-Goal-15.png" alt="SDG 15" class="mr-3" width="50">
                             <div>
@@ -292,15 +259,22 @@
                                 <p class="mb-0">Ekosistem Daratan (Life on Land)</p>
                             </div>
                         </div>
-                        <div class="mt-3 d-flex align-items-center" style="gap: 15px">
+                        <div class="section">
+                        <div class="mt-3 d-flex align-items-center ">
                             <label for="subscribe">
                                 <input type="checkbox" id="subscribe" name="subscribe" value="yes">
-                            </label>
-                            <span>11.1</span><span>Pada tahun 2030, menjamin akses bagi semua orang terhadap perumahan dan layanan dasar yang layak, aman dan terjangkau serta memperbaiki kawasan kumuh</span>
-                
+                           
+                            <span class="mx-3">11.1</span  ><span>Pada tahun 2030, menjamin akses bagi semua orang terhadap perumahan dan layanan dasar yang layak, aman dan terjangkau serta memperbaiki kawasan kumuh</span> </label>
+                        </div>
+                        <div id="sub-container" style="display: none;">
+                            <!-- Elemen sub akan muncul di sini -->
+                            <div class=" d-flex align-items-center" style="gap: 15px;margin-left: 70px" >
+                       
+                                <span>11.11</span><span>Pada tahun 2030, menjamin akses bagi semua orang terhadap perumahan dan layanan dasar yang layak, aman dan terjangkau serta memperbaiki kawasan kumuh</span>
+                            </div>
                         </div>
                     </div>
-                
+                </div>
                     <div class="d-flex justify-content-between mt-3">
                         <button type="button" class="btn btn-secondary" id="back-to-sdg-section">Back</button>
                         <button type="button" class="btn btn-primary" id="next-to-metric-section">Next</button>

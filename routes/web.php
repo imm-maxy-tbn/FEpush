@@ -1,7 +1,10 @@
 <?php
 
+use App\Models\Company;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CompanyController;
 
 
 Auth::routes();
@@ -10,9 +13,9 @@ Route::get('/', function () {
     return view('tampilanawalhome.welcome');
 });
 
-Route::get('/welcome', function () {
+Route::get('/', function () {
     return view('tampilanawalhome.welcome');
-})->name('home'); /* ini befungsi untuk memindahkan dari login ke home */
+})->name('/'); /* ini befungsi untuk memindahkan dari login ke home */
 
 // Route::get('/login', function () {
 //     return view('login');
@@ -161,13 +164,23 @@ Route::get('/event-register', function () {
 Route::get('/succes', function () {
     return view('event.succes');
 });
-
+Route::get('/profile-commpany', function () {
+    return view('imm.profile-commpany');
+});
 
 use App\Http\Controllers\HomeController;
 Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-use App\Http\Controllers\CompanyController;
-Route::post('/companies/store', [CompanyController::class, 'store'])->name('companies.store');
+Route::get('/profile-company/{id}', function ($id) {
+    $company = Company::findOrFail($id);
+    $user = User::findOrFail($id);
+    return view('imm.profile-commpany', compact('company', 'user'));
+})->name('profile-company');
+
+Route::put('/profile-company/{id}', [CompanyController::class, 'update'])->name('profile-company.update');
+
+
+
 
 use App\Http\Controllers\PostController;
 Route::get('/blog', [PostController::class, 'index'])->name('blog.index');

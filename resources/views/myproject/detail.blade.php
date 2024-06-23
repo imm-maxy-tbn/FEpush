@@ -266,19 +266,19 @@
                 </div>
                 <div class="col-5 d-flex justify-content-center align-items-center">
                     <ul class="d-flex" style="gap: 30px">
-                        <a href="#">
+                        <a href="/">
                             <li>HomePage</li>
                         </a>
-                        <a href="#">
+                        <a href="bootcamp">
                             <li>Bootcamp</li>
                         </a>
-                        <a href="#">
+                        <a href="imm">
                             <li>IMM</li>
                         </a>
                         <a href="#">
                             <li>Community</li>
                         </a>
-                        <a href="#">
+                        <a href="profile">
                             <li>Profile</li>
                         </a>
                     </ul>
