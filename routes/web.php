@@ -5,6 +5,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CompanyController;
+use App\Http\Controllers\SurveyController;
 
 
 Auth::routes();
@@ -179,8 +180,15 @@ Route::get('/profile-company/{id}', function ($id) {
 
 Route::put('/profile-company/{id}', [CompanyController::class, 'update'])->name('profile-company.update');
 
+Route::get('/profile', function ($id) {
+    $user = User::findOrFail($id);
+    return view('profile.profile', compact('user'));
+})->name('profile');
 
-
+// Route::get('/profile-company/{id}', function ($id) {
+//     $user = User::findOrFail(auth()->user()->id);
+//     return view('profile.profile', compact('user'));
+// })->name('profile');
 
 use App\Http\Controllers\PostController;
 Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
@@ -199,3 +207,13 @@ Route::get('/projects', [ProjectController::class, 'index'])->name('projects.ind
 Route::get('/creatproject', [ProjectController::class, 'create'])->name('projects.create');
 Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
 
+
+Route::get('/projects/filter-metrics', [ProjectController::class, 'filterMetrics'])->name('projects.filterMetrics');
+
+
+Route::post('survey', [SurveyController::class, 'store'])->name('surveys.store');
+
+Route::get('responden/{id}', [SurveyController::class, 'view'])->name('surveys.view');
+Route::get('responden-data-diri/{id}', [SurveyController::class, 'dataDiri'])->name('surveys.data-diri');
+Route::post('responden/{id}', [SurveyController::class, 'registerUser'])->name('surveys.register-user');
+Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submit'])->name('surveys.submit');

@@ -37,15 +37,16 @@ class ProjectController extends Controller
     {
         $tagIds = $request->input('tag_ids', []);
         $indicatorIds = $request->input('indicator_ids', []);
-
+        
         $metrics = Metric::orWhereHas('tags', function($query) use ($tagIds) {
             $query->whereIn('tags.id', $tagIds);
         })->orWhereHas('indicators', function($query) use ($indicatorIds) {
             $query->whereIn('indicators.id', $indicatorIds);
         })->with('relatedMetrics')->get();
-
+        
         return response()->json($metrics);
     }
+
 
 
     public function store(Request $request)

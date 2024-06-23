@@ -1,8 +1,8 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Company;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
@@ -11,20 +11,14 @@ use Illuminate\Support\Facades\Validator;
 class CompanyController extends Controller
 {
     // ...
-    
-    /**
-     * Update the specified Company in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+
     public function update(Request $request, $id)
     {
         try {
-            $user = Auth::user();
-            $company = Company::where('user_id', $user->id)->findOrFail($id);
+            $user = Auth::user(); // Mendapatkan user yang sedang login
+            $company = Company::where('user_id', $user->id)->findOrFail($id); // Mendapatkan perusahaan berdasarkan user_id
 
+            // Validasi input dari form
             $validated = $request->validate([
                 'nama_depan' => 'required',
                 'nama_belakang' => 'required',
@@ -41,7 +35,7 @@ class CompanyController extends Controller
                 'kabupaten' => 'required',
             ]);
 
-            // Update data perusahaan berdasarkan input dari form
+            // Update data perusahaan
             $company->update([
                 'nama' => $validated['company_name'],
                 'profile' => $validated['profile'],
@@ -74,10 +68,10 @@ class CompanyController extends Controller
                 Log::error('Validation error: ' . $error);
             }
 
-            // Redirect kembali ke halaman sebelumnya dengan pesan error
             return back()->withInput()->withErrors($errors);
         }
     }
 
     // ...
 }
+

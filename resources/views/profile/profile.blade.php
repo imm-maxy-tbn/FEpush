@@ -58,8 +58,8 @@
             </a>
         </div>
         <div class="col-md-4">
-            <h2>Rizard Hazard</h2>
-            <p><i class="fas fa-phone"></i> +628953410080</p>
+            {{-- <h2>{{$user->nama_belakang}} </h2> --}}
+            <p><i class="fas fa-phone"></i> {{$user->telepon}} </p>
             <p><i class="fas fa-envelope"></i> rizardhazard@gmail.com</p>
             <p><i class="fas fa-map-marker-alt"></i> Jl. Rukan Meruya Ilir Bl M/80 Jakarta, Dki Jakarta.</p>
         </div>
