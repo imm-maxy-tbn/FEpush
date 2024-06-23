@@ -14,6 +14,9 @@
 </head>
 
 <body>
+<div id="loading">
+        <img src="images/imm.png" alt="Loading">
+    </div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -28,7 +31,7 @@
                         <a class="nav-link" href="welcome">Home</a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link" href="bootcamp">Bootcamp</a>
+                    <a href="bootcamp" class="navbar-button">Bootcamp</a>
                     </li>
                     <li class="nav-item active">
                         <a class="nav-link" href="imm">IMM</a>

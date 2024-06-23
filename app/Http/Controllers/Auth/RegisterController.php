@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Validation\ValidationException;
 
 class RegisterController extends Controller
 {
@@ -52,7 +53,7 @@ class RegisterController extends Controller
     {
         $validator = Validator::make($data, [
             'nama' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'email' => ['required', 'string', 'email', 'max:255'],
             'password' => ['required', 'string', 'confirmed'], //add minimum
             'nik' => ['required', 'string', 'max:16'],
             'negara' => ['required', 'string', 'max:50'],
@@ -89,17 +90,40 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'nama_depan' => $data['nama'],
-            'nama_belakang' => null,
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'nik' => $data['nik'],
-            'negara' => $data['negara'],
-            'provinsi' => $data['provinsi'],
-            'alamat' => $data['alamat'],
-            'telepon' => $data['telepon'],
-            'role' => 'USER',
+        $user = User::where('email', $data['email'])->first();
+
+        if ($user && $user->nik === null && $user->negara === null && $user->provinsi === null && $user->role === 'USER') {
+            $user->update([
+                'nama_depan' => $data['nama'],
+                'nama_belakang' => null,
+                'password' => $data['password'],
+                'nik' => $data['nik'],
+                'negara' => $data['negara'],
+                'provinsi' => $data['provinsi'],
+                'alamat' => $data['alamat'],
+                'telepon' => $data['telepon'],
+                'role' => 'USER',
+            ]);
+
+            return $user;
+        } elseif (!$user) {
+            return User::create([
+                'nama_depan' => $data['nama'],
+                'nama_belakang' => null,
+                'email' => $data['email'],
+                'password' => $data['password'],
+                'nik' => $data['nik'],
+                'negara' => $data['negara'],
+                'provinsi' => $data['provinsi'],
+                'alamat' => $data['alamat'],
+                'telepon' => $data['telepon'],
+                'role' => 'USER',
+            ]);
+        }
+
+        // If the user exists and doesn't have 'nonlogin' as the password, throw a validation exception.
+        throw ValidationException::withMessages([
+            'email' => ['The email address is already in use and cannot be registered again.'],
         ]);
     }
 }

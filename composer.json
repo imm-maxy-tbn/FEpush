@@ -10,11 +10,16 @@
         "doctrine/event-manager": "^1.1",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.8",
+        "ichtrojan/laravel-otp": "^2.0",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "matt-daneshvar/laravel-survey": "^0.4.0",
+
+
+        "nesbot/carbon": "^2.72",
+
         "psr/cache": "^1.0"
     },
     "require-dev": {
@@ -30,7 +35,10 @@
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",
             "Database\\Seeders\\": "database/seeders/"
-        }
+        },
+        "files": [
+            "app/Helpers/SurveyHelper.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {

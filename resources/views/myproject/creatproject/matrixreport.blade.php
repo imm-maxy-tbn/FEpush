@@ -42,10 +42,10 @@
         <div class="col-md-4 target-check">
             <div class="icon-box d-flex justify-content-between mb-4">
                 <div class="icon-item">
-                    <img src="images/E-WEB-Goal-02.png" alt="Zero Hunger">
+                    <img src="{{ asset('images/ASVG/zero.svg') }}" alt="Zero Hunger">
                 </div>
                 <div class="icon-item">
-                    <img src="images/E-WEB-Goal-06.png" alt="Clean Water and Sanitation">
+                    <img src="{{ asset('images/ASVG/clean.svg') }}" alt="Clean Water and Sanitation">
                 </div>
             </div>
             <div class="target-check-box">

@@ -14,7 +14,7 @@
 </head>
 
 <body>
- 
+
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -82,7 +82,7 @@
     </div>
     <div class="container mt-5">
         <div class="row gap d-flex justify-content-center" style="gap: 24px">
-           <a href="/responden-data-diri"><button class="btn-kembali">Kembali</button></a> 
+           <a href="/responden-data-diri"><button class="btn-kembali">Kembali</button></a>
            <a href="/responden-pilihan-ganda"> <button class="btn-selanjutnya">Lanjutkan</button></a>
         </div>
     </div><footer>

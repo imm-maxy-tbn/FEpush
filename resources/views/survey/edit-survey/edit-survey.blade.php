@@ -23,6 +23,7 @@
         </div>
     </nav>
 
+<<<<<<< HEAD
     <form action="{{ route('surveys.store') }}" method="POST">
         @csrf
         <div class="container content mt-5 mb-5">
@@ -57,6 +58,46 @@
 
         <div class="container mb-5" id="sections-container">
 
+=======
+    <div class="container content mt-5 mb-5">
+        {{-- <div class="container">
+            <label for="gambar" style="cursor: pointer;">
+                <div class="sub-content d-flex justify-content-center align-items-center">
+                    <img src="images/upload.png" width="42">
+            </label>
+            <input type="file" id="gambar" name="gambar" accept="image/*" style="display: none;">
+        </div> --}}
+        <div class="mb-2 mt-2">
+            <input type="text" name="name" class="form-control" placeholder="Judul Survey anda"
+                style="border: none; background:transparent; font-size: 40px;font-weight: bold;">
+        </div>
+        {{-- <div class="mb-2 mt-2">
+            <textarea type="text" name="" class="form-control "
+                style="font-size: 20px; border: none; background:transparent;" placeholder="Desksipsi survey anda"> Deskripsi Survey anda</textarea>
+        </div> --}}
+        <div class="form-group" style="display: none;">
+            <label for="accept-guest-entries">Accept Guest Entries</label>
+            <input type="hidden" name="settings[accept-guest-entries]" id="accept-guest-entries" value="true"
+                class="form-control">
+        </div>
+        <div class="form-group" style="display: none;">
+            <label for="limit-per-participant">Limit Per Participant</label>
+            <input type="hidden" name="settings[limit-per-participant]" id="limit-per-participant" class="form-control"
+                value="-1">
+        </div>
+
+        <div class="row d-flex justify-content-between">
+            {{-- <button type="" class="btn-mulai">Mulai Survey</button>
+            <button type="" class="btn-akhiri">Akhiri Survey</button>
+            <button type="" class="btn-lihat d-flex justify-content-around align-items-center">
+                <a href="responden" class="text-dark"><span>Lihat Survey</span></a>
+                <img src="images/mata-icon.png" width="25" height="20" alt="">
+            </button> --}}
+            <button class="btn-simpan d-flex justify-content-around align-items-center">
+                <a href="impact" class="text-white"><span>Simpan Survey</span></a>
+                <img src="images/simpan-icon.png" width="29" height="auto" alt="">
+            </button>
+>>>>>>> 6727a490c701fb6c76a1b56899fa99c7d3590ec2
         </div>
 
         <div class="container d-flex justify-content-center mt-5">
@@ -121,6 +162,15 @@
     </template>
 
 
+<<<<<<< HEAD
+=======
+    </div>
+
+
+    <div class="container d-flex justify-content-center">
+        <span class="btn-tambah-bagian" id="add-section-btn">Tambah Bagian Survey +</span>
+    </div>
+>>>>>>> 6727a490c701fb6c76a1b56899fa99c7d3590ec2
     <footer>
         <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
             <div class="row d-flex  justify-content-center align-items-center">
@@ -228,6 +278,114 @@
             // Initial setup if there are any existing sections (optional)
             // addSection(); // Uncomment this if you want to start with one section by default
         });
+<<<<<<< HEAD
+=======
+
+        function clearFormContainer(container) {
+            container.innerHTML = '';
+        }
+
+        function showForm(container, formType) {
+            let form;
+            if (formType === 'Teks Isian') {
+                form = getEssayFormHtml(1);
+            } else if (formType === 'Pilihan Ganda') {
+                form = getMultipleChoiceFormHtml(1);
+            } else if (formType === 'Skala') {
+                form = getScaleFormHtml(1);
+            }
+            container.innerHTML = form;
+        }
+
+        function addQuestion(container, formType) {
+            questionCount++;
+            let newForm;
+            if (formType === 'Teks Isian') {
+                newForm = getEssayFormHtml(questionCount);
+            } else if (formType === 'Pilihan Ganda') {
+                newForm = getMultipleChoiceFormHtml(questionCount);
+            } else if (formType === 'Skala') {
+                newForm = getScaleFormHtml(questionCount);
+            }
+            container.innerHTML += newForm;
+        }
+
+        function getEssayFormHtml(questionNumber) {
+            return `
+    <div class="form-esay">
+       <div class="row d-flex" style="gap: 45px">
+            <span class="angka d-flex justify-content-center align-items-center">${questionNumber}</span>
+            <div class="mb-2 ">
+                <label for="nama_depan_${questionNumber}" class="form-label">Tambahkan pertanyaan</label>
+                <input type="text" id="nama_depan_${questionNumber}" class="form-control" placeholder="Isi disini">
+            </div>
+        </div>
+    </div>`;
+        }
+
+        function getMultipleChoiceFormHtml(questionNumber) {
+            return `
+    <div class="form-pilihan-ganda">
+        <div class="row d-flex" style="gap: 45px">
+            <span class="angka d-flex justify-content-center align-items-center">${questionNumber}</span>
+            <div class="mb-2 d-flex flex-column">
+                                  <input type="text" name="" class="form-control" placeholder="Tambahkan Pertanyaan"
+                    style="border: none; background:transparent; font-size: 20px;">
+                <label>
+                    <input type="radio" class="mb-3" name="optionsRadios_${questionNumber}" value="option1" checked=""><input type="text" name="" class="" placeholder="Isi jawaban disini"
+                    style="border: none; background:transparent; font-size: 5px;">
+                </label>
+                <label>
+                    <input type="radio" class="mb-3" name="optionsRadios_${questionNumber}" value="option2"><input type="text" name="" class="" placeholder="Isi jawaban disini"
+                    style="border: none; background:transparent; font-size: 5px;">
+                </label>
+                <label>
+                    <input type="radio" class="mb-3" name="optionsRadios_${questionNumber}" value="option3"><input type="text" name="" class="" placeholder="Isi jawaban disini"
+                    style="border: none; background:transparent; font-size: 5px;">
+                <label>
+                    <input type="radio" class="mb-3" name="optionsRadios_${questionNumber}" value="option4"><input type="text" name="" class="" placeholder="Isi jawaban disini"
+                    style="border: none; background:transparent; font-size: 5px;">
+                </label>
+            </div>
+        </div>
+    </div>`;
+        }
+
+        function getScaleFormHtml(questionNumber) {
+            return `
+    <div class="form-skala">
+        <div class="row d-flex" style="gap: 45px">
+            <span class="angka d-flex justify-content-center align-items-center">${questionNumber}</span>
+            <div class="row d-flex flex-column">
+                  <input type="text" name="" class="form-control" placeholder="Tambahkan Pertanyaan"
+                    style="border: none; background:transparent; font-size: 20px;">
+                <div class="mb-2 d-flex" style="gap: 125px">
+                    <div class="radio-item">
+                        <input type="radio" name="optionsRadios_${questionNumber}" value="option1" checked>
+                        <label for="optionsRadios_${questionNumber}">1</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" name="optionsRadios_${questionNumber}" value="option2">
+                        <label for="optionsRadios_${questionNumber}">2</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" name="optionsRadios_${questionNumber}" value="option3">
+                        <label for="optionsRadios_${questionNumber}">3</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" name="optionsRadios_${questionNumber}" value="option4">
+                        <label for="optionsRadios_${questionNumber}">4</label>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" name="optionsRadios_${questionNumber}" value="option5">
+                        <label for="optionsRadios_${questionNumber}">5</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`;
+        }
+>>>>>>> 6727a490c701fb6c76a1b56899fa99c7d3590ec2
     </script>
     <script src="{{ asset('js/imm/metrix.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

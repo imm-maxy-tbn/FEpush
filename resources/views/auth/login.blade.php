@@ -10,45 +10,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
-
-   
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />   
 </head>
 
 <body>
- 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">IMM Impact Mate</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ">
-                
-                    <li class="nav-item active">
-                        <a class="nav-link" href="welcome">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="bootcamp">Bootcamp</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="imm">IMM</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="community">Community</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="blog">Explore</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profile">Profile</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+<div id="loading">
+        <img src="images/imm.png" alt="Loading">
+    </div>
+
 
     <div class="container-fluid d-flex justify-content-between" style="max-height: 100vh">
         <div class="col-6 w-100 d-flex justify-content-center">

@@ -53,7 +53,7 @@ class PostController extends Controller
 
         $post = Post::create([
             'title' => $request->input('title'),
-            'img' => $imageName, 
+            'img' => $imageName,
             'content' => $request->input('content'),
             'user_id' => $request->input('user_id'),
             'published_at' => $request->input('published_at'),
@@ -92,7 +92,7 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
-            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:10000', 
+            'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:10000',
             'content' => 'required',
             'user_id' => 'required|exists:users,id',
             'published_at' => 'nullable|date',
@@ -106,7 +106,7 @@ class PostController extends Controller
             if ($post->img && file_exists(public_path('images/' . $post->img))) {
                 unlink(public_path('images/' . $post->img));
             }
-            
+
             $imageName = time() . '.' . $request->img->extension();
             $request->img->move(public_path('images'), $imageName);
             $post->img = $imageName;

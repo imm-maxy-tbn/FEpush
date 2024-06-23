@@ -14,6 +14,9 @@
 </head>
 
 <body>
+    <div id="loading">
+        <img src="{{ asset('images/imm.png') }}" alt="Loading...">
+    </div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -28,20 +31,26 @@
 
             </div>
 
-            <p style="font-size: 40px;font-weight: bold;">Survey Dampak Bisnis Ternak Lele</p>
-            <p style="font-size: 20px">Survey ini bertujuan untuk mengevaluasi dampak bisnis ternak lele terhadap
+            <p style="font-size: 40px;font-weight: bold;">{{ $survey->name }}</p>
+            {{-- <p style="font-size: 20px">Survey ini bertujuan untuk mengevaluasi dampak bisnis ternak lele terhadap
                 berbagai aspek ekonomi, sosial, dan lingkungan. Dengan memperhatikan pertumbuhan industri ternak lele,
                 kami akan menganalisis kontribusinya terhadap pendapatan peternak, kesejahteraan masyarakat lokal, serta
                 efeknya terhadap ekosistem air dan lahan. Data yang dikumpulkan dari survei ini diharapkan dapat
                 memberikan wawasan yang mendalam untuk memandu kebijakan dan praktik yang berkelanjutan dalam industri
-                ternak lele.</p>
+                ternak lele.</p> --}}
             <p style="font-weight: bold; font-size:20px;">Komitmen dalam menjaga privasi anda</p>
             <p style="font-size: 20px">Saya sangat berkomitmen untuk menjalankan survei dengan hati-hati dan jujur serta
                 menjaga kerahasiaan data yang dikumpulkan. Saya selalu menghormati privasi dan kepentingan peserta
                 survei, serta memastikan bahwa hasil survei saya digunakan dengan bertanggung jawab demi kebaikan semua
                 orang yang terlibat. </p>
             <div class="btn">
-                <a href="/responden-data-diri"><button type="">Mulai Survey</button></a>
+                @if (!$lastEntry)
+                    <!-- Check if $lastEntry is null -->
+                    <a href="/responden-data-diri/{{ $survey->id }}"><button type="">Mulai Survey</button></a>
+                @else
+                    <!-- Disable the button -->
+                    <button type="" disabled>Anda sudah mengisi survey</button>
+                @endif
             </div>
         </div>
     </div>

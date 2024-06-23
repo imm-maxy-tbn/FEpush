@@ -14,6 +14,9 @@
 </head>
 
 <body>
+<div id="loading">
+        <img src="images/imm.png" alt="Loading">
+    </div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -25,12 +28,12 @@
             <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item ">
-                        <a class="nav-link" href="welcome">Home</a>
+                        <button class="navbar-button">Home</button>
                     </li>
                     <li class="nav-item ">
                         <a class="nav-link" href="bootcamp">Bootcamp</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="imm">IMM</a>
                     </li>
                     <li class="nav-item">
@@ -141,14 +144,14 @@
     <div class="container mt-5">
 
             <div class="col-7  d-flex flex-column justify-content-center" style="margin-top: -60px">
-    
+
                     <table class="box-table">
                         <h2 class="table-title mb-3">New Assignment</h2>
                         <tr>
-                            
+
                             <td class="top-text ">Analisis Data Menggunakan Metode Machine Learning:</td>
                         </tr>
-                        
+
                         <tr>
                             <td class="bottom-text">Studi Kasus pada Industri Retail</td>
                         </tr>
@@ -162,7 +165,7 @@
                             <td class="bottom-text">dan Analisis Data Besar</td>
                         </tr>
                     </table>
-          
+
             </div>
             <div class="col-5">
 <div class="table">
@@ -213,7 +216,7 @@
                 <div class="container"></div>
             </div>
         </div>
-  
+
         <footer>
             <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
                 <div class="row d-flex  justify-content-center align-items-center">
@@ -241,7 +244,7 @@
                         </div>
                     </div>
                 </div>
-        
+
          </div>
         </footer>
 
