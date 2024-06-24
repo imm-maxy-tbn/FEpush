@@ -14,6 +14,17 @@
     <meta name="description" content="Manage your projects efficiently with MyProject">
     <meta name="keywords" content="project management, task management, productivity">
     <meta name="author" content="Your Name">
+    <style>
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        body {
+            padding-top: 56px; /* Adjust this value according to the height of your navbar */
+        }
+    </style>
 </head>
 
 <body>
@@ -22,7 +33,7 @@
         <img src="images/imm.png" alt="Loading">
     </div>
 
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="homepage">IMM</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -32,18 +43,15 @@
             <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                    <a class="nav-link active" href="/homepage">Home</a>
+                        <a class="nav-link active" href="/homepage">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a href="/myproject" class="navbar-button">Myproject</a>
+                        <a href="/myproject" class="navbar-button">Myproject</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="homepage">My Company</a>
                     </li>
-
                 </ul>
-                
-
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}"
@@ -56,8 +64,6 @@
             </li>
         </div>
     </nav>
-
-
 
     <div class="container">
         <h2 class="project-title">Draft Project</h2>
@@ -76,9 +82,8 @@
                 <button class="btn btn-primary btn-create-project" data-toggle="modal"
                     data-target="#projectModal">Create Project</button>
             </div>
-
         </div>
-        <h4 class="all-projects-title mt-5">All projects (0)</h4>
+        <h4 class="project-title mb-5 mt-5">All projects (0)</h4>
         <div class="row mt-3" id="draft-project-list">
             <div class="col-md-12 no-projects mt-3">
                 <p>Belum memiliki project apapun.</p>
@@ -86,9 +91,8 @@
         </div>
     </div>
 
-
     <div class="container">
-        <h2 class="ongoing-projects-title mt-5">On Going Project</h2>
+        <h2 class="project-title mb-5 mt-5">On Going Project</h2>
         <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
             <div class="dropdown">
                 <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -130,7 +134,6 @@
             </tbody>
         </table>
 
-
     <!-- Modal -->
     <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel"
         aria-hidden="true">
@@ -161,7 +164,7 @@
         </div>
     </div>
 
-    <h2 class="done-projects-titlee mt-5">Done Projects And Surveys</h2>
+    <h2 class="project-title mb-5 mt-5">Done Projects And Surveys</h2>
     <div class="card mt-3 done-projects-card">
         <div class="card-header d-flex justify-content-between align-items-center done-projects-header">
             <span>Project Completed</span>
@@ -192,36 +195,6 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="projectModalLabel">Select Project</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <select id="projectSelect" class="form-control">
-                        <option value="Maths Department">Maths Department</option>
-                        <option value="Chemistry Department">Chemistry Department</option>
-                        <option value="Physics Department">Physics Department</option>
-                        <option value="Computer Department">Computer Department</option>
-                        <option value="English Department">English Department</option>
-                        <option value="Social Department">Social Department</option>
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="addSelectedProject()">Add
-                        Project</button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="banner">
@@ -358,8 +331,6 @@
 
     </div>
 
-
-
    <footer>
     <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
         <div class="row d-flex  justify-content-center align-items-center">
@@ -387,8 +358,7 @@
                 </div>
             </div>
         </div>
-
- </div>
+    </div>
 </footer>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" async></script>
@@ -680,3 +650,4 @@
 </body>
 
 </html>
+
