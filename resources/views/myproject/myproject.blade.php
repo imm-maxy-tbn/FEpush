@@ -14,11 +14,22 @@
     <meta name="description" content="Manage your projects efficiently with MyProject">
     <meta name="keywords" content="project management, task management, productivity">
     <meta name="author" content="Your Name">
+    <style>
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+        body {
+            padding-top: 56px; /* Adjust this value according to the height of your navbar */
+        }
+    </style>
 </head>
 
 <body>
 
-     
+
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -33,7 +44,7 @@
                         <a class="nav-link active" href="/homepage">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class=" navbar-button" href="/myproject">My Project</a>
+                        <a href="/myproject" class="navbar-button">Myproject</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/profile-commpany">My Company</a>
@@ -52,9 +63,6 @@
         </div>
     </nav>
 
-
-
-
     <div class="container">
         <h2 class="project-title">Draft Project</h2>
         <div class="row jarak" style="margin-top:200px">
@@ -72,9 +80,8 @@
                 <button class="btn btn-primary btn-create-project" data-toggle="modal"
                     data-target="#projectModal">Create Project</button>
             </div>
-
         </div>
-        <h4 class="all-projects-title mt-5">All projects (0)</h4>
+        <h4 class="project-title mb-5 mt-5">All projects (0)</h4>
         <div class="row mt-3" id="draft-project-list">
             <div class="col-md-12 no-projects mt-3">
                 <p>Belum memiliki project apapun.</p>
@@ -82,9 +89,8 @@
         </div>
     </div>
 
-
     <div class="container">
-        <h2 class="ongoing-projects-title mt-5">On Going Project</h2>
+        <h2 class="project-title mb-5 mt-5">On Going Project</h2>
         <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
             <div class="dropdown">
                 <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -126,7 +132,6 @@
             </tbody>
         </table>
 
-
     <!-- Modal -->
     <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel"
         aria-hidden="true">
@@ -157,7 +162,7 @@
         </div>
     </div>
 
-    <h2 class="done-projects-titlee mt-5">Done Projects And Surveys</h2>
+    <h2 class="project-title mb-5 mt-5">Done Projects And Surveys</h2>
     <div class="card mt-3 done-projects-card">
         <div class="card-header d-flex justify-content-between align-items-center done-projects-header">
             <span>Project Completed</span>
@@ -188,36 +193,6 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="projectModalLabel">Select Project</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <select id="projectSelect" class="form-control">
-                        <option value="Maths Department">Maths Department</option>
-                        <option value="Chemistry Department">Chemistry Department</option>
-                        <option value="Physics Department">Physics Department</option>
-                        <option value="Computer Department">Computer Department</option>
-                        <option value="English Department">English Department</option>
-                        <option value="Social Department">Social Department</option>
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="addSelectedProject()">Add
-                        Project</button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="banner">
@@ -354,8 +329,6 @@
 
     </div>
 
-
-
    <footer>
     <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
         <div class="row d-flex  justify-content-center align-items-center">
@@ -383,8 +356,7 @@
                 </div>
             </div>
         </div>
-
- </div>
+    </div>
 </footer>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" async></script>
@@ -412,7 +384,7 @@
                 },
             ],
         };
-        
+
         // Configuration for the chart
         const config = {
             type: "bar",
@@ -438,11 +410,11 @@
                 },
             },
         };
-        
+
         // Render the chart
         const ctx = document.getElementById("performance-chart").getContext("2d");
         new Chart(ctx, config);
-        
+
         const projectTemplates = {
             "Maths Department": {
                 imageUrl: "images/25.png",
@@ -481,17 +453,17 @@
                 total: "Rp 8.000.000",
             },
         };
-        
+
         let projects = [];
         let completedProjects = [];
-        
+
         function displayProjects() {
             const draftProjectList = document.getElementById("draft-project-list");
             const ongoingProjectList = document.getElementById("ongoing-project-list");
-        
+
             draftProjectList.innerHTML = "";
             ongoingProjectList.innerHTML = "";
-        
+
             if (projects.length === 0) {
                 draftProjectList.innerHTML = `
                     <div class="col-md-12 no-projects mt-3">
@@ -536,7 +508,7 @@
                         </div>
                     `;
                     draftProjectList.innerHTML += draftProject;
-        
+
                     const ongoingProject = `
                         <tr id="ongoing-${newProjectId}">
                             <td>${project.name}</td>
@@ -549,15 +521,15 @@
                     ongoingProjectList.innerHTML += ongoingProject;
                 });
             }
-        
+
             displayCompletedProjects();
             updateProjectCount();
         }
-        
+
         function displayCompletedProjects() {
             const doneProjectList = document.getElementById("done-project-list");
             doneProjectList.innerHTML = "";
-        
+
             if (completedProjects.length === 0) {
                 doneProjectList.innerHTML = `
                     <tr>
@@ -578,7 +550,7 @@
                 });
             }
         }
-        
+
         function addSelectedProject() {
             const selectedProject = document.getElementById("projectSelect").value;
             const newProject = {
@@ -589,14 +561,14 @@
                 tags: projectTemplates[selectedProject].tags,
                 total: projectTemplates[selectedProject].total,
             };
-        
+
             projects.push(newProject);
             displayProjects();
-        
+
             // Close the modal
             $("#projectModal").modal("hide");
         }
-        
+
         function updateProject(projectId, index) {
             const project = projects[index];
             if (project.progress < 100) {
@@ -605,29 +577,29 @@
             }
             displayProjects();
         }
-        
+
         function deleteProject(projectId, index) {
             projects.splice(index, 1);
             displayProjects();
         }
-        
+
         function completeProject(projectId, index) {
             const project = projects[index];
             projects.splice(index, 1);
             completedProjects.push(project);
             displayProjects();
         }
-        
+
         function updateProjectCount() {
             const projectCountElement = document.querySelector(".all-projects-title");
             projectCountElement.textContent = `All projects (${projects.length})`;
-        
+
             const ongoingProjectCountElement = document.querySelector(
                 "#dropdownMenuButton2"
             );
             ongoingProjectCountElement.textContent = `${projects.length} of ${projects.length}`;
         }
-        
+
         function renderCalendar() {
             const calendarBody = document.getElementById("calendar-body");
             calendarBody.innerHTML = "";
@@ -635,9 +607,9 @@
             const startDayOfWeek = 3; // Assuming the month starts on Wednesday (index 3)
             const status = ["Present", "Sick leave", "Absent", "Holiday"];
             const statusClasses = ["present", "sick-leave", "absent", "holiday"];
-        
+
             let dayCounter = 1;
-        
+
             for (let i = 0; i < 5; i++) {
                 // Assume 5 weeks in a month
                 let row = "<tr>";
@@ -660,12 +632,12 @@
                 calendarBody.innerHTML += row;
             }
         }
-        
+
         // Initial display
         updateProjectCount();
         renderCalendar();
         displayProjects();
-        
+
         document.addEventListener("DOMContentLoaded", function () {
             setTimeout(function () {
                 var loading = document.getElementById("loading");
@@ -676,3 +648,4 @@
 </body>
 
 </html>
+
