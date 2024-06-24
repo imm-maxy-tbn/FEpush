@@ -1,27 +1,35 @@
 @extends('layouts.app-imm')
-@section('title', '')
+@section('title', 'My Project')
 
 @section('css')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/myproject/myproject.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <meta name="description" content="Manage your projects efficiently with MyProject">
-    <meta name="keywords" content="project management, task management, productivity">
-    <meta name="author" content="Your Name">
+<link rel="stylesheet" href="{{ asset('css/myproject/myproject.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<meta name="description" content="Manage your projects efficiently with MyProject">
+<meta name="keywords" content="project management, task management, productivity">
+<meta name="author" content="Your Name">
 @endsection
 @section('content')
 
-    
+<!DOCTYPE html>
+<html lang="en">
+
 
 <body>
 
+     
 
-    <div class="container">
-        <h2 class="project-title">Draft Project</h2>
-        <div class="row mt-5">
+ 
+
+
+
+
+    <div class="container mt-5">
+      
+        <div class="row jarak" style="margin-top:100px">
             <div class="col-md-8">
                 <div class="input-group">
                     <input type="text" class="form-control search-input" placeholder="Search..." aria-label="Search">
@@ -31,94 +39,88 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col-md-4 text-right">
                 <a href="creatproject" class="btn btn-primary btn-create-new-project">Create New Project</a>
                 <button class="btn btn-primary btn-create-project" data-toggle="modal"
                     data-target="#projectModal">Create Project</button>
             </div>
+
         </div>
-        <h4 class="project-title mb-5 mt-5">All projects (0)</h4>
+        <h4 class="all-projects-title">All projects (0)</h4>
         <div class="row mt-3" id="draft-project-list">
-            <div class="col-md-12 no-projects mt-3">
-                <p>Belum memiliki project apapun.</p>
+            <div class="col-md-12">
+                <h1>Daftar Proyek</h1>
+                @if($projects->isEmpty())
+                    <p>Tidak ada proyek yang ditemukan.</p>
+                @else
+                    <div class="row">
+                        @foreach($projects as $index => $project)
+                            @if($index % 3 == 0 && $index != 0)
+                                </div><div class="row mt-4">
+                            @endif
+                            <div class="col-md-4 mb-4" id="project-{{ $project->id }}">
+                                <div class="card project-card">
+                                    <img src="{{ env('APP_BACKEND_URL') . '/images/' . $project->img }}" class="card-img-top" alt="">
+                                    <div class="card-body">
+                                        <h5 class="card-title"> {{$project->nama}} </h5>
+                                        <button class="btn btn-secondary mt-2" onclick="updateProject('project-{{ $project->id }}', {{ $index }})">Update</button>
+                                        <button class="btn btn-danger mt-2" onclick="deleteProject('project-{{ $project->id }}', {{ $index }})">Delete</button>
+                                        <a href="detail/{{ $project->id }}" class="btn btn-secondary btn-detail mt-2">Detail</a>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
     </div>
 
-    <div class="container">
-        <h2 class="project-title mb-5 mt-5">On Going Project</h2>
-        <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
-            <div class="dropdown">
-                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Today
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Today</a>
-                    <a class="dropdown-item" href="#">This Week</a>
-                    <a class="dropdown-item" href="#">This Month</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    0 of 0
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                    <a class="dropdown-item" href="#">0 of 0</a>
-                    <a class="dropdown-item" href="#">1 of 1</a>
-                </div>
-            </div>
-        </div>
+
+<div class="container">
+   
+
+
+
+    <h2 class="done-projects-titlee mt-5">On Going Project</h2>
+    <div class="card mt-3 done-projects-card">
+     
         <table class="table mt-3 ongoing-projects-table">
             <thead>
-                <tr>
-                    <th>Project Name</th>
-                    <th>Date</th>
-                    <th>Impact</th>
-                    <th>SDGs</th>
-                    <th>Total</th>
+                <tr >
+                    <th>Nama Proyek</th>
+               
+                    <th>Tanggal Mulai</th>
+                    <th>Tanggal Selesai</th>
+                    <th>SDGs Terpilih</th>
+              
+                    <th>Jumlah Pendanaan</th>
+                
                 </tr>
             </thead>
-            <tbody id="ongoing-project-list">
-                <tr>
-                    <td colspan="5" class="text-center no-ongoing-projects">Tidak ada project yang sedang berjalan.
-                    </td>
-                </tr>
-            </tbody>
+            @foreach($projects as $project)
+            <tr>
+                <td>{{ $project->nama }}</td>
+    
+                <td>{{ $project->start_date }}</td>
+                <td>{{ $project->end_date }}</td>
+                
+                <td>             {{ $project->sdgs->implode('order', ', ') }}
+                </td>
+            
+
+                <td>{{ $project->jumlah_pendanaan }}</td>
+    
+            </tr>
+        @endforeach
         </table>
 
-    <!-- Modal -->
-    <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="projectModalLabel">Select Project</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <select id="projectSelect" class="form-control">
-                        <option value="Maths Department">Maths Department</option>
-                        <option value="Chemistry Department">Chemistry Department</option>
-                        <option value="Physics Department">Physics Department</option>
-                        <option value="Computer Department">Computer Department</option>
-                        <option value="English Department">English Department</option>
-                        <option value="Social Department">Social Department</option>
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="addSelectedProject()">Add
-                        Project</button>
-                </div>
-            </div>
-        </div>
-    </div>
 
-    <h2 class="project-title mb-5 mt-5">Done Projects And Surveys</h2>
+
+    </div>
+    
+    <h2 class="done-projects-titlee mt-5">Done Projects And Surveys</h2>
     <div class="card mt-3 done-projects-card">
         <div class="card-header d-flex justify-content-between align-items-center done-projects-header">
             <span>Project Completed</span>
@@ -145,72 +147,17 @@
             </thead>
             <tbody id="done-project-list">
                 <tr>
-                    <td colspan="4" class="text-center no-done-projects">Tidak ada project yang terselesaikan.</td>
+                    <td> {{$project->nama}} </td>
+                    <td> {{$project->end_date}} </td>
+                    <td> <div class="span bg-secondary text-white" style="padding: 5px 0; border-radius:50px">Succes</div> </td>
+                    <td> <img src="images/unduh.png" alt=""> </td>
                 </tr>
             </tbody>
         </table>
     </div>
+    
+</div>
 
-    <div class="banner">
-        Survey
-    </div>
-    <div class="container mt-4">
-        <div class="row text-center">
-            <div class="col-md-4">
-                <div class="stats-box">
-                    <h4>Survey Send</h4>
-                    <p class="number">0</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stats-box">
-                    <h4>Response Received</h4>
-                    <p class="number text-success">0</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="stats-box">
-                    <h4>Response Pending</h4>
-                    <p class="number text-warning">0</p>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="container mt-4">
-        <div class="row">
-            <div class="col-md-6 mb-4">
-                <div class="card stats-card">
-                    <div class="card-header stats-header d-flex justify-content-between">
-                        <div>Average Time<br><span class="stats-value">0%</span></div>
-                        <div>Completion Rate<br><span class="stats-value">0%</span></div>
-                        <div><span class="completion-circle">0%</span></div>
-                    </div>
-                    <div class="card-body text-center">
-                        <div class="total-responses">0%</div>
-                        <div class="responses-text">Total Responses</div>
-                        <div class="responses-line"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6 mb-4">
-                <div class="card performance-card">
-                    <div class="card-header performance-header">
-                        Vertical Performance
-                    </div>
-                    <div class="card-body">
-                        <!-- Placeholder for the chart -->
-                        <canvas id="performance-chart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row text-center">
-            <div class="col-12">
-                <a href="survey" class="btn btn-primary start-survey-btn">Start Your Survey</a>
-            </div>
-        </div>
-    </div>
 
     <div class="container mt-4">
         <h1 class="schedule-title">Schedule Project</h1>
@@ -253,39 +200,13 @@
         </div>
     </div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="projectModalLabel">Select Project</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <select id="projectSelect" class="form-control">
-                        <option value="Maths Department">Maths Department</option>
-                        <option value="Chemistry Department">Chemistry Department</option>
-                        <option value="Physics Department">Physics Department</option>
-                        <option value="Computer Department">Computer Department</option>
-                        <option value="English Department">English Department</option>
-                        <option value="Social Department">Social Department</option>
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="addSelectedProject()">Add
-                        Project</button>
-                </div>
-            </div>
-        </div>
-    </div>
+ 
 
     </div>
 
 
+
+  
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" async></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" async></script>
@@ -343,141 +264,11 @@
         const ctx = document.getElementById("performance-chart").getContext("2d");
         new Chart(ctx, config);
         
-        const projectTemplates = {
-            "Maths Department": {
-                imageUrl: "images/25.png",
-                impact: "Medium",
-                tags: "Education",
-                total: "Rp 7.000.000",
-            },
-            "Chemistry Department": {
-                imageUrl: "images/20.png",
-                impact: "High",
-                tags: "Science",
-                total: "Rp 8.000.000",
-            },
-            "Physics Department": {
-                imageUrl: "images/21.png",
-                impact: "Low",
-                tags: "Research",
-                total: "Rp 6.000.000",
-            },
-            "Computer Department": {
-                imageUrl: "images/24.png",
-                impact: "Medium",
-                tags: "Technology",
-                total: "Rp 7.500.000",
-            },
-            "English Department": {
-                imageUrl: "images/22.png",
-                impact: "Medium",
-                tags: "Language",
-                total: "Rp 7.000.000",
-            },
-            "Social Department": {
-                imageUrl: "images/23.png",
-                impact: "High",
-                tags: "Community",
-                total: "Rp 8.000.000",
-            },
-        };
+  
         
         let projects = [];
         let completedProjects = [];
         
-        function displayProjects() {
-            const draftProjectList = document.getElementById("draft-project-list");
-            const ongoingProjectList = document.getElementById("ongoing-project-list");
-        
-            draftProjectList.innerHTML = "";
-            ongoingProjectList.innerHTML = "";
-        
-            if (projects.length === 0) {
-                draftProjectList.innerHTML = `
-                    <div class="col-md-12 no-projects mt-3">
-                        <p>Belum memiliki project apapun.</p>
-                    </div>
-                `;
-                ongoingProjectList.innerHTML = `
-                    <tr>
-                        <td colspan="5" class="text-center no-ongoing-projects">Tidak ada project yang sedang berjalan.</td>
-                    </tr>
-                `;
-            } else {
-                projects.forEach((project, index) => {
-                    const newProjectId = `project-${index + 1}`;
-                    const draftProject = `
-                        <div class="col-md-4" id="${newProjectId}">
-                            <div class="card project-card">
-                                <img src="${
-                                    project.imageUrl
-                                }" class="card-img-top" alt="${project.name}">
-                                <div class="card-body">
-                                    <h5 class="card-title">${project.name}</h5>
-                                    <div class="progress">
-                                        <div class="progress-bar" role="progressbar" style="width: ${
-                                            project.progress
-                                        }%;" aria-valuenow="${
-                        project.progress
-                    }" aria-valuemin="0" aria-valuemax="100">${
-                        project.progress
-                    }% completed</div>
-                                    </div>
-                                    <button class="btn btn-secondary mt-2" onclick="updateProject('${newProjectId}', ${index})">Update</button>
-                                    <button class="btn btn-danger mt-2" onclick="deleteProject('${newProjectId}', ${index})">Delete</button>
-                                    <a href="detail" class="btn btn-secondary btn-detail mt-2">Detail</a>
-                                    ${
-                                        project.progress === 100
-                                            ? `<button class="btn btn-success mt-2" onclick="completeProject('${newProjectId}', ${index})">FINISHED</button>`
-                                            : ""
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    draftProjectList.innerHTML += draftProject;
-        
-                    const ongoingProject = `
-                        <tr id="ongoing-${newProjectId}">
-                            <td>${project.name}</td>
-                            <td>Oct 17, 2023</td>
-                            <td>${project.impact}</td>
-                            <td>${project.tags}</td>
-                            <td>${project.total}</td>
-                        </tr>
-                    `;
-                    ongoingProjectList.innerHTML += ongoingProject;
-                });
-            }
-        
-            displayCompletedProjects();
-            updateProjectCount();
-        }
-        
-        function displayCompletedProjects() {
-            const doneProjectList = document.getElementById("done-project-list");
-            doneProjectList.innerHTML = "";
-        
-            if (completedProjects.length === 0) {
-                doneProjectList.innerHTML = `
-                    <tr>
-                        <td colspan="4" class="text-center no-done-projects">Tidak ada project yang terselesaikan.</td>
-                    </tr>
-                `;
-            } else {
-                completedProjects.forEach((project, index) => {
-                    const completedProject = `
-                        <tr id="done-project-${index + 1}">
-                            <td>${project.name}</td>
-                            <td>Oct 17, 2023</td>
-                            <td><span class="status-finished">FINISHED</span></td>
-                            <td><i class="fas fa-download download-icon"></i></td>
-                        </tr>
-                    `;
-                    doneProjectList.innerHTML += completedProject;
-                });
-            }
-        }
         
         function addSelectedProject() {
             const selectedProject = document.getElementById("projectSelect").value;
@@ -575,4 +366,4 @@
         </script>
 </body>
 
-@endsection 
+@endsection

@@ -168,7 +168,7 @@ border: 1px solid #d1d1d1;
             <h2>Project By Region</h2>
             <div class="map">
                 <img id="indonesiaMap" src="images/peta.png" alt="Map of Indonesia">
-                <div id="bandung" class="city-overlay" data-city="West Java, Bandung"></div>
+                <div id="bandung" class="city-overlay" data-city="{{$company->provinsi}},{{$company->kabupaten}}"></div>
                 <!-- Add more cities as needed -->
             </div>
             <div id="location-info" class="location-info"></div>

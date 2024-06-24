@@ -2,6 +2,7 @@
 
 use App\Models\Company;
 use App\Models\User;
+use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
@@ -160,6 +161,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/creatproject', [ProjectController::class, 'create'])->name('projects.create');
     Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
     Route::post('/projects/filter-metrics', [ProjectController::class, 'filterMetrics'])->name('projects.filterMetrics');
+
+    Route::get('/companies', [CompanyController::class, 'index']);
 
     Route::resource('companies', 'CompanyController');
     Route::post('/homepageimm.homepage', [CompanyController::class, 'store'])->name('companies.store');
@@ -322,6 +325,39 @@ Route::get('/profile-commpany', function () {
 
     return view('imm.profile-commpany', compact('company', 'user'));
 })->name('profile-commpany');
+
+Route::get('/homepage', function () {
+    $user = auth()->user(); // Mengambil data user yang sedang login
+    $company = $user->company; // Mengambil data perusahaan yang terkait dengan user
+
+    return view('homepageimm.homepage', compact('company', 'user'));
+})->name('homepage');
+
+Route::get('/myproject', [ProjectController::class, 'index'])->name('projects.index');
+Route::get('/detail/{id}', [ProjectController::class, 'vieww'])->name('projects.view');
+
+
+
+// Route::get('/myproject', function () {
+//     $user = auth()->user(); // Mengambil data user yang sedang login
+//     $company = $user->company; // Mengambil data perusahaan yang terkait dengan user
+
+//     return view('myproject.myproject', compact('company', 'user'));
+// })->name('myproject');
+
+// Route::get('/myproject', function () {
+//     $user = auth()->user(); // Get the logged-in user
+//     if ($user) {
+//         // Retrieve projects associated with the user's company
+//         $projects = Project::whereHas('company', function ($query) use ($user) {
+//             $query->where('user_id', $user->id);
+//         })->get();
+
+//         return view('myproject.myproject', compact('projects', 'user'));
+//     } else {
+//         return redirect()->route('login'); // Redirect to login if not logged in
+//     }
+// })->name('myproject');
 
 
 

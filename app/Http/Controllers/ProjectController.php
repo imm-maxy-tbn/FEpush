@@ -17,10 +17,10 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::with('tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana')->get();
-
-        return view('projects.index', compact('projects'));
-    }
     
+        return view('myproject.myproject', compact('projects'));
+    }
+
     public function create()
     {
         $companies = Company::all();
@@ -134,6 +134,13 @@ class ProjectController extends Controller
         $project = Project::with('tags', 'indicators')->findOrFail($id);
         return view('projects.view', compact('project'));
     }
+
+    public function vieww($id)
+{
+    $project = Project::with('tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana')->findOrFail($id);
+    return view('projects.view', compact('project'));
+}
+
 
     public function update(Request $request, $id)
     {

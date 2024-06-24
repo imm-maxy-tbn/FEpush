@@ -65,8 +65,12 @@ class CompanyController extends Controller
     public function show(Company $company)
     {
         return view('companies.show', compact('company'));
+    }public function index()
+    {
+        $user = Auth::user();
+        $companies = Company::where('user_id', $user->id)->get();
+        return view('homepageimm.homepage', compact('companies'));
     }
-
     /**
      * Show the form for editing the specified Company.
      *

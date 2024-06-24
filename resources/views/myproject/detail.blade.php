@@ -40,11 +40,8 @@
 
                 <div class="card mb-4">
                     <div class="card-body">
-                        <h5 class="card-title">Deskripsi Project</h5>
-                        Proyek komprehensif yang bertujuan untuk memanfaatkan teknologi dan ilmu komputer untuk mencapai
-                        berbagai Tujuan Pembangunan Berkelanjutan (SDGs). Proyek ini dilaksanakan oleh Departemen
-                        Komputer untuk mendorong inovasi, mempromosikan pendidikan, dan memastikan pembangunan
-                        berkelanjutan melalui penerapan teknologi dan penelitian terkini.
+                        <h5 class="card-title"> {{$project->nama}} </h5>
+                       {{$program->deskripsi}}
                     </div>
                 </div>
 
@@ -52,7 +49,7 @@
                     <div class="card-body">
                         <h5 class="card-title">SDG'S</h5>
                         <div class="row">
-                            <div class="col-4">
+                            <div class="col-4"> 
                                 <img src="{{ asset('images/ASVG/sdg1.svg') }}" class="img-fluid" alt="SDG 4">
                             </div>
                             <div class="col-4">

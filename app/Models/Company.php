@@ -21,9 +21,22 @@ class Company extends Model
         'jumlah_karyawan',
         'user_id',
     ];
-
+    public function index()
+    {
+        $company_id = 1; // Ganti dengan company_id yang sesuai
+        $projects = Project::where('company_id', $company_id)->get();
+    
+        return view('myproject.myproject', compact('projects'));
+    }
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+    public function projects()
+    {
+        return $this->hasMany(Project::class);
+    }
+
+    // Mendefinisikan hubungan dengan model User
+    
 }

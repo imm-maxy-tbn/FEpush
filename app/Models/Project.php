@@ -36,7 +36,7 @@ class Project extends Model
     {
         return $this->belongsToMany(Indicator::class);
     }
-
+        
     public function targetPelanggan()
     {
         return $this->hasMany(TargetPelanggan::class);
@@ -49,6 +49,10 @@ class Project extends Model
     public function metricProjects()
     {
         return $this->hasMany(MetricProject::class);
+    }
+    public function user()
+    {
+        return $this->belongsTo(User::class);
     }
 }
 
