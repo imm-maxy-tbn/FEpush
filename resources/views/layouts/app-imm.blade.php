@@ -15,9 +15,9 @@
 @include('layouts.navbar-imm')
 
         @yield('content')
-        @if(!isset($hideFooter) || !$hideFooter)
+
         @include('layouts.footer-peserta')
-        @endif
+  
         <script>
             $(document).ready(function() {
     $('.navbar-button').click(function() {

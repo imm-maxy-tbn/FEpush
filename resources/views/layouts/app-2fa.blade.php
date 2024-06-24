@@ -12,19 +12,10 @@
 
 
 </head>
-@include('layouts.navbar-peserta')
+@include('layouts.navbar-2fa')
 
         @yield('content')
-     
-        @include('layouts.footer-peserta')
-   
-        <script>
-            $(document).ready(function() {
-    $('.navbar-button').click(function() {
-        $('.navbar-button').removeClass('active');
-        $(this).addClass('active');
-    });
-});
+      
 
         </script>
 </html>

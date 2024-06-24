@@ -1,47 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app-2fa')
+@section('title', 'Pendaftaran Perusahaan')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMM | Pendaftaran</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/imm/pendaftaranperusahaan.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-</head>
+@section('css')
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ asset('css/imm/pendaftaranperusahaan.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+@endsection
+@section('content')
+
 <body>
 
    
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container d-flex align-items-center justify-content-center">
-            <a class="navbar-brand" href="/">IMM</a>
-            <div class="justify-content-center" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item ">
-                        <a class="nav-link" href="welcome">Home</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="bootcamp">Bootcamp</a>
-                    </li>
-                    <li class="nav-item active">
-                    <a href="imm" class="navbar-button">IMM</a>
-                    </li>
-                    <li class="nav-item">
-                         <a class="nav-link" href="#">Community</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="blog">Explore</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profile">Profile</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
+
 
 
 <form action="{{ route('companies.store') }}" method="POST">
@@ -111,4 +84,4 @@
 <script src="{{ asset('js/imm/pendaftaran.js') }}"></script>
 
 </body>
-</html>
+@endsection

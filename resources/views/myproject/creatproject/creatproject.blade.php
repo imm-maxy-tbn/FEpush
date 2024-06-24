@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app-imm')
+@section('title', '')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+@section('css')
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/indicator.css') }}">
     <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/creatproject.css') }}">
     <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/pemilihansdgs.css') }}">
@@ -14,44 +11,11 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-</head>
+@endsection
+@section('content')
+
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="homepage">IMM</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/homepage">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class=" navbar-button" href="/myproject">My Project</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/profile-commpany">My Company</a>
-                    </li>
-                </ul>
-            </div>
-<li class="nav-item">
-    @auth
-        <a class="nav-link" href="{{ route('logout') }}"
-            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-           ({{ Auth::user()->nama_depan ?? '' }})
-        </a>
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-            @csrf
-        </form>
-    @else
-        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-    @endauth
-</li>
-        </div>
-    </nav>
 
     <div class="container mt-5">
         <h1>Buat Projek Baru</h1>
@@ -327,45 +291,7 @@
         </form>
     </div>
 
-    <footer>
-        <div class="container footer mt-5 d-flex justify-content-center align-items-center">
-            <div class="row d-flex  justify-content-center align-items-center">
-                <div class="col-4 d-flex flex-column" style="gap: 20px">
-                    <h5 class=" text-white  text-left">IMM</h5>
-                    <span class="span-footer text-left">Impact Measurement and Management
-                        <br> (TBN INDONESIA X MAXY ACADEMY)</span>
-                </div>
-                <div class="col-5 d-flex justify-content-center align-items-center">
-                    <ul class=" d-flex " style="gap: 30px">
-                        <a href="">
-                            <li>HomePage</li>
-                        </a>
-                        <a href="">
-                            <li>Bootcamp</li>
-                        </a>
-                        <a href="">
-                            <li>IMM</li>
-                        </a>
-                        <a href="">
-                            <li>Comunity</li>
-                        </a>
-                        <a href="">
-                            <li>Profile</li>
-                        </a>
-                    </ul>
-                </div>
-                <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
-                    <span class="span-footer text-center">Sosial Media</span>
-                    <div class="sosmed d-flex justify-content-end">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+ 
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -892,4 +818,4 @@
 
 </body>
 
-</html>
+@endsection

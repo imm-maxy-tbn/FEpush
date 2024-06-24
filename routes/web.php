@@ -21,7 +21,10 @@ Auth::routes();
 
 Route::get('/', function () {
     return view('tampilanawalhome.welcome');
-})->name(''); /* ini befungsi untuk memindahkan dari login ke home */
+})->name('welcome'); /* ini befungsi untuk memindahkan dari login ke home */
+Route::get('/welcome', function () {
+    return view('tampilanawalhome.welcome');
+})->name('welcome'); /* ini befungsi untuk memindahkan dari login ke home */
 
 
 
@@ -133,10 +136,7 @@ Route::middleware(['auth'])->group(function () {
         return view('survey.edit-survey.edit-survey-new');
     });
 
-    Route::get('/detail-kelas', function () {
-        return view('kelas.detail-kelas');
-    });
-
+ 
     Route::get('/bootcamp', function () {
         return view('bootcamp.bootcamp');
     });
@@ -190,6 +190,10 @@ Route::get('/pendaftaranperusahaan', function () {
 
 Route::get('/homepage', function () {
     return view('homepageimm.homepage');
+});
+
+Route::get('/detail-kelas', function () {
+    return view('kelas.detail-kelas');
 });
 
 Route::get('/myproject', function () {
@@ -353,6 +357,6 @@ Route::get('responden-data-diri/{id}', [SurveyController::class, 'dataDiri'])->n
 Route::post('responden/{id}', [SurveyController::class, 'registerUser'])->name('surveys.register-user');
 Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submit'])->name('surveys.submit');
 
-Route::get('/', [HomeController::class, 'home'])->middleware('hideFooter');
+
 Route::get('/about', [HomeController::class, 'about']);
 

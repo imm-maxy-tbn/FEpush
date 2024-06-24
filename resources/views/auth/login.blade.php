@@ -74,7 +74,7 @@ function periksaPendaftaran() {
 
     // Jika pengguna belum terdaftar, tampilkan notifikasi
     if (!terdaftar) {
-        alert("Diperlukan pendaftaran terlebih dahulu.");
+        alert("Login Berhasil");
     }
 }
 

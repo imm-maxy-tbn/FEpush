@@ -7,90 +7,6 @@ body {
 
 /* Navbar */
 
-.navbar {
-    background-color: #ffffff;
-    color: #000000;
-    padding: 15px 0;
-    position: fixed;
-    width: 100%;
-    z-index: 1000;
-    border-bottom: 3px solid #5940cb;
-}
-
-.bahasa {
-    background-color: #5940cb;
-}
-
-.navbar-nav .nav-item .nav-link {
-    color: #000000;
-}
-
-.navbar-nav .nav-item .nav-link:hover {
-    color: #5940cb;
-    text-decoration: underline;
-}
-
-.navbar-button {
-    background-color: #000000;
-    color: #ffffff;
-    padding: 10px 20px;
-    border-radius: 10px;
-    border: none;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-    /* Menghapus underline pada teks tautan */
-    display: inline-block;
-    /* Membuat tautan tampil sebagai blok inline */
-}
-
-.navbar-button:hover {
-    background-color: #333333;
-}
-
-.footer {
-    background-color: #5940cb;
-    color: #ffffff;
-    height: 167px;
-    text-align: center;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-    width: 100%;
-}
-
-.footer ul {
-    text-decoration: none;
-    list-style-type: none;
-}
-
-.footer ul li {
-    color: #fff;
-    font-size: 12px;
-}
-
-.span-footer {
-    font-size: 15px;
-    font-weight: bold;
-    color: #fff;
-}
-
-.sosmed {
-    gap: 10px;
-}
-
-.sosmed a {
-    color: #fff;
-    gap: 30px;
-    margin: 0 10px;
-}
-
-.col-footer {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
 .sdg-item {
     cursor: pointer;
     position: relative;
@@ -239,11 +155,3 @@ body {
 
 
 /* Menambahkan transisi pada navbar */
-
-.navbar {
-    transition: background-color 0.3s ease;
-}
-
-.navbar:hover {
-    background-color: #e3e3e3;
-}

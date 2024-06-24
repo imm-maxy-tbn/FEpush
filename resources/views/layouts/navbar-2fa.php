@@ -1,40 +1,28 @@
 <style>
-    .navbar {
-        background-color: #ffffff;
-        color: #000000;
-        padding: 15px 0;
-        position: fixed;
-        top: 0;
-        right: 0;
-        left: 0;
-        z-index: 1000;
-        border-bottom: 3px solid #5940cb;
-    }
+.nav-item {
+    margin-right: 10px; /* Adjust margin between nav items */
+}
 
-    .nav-item {
-        margin-right: 10px; /* Adjust margin between nav items */
-    }
+.navbar-brand {
+    font-size: 20px; /* Adjust navbar brand font size */
+    font-weight: bold; /* Make navbar brand text bold */
+}
 
-    .navbar-brand {
-        font-size: 20px; /* Adjust navbar brand font size */
-        font-weight: bold; /* Make navbar brand text bold */
-    }
+.nav-link,
+.navbar-button {
+    color: #000000;
+    text-decoration: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
 
-    .nav-link,
-    .navbar-button {
-        color: #000000;
-        text-decoration: none;
-        padding: 10px 15px;
-        border-radius: 5px;
-        transition: background-color 0.3s ease;
-    }
+.nav-link:hover,
+.navbar-button:hover {
+    background-color: #f0f0f0; /* Light grey background on hover */
+}
 
-    .nav-link:hover,
-    .navbar-button:hover {
-        background-color: #f0f0f0; /* Light grey background on hover */
-    }
-
-    .navbar-button.active,
+.navbar-button.active,
 .nav-link.active {
     background-color: #5940cb;
     color: #ffffff !important; /* Important to override existing color */
@@ -54,13 +42,13 @@
 
 .navbar-logo {
     font-size: 24px;
-    margin-left: 60px;
 }
 
 .navbar-links {
     list-style-type: none;
     display: flex;
-    margin-left: -580px;
+    margin: 0 auto; /* Center the navbar items */
+    padding: 0;
 }
 
 .navbar-links li {
@@ -147,19 +135,23 @@
     transform: translateY(1px);
     /* Bergerak sedikit ke bawah saat diklik */
 }
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 </style>
+
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="/">IMM</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        
         <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav mr-auto">
+            <ul class="navbar-nav navbar-links">
+
                 <li class="nav-item">
-                    <a  class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
+                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('bootcamp') ? 'active' : '' }}" href="/bootcamp">Bootcamp</a>
@@ -177,18 +169,20 @@
                     <a class="nav-link {{ Request::is('profile') ? 'active' : '' }}" href="/profile">Profile</a>
                 </li>
             </ul>
-            @if (Auth::check())
-                <!-- User is logged in -->
-            @else
-                <!-- User is not logged in -->
-                <div class="navbar-actions">
-                    <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
-                    <a href="{{ route('register') }}" class="btn btn-outline-primary">Register</a>
-                </div>
-            @endif
         </div>
     </div>
 </nav>
+
+<script>
+    // JavaScript for toggling active class on navbar links/buttons
+    $(document).ready(function() {
+        $('.nav-link, .navbar-button').click(function() {
+            $('.nav-link, .navbar-button').removeClass('active');
+            $(this).addClass('active');
+        });
+    });
+</script>
+
 
 <script>
     // JavaScript for toggling active class on navbar links/buttons

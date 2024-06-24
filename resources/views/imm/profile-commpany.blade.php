@@ -11,40 +11,32 @@
 @section('content')
 
 <body>
-
-
-
-<div class="container ">
+<div class="container">
     <div class="mx-5">
         <h4>My Company</h4>
     </div>
     <!-- content form -->
-    <div class="container "  >
+    <div class="container">
         <form method="POST" action="{{ route('profile-commpany', ['id' => $company->id]) }}">
             @csrf
             @method('PUT')
             <section> 
-                <div class="row propil mx-5 py-3 px-4 border border-dark">
-                    <div class="col-2">
+                <div class="row propil py-3 px-4 border border-dark">
+                    <div class="col-12 col-md-2 mb-3">
                         <h5>Basic Details</h5>
                     </div>
-                    <div class="col-10">
-                        <div class="row mb-3 flex align-items-center">
-                            <img src="images/profile-company.svg" width="50" height="50" alt="">
-                            <label>
-                                <div class="unggah">
-                                    Change Picture
-                                </div>
-                                <input type="file" class="gambar" name="gambar" accept="image/*" style="display: none;" multiple>
-                            </label>
-                            <span class="preview-container d-flex flex-wrap"></span>
+                    <div class="col-12 col-md-10">
+                        <div class="row mb-3 align-items-center">
+                           
+                            <div class="col-12 col-md-9">
+                                <span class="preview-container d-flex flex-wrap"></span>
+                            </div>
                         </div>
                         <div class="row mb-3">
                             <div class="col">
-                                <label for="nama-depan" class="">Nama Lengkap</label>
+                                <label for="nama-depan">Nama Lengkap</label>
                                 <input type="text" name="nama_depan" id="nama-depan" class="form-control" placeholder="First Name" aria-label="First name" value="{{$user->nama_depan}}">
                             </div>
-                           
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput1" class="form-label">Nama Perusahaan</label>
@@ -59,7 +51,7 @@
                             <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" value="{{$user->password}}">
                         </div>
                         <div class="mb-3">
-                            <label for="formGroupExampleInput2" class="form-label">Profil </label>
+                            <label for="formGroupExampleInput2" class="form-label">Profil</label>
                             <input type="text" name="profile" class="form-control" id="formGroupExampleInput2" placeholder="Profil Perusahaan" value="{{$company->profile}}">
                         </div>
                         <div class="mb-3">
@@ -72,7 +64,7 @@
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput5" class="form-label">Nomor Telepon</label>
-                            <input type="text" name="telepon" class="form-control" id="formGroupExampleInput5" placeholder="Nomor Telepon" value="{{$company->telepon}}"> 
+                            <input type="text" name="telepon" class="form-control" id="formGroupExampleInput5" placeholder="Nomor Telepon" value="{{$company->telepon}}">
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput6" class="form-label">Jumlah Pekerja</label>
@@ -94,27 +86,20 @@
                             <label for="formGroupExampleInput10" class="form-label">Kabupaten</label>
                             <input type="text" name="kabupaten" class="form-control" id="formGroupExampleInput10" placeholder="Kabupaten" value="{{$company->kabupaten}}">
                         </div>
-        
-                        {{-- <button type="submit" class="btn btn-primary">Update</button> --}}
                     </div>
                 </div>
             </section>
         </form>
-        
-        
     </div>
-
     <!-- end content form -->
 
     <section>
-        <div
-            class="row bahasa border flex justify-content-center text-white align-items-center rounded mt-3 py-1 mx-5 ">
-            <div class="col">General preferance for the web</div>
-            <img src="images/icon-negara.svg" height="23" width="23" alt="">
-            <div class=" mx-2">Language</div>
-            <div class="btn-group ">
-                <button class="btn dropdown-toggle text-white" type="button" data-bs-toggle="dropdown"
-                    aria-expanded="false">
+        <div class="row bahasa border flex justify-content-between text-white align-items-center rounded mt-3 py-1">
+            <div class="col">General preference for the web</div>
+            <img src="images/icon-negara.svg" height="23" width="23" alt="Icon Negara">
+            <div class="mx-2">Language</div>
+            <div class="btn-group">
+                <button class="btn dropdown-toggle text-white" type="button" data-bs-toggle="dropdown" aria-expanded="false">
                     Bahasa Indonesia
                 </button>
                 <ul class="dropdown-menu">
@@ -125,29 +110,22 @@
             </div>
         </div>
     </section>
-</div>
+
     <section>
-        <div class="row my-3 mx-5 justify-content-center align-items-center" style="gap: 50px">
-          <a href="/homepage"><button type="submit" class=" btn btn-primary">Exit</button></a> 
-          <form id="logout-form" action="{{ route('logout') }}" method="POST">
-            @csrf
-            <button class="btn btn-primary mt-4"><i class="fas fa-sign-out-alt"></i> Log Out</button>
-        </form>
-        </div>
+        <div class="row my-3 bahasa d-flex justify-content-center align-items-center" style="gap: 50px">
+            <div class="col">
+            <a href="/homepage"><button type="submit" class="btn btn-primary">Exit</button></a></div> 
+            <form id="logout-form" class=" mr-4" action="{{ route('logout') }}" method="POST">
+                @csrf
+                <button class="btn btn-primary mt-4"><i class="fas fa-sign-out-alt"></i> Log Out</button>
+            </form>
         </div>
     </section>
 
-
-
-
-   
     <script src="{{ asset('js/script.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-
 </body>
-
-
 @endsection
