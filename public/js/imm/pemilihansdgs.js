@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 document.addEventListener("DOMContentLoaded", function () {
     var sdgItems = document.querySelectorAll(".sdg-item");
 
@@ -36,3 +38,4 @@ document.addEventListener("DOMContentLoaded", function () {
         loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
     }, 1000); // 3000 milidetik = 3 detik
 });
+>>>>>>> 6727a490c701fb6c76a1b56899fa99c7d3590ec2

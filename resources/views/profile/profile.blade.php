@@ -56,28 +56,28 @@
 
 
 <!-- Profile Section -->
-    <div class="container mt-5 pt-5">
-        <div class="row">
-            <div class="col-md-4 text-center">
-                <img src="images/2.png" class="rounded-circle img-fluid" alt="Profile Picture">
-                <a href="edit" class="btn btn-outline-primary mt-3">
-                    <i class="fas fa-edit"></i> Edit
-                </a>
-            </div>
-            <div class="col-md-4">
-                <h2>Rizard Hazard</h2>
-                <p><i class="fas fa-phone"></i> +628953410080</p>
-                <p><i class="fas fa-envelope"></i> rizardhazard@gmail.com</p>
-                <p><i class="fas fa-map-marker-alt"></i> Jl. Rukan Meruya Ilir Bl M/80 Jakarta, Dki Jakarta.</p>
-            </div>
-            <div class="col-md-4">
-                <h3>Keahlian</h3>
-                <button class="btn btn-primary btn-block">Digital Marketing</button>
-                <button class="btn btn-primary btn-block">UI / UX Desain</button>
-                <button class="btn btn-outline-primary btn-block">+Tambah</button>
-            </div>
+<div class="container mt-5 pt-5">
+    <div class="row">
+        <div class="col-md-4 text-center">
+            <img src="images/2.png" class="rounded-circle img-fluid" alt="Profile Picture">
+            <a href="edit" class="btn btn-outline-primary mt-3">
+             <i class="fas fa-edit"></i> Edit
+            </a>
+        </div>
+        <div class="col-md-4">
+            <h2>Rizard Hazard</h2>
+            <p><i class="fas fa-phone"></i> +628953410080</p>
+            <p><i class="fas fa-envelope"></i> rizardhazard@gmail.com</p>
+            <p><i class="fas fa-map-marker-alt"></i> Jl. Rukan Meruya Ilir Bl M/80 Jakarta, Dki Jakarta.</p>
+        </div>
+        <div class="col-md-4">
+            <h3>Keahlian</h3>
+            <button class="btn btn-primary btn-block">Digital Marketing</button>
+            <button class="btn btn-primary btn-block">UI / UX Desain</button>
+            <button class="btn btn-outline-primary btn-block">+Tambah</button>
         </div>
     </div>
+</div>
 
     <!-- Tasks Section -->
     <div class="container mt-5">

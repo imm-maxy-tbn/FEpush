@@ -14,6 +14,7 @@
 </head>
 <body>
 
+   
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container d-flex align-items-center justify-content-center">
             <a class="navbar-brand" href="/">IMM</a>
@@ -41,6 +42,7 @@
             </div>
         </div>
     </nav>
+
 
 <form action="{{ route('companies.store') }}" method="POST">
     @csrf

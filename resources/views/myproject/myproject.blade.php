@@ -18,11 +18,9 @@
 
 <body>
 
-    <div id="loading">
-        <img src="images/imm.png" alt="Loading">
-    </div>
+     
 
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="homepage">IMM</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -32,18 +30,15 @@
             <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                    <a class="nav-link active" href="/homepage">Home</a>
+                        <a class="nav-link active" href="/homepage">Home</a>
                     </li>
                     <li class="nav-item">
-                    <a href="/myproject" class="navbar-button">Myproject</a>
+                        <a class=" navbar-button" href="/myproject">My Project</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="homepage">My Company</a>
+                        <a class="nav-link" href="/profile-commpany">My Company</a>
                     </li>
-
                 </ul>
-                
-
             </div>
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('logout') }}"
@@ -59,9 +54,10 @@
 
 
 
+
     <div class="container">
         <h2 class="project-title">Draft Project</h2>
-        <div class="row mt-5">
+        <div class="row jarak" style="margin-top:200px">
             <div class="col-md-8">
                 <div class="input-group">
                     <input type="text" class="form-control search-input" placeholder="Search..." aria-label="Search">

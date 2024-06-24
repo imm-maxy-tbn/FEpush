@@ -26,13 +26,13 @@
             <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                    <a class="nav-link active" href="/homepage">Home</a>
+                    <a class="nav-link navbar-button text-white" href="/homepage">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/myproject">My Project</a>
                     </li>
                     <li class="nav-item">
-                    <a href="homepage" class="navbar-button">My Company</a>
+                    <a href="profile-commpany" class="nav-link" >My Company</a>
                     </li>
 
                 </ul>

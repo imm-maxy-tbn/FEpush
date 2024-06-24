@@ -163,32 +163,6 @@ body {
     right: -5px;
 }
 
-.sdg-goal {
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.sdg-goal:hover {
-    filter: brightness(0.7);
-    transform: scale(1.05);
-}
-
-.sdg-description {
-    display: none;
-    opacity: 0;
-    transition: all 0.3s ease;
-}
-
-.sdg-description.show {
-    display: block;
-    opacity: 1;
-}
-
-.sdg-description.hide {
-    display: none;
-    opacity: 0;
-}
-
 .btn-continue {
     background-color: #5940cb;
 }

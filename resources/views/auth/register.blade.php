@@ -551,13 +551,7 @@
 </head>
 
 <body>
-    <div id="loading">
-        <img src="images/imm.png" alt="Loading">
-    </div>
 
-    <div id="loading">
-        <img src="images/imm.png" alt="Loading">
-    </div>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -634,7 +628,7 @@
                     </div>
                     <div class="form-group">
                         <label for="phone">Nomor Telepon</label>
-                        <input type="text" id="phone" name="telepon" placeholder="Isi disini" />
+                        <input type="number" id="phone" name="telepon" placeholder="Isi disini" />
                     </div>
                 </div>
                 <div class="form-row">
