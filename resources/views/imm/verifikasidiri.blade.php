@@ -33,7 +33,7 @@
                     <a href="imm" class="navbar-button">IMM</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="community">Community</a>
+                         <a class="nav-link" href="#">Community</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="blog">Explore</a>

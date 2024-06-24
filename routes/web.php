@@ -13,21 +13,17 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\SurveyController;
 
+
 // Rute untuk autentikasi
 Auth::routes();
 
 // Rute yang bisa diakses tanpa login (Login dan Register)
-Route::get('/', function () {
-    return view('auth.login');
-});
 
 Route::get('/', function () {
     return view('tampilanawalhome.welcome');
-})->name('/'); /* ini befungsi untuk memindahkan dari login ke home */
+})->name(''); /* ini befungsi untuk memindahkan dari login ke home */
 
-Route::get('/login', function () {
-    return view('auth.login');
-})->name('login');
+
 
 Route::get('/register', function () {
     return view('auth.register');
@@ -97,9 +93,13 @@ Route::middleware(['auth'])->group(function () {
     })->name('impact.impact');;
 
     Route::get('/profile', function () {
-        return view('profile.profile');
-    });
-
+        $user = Auth::user();
+        if ($user) {
+            return view('profile.profile', ['user' => $user]);
+        } else {
+            return redirect('/login');
+        }
+    })->middleware('auth');
     Route::get('/matrixreport', function () {
         return view('myproject.creatproject.matrixreport');
     });
@@ -162,7 +162,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/projects/filter-metrics', [ProjectController::class, 'filterMetrics'])->name('projects.filterMetrics');
 
     Route::resource('companies', 'CompanyController');
-    Route::post('/companies/store', [CompanyController::class, 'store'])->name('companies.store');
+    Route::post('/homepageimm.homepage', [CompanyController::class, 'store'])->name('companies.store');
 
     Route::get('event', [EventController::class, 'index'])->name('events.index');
     Route::get('event/{id}', [EventController::class, 'view'])->name('events.view');
@@ -220,9 +220,7 @@ Route::get('/impact', function () {
     return view('myproject.impact');
 });
 
-Route::get('/profile', function () {
-    return view('profile.profile');
-});
+
 
 Route::get('/matrixreport', function () {
     return view('myproject.creatproject.matrixreport');
@@ -312,7 +310,7 @@ Route::get('/profile-commpany', function () {
 });
 
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
+Route::get('/welcome', [HomeController::class, 'index'])->name('welcome');
 
 Route::get('/profile-commpany', function () {
     $user = auth()->user(); // Mengambil data user yang sedang login
@@ -320,10 +318,8 @@ Route::get('/profile-commpany', function () {
 
     return view('imm.profile-commpany', compact('company', 'user'));
 })->name('profile-commpany');
-Route::get('/profile', function ($id) {
-    $user = User::findOrFail($id);
-    return view('profile.profile', compact('user'));
-})->name('profile');
+
+
 
 // Route::get('/profile-company/{id}', function ($id) {
 //     $user = User::findOrFail(auth()->user()->id);
@@ -356,4 +352,7 @@ Route::get('responden/{id}', [SurveyController::class, 'view'])->name('surveys.v
 Route::get('responden-data-diri/{id}', [SurveyController::class, 'dataDiri'])->name('surveys.data-diri');
 Route::post('responden/{id}', [SurveyController::class, 'registerUser'])->name('surveys.register-user');
 Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submit'])->name('surveys.submit');
+
+Route::get('/', [HomeController::class, 'home'])->middleware('hideFooter');
+Route::get('/about', [HomeController::class, 'about']);
 

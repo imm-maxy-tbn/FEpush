@@ -1,10 +1,8 @@
-<<<<<<< HEAD
-=======
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", function() {
     var sdgItems = document.querySelectorAll(".sdg-item");
 
-    sdgItems.forEach(function (item) {
-        item.addEventListener("click", function () {
+    sdgItems.forEach(function(item) {
+        item.addEventListener("click", function() {
             var description = item.querySelector(".sdg-description");
             var toggle = item.querySelector(".sdg-toggle");
 
@@ -26,16 +24,15 @@ document.addEventListener("DOMContentLoaded", function () {
 function saveSelectedSDGs() {
     var selectedSDGs = [];
     document.querySelectorAll(".sdg-checkbox:checked")
-        .forEach(function (checkbox) {
+        .forEach(function(checkbox) {
             selectedSDGs.push(checkbox.value);
         });
     localStorage.setItem("selectedSDGs", JSON.stringify(selectedSDGs));
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-    setTimeout(function () {
+document.addEventListener("DOMContentLoaded", function() {
+    setTimeout(function() {
         var loading = document.getElementById("loading");
         loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
     }, 1000); // 3000 milidetik = 3 detik
 });
->>>>>>> 6727a490c701fb6c76a1b56899fa99c7d3590ec2

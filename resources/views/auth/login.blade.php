@@ -1,23 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>IMM | Login</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />   
-</head>
+@extends('layouts.app')
+@section('title', 'Masuk')
+ 
+@section('css')
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+<style>
+    *{
+        overflow: hidden;
+    }
+    </style>  
+@endsection
+@section('content')
 
 <body>
- 
 
-    <div class="container-fluid d-flex justify-content-between" style="max-height: 100vh">
-        <div class="col-6 w-100 d-flex justify-content-center">
+
+    <div class="container-fluid d-flex justify-content-between" style="height: 100vh">
+        <div class="col-6 w-100 d-flex justify-content-center align-items-center">
             <div class="container d-flex justify-content-center ">
                 <form method="POST" action="{{ route('login') }}">
                     @csrf
@@ -97,4 +100,4 @@ document.addEventListener("DOMContentLoaded", function () {
     </script>
 </body>
 
-</html>
+@endsection

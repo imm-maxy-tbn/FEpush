@@ -37,15 +37,19 @@
                     </li>
                 </ul>
             </div>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('logout') }}"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-            </li>
+<li class="nav-item">
+    @auth
+        <a class="nav-link" href="{{ route('logout') }}"
+            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+           ({{ Auth::user()->nama_depan ?? '' }})
+        </a>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+            @csrf
+        </form>
+    @else
+        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+    @endauth
+</li>
         </div>
     </nav>
 

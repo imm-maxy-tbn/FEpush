@@ -23,42 +23,6 @@
         </div>
     </nav>
 
-<<<<<<< HEAD
-    <form action="{{ route('surveys.store') }}" method="POST">
-        @csrf
-        <div class="container content mt-5 mb-5">
-            <div class="mb-2 mt-2">
-                <input type="text" name="name" class="form-control" placeholder="Judul Survey anda"
-                    style="border: none; background:transparent; font-size: 40px;font-weight: bold;" required>
-            </div>
-
-            <div class="row d-flex justify-content-between">
-                <button type="submit" class="btn-simpan d-flex justify-content-around align-items-center">
-                    <span class="text-white">Simpan Survey</span>
-                    <img src="images/simpan-icon.png" width="29" height="auto" alt="">
-                </button>
-            </div>
-
-            <div class="form-group" style="display: none;">
-                <label for="accept-guest-entries">Accept Guest Entries</label>
-                <input type="hidden" name="settings[accept-guest-entries]" id="accept-guest-entries" value="true"
-                    class="form-control">
-            </div>
-            <div class="form-group" style="display: none;">
-                <label for="limit-per-participant">Limit Per Participant</label>
-                <input type="hidden" name="settings[limit-per-participant]" id="limit-per-participant"
-                    class="form-control" value="-1">
-            </div>
-
-            {{-- <div id="sections-container">
-                <!-- Sections will be added dynamically here -->
-            </div> --}}
-
-        </div>
-
-        <div class="container mb-5" id="sections-container">
-
-=======
     <div class="container content mt-5 mb-5">
         {{-- <div class="container">
             <label for="gambar" style="cursor: pointer;">
@@ -97,7 +61,6 @@
                 <a href="impact" class="text-white"><span>Simpan Survey</span></a>
                 <img src="images/simpan-icon.png" width="29" height="auto" alt="">
             </button>
->>>>>>> 6727a490c701fb6c76a1b56899fa99c7d3590ec2
         </div>
 
         <div class="container d-flex justify-content-center mt-5">
@@ -162,15 +125,12 @@
     </template>
 
 
-<<<<<<< HEAD
-=======
     </div>
 
 
     <div class="container d-flex justify-content-center">
         <span class="btn-tambah-bagian" id="add-section-btn">Tambah Bagian Survey +</span>
     </div>
->>>>>>> 6727a490c701fb6c76a1b56899fa99c7d3590ec2
     <footer>
         <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
             <div class="row d-flex  justify-content-center align-items-center">
@@ -278,8 +238,6 @@
             // Initial setup if there are any existing sections (optional)
             // addSection(); // Uncomment this if you want to start with one section by default
         });
-<<<<<<< HEAD
-=======
 
         function clearFormContainer(container) {
             container.innerHTML = '';
@@ -385,7 +343,6 @@
         </div>
     </div>`;
         }
->>>>>>> 6727a490c701fb6c76a1b56899fa99c7d3590ec2
     </script>
     <script src="{{ asset('js/imm/metrix.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

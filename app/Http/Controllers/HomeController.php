@@ -25,4 +25,13 @@ class HomeController extends Controller
     {
         return view('tampilanawalhome.welcome');
     }
+    public function about()
+    {
+        return view('about'); // Menampilkan footer
+    }
+    public function loginhide(Request $request)
+    {
+        return view('auth.login', ['hideFooter' => true]);
+    }
+        
 }

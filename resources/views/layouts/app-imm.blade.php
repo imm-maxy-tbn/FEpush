@@ -12,7 +12,7 @@
 
 
 </head>
-@include('layouts.navbar-peserta')
+@include('layouts.navbar-imm')
 
         @yield('content')
         @if(!isset($hideFooter) || !$hideFooter)

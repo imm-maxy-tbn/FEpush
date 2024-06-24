@@ -1,11 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app-imm')
+@section('title', '')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMM | My Project</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+@section('css')
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{{ asset('css/myproject/myproject.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
@@ -14,50 +11,17 @@
     <meta name="description" content="Manage your projects efficiently with MyProject">
     <meta name="keywords" content="project management, task management, productivity">
     <meta name="author" content="Your Name">
-</head>
+@endsection
+@section('content')
+
+    
 
 <body>
-
-     
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="homepage">IMM</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/homepage">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class=" navbar-button" href="/myproject">My Project</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/profile-commpany">My Company</a>
-                    </li>
-                </ul>
-            </div>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('logout') }}"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-            </li>
-        </div>
-    </nav>
-
-
 
 
     <div class="container">
         <h2 class="project-title">Draft Project</h2>
-        <div class="row jarak" style="margin-top:200px">
+        <div class="row mt-5">
             <div class="col-md-8">
                 <div class="input-group">
                     <input type="text" class="form-control search-input" placeholder="Search..." aria-label="Search">
@@ -72,9 +36,8 @@
                 <button class="btn btn-primary btn-create-project" data-toggle="modal"
                     data-target="#projectModal">Create Project</button>
             </div>
-
         </div>
-        <h4 class="all-projects-title mt-5">All projects (0)</h4>
+        <h4 class="project-title mb-5 mt-5">All projects (0)</h4>
         <div class="row mt-3" id="draft-project-list">
             <div class="col-md-12 no-projects mt-3">
                 <p>Belum memiliki project apapun.</p>
@@ -82,9 +45,8 @@
         </div>
     </div>
 
-
     <div class="container">
-        <h2 class="ongoing-projects-title mt-5">On Going Project</h2>
+        <h2 class="project-title mb-5 mt-5">On Going Project</h2>
         <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
             <div class="dropdown">
                 <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
@@ -126,7 +88,6 @@
             </tbody>
         </table>
 
-
     <!-- Modal -->
     <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel"
         aria-hidden="true">
@@ -157,7 +118,7 @@
         </div>
     </div>
 
-    <h2 class="done-projects-titlee mt-5">Done Projects And Surveys</h2>
+    <h2 class="project-title mb-5 mt-5">Done Projects And Surveys</h2>
     <div class="card mt-3 done-projects-card">
         <div class="card-header d-flex justify-content-between align-items-center done-projects-header">
             <span>Project Completed</span>
@@ -188,36 +149,6 @@
                 </tr>
             </tbody>
         </table>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="projectModalLabel">Select Project</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <select id="projectSelect" class="form-control">
-                        <option value="Maths Department">Maths Department</option>
-                        <option value="Chemistry Department">Chemistry Department</option>
-                        <option value="Physics Department">Physics Department</option>
-                        <option value="Computer Department">Computer Department</option>
-                        <option value="English Department">English Department</option>
-                        <option value="Social Department">Social Department</option>
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="addSelectedProject()">Add
-                        Project</button>
-                </div>
-            </div>
-        </div>
     </div>
 
     <div class="banner">
@@ -355,37 +286,6 @@
     </div>
 
 
-
-   <footer>
-    <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
-        <div class="row d-flex  justify-content-center align-items-center">
-            <div class="col-4 d-flex flex-column" style="gap: 20px">
-                <h5 class=" text-white  text-left">IMM</h5>
-                <span class="span-footer text-left">Impact Measurement and Management
-                        <br> (TBN INDONESIA X MAXY ACADEMY)</span>
-            </div>
-            <div class="col-5 d-flex justify-content-center align-items-center">
-                <ul class=" d-flex " style="gap: 30px">
-                    <a href="/"><li>HomePage</li></a>
-                    <a href="bootcamp"><li>Bootcamp</li></a>
-                    <a href="imm"><li>IMM</li></a>
-                    <a href="#"><li>Comunity</li></a>
-                    <a href="profile"><li>Profile</li></a>
-                </ul>
-            </div>
-            <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
-                <span class="span-footer text-center">Sosial Media</span>
-                <div class="sosmed d-flex justify-content-end  ">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
-
- </div>
-</footer>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" async></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" async></script>
@@ -675,4 +575,4 @@
         </script>
 </body>
 
-</html>
+@endsection 

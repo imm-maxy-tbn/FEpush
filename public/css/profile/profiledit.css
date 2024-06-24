@@ -1,6 +1,8 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
+    list-style-type: none;
+    text-decoration: none;
 }
 
 .profile-container {
@@ -110,6 +112,7 @@ form {
     color: white;
 }
 
+
 /* Navbar */
 
 .navbar {
@@ -202,6 +205,7 @@ form {
     /* Bergerak sedikit ke bawah saat diklik */
 }
 
+
 /* Footer */
 
 .footer {
@@ -246,6 +250,7 @@ form {
     align-items: center;
     flex-direction: column;
 }
+
 
 /* Media query for responsiveness */
 
@@ -321,6 +326,7 @@ form {
     }
 }
 
+
 /* Animasi umum untuk elemen lainnya */
 
 .content-container h1,
@@ -344,6 +350,7 @@ form {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
+
 /* Menambahkan transisi pada navbar */
 
 .navbar {
@@ -360,10 +367,12 @@ form {
     padding: 10px 20px;
     border-radius: 10px;
     border: none;
-    font-weight: bold;
+    font-weight: 500;
     transition: background-color 0.3s ease;
-    text-decoration: none; /* Menghapus underline pada teks tautan */
-    display: inline-block; /* Membuat tautan tampil sebagai blok inline */
+    text-decoration: none;
+    /* Menghapus underline pada teks tautan */
+    display: inline-block;
+    /* Membuat tautan tampil sebagai blok inline */
 }
 
 .navbar-button:hover {

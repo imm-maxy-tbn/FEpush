@@ -1,52 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app-imm')
+@section('title', '')
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ asset('css/profile/profile-commpany.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMM | Profile Commpany</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/profile/profile-commpany.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+@section('css')
 
-    <style>
-    </style>
-</head>
+@endsection
+@section('content')
 
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="homepage">IMM</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="/homepage">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/myproject">My Project</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class=" navbar-button" href="/profile-commpany">My Company</a>
-                    </li>
-                </ul>
-            </div>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('logout') }}"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-            </li>
-        </div>
-    </nav>
 
 
 <div class="container ">
@@ -76,13 +41,10 @@
                         </div>
                         <div class="row mb-3">
                             <div class="col">
-                                <label for="nama-depan" class="">Nama Depan</label>
+                                <label for="nama-depan" class="">Nama Lengkap</label>
                                 <input type="text" name="nama_depan" id="nama-depan" class="form-control" placeholder="First Name" aria-label="First name" value="{{$user->nama_depan}}">
                             </div>
-                            <div class="col">
-                                <label for="nama-belakang" class="">Last Name</label>
-                                <input type="text" name="nama_belakang" id="nama-belakang" class="form-control" placeholder="Last name" aria-label="Last name" value="{{$user->nama_belakang}}">  
-                            </div>
+                           
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput1" class="form-label">Nama Perusahaan</label>
@@ -165,65 +127,21 @@
     </section>
 </div>
     <section>
-        <div class="row my-3 mx-5 justify-content-center align-items-center " style="gap: 50px">
-          <a href="/homepage"><button type="submit" class=" btn btn-primary">Exit</button>
-
-          </a> 
+        <div class="row my-3 mx-5 justify-content-center align-items-center" style="gap: 50px">
+          <a href="/homepage"><button type="submit" class=" btn btn-primary">Exit</button></a> 
+          <form id="logout-form" action="{{ route('logout') }}" method="POST">
+            @csrf
+            <button class="btn btn-primary mt-4"><i class="fas fa-sign-out-alt"></i> Log Out</button>
+        </form>
         </div>
         </div>
     </section>
 
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+   
     <script src="{{ asset('js/script.js') }}"></script>
-
-
-    <footer>
-        <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
-            <div class="row d-flex  justify-content-center align-items-center">
-                <div class="col-4 d-flex flex-column" style="gap: 20px">
-                    <h5 class=" text-white  text-left">IMM</h5>
-                    <span class="span-footer text-left">Impact Measurement and Management
-                        <br> (TBN INDONESIA X MAXY ACADEMY)</span>
-                </div>
-                <div class="col-5 d-flex justify-content-center align-items-center">
-                    <ul class=" d-flex " style="gap: 30px">
-                        <a href="/">
-                            <li>HomePage</li>
-                        </a>
-                        <a href="bootcamp">
-                            <li>Bootcamp</li>
-                        </a>
-                        <a href="imm">
-                            <li>IMM</li>
-                        </a>
-                        <a href="#">
-                            <li>Comunity</li>
-                        </a>
-                        <a href="profile">
-                            <li>Profile</li>
-                        </a>
-                    </ul>
-                </div>
-                <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
-                    <span class="span-footer text-center">Sosial Media</span>
-                    <div class="sosmed d-flex justify-content-end  ">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </footer>
-
-
-
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
@@ -232,4 +150,4 @@
 </body>
 
 
-</html>
+@endsection

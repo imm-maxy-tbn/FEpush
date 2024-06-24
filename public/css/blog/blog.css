@@ -73,6 +73,24 @@ html {
     /* Bergerak sedikit ke atas saat hover */
 }
 
+.navbar-button {
+    background-color: #000000;
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 10px;
+    border: none;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    text-decoration: none;
+    /* Menghapus underline pada teks tautan */
+    display: inline-block;
+    /* Membuat tautan tampil sebagai blok inline */
+}
+
+.navbar-button:hover {
+    background-color: #333333;
+}
+
 .navbar-actions .btn-outline-primary {
     color: #fdfdff;
     background-color: #5940cb;
@@ -259,9 +277,7 @@ h1 {
 }
 
 .blog-card {
-    background: #4b00820f;
-    color: #010101;
-    padding: 20px;
+    padding: 15px;
     border-radius: 5px;
     margin-bottom: 20px;
     text-align: center;
@@ -270,11 +286,7 @@ h1 {
     flex-direction: column;
     justify-content: space-between;
     transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.blog-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid #5940cb;
 }
 
 .blog-card a {
@@ -283,7 +295,7 @@ h1 {
 }
 
 .blog-card .blog-image {
-    height: 150px;
+    height: 200px;
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -302,7 +314,7 @@ h1 {
 .blog-card p {
     text-align: left;
     font-size: 1rem;
-    flex-grow: 1;
+    flex-grow: 3;
     /* Make the paragraph take remaining space */
 }
 

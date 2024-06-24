@@ -15,16 +15,7 @@
 @include('layouts.navbar-peserta')
 
         @yield('content')
-        @if(!isset($hideFooter) || !$hideFooter)
-        @include('layouts.footer-peserta')
-        @endif
-        <script>
-            $(document).ready(function() {
-    $('.navbar-button').click(function() {
-        $('.navbar-button').removeClass('active');
-        $(this).addClass('active');
-    });
-});
+      
 
         </script>
 </html>

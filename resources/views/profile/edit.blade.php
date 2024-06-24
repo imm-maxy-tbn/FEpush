@@ -27,11 +27,11 @@
                     <li class="nav-item ">
                         <a class="nav-link" href="bootcamp">Bootcamp</a>
                     </li>
-                    <li class="nav-item active">
+                    <li class="nav-item">
                         <a class="nav-link" href="imm">IMM</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="community">Community</a>
+                         <a class="nav-link" href="#">Community</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="blog">Explore</a>
@@ -39,10 +39,15 @@
                     <li class="nav-item">
                         <a href="profile" class="navbar-button">Profile</a>
                     </li>
-                </ul>                <div class="navbar-actions">
-                    <a href="login" class="btn btn-primary">Login</a>
-                    <a href="register" class="btn btn-outline-primary">Register</a>
-                </div>
+                </ul>                         <li class="nav-item">
+                    <a class="nav-link" href="{{ route('logout') }}"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        {{ __('Logout') }}
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
+                </li>
             </div>
         </div>
     </nav>
