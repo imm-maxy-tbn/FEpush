@@ -25,6 +25,7 @@ class EventController extends Controller
         }
 
         $backendUrl = env('APP_BACKEND_URL');
+        
         return view('event.event', compact('events', 'backendUrl'));
     }
 
@@ -74,7 +75,7 @@ class EventController extends Controller
 
         $request->validate([
             'pekerjaan' => 'required|string',
-            'instansi' => 'required|string',
+            'instansi' => 'nullable|string',
         ]);
 
         $user = Auth::user();
@@ -87,7 +88,7 @@ class EventController extends Controller
         $event = Event::findOrFail($request->event_id);
         $user->events()->attach($event);
 
-        return redirect('/event');
+        return view('event.succes', compact('event'));
     }
 
     public function view($id)
