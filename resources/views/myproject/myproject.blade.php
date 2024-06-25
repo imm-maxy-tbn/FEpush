@@ -48,7 +48,7 @@
 
         </div>
         <h4 class="all-projects-title">All projects (0)</h4>
-        <div class="row mt-3" id="draft-project-list">
+        <div class="row mt-3 "  id="draft-project-list">
             <div class="col-md-12">
                 <h1>Daftar Proyek</h1>
                 @if($projects->isEmpty())

@@ -165,7 +165,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/companies', [CompanyController::class, 'index']);
 
     Route::resource('companies', 'CompanyController');
-    Route::post('/homepageimm.homepage', [CompanyController::class, 'store'])->name('companies.store');
+    Route::post('/homepage', [CompanyController::class, 'store'])->name('companies.store');
 
     Route::get('event', [EventController::class, 'index'])->name('events.index');
     Route::get('event/{id}', [EventController::class, 'view'])->name('events.view');
