@@ -20,7 +20,7 @@ class ProjectController extends Controller
 
         return view('projects.index', compact('projects'));
     }
-    
+
     public function create()
     {
         $companies = Company::all();
@@ -130,8 +130,8 @@ class ProjectController extends Controller
 
     public function view($id)
     {
-        $project = Project::with('tags', 'indicators')->findOrFail($id);
-        return view('projects.view', compact('project'));
+        $project = Project::with('tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana')->findOrFail($id);
+        return view('myproject.detail', compact('project'));
     }
 
     public function update(Request $request, $id)
