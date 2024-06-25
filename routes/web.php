@@ -153,6 +153,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/creatproject', [ProjectController::class, 'create'])->name('projects.create');
     Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
     Route::post('/projects/filter-metrics', [ProjectController::class, 'filterMetrics'])->name('projects.filterMetrics');
+    Route::get('/myproject', [ProjectController::class, 'index'])->name('myproject.myproject');
     Route::get('/detail/{id}', [ProjectController::class, 'view'])->name('projects.view');
 
     Route::resource('companies', CompanyController::class);

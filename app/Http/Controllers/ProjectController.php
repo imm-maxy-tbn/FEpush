@@ -18,7 +18,7 @@ class ProjectController extends Controller
     {
         $projects = Project::with('tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana')->get();
 
-        return view('projects.index', compact('projects'));
+        return view('myproject.myproject', compact('projects'));
     }
 
     public function create()
@@ -112,7 +112,7 @@ class ProjectController extends Controller
             }
         }
 
-        return redirect()->route('myproject.creatproject.creatproject')->with('success', 'Project created successfully');
+        return redirect()->route('myproject.myproject')->with('success', 'Project created successfully');
     }
 
     public function edit($id)

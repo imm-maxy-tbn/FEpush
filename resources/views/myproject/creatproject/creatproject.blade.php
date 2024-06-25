@@ -4,8 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMM | Membuat Projek</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/indicator.css') }}">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/indicator.css') }}">
     <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/creatproject.css') }}">
     <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/pemilihansdgs.css') }}">
 
@@ -17,38 +18,32 @@
 
 <body>
 
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
-            <a class="navbar-brand" href="homepage">IMM</a>
+            <a class="navbar-brand" href="#">IMM</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
-                <ul class="navbar-nav">
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
                     <li class="nav-item">
-                    <a class="nav-link active" href="/homepage">Home</a>
+                        <a class="nav-link" href="welcome">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="/myproject">My Project</a>
+                        <a class="nav-link" href="bootcamp">Bootcamp</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">IMM</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="homepage">My Company</a>
+                        <a class="nav-link" href="comunity">Community</a>
                     </li>
-
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile">Profile</a>
+                    </li>
                 </ul>
-
-
             </div>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('logout') }}"
-                    onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                    {{ __('Logout') }}
-                </a>
-                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                    @csrf
-                </form>
-            </li>
         </div>
     </nav>
 
@@ -134,6 +129,12 @@
                                 </table>
                             </div>
                         </div>
+                        <div class="form-group" >
+
+                        @if(auth()->check() && auth()->user()->companies)
+                                <input type="hidden" name="company_id" value="{{ auth()->user()->companies->id }}" id="company_id">
+                        @endif
+                        </div>
                         <div class="form-group">
                             <label for="impactTags">Tag Tema Dampak Yang Selaras dengan Prioritas Dampak Anda</label>
                             <div class="tags-container" style="height: 200px; overflow-y: auto;">
@@ -144,7 +145,7 @@
                                             <label class="form-check-label" for="tag{{ $tag->id }}">{{ $tag->nama }}</label>
                                         </div>
                                     </div>
-                                </div>
+                                @endforeach
                             </div>
                         </div>
                         <div class="form-group">
@@ -230,7 +231,7 @@
                                     <div class="mt-3 d-flex align-items-center level-1-indicator" style="gap: 15px">
                                         <label for="indicator-{{ $indicator->id }}">
                                             <input type="checkbox" class="indicator-checkbox"
-                                                id="indicator-{{ $indicator->id }}" value="{{ $indicator->order }}"
+                                                id="indicator-{{ $indicator->id }}" name="indicator_ids[]" value="{{ $indicator->id }}"
                                                 data-target="sub-container-{{ $indicator->id }}">
                                             <span>{{ $indicator->order }} </span><span>{{ $indicator->name }}</span>
                                         </label>
@@ -261,7 +262,7 @@
                         <button type="button" class="btn btn-primary" id="next-to-metric-section">Next</button>
                     </div>
                 </div>
-            </div>
+            </div>
 
 
 
@@ -585,7 +586,7 @@ $('#next-to-metric-section').on('click', function() {
                             <h5 class="text-primary">(${metric.code}) ${metric.name}</h5>
                             <p class="mb-0">${metric.definition}</p>
                         </div>
-                        <input type="checkbox" class="metric-checkbox" name="metrics[]" value="${metric.id}">
+                        <input type="checkbox" class="metric-checkbox" name="metric_ids[]" value="${metric.id}">
                     </div>
                 `;
                 $('#metrics').append(metricHtml);
@@ -796,11 +797,53 @@ $(document).ready(function() {
         $('#metric-section').show();
     });
 
-    // Submit form action
-    $('form').on('submit', function(e) {
-        e.preventDefault(); // Assuming your form has an action attribute defined
-        // Perform form submission or AJAX request here
+    $('#submit-project').on('click', function() {
+    // Collect form data
+    var formData = new FormData();
+    formData.append('nama', $('#nama').val());
+    formData.append('deskripsi', $('#deskripsi').val());
+    formData.append('company_id', $('#company_id').val()); // Assuming $('#company_id').val() gives you the company_id integer
+
+    // Append sdg_ids
+    var sdgIds = $('.sdg-checkbox:checked').map(function() {
+        return $(this).val();
+    }).get();
+    formData.append('sdg_ids', JSON.stringify(sdgIds));
+
+    // Append indicator_ids
+    var indicatorIds = $('.indicator-checkbox:checked').map(function() {
+        return $(this).val();
+    }).get();
+    formData.append('indicator_ids', JSON.stringify(indicatorIds));
+
+    // Append metric_ids
+    var metricIds = $('.metric-checkbox:checked').map(function() {
+        return $(this).val();
+    }).get();
+    formData.append('metric_ids', JSON.stringify(metricIds));
+
+    // Handle img file
+    var imgFile = $('#img').prop('files')[0];
+    formData.append('img', imgFile);
+
+    // Perform AJAX request
+    $.ajax({
+        url: "{{ route('projects.store') }}",
+        method: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            // Handle success response (redirect or show success message)
+            console.log(response);
+        },
+        error: function(xhr) {
+            // Handle error response (show error message if needed)
+            console.log(xhr.responseText);
+        }
     });
+});
+
 });
     </script>
 
