@@ -87,7 +87,7 @@ class IndicatorController extends Controller
     public function edit($id)
     {
         $indicator = Indicator::find($id);
-        $indicators = Indicator::all(); 
+        $indicators = Indicator::all();
         $sdgs = Sdg::all();
 
         return view('indicators.edit', compact('indicator', 'indicators', 'sdgs'));
@@ -134,3 +134,4 @@ class IndicatorController extends Controller
             ->with('success', 'Indicator deleted successfully.');
     }
 }
+

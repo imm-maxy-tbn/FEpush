@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 </head>
 <body>
- 
+
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -84,7 +84,7 @@
                 </div>
             </div>
             <div class="d-flex justify-content-between mt-4">
-                
+
                 <button type="" class="btn export-btn">Export</button>
                 <a href="impact" ><button class="btn save-btn">Save</button></a>
             </div>

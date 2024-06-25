@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/imm', function () {
         return view('imm.imm');
-    });
+    })->middleware('check.company.registration');
 
     Route::get('/verifikasidiri', function () {
         return view('imm.verifikasidiri');
@@ -150,18 +150,19 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('projects', ProjectController::class);
     Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
-    Route::get('/detail/{id}', [ProjectController::class, 'view'])->name('projects.view');
     Route::get('/creatproject', [ProjectController::class, 'create'])->name('projects.create');
     Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
     Route::post('/projects/filter-metrics', [ProjectController::class, 'filterMetrics'])->name('projects.filterMetrics');
+    Route::get('/detail/{id}', [ProjectController::class, 'view'])->name('projects.view');
 
-    Route::resource('companies', 'CompanyController');
+    Route::resource('companies', CompanyController::class);
     Route::post('/companies/store', [CompanyController::class, 'store'])->name('companies.store');
 
-    Route::get('event', [EventController::class, 'index'])->name('events.index');
-    Route::get('event/{id}', [EventController::class, 'view'])->name('events.view');
-    Route::get('event-register/{id}', [EventController::class, 'edit'])->name('events.edit');
     Route::put('event/{id}', [EventController::class, 'update'])->name('events.update');
 
     Route::post('survey', [SurveyController::class, 'store'])->name('surveys.store');
 });
+
+Route::get('event', [EventController::class, 'index'])->name('events.index');
+Route::get('event/{id}', [EventController::class, 'view'])->name('events.view');
+Route::get('event-register/{id}', [EventController::class, 'edit'])->name('events.edit');

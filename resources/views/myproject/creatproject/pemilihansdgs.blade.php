@@ -10,7 +10,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
- 
+
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
@@ -33,7 +33,7 @@
                 </div>
             @endforeach
     </div>
-    
+
 </div>
 
 
