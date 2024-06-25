@@ -131,7 +131,7 @@ class ProjectController extends Controller
     public function view($id)
     {
         $project = Project::with('tags', 'indicators')->findOrFail($id);
-        return view('projects.view', compact('project'));
+        return view('myproject.detail', compact('project'));
     }
 
     public function update(Request $request, $id)
