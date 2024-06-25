@@ -39,7 +39,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('/imm', function () {
         return view('imm.imm');
-    })->middleware('check.company.registration');
+    });
 
     Route::get('/verifikasidiri', function () {
         return view('imm.verifikasidiri');
