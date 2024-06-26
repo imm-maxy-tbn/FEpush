@@ -1,5 +1,5 @@
 <?php
-
+// app/Models/Company.php
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -8,35 +8,30 @@ use Illuminate\Database\Eloquent\Model;
 class Company extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'nama',
-        'profile',
-        'tipe',
-        'nama_pic',
-        'posisi_pic',
-        'telepon',
-        'negara',
-        'provinsi',
-        'kabupaten',
-        'jumlah_karyawan',
-        'user_id',
-    ];
-    public function index()
-    {
-        $company_id = 1; // Ganti dengan company_id yang sesuai
-        $projects = Project::where('company_id', $company_id)->get();
-    
-        return view('myproject.myproject', compact('projects'));
-    }
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+
     public function projects()
     {
         return $this->hasMany(Project::class);
     }
 
-    // Mendefinisikan hubungan dengan model User
-    
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
+}
+
+// app/Models/Project.php
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class Project extends Model
+{
+    use HasFactory;
+
+    public function company()
+    {
+        return $this->belongsTo(Company::class);
+    }
 }

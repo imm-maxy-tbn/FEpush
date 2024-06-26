@@ -17,10 +17,10 @@ class ProjectController extends Controller
     public function index()
     {
         $projects = Project::with('tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana')->get();
-    
+
         return view('myproject.myproject', compact('projects'));
     }
-
+    
     public function create()
     {
         $companies = Company::all();
@@ -38,16 +38,15 @@ class ProjectController extends Controller
     {
         $tagIds = $request->input('tag_ids', []);
         $indicatorIds = $request->input('indicator_ids', []);
-        
+
         $metrics = Metric::orWhereHas('tags', function($query) use ($tagIds) {
             $query->whereIn('tags.id', $tagIds);
         })->orWhereHas('indicators', function($query) use ($indicatorIds) {
             $query->whereIn('indicators.id', $indicatorIds);
         })->with('relatedMetrics')->get();
-        
+
         return response()->json($metrics);
     }
-
 
 
     public function store(Request $request)
@@ -113,7 +112,7 @@ class ProjectController extends Controller
             }
         }
 
-        return redirect()->route('myproject.creatproject.creatproject')->with('success', 'Project created successfully');
+        return redirect()->route('myproject.myproject')->with('success', 'Project created successfully');
     }
 
     public function edit($id)
@@ -134,13 +133,6 @@ class ProjectController extends Controller
         $project = Project::with('tags', 'indicators')->findOrFail($id);
         return view('projects.view', compact('project'));
     }
-
-    public function vieww($id)
-{
-    $project = Project::with('tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana')->findOrFail($id);
-    return view('projects.view', compact('project'));
-}
-
 
     public function update(Request $request, $id)
     {

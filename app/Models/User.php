@@ -76,25 +76,11 @@ class User extends Authenticatable
 
     public function companies()
     {
-        return $this->hasMany(Company::class);
+        return $this->hasOne(Company::class, 'user_id');
     }
 
     public function events()
     {
-        return $this->belongsToMany(Event::class);
-    }
- public function company()
-    {
-        return $this->hasOne(Company::class);
-    }
-    public function projects()
-    {
-        return $this->hasMany(Project::class);
-    }
-    public function myproject()
-    {
-        return $this->hasMany(Project::class); // Assuming one user has many projects
-    }
-    
-    
+    return $this->belongsToMany(Event::class); 
+}
 }

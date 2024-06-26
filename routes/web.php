@@ -166,6 +166,9 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/creatproject', [ProjectController::class, 'create'])->name('projects.create');
     Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
     Route::post('/projects/filter-metrics', [ProjectController::class, 'filterMetrics'])->name('projects.filterMetrics');
+    Route::get('/myproject', [ProjectController::class, 'index'])->name('myproject.myproject');
+    
+    
 
     Route::get('/companies', [CompanyController::class, 'index']);
 
@@ -204,9 +207,7 @@ Route::get('/detail-kelas', function () {
     return view('kelas.detail-kelas');
 });
 
-Route::get('/myproject', function () {
-    return view('myproject.myproject');
-});
+
 
 Route::get('/survey', function () {
     return view('myproject.survey');
@@ -326,7 +327,7 @@ Route::get('/welcome', [HomeController::class, 'index'])->name('welcome');
 
 Route::get('/profile-commpany', function () {
     $user = auth()->user(); // Mengambil data user yang sedang login
-    $company = $user->company; // Mengambil data perusahaan yang terkait dengan user
+    $company = $user->company; // Mengambil data perusahaan yang terkait dengan user, jika ada
 
     return view('imm.profile-commpany', compact('company', 'user'));
 })->name('profile-commpany');
@@ -338,7 +339,7 @@ Route::get('/homepage', function () {
     return view('homepageimm.homepage', compact('company', 'user'));
 })->name('homepage');
 
-Route::get('/myproject', [ProjectController::class, 'index'])->name('projects.index');
+
 Route::get('/detail/{id}', [ProjectController::class, 'vieww'])->name('projects.view');
 
 
@@ -399,5 +400,4 @@ Route::post('responden/{id}', [SurveyController::class, 'registerUser'])->name('
 Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submit'])->name('surveys.submit');
 
 
-Route::get('/about', [HomeController::class, 'about']);
-
+Route::get('/about', [HomeController::class,'about']);

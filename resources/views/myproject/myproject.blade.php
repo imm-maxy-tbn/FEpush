@@ -1,4 +1,5 @@
 @extends('layouts.app-imm')
+
 @section('title', 'My Project')
 
 @section('css')
@@ -12,114 +13,100 @@
 <meta name="keywords" content="project management, task management, productivity">
 <meta name="author" content="Your Name">
 @endsection
+
 @section('content')
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">My Projects</div>
 
-<!DOCTYPE html>
-<html lang="en">
+                <div class="card-body">
+                    <div class="row jarak" style="margin-top:100px">
+                        <div class="col-md-8">
+                            <div class="input-group">
+                                <input type="text" class="form-control search-input" placeholder="Search..."
+                                    aria-label="Search">
+                                <div class="input-group-append">
+                                    <span class="input-group-text search-icon" aria-label="Search Button"><i
+                                            class="fas fa-search"></i></span>
+                                </div>
+                            </div>
+                        </div>
 
+                        <div class="col-md-4 text-right">
+                            <a href="{{ route('projects.create') }}" class="btn btn-primary btn-create-new-project">Create
+                                New Project</a>
+                            <button class="btn btn-primary btn-create-project" data-toggle="modal"
+                                data-target="#projectModal">Create Project</button>
+                        </div>
+                    </div>
 
-<body>
+                    <h4 class="all-projects-title">All projects ({{ $projects->count() }})</h4>
 
-     
-
- 
-
-
-
-
-    <div class="container mt-5">
-      
-        <div class="row jarak" style="margin-top:100px">
-            <div class="col-md-8">
-                <div class="input-group">
-                    <input type="text" class="form-control search-input" placeholder="Search..." aria-label="Search">
-                    <div class="input-group-append">
-                        <span class="input-group-text search-icon" aria-label="Search Button"><i
-                                class="fas fa-search"></i></span>
+                    <div class="row mt-3" id="draft-project-list">
+                        <div class="col-md-12">
+                            <h1>Daftar Proyek</h1>
+                            @if($projects->isEmpty())
+                            <p>Tidak ada proyek yang ditemukan.</p>
+                            @else
+                            <div class="row">
+                                @foreach($projects as $index => $project)
+                                @if($index % 3 == 0 && $index != 0)
+                            </div><div class="row mt-4">
+                                @endif
+                                <div class="col-md-4 mb-4 " id="project-{{ $project->id }}">
+                                    <div class="card project-card" style="min-height: 300px">
+                                        <img height="150px"
+                                            src="{{ env('APP_BACKEND_URL') . '/images/' . $project->img }}"
+                                            class="card-img-top" alt="">
+                                        <div class="card-body">
+                                            <h5 class="card-title"> {{ $project->nama }} </h5>
+                                            <button class="btn btn-danger mt-2"
+                                                onclick="deleteProject('project-{{ $project->id }}', {{ $index }})">Delete</button>
+                                            <a href="{{ route('projects.view', $project->id) }}"
+                                                class="btn btn-secondary btn-detail mt-2">Detail</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                @endforeach
+                            </div>
+                            @endif
+                        </div>
                     </div>
                 </div>
             </div>
-            
-            <div class="col-md-4 text-right">
-                <a href="creatproject" class="btn btn-primary btn-create-new-project">Create New Project</a>
-                <button class="btn btn-primary btn-create-project" data-toggle="modal"
-                    data-target="#projectModal">Create Project</button>
-            </div>
-
-        </div>
-        <h4 class="all-projects-title">All projects (0)</h4>
-        <div class="row mt-3 "  id="draft-project-list">
-            <div class="col-md-12">
-                <h1>Daftar Proyek</h1>
-                @if($projects->isEmpty())
-                    <p>Tidak ada proyek yang ditemukan.</p>
-                @else
-                    <div class="row">
-                        @foreach($projects as $index => $project)
-                            @if($index % 3 == 0 && $index != 0)
-                                </div><div class="row mt-4">
-                            @endif
-                            <div class="col-md-4 mb-4 "  id="project-{{ $project->id }}">
-                                <div class="card project-card" style="min-height: 300px">
-                                    <img height="150px" src="{{ env('APP_BACKEND_URL') . '/images/' . $project->img }}" class="card-img-top" alt="">
-                                    <div class="card-body">
-                                        <h5 class="card-title"> {{$project->nama}} </h5>
-                                       
-                                        <button class="btn btn-danger mt-2" onclick="deleteProject('project-{{ $project->id }}', {{ $index }})">Delete</button>
-                                        <a href="detail/{{ $project->id }}" class="btn btn-secondary btn-detail mt-2">Detail</a>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
-                    </div>
-                @endif
-            </div>
         </div>
     </div>
+</div>
 
-
-<div class="container">
-   
-
-
-
+<div class="container mt-4">
     <h2 class="done-projects-titlee mt-5">On Going Project</h2>
     <div class="card mt-3 done-projects-card">
-     
         <table class="table mt-3 ongoing-projects-table">
             <thead>
-                <tr >
+                <tr>
                     <th>Nama Proyek</th>
-               
                     <th>Tanggal Mulai</th>
                     <th>Tanggal Selesai</th>
                     <th>SDGs Terpilih</th>
-              
                     <th>Jumlah Pendanaan</th>
-                
                 </tr>
             </thead>
-            @foreach($projects as $project)
-            <tr>
-                <td>{{ $project->nama }}</td>
-    
-                <td>{{ $project->start_date }}</td>
-                <td>{{ $project->end_date }}</td>
-                
-                <td>             {{ $project->sdgs->implode('order', ', ') }}
-                </td>
-            
-
-                <td>{{ $project->jumlah_pendanaan }}</td>
-    
-            </tr>
-        @endforeach
+            <tbody>
+                @foreach($projects as $project)
+                <tr>
+                    <td>{{ $project->nama }}</td>
+                    <td>{{ $project->start_date }}</td>
+                    <td>{{ $project->end_date }}</td>
+                    <td>{{ $project->sdgs->implode('order', ', ') }}</td>
+                    <td>{{ $project->jumlah_pendanaan }}</td>
+                </tr>
+                @endforeach
+            </tbody>
         </table>
-
-
-
     </div>
-    
+
     <h2 class="done-projects-titlee mt-5">Done Projects And Surveys</h2>
     <div class="card mt-3 done-projects-card">
         <div class="card-header d-flex justify-content-between align-items-center done-projects-header">
@@ -136,7 +123,7 @@
                 </div>
             </div>
         </div>
-        <table class="tablee mt-3 done-projects-table">
+        <table class="table mt-3 done-projects-table">
             <thead>
                 <tr>
                     <th>Project Name</th>
@@ -146,18 +133,17 @@
                 </tr>
             </thead>
             <tbody id="done-project-list">
+                @foreach($projects as $project)
                 <tr>
-                    <td> {{$project->nama}} </td>
-                    <td> {{$project->end_date}} </td>
-                    <td> <div class="span bg-secondary text-white" style="padding: 5px 0; border-radius:50px">Succes</div> </td>
-                    <td> <img src="images/unduh.png" alt=""> </td>
+                    <td>{{ $project->nama }}</td>
+                    <td>{{ $project->end_date }}</td>
+                    <td><div class="span bg-secondary text-white" style="padding: 5px 0; border-radius:50px">Succes</div></td>
+                    <td><img src="images/unduh.png" alt=""></td>
                 </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
-    
-</div>
-
 
     <div class="container mt-4">
         <h1 class="schedule-title">Schedule Project</h1>
@@ -200,13 +186,14 @@
         </div>
     </div>
 
- 
+</div>
 
-    </div>
+<!-- JavaScript Libraries -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" async></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" async></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" async></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
-
-
-  
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" async></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" async></script>
@@ -311,12 +298,12 @@
         
         function updateProjectCount() {
             const projectCountElement = document.querySelector(".all-projects-title");
-            projectCountElement.textContent = `All projects (${projects.length})`;
+            projectCountElement.textContent = All projects (${projects.length});
         
             const ongoingProjectCountElement = document.querySelector(
                 "#dropdownMenuButton2"
             );
-            ongoingProjectCountElement.textContent = `${projects.length} of ${projects.length}`;
+            ongoingProjectCountElement.textContent = ${projects.length} of ${projects.length};
         }
         
         function renderCalendar() {
@@ -341,7 +328,7 @@
                         );
                         const dayStatus = status[randomStatusIndex];
                         const dayStatusClass = statusClasses[randomStatusIndex];
-                        row += `<td><div class="${dayStatusClass}">${dayStatus}</div><div>${dayCounter}</div></td>`;
+                        row += <td><div class="${dayStatusClass}">${dayStatus}</div><div>${dayCounter}</div></td>;
                         dayCounter++;
                     } else {
                         row += "<td></td>";
@@ -364,6 +351,9 @@
             }, 1000); // 3000 milidetik = 3 detik
         });
         </script>
+
+
+  
 </body>
 
 @endsection

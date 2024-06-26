@@ -1,8 +1,11 @@
-@extends('layouts.app-imm')
-@section('title', 'Create Project')
+<!DOCTYPE html>
+<html lang="en">
 
-@section('css')
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
     <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/indicator.css') }}">
     <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/creatproject.css') }}">
     <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/pemilihansdgs.css') }}">
@@ -11,18 +14,43 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-@endsection
-@section('content')
-
+</head>
 
 <body>
 
-    <div class="container mt-5">
-        <h1>Buat Projek Baru</h1>
-    </div>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="#">IMM</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="welcome">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bootcamp">Bootcamp</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">IMM</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="comunity">Community</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile">Profile</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
     
     <div class="container mt-5">
-        <form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">
+      
+        <form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">  <h1 class="mb-5">Buat Projek Baru</h1>
             <div id="form-section">
                 <div class="row">
                     <div class="col-md-6">
@@ -158,16 +186,17 @@
                     <div id="sdg-section" style="display: none;">
                         <h2>Pilih SDGs yang Relevan dengan Proyek Anda</h2>
                         @foreach ($sdgs as $sdg)
-                            <div class="sdg-item" data-sdg="{{ $sdg->id }}">
-                                <img src="{{ env('APP_BACKEND_URL') . '/images/' . $sdg->img }}" alt="SDG {{ $sdg->order }}">
-                                <h5>{{ $sdg->order }}. {{ $sdg->name }}</h5>
-                                <i class="fas fa-chevron-down sdg-toggle"></i>
-                                <input type="checkbox" class="sdg-checkbox" name="sdg_ids[]" value="{{ $sdg->id }}">
-                                <div class="sdg-description">
-                                    <p>{{ $sdg->description ?? 'Tidak ada deskripsi' }}</p>
-                                </div>
-                            </div>
-                        @endforeach
+                        
+                        <div class="sdg-item" data-sdg="{{ $sdg->id }} ">
+                            <img src="{{ env('APP_BACKEND_URL') . '/images/' . $sdg->img }}" alt="SDG {{ $sdg->order }}">
+                            <h5 class="sdg-name">{{ $sdg->order }}. {{ $sdg->name }}</h5>
+                            <i class="fas fa-chevron-down sdg-toggle"></i>
+                            <input type="checkbox" class="sdg-checkbox" name="sdg_ids[]" value="{{ $sdg->id }}">
+                        </div>
+                        <div class="sdg-description">
+                            <p>{{ $sdg->description ?? 'Tidak ada deskripsi' }}</p>
+                        </div>
+                    @endforeach
                         <div class="d-flex justify-content-between mt-3">
                             <button type="button" class="btn btn-secondary" id="back-to-form-section">Back</button>
                             <button type="button" class="btn btn-primary" id="next-to-indicator-section">Next</button>
@@ -212,7 +241,7 @@
                                 @if ($indicator->level == 1)
                                 <div class="sub-container" id="sub-container-{{ $indicator->id }}"
                                     style="display: none; margin-top: 10px;">
-                                    <div class="d-flex flex-column" style="gap: 15px; margin-left: 50px;">
+                                    <div class="d-flex flex-column" style="gap: 15px; margin-left:45px;">
                                         @foreach ($indicator->childIndicators as $childIndicator)
                                         <div class=" d-flex">
                                             <span>{{ $childIndicator->order }} </span><span>{{ $childIndicator->name }}</span><br>
@@ -253,19 +282,20 @@
             </div>
                     
             <div id="review-section" style="display: none;">
+                
                 <div class="container mt-5 pt-5">
                     <h1 class="text-center">Detail Review: SDGs Goals, Indicators, dan Metrix</h1>
                     <p class="text-center">Goals SDGs project anda</p>
                     <div class="d-flex justify-content-center mb-4" id="review-sdg-images-container"></div>
                     <div class="goals-text mt-4">
-                        <div class="goal-description" id="selected-sdgs-container"></div>
+                        <span class="goal-description" id="selected-sdgs-container"></span>
                     </div>
                 </div>
                 <!-- Bagian Indicators -->
-                <div class="indicators mt-5">
-                    <h2 class="text-center">Indicators</h2>
-                    <div id="selected-indicators-container"></div>
-                </div>
+           <div class="indicators mt-5">
+            <h2 class="text-center">Indicators</h2>
+            <div id="selected-indicators-container"></div>
+        </div>
                 <!-- Bagian Metrics -->
                 <div class="indicators mt-5">
                     <h2 class="text-center">Metrics</h2>
@@ -281,6 +311,35 @@
         </form>
     </div>
 
+    <footer>
+        <div class="container footer mt-5 d-flex justify-content-center align-items-center">
+            <div class="row d-flex  justify-content-center align-items-center">
+                <div class="col-4 d-flex flex-column" style="gap: 20px">
+                    <h5 class=" text-white  text-left">IMM</h5>
+                    <span class="span-footer text-left">Impact Measurement and Management
+                        <br> (TBN INDONESIA X MAXY ACADEMY)</span>
+                </div>
+                <div class="col-5 d-flex justify-content-center align-items-center">
+                    <ul class=" d-flex " style="gap: 30px">
+                        <a href=""><li>HomePage</li></a>
+                        <a href=""><li>Bootcamp</li></a>
+                        <a href=""><li>IMM</li></a>
+                        <a href=""><li>Comunity</li></a>
+                        <a href=""><li>Profile</li></a>
+                    </ul>
+                </div>
+                <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
+                    <span class="span-footer text-center">Sosial Media</span>
+                    <div class="sosmed d-flex justify-content-end">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -293,7 +352,51 @@
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
     <script>
-        document.addEventListener("DOMContentLoaded", function() {
+        $(document).ready(function() {
+            $('.sdg-item').on('click', function(e) {
+                if (!$(e.target).is('.sdg-checkbox')) {
+                    var checkbox = $(this).find('.sdg-checkbox');
+                    checkbox.prop('checked', !checkbox.prop('checked'));
+                }
+    
+                var description = $(this).next('.sdg-description');
+                description.slideToggle();
+    
+                // Toggle the rotation class on the arrow icon
+                $(this).find('.sdg-toggle').toggleClass('rotate-180');
+            });
+    
+            $('.sdg-checkbox').on('click', function(e) {
+                e.stopPropagation(); // Prevent the event from bubbling up to the parent div
+            });
+    
+            $('#next-to-indicator-section').on('click', function() {
+                // Hide all goal descriptions first
+                $('.goal-description').hide();
+    
+                // Get all selected SDG checkboxes
+                var selectedSdgs = $('.sdg-checkbox:checked');
+    
+                // Show goal descriptions only for selected SDGs
+                selectedSdgs.each(function() {
+                    var sdgId = $(this).val();
+                    $('#goal' + sdgId + '-description').show();
+                });
+    
+                // Move to the indicator section
+                $('#sdg-section').hide();
+                $('#indicator-section').show();
+            });
+    
+            $('#back-to-sdg-section').on('click', function() {
+                $('#indicator-section').hide();
+                $('#sdg-section').show();
+            });
+        });
+    </script>
+    
+    <script>
+       document.addEventListener("DOMContentLoaded", function() {
     var checkboxes = document.querySelectorAll(".indicator-checkbox");
 
     checkboxes.forEach(function(checkbox) {
@@ -308,8 +411,7 @@
             }
         });
     });
-});
-        $(document).ready(function() {
+});   $(document).ready(function() {
             var index = 1;
             $(".btn-add-pelanggan").click(function() {
                 var newRow = '<tr>' +
@@ -518,25 +620,40 @@ $('#next-to-metric-section').on('click', function() {
             indicator_ids: selectedIndicators
         },
         success: function(response) {
-            // Memproses respons dari server (response berisi metrik yang sesuai)
-            $('#metrics').empty();
-            $.each(response, function(index, metric) {
-                var metricHtml = `
-                    <div class="d-flex align-items-center justify-content-between">
-                        <div>
-                            <h5 class="text-primary">(${metric.code}) ${metric.name}</h5>
-                            <p class="mb-0">${metric.definition}</p>
-                        </div>
-                        <input type="checkbox" class="metric-checkbox" name="metric_ids[]" value="${metric.id}">
-                    </div>
-                `;
-                $('#metrics').append(metricHtml);
-            });
+    // Memproses respons dari server (response berisi metrik yang sesuai)
+    $('#metrics').empty();
+    $.each(response, function(index, metric) {
+        var metricHtml = `
+            <div class="d-flex align-items-center justify-content-between p-3 my-3 border ">
+                <div class="metric-text">
+                    <h5 class="" style="color:#5940CB">(${metric.code}) ${metric.name}</h5>
+                    <p class="mb-0 sdg-name-metric">${metric.definition}</p>
+                </div>
+                <input type="checkbox" class="metric-checkbox" name="metric_ids[]" value="${metric.id}">
+            </div>
+        `;
+        $('#metrics').append(metricHtml);
+    });
 
-            // Menyembunyikan Indicator Section dan menampilkan Metric Section
-            $('#indicator-section').hide();
-            $('#metric-section').show();
-        },
+    // Menambahkan event listener ke metric-item untuk melakukan toggle checkbox
+    $('.metric-text').on('click', function(e) {
+        if (!$(e.target).is('.metric-checkbox')) {
+            var checkbox = $(this).find('.metric-checkbox');
+            checkbox.prop('checked', !checkbox.prop('checked'));
+        }
+    });
+
+    // Menambahkan event listener ke metric-text untuk menghentikan propagasi klik ke parent
+    $('.metric-text').on('click', function(e) {
+        e.stopPropagation(); // Prevent the event from bubbling up to the parent div
+        var checkbox = $(this).siblings('.metric-checkbox');
+        checkbox.prop('checked', !checkbox.prop('checked'));
+    });
+
+    // Menyembunyikan Indicator Section dan menampilkan Metric Section
+    $('#indicator-section').hide();
+    $('#metric-section').show();
+},
         error: function(xhr) {
             console.log(xhr.responseText);
         }
@@ -603,7 +720,7 @@ $('#next-to-metric-section').on('click', function() {
         var selectedMetrics = $('.metric-checkbox:checked').map(function() {
             return $(this).closest('.d-flex').find('h5').text().trim();
         }).get();
-        var metricsHtml = '<div>';
+        var metricsHtml = '<div style=" m-3 border">';
         selectedMetrics.forEach(function(metric) {
             metricsHtml += '<h5 class="text-primary">' + metric + '</h5>';
         });
@@ -640,6 +757,7 @@ $(document).ready(function() {
         $('#review-sdg-images-container').html('');
         selectedSdgImages.forEach(function(src) {
             $('#review-sdg-images-container').append('<img src="' + src + '" alt="SDG" class="img-fluid mx-2 sdg-goal">');
+            
         });
 
         // Selected SDGs
@@ -684,9 +802,9 @@ $(document).ready(function() {
             }).get();
 
             if (selectedIndicators.length > 0) {
-                selectedIndicatorsHtml += '<div class="sdg-indicators mb-4">';
+                selectedIndicatorsHtml += '<div class="sdg-indicators">';
                 selectedIndicatorsHtml += '<div class="d-flex align-items-center">';
-                selectedIndicatorsHtml += '<img src="' + sdgImage + '" alt="SDG ' + sdg.order + '" class="mr-3" width="50">';
+                selectedIndicatorsHtml += '<img src="' + sdgImage + '" alt="SDG ' + sdg.order + '" class="mr-3 rounded" width="100">';
                 selectedIndicatorsHtml += '<h5>SDGs ' + sdg.order + '. ' + sdg.name + '</h5>';
                 selectedIndicatorsHtml += '</div>';
 
@@ -717,8 +835,8 @@ $(document).ready(function() {
         }).get();
         var metricsHtml = '<div>';
         selectedMetrics.forEach(function(metric) {
-            metricsHtml += '<div class="d-flex justify-content-between align-items-center p-3 border">';
-            metricsHtml += '<div><h5 class="indicator-title">' + metric.title + '</h5>';
+            metricsHtml += '<div class="d-flex justify-content-between align-items-center p-3 border my-3">';
+            metricsHtml += '<div><h5 class="indicator-title" style="color:#5940CB">' + metric.title + '</h5>';
             metricsHtml += '<p class="indicator-description">' + metric.description + '</p></div>';
             metricsHtml += '</div>';
         });
@@ -790,5 +908,4 @@ $(document).ready(function() {
     
 </body>
 
-
-@endsection
+</html>

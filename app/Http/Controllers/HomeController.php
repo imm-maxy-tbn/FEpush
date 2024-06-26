@@ -1,37 +1,34 @@
 <?php
-
+// app/Http/Controllers/HomeController.php
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
     public function index()
     {
-        return view('tampilanawalhome.welcome');
+        $user = Auth::user();
+        $company = $user->companies;
+        $projects = $company ? $company->projects : collect();
+
+        return view('tampilanawalhome.welcome', compact('projects'));
     }
+
     public function about()
     {
-        return view('about'); // Menampilkan footer
+        return view('about');
     }
+
     public function loginhide(Request $request)
     {
         return view('auth.login', ['hideFooter' => true]);
     }
-        
 }
+
