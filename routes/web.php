@@ -321,6 +321,7 @@ Route::get('/succes', function () {
 Route::get('/profile-commpany', function () {
     return view('imm.profile-commpany');
 });
+Route::get('/responden/{id}', 'SurveyController@view')->name('survey.responden.view');
 
 
 Route::get('/welcome', [HomeController::class, 'index'])->name('welcome');
@@ -392,12 +393,13 @@ Route::post('/projects', [ProjectController::class, 'store'])->name('projects.st
 Route::get('/projects/filter-metrics', [ProjectController::class, 'filterMetrics'])->name('projects.filterMetrics');
 
 
-Route::post('survey', [SurveyController::class, 'store'])->name('surveys.store');
+
 
 Route::get('responden/{id}', [SurveyController::class, 'view'])->name('surveys.view');
 Route::get('responden-data-diri/{id}', [SurveyController::class, 'dataDiri'])->name('surveys.data-diri');
 Route::post('responden/{id}', [SurveyController::class, 'registerUser'])->name('surveys.register-user');
 Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submit'])->name('surveys.submit');
-
+Route::post('survey', [SurveyController::class, 'store'])->name('surveys.store');
+Route::get('/responden/{id}', [SurveyController::class, 'view'])->name('surveys.view');
 
 Route::get('/about', [HomeController::class,'about']);

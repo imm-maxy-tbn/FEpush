@@ -4,53 +4,210 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homepage</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
-    <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/indicator.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/creatproject.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/myproject/creatproject/pemilihansdgs.css') }}">
+    <title>IMM | @yield('title')</title>
+    <!-- CSS Umum -->
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <!-- CSS Khusus Halaman -->
+    @yield('css')
+    <style>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-</head>
+.navbar {
+        background-color: #ffffff;
+        color: #000000;
+        padding: 15px 0;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 1000;
+        border-bottom: 3px solid #5940cb;
+    }
 
-<body>
+    .nav-item {
+        margin-right: 10px; /* Adjust margin between nav items */
+    }
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">IMM</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="welcome">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="bootcamp">Bootcamp</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">IMM</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="comunity">Community</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profile">Profile</a>
-                    </li>
-                </ul>
+    .navbar-brand {
+        font-size: 20px; /* Adjust navbar brand font size */
+        font-weight: bold; /* Make navbar brand text bold */
+    }
+
+    .nav-link,
+    .navbar-button {
+        color: #000000;
+        text-decoration: none;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .nav-link:hover,
+    .navbar-button:hover {
+        background-color: #f0f0f0; /* Light grey background on hover */
+    }
+
+    .navbar-button.active,
+.nav-link.active {
+    background-color: #5940cb;
+    color: #ffffff !important; /* Important to override existing color */
+}
+
+    .navbar-toggler {
+        border: none; /* Remove border from toggler button */
+    }
+
+    .navbar-actions {
+        margin-left: auto; /* Push login/register buttons to the right */
+    }
+
+    .btn {
+        margin-left: 10px; /* Adjust margin between login/register buttons */
+    }
+
+
+
+
+        .footer {
+    background-color: #5940cb;
+    color: #ffffff;
+    height: 167px;
+    text-align: center;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    width: 100%;
+}
+
+.footer ul {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.footer ul li {
+    color: #fff;
+    font-size: 12px;
+}
+
+.span-footer {
+    font-size: 15px;
+    font-weight: bold;
+    color: #fff;
+}
+
+.sosmed {
+    gap: 15px;
+}
+
+.sosmed a {
+    color: #fff;
+    gap: 30px;
+    margin: 0 10px;
+}
+
+.col-footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.btn-keluar {
+    width: 183px;
+    height: 35px;
+    background-color: white;
+    border: 2px solid #5940cb;
+    border-radius: 7px;
+}
+
+.btn-masuk {
+    width: 183px;
+    height: 35px;
+    background-color: #5940cb;
+    color: white;
+    border: none;
+    border-radius: 7px;
+}
+
+.modal-content {
+    width: 699px;
+    height: 253px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-body {
+    gap: 20px;
+    margin: 0 51px;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btnn {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+    </style>
+
+
+</head><body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+        <a class="navbar-brand" href="/welcome">
+            <img src="images/logo-imm.svg" width="100" alt="">
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('homepage') ? 'active' : '' }}" href="homepage">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('myproject') ? 'active' : '' }}" href="myproject">My Project</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ Request::is('profile-commpany') ? 'active' : '' }}" href="profile-commpany">Profile Company</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content shadow ">
+               
+                <div class="modal-body">
+                    <h5 class="modal-title" id="confirmationModalLabel">Pengisian form tidak dapat tersimpan</h5>
+                    <span>
+                    Apabila anda keluar dari halaman ini maka pilihan yang anda telah pilih tidak dapat tersimpan. Apakah anda yakin untuk keluar halaman?</span>
+                    <div class=" btnn">
+                        <button type="button"  class="btn btn-keluar"  id="confirmUpdate">Ya,Keluar Halaman</button>
+                        <button type="button" class="btnary btn-masuk" data-dismiss="modal">Tidak</button>
+                
+                    </div>
+                </div>
+               
             </div>
         </div>
-    </nav>
+    </div>
+
 
     
     <div class="container mt-5">
       
-        <form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">  <h1 class="mb-5">Buat Projek Baru</h1>
+        <form action="{{ route('projects.store') }}" method="POST" enctype="multipart/form-data">  <h1 class="mb-5" id="buatproject">Buat Projek Baru</h1>
             <div id="form-section">
                 <div class="row">
                     <div class="col-md-6">
@@ -91,15 +248,17 @@
                             <label for="gmaps">Google Maps URL:</label>
                             <input type="text" class="form-control" id="gmaps" name="gmaps" required>
                         </div>
-                        <div class="form-group">
-                            <label for="jumlah_pendanaan">Jumlah Dana Keseluruhan</label>
-                            <input type="number" class="form-control" name="jumlah_pendanaan" id="jumlah_pendanaan">
-                        </div>
+                      
                     </div>
                     <div class="col-md-6">
                         <h2 class="project-title">Spesisifikasi Pendanaan</h2>
                         <div class="form-group">
+                            <div class="form-group mt-3">
+                                <label for="jumlah_pendanaan">Jumlah Dana Keseluruhan</label>
+                                <input type="number" class="form-control" name="jumlah_pendanaan" id="jumlah_pendanaan">
+                            </div>
                             <label for="otherFunds">Pendanaan Lainnya</label>
+                            
                             <button type="button" class="btn btn-primary btn-add-dana ml-2 mb-2"><i class="fa-solid fa-plus" style="color: #ffffff;"></i></button>
                             <div class="spesifikasi-pendanaan">
                                 <table class="table">
@@ -174,8 +333,8 @@
                                 </table>
                             </div>
                         </div>
-                        <div class="d-flex justify-content-between">
-                            <button type="button" class="btn btn-primary" id="next-to-sdg-section">Next</button>
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary" id="next-to-sdg-section">Simpan dan Lanjutkan</button>
                         </div>
                     </div>
                 </div>
@@ -198,8 +357,8 @@
                         </div>
                     @endforeach
                         <div class="d-flex justify-content-between mt-3">
-                            <button type="button" class="btn btn-secondary" id="back-to-form-section">Back</button>
-                            <button type="button" class="btn btn-primary" id="next-to-indicator-section">Next</button>
+                            <button type="button" class="btn btn-secondary" id="back-to-form-section">Kembali</button>
+                            <button type="button" class="btn btn-primary" id="next-to-indicator-section">Simpan dan Lanjutkan</button>
                         </div>
                     </div>
                 </div>
@@ -257,8 +416,8 @@
                     
     
                     <div class="d-flex justify-content-between mt-3">
-                        <button type="button" class="btn btn-secondary" id="back-to-sdg-section">Back</button>
-                        <button type="button" class="btn btn-primary" id="next-to-metric-section">Next</button>
+                        <button type="button" class="btn btn-secondary" id="back-to-sdg-section">Kembali</button>
+                        <button type="button" class="btn btn-primary" id="next-to-metric-section">Simpan dan Lanjutkan</button>
                     </div>
                 </div>
             </div>
@@ -275,8 +434,8 @@
                         </ul>
                     </div>
                     <div class="d-flex justify-content-between mt-3">
-                        <button type="button" class="btn btn-secondary" id="back-to-indicator-section">Back</button>
-                        <button type="button" class="btn btn-primary" id="next-to-review-section">Next</button>
+                        <button type="button" class="btn btn-secondary" id="back-to-indicator-section">Kembali</button>
+                        <button type="button" class="btn btn-primary" id="next-to-review-section">Simpan dan Lanjutkan</button>
                     </div>
                 </div>
             </div>
@@ -302,8 +461,8 @@
                     <div id="review-selected-metrics"></div>
                 </div>
                 <div class="d-flex justify-content-between mt-3">
-                    <button type="button" class="btn btn-secondary" id="back-to-metric-section">Back</button>
-                    <button type="submit" class="btn btn-primary">Submit</button>
+                    <button type="button" class="btn btn-secondary" id="back-to-metric-section">Kembali</button>
+                    <button type="submit" class="btn btn-primary">Kirim</button>
                 </div>
             </div>
             
@@ -311,35 +470,7 @@
         </form>
     </div>
 
-    <footer>
-        <div class="container footer mt-5 d-flex justify-content-center align-items-center">
-            <div class="row d-flex  justify-content-center align-items-center">
-                <div class="col-4 d-flex flex-column" style="gap: 20px">
-                    <h5 class=" text-white  text-left">IMM</h5>
-                    <span class="span-footer text-left">Impact Measurement and Management
-                        <br> (TBN INDONESIA X MAXY ACADEMY)</span>
-                </div>
-                <div class="col-5 d-flex justify-content-center align-items-center">
-                    <ul class=" d-flex " style="gap: 30px">
-                        <a href=""><li>HomePage</li></a>
-                        <a href=""><li>Bootcamp</li></a>
-                        <a href=""><li>IMM</li></a>
-                        <a href=""><li>Comunity</li></a>
-                        <a href=""><li>Profile</li></a>
-                    </ul>
-                </div>
-                <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
-                    <span class="span-footer text-center">Sosial Media</span>
-                    <div class="sosmed d-flex justify-content-end">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
+
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -373,6 +504,7 @@
             $('#next-to-indicator-section').on('click', function() {
                 // Hide all goal descriptions first
                 $('.goal-description').hide();
+
     
                 // Get all selected SDG checkboxes
                 var selectedSdgs = $('.sdg-checkbox:checked');
@@ -462,7 +594,9 @@
     
             $('#next-to-sdg-section').on('click', function() {
                 $('#form-section').hide();
+                $('#buatproject').hide();
                 $('#sdg-section').show();
+                
             });
     
             $('#next-to-metric-section').on('click', function() {
@@ -485,6 +619,7 @@
             $('#back-to-form-section').on('click', function() {
                 $('#sdg-section').hide();
                 $('#form-section').show();
+                $('#buatproject').show();
             });
     
             $('#next-to-indicator-section').on('click', function() {
@@ -907,5 +1042,3 @@ $(document).ready(function() {
     </script>
     
 </body>
-
-</html>

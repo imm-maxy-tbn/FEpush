@@ -62,68 +62,40 @@
                 <img src="images/simpan-icon.png" width="29" height="auto" alt="">
             </button>
         </div>
-
-        <div class="container d-flex justify-content-center mt-5">
-            <span class="btn-tambah-bagian" id="add-section-btn">Tambah Bagian Survey +</span>
-        </div>
-    </form>
-
+    </div>
+    </div>
 
     <template id="section-template">
-        <div class="section-group container content mt-5">
-            <div class="container d-flex align-items-center justify-content-between">
+        <div class="container content mt-5">
+            <div class="container  d-flex align-items-center justify-content-between">
                 <span>
                     <div class="mb-2 mt-2">
-                        <input type="text" name="sections[__INDEX__][name]" class="form-control section-number"
-                            placeholder="Judul bagian"
-                            style="border: none; background:transparent; font-size: 40px;font-weight: bold;" required>
+                        <input type="text" name="" class="form-control section-number" placeholder="Bagian"
+                            style="border: none; background:transparent; font-size: 40px;font-weight: bold;">
                     </div>
 
-                    {{-- <textarea name="sections[__INDEX__][description]" class="form-control"
-                        style="font-size: 20px; border: none; background:transparent;" placeholder="Tambahkan Desksipsi"></textarea> --}}
+                    <textarea type="text" name="" class="form-control "
+                        style="font-size: 20px; border: none; background:transparent;" placeholder="Tambahkan Desksipsi"> Deskripsi Survey anda</textarea>
+                </span>
+                <span>
+                    <select class="form-control-select projectSelect">
+                        <option value="Pilih disini">Pilih disini</option>
+                        <option value="Teks Isian">Teks Isian</option>
+                        <option value="Pilihan Ganda">Pilihan Ganda</option>
+                        <option value="Skala">Skala</option>
+                    </select>
                 </span>
             </div>
-            <div class="questions-container container mt-3"></div>
-            <span>
-                <button type="button" class="btn-tambah add-question ml-5">Tambah Pertanyaan</button>
-            </span>
-        </div>
-    </template>
-
-    <template id="question-template">
-        <div class="form-group question-group">
-            <span class="angka d-flex justify-content-center align-items-center mt-2 mb-1">__QUESTION_NUMBER__</span>
-            <label for="question-content">Tambahkan pertanyaan</label>
-            <input type="text" name="sections[__SECTION_INDEX__][questions][__QUESTION_INDEX__][content]"
-                class="form-control mb-2" required>
-
-            <label for="question-type">Tipe pertanyaan</label>
-            <select name="sections[__SECTION_INDEX__][questions][__QUESTION_INDEX__][type]"
-                class="form-control question-type mb-2" required>
-                <option value="text">Text</option>
-                <option value="number">Number</option>
-                <option value="radio">Radio</option>
-                <option value="multiselect">Multiselect</option>
-                <option value="range">Range</option>
-            </select>
-
-            <input type="hidden" name="sections[__SECTION_INDEX__][questions][__QUESTION_INDEX__][rules]"
-                class="form-control" value="">
-
-            <div class="question-options-container mb-2">
-                <label for="question-options">Opsi (untuk radio dan multiselect)</label>
-                <input type="text" name="sections[__SECTION_INDEX__][questions][__QUESTION_INDEX__][options][0]"
-                    class="form-control question-option mb-1" placeholder="Opsi 1" disabled>
-                <input type="text" name="sections[__SECTION_INDEX__][questions][__QUESTION_INDEX__][options][1]"
-                    class="form-control question-option mb-1" placeholder="Opsi 2" disabled>
-                <input type="text" name="sections[__SECTION_INDEX__][questions][__QUESTION_INDEX__][options][2]"
-                    class="form-control question-option mb-1" placeholder="Opsi 3" disabled>
-                <input type="text" name="sections[__SECTION_INDEX__][questions][__QUESTION_INDEX__][options][3]"
-                    class="form-control question-option mb-1" placeholder="Opsi 4" disabled>
+            <div class="container">
+                <div class="form-container"></div>
+                <div class="d-flex justify-content-end mt-4">
+                    <button class="btn-tambah hidden add-question-btn">Tambah Pertanyaan</button>
+                </div>
             </div>
         </div>
     </template>
 
+    <div class="container   mb-5" id="bagian-container">
 
     </div>
 
@@ -173,70 +145,43 @@
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let sectionIndex = 0;
+        let questionCount = 1;
 
-            function updateQuestionOptions(selectElement) {
-                const type = selectElement.value;
-                const formGroup = selectElement.closest('.form-group');
-                const optionsContainer = formGroup.querySelector('.question-options-container');
-                const optionsInputs = optionsContainer.querySelectorAll('.question-option');
+        document.getElementById('add-section-btn').addEventListener('click', function() {
+            const container = document.getElementById('bagian-container');
+            const template = document.getElementById('section-template');
+            const newSection = template.content.cloneNode(true);
 
-                if (type === 'radio' || type === 'multiselect') {
-                    optionsInputs.forEach(input => input.disabled = false);
-                } else {
-                    optionsInputs.forEach(input => {
-                        input.disabled = true;
-                        input.value = '';
-                    });
-                }
-            }
+            const sectionNumber = container.querySelectorAll('.container.content').length + 1;
+            newSection.querySelector('.section-number').textContent = sectionNumber;
 
-            function addSection() {
-                const sectionTemplate = document.getElementById('section-template').innerHTML;
-                const container = document.getElementById('sections-container');
-                const sectionHtml = sectionTemplate.replace(/__INDEX__/g, sectionIndex);
-                container.insertAdjacentHTML('beforeend', sectionHtml);
-                sectionIndex++;
-            }
+            const projectSelect = newSection.querySelector('.projectSelect');
+            const addButton = newSection.querySelector('.add-question-btn');
+            const formContainer = newSection.querySelector('.form-container');
 
-            function addQuestion(event) {
-                const sectionGroup = event.target.closest('.section-group');
-                const questionsContainer = sectionGroup.querySelector('.questions-container');
-                const questionTemplate = document.getElementById('question-template').innerHTML;
-                const sectionIndex = Array.from(sectionGroup.parentNode.children).indexOf(sectionGroup);
-                const questionIndex = questionsContainer.querySelectorAll('.question-group').length;
-                const questionNumber = `${sectionIndex + 1}.${questionIndex + 1}`;
-                const questionHtml = questionTemplate
-                    .replace(/__SECTION_INDEX__/g, sectionIndex)
-                    .replace(/__QUESTION_INDEX__/g, questionIndex)
-                    .replace(/__QUESTION_NUMBER__/g, questionNumber);
-                questionsContainer.insertAdjacentHTML('beforeend', questionHtml);
+            projectSelect.addEventListener('change', function() {
+                addButton.classList.remove('hidden');
+                clearFormContainer(formContainer);
 
-                const newSelectElement = questionsContainer.querySelector(
-                    `.question-group:last-child .question-type`);
-                updateQuestionOptions(newSelectElement);
-                newSelectElement.addEventListener('change', function() {
-                    updateQuestionOptions(newSelectElement);
-                });
-            }
-
-            document.getElementById('add-section-btn').addEventListener('click', addSection);
-
-            document.addEventListener('click', function(event) {
-                if (event.target.classList.contains('add-question')) {
-                    addQuestion(event);
+                if (this.value === 'Teks Isian') {
+                    showForm(formContainer, 'Teks Isian');
+                } else if (this.value === 'Pilihan Ganda') {
+                    showForm(formContainer, 'Pilihan Ganda');
+                } else if (this.value === 'Skala') {
+                    showForm(formContainer, 'Skala');
                 }
             });
 
-            document.addEventListener('change', function(event) {
-                if (event.target.classList.contains('question-type')) {
-                    updateQuestionOptions(event.target);
+            addButton.addEventListener('click', function() {
+                const selectedFormType = projectSelect.value;
+                if (selectedFormType === 'Pilih disini') {
+                    alert('Pilih jenis form terlebih dahulu!');
+                    return;
                 }
+                addQuestion(formContainer, selectedFormType);
             });
 
-            // Initial setup if there are any existing sections (optional)
-            // addSection(); // Uncomment this if you want to start with one section by default
+            container.appendChild(newSection);
         });
 
         function clearFormContainer(container) {

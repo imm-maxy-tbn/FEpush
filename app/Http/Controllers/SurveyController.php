@@ -72,7 +72,7 @@ class SurveyController extends Controller
     {
         $survey = Survey::with('sections.questions')->findOrFail($id);
         $lastEntry = Entry::where('participant_id', auth()->id())->latest()->first();
-
+    
         return view('survey.responden.responden', compact('survey', 'lastEntry'));
     }
 
