@@ -17,7 +17,7 @@
     <div class="content-text">
         <h1>Selamat Datang di IMM</h1>
         <p>IMM (Impact Mate) adalah platform yang...</p>
-        <a href="verifikasidiri" class="btn">Mulai Sekarang</a>
+        <a href="{{ route('verifikasidiri') }}" class="btn">Mulai Sekarang</a>
     </div>
 </div>
 

@@ -47,10 +47,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/imm', function () {
         return view('imm.imm');
     });
-
     Route::get('/verifikasidiri', function () {
         return view('imm.verifikasidiri');
-    });
+    })->name('verifikasidiri');
+    
+    Route::get('/homepage', [CompanyController::class, 'index'])->name('homepage');
+    
+    Route::get('/imm', function () {
+        return view('imm.imm');
+    })->middleware('check.company');
 
     Route::get('/blog', function () {
         return view('blog.blog');

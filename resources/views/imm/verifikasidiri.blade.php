@@ -1,4 +1,4 @@
-@extends('layouts.app-2fa')
+@extends('layouts.app-2fa   ')
 @section('title', 'Verifikasi')
 
 @section('css')

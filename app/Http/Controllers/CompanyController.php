@@ -33,7 +33,7 @@ class CompanyController extends Controller
             'kabupaten' => 'required|string|max:255',
             'jumlah_karyawan' => 'required|integer',
         ]);
-    
+
         // Simpan data ke dalam database
         Company::create([
             'user_id' => Auth::id(),
@@ -48,12 +48,9 @@ class CompanyController extends Controller
             'kabupaten' => $validated['kabupaten'],
             'jumlah_karyawan' => $validated['jumlah_karyawan'],
         ]);
-    
-        // Redirect ke halaman lain atau tampilkan pesan sukses
-        return view('homepageimm.homepage')
-                ->with('success', 'Company created successfully.');
 
-        
+        // Redirect ke homepage
+        return redirect()->route('homepage')->with('success', 'Company created successfully.');
     }
 
     /**

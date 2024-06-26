@@ -59,12 +59,12 @@
                             @if($index % 3 == 0 && $index != 0)
                                 </div><div class="row mt-4">
                             @endif
-                            <div class="col-md-4 mb-4" id="project-{{ $project->id }}">
-                                <div class="card project-card">
-                                    <img src="{{ env('APP_BACKEND_URL') . '/images/' . $project->img }}" class="card-img-top" alt="">
+                            <div class="col-md-4 mb-4 "  id="project-{{ $project->id }}">
+                                <div class="card project-card" style="min-height: 300px">
+                                    <img height="150px" src="{{ env('APP_BACKEND_URL') . '/images/' . $project->img }}" class="card-img-top" alt="">
                                     <div class="card-body">
                                         <h5 class="card-title"> {{$project->nama}} </h5>
-                                        <button class="btn btn-secondary mt-2" onclick="updateProject('project-{{ $project->id }}', {{ $index }})">Update</button>
+                                       
                                         <button class="btn btn-danger mt-2" onclick="deleteProject('project-{{ $project->id }}', {{ $index }})">Delete</button>
                                         <a href="detail/{{ $project->id }}" class="btn btn-secondary btn-detail mt-2">Detail</a>
                                     </div>
