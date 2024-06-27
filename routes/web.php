@@ -26,13 +26,13 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
-Route::get('responden/{id}', [SurveyController::class, 'view'])->name('surveys.view');
-Route::get('responden-data-diri/{id}', [SurveyController::class, 'dataDiri'])->name('surveys.data-diri');
-Route::post('responden/{id}', [SurveyController::class, 'registerUser'])->name('surveys.register-user');
-Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submit'])->name('surveys.submit');
+// Route::get('responden/{id}', [SurveyController::class, 'view'])->name('surveys.view');
+// Route::get('responden-data-diri/{id}', [SurveyController::class, 'dataDiri'])->name('surveys.data-diri');
+// Route::post('responden/{id}', [SurveyController::class, 'registerUser'])->name('surveys.register-user');
+// Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submit'])->name('surveys.submit');
 
 // Rute yang memerlukan autentikasi
-Route::middleware(['auth'])->group(function () {
+// Route::middleware(['auth'])->group(function () {
     Route::get('/welcome', function () {
         return view('tampilanawalhome.welcome');
     })->name('home'); /* ini berfungsi untuk memindahkan dari login ke home */
@@ -144,7 +144,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/blogarticle/{id}/view', [PostController::class, 'view'])->name('blog.view');
 
     Route::get('/imm3', [VerificationController::class, 'showVerificationForm'])->name('imm3');
-    Route::get('/kodeotp', [VerificationController::class, 'showOtpVerification'])->name('kodeotp');
+    // Route::get('/kodeotp', [VerificationController::class, 'showOtpVerification'])->name('kodeotp');
     Route::post('/send-otp', [VerificationController::class, 'sendVerificationEmail'])->name('send-otp');
     Route::post('/verify-code', [VerificationController::class, 'verifyCode'])->name('verify-code');
 
@@ -162,8 +162,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('event/{id}', [EventController::class, 'update'])->name('events.update');
 
     Route::post('survey', [SurveyController::class, 'store'])->name('surveys.store');
-});
+// });
 
-Route::get('event', [EventController::class, 'index'])->name('events.index');
-Route::get('event/{id}', [EventController::class, 'view'])->name('events.view');
-Route::get('event-register/{id}', [EventController::class, 'edit'])->name('events.edit');
+// Route::get('event', [EventController::class, 'index'])->name('events.index');
+// Route::get('event/{id}', [EventController::class, 'view'])->name('events.view');
+// Route::get('event-register/{id}', [EventController::class, 'edit'])->name('events.edit');

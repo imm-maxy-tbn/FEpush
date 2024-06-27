@@ -14,33 +14,33 @@
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container d-flex align-items-center justify-content-center">
-            <a class="navbar-brand" href="/">IMM</a>
-            <div class="justify-content-center" id="navbarNav">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+    <a class="navbar-brand" href="imm">IMM</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item ">
-                        <a class="nav-link" href="welcome">Home</a>
-                    </li>
-                    <li class="nav-item ">
-                        <a class="nav-link" href="bootcamp">Bootcamp</a>
-                    </li>
-                    <li class="nav-item active">
-                    <a href="imm" class="navbar-button">IMM</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="community">Community</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="blog">Explore</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="profile">Profile</a>
-                    </li>
-                </ul>
-            </div>
+            <li class="nav-item ">
+                <a class="nav-link" href="/">Home</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="bootcamp">Bootcamp</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="imm">IMM</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="community">Community</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="profile">Profile</a>
+            </li>
+        </ul>
         </div>
-    </nav>
+    </div>
+</nav>
 
     <div class="login-container">
         <div class="login-form">
@@ -51,10 +51,6 @@
                     <tr>
                         <td><span class="input-icon"><i class="fas fa-envelope"></i></span></td>
                         <td><input type="email" placeholder="Masukkan Email" id="email" name="email" required /></td>
-                    </tr>
-                    <tr>
-                        <td><span class="input-icon"><i class="fas fa-phone"></i></span></td>
-                        <td><input type="number" class="telepon" placeholder="Masukkan telepon" id="telepon" name="telepon" required /></td>
                     </tr>
                     <tr>
                         <td></td>
