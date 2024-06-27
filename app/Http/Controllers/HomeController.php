@@ -18,7 +18,7 @@ class HomeController extends Controller
         $company = $user->companies;
         $projects = $company ? $company->projects : collect();
 
-        return view('tampilanawalhome.welcome', compact('projects'));
+        return view('home', compact('projects'));
     }
 
     public function about()

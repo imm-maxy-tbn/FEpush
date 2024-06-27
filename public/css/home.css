@@ -1,0 +1,95 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.section-video {
+    width: 100%;
+    height: 468px;
+    background-color: antiquewhite;
+    background-color: #D9D9D9;
+}
+
+#title {
+    font-size: 40px;
+    color: #5940CB;
+    font-weight: 400;
+}
+
+.btn-mulai {
+    width: 275px;
+    height: 48px;
+    background-color: #6543FC;
+    font-size: 20px;
+    font-weight: 500;
+    color: white;
+    border-radius: 5px;
+    border: none;
+}
+
+.btn-mulai:hover {
+    background-color: #5837eb;
+}
+
+#sdgs {
+    font-size: 40px;
+    color: #5940CB;
+    font-weight: 400;
+}
+
+.section-content1 {
+    gap: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+}
+
+.col-4 h5 {
+    font-size: 32px;
+    color: #5940CB;
+    font-weight: 500;
+}
+
+.col-4 {
+    color: #5940CB;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.section-sdgs {
+    gap: 10px;
+}
+
+.bulat {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #5940CB;
+    margin-right: 15px;
+}
+
+.text {
+    color: #5940CB;
+}
+
+.bagaimana {
+    margin-bottom: 100px;
+    margin-top: 50px;
+}
+
+.text-content {
+    font-size: 40px;
+    color: #5940CB;
+    font-weight: 400;
+}
+
+.section-sdgs,
+.section-data,
+.section-ukur,
+.bagaimana {
+    margin-top: 80px;
+}

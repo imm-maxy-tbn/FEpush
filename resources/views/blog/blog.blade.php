@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app-imm')
 @section('title', 'Blogs')
 
 @section('css')

@@ -12,11 +12,11 @@
 
 
 </head>
-@include('layouts.navbar-peserta')
+
 
         @yield('content')
      
-        @include('layouts.footer-peserta')
+    
    
         <script>
             $(document).ready(function() {

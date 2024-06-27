@@ -21,11 +21,8 @@ Auth::routes();
 // Rute yang bisa diakses tanpa login (Login dan Register)
 
 Route::get('/', function () {
-    return view('tampilanawalhome.welcome');
-})->name('welcome'); /* ini befungsi untuk memindahkan dari login ke home */
-Route::get('/welcome', function () {
-    return view('tampilanawalhome.welcome');
-})->name('welcome'); /* ini befungsi untuk memindahkan dari login ke home */
+    return view('home');
+})->name('home'); /* ini befungsi untuk memindahkan dari login ke home */
 
 
 
@@ -40,8 +37,8 @@ Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submi
 
 // Rute yang memerlukan autentikasi
 Route::middleware(['auth'])->group(function () {
-    Route::get('/welcome', function () {
-        return view('tampilanawalhome.welcome');
+    Route::get('/home', function () {
+        return view('welcome');
     })->name('home'); /* ini berfungsi untuk memindahkan dari login ke home */
 
     Route::get('/imm', function () {
@@ -117,9 +114,7 @@ Route::middleware(['auth'])->group(function () {
         return view('myproject.creatproject.review');
     });
 
-    Route::get('/edit', function () {
-        return view('profile.edit');
-    });
+
 
     Route::get('/pemilihansdgs', function () {
         return view('myproject.creatproject.pemilihansdgs');
@@ -317,6 +312,10 @@ Route::get('/event-register', function () {
 
 Route::get('/succes', function () {
     return view('event.succes');
+});
+
+Route::get('/kuesioner', function () {
+    return view('survey.responden.kuesioner');
 });
 Route::get('/profile-commpany', function () {
     return view('imm.profile-commpany');

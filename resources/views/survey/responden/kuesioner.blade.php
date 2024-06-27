@@ -11,16 +11,102 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap");
+body {
+    font-family: "Roboto", sans-serif;
+    /* Add padding to avoid content being hidden behind fixed navbar */
+    background-color: #ffffff;
+    font-family: "Quicksand", sans-serif;
+}
+
+.content {
+    background-color: #f7f6fb;
+    height: 362px;
+    width: 1220px;
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    padding: 0 50px;
+    text-align: justify;
+}
+
+label {
+    font-size: 16px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+}
+
+.form-control {
+    height: 47px;
+    width: 702px;
+    border: 2px solid #5940cb;
+}
+
+.content2 {
+    background-color: #f7f6fb;
+    width: 1220px;
+    border-radius: 20px;
+    display: flex;
+    padding: 50px 50px;
+    text-align: justify;
+}
+
+.sub-content {
+    background-color: #e5e2f2;
+    width: 100%;
+    height: 182px;
+    margin-top: 50px;
+    justify-content: center;
+    display: flex;
+    margin-bottom: 30px;
+    overflow: hidden;
+}
+
+img {
+    width: 100%;
+    height: auto;
+    background-size: cover;
+}
+
+.angka {
+    height: 54px;
+    width: 35px;
+    background-color: #5940cb;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 500;
+    color: white;
+}
+
+.btn-kembali {
+    width: 399px;
+    height: 49px;
+    background-color: white;
+    border: 3px solid #5940cb;
+    border-radius: 6px;
+    color: #5940cb;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+}
+
+.btn-selanjutnya {
+    width: 399px;
+    height: 49px;
+    background-color: #5940cb;
+    border: 3px solid #5940cb;
+    border-radius: 6px;
+    color: white;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+}
+    </style>
 </head>
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">IMM</a>
-
-        </div>
-    </nav>
 
     <div class="container content mt-5">
         <div class="container">
@@ -28,7 +114,7 @@
                 <img src="" alt="img">
             </div> --}}
 
-            <p style="font-size: 40px;font-weight: bold;">{{ $survey->name }}</p>
+            <p style="font-size: 40px;font-weight: bold;">surveynama</p>
 
         </div>
     </div>
@@ -72,46 +158,6 @@
         </div>
     </div> --}}
 
-    <footer>
-        <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
-            <div class="row d-flex  justify-content-center align-items-center">
-                <div class="col-4 d-flex flex-column" style="gap: 20px">
-                    <h5 class=" text-white  text-left">IMM</h5>
-                    <span class="span-footer text-left">Impact Measurement and Management
-                        <br> (TBN INDONESIA X MAXY ACADEMY)</span>
-                </div>
-                <div class="col-5 d-flex justify-content-center align-items-center">
-                    <ul class=" d-flex " style="gap: 30px">
-                        <a href="/">
-                            <li>HomePage</li>
-                        </a>
-                        <a href="bootcamp">
-                            <li>Bootcamp</li>
-                        </a>
-                        <a href="imm">
-                            <li>IMM</li>
-                        </a>
-                        <a href="#">
-                            <li>Comunity</li>
-                        </a>
-                        <a href="profile">
-                            <li>Profile</li>
-                        </a>
-                    </ul>
-                </div>
-                <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
-                    <span class="span-footer text-center">Sosial Media</span>
-                    <div class="sosmed d-flex justify-content-end  ">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </footer>
 
     <script src="{{ asset('js/imm/metrix.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

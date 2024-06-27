@@ -16,13 +16,6 @@
 <body>
 
 
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="homepage">IMM</a>
-
-        </div>
-    </nav>
-
     <div class="container content mt-5">
         <div class="container">
             <div class="sub-content  d-flex justify-content-center align-items-center">

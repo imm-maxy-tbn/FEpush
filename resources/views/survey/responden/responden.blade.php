@@ -11,84 +11,138 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+        body {
+            font-family: "Roboto", sans-serif;
+            background-color: #ffffff;
+            font-family: "Quicksand", sans-serif;
+        }
+
+        .content {
+            background-color: #f7f6fb;
+            height: 742px;
+            width: 100%;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            padding: 0 50px;
+            text-align: justify;
+            flex-direction: column;
+        }
+
+        .sub-content {
+            background-color: #e5e2f2;
+            width: 100%;
+            height: 182px;
+            margin-top: 50px;
+            justify-content: center;
+            display: flex;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            background-size: cover;
+        }
+
+        .btn {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        button {
+            width: 399px;
+            height: 49px;
+            background-color: #5940cb;
+            border: none;
+            border-radius: 6px;
+            color: white;
+        }
+
+        .text-primary {
+            color: #5940cb !important;
+        }
+
+        .main-title {
+            font-size: 40px;
+            font-weight: bold;
+        }
+
+        .subtitle {
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .content-text {
+            font-size: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .content {
+                padding: 20px;
+                height: auto;
+            }
+
+            .sub-content {
+                margin-top: 20px;
+                margin-bottom: 20px;
+                height: 100px;
+            }
+
+            .main-title {
+                font-size: 24px;
+            }
+
+            .subtitle,
+            .content-text {
+                font-size:12px;
+            }
+
+            .btn {
+                justify-content: center;
+                margin-top: 20px;
+            }
+
+            button {
+                width: 100%;
+                height: auto;
+                padding: 15px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <div id="loading">
-        <img src="{{ asset('images/imm.png') }}" alt="Loading...">
-    </div>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="homepage">IMM</a>
-
-        </div>
-    </nav>
-
     <div class="container content mt-5">
         <div class="container">
             <div class="sub-content">
-
             </div>
-
-            <p style="font-size: 40px;font-weight: bold;">{{ $survey->name }}</p>
-            {{-- <p style="font-size: 20px">Survey ini bertujuan untuk mengevaluasi dampak bisnis ternak lele terhadap
-                berbagai aspek ekonomi, sosial, dan lingkungan. Dengan memperhatikan pertumbuhan industri ternak lele,
-                kami akan menganalisis kontribusinya terhadap pendapatan peternak, kesejahteraan masyarakat lokal, serta
-                efeknya terhadap ekosistem air dan lahan. Data yang dikumpulkan dari survei ini diharapkan dapat
-                memberikan wawasan yang mendalam untuk memandu kebijakan dan praktik yang berkelanjutan dalam industri
-                ternak lele.</p> --}}
-            <p style="font-weight: bold; font-size:20px;">Komitmen dalam menjaga privasi anda</p>
-            <p style="font-size: 20px">Saya sangat berkomitmen untuk menjalankan survei dengan hati-hati dan jujur serta
+            <p class="main-title">{{ $survey->name }}</p>
+            <p class="subtitle">Komitmen dalam menjaga privasi anda</p>
+            <p class="content-text">Saya sangat berkomitmen untuk menjalankan survei dengan hati-hati dan jujur serta
                 menjaga kerahasiaan data yang dikumpulkan. Saya selalu menghormati privasi dan kepentingan peserta
                 survei, serta memastikan bahwa hasil survei saya digunakan dengan bertanggung jawab demi kebaikan semua
                 orang yang terlibat. </p>
             <div class="btn">
                 @if (!$lastEntry)
-                    <!-- Check if $lastEntry is null -->
-                    <a href="/responden-data-diri/{{ $survey->id }}"><button type="">Mulai Survey</button></a>
-                @else
-                    <!-- Disable the button -->
-                    <button type="" disabled>Anda sudah mengisi survey</button>
-                @endif
+                <!-- Check if $lastEntry is null -->
+                <a href="/responden-data-diri/{{ $survey->id }}"><button type="">Mulai Survey</button></a>
+            @else
+                <!-- Disable the button -->
+                <button type="" disabled>Anda sudah mengisi survey</button>
+            @endif
             </div>
         </div>
     </div>
 
-  <footer>
-    <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
-        <div class="row d-flex  justify-content-center align-items-center">
-            <div class="col-4 d-flex flex-column" style="gap: 20px">
-                <h5 class=" text-white  text-left">IMM</h5>
-                <span class="span-footer text-left">Impact Measurement and Management
-                        <br> (TBN INDONESIA X MAXY ACADEMY)</span>
-            </div>
-            <div class="col-5 d-flex justify-content-center align-items-center">
-                <ul class=" d-flex " style="gap: 30px">
-                    <a href="/"><li>HomePage</li></a>
-                    <a href="bootcamp"><li>Bootcamp</li></a>
-                    <a href="imm"><li>IMM</li></a>
-                    <a href="#"><li>Comunity</li></a>
-                    <a href="profile"><li>Profile</li></a>
-                </ul>
-            </div>
-            <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
-                <span class="span-footer text-center">Sosial Media</span>
-                <div class="sosmed d-flex justify-content-end  ">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
-
- </div>
-</footer>
     <script src="{{ asset('js/imm/metrix.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="https://stackpath.amazonaws.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>

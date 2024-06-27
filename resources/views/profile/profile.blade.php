@@ -1,176 +1,149 @@
-@extends('layouts.app')
+@extends('layouts.app-imm')
 @section('title', 'Profil')
 
 @section('css')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/profile/profile.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ asset('css/profile/profile.css') }}">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+        font-family: "Roboto", sans-serif;
+        text-decoration: none;
+        list-style-type: none;
+        /* Add padding to avoid content being hidden behind fixed navbar */
+        background-color: #f8f9fa;
+    }
+
+    /* Menambahkan transisi pada navbar */
+    /* Profile Section */
+    .biodata {
+        word-wrap: break-word;
+        /* Membuat teks wrap otomatis */
+        overflow-wrap: break-word;
+        /* Alternatif lain untuk memastikan teks wrap */
+        width: 100%;
+        /* Menentukan lebar kontainer */
+    }
+
+    .section {
+        margin-top: 80px;
+        margin-bottom: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+        background-color: #d2cce2;
+        padding: 20px 0;
+    }
+
+    .profile-section {
+        max-width: 150px;
+        border: 3px solid #6f42c1;
+        padding: 5px;
+        border-radius: 50%;
+        transition: transform 0.3s;
+    }
+
+    .img-fluid {
+        width: 200px;
+        height: 200px;
+    }
+
+    .profile-section :hover {
+        transform: scale(1.1);
+    }
+
+    .profile-section h2,
+    .profile-section h3 {
+        font-weight: bold;
+    }
+
+    .profile-section p {
+        margin: 5px 10px;
+    }
+
+    .profile-section .btn {
+        margin-top: 199px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .profile-section .btn:hover {
+        background-color: #6f42c1;
+        color: #ffffff;
+    }
+
+
+
+
+    .btn-primary {
+        background-color: #6f42c1;
+        border: none;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .btn-primary:hover {
+        background-color: #563d7c;
+        color: #ffffff;
+    }
+
+    /* Media Queries for Responsive Design */
+    @media (max-width: 768px) {
+        .section {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            display: flex;
+            text-align: center;
+        }
+
+        .profile-section {
+            margin-bottom: 20px;
+        }
+.bio{
+    
+}
+        .biodata {
+       display: flex;
+       flex-direction: column; align-content: center
+            text-align: center;
+            width: 70%;
+            margin-left: 55px;
+            margin-top: 10px;
+            padding: 20px 0;
+        }
+        .img-fluid {
+        width: 100px;
+        height: 100px;
+    }
+    }
+</style>
 @endsection
+
 @section('content')
-
-
-<body>
-
-
-<!-- Profile Section -->
 <div class="container mt-5 pt-5">
-    <div class="row">
+    <div class="row section">
         <div class="col-md-4 text-center">
             <img src="images/2.png" class="rounded-circle img-fluid" alt="Profile Picture">
-            <a href="edit" class="btn btn-outline-secondary mt-3">
-             <i class="fas fa-edit"></i> Edit
-            </a>
         </div>
-        <div class="col-md-4">
-            <h2> {{$user->nama_depan}} {{$user->nama_belakang}} </h2>
-            <p><i class="fas fa-phone"> {{$user->telepon}}</i></p>
-            <p><i class="fas fa-envelope"></i>  {{$user->email}} </p>
-            <p><i class="fas fa-map-marker-alt"></i> {{$user->alamat}} </p>
+        <div class="col-md-4 bio">
+            <div class="biodata">
+                <h2 class="mb-3"> {{$user->nama_depan}} {{$user->nama_belakang}} </h2>
+                <p><i class="fas fa-phone"> {{$user->telepon}}</i></p>
+                <p><i class="fas fa-envelope"></i> {{$user->alamat}}</p>
+                <span><i class="fas fa-map-marker-alt"></i>asdsaaaaadddddddddddddddddddaaaaaaaaassssssssssssaaaaaaa </span> <br>
+                <a href="edit" class="btn btn-outline-secondary mt-3">
+                    <i class="fas fa-edit"></i> Edit
+                </a>
+            </div>
         </div>
-        <div class="col-md-4">
-            <h3>Keahlian</h3>
-            <button class="btn btn-primary btn-block">Digital Marketing</button>
-            <button class="btn btn-primary btn-block">UI / UX Desain</button>
-            <button class="btn btn-outline-secondary btn-block">+Tambah</button>
-        </div>
+        <div class="col-md-4"></div>
     </div>
 </div>
 
-    <!-- Tasks Section -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="task-column">
-                    <h3 class="column-title">Akan Datang</h3>
-                    <div class="task-card">
-                        <span class="badge badge-category">Marketing</span>
-                        <p>Rencana Kampanye Pemasaran</p>
-                        <span class="task-date"><i class="fas fa-clock"></i> Sep 24</span>
-                    </div>
-                    <div class="task-card">
-                        <span class="badge badge-category">Mobile App</span>
-                        <p>Pembuatan Aplikasi Sederhana</p>
-                        <span class="task-date"><i class="fas fa-clock"></i> Sep 24</span>
-                    </div>
-                    <div class="task-card">
-                        <span class="badge badge-category">Mobile App</span>
-                        <p>Pembuatan Aplikasi E-Commerce</p>
-                        <span class="task-date"><i class="fas fa-clock"></i> Sep 24</span>
-                    </div>
-                    <button class="btn btn-primary  btn-block mt-3">+ Tambahkan Permasalahan</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="task-column">
-                    <h3 class="column-title">Proses</h3>
-                    <div class="task-card">
-                        <span class="badge badge-category">Marketing</span>
-                        <p>Optimalisasi Kampanye Media Sosial</p>
-                        <span class="task-date"><i class="fas fa-clock"></i> Jun 24</span>
-                    </div>
-                    <div class="task-card">
-                        <span class="badge badge-category">Marketing</span>
-                        <p>Optimisasi SEO Untuk Website</p>
-                        <span class="task-date"><i class="fas fa-clock"></i> Jun 24</span>
-                    </div>
-                    <div class="task-card">
-                        <span class="badge badge-category">UI / UX Desain</span>
-                        <p>Peninjauan Pengalaman Pengguna</p>
-                        <span class="task-date"><i class="fas fa-clock"></i> Jun 24</span>
-                    </div>
-                    <div class="task-card">
-                        <span class="badge badge-category">UI / UX Desain</span>
-                        <p>Revisi Visual Pada Formulir Kontak</p>
-                        <span class="task-date"><i class="fas fa-clock"></i> Jun 24</span>
-                    </div>
-                    <button class="btn btn-primary  btn-block mt-3">+ Tambahkan Permasalahan</button>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="task-column">
-                    <h3 class="column-title">Selesai</h3>
-                    <div class="task-card">
-                        <span class="badge badge-category">Marketing</span>
-                        <p>Peningkatan Konversi Email Marketing</p>
-                        <span class="task-date"><i class="fas fa-clock"></i> Jun 24</span>
-                    </div>
-                    <div class="task-card">
-                        <span class="badge badge-category">Marketing</span>
-                        <p>Pengembangan Template Iklan Untuk Media Sosial</p>
-                        <span class="task-date"><i class="fas fa-clock"></i> Jun 24</span>
-                    </div>
-                    <div class="task-card">
-                        <span class="badge badge-category">Marketing</span>
-                        <p>Evaluasi Dan Penjadwalan Acara Promosi</p>
-                        <span class="task-date"><i class="fas fa-clock"></i> Jun 24</span>
-                    </div>
-                    <button class="btn btn-primary btn-block mt-3">+ Tambahkan Permasalahan</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Marketing Bootcamp Section -->
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-12">
-                <div class="bootcamp-header d-flex align-items-center mb-4">
-                    <img src="images/2.png" class="bootcamp-icon mr-3" alt="Marketing Bootcamp Icon">
-                    <h2>Marketing Bootcamp</h2>
-                    <i class="fas fa-chevron-down ml-2"></i>
-                </div>
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="#">Ringkasan</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">List</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Timeline</a>
-                    </li>
-                </ul>
-                <h3 class="mt-4">Agustus</h3>
-                <div class="timeline">
-                    <div class="timeline-row">
-                        <span class="timeline-label">Penelitian Dan Perencanaan</span>
-                        <div class="timeline-bar" style="left: 0%; width: 50%;"></div>
-                    </div>
-                    <div class="timeline-row">
-                        <span class="timeline-label">Riset Pasar Dan Analisis Kompetitor</span>
-                        <div class="timeline-bar" style="left: 10%; width: 60%;"></div>
-                    </div>
-                    <div class="timeline-row">
-                        <span class="timeline-label">Pengembangan Strategi Pemasaran Dan Identifikasi Tujuan</span>
-                        <div class="timeline-bar" style="left: 30%; width: 40%;"></div>
-                    </div>
-                    <div class="timeline-row">
-                        <span class="timeline-label">Pemasaran Media Sosial Dan Pembuatan Konten</span>
-                        <div class="timeline-bar" style="left: 70%; width: 20%;"></div>
-                    </div>
-                </div>   <h4>Pilihan Bahasa</h4>
-                <div class="language-selection mt-4 mb-4 d-flex justify-content-between">
-                 
-                    <button class="btn btn-secondary"><i class="fas fa-language"></i> Bahasa Indonesia</button>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                        @csrf
-                        <button class="btn btn-secondary mt-4"><i class="fas fa-sign-out-alt"></i> Log Out</button>
-                    </form>
-                </div>
-               
-            </div>
-        </div>
-    </div>
-
-
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="{{ asset('js/welcome/script.js') }}"></script>
-
-</body>
-
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{{ asset('js/welcome/script.js') }}"></script>
 @endsection

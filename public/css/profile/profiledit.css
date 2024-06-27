@@ -1,6 +1,5 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
     list-style-type: none;
     text-decoration: none;
 }
@@ -10,9 +9,8 @@ body {
     padding: 17px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    top: -32px;
     text-align: center;
-    width: 586px;
+    width: 100%;
     position: relative;
 }
 
@@ -36,6 +34,8 @@ body {
     border: 5px solid #ddd;
     width: 150px;
     height: 150px;
+    border: 7px solid #6a0dad;
+    background-size: cover;
 }
 
 .edit-icon {
@@ -46,10 +46,15 @@ body {
     border-radius: 50%;
     padding: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
 }
 
 .edit-icon i {
     color: #6a0dad;
+}
+
+#file-input {
+    display: none;
 }
 
 form {
@@ -94,22 +99,16 @@ form {
     margin-top: 20px;
 }
 
-.btn {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
+.btn-save,
 .btn-back {
+    width: 154px;
+    height: 42px;
     background-color: #6a0dad;
     color: white;
-}
-
-.btn-save {
-    background-color: #4caf50;
-    color: white;
+    border-radius: 5px;
+    font-size: 20px;
+    font-weight: 500;
+    border: none;
 }
 
 

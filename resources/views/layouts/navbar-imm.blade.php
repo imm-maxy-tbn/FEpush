@@ -36,7 +36,7 @@
 
     .navbar-button.active,
 .nav-link.active {
-    background-color: #5940cb;
+    background-color: #000000;
     color: #ffffff !important; /* Important to override existing color */
 }
 
