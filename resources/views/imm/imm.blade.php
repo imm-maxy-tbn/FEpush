@@ -47,7 +47,7 @@
     <img src="images/6.png" alt="Your Image" class="content-image">
     <div class="content-text">
         <h1>Selamat Datang di IMM</h1>
-        <p>IMM (Impact Mate) adalah platform yang...</p>
+        <!-- <p>IMM (Impact Mate) adalah platform yang...</p> -->
         <a href="verifikasidiri" class="btn">Mulai Sekarang</a>
     </div>
 </div>
