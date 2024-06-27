@@ -1,4 +1,4 @@
-@extends('layouts.app-nofooter')
+@extends('layouts.app-2fa')
 @section('title', 'IMM')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ asset('css/imm/imm.css') }}">
@@ -16,8 +16,8 @@
     <img src="images/6.png" alt="Your Image" class="content-image">
     <div class="content-text">
         <h1>Selamat Datang di IMM</h1>
-        <p>IMM (Impact Mate) adalah platform yang...</p>
-        <a href="{{ route('verifikasidiri') }}" class="btn">Mulai Sekarang</a>
+        <!-- <p>IMM (Impact Mate) adalah platform yang...</p> -->
+        <a href="verifikasidiri" class="btn">Mulai Sekarang</a>
     </div>
 </div>
 

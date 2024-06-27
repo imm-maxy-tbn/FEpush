@@ -390,6 +390,13 @@ Route::post('/projects', [ProjectController::class, 'store'])->name('projects.st
 Route::get('/projects/filter-metrics', [ProjectController::class, 'filterMetrics'])->name('projects.filterMetrics');
 
 
+Route::get('/verifikasi-diri', function () {
+   return view('imm.imm');
+})->name('verifikasidiri');
+
+Route::get('/berhasilverif', function () {
+   return view('imm.berhasilverif');
+})->name('berhasilverif');
 
 
 Route::get('responden/{id}', [SurveyController::class, 'view'])->name('surveys.view');

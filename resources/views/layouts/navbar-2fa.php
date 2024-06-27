@@ -144,44 +144,6 @@
 </style>
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-        
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav navbar-links">
-
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('/') ? 'active' : '' }}" href="/">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('bootcamp') ? 'active' : '' }}" href="/bootcamp">Bootcamp</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('imm') ? 'active' : '' }}" href="/imm">IMM</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('#') ? 'active' : '' }}" href="#">Community</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('blog') ? 'active' : '' }}" href="/blog">Explore</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link {{ Request::is('profile') ? 'active' : '' }}" href="/profile">Profile</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
-<script>
-    // JavaScript for toggling active class on navbar links/buttons
-    $(document).ready(function() {
-        $('.nav-link, .navbar-button').click(function() {
-            $('.nav-link, .navbar-button').removeClass('active');
-            $(this).addClass('active');
-        });
-    });
-</script>
 
 
 <script>

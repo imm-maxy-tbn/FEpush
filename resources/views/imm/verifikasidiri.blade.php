@@ -22,22 +22,20 @@
                 @csrf
                 <table>
                     <tr>
-                        <td><span class="input-icon"><i class="fas fa-envelope"></i></span></td>
+                        <td><span class="otp"><i class="fas fa-envelope"></i></span></td>
                         <td><input type="email" placeholder="Masukkan Email" id="email" name="email" required /></td>
                     </tr>
                     <tr>
-                        <td><span class="input-icon"><i class="fas fa-phone"></i></span></td>
-                        <td><input type="number" class="telepon" placeholder="Masukkan telepon" id="telepon" name="telepon" required /></td>
-                    </tr>
-                    <tr>
-                        <td></td>
+                        <td>
                         <td><button class="btn-login" id="loginBtn" type="submit">Verifikasi</button></td>
+                        </td>
                     </tr>
                 </table>
-                <div class="notification" id="notification"></div>
+                <!-- <div class="notification" id="notification"></div> -->
             </form>
         </div>
     </div>
+
 
 
 

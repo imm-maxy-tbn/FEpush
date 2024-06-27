@@ -246,6 +246,9 @@ body {
 
 .btn {
     background-color: #5a67d8;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: #fff;
     border: none;
     border-radius: 8px;

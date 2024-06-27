@@ -3,7 +3,6 @@ body {
     padding-top: 70px;
     /* Add padding to avoid content being hidden behind fixed navbar */
     background-color: #f8f9fa;
-    min-height: 280vh;
     /* Adjusted height */
 }
 

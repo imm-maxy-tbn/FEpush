@@ -19,7 +19,7 @@
 .navbar {
         background-color: #ffffff;
         color: #000000;
-        padding: 15px 0;
+        padding: 10px 0;
         position: fixed;
         top: 0;
         right: 0;
