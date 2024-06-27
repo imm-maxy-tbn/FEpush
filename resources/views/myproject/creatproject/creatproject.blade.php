@@ -148,14 +148,14 @@
                             <div class="section-img">
                                 <h5>Unggah Foto Sampul Proyek</h5>
                                 <p>Gunakan foto Default</p>
-                                <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data"> <label for="imageInput" class="choose-file-label">
+                               enctype="multipart/form-data"> <label for="imageInput" class="choose-file-label">
                                     <div class="unggah-image">
                                          <img id="previewImage" src="" alt="Unggah foto sampul 1920x1080
 (.png, .jpg, .jpeg) Maximal 5 MB">
                                     </div>
                                 </label>
-                                    <input type="file" id="imageInput" name="image" style="display: none;">
-                                </form>
+                                    <input type="file" id="imageInput" name="img" style="display: none;">
+                             
                             </div><div class="d-flex justify-content-start mt-4">
                                 <button type="button" class="btn btn-primary" id="next-to-sdg-section">Simpan dan Lanjutkan</button>
                             </div>
