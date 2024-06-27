@@ -155,7 +155,7 @@ body {
 }
 
 .login-form {
-    width: 329px;
+    width: 609px;
     padding: 10px;
     background-color: #ffffff;
     border-radius: 10px;
@@ -190,7 +190,7 @@ td {
 
 input[type="email"],
 input[type="number"] {
-    width: calc(108% - 40px);
+    width: calc(100% - 40px);
     padding: 10px;
     border-radius: 5px;
     border: 1px solid #ccc;
