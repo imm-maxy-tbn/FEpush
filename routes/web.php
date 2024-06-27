@@ -28,7 +28,9 @@ Route::get('/', function () {
 
 Route::get('/register', function () {
     return view('auth.register');
-})->name('register');
+})->name('register');  Route::get('/home', function () {
+    return view('welcome');
+})->name('home'); /* ini berfungsi untuk memindahkan dari login ke home */
 
 Route::get('responden/{id}', [SurveyController::class, 'view'])->name('surveys.view');
 Route::get('responden-data-diri/{id}', [SurveyController::class, 'dataDiri'])->name('surveys.data-diri');
@@ -37,9 +39,7 @@ Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submi
 
 // Rute yang memerlukan autentikasi
 Route::middleware(['auth'])->group(function () {
-    Route::get('/home', function () {
-        return view('welcome');
-    })->name('home'); /* ini berfungsi untuk memindahkan dari login ke home */
+  
 
     Route::get('/imm', function () {
         return view('imm.imm');
@@ -132,7 +132,7 @@ Route::middleware(['auth'])->group(function () {
         return view('myproject.creatproject.detailreview');
     });
 
-    Route::get('/edit-survey', function () {
+    Route::get('/edit-survey-new', function () {
         // return view('survey.edit-survey.edit-survey');
         return view('survey.edit-survey.edit-survey-new');
     });
@@ -286,9 +286,7 @@ Route::get('/responden-penutup-survey', function () {
     return view('survey.responden.responden-penutup-survey');
 });
 
-Route::get('/edit-survey', function () {
-    return view('survey.edit-survey.edit-survey');
-});
+
 
 Route::get('/event', function () {
     return view('event.event');
@@ -401,4 +399,7 @@ Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submi
 Route::post('survey', [SurveyController::class, 'store'])->name('surveys.store');
 Route::get('/responden/{id}', [SurveyController::class, 'view'])->name('surveys.view');
 
+
+
 Route::get('/about', [HomeController::class,'about']);
+Route::get('/edit-survey-new/{survey}', [SurveyController::class, 'edit'])->name('surveys.edit');

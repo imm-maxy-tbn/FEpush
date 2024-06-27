@@ -12,6 +12,32 @@ body {
     margin-left: 115px;
 }
 
+.tags-container {
+    gap: 5px;
+}
+
+.tag-button {
+    border-radius: 10px;
+}
+
+.tag-button {
+    background-color: rgba(89, 64, 203, 0.502);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+}
+
+.tag-button.selected {
+    background-color: #5940cb;
+}
+
+.tag-button:hover {
+    background-color: #5940cb;
+}
+
 .sdg-description {
     width: 100%;
     /* or set a fixed width like 300px */
@@ -23,6 +49,29 @@ body {
     /* Ensure it starts hidden */
     word-wrap: break-word;
     /* Ensures long words break to the next line */
+}
+
+.section-img {
+    width: 100%;
+}
+
+.unggah-image,
+.choose-file-label {
+    width: 100%;
+    height: 131px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: 1px solid #000;
+    border-radius: 5px;
+}
+
+#previewImage {
+    max-width: 55%;
+    text-align: center;
+    max-height: 100%;
+    font-style: italic;
 }
 
 .metric-checkbox {
@@ -106,7 +155,7 @@ body {
 /* Upload Box */
 
 .upload-box {
-    background-color: #6f42c1;
+    background-color: #5940cb;
     color: white;
     text-align: center;
     padding: 30px;
@@ -172,7 +221,7 @@ body {
 
 .btn-primary {
     color: #fff;
-    background-color: #6f42c1;
+    background-color: #5940cb;
     border-color: #6f42c129;
 }
 

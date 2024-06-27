@@ -58,6 +58,10 @@
                             <label for="email" class="form-label">Email yang bisa dihubunggi</label>
                             <input type="email" name="email" id="email" class="form-control"  placeholder="imm@gmail.com" required>
                           </div>
+                        <div class="mb-4">
+                            <label for="date" class="form-label">Tanggal Mengisi</label>
+                            <input type="date" name="date" id="date" class="form-control"  placeholder="" required>
+                          </div>
 
                 </div>
 
@@ -75,32 +79,8 @@
     </div>
                     </form>
     <footer>
-        <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
-            <div class="row d-flex  justify-content-center align-items-center">
-                <div class="col-4 d-flex flex-column" style="gap: 20px">
-                    <h5 class=" text-white  text-left">IMM</h5>
-                    <span class="span-footer text-left">Impact Measurement and Management
-                            <br> (TBN INDONESIA X MAXY ACADEMY)</span>
-                </div>
-                <div class="col-5 d-flex justify-content-center align-items-center">
-                    <ul class=" d-flex " style="gap: 30px">
-                        <a href=""><li>HomePage</li></a>
-                        <a href=""><li>Bootcamp</li></a>
-                        <a href=""><li>IMM</li></a>
-                        <a href=""><li>Comunity</li></a>
-                        <a href=""><li>Profile</li></a>
-                    </ul>
-                </div>
-                <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
-                    <span class="span-footer text-center">Sosial Media</span>
-                    <div class="sosmed d-flex justify-content-end  ">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
+        <div class="container mb-5 mt-5 d-flex justify-content-center align-items-center  ">
+            <h5 style="color: #5940cb; font-weight:bold">Konten di dalam survey ini tidak dibuat oleh Impact Mate</h5>
 
      </div>
     </footer>

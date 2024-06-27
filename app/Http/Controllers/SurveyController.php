@@ -27,7 +27,7 @@ class SurveyController extends Controller
     {
         try {
             logger($request->all()); // Use Laravel's logger
-
+    
             $request->validate([
                 'name' => 'required|string|max:255',
                 'settings.accept-guest-entries' => 'required',
@@ -39,7 +39,7 @@ class SurveyController extends Controller
                 'sections.*.questions.*.type' => 'required|string',
                 'sections.*.questions.*.rules' => 'nullable|string',
             ]);
-
+    
             $survey = Survey::create([
                 'name' => $request->name,
                 'settings' => [
@@ -47,10 +47,10 @@ class SurveyController extends Controller
                     'limit-per-participant' => (int) $request->settings['limit-per-participant'],
                 ]
             ]);
-
+    
             foreach ($request->sections as $sectionData) {
                 $section = $survey->sections()->create(['name' => $sectionData['name']]);
-
+    
                 foreach ($sectionData['questions'] as $questionData) {
                     $section->questions()->create([
                         'content' => $questionData['content'],
@@ -60,11 +60,17 @@ class SurveyController extends Controller
                     ]);
                 }
             }
-
-            return redirect()->route('impact.impact')->with('success', 'Survey created successfully.');
+    
+            return response()->json([
+                'success' => true,
+                'survey_id' => $survey->id,
+            ]);
         } catch (\Exception $e) {
             Log::error('Survey creation failed: ' . $e->getMessage());
-            return redirect()->back()->with('error', 'Failed to create survey. Please try again later.');
+            return response()->json([
+                'success' => false,
+                'message' => 'Failed to create survey. Please try again later.',
+            ]);
         }
     }
 
@@ -72,7 +78,7 @@ class SurveyController extends Controller
     {
         $survey = Survey::with('sections.questions')->findOrFail($id);
         $lastEntry = Entry::where('participant_id', auth()->id())->latest()->first();
-    
+
         return view('survey.responden.responden', compact('survey', 'lastEntry'));
     }
 

@@ -110,11 +110,11 @@ img {
 
     <div class="container content mt-5">
         <div class="container">
-            {{-- <div class="sub-content  d-flex justify-content-center align-items-center">
-                <img src="" alt="img">
-            </div> --}}
+            <div class="sub-content  d-flex justify-content-center align-items-center">
+                <img src="/images/banner-detailkelas.png" alt="img">
+            </div>
 
-            <p style="font-size: 40px;font-weight: bold;">surveynama</p>
+            <p style="font-size: 40px;font-weight: bold;"> {{$survey->name}} </p>
 
         </div>
     </div>
@@ -125,10 +125,10 @@ img {
             <div class="container">
                 <div class="form-esay">
                     @foreach ($survey->sections as $section)
-                        <h3 class="px-4 py-2" style="background:#efefef; border-top:solid 1px #dadada">
+                        <h3 class="px-4 py-3 mb-5 mt-5" style="background:#5940cb; color:white; border-top:solid 1px #dadada">
                             {{ $section->name }}</h3>
                         @foreach ($section->questions as $question)
-                            <div class="row d-flex align-items-center">
+                            <div class="row d-flex align-items-start">
                                 <span class="angka d-flex justify-content-center align-items-center">
                                     {{ $loop->parent->iteration }}.{{ $loop->iteration }}
                                 </span>
@@ -150,6 +150,13 @@ img {
             </div>
         </div>
     </form>
+
+    <footer>
+        <div class="container mb-5 mt-5 d-flex justify-content-center align-items-center  ">
+            <h5 style="color: #5940cb; font-weight:bold">Konten di dalam survey ini tidak dibuat oleh Impact Mate</h5>
+
+     </div>
+    </footer>
 
     {{-- <div class="container mt-5">
         <div class="row gap d-flex justify-content-center">

@@ -35,11 +35,11 @@
                         </div>
                         <div class="form-group">
                             <label for="deskripsi">Deskripsi Proyek</label>
-                            <textarea class="form-control" name="deskripsi" id="deskripsi" rows="3" required></textarea>
+                            <textarea class="form-control" name="deskripsi" id="deskripsi" rows="5" required></textarea>
                         </div>
                         <div class="form-group">
                             <label for="tujuan">Tujuan Proyek</label>
-                            <textarea class="form-control" name="tujuan" id="tujuan" rows="2"></textarea>
+                            <textarea class="form-control" name="tujuan" id="tujuan" rows="5"></textarea>
                         </div>
                         <div class="form-group">
                             <label for="start_date">Tanggal Mulai Proyek</label>
@@ -109,11 +109,11 @@
                             <label for="impactTags">Tag Tema Dampak Yang Selaras dengan Prioritas Dampak Anda</label>
                             <div class="tags-container" style="height: 200px; overflow-y: auto;">
                                 @foreach ($tags as $tag)
-                                    <div class="form-check ml-3">
-                                        <div>
-                                            <input class="form-check-input" type="checkbox" value="{{ $tag->id }}" id="tag{{ $tag->id }}" name="tag_ids[]">
-                                            <label class="form-check-label" for="tag{{ $tag->id }}">{{ $tag->nama }}</label>
-                                        </div>
+                                    <div class="form-check ">
+                                        <button class="tag-button" data-tag-id="{{ $tag->id }}" type="button">
+                                            {{ $tag->nama }}
+                                        </button>
+                                        <input class="form-check-input" type="checkbox" value="{{ $tag->id }}" id="tag{{ $tag->id }}" name="tag_ids[]" style="display: none;">
                                     </div>
                                 @endforeach
                             </div>
@@ -145,10 +145,22 @@
                                     </tbody>
                                 </table>
                             </div>
+                            <div class="section-img">
+                                <h5>Unggah Foto Sampul Proyek</h5>
+                                <p>Gunakan foto Default</p>
+                                <form id="uploadForm" action="/upload" method="post" enctype="multipart/form-data"> <label for="imageInput" class="choose-file-label">
+                                    <div class="unggah-image">
+                                         <img id="previewImage" src="" alt="Unggah foto sampul 1920x1080
+(.png, .jpg, .jpeg) Maximal 5 MB">
+                                    </div>
+                                </label>
+                                    <input type="file" id="imageInput" name="image" style="display: none;">
+                                </form>
+                            </div><div class="d-flex justify-content-start mt-4">
+                                <button type="button" class="btn btn-primary" id="next-to-sdg-section">Simpan dan Lanjutkan</button>
+                            </div>
                         </div>
-                        <div class="d-flex justify-content-end">
-                            <button type="button" class="btn btn-primary" id="next-to-sdg-section">Simpan dan Lanjutkan</button>
-                        </div>
+                        
                     </div>
                 </div>
             </div>
@@ -236,22 +248,32 @@
             </div>
             
             
-
-            <div id="metric-section" style="display: none;">
-                <div class="container mt-5">
-                    <h1 class="text-center">Select Metrics Based on Your Chosen Indicator</h1>
-                    <div id="metrics" class="metric-item mb-4 p-3 bg-white shadow-sm rounded"></div>
-                    <div class="pagination mt-4">
-                        <ul class="pagination">
-                            <!-- Pagination links -->
+    <div id="metric-section" style="display: none;">
+        <div class="container mt-5">
+            <h1 class="text-center">Pilih Metrik Berdasarkan Indikator yang Anda Pilih</h1>
+            <div id="metrics" class="mb-4 p-3 bg-white shadow-sm rounded"></div>
+            <div class="pagination mt-4">
+                <ul id="pagination-links" class="pagination justify-content-center">
+                    <div class="pagination mt-4 d-flex justify-content-center">
+                        <ul id="pagination-links" class="pagination">
+                            <li class="page-item" id="previous-page-li">
+                                <button type="button" class="btn btn-secondary page-link" id="previous-page">Sebelumnya</button>
+                            </li>
+                            <!-- Page numbers will be dynamically inserted here -->
+                            <li class="page-item" id="next-page-li">
+                                <button type="button" class="btn btn-primary page-link" id="next-page">Berikutnya</button>
+                            </li>
                         </ul>
                     </div>
-                    <div class="d-flex justify-content-between mt-3">
-                        <button type="button" class="btn btn-secondary" id="back-to-indicator-section">Kembali</button>
-                        <button type="button" class="btn btn-primary" id="next-to-review-section">Simpan dan Lanjutkan</button>
-                    </div>
-                </div>
+                </ul>
             </div>
+            <div class="d-flex justify-content-between mt-3">
+                <button type="button" class="btn btn-secondary" id="back-to-indicator-section">Kembali</button>
+                <button type="button" class="btn btn-primary" id="next-to-review-section">Simpan dan Lanjutkan</button>
+            </div>
+        </div>
+    </div>
+    
                     
             <div id="review-section" style="display: none;">
                 
@@ -296,6 +318,25 @@
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var imageInput = document.getElementById('imageInput');
+            var previewImage = document.getElementById('previewImage');
+    
+            imageInput.addEventListener('change', function() {
+                var file = this.files[0];
+                if (file) {
+                    var reader = new FileReader();
+                    reader.onload = function(e) {
+                        previewImage.src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                } else {
+                    previewImage.src = "";
+                }
+            });
+        });
+    </script>
+    <script>
         $(document).ready(function() {
             $('.sdg-item').on('click', function(e) {
                 if (!$(e.target).is('.sdg-checkbox')) {
@@ -336,6 +377,33 @@
             $('#back-to-sdg-section').on('click', function() {
                 $('#indicator-section').hide();
                 $('#sdg-section').show();
+            });
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.tag-button').click(function() {
+                var $button = $(this);
+                var tagId = $button.data('tag-id');
+                var $checkbox = $('#tag' + tagId);
+    
+                // Toggle the selected state
+                $button.toggleClass('selected');
+    
+                // Sync the checkbox with the button state
+                $checkbox.prop('checked', $button.hasClass('selected'));
+            });
+    
+            // Initialize button states based on checkboxes
+            $('.form-check-input').each(function() {
+                var $checkbox = $(this);
+                var tagId = $checkbox.val();
+                var $button = $('button[data-tag-id="' + tagId + '"]');
+                
+                if ($checkbox.prop('checked')) {
+                    $button.addClass('selected');
+                }
             });
         });
     </script>
@@ -537,28 +605,66 @@
     });
 });
 $(document).ready(function() {
-    $('.sdg-checkbox').on('change', function() {
-        // Semua checkbox SDG yang dipilih
-        var selectedSdgs = $('.sdg-checkbox:checked');
-        
-        // Sembunyikan semua deskripsi SDG terlebih dahulu
-        $('.goal-description').hide();
+    var metricsPerPage = 5; // Jumlah metrik per halaman
+    var currentPage = 1;    // Halaman saat ini
+    var metricsData = [];    // Array untuk menyimpan data metrik dari response
 
-        // Tampilkan deskripsi untuk setiap SDG yang diceklis
-        selectedSdgs.each(function() {
-            var sdgId = $(this).val();
-            $('#goal' + sdgId + '-description').show();
+    // Fungsi untuk menampilkan metrik pada halaman tertentu
+    function displayMetrics(page) {
+        var startIndex = (page - 1) * metricsPerPage;
+        var endIndex = startIndex + metricsPerPage;
+        var metricsSlice = metricsData.slice(startIndex, endIndex);
+
+        $('#metrics').empty(); // Kosongkan container metrik terlebih dahulu
+        $.each(metricsSlice, function(index, metric) {
+            var metricHtml = `
+                <div class="d-flex align-items-center justify-content-between p-3 my-3 border ">
+                    <div class="metric-text">
+                        <h5 style="color:#5940CB">(${metric.code}) ${metric.name}</h5>
+                        <p class="mb-0 sdg-name-metric">${metric.definition}</p>
+                    </div>
+                    <input type="checkbox" class="metric-checkbox" name="metric_ids[]" value="${metric.id}">
+                </div>
+            `;
+            $('#metrics').append(metricHtml);
         });
-    });
-});
-$('#next-to-metric-section').on('click', function() {
-    var selectedTags = $('input[name="tag_ids[]"]:checked').map(function() {
-        return $(this).val();
-    }).get();
-    var selectedIndicators = $('.indicator-checkbox:checked').map(function() {
-        return $(this).val();
-    }).get();
 
+        // Update pagination links
+        updatePagination();
+    }
+
+    // Fungsi untuk membuat dan mengatur tombol-tombol pagination
+    function updatePagination() {
+        var totalPages = Math.ceil(metricsData.length / metricsPerPage);
+        var paginationLinks = $('#pagination-links');
+        paginationLinks.empty(); // Kosongkan tombol-tombol pagination terlebih dahulu
+
+        for (var i = 1; i <= totalPages; i++) {
+            var activeClass = (i === currentPage) ? 'active' : '';
+            var paginationBtn = $('<li class="page-item ' + activeClass + '"><a class="page-link" href="#">' + i + '</a></li>');
+
+            paginationBtn.on('click', function() {
+                currentPage = parseInt($(this).text()); // Perbarui halaman saat ini
+                displayMetrics(currentPage); // Tampilkan metrik untuk halaman yang diklik
+            });
+
+            paginationLinks.append(paginationBtn);
+        }
+    }
+
+    // Event listener untuk tombol Kembali ke Bagian Indikator
+    $('#back-to-indicator-section').on('click', function() {
+        $('#metric-section').hide();
+        $('#indicator-section').show();
+    });
+
+    // Event listener untuk tombol Simpan dan Lanjutkan ke Bagian Review
+    $('#next-to-review-section').on('click', function() {
+        $('#metric-section').hide();
+        $('#review-section').show();
+    });
+
+    // Contoh penggunaan AJAX untuk mendapatkan data metrik dari server
     $.ajax({
         url: '{{ route("projects.filterMetrics") }}',
         method: 'POST',
@@ -568,44 +674,140 @@ $('#next-to-metric-section').on('click', function() {
             indicator_ids: selectedIndicators
         },
         success: function(response) {
-    // Memproses respons dari server (response berisi metrik yang sesuai)
-    $('#metrics').empty();
-    $.each(response, function(index, metric) {
-        var metricHtml = `
-            <div class="d-flex align-items-center justify-content-between p-3 my-3 border ">
-                <div class="metric-text">
-                    <h5 class="" style="color:#5940CB">(${metric.code}) ${metric.name}</h5>
-                    <p class="mb-0 sdg-name-metric">${metric.definition}</p>
-                </div>
-                <input type="checkbox" class="metric-checkbox" name="metric_ids[]" value="${metric.id}">
-            </div>
-        `;
-        $('#metrics').append(metricHtml);
-    });
-
-    // Menambahkan event listener ke metric-item untuk melakukan toggle checkbox
-    $('.metric-text').on('click', function(e) {
-        if (!$(e.target).is('.metric-checkbox')) {
-            var checkbox = $(this).find('.metric-checkbox');
-            checkbox.prop('checked', !checkbox.prop('checked'));
+            metricsData = response; // Simpan data metrik dari response
+            displayMetrics(currentPage); // Tampilkan metrik untuk halaman pertama
+        },
+        error: function(xhr, status, error) {
+            console.error('Error fetching metrics:', error);
+            // Handle error case if needed
         }
     });
+});
 
-    // Menambahkan event listener ke metric-text untuk menghentikan propagasi klik ke parent
-    $('.metric-text').on('click', function(e) {
-        e.stopPropagation(); // Prevent the event from bubbling up to the parent div
-        var checkbox = $(this).siblings('.metric-checkbox');
-        checkbox.prop('checked', !checkbox.prop('checked'));
-    });
+$('#next-to-metric-section').on('click', function() {
+    var selectedTags = $('input[name="tag_ids[]"]:checked').map(function() {
+        return $(this).val();
+    }).get();
+    var selectedIndicators = $('.indicator-checkbox:checked').map(function() {
+        return $(this).val();
+    }).get();
+    
+    $(document).ready(function() {
+    var currentPage = 1; // Initial page
+    var totalPages = 1; // Total pages, will be updated after receiving response from server
+    var selectedMetricsIds = {}; // Object to store selected metric IDs
 
-    // Menyembunyikan Indicator Section dan menampilkan Metric Section
-    $('#indicator-section').hide();
-    $('#metric-section').show();
-},
-        error: function(xhr) {
-            console.log(xhr.responseText);
+    // Function to fetch metrics based on selected tags and indicators
+    function fetchMetrics() {
+        $.ajax({
+            url: '{{ route("projects.filterMetrics") }}',
+            method: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                tag_ids: selectedTags,
+                indicator_ids: selectedIndicators,
+                page: currentPage // Send current page number to server
+            },
+            success: function(response) {
+                $('#metrics').empty(); // Clear existing metrics
+
+                // Iterate through metrics and append to #metrics container
+                $.each(response.data, function(index, metric) {
+                    // Check if this metric is selected
+                    var isChecked = selectedMetricsIds[metric.id] ? 'checked' : '';
+
+                    var metricHtml = `
+                        <div class="d-flex align-items-center justify-content-between p-3 my-3 border">
+                            <div class="metric-text">
+                                <h5 style="color:#5940CB">(${metric.code}) ${metric.name}</h5>
+                                <p class="mb-0 sdg-name-metric">${metric.definition}</p>
+                            </div>
+                            <input type="checkbox" class="metric-checkbox" name="metric_ids[]" value="${metric.id}" ${isChecked}>
+                        </div>
+                    `;
+                    $('#metrics').append(metricHtml);
+                });
+
+                // Update total pages based on response
+                totalPages = response.last_page;
+
+                // Update pagination links
+                updatePagination();
+
+                // Initialize event handlers for newly added checkboxes
+                initializeCheckboxEventHandlers();
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching metrics:', error);
+            }
+        });
+    }
+
+    // Function to update pagination links
+    function updatePagination() {
+        $('#pagination-links').empty(); // Clear existing pagination links
+
+        // Add previous button
+        $('#pagination-links').append(`
+            <li class="page-item ${currentPage === 1 ? 'disabled' : ''}" id="previous-page-li">
+                <button type="button" class="btn btn-secondary page-link" id="previous-page">Sebelumnya</button>
+            </li>
+        `);
+
+        // Add page numbers
+        for (var i = 1; i <= totalPages; i++) {
+            $('#pagination-links').append(`
+                <li class="page-item ${currentPage === i ? 'active' : ''}">
+                    <button type="button" class="btn btn-link page-link page-number">${i}</button>
+                </li>
+            `);
         }
-    });
+
+        // Add next button
+        $('#pagination-links').append(`
+            <li class="page-item ${currentPage === totalPages ? 'disabled' : ''}" id="next-page-li">
+                <button type="button" class="btn btn-primary page-link" id="next-page">Berikutnya</button>
+            </li>
+        `);
+
+        // Add click event handlers for pagination buttons
+        $('.page-number').on('click', function() {
+            currentPage = parseInt($(this).text());
+            fetchMetrics(); // Fetch metrics for the selected page
+        });
+
+        $('#previous-page').on('click', function() {
+            if (currentPage > 1) {
+                currentPage--;
+                fetchMetrics(); // Fetch metrics for the previous page
+            }
+        });
+
+        $('#next-page').on('click', function() {
+            if (currentPage < totalPages) {
+                currentPage++;
+                fetchMetrics(); // Fetch metrics for the next page
+            }
+        });
+    }
+
+    // Function to initialize event handlers for checkboxes
+    function initializeCheckboxEventHandlers() {
+        $('.metric-checkbox').on('change', function() {
+            var metricId = $(this).val();
+            if ($(this).prop('checked')) {
+                selectedMetricsIds[metricId] = true; // Store the ID in selectedMetricsIds
+            } else {
+                delete selectedMetricsIds[metricId]; // Remove the ID from selectedMetricsIds
+            }
+        });
+    }
+
+    // Initial fetch for metrics
+    fetchMetrics();
+});
+
+
 });
 
         $('#back-to-indicator-section').on('click', function() {

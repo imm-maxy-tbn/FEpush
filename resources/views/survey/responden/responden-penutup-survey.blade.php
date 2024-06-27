@@ -51,36 +51,14 @@
             <button class="btn-kembali">Kembali</button>
             <button class="btn-selanjutnya">Lanjutkan</button>
         </div>
-    </div> --}}<footer>
-    <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
-        <div class="row d-flex  justify-content-center align-items-center">
-            <div class="col-4 d-flex flex-column" style="gap: 20px">
-                <h5 class=" text-white  text-left">IMM</h5>
-                <span class="span-footer text-left">Impact Measurement and Management
-                        <br> (TBN INDONESIA X MAXY ACADEMY)</span>
-            </div>
-            <div class="col-5 d-flex justify-content-center align-items-center">
-                <ul class=" d-flex " style="gap: 30px">
-                    <a href="/"><li>HomePage</li></a>
-                    <a href="bootcamp"><li>Bootcamp</li></a>
-                    <a href="imm"><li>IMM</li></a>
-                    <a href="#"><li>Comunity</li></a>
-                    <a href="profile"><li>Profile</li></a>
-                </ul>
-            </div>
-            <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
-                <span class="span-footer text-center">Sosial Media</span>
-                <div class="sosmed d-flex justify-content-end  ">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                </div>
-            </div>
-        </div>
+    </div> --}}    
+    
+    <footer>
+        <div class="container mb-5 mt-5 d-flex justify-content-center align-items-center  ">
+            <h5 style="color: #5940cb; font-weight:bold">Konten di dalam survey ini tidak dibuat oleh Impact Mate</h5>
 
- </div>
-</footer>
+     </div>
+    </footer>
     <script src="{{ asset('js/imm/metrix.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

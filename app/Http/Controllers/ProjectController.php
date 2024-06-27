@@ -38,13 +38,21 @@ class ProjectController extends Controller
     {
         $tagIds = $request->input('tag_ids', []);
         $indicatorIds = $request->input('indicator_ids', []);
-
-        $metrics = Metric::orWhereHas('tags', function($query) use ($tagIds) {
-            $query->whereIn('tags.id', $tagIds);
-        })->orWhereHas('indicators', function($query) use ($indicatorIds) {
-            $query->whereIn('indicators.id', $indicatorIds);
-        })->with('relatedMetrics')->get();
-
+    
+        // Menggunakan Eloquent Builder untuk memfilter data dengan paginasi
+        $metricsQuery = Metric::query()
+            ->orWhereHas('tags', function ($query) use ($tagIds) {
+                $query->whereIn('tags.id', $tagIds);
+            })
+            ->orWhereHas('indicators', function ($query) use ($indicatorIds) {
+                $query->whereIn('indicators.id', $indicatorIds);
+            })
+            ->with('relatedMetrics'); // Mengambil relasi terkait jika diperlukan
+    
+        // Menentukan jumlah item per halaman
+        $perPage = 10; // Misalnya, 10 item per halaman
+        $metrics = $metricsQuery->paginate($perPage);
+    
         return response()->json($metrics);
     }
 

@@ -174,7 +174,7 @@
                     <a  class="nav-link {{ Request::is('home') ? 'active' : '' }}" href="home">Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('myproject') ? 'active' : '' }}" href="myproject">Proyek Saya</a>
+                    <a class="nav-link {{ Request::is('homepage') ? 'active' : '' }}" href="homepage">Proyek Saya</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {{ Request::is('event') ? 'active' : '' }}" href="event">Event</a>

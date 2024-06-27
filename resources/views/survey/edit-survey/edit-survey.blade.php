@@ -51,12 +51,12 @@
         </div>
 
         <div class="row d-flex justify-content-between">
-            {{-- <button type="" class="btn-mulai">Mulai Survey</button>
+            <button type="" class="btn-mulai">Mulai Survey</button>
             <button type="" class="btn-akhiri">Akhiri Survey</button>
             <button type="" class="btn-lihat d-flex justify-content-around align-items-center">
                 <a href="responden" class="text-dark"><span>Lihat Survey</span></a>
                 <img src="images/mata-icon.png" width="25" height="20" alt="">
-            </button> --}}
+            </button>
             <button class="btn-simpan d-flex justify-content-around align-items-center">
                 <a href="impact" class="text-white"><span>Simpan Survey</span></a>
                 <img src="images/simpan-icon.png" width="29" height="auto" alt="">

@@ -21,7 +21,7 @@
 
         .content {
             background-color: #f7f6fb;
-            height: 742px;
+            height: 602px;
             width: 100%;
             border-radius: 20px;
             display: flex;
@@ -128,16 +128,22 @@
                 survei, serta memastikan bahwa hasil survei saya digunakan dengan bertanggung jawab demi kebaikan semua
                 orang yang terlibat. </p>
             <div class="btn">
-                @if (!$lastEntry)
-                <!-- Check if $lastEntry is null -->
-                <a href="/responden-data-diri/{{ $survey->id }}"><button type="">Mulai Survey</button></a>
-            @else
-                <!-- Disable the button -->
-                <button type="" disabled>Anda sudah mengisi survey</button>
-            @endif
+                  @if (!$lastEntry)
+                    <!-- Check if $lastEntry is null -->
+                    <a href="/responden-data-diri/{{ $survey->id }}"><button type="">Mulai Survey</button></a>
+                @else
+                    <!-- Disable the button -->
+                    <button type="" disabled>Anda sudah mengisi survey</button>
+                @endif
             </div>
         </div>
     </div>
+    <footer>
+        <div class="container mb-5 mt-5 d-flex justify-content-center align-items-center  ">
+            <h5 style="color: #5940cb; font-weight:bold">Konten di dalam survey ini tidak dibuat oleh Impact Mate</h5>
+
+     </div>
+    </footer>
 
     <script src="{{ asset('js/imm/metrix.js') }}"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

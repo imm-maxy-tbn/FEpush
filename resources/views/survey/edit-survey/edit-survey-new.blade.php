@@ -1,38 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app-imm')
+@section('title', '')
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMM | Edit Survey</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    {{-- <link rel="stylesheet" href="{{ asset('css/responden/edit-survey.css') }}"> --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
-        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="{{ asset('css/responden/edit-survey.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-
-</head>
+@section('css')
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+{{-- <link rel="stylesheet" href="{{ asset('css/responden/edit-survey.css') }}"> --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="{{ asset('css/responden/edit-survey.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+@endsection
+@section('content')
 
 <body>
-
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container">
-            <a class="navbar-brand" href="#">IMM</a>
-        </div>
-    </nav>
-
+      
     <form action="{{ route('surveys.store') }}" method="POST">
         @csrf
         <div class="container content mt-5 mb-5">
+                    <div class="container">
+            
+                <div class="sub-content d-flex justify-content-center align-items-center"><label for="gambar" style="cursor: pointer;">
+                    <img src="images/upload.png" width="42">
+            </label>
+            <input type="file" id="gambar" name="gambar" accept="image/*" style="display: none;">
+        </div>
             <div class="mb-2 mt-2">
                 <input type="text" name="name" class="form-control" placeholder="Judul Survey anda"
                     style="border: none; background:transparent; font-size: 40px;font-weight: bold;" required>
+                <input type="text" name="deskripsi" class="form-control" placeholder="Deskripsi Survey anda"
+                    style="border: none; background:transparent; font-size: 20px;font-weight: 400;" required>
             </div>
 
-            <div class="row d-flex justify-content-between">
+            <div class="row d-flex justify-content-between mt-5">
+                <button type="" class="btn-mulai">Mulai Survey</button>
+                <button type="" class="btn-akhiri">Akhiri Survey</button>
+               <a href="responden"><button type="" class="btn-lihat-responden">Lihat Responden Survey</button></a> 
+                <button type="" class="btn-lihat d-flex justify-content-around align-items-center">
+                    <a href="responden" class="text-dark"><span>Lihat Survey</span></a>
+                    <img src="images/mata-icon.png" width="25" height="20" alt="">
+                </button>
                 <button type="submit" class="btn-simpan d-flex justify-content-around align-items-center">
+                    
                     <span class="text-white">Simpan Survey</span>
                     <img src="images/simpan-icon.png" width="29" height="auto" alt="">
                 </button>
@@ -120,48 +128,23 @@
         </div>
     </template>
 
+    <script>
+        const inputGambar = document.getElementById('gambar');
+        const previewImg = document.getElementById('preview-img');
 
-    <footer>
-        <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
-            <div class="row d-flex  justify-content-center align-items-center">
-                <div class="col-4 d-flex flex-column" style="gap: 20px">
-                    <h5 class=" text-white  text-left">IMM</h5>
-                    <span class="span-footer text-left">Impact Measurement and Management
-                        <br> (TBN INDONESIA X MAXY ACADEMY)</span>
-                </div>
-                <div class="col-5 d-flex justify-content-center align-items-center">
-                    <ul class=" d-flex " style="gap: 30px">
-                        <a href="">
-                            <li>HomePage</li>
-                        </a>
-                        <a href="">
-                            <li>Bootcamp</li>
-                        </a>
-                        <a href="">
-                            <li>IMM</li>
-                        </a>
-                        <a href="">
-                            <li>Comunity</li>
-                        </a>
-                        <a href="">
-                            <li>Profile</li>
-                        </a>
-                    </ul>
-                </div>
-                <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
-                    <span class="span-footer text-center">Sosial Media</span>
-                    <div class="sosmed d-flex justify-content-end  ">
-                        <a href="#"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </footer>
-
+        inputGambar.addEventListener('change', function() {
+            const file = this.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewImg.src = e.target.result;
+                };
+                reader.readAsDataURL(file);
+            } else {
+                previewImg.src = 'images/upload.png'; // Default image if no file selected
+            }
+        });
+    </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             let sectionIndex = 0;
@@ -235,4 +218,4 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
-</html>
+@endsection
