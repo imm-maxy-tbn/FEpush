@@ -26,6 +26,11 @@ Route::get('/register', function () {
     return view('auth.register');
 })->name('register');
 
+
+Route::get('/berhasilverif', function () {
+    return view('imm.berhasilverif');
+});
+
 // Route::get('responden/{id}', [SurveyController::class, 'view'])->name('surveys.view');
 // Route::get('responden-data-diri/{id}', [SurveyController::class, 'dataDiri'])->name('surveys.data-diri');
 // Route::post('responden/{id}', [SurveyController::class, 'registerUser'])->name('surveys.register-user');

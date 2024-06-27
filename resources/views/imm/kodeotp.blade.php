@@ -55,7 +55,7 @@
             </div>
             <p>Belum menerima kode? Tunggu <span id="countdown">1:00</span> menit.</p>
             <button class="btn-resend">Kirim ulang kode</button>
-            <a href="pendaftaranperusahaan"><button class="btn-resend" id="verifyOtpBtn">Verifikasi</button></a>
+            <a href="berhasilverif"><button class="btn-resend" id="verifyOtpBtn">Verifikasi</button></a>
         </div>
     </div>
 </div>

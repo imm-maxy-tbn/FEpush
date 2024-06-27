@@ -12,101 +12,109 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <div class="container">
-    <a class="navbar-brand" href="imm">IMM</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="imm">IMM</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
                 <ul class="navbar-nav mr-auto">
-            <li class="nav-item ">
-                <a class="nav-link" href="/">Home</a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="bootcamp">Bootcamp</a>
-            </li>
-            <li class="nav-item active">
-                <a class="nav-link" href="imm">IMM</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="community">Community</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="profile">Profile</a>
-            </li>
-        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="bootcamp">Bootcamp</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="imm">IMM</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="community">Community</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="profile">Profile</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav>
+    </nav>
 
-<form action="{{ route('companies.store') }}" method="POST">
-    @csrf
     <div class="register-container">
         <h2>Daftarkan Perusahaan Anda</h2>
-        <div class="register-form">
-            <div class="informasi-pribadi">
-                <table>
-                    <tr>
-                        <td><span class="input-icon"><i class="fas fa-building"></i></span></td>
-                        <td><input type="text" placeholder="Nama Perusahaan" id="nama" name="nama" required /></td>
-                    </tr>
-                    <tr>
-                        <td><span class="input-icon"><i class="fas fa-id-card"></i></span></td>
-                        <td><input type="text" placeholder="Profil Perusahaan" id="profile" name="profile" required /></td>
-                    </tr>
-                    <tr>
-                        <td><span class="input-icon"><i class="fas fa-user"></i></span></td>
-                        <td><input type="text" placeholder="Nama PIC" id="nama_pic" name="nama_pic" required /></td>
-                    </tr>
-                    <tr>
-                        <td><span class="input-icon"><i class="fas fa-user-tie"></i></span></td>
-                        <td><input type="text" placeholder="Posisi PIC" id="posisi_pic" name="posisi_pic" required /></td>
-                    </tr>
-                    <tr>
-                        <td><span class="input-icon"><i class="fas fa-phone"></i></span></td>
-                        <td><input type="text" placeholder="Nomor Telepon" id="telepon" name="telepon" required /></td>
-                    </tr>
-                </table>
+        <form action="{{ route('companies.store') }}" method="POST">
+            @csrf
+            <div class="register-form row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="nama">Nama Perusahaan</label>
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Isi disini" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="profile">Profil Perusahaan</label>
+                        <input type="text" class="form-control" id="profile" name="profile" placeholder="Masukkan link disini" required>
+                        <small class="form-text text-muted">Dalam bentuk website, media sosial, atau lainnya</small>
+                    </div>
+                    <div class="form-group">
+                        <label for="nama_pic">Nama PIC</label>
+                        <input type="text" class="form-control" id="nama_pic" name="nama_pic" placeholder="Isi disini" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="posisi_pic">Posisi PIC</label>
+                        <input type="text" class="form-control" id="posisi_pic" name="posisi_pic" placeholder="Isi disini" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="telepon">Nomor Telepon PIC</label>
+                        <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Isi disini" required>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="negara">Negara</label>
+                        <select class="form-control" id="negara" name="negara" required>
+                            <option>Pilih Negara</option>
+                            <!-- Tambahkan opsi negara di sini -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="provinsi">Provinsi</label>
+                        <select class="form-control" id="provinsi" name="provinsi" required>
+                            <option>Pilih Provinsi</option>
+                            <!-- Tambahkan opsi provinsi di sini -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="kabupaten">Kabupaten</label>
+                        <select class="form-control" id="kabupaten" name="kabupaten" required>
+                            <option>Pilih Kabupaten</option>
+                            <!-- Tambahkan opsi kabupaten di sini -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="jumlah_karyawan">Jumlah Karyawan</label>
+                        <input type="number" class="form-control" id="jumlah_karyawan" name="jumlah_karyawan" placeholder="Isi disini" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="tipe">Tipe Perusahaan</label>
+                        <input type="text" class="form-control" id="tipe" name="tipe" placeholder="Isi disini" required>
+                    </div>
+                </div>
+                <div class="col-12 text-center">
+                    <button class="btn btn-primary" type="submit" id="simpanBtn">Simpan Data</button>
+                </div>
             </div>
-
-            <div class="informasi-alamat">
-                <table>
-                    <tr>
-                        <td><span class="input-icon"><i class="fas fa-globe"></i></span></td>
-                        <td><input type="text" placeholder="Negara" id="negara" name="negara" required /></td>
-                    </tr>
-                    <tr>
-                        <td><span class="input-icon"><i class="fas fa-map-marker-alt"></i></span></td>
-                        <td><input type="text" placeholder="Provinsi" id="provinsi" name="provinsi" required /></td>
-                    </tr>
-                    <tr>
-                        <td><span class="input-icon"><i class="fas fa-map-marker-alt"></i></span></td>
-                        <td><input type="text" placeholder="Kabupaten" id="kabupaten" name="kabupaten" required /></td>
-                    </tr>
-                    <tr>
-                        <td><span class="input-icon"><i class="fas fa-users"></i></span></td>
-                        <td><input type="number" placeholder="Jumlah Karyawan" id="jumlah_karyawan" name="jumlah_karyawan" required /></td>
-                    </tr>
-                    <tr>
-                        <td><span class="input-icon"><i class="fas fa-industry"></i></span></td>
-                        <td><input type="text" placeholder="Tipe Perusahaan" id="tipe" name="tipe" required /></td>
-                    </tr>
-                    <tr>
-                        <td colspan="2"><button class="btn btn-primary" type="submit" id="simpanBtn">Simpan Data</button></td>
-                    </tr>
-                </table>
-            </div>
-        </div>
+        </form>
     </div>
-</form>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="{{ asset('js/imm/pendaftaran.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script src="{{ asset('js/imm/pendaftaran.js') }}"></script>
 
 </body>
+
 </html>
