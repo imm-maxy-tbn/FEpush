@@ -53,11 +53,12 @@
                         <td><input type="email" placeholder="Masukkan Email" id="email" name="email" required /></td>
                     </tr>
                     <tr>
-                        <td></td>
+                        <td>
                         <td><button class="btn-login" id="loginBtn" type="submit">Verifikasi</button></td>
+                        </td>
                     </tr>
                 </table>
-                <div class="notification" id="notification"></div>
+                <!-- <div class="notification" id="notification"></div> -->
             </form>
         </div>
     </div>
