@@ -104,7 +104,7 @@
         }
 
         .btn-wide {
-            width: 300px; /* Menyesuaikan lebar tombol */
+            width: 300px;
             text-align: center;
         }
 
@@ -119,12 +119,45 @@
         }
 
         .mt-5 {
-            margin-top: 3rem !important; /* Menambahkan margin atas sebesar 3rem */
+            margin-top: 3rem !important;
         }
 
         .scrollable {
             max-height: 200px;
             overflow-y: auto;
+        }
+
+        .upload-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: url('images/2.png') no-repeat center center;
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border: 2px dashed #ccc;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .upload-container input[type="file"] {
+            display: none;
+        }
+
+        .upload-container label {
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .upload-container label i {
+            font-size: 2rem;
+        }
+
+        .hidden {
+            display: none;
         }
     </style>
 </head>
@@ -162,7 +195,13 @@
 <div class="container mt-5 pt-5">
     <div class="row">
         <div class="col-12">
-            <img src="images/2.png" class="header-image" alt="Header Image">
+            <div class="upload-container">
+                <input type="file" id="file-upload" accept="image/*">
+                <label for="file-upload">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <span>Tambahkan foto disini (Ukuran maksimal 2 mb)</span>
+                </label>
+            </div>
         </div>
     </div>
 </div>
@@ -326,10 +365,16 @@
     document.addEventListener('DOMContentLoaded', function() {
         const editIcons = document.querySelectorAll('.edit-icon');
         const saveButton = document.getElementById('save-button');
+        let isButtonVisible = false;
 
         editIcons.forEach(icon => {
             icon.addEventListener('click', function() {
-                saveButton.classList.toggle('hidden');
+                isButtonVisible = !isButtonVisible;
+                if (isButtonVisible) {
+                    saveButton.classList.remove('hidden');
+                } else {
+                    saveButton.classList.add('hidden');
+                }
             });
         });
     });

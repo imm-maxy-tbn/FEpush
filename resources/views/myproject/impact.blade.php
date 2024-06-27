@@ -27,7 +27,7 @@
             margin-bottom: 20px;
         }
         .matrix-section .card-header {
-            background-color: #673ab7;
+            background-color: #5940CB;
             color: white;
             font-weight: bold;
             padding: 10px 15px;
@@ -47,7 +47,7 @@
             border-radius: 5px;
         }
         .matrix-section .btn-save {
-            background-color: #673ab7;
+            background-color: #5940CB;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -59,12 +59,12 @@
             text-align: center;
         }
         .matrix-section .btn-save:hover {
-            background-color: #5e35b1;
+            background-color: #4A35B1;
         }
         .btn-save-custom {
             background-color: transparent;
-            border: 2px solid #673ab7;
-            color: #673ab7;
+            border: 2px solid #5940CB;
+            color: #5940CB;
             border-radius: 5px;
             font-weight: bold;
             cursor: pointer;
@@ -75,19 +75,19 @@
             width: fit-content;
         }
         .btn-save-custom:hover {
-            background-color: #673ab7;
+            background-color: #5940CB;
             color: white;
         }
         .detail-matrix-section {
             margin-top: 20px;
         }
         .detail-matrix-section .card-header {
-            background-color: #673ab7;
+            background-color: #5940CB;
             color: white;
             font-weight: bold;
         }
         .detail-matrix-section .section-title {
-            background-color: #673ab7;
+            background-color: #5940CB;
             color: white;
             padding: 10px;
             border-radius: 5px;
@@ -96,6 +96,49 @@
             background-color: #f5f5f5;
             padding: 20px;
             border-radius: 5px;
+        }
+        .btn-keluar {
+            width: 183px;
+            height: 50px;
+            background-color: white;
+            border: 2px solid #5940CB;
+            color: #5940CB;
+            border-radius: 7px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-masuk {
+            width: 183px;
+            height: 50px;
+            background-color: #5940CB;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .modal-body {
+            margin: 0;
+            padding: 20px;
+        }
+
+        .btnn {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Adds space between buttons */
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -132,7 +175,7 @@
                                     <label for="tahun">Tahun</label>
                                     <input type="text" id="tahun" class="form-control">
                                 </div>
-                                <button type="button" class="btn-save-custom">Simpan Data</button>
+                                <button type="button" class="btn-save-custom" data-toggle="modal" data-target="#confirmationModal">Simpan Data</button>
                             </form>
                         </div>
                     </div>
@@ -210,6 +253,21 @@
             </div>
         </div>
     </footer>
+
+    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content shadow">
+                <div class="modal-body">
+                    <h5 class="modal-title" id="confirmationModalLabel">Apakah data sudah benar?</h5>
+                    <p class="text-muted">Note: Data yang anda tambahkan tidak bisa diubah kembali, pastikan semua input data sudah benar</p>
+                    <div class="btnn">
+                        <button type="button" class="btn btn-keluar" id="confirmUpdate">Belum, cek kembali</button>
+                        <button type="button" class="btn btn-masuk" data-dismiss="modal">Ya, sudah benar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

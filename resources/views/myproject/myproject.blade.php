@@ -21,14 +21,18 @@
             width: 100%;
             z-index: 1000;
         }
+
         body {
-            padding-top: 56px; /* Adjust this value according to the height of your navbar */
+            padding-top: 56px;
+            /* Adjust this value according to the height of your navbar */
         }
+
         .see-all-button {
             display: none;
             text-align: center;
             margin-top: 20px;
         }
+
         .see-all-button button {
             background-color: #6c63ff;
             color: white;
@@ -148,120 +152,116 @@
             </tbody>
         </table>
 
-    <!-- Modal -->
-    <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="projectModalLabel">Select Project</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <select id="projectSelect" class="form-control">
-                        <option value="Maths Department">Maths Department</option>
-                        <option value="Chemistry Department">Chemistry Department</option>
-                        <option value="Physics Department">Physics Department</option>
-                        <option value="Computer Department">Computer Department</option>
-                        <option value="English Department">English Department</option>
-                        <option value="Social Department">Social Department</option>
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="addSelectedProject()">Add
-                        Project</button>
+        <!-- Modal -->
+        <div class="modal fade" id="projectModal" tabindex="-1" role="dialog" aria-labelledby="projectModalLabel"
+            aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="projectModalLabel">Select Project</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <select id="projectSelect" class="form-control">
+                            <option value="Maths Department">Maths Department</option>
+                            <option value="Chemistry Department">Chemistry Department</option>
+                            <option value="Physics Department">Physics Department</option>
+                            <option value="Computer Department">Computer Department</option>
+                            <option value="English Department">English Department</option>
+                            <option value="Social Department">Social Department</option>
+                        </select>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary" onclick="addSelectedProject()">Add
+                            Project</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <h2 class="project-title mb-5 mt-5">Done Projects</h2>
-<div class="card mt-3 done-projects-card">
-    <div class="card-header d-flex justify-content-between align-items-center done-projects-header">
-        <span>Project Completed</span>
-        <div class="dropdown">
-            <button class="btn btn-outline-primary dropdown-toggle done-projects-dropdown-toggle" type="button"
-                id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span>Monthly</span> <i class="fas fa-calendar-alt ml-2"></i>
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                <a class="dropdown-item" href="#">Daily</a>
-                <a class="dropdown-item" href="#">Weekly</a>
-                <a class="dropdown-item" href="#">Monthly</a>
+        <h2 class="project-title mb-5 mt-5">Done Projects</h2>
+        <div class="card mt-3 done-projects-card">
+            <div class="card-header d-flex justify-content-between align-items-center done-projects-header">
+                <span>Proyek Selesai</span>
+                <div class="dropdown">
+                    <button class="btn btn-outline-primary dropdown-toggle done-projects-dropdown-toggle" type="button"
+                        id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span>Bulan</span> <i class="fas fa-calendar-alt ml-2"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                        <a class="dropdown-item" href="#">Hari</a>
+                        <a class="dropdown-item" href="#">Minggu</a>
+                        <a class="dropdown-item" href="#">Bulan</a>
+                    </div>
+                </div>
             </div>
+            <table class="table mt-3 done-projects-table">
+                <thead>
+                    <tr>
+                        <th>Nama Proyek</th>
+                        <th>tanggal penyelesaian</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="done-project-list">
+                    <!-- Existing completed projects -->
+                    <tr>
+                        <td>Social Department</td>
+                        <td>Oct 17, 2023</td>
+                        <td><span class="badge badge-success">SELESAI</span></td>
+                    </tr>
+                    <tr>
+                        <td>Computer Department</td>
+                        <td>Oct 17, 2023</td>
+                        <td><span class="badge badge-success">SELESAI</span></td>
+                    </tr>
+                    <tr>
+                        <td>Chemistry Department</td>
+                        <td>Oct 17, 2023</td>
+                        <td><span class="badge badge-success">SELESAI</span></td>
+                    </tr>
+                    <tr>
+                        <td>Math Department</td>
+                        <td>Oct 17, 2023</td>
+                        <td><span class="badge badge-success">SELESAI</span></td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-    <table class="tablee mt-3 done-projects-table">
-        <thead>
-            <tr>
-                <th>Project Name</th>
-                <th>Completion Date</th>
-                <th>Status</th>
-                <th>Laporan in Docs</th>
-            </tr>
-        </thead>
-        <tbody id="done-project-list">
-            <!-- Existing completed projects -->
-            <tr>
-                <td>Social Department</td>
-                <td>Oct 17, 2023</td>
-                <td><span class="badge badge-success">FINISHED</span></td>
-                <td><a href="#"><i class="fas fa-download"></i></a></td>
-            </tr>
-            <tr>
-                <td>Computer Department</td>
-                <td>Oct 17, 2023</td>
-                <td><span class="badge badge-success">FINISHED</span></td>
-                <td><a href="#"><i class="fas fa-download"></i></a></td>
-            </tr>
-            <tr>
-                <td>Chemistry Department</td>
-                <td>Oct 17, 2023</td>
-                <td><span class="badge badge-success">FINISHED</span></td>
-                <td><a href="#"><i class="fas fa-download"></i></a></td>
-            </tr>
-            <tr>
-                <td>Math Department</td>
-                <td>Oct 17, 2023</td>
-                <td><span class="badge badge-success">FINISHED</span></td>
-                <td><a href="#"><i class="fas fa-download"></i></a></td>
-            </tr>
-        </tbody>
-    </table>
-</div>
 
     <footer>
-    <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
-        <div class="row d-flex  justify-content-center align-items-center">
-            <div class="col-4 d-flex flex-column" style="gap: 20px">
-                <h5 class=" text-white  text-left">IMM</h5>
-                <span class="span-footer text-left">Impact Measurement and Management
+        <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
+            <div class="row d-flex  justify-content-center align-items-center">
+                <div class="col-4 d-flex flex-column" style="gap: 20px">
+                    <h5 class=" text-white  text-left">IMM</h5>
+                    <span class="span-footer text-left">Impact Measurement and Management
                         <br> (TBN INDONESIA X MAXY ACADEMY)</span>
-            </div>
-            <div class="col-5 d-flex justify-content-center align-items-center">
-                <ul class=" d-flex " style="gap: 30px">
-                    <a href="/"><li>HomePage</li></a>
-                    <a href="bootcamp"><li>Bootcamp</li></a>
-                    <a href="imm"><li>IMM</li></a>
-                    <a href="#"><li>Comunity</li></a>
-                    <a href="profile"><li>Profile</li></a>
-                </ul>
-            </div>
-            <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
-                <span class="span-footer text-center">Sosial Media</span>
-                <div class="sosmed d-flex justify-content-end  ">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="col-5 d-flex justify-content-center align-items-center">
+                    <ul class=" d-flex " style="gap: 30px">
+                        <a href="/"><li>HomePage</li></a>
+                        <a href="bootcamp"><li>Bootcamp</li></a>
+                        <a href="imm"><li>IMM</li></a>
+                        <a href="#"><li>Comunity</li></a>
+                        <a href="profile"><li>Profile</li></a>
+                    </ul>
+                </div>
+                <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
+                    <span class="span-footer text-center">Sosial Media</span>
+                    <div class="sosmed d-flex justify-content-end  ">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</footer>
+    </footer>
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" async></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" async></script>
@@ -319,26 +319,22 @@
             {
                 name: "Social Department",
                 completionDate: "Oct 17, 2023",
-                status: "FINISHED",
-                laporanLink: "#"
+                status: "SELESAI"
             },
             {
                 name: "Computer Department",
                 completionDate: "Oct 17, 2023",
-                status: "FINISHED",
-                laporanLink: "#"
+                status: "SELESAI"
             },
             {
                 name: "Chemistry Department",
                 completionDate: "Oct 17, 2023",
-                status: "FINISHED",
-                laporanLink: "#"
+                status: "SELESAI"
             },
             {
                 name: "Math Department",
                 completionDate: "Oct 17, 2023",
-                status: "FINISHED",
-                laporanLink: "#"
+                status: "SELESAI"
             }
         ];
 
@@ -448,7 +444,6 @@
                             <td>${project.name}</td>
                             <td>${project.completionDate}</td>
                             <td><span class="badge badge-success">${project.status}</span></td>
-                            <td><a href="${project.laporanLink}"><i class="fas fa-download"></i></a></td>
                         </tr>
                     `;
                     doneProjectList.innerHTML += completedProject;
@@ -494,8 +489,7 @@
             completedProjects.push({
                 name: project.name,
                 completionDate: "Oct 17, 2023",
-                status: "FINISHED",
-                laporanLink: "#",
+                status: "SELESAI"
             });
             displayProjects();
         }
@@ -546,8 +540,8 @@
         renderCalendar();
         displayProjects();
 
-        document.addEventListener("DOMContentLoaded", function () {
-            setTimeout(function () {
+        document.addEventListener("DOMContentLoaded", function() {
+            setTimeout(function() {
                 var loading = document.getElementById("loading");
                 loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
             }, 1000); // 3000 milidetik = 3 detik
