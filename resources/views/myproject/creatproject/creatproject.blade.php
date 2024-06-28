@@ -148,7 +148,7 @@
                             <div class="section-img">
                                 <h5>Unggah Foto Sampul Proyek</h5>
                                 <p>Gunakan foto Default</p>
-                               enctype="multipart/form-data"> <label for="imageInput" class="choose-file-label">
+                               <label for="imageInput" class="choose-file-label">
                                     <div class="unggah-image">
                                          <img id="previewImage" src="" alt="Unggah foto sampul 1920x1080
 (.png, .jpg, .jpeg) Maximal 5 MB">

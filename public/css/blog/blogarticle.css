@@ -2,6 +2,7 @@
 body,
 html {
     font-family: "Quicksand", sans-serif;
+    padding-top: 30px;
 }
 
 
@@ -81,7 +82,7 @@ html {
     font-weight: bold;
     margin: 0 auto;
     max-width: 500px;
-    color: #4b0082;
+    color: #000;
     margin-bottom: 10px;
     text-align: center;
 }
@@ -89,7 +90,7 @@ html {
 .blog-author,
 .blog-date {
     font-size: 16px;
-    color: #4b0082;
+    color: #000;
 }
 
 .blog-author {
@@ -99,7 +100,7 @@ html {
 .section-title {
     font-size: 24px;
     font-weight: 400;
-    color: #4b0082;
+    color: #000;
     margin-top: 20px;
 }
 

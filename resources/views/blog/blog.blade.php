@@ -13,13 +13,10 @@
 
 <body>
 <div class="container mt-5">
-    <div class="btn">
-    <a href="/blog"><button class="btn-blog">Blog Artikel</button></a>
-    <a href="/event"><button class="btn-event">Event</button></a>
-    </div>
+<h5 class=" text-center mb-5">Temukan wawasan tentang dampak baru disini</h5>
     <div class="search-container mt-4">
         <input type="text" class="form-control" placeholder="cari disini" id="searchInput">
-        <button onclick="searchBlog()"><i class="fas fa-search"></i></button>
+        <button onclick="searchBlog()" class="btn-search"><i class="fas fa-search"></i></button>
     </div>
     <div class="row" id="blogContainer">
         <!-- Blog cards will be inserted here by JavaScript -->
@@ -58,7 +55,7 @@
             blogCard.innerHTML = `
                 <a href="/blogarticle/${post.id}/view">
                     <div class="blog-image" style="background-image: url(${post.img});"></div>
-                    <h3>${post.title}</h3>
+                    <h3 class="title">${post.title}</h3>
                     <p>${post.content}</p>
                 </a>
             `;

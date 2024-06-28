@@ -104,7 +104,7 @@
             </div>
             <div class="btn-container">
                 <button type="button" class="btn export-btn">Export</button>
-                <button type="button" class="btn save-btn">Save</button>
+                <a href="detail"><button type="button" class="btn save-btn">Save</button></a>
             </div>
         </div>
     </div>

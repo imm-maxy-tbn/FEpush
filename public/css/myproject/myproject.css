@@ -458,6 +458,10 @@ body {
     text-decoration: none;
 }
 
+.btn {
+    width: 120px;
+}
+
 .start-survey-btn:hover {
     background-color: #574dcf;
 }
@@ -537,6 +541,10 @@ body {
 .tableee td {
     background-color: #ffffff;
     border-radius: 5px;
+}
+
+.card {
+    border-radius: 15px;
 }
 
 .project-card {

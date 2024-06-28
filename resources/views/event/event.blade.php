@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.app-imm')
 @section('title', 'Event')
 
 @section('css')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/event/eventt.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/blog/blog.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -80,33 +80,32 @@
 @endsection
 @section('content')
 
-    <body>
-        <div class="container mt-5">
-            <div class="btn">
-                <a href="/blog"><button class="btn-blog">Event Artikel</button></a>
-                <a href="/event"> <button class="btn-event">Event</button></a>
-            </div>
-            <div class="search-container mt-4">
-                <input type="text" class="form-control" placeholder="cari disini" id="searchInput">
-                <button onclick="searchBlog()"><i class="fas fa-search"></i></button>
-            </div>
-            <div class="row" id="blogContainer">
-                <!-- Blog cards will be inserted here by JavaScript -->
-            </div>
-            <div class="pagination-container">
-                <p>Halaman <span id="currentPage">1</span> dari 123</p>
-            </div>
-            <div class="subscribe-container">
-                <p>Jangan tertinggal artikel seputar gerakan berdampak!</p>
-                <p><strong>Langganan melalui e-mail sekarang GRATIS</strong></p>
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="masukkan e-mail anda disini">
-                    <div class="input-group-append">
-                        <button class="btn btn-primary" type="button"><i class="fas fa-envelope"></i></button>
-                    </div>
-                </div>
+<body>
+    <div class="container mt-5">
+    <h5 class=" text-center mb-5">Temukan wawasan tentang dampak baru disini</h5>
+        <div class="search-container mt-4">
+            <input type="text" class="form-control" placeholder="cari disini" id="searchInput">
+            <button onclick="searchBlog()" class="btn-search"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="row" id="blogContainer">
+            <!-- Blog cards will be inserted here by JavaScript -->
+        </div>
+        <div class="pagination-container">
+            <p>Halaman <span id="currentPage">1</span> dari 123</p>
+        </div>
+        <div class="subscribe-container d-flex flex-column align-items-center justify-content-center">
+            <p>Jangan tertinggal artikel seputar gerakan berdampak!</p>
+            <p class=" mt-2 mb-2"><strong>Langganan melalui e-mail sekarang GRATIS</strong></p>
+            <div class="input-group mb-3 d-flex justify-content-center">
+                <input type="text" class="form-control" placeholder="masukkan e-mail anda disini">
+                <button class="btnn btn-primary" type="button"><i class="fas fa-envelope"></i></button>
+    
             </div>
         </div>
+    </div>
+
+
+    
 
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"

@@ -34,8 +34,9 @@
         display: flex;
         align-items: center;
         justify-content: start;
-        background-color: #d2cce2;
+        background-color: #E6E3F1;
         padding: 20px 0;
+        border-radius: 10px
     }
 
     .profile-section {
@@ -132,7 +133,7 @@
                 <h2 class="mb-3"> {{$user->nama_depan}} {{$user->nama_belakang}} </h2>
                 <p><i class="fas fa-phone"> {{$user->telepon}}</i></p>
                 <p><i class="fas fa-envelope"></i> {{$user->alamat}}</p>
-                <span><i class="fas fa-map-marker-alt"></i>asdsaaaaadddddddddddddddddddaaaaaaaaassssssssssssaaaaaaa </span> <br>
+                <span><i class="fas fa-map-marker-alt"></i> {{$user->alamat}} </span> <br>
                 <a href="edit" class="btn btn-outline-secondary mt-3">
                     <i class="fas fa-edit"></i> Edit
                 </a>

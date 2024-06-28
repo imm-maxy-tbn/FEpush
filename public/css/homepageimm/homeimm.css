@@ -10,23 +10,27 @@ body {
     list-style-type: none;
 }
 
+.edit-icon {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #007bff;
+}
+
+.btn-kelola {
+    width: 240px;
+    height: 43px;
+    background-color: #524eff;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
 
 /* end footer */
 
-.dashboard-image {
-    width: 219px;
-    height: 142px;
-    position: relative;
-    top: -139px;
-    right: -445px;
-}
-
-.box {
-    background-color: white;
-    border-radius: 4px;
-    text-align: center;
-    padding: 14px;
-    border: 1px solid #d1d1d1;
+.boxx {
+    gap: 40px;
 }
 
 .box1 {
@@ -34,7 +38,7 @@ body {
     padding: 10px;
     border-radius: 17px;
     text-align: center;
-    width: 246px;
+    width: 100%;
     border: 1px solid #d1d1d1;
 }
 
@@ -44,7 +48,7 @@ body {
     padding: 10px;
     border-radius: 14px;
     text-align: center;
-    width: 246px;
+    width: 100%;
 }
 
 .balance-card,
@@ -86,72 +90,6 @@ p {
     top: -9px;
 }
 
-.analytics-title {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-}
-
-.progress-bar-container {
-    width: 100%;
-    background-color: #f0f0f0;
-}
-
-.progress {
-    height: 20px;
-    background-color: #ced0d2;
-    border-radius: 10px;
-    margin: 0;
-}
-
-.progress-bar {
-    height: 100%;
-    background-color: #5940cb;
-    border-radius: 10px;
-}
-
-.report-container {
-    background-size: cover;
-    background-position: center;
-    width: 100%;
-    height: 336px;
-    border-radius: 20px;
-}
-
-.report-container .btn-report {
-    background-color: rgb(106, 90, 205);
-    color: white;
-    border: none;
-    padding: 14px 34px;
-    border-radius: 9px;
-    position: relative;
-    top: 75px;
-    display: flex;
-    align-items: center;
-    transition: all 0.3s ease;
-    /* Animasi transisi yang halus untuk semua properti */
-}
-
-.report-container .btn-report:hover,
-.report-container .btn-report:focus {
-    background-color: rgb(126, 110, 225);
-    /* Menerangkan warna latar saat hover atau fokus */
-    transform: scale(1.05);
-    /* Membesar sedikit saat di-hover atau di-focus */
-    box-shadow: 0 8px 16px rgba(106, 90, 205, 0.2);
-    /* Menambah bayangan untuk efek "mengangkat" */
-}
-
-.report-container .btn-report:active {
-    transform: scale(0.95);
-    /* Mengecil sedikit saat diklik */
-}
-
-.report-container .btn-report i {
-    margin-right: 10px;
-    /* Jarak antara ikon dan teks */
-}
-
 h4 {
     font-size: 39px;
     /* Ukuran font yang lebih besar */
@@ -187,98 +125,6 @@ h4 {
 .col-6 {
     flex: 0 0 50%;
     max-width: 50%;
-}
-
-#notificationText {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    font-weight: bold;
-}
-
-#dropdownContent {
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background-color: #f9f9f9;
-    min-width: 100%;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-    border-radius: 5px;
-    overflow: hidden;
-}
-
-#dropdownContent a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-#dropdownContent a:hover {
-    background-color: #f1f1f1;
-}
-
-.notification-section.active #dropdownContent {
-    display: block;
-}
-
-.notification-section p {
-    margin: 8px;
-    font-weight: bold;
-    position: absolute;
-    top: -20px;
-    right: 427px;
-}
-
-.notification-section i {
-    cursor: pointer;
-    position: relative;
-    top: -2px;
-    right: -19px;
-    font-size: 23px;
-}
-
-.notification-section i:hover {
-    color: #007bff;
-    /* Change icon color on hover */
-}
-
-.dropdown-content {
-    display: none;
-    /* Initially hide the dropdown content */
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: #ddd;
-}
-
-.notification-section #notificationText .fa-bell {
-    margin-right: -103px;
-    margin-top: 2px;
-}
-
-.notification-section #notificationText .fa-bell {
-    font-size: 20px;
-    /* Ukuran ikon lonceng */
-}
-
-.notification-section #notificationText .fa-bell {
-    color: #ffcc00;
-    /* Warna ikon lonceng */
 }
 
 .sdg-container {

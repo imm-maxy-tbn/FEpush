@@ -12,6 +12,7 @@ class EventController extends Controller
 {
     public function index()
     {
+        
         $currentDateTime = Carbon::now();
 
         // Filter events where the deadline is in the future

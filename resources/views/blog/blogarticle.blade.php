@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app-imm')
 @section('title', 'Artikel')
 
 @section('css')<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -13,13 +13,8 @@
  
 
     <div class="container mt-5">
-        <div class="ad-container">
-            <div class="ad-content">
-                <p>Iklan</p>
-            </div>
-        </div>
-        <div class="back-link">
-            <a href="/blog"><i class="fas fa-arrow-left"></i> Blog</a>
+                <div class="back-link">
+            <a href="/blog"><i class="fas fa-arrow-left mr-4"></i> Artikel</a>
         </div>
     </div>
 

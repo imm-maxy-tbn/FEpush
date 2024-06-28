@@ -46,25 +46,16 @@
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
-                        <label for="negara">Negara</label>
-                        <select class="form-control" id="negara" name="negara" required>
-                            <option>Pilih Negara</option>
-                            <!-- Tambahkan opsi negara di sini -->
-                        </select>
+                        <label for="posisi_pic">Negara</label>
+                        <input type="text" class="form-control" id="posisi_pic" name="negara" placeholder="Isi disini" required>
                     </div>
                     <div class="form-group">
-                        <label for="provinsi">Provinsi</label>
-                        <select class="form-control" id="provinsi" name="provinsi" required>
-                            <option>Pilih Provinsi</option>
-                            <!-- Tambahkan opsi provinsi di sini -->
-                        </select>
+                        <label for="posisi_pic">Provinsi</label>
+                        <input type="text" class="form-control" id="posisi_pic" name="provinsi" placeholder="Isi disini" required>
                     </div>
                     <div class="form-group">
-                        <label for="kabupaten">Kabupaten</label>
-                        <select class="form-control" id="kabupaten" name="kabupaten" required>
-                            <option>Pilih Kabupaten</option>
-                            <!-- Tambahkan opsi kabupaten di sini -->
-                        </select>
+                        <label for="posisi_pic">Kabupaten</label>
+                        <input type="text" class="form-control" id="posisi_pic" name="kabupaten" placeholder="Isi disini" required>
                     </div>
                     <div class="form-group">
                         <label for="jumlah_karyawan">Jumlah Karyawan</label>

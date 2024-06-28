@@ -77,7 +77,7 @@
               
                
                 <div class="form-buttons">
-                    <button class="btn-back" onclick="window.location.href='profile'">Kembali</button>
+                   <a href="profile"> <button class="btn-back">Kembali</button></a>
                     <button type="submit" class="btn-save">Simpan</button>
                 </div>
         </div>

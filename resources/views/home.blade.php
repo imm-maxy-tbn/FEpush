@@ -76,31 +76,31 @@
         <div class="container bagaimana ">
             <h5 class="text-center text-content m-5">Bagaimana caranya?</h5>
             <div class="row d-flex justify-content-center">
-                <div class="col-3 d-flex ">
-                    <div class="bulat"></div>
-                    <div class="text">
-                        <h5>Definisikan tujuan dampak anda</h5>
+                <div class="col-3 d-flex align-items-start">
+                    <img src="/images/bulat.svg"  alt="">
+                    <div class="text ml-3">
+                        <h5 class="mb-3"><strong>Definisikan tujuan dampak anda</strong></h5>
                         <p>Tentukan tujuan dengan tag dampak dan 17 point SDGs</p>
                     </div>
                 </div>
-                <div class="col-3 d-flex ">
-                    <div class="bulat"></div>
-                    <div class="text">
-                        <h5>Atur Metrik anda</h5>
+                <div class="col-3 d-flex align-items-start">
+                    <img src="/images/bulat.svg"  alt="">
+                    <div class="text ml-3">
+                        <h5 class="mb-3"><strong>Atur Metrik anda</strong></h5>
                         <p>Pilihan metrik yang beragam sesuai dengan kebutuhan dampak organisasi</p>
                     </div>
                 </div>
-                <div class="col-3 d-flex ">
-                    <div class="bulat"></div>
-                    <div class="text">
-                        <h5>Kumpulkan dan analisa data</h5>
+                <div class="col-3 d-flex align-items-start">
+                    <img src="/images/bulat.svg"  alt="">
+                    <div class="text ml-3">
+                        <h5 class="mb-3"><strong>Kumpulkan dan analisa data</strong></h5>
                         <p>Didukung dengan fitur survey dan visualisasi data</p>
                     </div>
                 </div>
-                <div class="col-3 d-flex ">
-                    <div class="bulat"></div>
-                    <div class="text">
-                        <h5>Hasilkan laporan</h5>
+                <div class="col-3 d-flex align-items-start">
+                    <img src="/images/bulat.svg"  alt="">
+                    <div class="text ml-3">
+                        <h5 class="mb-3"><strong>Hasilkan laporan</strong></h5>
                         <p>Dokumentasi dampak anda dalam bentuk laporan komprehensif</p>
                     </div>
                 </div>

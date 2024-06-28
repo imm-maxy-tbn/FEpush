@@ -274,6 +274,22 @@ Route::get('/responden-esay', function () {
     return view('survey.responden.responden-esay');
 });
 
+Route::get('/kelolapengeluaran', function () {
+    return view('homepageimm.kelolapengeluaran');
+});
+
+Route::get('/detailbiaya', function () {
+    return view('homepageimm.detailbiaya');
+});
+
+Route::get('/unggahdokumen', function () {
+    return view('myproject.creatproject.unggahdokumen');
+});
+
+Route::get('/tambahpenggunaandana', function () {
+    return view('homepageimm.tambahpenggunaandana');
+});
+
 Route::get('/responden-pilihan-ganda', function () {
     return view('survey.responden.responden-pilihan-ganda');
 });

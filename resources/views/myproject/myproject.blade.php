@@ -63,9 +63,9 @@
                 </div>
             </div>
             <div class="col-md-4 text-right">
-                <button class="btn btn-primary btn-create-project" data-toggle="modal"
-                    data-target="#projectModal">Create New Project</button>
-            </div>
+                <a href="creatproject">
+                <button class="btn btn-primary btn-create-project">Create New Project</button>
+            </div></a>
         </div>
         <div class="section d-flex justify-content-between justify-content-center">
         <h4 class="project-title mb-5 mt-5">Semua Proyek ({{ $projects->count() }})</h4>
@@ -85,9 +85,11 @@
                             <div class="card project-card" style="min-height: 300px">
                                 <img height="150px" src="{{ env('APP_BACKEND_URL') . '/images/' . $project->img }}" class="card-img-top" alt="">
                                 <div class="card-body">
-                                    <h5 class="card-title">{{ $project->nama }}</h5>
-                                    <button class="btn btn-danger mt-2" onclick="deleteProject('project-{{ $project->id }}', {{ $index }})">Delete</button>
-                                    <a href="{{ route('projects.view', $project->id) }}" class="btn btn-secondary btn-detail mt-2">Detail</a>
+                                    <h5 class="card-title">{{ $project->nama }}</h5>   
+                                    <div class=" d-flex">
+                                    <a href="detail" class="btn btn-secondary btn-detail mt-2">Detail</a>
+                                    <button class="btn btn-danger mt-2" onclick="deleteProject('project-{{ $project->id }}', {{ $index }})">Delete</button></div>
+                              
                                 </div>
                             </div>
                         </div>
