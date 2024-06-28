@@ -159,30 +159,80 @@ border: 1px solid #d1d1d1;
     </div>
   </div>
 
-   
-    <div class="container mt-5">
-        <div class="sdg-container">
-            <div class="grid">
-                <div class="grid-item" data-index="1"><img src="images/E-WEB-Goal-1.png" alt="Goal 1"></div>
-                <div class="grid-item" data-index="2"><img src="images/E-WEB-Goal-2.png" alt="Goal 2"></div>
-                <div class="grid-item" data-index="3"><img src="images/E-WEB-Goal-3.png" alt="Goal 3"></div>
-                <div class="grid-item" data-index="4"><img src="images/E-WEB-Goal-4.png" alt="Goal 4"></div>
-                <div class="grid-item" data-index="5"><img src="images/E-WEB-Goal-5.png" alt="Goal 5"></div>
-                <div class="grid-item" data-index="6"><img src="images/E-WEB-Goal-6.png" alt="Goal 6"></div>
-                <div class="grid-item" data-index="7"><img src="images/E-WEB-Goal-7.png" alt="Goal 7"></div>
-                <div class="grid-item" data-index="8"><img src="images/E-WEB-Goal-8.png" alt="Goal 8"></div>
-                <div class="grid-item" data-index="9"><img src="images/E-WEB-Goal-9.png" alt="Goal 9"></div>
-                <div class="grid-item" data-index="10"><img src="images/E-WEB-Goal-10.png" alt="Goal 10"></div>
-                <div class="grid-item" data-index="11"><img src="images/E-WEB-Goal-11.png" alt="Goal 11"></div>
-                <div class="grid-item" data-index="12"><img src="images/E-WEB-Goal-12.png" alt="Goal 12"></div>
-                <div class="grid-item" data-index="13"><img src="images/E-WEB-Goal-13.png" alt="Goal 13"></div>
-                <div class="grid-item" data-index="14"><img src="images/E-WEB-Goal-14.png" alt="Goal 14"></div>
-                <div class="grid-item" data-index="15"><img src="images/E-WEB-Goal-15.png" alt="Goal 15"></div>
-                <div class="grid-item" data-index="16"><img src="images/E-WEB-Goal-16.png" alt="Goal 16"></div>
-                <div class="grid-item" data-index="17"><img src="images/E-WEB-Goal-17.png" alt="Goal 17"></div>
-            </div>
-        </div>
-    </div>
+  Untuk membuat gambar SDGs yang dipilih oleh perusahaan menjadi tidak transparan (menyala) saat dipilih, kita dapat menggunakan jQuery untuk menambahkan atau menghapus kelas CSS yang mengatur transparansi. Berikut langkah-langkah yang perlu diikuti:
+
+  Tambahkan kelas CSS untuk mengatur transparansi gambar yang belum dipilih:
+  css
+  Copy code
+  .sdg-item img.transparent {
+      opacity: 0.5;
+  }
+  .sdg-item img.selected {
+      opacity: 1;
+  }
+  Update HTML agar gambar SDGs memiliki kelas transparent secara default:
+  Tambahkan kelas transparent ke gambar SDGs saat dimuat pertama kali.
+  
+  html
+  Copy code
+  <div class="container mt-5">
+      <div class="sdg-container">
+          <div class="grid">
+              <div class="grid-item" data-index="1">
+                  <img src="images/E-WEB-Goal-1.png" alt="Goal 1" class="transparent">
+              </div>
+              <div class="grid-item" data-index="2">
+                  <img src="images/E-WEB-Goal-2.png" alt="Goal 2" class="transparent">
+              </div>
+              <div class="grid-item" data-index="3">
+                  <img src="images/E-WEB-Goal-3.png" alt="Goal 3" class="transparent">
+              </div>
+              <div class="grid-item" data-index="4">
+                  <img src="images/E-WEB-Goal-4.png" alt="Goal 4" class="transparent">
+              </div>
+              <div class="grid-item" data-index="5">
+                  <img src="images/E-WEB-Goal-5.png" alt="Goal 5" class="transparent">
+              </div>
+              <div class="grid-item" data-index="6">
+                  <img src="images/E-WEB-Goal-6.png" alt="Goal 6" class="transparent">
+              </div>
+              <div class="grid-item" data-index="7">
+                  <img src="images/E-WEB-Goal-7.png" alt="Goal 7" class="transparent">
+              </div>
+              <div class="grid-item" data-index="8">
+                  <img src="images/E-WEB-Goal-8.png" alt="Goal 8" class="transparent">
+              </div>
+              <div class="grid-item" data-index="9">
+                  <img src="images/E-WEB-Goal-9.png" alt="Goal 9" class="transparent">
+              </div>
+              <div class="grid-item" data-index="10">
+                  <img src="images/E-WEB-Goal-10.png" alt="Goal 10" class="transparent">
+              </div>
+              <div class="grid-item" data-index="11">
+                  <img src="images/E-WEB-Goal-11.png" alt="Goal 11" class="transparent">
+              </div>
+              <div class="grid-item" data-index="12">
+                  <img src="images/E-WEB-Goal-12.png" alt="Goal 12" class="transparent">
+              </div>
+              <div class="grid-item" data-index="13">
+                  <img src="images/E-WEB-Goal-13.png" alt="Goal 13" class="transparent">
+              </div>
+              <div class="grid-item" data-index="14">
+                  <img src="images/E-WEB-Goal-14.png" alt="Goal 14" class="transparent">
+              </div>
+              <div class="grid-item" data-index="15">
+                  <img src="images/E-WEB-Goal-15.png" alt="Goal 15" class="transparent">
+              </div>
+              <div class="grid-item" data-index="16">
+                  <img src="images/E-WEB-Goal-16.png" alt="Goal 16" class="transparent">
+              </div>
+              <div class="grid-item" data-index="17">
+                  <img src="images/E-WEB-Goal-17.png" alt="Goal 17" class="transparent">
+              </div>
+              
+          </div>
+      </div>
+  </div>
 
    
 
@@ -190,7 +240,65 @@ border: 1px solid #d1d1d1;
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>$(document).ready(function() {
+    // Ketika SDG item diklik, toggle checkbox dan update transparansi gambar
+    $('.sdg-item').on('click', function(e) {
+        if (!$(e.target).is('.sdg-checkbox')) {
+            var checkbox = $(this).find('.sdg-checkbox');
+            checkbox.prop('checked', !checkbox.prop('checked')).trigger('change');
+        }
 
+        var description = $(this).next('.sdg-description');
+        description.slideToggle();
+
+        // Toggle the rotation class on the arrow icon
+        $(this).find('.sdg-toggle').toggleClass('rotate-180');
+    });
+
+    // Stop checkbox click event from propagating to the parent div
+    $('.sdg-checkbox').on('click', function(e) {
+        e.stopPropagation();
+    });
+
+    // Update gambar saat checkbox berubah status
+    $('.sdg-checkbox').on('change', function() {
+        var img = $(this).closest('.sdg-item').find('img');
+        if ($(this).prop('checked')) {
+            img.removeClass('transparent').addClass('selected');
+        } else {
+            img.removeClass('selected').addClass('transparent');
+        }
+    });
+
+    // Inisialisasi gambar berdasarkan status checkbox saat page load
+    $('.sdg-checkbox').each(function() {
+        var img = $(this).closest('.sdg-item').find('img');
+        if ($(this).prop('checked')) {
+            img.removeClass('transparent').addClass('selected');
+        } else {
+            img.removeClass('selected').addClass('transparent');
+        }
+    });
+
+    $('#next-to-indicator-section').on('click', function() {
+        $('.goal-description').hide();
+
+        var selectedSdgs = $('.sdg-checkbox:checked');
+
+        selectedSdgs.each(function() {
+            var sdgId = $(this).val();
+            $('#goal' + sdgId + '-description').show();
+        });
+
+        $('#sdg-section').hide();
+        $('#indicator-section').show();
+    });
+
+    $('#back-to-sdg-section').on('click', function() {
+        $('#indicator-section').hide();
+        $('#sdg-section').show();
+    });
+});</script>
     <script>
      </body>
 
