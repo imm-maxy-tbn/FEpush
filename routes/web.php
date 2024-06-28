@@ -304,10 +304,6 @@ Route::get('/responden-penutup-survey', function () {
 
 
 
-Route::get('/event', function () {
-    return view('event.event');
-});
-
 Route::get('/event-detail', function () {
     return view('event.event-detail');
 });

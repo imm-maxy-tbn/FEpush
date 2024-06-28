@@ -1,5 +1,5 @@
 @extends('layouts.app-imm')
-@section('title', '')
+@section('title', 'Create Project')
 
 @section('css')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
@@ -691,11 +691,11 @@ $('#next-to-metric-section').on('click', function() {
     var selectedIndicators = $('.indicator-checkbox:checked').map(function() {
         return $(this).val();
     }).get();
-    
     $(document).ready(function() {
     var currentPage = 1; // Initial page
     var totalPages = 1; // Total pages, will be updated after receiving response from server
     var selectedMetricsIds = {}; // Object to store selected metric IDs
+    var allMetrics = {}; // Object to store all fetched metrics
 
     // Function to fetch metrics based on selected tags and indicators
     function fetchMetrics() {
@@ -710,6 +710,9 @@ $('#next-to-metric-section').on('click', function() {
             },
             success: function(response) {
                 $('#metrics').empty(); // Clear existing metrics
+
+                // Store all fetched metrics
+                allMetrics[currentPage] = response.data;
 
                 // Iterate through metrics and append to #metrics container
                 $.each(response.data, function(index, metric) {
@@ -802,6 +805,33 @@ $('#next-to-metric-section').on('click', function() {
             }
         });
     }
+
+    // Function to gather all selected metrics
+    function gatherAllSelectedMetrics() {
+        $('#metrics').empty();
+        for (var page in allMetrics) {
+            $.each(allMetrics[page], function(index, metric) {
+                if (selectedMetricsIds[metric.id]) {
+                    var metricHtml = `
+                        <div class="d-flex align-items-center justify-content-between p-3 my-3 border">
+                            <div class="metric-text">
+                                <h5 style="color:#5940CB">(${metric.code}) ${metric.name}</h5>
+                                <p class="mb-0 sdg-name-metric">${metric.definition}</p>
+                            </div>
+                        </div>
+                    `;
+                    $('#metrics').append(metricHtml);
+                }
+            });
+        }
+    }
+
+    // Event handler for "Simpan dan Lanjutkan" button
+    $('#next-to-review-section').on('click', function() {
+        gatherAllSelectedMetrics();
+        $('#metric-section').hide();
+        $('#review-section').show(); // Assuming you have a section with ID 'review-section'
+    });
 
     // Initial fetch for metrics
     fetchMetrics();
