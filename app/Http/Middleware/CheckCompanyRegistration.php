@@ -18,10 +18,17 @@ class CheckCompanyRegistration
     {
         $user = Auth::user();
 
-        if ($user->company) {
-            return redirect()->route('homepage');
+        if (!$user) {
+            // Jika pengguna tidak terautentikasi, arahkan ke halaman login
+            return redirect()->route('login');
         }
 
-        return redirect()->route('verifikasidiri');
+        if (!$user->companies) {
+            // Jika pengguna tidak memiliki perusahaan, arahkan ke halaman verifikasi diri
+            return redirect()->route('verifikasidiri');
+        }
+
+        // Jika pengguna memiliki perusahaan, lanjutkan ke rute yang diminta
+        return $next($request);
     }
 }
