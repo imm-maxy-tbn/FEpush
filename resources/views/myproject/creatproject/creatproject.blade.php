@@ -806,7 +806,7 @@ $('#next-to-metric-section').on('click', function() {
         });
     }
 
-    // Function to gather all selected metrics
+    // Function to gather all selected metrics and display them
     function gatherAllSelectedMetrics() {
         $('#metrics').empty();
         for (var page in allMetrics) {
@@ -818,6 +818,7 @@ $('#next-to-metric-section').on('click', function() {
                                 <h5 style="color:#5940CB">(${metric.code}) ${metric.name}</h5>
                                 <p class="mb-0 sdg-name-metric">${metric.definition}</p>
                             </div>
+                            <input type="checkbox" class="metric-checkbox" name="metric_ids[]" value="${metric.id}" checked disabled>
                         </div>
                     `;
                     $('#metrics').append(metricHtml);

@@ -1,5 +1,5 @@
 @extends('layouts.app-2fa   ')
-@section('title', 'Verifikasi')
+@section('title', 'Verifikasi Diri')
 
 @section('css')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
