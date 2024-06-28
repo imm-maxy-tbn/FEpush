@@ -14,17 +14,15 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\SurveyController;
 
-// Rute untuk autentikasi
 Auth::routes();
 
-// Rute yang bisa diakses tanpa login (Login dan Register)
 Route::get('/', function () {
     return view('home');
-})->name('home'); 
+})->name('home');
 
 Route::get('/register', function () {
     return view('auth.register');
-})->name('register'); 
+})->name('register');
 
 Route::get('/home', function () {
     return view('welcome');
