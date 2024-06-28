@@ -223,35 +223,37 @@
         @yield('content')
 
         <footer>
-            <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
-           
-                    <div class="col-4 d-flex flex-column" style="gap: 20px">
-                        <a class=" d-flex justify-content-start" href="/home">
-                            <img src="images/imm.png" width="100" height="55" alt=""></a>
-                        <span class="span-footer text-left">Impact Measurement and Management
-                                <br> (TBN INDONESIA X MAXY ACADEMY)</span>
+            <div class="row-footer d-flex justify-content-center align-items-center">
+                <div class="row-footer-in d-flex flex-column justify-content-center text-center align-items-center"
+                    style="">
+                    <div class="col text-white
+                    " style="font-size:32px; font-weight:500">Tertarik menjadi
+                        sponsor</div>
+                    <div class="col">
+                       <a href="#"> <button class="btn-daftar ">Hubungi Sekarang</button></a>
                     </div>
-                    <div class="col-6 d-flex justify-content-center align-items-center">
-                        <ul class=" d-flex " style="gap: 15px">
-                            <a href=""><li>Beranda</li></a>
-                            <a href=""><li>Proyek Saya</li></a>
-                            <a href=""><li>Event</li></a>
-                            <a href=""><li>Artikel</li></a>
-                            <a href=""><li>Perusahaan Saya</li></a>
-                        </ul>
-                    </div>
-                    <div class="col-2 d-flex flex-column justify-content-center" style="gap: 30px">
-                        <span class="span-footer text-center">Sosial Media</span>
-                        <div class="sosmed d-flex justify-content-end  ">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
-                            <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
-                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <div class="col d-flex justify-content-between" style="">
+    
+                        <div class="col d-flex justify-content-start" style="gap:50px">
+                            <a href=""></a><img src="images/icon-yt.png" alt=""></a>
+                            <a href=""> <img src="images/icon-ig.png" alt=""></a>
+                            <a href=""> <img src="images/icon-fb.png" alt=""></a>
+                        </div>
+                        <div class="col-text">
+                            <div class="row d-flex flex-column align-items-center " style="gap: 30px">
+                                <div class="col text-left  d-flex justify-content-start" style="gap: 30px">
+    
+                                    <a href="" class="text-white">Term of Reference</a>
+                                    <a href="" class="text-white">Contact</a>
+    
+                                </div>
+                                <a href="" class="text-white">Privacy Policy</a>
+                            </div>
                         </div>
                     </div>
-      
-        
-         </div>
+                    <div class="col-text2 text-white">Maxyacademy Copyright @ 2024</div>
+                </div>
+            </div>
         </footer>
   
         <script>

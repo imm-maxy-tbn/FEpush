@@ -3,65 +3,44 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IMM | Laporan</title>
+    <title>Homepage</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/homepageimm/laporanproject.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/imm.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 </head>
 <body>
+
      
 
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
-        <a class="navbar-brand" href="#">IMM</a>
+    <a class="navbar-brand" href="#">IMM</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+            <li class="nav-item ">
+                <a class="nav-link" href="welcome">Home</a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="#">Bootcamp</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="#">IMM</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">Community</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="profile">Profile</a>
+            </li>
+        </ul>
+        </div>
     </div>
 </nav>
 
-<div class="container report-section ">
-    <a class="navbar-brand" href="homepage"><i class="fas fa-arrow-left"></i> Laporan Project</a>
-    
-    <p class="deskripsi">Lengkapi laporan Bulanan dan pastikan laporan diselesaikan tepat waktu dengan melampirkan dokumen yang dibutuhkan</p>
-    <div class="report-card">
-        <div class="section d-flex justify-content-between align-content-center">
-        <h3>Bulan Pertama</h3>
-        <img src="images/succes.png" width="30" height="30" alt=""></div>
-        <a href="reportbulanpertama" class="btn btn-report form-control">Isi Laporan</a>
-        <p class="mt-3">Telah disetujui oleh Mentor</p>
-    </div>
-    <div class="report-card">
-        <div class="section d-flex justify-content-between align-content-center">
-        <h3>Bulan Kedua</h3>
-        <img src="images/warning.png" width="30" height="30" alt=""></div>
-        <a href="reportbulanpertama" class="btn btn-report form-control">Isi Laporan</a>
-        <p class="mt-3">Perlu tindakan revisi ~ Mentor</p>
-    </div>
-    <div class="report-card">
-        <div class="section d-flex justify-content-between align-content-center">
-        <h3>Bulan Ketiga</h3>
-        <img src="images/tolak.png" width="30" height="30" alt=""></div>
-        <a href="reportbulanpertama" class="btn btn-report form-control">Isi Laporan</a>
-        <p class="mt-3">Laporan bulan ketiga belum dibuat</p>
-    </div>
-    <div class="report-card">
-        <div class="section d-flex justify-content-between align-content-center">
-        <h3>Bulan Keempat</h3>
-        <img src="images/succes.png" width="30" height="30" alt=""></div>
-        <a href="reportbulanpertama" class="btn btn-report form-control">Isi Laporan</a>
-        <p class="mt-3">Telah disetujui oleh Mentor</p>
-    </div>
-    <div class="report-card">
-        <div class="section d-flex justify-content-between align-content-center">
-        <h3>Bulan Kelima</h3>
-        <img src="images/succes.png" width="30" height="30" alt=""></div>
-        <a href="reportbulanpertama" class="btn btn-report form-control">Isi Laporan</a>
-        <p class="mt-3">Telah disetujui oleh Mentor</p>
-    </div>
-    
-</div>
 
 <footer>
     <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
@@ -97,6 +76,14 @@
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="{{ asset('js/welcome/script.js') }}"></script>
+<script src="{{ asset('js/script.js') }}"></script>
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+        var loading = document.getElementById("loading");
+        loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
+    }, 2000); // 3000 milidetik = 3 detik
+});
+</script>
 </body>
 </html>

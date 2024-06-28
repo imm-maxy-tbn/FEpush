@@ -1,5 +1,5 @@
 @extends('layouts.app-imm')
-@section('title', 'Detail Artikel')
+@section('title', 'Artikel')
 
 @section('css')<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ asset('css/blog/blogarticle.css') }}">

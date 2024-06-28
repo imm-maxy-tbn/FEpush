@@ -1,5 +1,5 @@
 @extends('layouts.app-imm')
-@section('title', 'Create Project')
+@section('title', '')
 
 @section('css')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">  
@@ -691,67 +691,61 @@ $('#next-to-metric-section').on('click', function() {
     var selectedIndicators = $('.indicator-checkbox:checked').map(function() {
         return $(this).val();
     }).get();
-        $(document).ready(function() {
-        var currentPage = 1; // Initial page
-        var totalPages = 1; // Total pages, will be updated after receiving response from server
-        var selectedMetricsIds = {}; // Object to store selected metric IDs
-        var allMetrics = {}; // Object to store all fetched metrics
+    
+    $(document).ready(function() {
+    var currentPage = 1; // Initial page
+    var totalPages = 1; // Total pages, will be updated after receiving response from server
+    var selectedMetricsIds = {}; // Object to store selected metric IDs
 
-        // Function to fetch metrics based on selected tags and indicators
-        function fetchMetrics() {
-            $.ajax({
-                url: '{{ route("projects.filterMetrics") }}',
-                method: 'POST',
-                data: {
-                    _token: '{{ csrf_token() }}',
-                    tag_ids: selectedTags,
-                    indicator_ids: selectedIndicators,
-                    page: currentPage // Send current page number to server
-                },
-                success: function(response) {
-                    $('#metrics').empty(); // Clear existing metrics
+    // Function to fetch metrics based on selected tags and indicators
+    function fetchMetrics() {
+        $.ajax({
+            url: '{{ route("projects.filterMetrics") }}',
+            method: 'POST',
+            data: {
+                _token: '{{ csrf_token() }}',
+                tag_ids: selectedTags,
+                indicator_ids: selectedIndicators,
+                page: currentPage // Send current page number to server
+            },
+            success: function(response) {
+                $('#metrics').empty(); // Clear existing metrics
 
-                    // Store all fetched metrics
-                    allMetrics[currentPage] = response.data;
+                // Iterate through metrics and append to #metrics container
+                $.each(response.data, function(index, metric) {
+                    // Check if this metric is selected
+                    var isChecked = selectedMetricsIds[metric.id] ? 'checked' : '';
 
-                    // Iterate through metrics and append to #metrics container
-                    $.each(response.data, function(index, metric) {
-                        // Check if this metric is selected
-                        var isChecked = selectedMetricsIds[metric.id] ? 'checked' : '';
-
-                        var metricHtml = `
-                            <div class="d-flex align-items-center justify-content-between p-3 my-3 border">
-                                <div class="metric-text">
-                                    <h5 style="color:#5940CB">(${metric.code}) ${metric.name}</h5>
-                                    <p class="mb-0 sdg-name-metric">${metric.definition}</p>
-                                </div>
-                                <input type="checkbox" class="metric-checkbox" name="metric_ids[]" value="${metric.id}" ${isChecked}>
+                    var metricHtml = `
+                        <div class="d-flex align-items-center justify-content-between p-3 my-3 border">
+                            <div class="metric-text">
+                                <h5 style="color:#5940CB">(${metric.code}) ${metric.name}</h5>
+                                <p class="mb-0 sdg-name-metric">${metric.definition}</p>
                             </div>
-                        `;
-                        $('#metrics').append(metricHtml);
-                    });
+                            <input type="checkbox" class="metric-checkbox" name="metric_ids[]" value="${metric.id}" ${isChecked}>
+                        </div>
+                    `;
+                    $('#metrics').append(metricHtml);
+                });
 
-                    // Update total pages based on response
-                    totalPages = response.last_page;
+                // Update total pages based on response
+                totalPages = response.last_page;
 
-                    // Update pagination links
-                    updatePagination();
+                // Update pagination links
+                updatePagination();
 
-                    // Initialize event handlers for newly added checkboxes
-                    initializeCheckboxEventHandlers();
-                },
-                error: function(xhr, status, error) {
-                    console.error('Error fetching metrics:', error);
-                }
-            });
-        }
+                // Initialize event handlers for newly added checkboxes
+                initializeCheckboxEventHandlers();
+            },
+            error: function(xhr, status, error) {
+                console.error('Error fetching metrics:', error);
+            }
+        });
+    }
 
-        // Function to update pagination links
-        function updatePagination() {
+    // Function to update pagination links
+    function updatePagination() {
         $('#pagination-links').empty(); // Clear existing pagination links
-
-        var startPage = Math.max(currentPage - 5, 1);
-        var endPage = Math.min(currentPage + 5, totalPages);
 
         // Add previous button
         $('#pagination-links').append(`
@@ -760,31 +754,11 @@ $('#next-to-metric-section').on('click', function() {
             </li>
         `);
 
-        // Add first page button if startPage is greater than 1
-        if (startPage > 1) {
-            $('#pagination-links').append(`
-                <li class="page-item">
-                    <button type="button" class="btn btn-link page-link page-number">1</button>
-                </li>
-                <li class="page-item disabled"><span class="page-link">...</span></li>
-            `);
-        }
-
         // Add page numbers
-        for (var i = startPage; i <= endPage; i++) {
+        for (var i = 1; i <= totalPages; i++) {
             $('#pagination-links').append(`
                 <li class="page-item ${currentPage === i ? 'active' : ''}">
                     <button type="button" class="btn btn-link page-link page-number">${i}</button>
-                </li>
-            `);
-        }
-
-        // Add last page button if endPage is less than totalPages
-        if (endPage < totalPages) {
-            $('#pagination-links').append(`
-                <li class="page-item disabled"><span class="page-link">...</span></li>
-                <li class="page-item">
-                    <button type="button" class="btn btn-link page-link page-number">${totalPages}</button>
                 </li>
             `);
         }
@@ -817,64 +791,104 @@ $('#next-to-metric-section').on('click', function() {
         });
     }
 
-        // Function to initialize event handlers for checkboxes
-       function initializeCheckboxEventHandlers() {
-    $('.metric-checkbox').on('change', function() {
-        var metricId = $(this).val();
-        if ($(this).prop('checked')) {
-            selectedMetricsIds[metricId] = true; // Store the ID in selectedMetricsIds
-        } else {
-            delete selectedMetricsIds[metricId]; // Remove the ID from selectedMetricsIds
-        }
-    });
-
-    // Make the metric-text div clickable to toggle the checkbox
-    $('.metric-text').on('click', function() {
-        var checkbox = $(this).siblings('.metric-checkbox');
-        checkbox.prop('checked', !checkbox.prop('checked'));
-        checkbox.trigger('change'); // Trigger the change event
-    });
-}
-
-        // Function to gather all selected metrics and display them
-        function gatherAllSelectedMetrics() {
-            $('#metrics').empty();
-            for (var page in allMetrics) {
-                $.each(allMetrics[page], function(index, metric) {
-                    if (selectedMetricsIds[metric.id]) {
-                        var metricHtml = `
-                            <div class="d-flex align-items-center justify-content-between p-3 my-3 border">
-                                <div class="metric-text">
-                                    <h5 style="color:#5940CB">(${metric.code}) ${metric.name}</h5>
-                                    <p class="mb-0 sdg-name-metric">${metric.definition}</p>
-                                </div>
-                                <input type="checkbox" class="metric-checkbox" name="metric_ids[]" value="${metric.id}" checked disabled>
-                            </div>
-                        `;
-                        $('#metrics').append(metricHtml);
-                    }
-                });
+    // Function to initialize event handlers for checkboxes
+    function initializeCheckboxEventHandlers() {
+        $('.metric-checkbox').on('change', function() {
+            var metricId = $(this).val();
+            if ($(this).prop('checked')) {
+                selectedMetricsIds[metricId] = true; // Store the ID in selectedMetricsIds
+            } else {
+                delete selectedMetricsIds[metricId]; // Remove the ID from selectedMetricsIds
             }
-        }
+        });
+    }
 
-        // Event handler for "Simpan dan Lanjutkan" button
-        $('#next-to-review-section').on('click', function() {
-            gatherAllSelectedMetrics();
+    // Initial fetch for metrics
+    fetchMetrics();
+});
+
+
+});
+
+        $('#back-to-indicator-section').on('click', function() {
             $('#metric-section').hide();
-            $('#review-section').show(); // Assuming you have a section with ID 'review-section'
-        }); // Event handler for "Kembali" button
-    $('#back-to-metric-section').on('click', function() {
-        $('#review-section').hide();
-    
-        $('#metric-section').show();
-     
-    
+            $('#indicator-section').show();
+        });
+        $(document).ready(function() {
+    // Function to update review section with selected project details
+    function updateReviewSection() {
+        // Project Name
+        var projectName = $('#nama').val();
+        $('#project-title').text(projectName);
+
+        // Selected SDG Images
+        var selectedSdgImages = $('.sdg-checkbox:checked').map(function() {
+            return $(this).closest('.sdg-item').find('img').attr('src');
+        }).get();
+        $('#sdg-images-container').html('');
+        selectedSdgImages.forEach(function(src) {
+            $('#sdg-images-container').append('<img src="' + src + '" alt="SDG" class="img-fluid mx-2 sdg-goal">');
+        });
+
+        // Project Description
+        var projectDescription = $('#deskripsi').val();
+        $('#project-long-description').text(projectDescription);
+
+        // Selected SDGs and Indicators
+        var selectedSdgs = $('.sdg-checkbox:checked').map(function() {
+            var sdgId = $(this).val();
+            var sdgName = $(this).closest('.sdg-item').find('.sdg-name').text().trim();
+            var sdgImage = $(this).closest('.sdg-item').find('img').attr('src');
+            var selectedIndicators = $('#sub-container-' + sdgId + ' input:checked').map(function() {
+                var indicatorId = $(this).val();
+                var indicatorName = $(this).next().text().trim();
+                return {
+                    name: indicatorName
+                };
+            }).get();
+            return {
+                name: sdgName,
+                image: sdgImage,
+                indicators: selectedIndicators
+            };
+        }).get();
+
+        var sdgsHtml = '';
+        selectedSdgs.forEach(function(sdg) {
+            sdgsHtml += '<div class="mb-4">';
+            sdgsHtml += '<h3>' + sdg.name + '</h3>';
+            sdgsHtml += '<img src="' + sdg.image + '" alt="' + sdg.name + '" class="img-fluid mx-2 sdg-goal">';
+            sdgsHtml += '<div class="ml-4 mt-2">';
+            sdg.indicators.forEach(function(indicator) {
+                sdgsHtml += '<h5>' + indicator.name + '</h5>';
+            });
+            sdgsHtml += '</div></div>';
+        });
+        $('#selected-sdgs-container').html(sdgsHtml);
+
+        // Selected Metrics
+        var selectedMetrics = $('.metric-checkbox:checked').map(function() {
+            return $(this).closest('.d-flex').find('h5').text().trim();
+        }).get();
+        var metricsHtml = '<div style=" m-3 border">';
+        selectedMetrics.forEach(function(metric) {
+            metricsHtml += '<h5 class="text-primary">' + metric + '</h5>';
+        });
+        metricsHtml += '</div>';
+        $('#review-selected-metrics').html(metricsHtml);
+    }
+
+    // Update review section when the Next or Back buttons are clicked
+    $('#next-to-review-section, #back-to-metric-section').on('click', function() {
+        updateReviewSection();
     });
 
-        // Initial fetch for metrics
-        fetchMetrics();
+    // Submit form action
+    $('#submit-project').on('click', function() {
+        // Perform form submission or AJAX request here
+        $('form').submit(); // Assuming your form has an action attribute defined
     });
-
+});
 $(document).ready(function() {
     // Function to update review section with selected project details
     function updateReviewSection() {
@@ -893,6 +907,7 @@ $(document).ready(function() {
         $('#review-sdg-images-container').html('');
         selectedSdgImages.forEach(function(src) {
             $('#review-sdg-images-container').append('<img src="' + src + '" alt="SDG" class="img-fluid mx-2 sdg-goal">');
+            
         });
 
         // Selected SDGs
@@ -992,53 +1007,51 @@ $(document).ready(function() {
     });
 
     $('#submit-project').on('click', function() {
-        // Collect form data
-        var formData = new FormData();
-        formData.append('nama', $('#nama').val());
-        formData.append('deskripsi', $('#deskripsi').val());
-        formData.append('company_id', $('#company_id').val()); // Assuming $('#company_id').val() gives you the company_id integer
+    // Collect form data
+    var formData = new FormData();
+    formData.append('nama', $('#nama').val());
+    formData.append('deskripsi', $('#deskripsi').val());
+    formData.append('company_id', $('#company_id').val()); // Assuming $('#company_id').val() gives you the company_id integer
 
-        // Append sdg_ids
-        var sdgIds = $('.sdg-checkbox:checked').map(function() {
-            return $(this).val();
-        }).get();
-        formData.append('sdg_ids', JSON.stringify(sdgIds));
+    // Append sdg_ids
+    var sdgIds = $('.sdg-checkbox:checked').map(function() {
+        return $(this).val();
+    }).get();
+    formData.append('sdg_ids', JSON.stringify(sdgIds));
 
-        // Append indicator_ids
-        var indicatorIds = $('.indicator-checkbox:checked').map(function() {
-            return $(this).val();
-        }).get();
-        formData.append('indicator_ids', JSON.stringify(indicatorIds));
+    // Append indicator_ids
+    var indicatorIds = $('.indicator-checkbox:checked').map(function() {
+        return $(this).val();
+    }).get();
+    formData.append('indicator_ids', JSON.stringify(indicatorIds));
 
-        // Append metric_ids
-        var metricIds = $('.metric-checkbox:checked').map(function() {
-            return $(this).val();
-        }).get();
-        formData.append('metric_ids', JSON.stringify(metricIds));
+    // Append metric_ids
+    var metricIds = $('.metric-checkbox:checked').map(function() {
+        return $(this).val();
+    }).get();
+    formData.append('metric_ids', JSON.stringify(metricIds));
 
-        // Handle img file
-        var imgFile = $('#img').prop('files')[0];
-        formData.append('img', imgFile);
+    // Handle img file
+    var imgFile = $('#img').prop('files')[0];
+    formData.append('img', imgFile);
 
-        // Perform AJAX request
-        $.ajax({
-            url: "{{ route('projects.store') }}",
-            method: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            success: function(response) {
-                // Handle success response (redirect or show success message)
-                console.log(response);
-            },
-            error: function(xhr) {
-                // Handle error response (show error message if needed)
-                console.log(xhr.responseText);
-            }
-        });
+    // Perform AJAX request
+    $.ajax({
+        url: "{{ route('projects.store') }}",
+        method: 'POST',
+        data: formData,
+        contentType: false,
+        processData: false,
+        success: function(response) {
+            // Handle success response (redirect or show success message)
+            console.log(response);
+        },
+        error: function(xhr) {
+            // Handle error response (show error message if needed)
+            console.log(xhr.responseText);
+        }
     });
 });
-
 
 });
     </script>

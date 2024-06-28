@@ -1,5 +1,5 @@
 @extends('layouts.app-imm')
-@section('title', 'Profil Perusahaan')
+@section('title', '')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ asset('css/profile/profile-commpany.css') }}">
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">

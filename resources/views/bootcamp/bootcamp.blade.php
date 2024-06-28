@@ -1,4 +1,4 @@
-@extends('layouts.app-imm')
+@extends('layouts.app')
 @section('title', 'Bootcamp')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <link rel="stylesheet" href="{{ asset('css/bootcamp/bootcamp.css') }}">
