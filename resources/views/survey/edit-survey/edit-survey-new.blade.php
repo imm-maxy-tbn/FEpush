@@ -30,7 +30,7 @@
                 <input type="text" name="deskripsi" class="form-control" placeholder="Deskripsi Survey anda"
                     style="border: none; background:transparent; font-size: 20px;font-weight: 400;" required>
             </div>
-
+{{-- error --}}
             <div class="row d-flex justify-content-between mt-5">
                 <button type="submit" class="btn-simpan d-flex justify-content-around align-items-center">
                     <span class="text-white">Simpan Survey</span>
