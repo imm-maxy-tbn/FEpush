@@ -158,47 +158,66 @@ body {
 /* Media query for responsiveness */
 
 @media only screen and (max-width: 768px) {
+    .navbar-links {
+        flex-direction: column;
+        margin-left: 0;
+        align-items: center;
+    }
+
+    .navbar-links li {
+        margin-bottom: 10px;
+    }
+
+    .footer {
+        width: 100%;
+        left: 0;
+        border-top-left-radius: 60px;
+        border-top-right-radius: 60px;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
     .brand-info,
     .footer-links,
     .social-media {
-        flex-basis: 100%;
-        /* Set width to 100% on small screens */
-        text-align: center;
-    }
-    .footer {
-        background-color: #5940cb;
-        color: #ffffff;
-        padding: 48px 0;
-        text-align: center;
-        position: fixed;
-        bottom: 0;
         width: 100%;
-        left: 0%;
-        border-top-left-radius: 60px;
-        border-top-right-radius: 60px;
-        border-bottom-left-radius: 0;
-        border-bottom-right-radius: 0;
-        z-index: 1000;
+        margin-bottom: 20px;
     }
-    .social-media {
-        margin-right: auto;
-        position: absolute;
-        top: 29px;
-        right: 23px;
-    }
-    .social-media a {
-        color: #ffffff;
-        text-decoration: none;
-        font-size: 20px;
-        margin-left: 10px;
-    }
+
     .footer-nav ul {
-        list-style-type: none;
-        padding: 0px;
-        margin: 0;
-        position: absolute;
-        top: 30px;
-        right: 86px;
+        position: static;
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer-nav ul li {
+        margin-right: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+@media only screen and (max-width: 576px) {
+    .footer-nav ul li {
+        margin-right: 5px;
+    }
+
+    .brand-info h3 {
+        font-size: 18px;
+    }
+
+    .brand-info p {
+        font-size: 12px;
+    }
+
+    .footer-nav ul li a {
+        font-size: 14px;
+    }
+
+    .social-media a {
+        font-size: 18px;
     }
 }
 
