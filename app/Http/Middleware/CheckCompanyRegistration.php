@@ -22,6 +22,7 @@ class CheckCompanyRegistration
             // Jika pengguna tidak terautentikasi, arahkan ke halaman login
             return redirect()->route('login');
         }
+        
 
         if (!$user->companies) {
             // Jika pengguna tidak memiliki perusahaan, arahkan ke halaman verifikasi diri

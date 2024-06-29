@@ -75,7 +75,15 @@ class LoginController extends Controller
 }
 
 
+protected function authenticated(Request $request, $user)
+{
+    // Check if user has a company
+    if ($user->companies) {
+        return redirect()->route('homepage');
+    }
 
+    return redirect()->route('home');
+}
 
 protected function sendFailedLoginResponse(Request $request)
 {
