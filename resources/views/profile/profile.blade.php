@@ -130,11 +130,11 @@
         </div>
         <div class="col-md-4 bio">
             <div class="biodata">
-                <h2 class="mb-3"> {{$user->nama_depan}} {{$user->nama_belakang}} </h2>
+                <h2 class="mb-3"> {{$user->nama_depan}} </h2>
                 <p><i class="fas fa-phone"> {{$user->telepon}}</i></p>
-                <p><i class="fas fa-envelope"></i> {{$user->alamat}}</p>
+                <p><i class="fas fa-envelope"></i> {{$user->email}}</p>
                 <span><i class="fas fa-map-marker-alt"></i> {{$user->alamat}} </span> <br>
-                <a href="edit" class="btn btn-outline-secondary mt-3">
+                <a href="{{ route('profile.edit') }}" class="btn btn-outline-secondary mt-3">
                     <i class="fas fa-edit"></i> Edit
                 </a>
             </div>

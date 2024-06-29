@@ -7,6 +7,7 @@
     <title>IMM | @yield('title')</title>
     <!-- CSS Umum -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/event/event.css') }}">    <link rel="icon" href="/images/imm.png" type="image/png">
     <!-- CSS Khusus Halaman -->
     @yield('css')
     <style>
@@ -171,19 +172,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a  class="nav-link {{ Request::is('home') ? 'active' : '' }}" href="home">Beranda</a>
+                    <a  class="nav-link {{ Request::is('/home') ? 'active' : '' }}" href="/home">Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('homepage') ? 'active' : '' }}" href="homepage">Proyek Saya</a>
+                    <a class="nav-link {{ Request::is('/homepage') ? 'active' : '' }}" href="/homepage">Proyek Saya</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('event') ? 'active' : '' }}" href="event">Event</a>
+                    <a class="nav-link {{ Request::is('/event') ? 'active' : '' }}" href="/event">Event</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('blog') ? 'active' : '' }}" href="blog">Artikel</a>
+                    <a class="nav-link {{ Request::is('/blog') ? 'active' : '' }}" href="/blog">Artikel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('profile-commpany') ? 'active' : '' }}" href="profile-commpany">Perusahaan Saya</a>
+                    <a class="nav-link {{ Request::is('/profile-commpany') ? 'active' : '' }}" href="/profile-commpany">Perusahaan Saya</a>
                 </li>
             </ul> 
             <!-- User is logged in -->
@@ -235,9 +236,9 @@
                     <div class="col d-flex justify-content-between" style="">
     
                         <div class="col d-flex justify-content-start" style="gap:50px">
-                            <a href=""></a><img src="images/icon-yt.png" alt=""></a>
-                            <a href=""> <img src="images/icon-ig.png" alt=""></a>
-                            <a href=""> <img src="images/icon-fb.png" alt=""></a>
+                            <a href=""></a><img src="/images/icon-yt.png" alt=""></a>
+                            <a href=""> <img src="/images/icon-ig.png" alt=""></a>
+                            <a href=""> <img src="/images/icon-fb.png" alt=""></a>
                         </div>
                         <div class="col-text">
                             <div class="row d-flex flex-column align-items-center " style="gap: 30px">

@@ -13,6 +13,7 @@ use App\Http\Controllers\VerificationController;
 use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\SurveyController;
+use App\Http\Controllers\ProfileController;
 
 // Rute untuk autentikasi
 Auth::routes();
@@ -21,14 +22,17 @@ Auth::routes();
 Route::get('/', function () {
     return view('home');
 })->name('home'); 
+Route::get('/home', function () {
+    return view('home');
+})->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('welcome');
+  Route::get('event', [EventController::class, 'index'])->name('events.index');
 
 Route::get('/register', function () {
     return view('auth.register');
 })->name('register'); 
+Route::get('event/{id}', [EventController::class, 'view'])->name('events.view');
 
-Route::get('/home', function () {
-    return view('welcome');
-})->name('home');
 
 Route::get('responden/{id}', [SurveyController::class, 'view'])->name('surveys.view');
 Route::get('responden-data-diri/{id}', [SurveyController::class, 'dataDiri'])->name('surveys.data-diri');
@@ -132,7 +136,7 @@ Route::middleware(['auth'])->group(function () {
         return view('event.succes');
     });
 
-    Route::get('/home', [HomeController::class, 'index'])->name('home');
+ 
 
     Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
     Route::get('/blogarticle/{id}/view', [PostController::class, 'view'])->name('blog.view');
@@ -154,12 +158,27 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('companies', 'CompanyController');
     Route::post('/homepage', [CompanyController::class, 'store'])->name('companies.store');
 
-    Route::get('event', [EventController::class, 'index'])->name('events.index');
-    Route::get('event/{id}', [EventController::class, 'view'])->name('events.view');
+  
+  
     Route::get('event-register/{id}', [EventController::class, 'edit'])->name('events.edit');
     Route::put('event/{id}', [EventController::class, 'update'])->name('events.update');
 
     Route::post('survey', [SurveyController::class, 'store'])->name('surveys.store');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
+Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
+ 
+Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+Route::get('/profile-commpany', [ProfileController::class, 'editCompanyProfile'])->name('profile-commpany');
+Route::put('/profile-commpany/{id}', [ProfileController::class, 'updateCompanyProfile'])->name('profile-commpany.update');
+
+
+
 });
 
 Route::get('/verifikasidiri', function () {
@@ -214,9 +233,6 @@ Route::get('/review', function () {
     return view('myproject.creatproject.review');
 });
 
-Route::get('/edit', function () {
-    return view('profile.edit');
-});
 
 Route::get('/pemilihansdgs', function () {
     return view('myproject.creatproject.pemilihansdgs');
@@ -274,9 +290,7 @@ Route::get('/responden-penutup-survey', function () {
     return view('survey.responden.responden-penutup-survey');
 });
 
-Route::get('/event', function () {
-    return view('event.event');
-});
+
 
 Route::get('/event-detail', function () {
     return view('event.event-detail');
@@ -302,20 +316,8 @@ Route::get('/kuesioner', function () {
     return view('survey.responden.kuesioner');
 });
 
-Route::get('/profile-commpany', function () {
-    return view('imm.profile-commpany');
-});
-
 Route::get('/responden/{id}', 'SurveyController@view')->name('survey.responden.view');
 
-Route::get('/welcome', [HomeController::class, 'index'])->name('welcome');
-
-Route::get('/profile-commpany', function () {
-    $user = auth()->user();
-    $company = $user->company;
-
-    return view('imm.profile-commpany', compact('company', 'user'));
-})->name('profile-commpany');
 
 Route::get('/homepage', function () {
     $user = auth()->user();

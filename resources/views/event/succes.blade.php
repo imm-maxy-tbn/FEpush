@@ -14,7 +14,7 @@
 
 
     <section class="banner" style="">
-        <img src="images/bg-event.png" class="w-100 h-auto" alt="">
+        <img class="banner-img" src="images/bg-event.png" class="w-100 h-auto" alt="">
     </section>
 
     <div class="container content d-flex flex-column justify-content-center">

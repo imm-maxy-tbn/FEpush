@@ -26,9 +26,6 @@ class HomeController extends Controller
         return view('about');
     }
 
-    public function loginhide(Request $request)
-    {
-        return view('auth.login', ['hideFooter' => true]);
-    }
+
 }
 

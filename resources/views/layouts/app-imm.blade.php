@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IMM | @yield('title')</title>
+    <link rel="icon" href="/images/imm.png" type="image/png">
     <!-- CSS Umum -->
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <!-- CSS Khusus Halaman -->
@@ -15,6 +16,8 @@
 
 *{
     font-family: "Poppins", sans-serif;
+    text-decoration: none;
+    list-style-type: none;
 }
 .navbar {
         background-color: #ffffff;
@@ -132,7 +135,8 @@
     height: 40px;
     display: flex;
     justify-content: center;
-    align-items: center
+    align-items: center;
+    cursor: pointer;
     
 }
 
@@ -142,6 +146,10 @@
     font-size: 20px;
     font-weight: 500;
     border-radius:9px;
+}
+
+.btn-masukk a:hover{
+    color: white
 }
 .btn-daftarr{
     background-color: transparent;
@@ -171,19 +179,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a  class="nav-link {{ Request::is('home') ? 'active' : '' }}" href="home">Beranda</a>
+                    <a  class="nav-link {{ Request::is('/home') ? 'active' : '' }}" href="/home">Beranda</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('homepage') ? 'active' : '' }}" href="homepage">Proyek Saya</a>
+                    <a class="nav-link {{ Request::is('/homepage') ? 'active' : '' }}" href="/homepage">Proyek Saya</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('event') ? 'active' : '' }}" href="event">Event</a>
+                    <a class="nav-link {{ Request::is('/event') ? 'active' : '' }}" href="/event">Event</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('blog') ? 'active' : '' }}" href="blog">Artikel</a>
+                    <a class="nav-link {{ Request::is('/blog') ? 'active' : '' }}" href="/blog">Artikel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('profile-commpany') ? 'active' : '' }}" href="profile-commpany">Perusahaan Saya</a>
+                    <a class="nav-link {{ Request::is('profile-commpany') ? 'active' : '' }}" href="/profile-commpany">Perusahaan Saya</a>
                 </li>
             </ul> 
             <!-- User is logged in -->
@@ -195,22 +203,30 @@
 
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="https://via.placeholder.com/40" alt="Profile Picture" class="profile-img">
-                                <span class="ml-2">Name</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="profile">Profil Saya</a>
-         
-                              
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button class=" dropdown-item ">
-                                        <i class="fas fa-sign-out-alt"></i> Log Out</button>
-                                </form>
-                            </div>
-                        </li>
+                        @guest
+                            <li class="nav-item">
+                                <a class="btn btn-masukk" href="{{ route('login') }}">Masuk</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-daftarr" href="{{ route('register') }}">Daftar</a>
+                            </li>
+                        @endguest
+                        @auth
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="https://via.placeholder.com/40" alt="Profile Picture" class="profile-img">
+                                    <span class="ml-2">{{ Auth::user()->nama_depan }}</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="{{ route('profile') }}">Profil Saya</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">
+                                            <i class="fas fa-sign-out-alt"></i> Log Out</button>
+                                    </form>
+                                </div>
+                            </li>
+                        @endauth
                     </ul>
                 </div>
      

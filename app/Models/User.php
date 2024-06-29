@@ -44,14 +44,13 @@ class User extends Authenticatable
      * @return string
      */
     public function getFullNameAttribute()
-    {
-        if (is_null($this->nama_belakang)) {
-            return "{$this->nama_depan}";
-        }
-
-        return "{$this->nama_depan} {$this->nama_belakang}";
+{
+    if (is_null($this->nama_belakang)) {
+        return "{$this->nama_depan}";
     }
 
+    return "{$this->nama_depan}";
+}
     /**
      * Set the user's password.
      *

@@ -48,10 +48,14 @@ body {
 }
 
 .banner {
-    background-image: url("bg-event.png");
     width: 100%;
     height: 610px;
+}
+
+.banner-img {
     background-size: cover;
+    width: 100%;
+    height: 610px;
 }
 
 .content {
@@ -64,6 +68,24 @@ body {
     font-weight: 500;
     max-width: 217px;
     text-align: center;
+}
+
+footer {
+    width: 100%;
+    height: 481px;
+    background-color: #5271ff;
+    margin-top: 170px;
+}
+
+.row-footer {
+    margin-right: 5%;
+    margin-left: 5%;
+    height: 481px;
+}
+
+.row-footer-in {
+    width: 1220px;
+    height: 255px;
 }
 
 .span-footer {
@@ -93,11 +115,6 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-}
-
-img {
-    height: 42px;
-    width: auto;
 }
 
 .col-text2 {
