@@ -94,6 +94,7 @@ class ProjectController extends Controller
             $validatedData['img'] = $imageName;
         }
 
+        
         $project = Project::create($validatedData);
 
         $project->tags()->attach($request->input('tag_ids'));

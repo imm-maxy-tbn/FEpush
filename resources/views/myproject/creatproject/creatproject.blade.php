@@ -149,14 +149,13 @@
                             <div class="section-img">
                                 <h5>Unggah Foto Sampul Proyek</h5>
                                 <p>Gunakan foto Default</p>
-                               <label for="imageInput" class="choose-file-label">
+                                <label for="imageInput" class="choose-file-label">
                                     <div class="unggah-image">
-                                         <img id="previewImage" src="" alt="Unggah foto sampul 1920x1080
-(.png, .jpg, .jpeg) Maximal 5 MB">
+                                        <img id="previewImage" src="" alt="Unggah foto sampul 1920x1080 (.png, .jpg, .jpeg) Maximal 5 MB">
                                     </div>
                                 </label>
-                                    <input type="file" id="imageInput" name="img" style="display: none;">
-                             
+                                <input type="file" id="imageInput" name="img" style="display: none;">
+                                <button id="uploadButton">Upload Image</button>
                             </div><div class="d-flex justify-content-start mt-4">
                                 <button type="button" class="btn btn-primary" id="next-to-sdg-section">Simpan dan Lanjutkan</button>
                             </div>
@@ -318,6 +317,7 @@
     <script src="{{ asset('js/imm/pemilihansdgs.js') }}"></script>
 
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+    
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             var imageInput = document.getElementById('imageInput');

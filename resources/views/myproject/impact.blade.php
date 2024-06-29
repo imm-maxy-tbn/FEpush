@@ -95,57 +95,21 @@
         padding: 20px;
         border-radius: 5px;
     }
-    .btn-keluar {
-        width: 183px;
-        height: 50px;
-        background-color: white;
-        border: 2px solid #5940CB;
-        color: #5940CB;
-        border-radius: 7px;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .btn-masuk {
-        width: 183px;
-        height: 50px;
-        background-color: #5940CB;
-        color: white;
-        border: none;
-        border-radius: 7px;
-        font-weight: bold;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-
-    .modal-content {
-        padding: 20px;
-        border-radius: 10px;
-        text-align: center;
-    }
-
-    .modal-body {
-        margin: 0;
-        padding: 20px;
-    }
-
-    .btnn {
-        display: flex;
-        justify-content: center;
-        gap: 20px; /* Adds space between buttons */
-        margin-top: 20px;
-    }
+    
 </style>
 @endsection
 @section('content')
 
 <body>
+    <div class="container" style="padding-top: 40px" >
+        <a href="detail">
+            <h4 class=" d-flex align-items-center"><strong style="font-size: 40px;">
+                    <</strong> Detail Matrix</h4>
+        </a>
 
-    <div class="container mt-5 detail-matrix-section">
-        <h2>Detail Matrix</h2>
+    </div>
+    <div class="container detail-matrix-section">
+        
         <div class="card-header">Matrix : Alasan Klien Berhenti</div>
             <div class="card">
             <div class="card-body">

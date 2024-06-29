@@ -339,7 +339,7 @@ Route::get('/blogarticle/{id}/view', [PostController::class, 'view'])->name('blo
 Route::get('/imm3', [VerificationController::class, 'showVerificationForm'])->name('imm3');
 Route::post('/send-otp', [VerificationController::class, 'sendVerificationEmail'])->name('send-otp');
 Route::post('/verify-code', [VerificationController::class, 'verifyCode'])->name('verify-code');
-
+Route::post('/projects', [ProjectController::class, 'store'])->name('project.store');
 Route::get('/projects', [ProjectController::class, 'index'])->name('projects.index');
 Route::get('/creatproject', [ProjectController::class, 'create'])->name('projects.create');
 Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');

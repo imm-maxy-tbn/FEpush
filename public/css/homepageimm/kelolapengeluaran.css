@@ -55,6 +55,93 @@ a:hover {
     text-decoration: none;
 }
 
+.btn-keluar {
+    width: 183px;
+    height: 50px;
+    background-color: white;
+    border: 2px solid #5940CB;
+    color: #5940CB;
+    border-radius: 7px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-masuk {
+    width: 183px;
+    height: 50px;
+    background-color: #5940CB;
+    color: white;
+    border: none;
+    border-radius: 7px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-content {
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.modal-body {
+    margin: 0;
+    padding: 20px;
+}
+
+.btnn {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    /* Adds space between buttons */
+    margin-top: 20px;
+}
+
+.btn-save-custom {
+    background-color: transparent;
+    border: 2px solid #5940CB;
+    color: #5940CB;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px 20px;
+    text-align: center;
+    display: block;
+    margin-top: 10px;
+    width: fit-content;
+}
+
+.btn-save-custom:hover {
+    background-color: #5940CB;
+    color: white;
+}
+
+.detail-matrix-section {
+    margin-top: 20px;
+}
+
+.detail-matrix-section .card-header {
+    background-color: #5940CB;
+    color: white;
+    font-weight: bold;
+}
+
+.detail-matrix-section .section-title {
+    background-color: #5940CB;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.detail-matrix-section .form-section {
+    background-color: #f5f5f5;
+    padding: 20px;
+    border-radius: 5px;
+}
+
 input[type="date"] {
     width: 274px;
 }
