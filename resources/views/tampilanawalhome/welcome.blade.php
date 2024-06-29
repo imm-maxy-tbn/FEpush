@@ -45,10 +45,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="profile">Profile</a>
                     </li>
-                </ul>                <div class="navbar-actions">
-                    <a href="login" class="btn btn-primary">Login</a>
-                    <a href="register" class="btn btn-outline-primary">Register</a>
-                </div>
+                </ul>             
             </div>
         </div>
     </nav>

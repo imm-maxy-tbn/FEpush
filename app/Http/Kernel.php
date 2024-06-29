@@ -65,5 +65,4 @@ class Kernel extends HttpKernel
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
         'check.company.registration' => \App\Http\Middleware\CheckCompanyRegistration::class,
     ];
-
 }
