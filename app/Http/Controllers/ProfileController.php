@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Company;
 use App\Models\User;
+use App\Models\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -19,6 +19,29 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
         return view('profile.profile', compact('user'));
+    }
+
+    public function show($id)
+    {
+        $user = User::find($id);
+        $company = Company::where('user_id', $id)->first();
+
+        return view('imm.profile-commpany', [
+            'user' => $user,
+            'company' => $company,
+        ]);
+    }
+
+    public function editCompanyProfile()
+    {
+        $user = Auth::user();
+        $company = $user->companies;
+    
+        if (!$company) {
+            return redirect('/imm');
+        }
+    
+        return view('imm.profile-commpany', compact('company', 'user'));
     }
 
     public function edit()
@@ -37,39 +60,33 @@ class ProfileController extends Controller
             'password_confirmation' => 'nullable|min:8|max:12|required_with:new_password|same:new_password'
         ]);
 
-        $user = Auth::user();
+        $user = User::findOrFail(Auth::user()->id);
         $user->nama_depan = $request->input('nama_depan');
         $user->email = $request->input('email');
+        $user->nik = $request->input('nik');
+        $user->negara = $request->input('negara');
+        $user->provinsi = $request->input('provinsi');
+        $user->alamat = $request->input('alamat');
+        $user->telepon = $request->input('telepon');
 
         if (!is_null($request->input('current_password'))) {
             if (Hash::check($request->input('current_password'), $user->password)) {
                 $user->password = bcrypt($request->input('new_password'));
             } else {
-                return redirect()->back()->withInput();
+                return redirect()->back()->withInput()->withErrors(['current_password' => 'Password saat ini tidak sesuai.']);
             }
         }
 
         $user->save();
 
-        return redirect()->route('profile')->with('success', 'Profile updated successfully.');
-    }
-
-    public function editCompanyProfile()
-    {
-        $user = Auth::user();
-        $company = $user->companies()->first();
-
-        if (!$company) {
-            return redirect()->route('buat-company'); // Arahkan ke halaman pembuatan perusahaan jika tidak ditemukan
-        }
-
-        return view('profile.profile-commpany', compact('user', 'company'));
+        return redirect()->route('profile')->with('success', 'Profil berhasil diperbarui.');
     }
 
     public function updateCompanyProfile(Request $request, $id)
     {
         $request->validate([
             'nama' => 'required|string|max:255',
+            'email' => 'required|string|max:255',
             'profile' => 'required|string|max:255',
             'tipe' => 'required|string|max:255',
             'nama_pic' => 'required|string|max:255',
@@ -84,6 +101,7 @@ class ProfileController extends Controller
         $company = Company::findOrFail($id);
         $company->update([
             'nama' => $request->input('nama'),
+            'email' => $request->input('email'),
             'profile' => $request->input('profile'),
             'tipe' => $request->input('tipe'),
             'nama_pic' => $request->input('nama_pic'),
@@ -95,6 +113,6 @@ class ProfileController extends Controller
             'jumlah_karyawan' => $request->input('jumlah_karyawan'),
         ]);
 
-        return redirect()->route('profile-commpany')->with('success', 'Company profile updated successfully.');
+        return redirect()->route('profile-commpany')->with('success', 'Profil perusahaan berhasil diperbarui.');
     }
 }

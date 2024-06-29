@@ -63,7 +63,7 @@
           </button>
         </div>
         <div class="modal-body">
-         gir 
+         
         </div>
       </div>
     </div>

@@ -176,7 +176,9 @@ Route::post('/profile', [ProfileController::class, 'update'])->name('profile.upd
 
 Route::get('/profile-commpany', [ProfileController::class, 'editCompanyProfile'])->name('profile-commpany');
 Route::put('/profile-commpany/{id}', [ProfileController::class, 'updateCompanyProfile'])->name('profile-commpany.update');
-
+Route::get('/profile-commpany', [ProfileController::class, 'editCompanyProfile'])
+    ->name('profile-commpany')
+    ->middleware('check.company');
 
 
 });

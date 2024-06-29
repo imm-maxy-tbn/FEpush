@@ -27,6 +27,19 @@ body {
     border-radius: 7px;
 }
 
+.btn-masukkk {
+    width: 383px;
+    height: 35px;
+    background-color: #5940cb;
+    color: white;
+    border: none;
+    border-radius: 7px;
+}
+
+.btn-masukkk:hover {
+    background-color: #5e41de;
+}
+
 .modal-content {
     width: 699px;
     height: 253px;

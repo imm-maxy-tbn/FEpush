@@ -8,75 +8,7 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        /* Custom CSS for Responsiveness */
-        .btn-blog,
-        .btn-event {
-            margin: 5px;
-        }
-
-        .search-container input {
-            width: calc(100% - 50px);
-            display: inline-block;
-        }
-
-        .search-container button {
-            width: 40px;
-        }
-
-        .sosmed a {
-            margin: 0 10px;
-        }
-
-        /* Footer adjustments */
-        footer .row {
-            margin-top: 20px;
-        }
-
-        /* Adjust layout for smaller screens */
-        @media (max-width: 768px) {
-            .navbar-brand {
-                font-size: 1.5rem;
-            }
-
-            .navbar-nav .nav-link {
-                font-size: 1rem;
-            }
-
-            .subscribe-container {
-                text-align: center;
-            }
-
-            .footer {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .footer .row {
-                flex-direction: column;
-                gap: 20px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .input-group {
-                flex-direction: column;
-            }
-
-            .input-group input {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            .input-group-append {
-                width: 100%;
-            }
-
-            .input-group-append button {
-                width: 100%;
-            }
-        }
-    </style>
+   
 @endsection
 @section('content')
 

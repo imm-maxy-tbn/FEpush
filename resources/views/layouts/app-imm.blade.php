@@ -191,7 +191,7 @@
                     <a class="nav-link {{ Request::is('/blog') ? 'active' : '' }}" href="/blog">Artikel</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {{ Request::is('profile-commpany') ? 'active' : '' }}" href="/profile-commpany">Perusahaan Saya</a>
+                    <a class="nav-link {{ Request::is('profile-commpany') ? 'active' : '' }}" href="{{ route('profile-commpany') }}">Perusahaan Saya</a>
                 </li>
             </ul> 
             <!-- User is logged in -->

@@ -28,7 +28,15 @@ class CheckCompanyRegistration
             return redirect()->route('verifikasidiri');
         }
 
+ 
+        
+        if ($user && !$user->companies) { // Check if user is logged in and has no registered company
+            return redirect()->route('imm');
+        }
+
+    
         // Jika pengguna memiliki perusahaan, lanjutkan ke rute yang diminta
         return $next($request);
+
     }
 }
