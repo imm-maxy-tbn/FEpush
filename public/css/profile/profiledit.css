@@ -298,33 +298,6 @@ form {
     }
 }
 
-#loading {
-    position: fixed;
-    width: 100%;
-    height: 300%;
-    background: #fff;
-    z-index: 9999;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-#loading img {
-    width: 100px;
-    /* Ukuran gambar loading */
-    height: 100px;
-    /* Ukuran gambar loading */
-    position: relative;
-    animation: spin 1s linear infinite;
-    top: -200px;
-}
-
-@keyframes spin {
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
 
 /* Animasi umum untuk elemen lainnya */
 

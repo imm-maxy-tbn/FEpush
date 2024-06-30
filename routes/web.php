@@ -94,9 +94,7 @@ Route::middleware(['auth'])->group(function () {
         return view('myproject.myproject');
     });
 
-    Route::get('/survey', function () {
-        return view('myproject.survey');
-    });
+
 
     Route::get('/blogarticle', function () {
         return view('blog.blogarticle');
@@ -118,14 +116,7 @@ Route::middleware(['auth'])->group(function () {
         return view('myproject.impact');
     })->name('impact.impact');
 
-    Route::get('/profile', function () {
-        $user = Auth::user();
-        if ($user) {
-            return view('profile.profile', ['user' => $user]);
-        } else {
-            return redirect('/login');
-        }
-    })->middleware('auth');
+
 
     Route::get('/matrixreport', function () {
         return view('myproject.creatproject.matrixreport');
@@ -190,7 +181,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('event-register/{id}', [EventController::class, 'edit'])->name('events.edit');
     Route::put('event/{id}', [EventController::class, 'update'])->name('events.update');
 
-    Route::post('survey', [SurveyController::class, 'store'])->name('surveys.store');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
@@ -233,9 +223,7 @@ Route::get('/detail-kelas', function () {
     return view('kelas.detail-kelas');
 });
 
-Route::get('/survey', function () {
-    return view('myproject.survey');
-});
+
 
 Route::get('/blogarticle', function () {
     return view('blog.blogarticle');

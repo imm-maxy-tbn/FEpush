@@ -627,10 +627,9 @@
             alert("Data berhasil disimpan!");
 
             // Arahkan ke halaman login
-            window.location.href = "login"; // Ganti "halaman-login.html" dengan URL halaman login Anda
+            window.location.href = "/login"; // Ganti "halaman-login.html" dengan URL halaman login Anda
         }
-            // Arahkan ke halaman login
-            window.location.href = "login"; // Ganti "halaman-login.html" dengan URL halaman login Anda
+          
         }
 
         // Tambahkan event listener untuk tombol "Simpan Data"
@@ -644,12 +643,7 @@
                 loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
             }, 1000); // 3000 milidetik = 3 detik
         });
-        document.addEventListener("DOMContentLoaded", function () {
-            setTimeout(function () {
-                var loading = document.getElementById("loading");
-                loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
-            }, 1000); // 3000 milidetik = 3 detik
-        });
+
     </script>
 </body>
 

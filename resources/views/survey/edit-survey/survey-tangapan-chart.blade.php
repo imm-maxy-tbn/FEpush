@@ -322,7 +322,6 @@
 
     <!-- Section for the second chart -->
 
-
     <div class="container d-flex justify-content-center mt-5" style="gap: 30px">
         <button class="btn-kembali">Kembali</button>
         <button class="btn-selanjutnya">Lanjutkan</button>

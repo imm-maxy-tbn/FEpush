@@ -32,18 +32,18 @@
             </div>
 
             <div class="row d-flex justify-content-between mt-5">
-                <button type="" class="btn-mulai">Mulai Survey</button>
+                <button type="submit" class="btn-simpan d-flex justify-content-around align-items-center">
+                    
+                    <span class="text-white">Simpan Survey</span>
+                    <img src="images/simpan-icon.png" width="29" height="auto" alt="">
+                </button>
                 <button type="" class="btn-akhiri">Akhiri Survey</button>
                <a href="responden"><button type="" class="btn-lihat-responden">Lihat Responden Survey</button></a> 
                 <button type="" class="btn-lihat d-flex justify-content-around align-items-center">
                     <a href="survey-tangapan-diagram" class="text-dark"><span>Lihat Survey</span></a>
                     <img src="images/mata-icon.png" width="25" height="20" alt="">
                 </button>
-                <button type="submit" class="btn-simpan d-flex justify-content-around align-items-center">
-                    
-                    <span class="text-white">Simpan Survey</span>
-                    <img src="images/simpan-icon.png" width="29" height="auto" alt="">
-                </button>
+               
             </div>
 
             <div class="form-group" style="display: none;">
@@ -69,6 +69,7 @@
 
         <div class="container d-flex justify-content-center mt-5">
             <span class="btn-tambah-bagian" id="add-section-btn">Tambah Bagian Survey +</span>
+        </div>
         </div>
     </form>
 
