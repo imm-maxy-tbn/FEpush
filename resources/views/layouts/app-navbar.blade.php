@@ -252,7 +252,7 @@
                     " style="font-size:32px; font-weight:500">Tertarik menjadi
                         sponsor</div>
                     <div class="col">
-                       <a href="#"> <button class="btn-daftar ">Hubungi Sekarang</button></a>
+                        <a href="{{ route('hubungi.sekarang', ['event_id' => $event->id]) }}" target="_blank"> <button class="btn-daftar ">Hubungi Sekarang</button></a>
                     </div>
                     <div class="col d-flex justify-content-between" style="">
     

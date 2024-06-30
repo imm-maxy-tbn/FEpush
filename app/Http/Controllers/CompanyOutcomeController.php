@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\CompanyOutcome;
 use App\Models\Company;
 use App\Models\Project;
-use App\Models\Dana;
-
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 
@@ -33,43 +30,45 @@ class CompanyOutcomeController extends Controller
             }])
             ->get();
         
-        
         return $projects;
     }
+
     public function detailOutcome($project_id)
     {
         $outcomes = CompanyOutcome::where('project_id', $project_id)->get();
         
         if ($outcomes->isEmpty()) {
-            // Handle jika tidak ada data yang ditemukan
-            return view('homepageimm.detailbiaya', ['project_id' => $project_id, 'outcomes' => collect()]); // Mengirim koleksi kosong
+            return view('homepageimm.detailbiaya', ['project_id' => $project_id, 'outcomes' => collect()]);
         }
-    
+
         return view('homepageimm.detailbiaya', compact('outcomes', 'project_id'));
     }
+
     public function create($project_id)
     {
         $project = Project::findOrFail($project_id);
-        return view('homepageimm.tambahpenggunaandana', compact('project'));
+        return view('homepageimm.tambahpenggunaandana', compact('project_id'));
+        
     }
+
     public function store(Request $request)
     {
         $validatedData = $request->validate([
             'date' => 'required|date',
             'jumlah_biaya' => 'required|numeric',
             'keterangan' => 'required|string|max:255',
-            'bukti' => 'nullable|file|mimes:pdf,jpeg,jpg,png|max:5000', // Adjust max file size as needed
+            'bukti' => 'nullable|file|mimes:pdf,jpeg,jpg,png|max:5000',
             'project_id' => 'required|exists:projects,id',
         ]);
-    
+
         $buktiFileName = null;
-    
+
         if ($request->hasFile('bukti')) {
             $buktiFile = $request->file('bukti');
-            $buktiFileName =time() . '.' . $request->bukti->extension();
+            $buktiFileName = time() . '.' . $buktiFile->getClientOriginalExtension();
             $buktiFile->move(public_path('images'), $buktiFileName);
         }
-    
+
         CompanyOutcome::create([
             'date' => $validatedData['date'],
             'jumlah_biaya' => $validatedData['jumlah_biaya'],
@@ -77,10 +76,8 @@ class CompanyOutcomeController extends Controller
             'bukti' => $buktiFileName,
             'project_id' => $validatedData['project_id'],
         ]);
-    
+
         return redirect()->route('homepageimm.detailbiaya', ['project_id' => $validatedData['project_id']])
-                        ->with('success', 'Company outcome created successfully.');
+                        ->with('success', 'Penggunaan dana berhasil ditambahkan.');
     }
-    
-    
 }

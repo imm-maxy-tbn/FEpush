@@ -30,6 +30,17 @@ class EventController extends Controller
         return view('event.event', compact('events', 'backendUrl'));
     }
 
+    
+    public function hubungiSekarang(Request $request, $event_id)
+    {
+        
+        $message = urlencode("Saya tertarik untuk kerjasama dalam event dengan ID: {$event_id}");
+        $whatsappUrl = "https://api.whatsapp.com/send?phone=6285785455575&text={$message}";
+
+        return redirect()->away($whatsappUrl);
+    }
+
+    
     public function create()
     {
         $users = User::all();

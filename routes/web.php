@@ -66,6 +66,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tambah-penggunaan-dana/{project_id}', [CompanyOutcomeController::class, 'create'])->name('tambah.penggunaan.dana');
     Route::post('/store-company-outcome', [CompanyOutcomeController::class, 'store'])->name('store-company-outcome');
 
+    Route::get('/hubungi-sekarang/{event_id}', [EventController::class, 'hubungiSekarang'])->name('hubungi.sekarang');
+
     Route::get('/blog', function () {
         return view('blog.blog');
     });

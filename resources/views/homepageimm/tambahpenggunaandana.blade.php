@@ -13,22 +13,24 @@
 
 @section('content')
     <div class="container" style="padding-top: 120px">
-        <a href="detailbiaya">
-            <h4 class="d-flex align-items-center"><strong style="font-size: 40px;">&lt;</strong> Tambah penggunaan dana</h4>
+        <a href="{{ route('homepageimm.detailbiaya', ['project_id' => $project_id]) }}">
+            <h4 class="d-flex align-items-center">
+                <strong style="font-size: 40px;">&lt;</strong> Tambah penggunaan dana
+            </h4>
         </a>
     </div>
 
     <div class="container mt-5">
         <form id="addOutcomeForm" action="{{ route('store-company-outcome') }}" method="POST" enctype="multipart/form-data">
             @csrf
-            <input type="hidden" name="project_id" value="{{ $project->id }}">
+            <input type="hidden" name="project_id" value="{{ $project_id }}">
 
             <div class="row mt-4">
                 <div class="col-3">
                     <h5>Tanggal</h5>
                 </div>
                 <div class="col-8">
-                    <input type="date" name="date">
+                    <input type="date" name="date" class="form-control" required>
                 </div>
             </div>
             <div class="row mt-4">
@@ -36,7 +38,7 @@
                     <h5>Jumlah Biaya</h5>
                 </div>
                 <div class="col-8">
-                    <input type="number" name="jumlah_biaya" placeholder="cth. Rp 100.000">
+                    <input type="number" name="jumlah_biaya" class="form-control" placeholder="cth. Rp 100.000" required>
                 </div>
             </div>
             <div class="row mt-4">
@@ -44,7 +46,7 @@
                     <h5>Keterangan</h5>
                 </div>
                 <div class="col-8">
-                    <textarea name="keterangan" placeholder="cth. Pembelian karung beras bekas (5 lusin)" cols="60" rows="7"></textarea>
+                    <textarea name="keterangan" class="form-control" placeholder="cth. Pembelian karung beras bekas (5 lusin)" cols="60" rows="7" required></textarea>
                 </div>
             </div>
             <div class="row mt-4">
@@ -52,14 +54,14 @@
                     <h5>Upload Bukti</h5>
                 </div>
                 <div class="col-8">
-                    <button class="btn-unggah" onclick="document.getElementById('file-input').click()" type="button">Unggah File</button>
+                    <button class="btn-unggah btn btn-primary" onclick="document.getElementById('file-input').click()" type="button">Unggah File</button>
                     <span class="file-name">Unggah bukti dalam bentuk .pdf (scan bukti pembayaran)</span>
                     <input type="file" id="file-input" name="bukti" onchange="updateFileName()" style="display: none">
                 </div>
             </div>
 
             <div class="container d-flex justify-content-center mt-5">
-                <button type="button" class="btn-tambah px-3" data-toggle="modal" data-target="#confirmationModal">Tambah Data</button>
+                <button type="button" class="btn-tambah px-3 btn btn-success" data-toggle="modal" data-target="#confirmationModal">Tambah Data</button>
             </div>
         </form>
     </div>
@@ -69,10 +71,10 @@
             <div class="modal-content shadow">
                 <div class="modal-body">
                     <h5 class="modal-title" id="confirmationModalLabel">Apakah data sudah benar?</h5>
-                    <span><strong>Note.</strong> Data yang anda tambahkan tidak bisa diubah kembali, pastikan sudah semua input data sudah benar</span>
-                    <div class="btnn">
-                        <button type="button" class="btn btn-keluar" data-dismiss="modal">Belum, cek kembali</button>
-                        <button type="button" class="btn btn-masuk" id="confirmUpdate">Ya, sudah benar</button>
+                    <span><strong>Note:</strong> Data yang anda tambahkan tidak bisa diubah kembali, pastikan semua input data sudah benar</span>
+                    <div class="btn-group mt-3">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Belum, cek kembali</button>
+                        <button type="button" class="btn btn-primary" id="confirmUpdate">Ya, sudah benar</button>
                     </div>
                 </div>
             </div>
