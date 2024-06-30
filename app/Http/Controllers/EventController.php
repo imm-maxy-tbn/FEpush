@@ -22,7 +22,7 @@ class EventController extends Controller
 
         foreach ($events as $event) {
             $event->content = \Illuminate\Support\Str::limit($event->content, 100, $end = '...');
-            $event->img = env('APP_BACKEND_URL') . '/images/' . $event->img;
+            $event->cover_img = env('APP_BACKEND_URL') . '/images/' . $event->cover_img;
         }
 
         $backendUrl = env('APP_BACKEND_URL');

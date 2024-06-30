@@ -14,8 +14,8 @@
 
 
     <section class="banner" style="">
-        <img class="banner-img" src="images/bg-event.png" class="w-100 h-auto" alt="">
-    </section>
+        <img class="banner-img" src="{{ env('APP_BACKEND_URL') . '/images/' . $event->cover_img }}"
+           class="w-100 h-auto" alt=""></section>
 
     <div class="container content d-flex flex-column justify-content-center">
         <p class="text-center" style="font-size:32px; font-weight:500">Selamat Anda telah terdaftar! <br>

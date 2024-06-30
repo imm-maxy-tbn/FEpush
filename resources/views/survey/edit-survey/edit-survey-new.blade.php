@@ -36,7 +36,7 @@
                 <button type="" class="btn-akhiri">Akhiri Survey</button>
                <a href="responden"><button type="" class="btn-lihat-responden">Lihat Responden Survey</button></a> 
                 <button type="" class="btn-lihat d-flex justify-content-around align-items-center">
-                    <a href="responden" class="text-dark"><span>Lihat Survey</span></a>
+                    <a href="survey-tangapan-diagram" class="text-dark"><span>Lihat Survey</span></a>
                     <img src="images/mata-icon.png" width="25" height="20" alt="">
                 </button>
                 <button type="submit" class="btn-simpan d-flex justify-content-around align-items-center">

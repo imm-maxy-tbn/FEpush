@@ -270,19 +270,49 @@
                     </div>
                     <div class="col-6 d-flex justify-content-center align-items-center">
                         <ul class=" d-flex " style="gap: 15px">
-                            <a href=""><li>Beranda</li></a>
-                            <a href=""><li>Proyek Saya</li></a>
-                            <a href=""><li>Event</li></a>
-                            <a href=""><li>Artikel</li></a>
-                            <a href=""><li>Perusahaan Saya</li></a>
+                            @if (Auth::check() && Auth::user()->companies)
+                    <!-- Navbar untuk user yang sudah mendaftarkan perusahaan -->
+                    <li class="text-white">
+                        <a class=" text-white" href="/homepage">Beranda</a>
+                    </li>
+                    <li class="text-white">
+                        <a class=" text-white" href="/myproject">Proyek Saya</a>
+                    </li>
+                    <li class="text-white">
+                        <a class=" text-white" href="/event">Event</a>
+                    </li>
+                    <li class="text-white">
+                        <a class=" text-white" href="/blog">Artikel</a>
+                    </li>
+                    <li class="text-white">
+                        <a class=" text-white" href="{{ route('profile-commpany') }}">Perusahaan Saya</a>
+                    </li>
+                @else
+                    <!-- Navbar untuk user yang belum mendaftarkan perusahaan -->
+                    <li class="text-white">
+                        <a class=" text-white" href="/home">Beranda</a>
+                    </li>
+                    <li class="text-white">
+                        <a class=" text-white" href="/homepage">Proyek Saya</a>
+                    </li>
+                    <li class="text-white">
+                        <a class=" text-white" href="/event">Event</a>
+                    </li>
+                    <li class="text-white">
+                        <a class=" text-white" href="/blog">Artikel</a>
+                    </li>
+                    <li class="text-white">
+                        <a class=" text-white" href="{{ route('profile-commpany') }}">Perusahaan Saya</a>
+                    </li>
+                @endif
                         </ul>
                     </div>
                     <div class="col-2 d-flex flex-column justify-content-center" style="gap: 30px">
                         <span class="span-footer text-center">Sosial Media</span>
                         <div class="sosmed d-flex justify-content-end  ">
-                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href=""><i class="fab fa-facebook-f"></i></a>
                             <a href="#"><i class="fab fa-twitter"></i></a>
-                            <a href="#"><i class="fab fa-instagram"></i></a>
+                            <a href="https://www.instagram.com/imm.bootcamp"><i class="fab fa-instagram"></i></a>
                             <a href="#"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>

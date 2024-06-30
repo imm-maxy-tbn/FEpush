@@ -27,14 +27,24 @@ Route::get('/', function () {
 })->name('home'); 
 Route::get('/home', function () {
     return view('home');
-})->name('home');
-Route::get('/home', [HomeController::class, 'index'])->name('welcome');
+})->name('home'); 
+Route::get('/survey-tangapan', function () {
+    return view('survey.edit-survey.survey-tangapan');
+})->name('survey-tangapan'); 
+Route::get('/survey-tangapan-chart', function () {
+    return view('survey.edit-survey.survey-tangapan-chart');
+})->name('survey-tangapan-chart'); 
+Route::get('/survey-tangapan-diagram', function () {
+    return view('survey.edit-survey.survey-tangapan-diagram');
+})->name('survey-tangapan-diagram'); 
+
   Route::get('event', [EventController::class, 'index'])->name('events.index');
 
 Route::get('/register', function () {
     return view('auth.register');
 })->name('register'); 
 Route::get('event/{id}', [EventController::class, 'view'])->name('events.view');
+
 
 
 Route::get('responden/{id}', [SurveyController::class, 'view'])->name('surveys.view');

@@ -164,7 +164,7 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container">
         <a class="navbar-brand" href="/home">
-        <img src="images/imm.png" width="100" height="55" alt=""></a>
+        <img src="/images/imm.png" width="100" height="55" alt=""></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -207,7 +207,7 @@
                     </li>
                 @endif
             </ul>
-
+            
             <!-- User is logged in -->
       
             <!-- User is not logged in -->
@@ -217,22 +217,30 @@
 
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="https://via.placeholder.com/40" alt="Profile Picture" class="profile-img">
-                                <span class="ml-2">Name</span>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-                                <a class="dropdown-item" href="profile">Profil Saya</a>
-         
-                              
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST">
-                                    @csrf
-                                    <button class=" dropdown-item ">
-                                        <i class="fas fa-sign-out-alt"></i> Log Out</button>
-                                </form>
-                            </div>
-                        </li>
+                        @guest
+                            <li class="nav-item">
+                                <a class="btn btn-masukk" href="{{ route('login') }}">Masuk</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-daftarr" href="{{ route('register') }}">Daftar</a>
+                            </li>
+                        @endguest
+                        @auth
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="https://via.placeholder.com/40" alt="Profile Picture" class="profile-img">
+                                    <span class="ml-2">{{ Auth::user()->nama_depan }}</span>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                                    <a class="dropdown-item" href="{{ route('profile') }}">Profil Saya</a>
+                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                        @csrf
+                                        <button type="submit" class="dropdown-item">
+                                            <i class="fas fa-sign-out-alt"></i> Log Out</button>
+                                    </form>
+                                </div>
+                            </li>
+                        @endauth
                     </ul>
                 </div>
      
@@ -240,6 +248,7 @@
         </div>
     </div>
 </nav>
+
 
 
         @yield('content')

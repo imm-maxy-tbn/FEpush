@@ -14,15 +14,13 @@ document.addEventListener("DOMContentLoaded", (event) => {
                 "Juni",
                 "Juli",
             ],
-            datasets: [
-                {
-                    label: "Bahan baku yang diolah kembali (kg)",
-                    data: initialData.slice(),
-                    backgroundColor: "rgba(103, 58, 183, 0.6)",
-                    borderColor: "rgba(103, 58, 183, 1)",
-                    borderWidth: 1,
-                },
-            ],
+            datasets: [{
+                label: "Bahan baku yang diolah kembali (kg)",
+                data: initialData.slice(),
+                backgroundColor: "rgba(103, 58, 183, 0.6)",
+                borderColor: "rgba(103, 58, 183, 1)",
+                borderWidth: 1,
+            }, ],
         },
         options: {
             scales: {
@@ -50,7 +48,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     // Menambahkan event listener untuk slider
     const slider = document.getElementById("myRange");
-    slider.addEventListener("input", function () {
+    slider.addEventListener("input", function() {
         const value = slider.value;
         document.querySelectorAll(".input-row input").forEach((input) => {
             input.value = value;
@@ -75,11 +73,4 @@ document.addEventListener("DOMContentLoaded", (event) => {
     document.querySelector(".btn-primary").addEventListener("click", () => {
         alert("Data berhasil disimpan!");
     });
-});
-
-document.addEventListener("DOMContentLoaded", function () {
-    setTimeout(function () {
-        var loading = document.getElementById("loading");
-        loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
-    }, 1000); // 3000 milidetik = 3 detik
 });
