@@ -48,8 +48,6 @@
 
 
 <body>
-
- 
     <div class="container">
         <h2 class="project-title">Draft Project</h2>
         <div class="row mt-5">
@@ -57,140 +55,135 @@
                 <div class="input-group">
                     <input type="text" class="form-control search-input" placeholder="Search..." aria-label="Search">
                     <div class="input-group-append">
-                        <span class="input-group-text search-icon" aria-label="Search Button"><i
-                                class="fas fa-search"></i></span>
+                        <span class="input-group-text search-icon" aria-label="Search Button"><i class="fas fa-search"></i></span>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 text-right">
                 <a href="creatproject">
-                <button class="btn btn-primary btn-create-project">Create New Project</button>
-            </div></a>
+                    <button class="btn btn-primary btn-create-project">Create New Project</button>
+                </a>
+            </div>
         </div>
         <div class="section d-flex justify-content-between justify-content-center">
-        <h4 class="project-title mb-5 mt-5">Semua Proyek ({{ $projects->count() }})</h4>
-        @if(count($projects) > 6) <h5 class="seeAll" id="show-all-btn">Lihat Semua</h5>@endif
-    </div> 
-
-
-   
-    <div class="row mt-3" id="draft-project-list">
-        <div class="col-md-12 no-projects mt-3">
-            @if($projects->isEmpty())
-                <p>Tidak ada proyek yang ditemukan.</p>
-            @else
-                <div class="row">
-                    @foreach($projects as $index => $project)
-                        <div class="col-md-4 mb-4" id="project-{{ $project->id }}" @if($index >= 6) style="display: none;" @endif>
-                            <div class="card project-card" style="min-height: 300px">
-                                <img height="150px" src="{{ env('APP_BACKEND_URL') . '/images/' . $project->img }}" class="card-img-top" alt="">
-                                <div class="card-body">
-                                    <h5 class="card-title">{{ $project->nama }}</h5>   
-                                    <div class=" d-flex">
-                                    <a href="detail" class="btn btn-secondary btn-detail mt-2">Detail</a>
-                                    <button class="btn btn-danger mt-2" onclick="deleteProject('project-{{ $project->id }}', {{ $index }})">Delete</button></div>
-                              
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-              
+            <h4 class="project-title mb-5 mt-5">Semua Proyek ({{ $allProjects->count() }})</h4>
+            @if($allProjects->count() > 6) 
+                <h5 class="seeAll" id="show-all-btn">Lihat Semua</h5>
             @endif
         </div>
-    </div>
-   
-    </div>
-
-    <div class="container">
-        <h2 class="project-title mb-5 mt-5">On Going Project</h2>
-        <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
-            <div class="dropdown">
-                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Today
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <a class="dropdown-item" href="#">Today</a>
-                    <a class="dropdown-item" href="#">This Week</a>
-                    <a class="dropdown-item" href="#">This Month</a>
-                </div>
-            </div>
-            <div class="dropdown">
-                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    0 of 0
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                    <a class="dropdown-item" href="#">0 of 0</a>
-                    <a class="dropdown-item" href="#">1 of 1</a>
-                </div>
+    
+        <div class="row mt-3" id="draft-project-list">
+            <div class="col-md-12 no-projects mt-3">
+                @if($allProjects->isEmpty())
+                    <p>Tidak ada proyek yang ditemukan.</p>
+                @else
+                    <div class="row">
+                        @foreach($allProjects as $index => $project)
+                            <div class="col-md-4 mb-4" id="project-{{ $project->id }}" @if($index >= 6) style="display: none;" @endif>
+                                <div class="card project-card" style="min-height: 300px">
+                                    <img height="150px" src="{{ env('APP_BACKEND_URL') . '/images/' . $project->img }}" class="card-img-top" alt="">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $project->nama }}</h5>   
+                                        <div class="d-flex">
+                                            <a href="detail" class="btn btn-secondary btn-detail mt-2">Detail</a>
+                                            <form action="{{ route('projects.destroy', $project->id) }}" method="POST" style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button class="btn btn-danger mt-2" onclick="return confirm('Are you sure you want to delete this project?')">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endif
             </div>
         </div>
-        <table class="table mt-3 ongoing-projects-table">
-            <thead>
-                <tr>
-                    <th>Project Name</th>
-                    <th>Date</th>
-                    <th>Impact</th>
-                    <th>SDGs</th>
-                    <th>Total</th>
-                </tr>
-            </thead>
-            <tbody id="ongoing-project-list">
-                @foreach($projects as $project)
-                <tr>
-                    <td>{{ $project->nama }}</td>
-                    <td>{{ $project->start_date }}</td>
-                    <td>{{ $project->end_date }}</td>
-                    <td>{{ $project->sdgs->implode('order', ', ') }}</td>
-                    <td>{{ $project->jumlah_pendanaan }}</td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-
-        <!-- Modal -->
-  
-
-        <h2 class="project-title mb-5 mt-5">Done Projects</h2>
-        <div class="card mt-3 done-projects-card">
-            <div class="card-header d-flex justify-content-between align-items-center done-projects-header">
-                <span>Proyek Selesai</span>
+    
+        <div class="container">
+            <h2 class="project-title mb-5 mt-5">On Going Project</h2>
+            <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
                 <div class="dropdown">
-                    <button class="btn btn-outline-primary dropdown-toggle done-projects-dropdown-toggle" type="button"
-                        id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span>Bulan</span> <i class="fas fa-calendar-alt ml-2"></i>
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Today
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                        <a class="dropdown-item" href="#">Hari</a>
-                        <a class="dropdown-item" href="#">Minggu</a>
-                        <a class="dropdown-item" href="#">Bulan</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Today</a>
+                        <a class="dropdown-item" href="#">This Week</a>
+                        <a class="dropdown-item" href="#">This Month</a>
+                    </div>
+                </div>
+                <div class="dropdown">
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        0 of 0
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                        <a class="dropdown-item" href="#">0 of 0</a>
+                        <a class="dropdown-item" href="#">1 of 1</a>
                     </div>
                 </div>
             </div>
-            <table class="table mt-3 done-projects-table">
+            <table class="table mt-3 ongoing-projects-table">
                 <thead>
                     <tr>
-                        <th>Nama Proyek</th>
-                        <th>tanggal penyelesaian</th>
-                        <th>Status</th>
+                        <th>Project Name</th>
+                        <th>Tanggal Mulai</th>
+                        <th>Tenggat Waktu</th>
+                        <th>Tujuan SDGs</th>
+                        <th>Total</th>
                     </tr>
                 </thead>
-                <tbody id="done-project-list">
-                    <!-- Existing completed projects -->
-                    @foreach($projects as $project)
-                <tr>
-                    <td>{{ $project->nama }}</td>
-                    <td>{{ $project->end_date }}</td>
-                    <td><div class="span bg-success text-white" style="padding: 5px 0; border-radius:50px">Succes</div></td>
-             
-                </tr>
-                @endforeach
+                <tbody id="ongoing-project-list">
+                    @foreach($ongoingProjects as $project)
+                        <tr>
+                            <td>{{ $project->nama }}</td>
+                            <td>{{ $project->start_date }}</td>
+                            <td>{{ $project->end_date }}</td>
+                            <td>{{ $project->sdgs->implode('order', ', ') }}</td>
+                            <td>{{ 'Rp' . number_format($project->jumlah_pendanaan, 0, ',', '.') }}</td>
+                        </tr>
+                    @endforeach
                 </tbody>
             </table>
+    
+            <h2 class="project-title mb-5 mt-5">Done Projects</h2>
+            <div class="card mt-3 done-projects-card">
+                <div class="card-header d-flex justify-content-between align-items-center done-projects-header">
+                    <span>Proyek Selesai</span>
+                    <div class="dropdown">
+                        <button class="btn btn-outline-primary dropdown-toggle done-projects-dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <span>Bulan</span> <i class="fas fa-calendar-alt ml-2"></i>
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                            <a class="dropdown-item" href="#">Hari</a>
+                            <a class="dropdown-item" href="#">Minggu</a>
+                            <a class="dropdown-item" href="#">Bulan</a>
+                        </div>
+                    </div>
+                </div>
+                <table class="table mt-3 done-projects-table">
+                    <thead>
+                        <tr>
+                            <th>Nama Proyek</th>
+                            <th>Tanggal Penyelesaian</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="done-project-list">
+                        @foreach($completedProjects as $project)
+                            <tr>
+                                <td>{{ $project->nama }}</td>
+                                <td>{{ $project->tanggal_penyelesaian }}</td>
+                                <td><div class="span bg-success text-white" style="padding: 5px 0; border-radius:50px">{{ $project->status }}</div></td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
+    
 
 
     <!-- JavaScript Libraries -->
@@ -205,70 +198,6 @@
                 loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
             }, 1000); // 3000 milidetik = 3 detik
         });
-
-        const projectTemplates = {
-            "Maths Department": {
-                imageUrl: "images/25.png",
-                impact: "Medium",
-                tags: "Education",
-                total: "Rp 7.000.000",
-            },
-            "Chemistry Department": {
-                imageUrl: "images/20.png",
-                impact: "High",
-                tags: "Science",
-                total: "Rp 8.000.000",
-            },
-            "Physics Department": {
-                imageUrl: "images/21.png",
-                impact: "Low",
-                tags: "Research",
-                total: "Rp 6.000.000",
-            },
-            "Computer Department": {
-                imageUrl: "images/24.png",
-                impact: "Medium",
-                tags: "Technology",
-                total: "Rp 7.500.000",
-            },
-            "English Department": {
-                imageUrl: "images/22.png",
-                impact: "Medium",
-                tags: "Language",
-                total: "Rp 7.000.000",
-            },
-            "Social Department": {
-                imageUrl: "images/23.png",
-                impact: "High",
-                tags: "Community",
-                total: "Rp 8.000.000",
-            },
-        };
-
-        let projects = [];
-        let completedProjects = [
-            {
-                name: "Social Department",
-                completionDate: "Oct 17, 2023",
-                status: "SELESAI"
-            },
-            {
-                name: "Computer Department",
-                completionDate: "Oct 17, 2023",
-                status: "SELESAI"
-            },
-            {
-                name: "Chemistry Department",
-                completionDate: "Oct 17, 2023",
-                status: "SELESAI"
-            },
-            {
-                name: "Math Department",
-                completionDate: "Oct 17, 2023",
-                status: "SELESAI"
-            }
-        ];
-
         function displayProjects() {
             const draftProjectList = document.getElementById("draft-project-list");
             const ongoingProjectList = document.getElementById("ongoing-project-list");

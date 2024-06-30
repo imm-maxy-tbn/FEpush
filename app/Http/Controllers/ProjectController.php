@@ -11,15 +11,25 @@ use App\Models\Metric;
 use App\Models\TargetPelanggan;
 use App\Models\Dana;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ProjectController extends Controller
 {
     public function index()
     {
-        $projects = Project::with('tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana')->get();
-
-        return view('myproject.myproject', compact('projects'));
+        $user = Auth::user();
+        $allProjects = Project::with('tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana')
+            ->whereHas('company', function ($query) use ($user) {
+                $query->where('user_id', $user->id);
+            })
+            ->get();
+    
+        $ongoingProjects = $allProjects->where('status', 'Belum selesai');
+        $completedProjects = $allProjects->where('status', 'Selesai');
+    
+        return view('myproject.myproject', compact('allProjects', 'ongoingProjects', 'completedProjects'));
     }
+    
     
     public function create()
     {
@@ -87,7 +97,7 @@ class ProjectController extends Controller
             'target_pelanggans.*.rentang_usia' => 'nullable|string',
             'target_pelanggans.*.deskripsi_pelanggan' => 'nullable|string',
         ]);
-
+        $validatedData['status'] = 'Belum selesai';
         if ($request->hasFile('img')) {
             $imageName = time() . '.' . $request->img->extension();
             $request->img->move(public_path('images'), $imageName);

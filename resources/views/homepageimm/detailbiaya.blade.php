@@ -15,7 +15,7 @@
 
     <div class="container" style="padding-top: 120px"> 
        <div class="row d-flex justify-content-between"><a href="kelolapengeluaran"> <h4 class=" d-flex align-items-center"><strong style="font-size: 40px;"><</strong>   Detail penggunaan biaya proyek ramah anak</h4></a>
-       <a href="tambahpenggunaandana"><button class="btn-tambahdana">Tambah Penggunaan Dana</button></a>
+       <a href="{{ route('tambah.penggunaan.dana', ['project_id' => $project_id]) }}"><button class="btn-tambahdana">Tambah Penggunaan Dana</button></a>
     </div>
         <h5>Detail Biaya</h5>
     </div>
@@ -32,44 +32,41 @@
                 </tr>
             </thead>
             <tbody>
-           
-              
-                <tr>
-          <td>2024/05/25</td>
-          <td>Rp 150.000</td>
-          <td>Pembelian barang habis pakai
-            Kertas HVS A4 (5 rim)
-            Tinta printer Epson L100
-            Bolpoin AE7 (1 lusin)</td>
-          <td><span href="" data-toggle="modal" style="cursor: pointer" data-target="#notificationModal"><img src="/images/icon-bukti.svg" alt=""></span></td>
-       
-                </tr>
+              @foreach ($outcomes as $outcome)
+              <tr>
+                  <td>{{ $outcome->date }}</td>
+                  <td>Rp{{ number_format($outcome->jumlah_biaya, 0, ',', '.') }}</td>
+                  <td>{{ $outcome->keterangan }}</td>
+                  <td>
+                      <span href="" data-toggle="modal" style="cursor: pointer" data-target="#notificationModal{{ $outcome->id }}">
+                          <img src="{{ asset('images/icon-bukti.svg') }}" alt="Bukti">
+                      </span>
+                  </td>
+              </tr>
+              @endforeach
           
             </tbody>
         </table>
     </div>
 
-    <!-- Trigger Button for Scrollable Modal -->
-
-  
-  <!-- Scrollable Modal -->
-  <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-scrollable">
-      <div class="modal-content pb-4" style="height: 400px">
-        <div class="modal-header">
-          <h5 class="modal-title" id="notificationModalLabel">Notifications</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+    <!-- Modal for Each Outcome -->
+    @foreach ($outcomes as $outcome)
+    <div class="modal fade" id="notificationModal{{ $outcome->id }}" tabindex="-1" aria-labelledby="notificationModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content pb-4" style="height: 400px">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="notificationModalLabel">Bukti Pengeluaran</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <img src="{{ env('APP_BACKEND_URL') }}/images/{{ $outcome->bukti }}" alt="Bukti Pengeluaran" class="img-fluid my-4">
+                </div>
+            </div>
         </div>
-        <div class="modal-body">
-         
-        </div>
-      </div>
     </div>
-  </div>
-
-   
+    @endforeach
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

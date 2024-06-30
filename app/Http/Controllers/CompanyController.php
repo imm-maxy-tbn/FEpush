@@ -18,6 +18,32 @@ class CompanyController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    public function update(Request $request, $id)
+    {
+        // Validasi data yang dikirimkan melalui formulir
+        $validated = $request->validate([
+            'nama' => 'required|string|max:255',
+            'profile' => 'required|string|max:255',
+            'tipe' => 'required|string|max:255',
+            'nama_pic' => 'required|string|max:255',
+            'posisi_pic' => 'required|string|max:255',
+            'telepon' => 'required|string|max:20',
+            'negara' => 'required|string|max:255',
+            'provinsi' => 'required|string|max:255',
+            'kabupaten' => 'required|string|max:255',
+            'jumlah_karyawan' => 'required|integer',
+        ]);
+
+        // Temukan Company berdasarkan ID
+        $company = Company::findOrFail($id);
+
+        // Update data perusahaan
+        $company->update($validated);
+
+        // Redirect ke halaman profil perusahaan dengan pesan sukses
+        return redirect()->route('profile-commpany.show', $company->id)->with('success', 'Data perusahaan berhasil diperbarui.');
+    }
+    
     public function store(Request $request)
     {
         // Validasi data yang dikirimkan melalui formulir

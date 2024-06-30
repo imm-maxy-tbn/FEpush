@@ -86,7 +86,6 @@ class ProfileController extends Controller
     {
         $request->validate([
             'nama' => 'required|string|max:255',
-            'email' => 'required|string|max:255',
             'profile' => 'required|string|max:255',
             'tipe' => 'required|string|max:255',
             'nama_pic' => 'required|string|max:255',
@@ -101,7 +100,6 @@ class ProfileController extends Controller
         $company = Company::findOrFail($id);
         $company->update([
             'nama' => $request->input('nama'),
-            'email' => $request->input('email'),
             'profile' => $request->input('profile'),
             'tipe' => $request->input('tipe'),
             'nama_pic' => $request->input('nama_pic'),
@@ -115,4 +113,5 @@ class ProfileController extends Controller
 
         return redirect()->route('profile-commpany')->with('success', 'Profil perusahaan berhasil diperbarui.');
     }
+
 }

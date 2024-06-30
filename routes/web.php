@@ -6,6 +6,9 @@ use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 
+use App\Http\Controllers\CompanyOutcomeController;
+use App\Http\Controllers\CompanyIncomeController;
+use App\Http\Controllers\HomepageController;
 use App\Http\Controllers\CompanyController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
@@ -39,17 +42,29 @@ Route::get('responden-data-diri/{id}', [SurveyController::class, 'dataDiri'])->n
 Route::post('responden/{id}', [SurveyController::class, 'registerUser'])->name('surveys.register-user');
 Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submit'])->name('surveys.submit');
 
+
+
 // Rute yang memerlukan autentikasi
 Route::middleware(['auth'])->group(function () {
     Route::get('/verifikasidiri', function () {
         return view('imm.verifikasidiri');
     })->name('verifikasidiri');
 
-    Route::get('/homepage', [CompanyController::class, 'index'])->name('homepage')->middleware('check.company');
-
     Route::get('/imm', function () {
         return view('imm.imm');
     })->middleware('check.company');
+    Route::get('/kelolapengeluaran', function (\Illuminate\Http\Request $request) {
+        $companyIncomeController = app(CompanyIncomeController::class);
+        $companyOutcomeController = app(CompanyOutcomeController::class);
+    
+        $companyIncomes = $companyIncomeController->index();
+        $projects = $companyOutcomeController->index($request);
+    
+        return view('homepageimm.kelolapengeluaran', compact('companyIncomes', 'projects'));
+    })->name('kelola-pengeluaran');
+    Route::get('/detail-biaya/{project_id}', [CompanyOutcomeController::class, 'detailOutcome'])->name('homepageimm.detailbiaya');
+    Route::get('/tambah-penggunaan-dana/{project_id}', [CompanyOutcomeController::class, 'create'])->name('tambah.penggunaan.dana');
+    Route::post('/store-company-outcome', [CompanyOutcomeController::class, 'store'])->name('store-company-outcome');
 
     Route::get('/blog', function () {
         return view('blog.blog');
@@ -267,9 +282,9 @@ Route::get('/responden-esay', function () {
     return view('survey.responden.responden-esay');
 });
 
-Route::get('/kelolapengeluaran', function () {
-    return view('homepageimm.kelolapengeluaran');
-});
+// Route::get('/kelolapengeluaran', function () {
+//     return view('homepageimm.kelolapengeluaran');
+// });
 
 Route::get('/detailbiaya', function () {
     return view('homepageimm.detailbiaya');
@@ -324,12 +339,15 @@ Route::get('/kuesioner', function () {
 Route::get('/responden/{id}', 'SurveyController@view')->name('survey.responden.view');
 
 
-Route::get('/homepage', function () {
-    $user = auth()->user();
-    $company = $user->company;
+// Route::get('/homepage', function () {
+//     $user = auth()->user();
+//     $company = $user->company;
 
-    return view('homepageimm.homepage', compact('company', 'user'));
-})->name('homepage')->middleware('check.company');
+//     return view('homepageimm.homepage', compact('company', 'user'));
+// })->name('homepage')->middleware('check.company');
+
+Route::get('/homepage', [HomepageController::class, 'index'])->name('homepage')->middleware('check.company');
+
 
 Route::get('/detail/{id}', [ProjectController::class, 'vieww'])->name('projects.view');
 

@@ -38,11 +38,7 @@
                     </div>
                     <div class="form-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email" name="email" class="form-control" value="{{ $user->email }}">
-                    </div>
-                    <div class="form-group">
-                        <label for="current_password">Password Saat Ini</label>
-                        <input type="password" id="current_password" name="current_password" class="form-control">
+                        <input type="email" id="email" name="email" class="form-control" value="{{ $user->email }}" readonly>
                     </div>
                 </div>
                 <div class="col-6">

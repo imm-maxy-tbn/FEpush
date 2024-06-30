@@ -30,15 +30,15 @@
                 </tr>
             </thead>
             <tbody>
-           
-                <tr>
-          <td>2024/05/25</td>
-          <td>Impact Mate</td>
-          <td>Bank ABC</td>
-          <td>Bank BRI</td>
-          <td>40.000.000</td>
-                </tr>
-          
+                @foreach ($companyIncomes as $income)
+                    <tr>
+                        <td>{{ $income->date }}</td>
+                        <td>{{ $income->pengirim }}</td>
+                        <td>{{ $income->bank_asal }}</td>
+                        <td>{{ $income->bank_tujuan }}</td>
+                        <td>Rp{{ number_format($income->jumlah_hibah, 0, ',', '.') }}</td>
+                    </tr>
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -61,15 +61,15 @@
                 </tr>
             </thead>
             <tbody>
-           
+                @foreach ($projects as $project)
                 <tr>
-          <td>Proyek Ramah Anak</td>
-          <td>Rp 5.000.000</td>
-          <td><a href="detailbiaya" style="text-decoration: underline">cek disini</a></td>
-   
+                    <td>{{ $project->nama }}</td>
+                    <td>Rp{{ number_format($project->dana->first()->nominal, 0, ',', '.') }}</td>
+                    <td>
+                        <a href="{{ route('homepageimm.detailbiaya', ['project_id' => $project->id]) }}" style="text-decoration: underline">cek disini</a>
+                    </td>
                 </tr>
-
-          
+                @endforeach
             </tbody>
         </table>
     </div>
@@ -82,7 +82,6 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-    <script>
      
 </body>
 

@@ -38,4 +38,8 @@ class Company extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+    public function incomes()
+    {
+        return $this->hasMany(CompanyIncome::class);
+    }
 }
