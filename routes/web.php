@@ -24,25 +24,25 @@ Auth::routes();
 // Rute yang bisa diakses tanpa login (Login dan Register)
 Route::get('/', function () {
     return view('home');
-})->name('home'); 
+})->name('home');
 Route::get('/home', function () {
     return view('home');
-})->name('home'); 
+})->name('home');
 Route::get('/survey-tangapan', function () {
     return view('survey.edit-survey.survey-tangapan');
-})->name('survey-tangapan'); 
+})->name('survey-tangapan');
 Route::get('/survey-tangapan-chart', function () {
     return view('survey.edit-survey.survey-tangapan-chart');
-})->name('survey-tangapan-chart'); 
+})->name('survey-tangapan-chart');
 Route::get('/survey-tangapan-diagram', function () {
     return view('survey.edit-survey.survey-tangapan-diagram');
-})->name('survey-tangapan-diagram'); 
+})->name('survey-tangapan-diagram');
 
-  Route::get('event', [EventController::class, 'index'])->name('events.index');
+Route::get('event', [EventController::class, 'index'])->name('events.index');
 
 Route::get('/register', function () {
     return view('auth.register');
-})->name('register'); 
+})->name('register');
 Route::get('event/{id}', [EventController::class, 'view'])->name('events.view');
 
 
@@ -66,10 +66,10 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/kelolapengeluaran', function (\Illuminate\Http\Request $request) {
         $companyIncomeController = app(CompanyIncomeController::class);
         $companyOutcomeController = app(CompanyOutcomeController::class);
-    
+
         $companyIncomes = $companyIncomeController->index();
         $projects = $companyOutcomeController->index($request);
-    
+
         return view('homepageimm.kelolapengeluaran', compact('companyIncomes', 'projects'));
     })->name('kelola-pengeluaran');
     Route::get('/detail-biaya/{project_id}', [CompanyOutcomeController::class, 'detailOutcome'])->name('homepageimm.detailbiaya');
@@ -93,8 +93,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/myproject', function () {
         return view('myproject.myproject');
     });
-
-
 
     Route::get('/blogarticle', function () {
         return view('blog.blogarticle');
@@ -142,9 +140,7 @@ Route::middleware(['auth'])->group(function () {
         return view('myproject.creatproject.detailreview');
     });
 
-    Route::get('/edit-survey-new', function () {
-        return view('survey.edit-survey.edit-survey-new');
-    });
+
 
     Route::get('/bootcamp', function () {
         return view('bootcamp.bootcamp');
@@ -154,7 +150,7 @@ Route::middleware(['auth'])->group(function () {
         return view('event.succes');
     });
 
- 
+
 
     Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
     Route::get('/blogarticle/{id}/view', [PostController::class, 'view'])->name('blog.view');
@@ -170,14 +166,14 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/projects', [ProjectController::class, 'store'])->name('projects.store');
     Route::post('/projects/filter-metrics', [ProjectController::class, 'filterMetrics'])->name('projects.filterMetrics');
     Route::get('/myproject', [ProjectController::class, 'index'])->name('myproject.myproject');
+    Route::get('/detail/{id}', [ProjectController::class, 'view'])->name('projects.view');
+    Route::put('/projects/{id}', [ProjectController::class, 'update'])->name('projects.update');
 
     Route::get('/companies', [CompanyController::class, 'index']);
 
     Route::resource('companies', 'CompanyController');
     Route::post('/homepage', [CompanyController::class, 'store'])->name('companies.store');
 
-  
-  
     Route::get('event-register/{id}', [EventController::class, 'edit'])->name('events.edit');
     Route::put('event/{id}', [EventController::class, 'update'])->name('events.update');
 
@@ -185,22 +181,19 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
     Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
-Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
- 
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
 
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
-
-Route::get('/profile-commpany', [ProfileController::class, 'editCompanyProfile'])->name('profile-commpany');
-Route::put('/profile-commpany/{id}', [ProfileController::class, 'updateCompanyProfile'])->name('profile-commpany.update');
-Route::get('/profile-commpany', [ProfileController::class, 'editCompanyProfile'])
-    ->name('profile-commpany')
-    ->middleware('check.company');
+    Route::get('/profile-commpany', [ProfileController::class, 'editCompanyProfile'])->name('profile-commpany');
+    Route::put('/profile-commpany/{id}', [ProfileController::class, 'updateCompanyProfile'])->name('profile-commpany.update');
+    Route::get('/profile-commpany', [ProfileController::class, 'editCompanyProfile'])
+        ->name('profile-commpany')
+        ->middleware('check.company');
 
     Route::get('/profile-commpany', [ProfileController::class, 'editCompanyProfile'])->name('profile-commpany')->middleware('check.company');
-
 });
 
 Route::get('/verifikasidiri', function () {
@@ -348,9 +341,6 @@ Route::get('/responden/{id}', 'SurveyController@view')->name('survey.responden.v
 
 Route::get('/homepage', [HomepageController::class, 'index'])->name('homepage')->middleware('check.company');
 
-
-Route::get('/detail/{id}', [ProjectController::class, 'vieww'])->name('projects.view');
-
 Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
 Route::get('/blogarticle/{id}/view', [PostController::class, 'view'])->name('blog.view');
 
@@ -378,6 +368,11 @@ Route::post('responden/{id}', [SurveyController::class, 'registerUser'])->name('
 Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submit'])->name('surveys.submit');
 Route::post('survey', [SurveyController::class, 'store'])->name('surveys.store');
 Route::get('/responden/{id}', [SurveyController::class, 'view'])->name('surveys.view');
+Route::get('/edit-survey-new/{project}', function () {
+    return view('survey.edit-survey.edit-survey-new');
+});
+Route::delete('survey/{survey}', [SurveyController::class, 'destroy'])->name('surveys.destroy');
+Route::get('survey-result/{survey}', [SurveyController::class, 'results'])->name('surveys.results');
 
-Route::get('/about', [HomeController::class,'about']);
+Route::get('/about', [HomeController::class, 'about']);
 Route::get('/edit-survey-new/{survey}', [SurveyController::class, 'edit'])->name('surveys.edit');

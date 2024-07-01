@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use MattDaneshvar\Survey\Models\Survey;
+
 class Project extends Model
 {
     protected $fillable = ['img', 'nama', 'deskripsi', 'tujuan', 'start_date', 'end_date', 'provinsi', 'kota', 'gmaps', 'jumlah_pendanaan', 'jenis_dana', 'dana_lain', 'deskripsi_pelanggan', 'company_id'];
@@ -36,7 +38,7 @@ class Project extends Model
     {
         return $this->belongsToMany(Indicator::class);
     }
-        
+
     public function targetPelanggan()
     {
         return $this->hasMany(TargetPelanggan::class);
@@ -49,6 +51,10 @@ class Project extends Model
     public function metricProjects()
     {
         return $this->hasMany(MetricProject::class);
+    }
+    public function surveys()
+    {
+        return $this->hasMany(Survey::class);
     }
     public function user()
     {

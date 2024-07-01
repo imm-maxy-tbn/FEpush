@@ -2,19 +2,20 @@
 @section('title', 'Detail Proyek')
 
 @section('css')
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet"> <style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
         .header-image {
             width: 100%;
             height: auto;
         }
 
-        .fa-trash-alt{
+        .fa-trash-alt {
             cursor: pointer;
-           color: red;
+            color: red;
         }
 
         .content-wrapper {
@@ -128,7 +129,7 @@
         }
 
         .upload-container {
-      
+
             width: 100%;
             height: 200px;
             display: flex;
@@ -157,279 +158,263 @@
         .hidden {
             display: none;
         }
-        .upload-container{
+
+        .upload-container {
             cursor: pointer;
         }
-        img{
-            background-size: cover;
-            
-        }
 
+        img {
+            background-size: cover;
+
+        }
     </style>
 @endsection
 @section('content')
 
 
-   
 
 
-<body>
+
+    <body>
 
 
-<!-- Main Container -->
-<div class="container mt-5 pt-5 contentTop">
-    <div class="row">
-        <div class="col-12">
-            <div class="container">
-                <label for="file-upload" class=" w-100" aria-placeholder=""> 
-                    <img class="upload-container" src="/images/banner-bootcamp.png" id="image-preview"   >
-                <input type="file" id="file-upload" accept="image/*" style="display: none" >
-            
-                    <i class="fas fa-cloud-upload-alt" style="display: none"></i>
-                </label>
-            </div>
-    
-        </div>
-    </div>
-</div>
+        <!-- Main Container -->
+        <div class="container mt-5 pt-5 contentTop">
+            <div class="row">
+                <div class="col-12">
+                    <div class="container">
+                        <label for="file-upload" class=" w-100" aria-placeholder="">
+                            <img class="upload-container" src="/images/banner-bootcamp.png" id="image-preview">
+                            <input type="file" id="file-upload" accept="image/*" style="display: none">
 
-<!-- Content Section -->
-<div class="container mt-3">
-    <div class="row">
-        <!-- Left Content -->
-        <div class="col-lg-8">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="edit-container">
-                        <h5 class="card-title">Nama Proyek</h5>
-                        <i class="fas fa-edit edit-icon" id="edit-nama-proyek"></i>
+                            <i class="fas fa-cloud-upload-alt" style="display: none"></i>
+                        </label>
                     </div>
-                    <input type="text" class="form-control" id="nama-proyek" value="Projek Anti-Phising" readonly>
-                </div>
-            </div>
 
-            <div class="card mb-4">
-                <div class="card-body">
-                    <div class="edit-container">
-                        <h5 class="card-title">Deskripsi Proyek</h5>
-                        <i class="fas fa-edit edit-icon" id="edit-deskripsi-proyek"></i>
-                    </div>
-                    <textarea class="form-control" id="deskripsi-proyek" rows="4" readonly>Proyek komprehensif yang bertujuan untuk memanfaatkan teknologi dan ilmu komputer untuk mencapai berbagai Tujuan Pembangunan Berkelanjutan (SDGs).</textarea>
-                </div>
-                
-                
-            </div>
-
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">SDG'S</h5>
-                    <div class="row">
-                        <div class="col-4">
-                            <img src="{{ asset('images/ASVG/sdg1.svg') }}" class="img-fluid" alt="SDG 4">
-                        </div>
-                        <div class="col-4">
-                            <img src="{{ asset('images/ASVG/sdg2.svg') }}" class="img-fluid" alt="SDG 9">
-                        </div>
-                        <div class="col-4">
-                            <img src="{{ asset('images/ASVG/sdg3.svg') }}" class="img-fluid" alt="SDG 10">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="card mb-4">
-                <div class="card-body d-flex justify-content-between align-items-center">
-                    <h5 class="card-title">Dokumen Validitas Data</h5>
-                    <button class="btn btn-purple" id="tambah-dokumen">Tambah Dokumen</button>
-                    <input type="file" id="file-input" style="display: none;">
-                </div>
-                <ul class="list-group" id="file-list">
-                    <li class="list-group-item">
-                        <a href="#" class="file-link">File a.csv</a>
-                        <span class="float-right">
-                            <i class="fas fa-trash-alt delete-icon"></i>
-                        </span>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="card mb-4">
-                <div class="card-body d-flex justify-content-between align-items-center">
-                    <h5 class="card-title">Survey Pendukung</h5>
-                    <a href="/edit-survey-new"><button class="btn btn-purple">Mulai Survey</button></a>
-                </div>
-                <ul class="list-group">
-                    <li class="list-group-item">Survey Kesadaran CyberSecurity <span class="float-right"><i class="fas fa-trash-alt"></i></span></li>
-                    <li class="list-group-item">Survey Korban Phising <span class="float-right"><i class="fas fa-trash-alt"></i></span></li>
-                    <li class="list-group-item">Survey Korban Phising <span class="float-right"><i class="fas fa-trash-alt"></i></span></li>
-                    <li class="list-group-item">Survey Korban Phising <span class="float-right"><i class="fas fa-trash-alt"></i></span></li>
-                </ul>
-                
-            </div>
-
-            <button class="btn btn-purple btn-block mb-5">Project Selesai</button>
-        </div>
-
-        <!-- Right Content -->
-        <div class="col-lg-4">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">Metrix Anda</h5>
-                    <input type="text" class="form-control" placeholder="Cari Matrix anda">
-                    <ul class="list-group mt-3 scrollable">
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Premi Penghematan Klien</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Bias-Reducing Investment Practices</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Bias-Reducing Investment Practices</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Bias-Reducing Investment Practices</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Bias-Reducing Investment Practices</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Bias-Reducing Investment Practices</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Bias-Reducing Investment Practices</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Lorem ipsum dolor sit amet</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Consectetur adipiscing elit</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">Indicator</h5>
-                    <ul class="list-group">
-                        <li class="list-group-item">4.1.1.(a) Proporsi anak-anak dan remaja di: (a) kelas 5 (b) kelas 8, dan (c) usia 15 tahun yang mencapai setidaknya tingkat kemahiran minimum dalam: (i) membaca, (ii) matematika.</li>
-                        <li class="list-group-item">4.4.1.(a) Proporsi remaja (usia 15-24 tahun) dan dewasa (usia 15-59 tahun) dengan keterampilan teknologi informasi dan komunikasi (TIK).</li>
-                        <li class="list-group-item">9.5.2 Jumlah sumber daya manusia bidang ilmu pengetahuan dan teknologi (peneliti, perekayasa, dan dosen) pada instansi pemerintah dan perguruan tinggi per satu juta penduduk.</li>
-                        <li class="list-group-item">10.4.1.(b) Proporsi peserta Program Jaminan Sosial Bidang Ketenagakerjaan.</li>
-                    </ul>
                 </div>
             </div>
         </div>
-    </div>
-
-    
-</div>
-<div class="container d-flex justify-content-center mt-5">
-    <a href="myproject" class="btn w-50 btn-purple px-4 py-2 btn-wide text-white hidden" id="save-button" style="font-weight:bold;">Simpan Perubahan Detail Proyek</a>
-</div>
 
 
+        <!-- Content Section -->
+        <div class="container mt-3">
+            <div class="row">
+                <!-- Left Content -->
+                <div class="col-lg-8">
+                    <form id="projectForm" action="{{ route('projects.update', $project->id) }}" method="POST"
+                        enctype="multipart/form-data">
+                        @csrf
+                        @method('PUT')
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="edit-container">
+                                    <h5 class="card-title">Nama Proyek</h5>
+                                    <i class="fas fa-edit edit-icon" id="edit-nama-proyek"></i>
+                                </div>
+                                <input type="text" class="form-control" id="nama-proyek" name="nama"
+                                    value="{{ $project->nama }}" readonly>
+                            </div>
+                        </div>
 
-<script>
-    $(document).ready(function() {
-        $('#file-upload').on('change', function() {
-            var file = this.files[0];
-            if (file) {
-                if (file.size > 5 * 1024 * 1024 * 1024 * 1024 * 1024) { // Check if file size is more than 5 MB
-                    alert('Ukuran file terlalu besar. Maksimal 5 MB.');
-                    this.value = null; // Reset input file
-                    return;
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="edit-container">
+                                    <h5 class="card-title">Deskripsi Proyek</h5>
+                                    <i class="fas fa-edit edit-icon" id="edit-deskripsi-proyek"></i>
+                                </div>
+                                <textarea class="form-control" id="deskripsi-proyek" name="deskripsi" rows="4" readonly>{{ $project->deskripsi }}</textarea>
+                            </div>
+                        </div>
+
+                        <!-- Dokumen Validitas Data section -->
+                        <div class="card mb-4">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <h5 class="card-title">Dokumen Validitas Data</h5>
+                                <button type="button" class="btn btn-purple" id="tambah-dokumen">Tambah Dokumen</button>
+                                <input type="file" id="file-input" name="documents[]" style="display: none;" multiple>
+                            </div>
+                            <ul class="list-group" id="file-list">
+                                {{-- @foreach ($project->documents as $document)
+                                    <li class="list-group-item">
+                                        <a href="{{ asset('storage/' . $document->path) }}"
+                                            class="file-link">{{ $document->name }}</a>
+                                        <span class="float-right">
+                                            <i class="fas fa-trash-alt delete-icon" data-id="{{ $document->id }}"></i>
+                                        </span>
+                                    </li>
+                                @endforeach --}}
+                            </ul>
+                        </div>
+
+                        <!-- Survey Pendukung section -->
+                        <div class="card mb-4">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <h5 class="card-title">Survey Pendukung</h5>
+                                <a href="edit-survey-new/{{ $project->id }}"><button class="btn btn-purple">Tambah
+                                        Survey</button></a>
+                            </div>
+                            <ul class="list-group">
+                                @foreach ($project->surveys as $survey)
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        {{ $survey->name }}
+                                        <div>
+                                            {{-- <a href="{{ route('survey.edit', $survey->id) }}"
+                                                class="btn btn-sm btn-info">Edit</a> --}}
+                                            <form action="{{ route('surveys.destroy', $survey->id) }}" method="POST"
+                                                style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm"><i
+                                                        class="fas fa-trash-alt"></i></button>
+                                            </form>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+
+                        <button class="btn btn-purple btn-block mb-5">Project Selesai</button>
+                </div>
+
+                <!-- Right Content -->
+                <div class="col-lg-4">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Metrix Anda</h5>
+                            <input type="text" class="form-control" placeholder="Cari Matrix anda">
+                            <ul class="list-group mt-3 scrollable">
+                                @foreach ($project->metrics as $metric)
+                                    <li class="list-group-item">
+                                        <a href="impact" class="text-dark">({{ $metric->code }}) {{ $metric->name }}</a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Indicator</h5>
+                            <ul class="list-group">
+                                @foreach ($project->indicators as $indicator)
+                                    <li class="list-group-item">{{ $indicator->description }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Penggunaan Dana section -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Penggunaan Dana</h5>
+                            @php
+                                $totalDana = $project->dana->sum('nominal');
+                            @endphp
+                            @foreach ($project->dana as $dana)
+                                @php
+                                    $percentage = $totalDana > 0 ? ($dana->nominal / $totalDana) * 100 : 0;
+                                @endphp
+                                <div class="mb-3">
+                                    <div class="d-flex justify-content-between">
+                                        <span>{{ $dana->jenis_dana }}</span>
+                                        <span
+                                            class="font-weight-bold">{{ number_format($dana->nominal, 0, ',', '.') }}</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-primary" role="progressbar"
+                                            style="width: {{ $percentage }}%;" aria-valuenow="{{ $percentage }}"
+                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                            @endforeach
+                            <div>
+                                <div class="d-flex justify-content-between">
+                                    <span>Total Dana</span>
+                                    <span class="font-weight-bold">{{ number_format($totalDana, 0, ',', '.') }}</span>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;"
+                                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <p class="mt-3 text-center">Total Dana Untuk Proyek Ini Telah Terpenuhi</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container d-flex justify-content-center mt-5">
+            <a href="myproject" class="btn w-50 btn-purple px-4 py-2 btn-wide text-white hidden" id="save-button"
+                style="font-weight:bold;"><button type="submit">Simpan Perubahan Detail Proyek</button></a>
+        </div>
+        </form>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                let isEdited = false;
+
+                function toggleEditState(element) {
+                    if (element.attr('readonly')) {
+                        element.removeAttr('readonly');
+                        element.focus();
+                    } else {
+                        element.attr('readonly', 'readonly');
+                    }
+                    isEdited = true;
+                    $('#save-button').removeClass('hidden');
                 }
 
-                var reader = new FileReader();
-                reader.onload = function(e) {
-                    $('#image-preview').html('<img src="' + e.target.result + '" class="img-fluid" alt="Preview">');
-                };
-                reader.readAsDataURL(file);
-            }
-        });
-    });
-</script>
-<script>
-    $(document).ready(function() {
-        $('#tambah-dokumen').on('click', function() {
-            $('#file-input').click();
-        });
-
-        $('#file-input').on('change', function() {
-            var file = this.files[0];
-            if (file) {
-                var fileName = file.name;
-                var listItem = $('<li class="list-group-item"></li>');
-                var fileLink = $('<a href="#" class="file-link"></a>').text(fileName);
-                var deleteIcon = $('<i class="fas fa-trash-alt delete-icon"></i>');
-
-                deleteIcon.on('click', function() {
-                    listItem.remove();
+                $('#edit-nama-proyek').click(function() {
+                    toggleEditState($('#nama-proyek'));
                 });
 
-                listItem.append(fileLink).append($('<span class="float-right"></span>').append(deleteIcon));
-                $('#file-list').append(listItem);
-            }
-        });
-    });
-</script><script>
-    document.querySelectorAll('.fa-trash-alt').forEach(function(trashIcon) {
-        trashIcon.addEventListener('click', function() {
-            var listItem = this.closest('.list-group-item');
-            listItem.remove();
-        });
-    });
-</script>
+                $('#edit-deskripsi-proyek').click(function() {
+                    toggleEditState($('#deskripsi-proyek'));
+                });
 
-<script>
-    document.getElementById('edit-deskripsi-proyek').addEventListener('click', function() {
-        var textareaField = document.getElementById('deskripsi-proyek');
-        if (textareaField.hasAttribute('readonly')) {
-            textareaField.removeAttribute('readonly');
-            textareaField.focus();  // Optional: to automatically focus the textarea when it becomes editable
-        } else {
-            textareaField.setAttribute('readonly', 'readonly');
-        }
-    });
-</script>
+                $('#tambah-dokumen').click(function() {
+                    $('#file-input').click();
+                });
 
+                $('#file-input').change(function() {
+                    let files = this.files;
+                    for (let i = 0; i < files.length; i++) {
+                        let file = files[i];
+                        let listItem = $('<li class="list-group-item"></li>');
+                        listItem.text(file.name);
+                        $('#file-list').append(listItem);
+                    }
+                    isEdited = true;
+                    $('#save-button').removeClass('hidden');
+                });
 
-<script>
-    document.getElementById('edit-nama-proyek').addEventListener('click', function() {
-        var inputField = document.getElementById('nama-proyek');
-        if (inputField.hasAttribute('readonly')) {
-            inputField.removeAttribute('readonly');
-            inputField.focus();  // Optional: to automatically focus the input field when it becomes editable
-        } else {
-            inputField.setAttribute('readonly', 'readonly');
-        }
-    });
-</script>
+                $(document).on('click', '.delete-icon', function() {
+                    let documentId = $(this).data('id');
+                    $(this).closest('li').remove();
+                    $('<input>').attr({
+                        type: 'hidden',
+                        name: 'delete_documents[]',
+                        value: documentId
+                    }).appendTo('#projectForm');
+                    isEdited = true;
+                    $('#save-button').removeClass('hidden');
+                });
 
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const editIcons = document.querySelectorAll('.edit-icon');
-        const saveButton = document.getElementById('save-button');
-        let isButtonVisible = false;
-
-        editIcons.forEach(icon => {
-            icon.addEventListener('click', function() {
-                isButtonVisible = !isButtonVisible;
-                if (isButtonVisible) {
-                    saveButton.classList.remove('hidden');
-                } else {
-                    saveButton.classList.remove('hidden');
-                }
+                $('#projectForm').submit(function(e) {
+                    if (!isEdited) {
+                        e.preventDefault();
+                        alert('No changes were made.');
+                    }
+                });
             });
-        });
-    });
-</script>
-</body>
+        </script>
+    </body>
 @endsection
-

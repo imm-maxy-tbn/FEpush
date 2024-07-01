@@ -27,7 +27,7 @@ class SurveyController extends Controller
     {
         try {
             logger($request->all()); // Use Laravel's logger
-    
+
             $request->validate([
                 'name' => 'required|string|max:255',
                 'settings.accept-guest-entries' => 'required',
@@ -39,7 +39,7 @@ class SurveyController extends Controller
                 'sections.*.questions.*.type' => 'required|string',
                 'sections.*.questions.*.rules' => 'nullable|string',
             ]);
-    
+
             $survey = Survey::create([
                 'name' => $request->name,
                 'settings' => [
@@ -47,10 +47,10 @@ class SurveyController extends Controller
                     'limit-per-participant' => (int) $request->settings['limit-per-participant'],
                 ]
             ]);
-    
+
             foreach ($request->sections as $sectionData) {
                 $section = $survey->sections()->create(['name' => $sectionData['name']]);
-    
+
                 foreach ($sectionData['questions'] as $questionData) {
                     $section->questions()->create([
                         'content' => $questionData['content'],
@@ -60,7 +60,7 @@ class SurveyController extends Controller
                     ]);
                 }
             }
-    
+
             return response()->json([
                 'success' => true,
                 'survey_id' => $survey->id,
@@ -194,5 +194,41 @@ class SurveyController extends Controller
             // Redirect back with a general error message
             return redirect()->back()->with('error', 'An error occurred while submitting your responses. Please try again.');
         }
+    }
+
+    public function results(Survey $survey)
+    {
+        $results = [];
+        $totalResponses = $survey->entries()->count();
+
+        foreach ($survey->sections as $section) {
+            $sectionResults = [];
+            foreach ($section->questions as $question) {
+                $answers = [];
+                if ($question->type === 'multiselect') {
+                    foreach ($question->answers as $answer) {
+                        // Split each answer by comma and trim whitespace
+                        $splitAnswers = array_map('trim', explode(',', $answer->value));
+                        $answers = array_merge($answers, $splitAnswers);
+                    }
+                } else {
+                    // For other types (radio, text, number, etc.)
+                    $answers = $question->answers()->pluck('value')->toArray();
+                }
+
+                $sectionResults[] = [
+                    'question' => $question->content,
+                    'type' => $question->type,
+                    'options' => $question->options,
+                    'answers' => $answers,
+                ];
+            }
+            $results[] = [
+                'section' => $section->name,
+                'questions' => $sectionResults
+            ];
+        }
+
+        return view('survey.edit-survey.results', compact('survey', 'results', 'totalResponses'));
     }
 }

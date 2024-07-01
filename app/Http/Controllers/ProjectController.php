@@ -23,14 +23,14 @@ class ProjectController extends Controller
                 $query->where('user_id', $user->id);
             })
             ->get();
-    
+
         $ongoingProjects = $allProjects->where('status', 'Belum selesai');
         $completedProjects = $allProjects->where('status', 'Selesai');
-    
+
         return view('myproject.myproject', compact('allProjects', 'ongoingProjects', 'completedProjects'));
     }
-    
-    
+
+
     public function create()
     {
         $companies = Company::all();
@@ -48,7 +48,7 @@ class ProjectController extends Controller
     {
         $tagIds = $request->input('tag_ids', []);
         $indicatorIds = $request->input('indicator_ids', []);
-    
+
         // Menggunakan Eloquent Builder untuk memfilter data dengan paginasi
         $metricsQuery = Metric::query()
             ->orWhereHas('tags', function ($query) use ($tagIds) {
@@ -58,11 +58,11 @@ class ProjectController extends Controller
                 $query->whereIn('indicators.id', $indicatorIds);
             })
             ->with('relatedMetrics'); // Mengambil relasi terkait jika diperlukan
-    
+
         // Menentukan jumlah item per halaman
         $perPage = 10; // Misalnya, 10 item per halaman
         $metrics = $metricsQuery->paginate($perPage);
-    
+
         return response()->json($metrics);
     }
 
@@ -148,82 +148,40 @@ class ProjectController extends Controller
 
     public function view($id)
     {
-        $project = Project::with('tags', 'indicators')->findOrFail($id);
-        return view('projects.view', compact('project'));
+        $project = Project::with('tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana', 'surveys')->findOrFail($id);
+        return view('myproject.detail', compact('project'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Project $project)
     {
-        $project = Project::findOrFail($id);
-
         $validatedData = $request->validate([
-            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:10000',
-            'nama' => 'required|string',
+            'nama' => 'required|string|max:255',
             'deskripsi' => 'required|string',
-            'tujuan' => 'required|string',
-            'start_date' => 'required|date',
-            'end_date' => 'required|date',
-            'provinsi' => 'required|string',
-            'kota' => 'required|string',
-            'gmaps' => 'required|string',
-            'jumlah_pendanaan' => 'required|numeric',
-            'dana' => 'required|array',
-            'dana.*.jenis_dana' => 'required|string',
-            'dana.*.nominal' => 'required|numeric',
-            'company_id' => 'required|exists:companies,id',
-            'tag_ids' => 'array',
-            'tag_ids.*' => 'exists:tags,id',
-            'sdg_ids' => 'array',
-            'sdg_ids.*' => 'exists:sdgs,id',
-            'indicator_ids' => 'array',
-            'indicator_ids.*' => 'exists:indicators,id',
-            'metric_ids' => 'array',
-            'metric_ids.*' => 'exists:metrics,id',
-            'target_pelanggans' => 'array',
-            'target_pelanggans.*.status' => 'nullable|string',
-            'target_pelanggans.*.rentang_usia' => 'nullable|string',
-            'target_pelanggans.*.deskripsi_pelanggan' => 'nullable|string',
+            'documents.*' => 'file|mimes:pdf,doc,docx,csv|max:2048',
         ]);
 
-        if ($request->hasFile('img')) {
-            $imageName = time() . '.' . $request->img->extension();
-            $request->img->move(public_path('images'), $imageName);
-            $validatedData['img'] = $imageName;
-        }
         $project->update($validatedData);
 
-        $project->tags()->sync($request->input('tag_ids', []));
-        $project->sdgs()->sync($request->input('sdg_ids', []));
-        $project->indicators()->sync($request->input('indicator_ids', []));
-        $project->metrics()->sync($request->input('metric_ids', []));
-
-        if ($request->has('dana')) {
-            $project->dana()->delete();
-            foreach ($request->dana as $dana) {
-                $project->dana()->create([
-                    'jenis_dana' => $dana['jenis_dana'],
-                    'nominal' => $dana['nominal'],
+        if ($request->hasFile('documents')) {
+            foreach ($request->file('documents') as $document) {
+                $path = $document->store('project_documents', 'public');
+                $project->documents()->create([
+                    'name' => $document->getClientOriginalName(),
+                    'path' => $path,
                 ]);
             }
         }
 
-        if ($request->has('target_pelanggans')) {
-            $project->targetPelanggan()->delete();
-            foreach ($request->target_pelanggans as $target) {
-                $project->targetPelanggan()->create([
-                    'status' => $target['status'],
-                    'rentang_usia' => $target['rentang_usia'],
-                    'deskripsi_pelanggan' => $target['deskripsi_pelanggan'],
-                ]);
-            }
+        if ($request->has('delete_documents')) {
+            $project->documents()->whereIn('id', $request->delete_documents)->delete();
         }
 
-        return redirect()->route('projects.index')->with('success', 'Project updated successfully.');
+        return redirect()->route('project.show', $project)->with('success', 'Project updated successfully');
     }
 
     public function destroy($id)
     {
         Project::destroy($id);
         return redirect()->route('projects.index')->with('success', 'Project deleted successfull');
-}
+    }
 }
