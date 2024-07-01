@@ -11,12 +11,112 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <style>
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-nav .nav-item .nav-link {
+            margin-right: 10px;
+        }
+        
+        .notification-section {
+            margin-top: 20px;
+        }
+
+        .notification-section .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f9f9f9;
+            min-width: 100%;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            left: 0;
+            right: 0;
+        }
+
+        .notification-section.active .dropdown-content {
+            display: block;
+        }
+
+        .map-container {
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .map img {
+            width: 100%;
+            height: auto;
+        }
+
+        .city-overlay {
+            position: absolute;
+            cursor: pointer;
+        }
+
+        .location-info {
+            margin-top: 10px;
+        }
+
+        .box, .box1, .box2 {
+            background: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .sdg-container .grid-item {
+            cursor: pointer;
+        }
+
+        .grid-item img {
+            width: 100%;
+            height: auto;
+        }
+
+        @media (max-width: 768px) {
+            .navbar-nav .nav-item .nav-link {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+
+            .box, .box1, .box2 {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .analytics-title, .balance-card, .outcome-card, .report-container h4, .sdg-container .grid-item img {
+                font-size: 14px;
+            }
+
+            .navbar-brand, .navbar-nav .nav-link {
+                font-size: 14px;
+            }
+
+            .btn-report {
+                font-size: 14px;
+                padding: 5px 10px;
+            }
+
+            .progress-bar-container, .map-container {
+                width: 100%;
+                overflow-x: auto;
+            }
+
+            .progress-bar {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
 <body>
-
-     <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="homepage">IMM</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
@@ -26,20 +126,17 @@
             <div class="collapse navbar-collapse justify-content-start" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                    <a class="nav-link active" href="/homepage">Home</a>
+                        <a class="nav-link active" href="/homepage">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="/myproject">My Project</a>
                     </li>
                     <li class="nav-item">
-                    <a href="homepage" class="navbar-button">My Company</a>
+                        <a href="homepage" class="navbar-button">My Company</a>
                     </li>
-
                 </ul>
-
-
             </div>
-            <li class="nav-item">
+            <div class="ml-auto">
                 <a class="nav-link" href="{{ route('logout') }}"
                     onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                     {{ __('Logout') }}
@@ -47,12 +144,11 @@
                 <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                     @csrf
                 </form>
-            </li>
+            </div>
         </div>
     </nav>
 
-
-    <div class="container">
+    <div class="container" style="padding-top: 80px;">
         <div class="notification-section">
             <div class="row">
                 <div class="col-6">
@@ -72,28 +168,20 @@
         </div>
     </div>
 
-
-    <div class="col-6 text-right">
-        <i id="dropdownIcon" class="fas fa-chevron-down"></i>
-    </div>
-
     <div class="container-fluid d-flex justify-content-center">
         <div class="map-container">
             <h2>Project By Region</h2>
             <div class="map">
                 <img id="indonesiaMap" src="images/peta.png" alt="Map of Indonesia">
                 <div id="bandung" class="city-overlay" data-city="West Java, Bandung"></div>
-                <!-- Tambahkan lebih banyak kota sesuai kebutuhan -->
+                <!-- Add more cities as needed -->
             </div>
             <div id="location-info" class="location-info"></div>
         </div>
     </div>
 
-
-    {{-- diagram --}}
-    <div class="container d-flex justify-content-center align-items-start">
-
-        <div class="col-8 d-flex justify-content-start">
+    <div class="container d-flex flex-column flex-lg-row justify-content-center align-items-start">
+        <div class="col-lg-8 d-flex flex-column justify-content-start">
             <div class="box">
                 <div class="d-flex justify-content-between align-items-center">
                     <h2 class="analytics-title">Analytics</h2>
@@ -112,59 +200,41 @@
                 </div>
             </div>
         </div>
-        <div class="col-4 d-flex flex-column align-items-end justify-content-end" style="gap: 20px">
-
+        <div class="col-lg-4 d-flex flex-column align-items-end justify-content-end" style="gap: 20px">
             <div class="box1">
                 <div class="balance-card">
                     <i class="fas fa-wallet mb-3"></i>
-
                     <span>Total Balance</span>
                     <span class="price" id="totalBalance">Rp.50.000.000</span>
-
                 </div>
             </div>
             <div class="box2">
                 <div class="outcome-card">
                     <i class="fas fa-chart-line mb-3"></i>
-
                     <span>Total Outcome</span>
                     <span class="price" id="totalOutcome">Rp.10.000.000</span>
-
                 </div>
             </div>
-
-
-
-
-
         </div>
     </div>
-    {{-- End Diagram --}}
 
-
-    {{-- Survey --}}
     <div class="container mt-5">
         <div class="report-container" style="background-image: url('images/f1.png');">
             <div class="container h-100 d-flex justify-content-center align-content-center">
                 <div class="col d-flex justify-content-center align-items-center">
                     <h4>Kumpulkan report <br />Bulanan</h4>
                 </div>
-                <div class="col d-flex justify-content-end align-items-center"> <button class="btn btn-report">
+                <div class="col d-flex justify-content-end align-items-center">
+                    <button class="btn btn-report">
                         <a href="laporanproject" style="text-decoration: none; color: inherit;">
                             <i class="fas fa-file-alt"></i> Report Project
                         </a>
-                    </button></div>
+                    </button>
+                </div>
             </div>
-
-
-
-
         </div>
     </div>
-    {{-- end survey --}}
 
-
-    {{-- sdg --}}
     <div class="container mt-5">
         <div class="sdg-container">
             <div class="grid">
@@ -188,40 +258,36 @@
             </div>
         </div>
     </div>
-    {{-- end sdg --}}
 
     <footer>
-    <div class="container footer mt-5 d-flex justify-content-center align-items-center  ">
-        <div class="row d-flex  justify-content-center align-items-center">
-            <div class="col-4 d-flex flex-column" style="gap: 20px">
-                <h5 class=" text-white  text-left">IMM</h5>
-                <span class="span-footer text-left">Impact Measurement and Management
+        <div class="container footer mt-5 d-flex justify-content-center align-items-center">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-4 d-flex flex-column" style="gap: 20px">
+                    <h5 class="text-white text-left">IMM</h5>
+                    <span class="span-footer text-left">Impact Measurement and Management
                         <br> (TBN INDONESIA X MAXY ACADEMY)</span>
-            </div>
-            <div class="col-5 d-flex justify-content-center align-items-center">
-                <ul class=" d-flex " style="gap: 30px">
-                    <a href="/"><li>HomePage</li></a>
-                    <a href="bootcamp"><li>Bootcamp</li></a>
-                    <a href="imm"><li>IMM</li></a>
-                    <a href="#"><li>Comunity</li></a>
-                    <a href="profile"><li>Profile</li></a>
-                </ul>
-            </div>
-            <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
-                <span class="span-footer text-center">Sosial Media</span>
-                <div class="sosmed d-flex justify-content-end  ">
-                    <a href="#"><i class="fab fa-facebook-f"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <div class="col-5 d-flex justify-content-center align-items-center">
+                    <ul class="d-flex" style="gap: 30px">
+                        <a href="/"><li>HomePage</li></a>
+                        <a href="bootcamp"><li>Bootcamp</li></a>
+                        <a href="imm"><li>IMM</li></a>
+                        <a href="#"><li>Comunity</li></a>
+                        <a href="profile"><li>Profile</li></a>
+                    </ul>
+                </div>
+                <div class="col-3 d-flex flex-column justify-content-center" style="gap: 30px">
+                    <span class="span-footer text-center">Sosial Media</span>
+                    <div class="sosmed d-flex justify-content-end">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
                 </div>
             </div>
         </div>
-
- </div>
-</footer>
-
-
+    </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -328,7 +394,6 @@
                 }
             }
 
-            // Set initial state
             updateProgressBar(yearSelector.value);
         });
 
@@ -379,8 +444,6 @@
                 });
             });
         });
-
-        //
     </script>
 </body>
 

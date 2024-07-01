@@ -1,3 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMM | My Project</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/myproject/myproject.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <meta name="description" content="Manage your projects efficiently with MyProject">
+    <meta name="keywords" content="project management, task management, productivity">
+    <meta name="author" content="Your Name">
+    <style>
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        body {
+            padding-top: 56px;
+            /* Adjust this value according to the height of your navbar */
+        }
+
+        .see-all-button {
+            display: none;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .see-all-button button {
+            background-color: #6c63ff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
 kalau blm aku kasih ini ya
 
 @extends('layouts.app-imm')
@@ -43,11 +87,9 @@ kalau blm aku kasih ini ya
             </div>
 
             <div class="col-md-4 text-right">
-                <a href="creatproject" class="btn btn-primary btn-create-new-project">Create New Project</a>
                 <button class="btn btn-primary btn-create-project" data-toggle="modal"
-                    data-target="#projectModal">Create Project</button>
+                    data-target="#projectModal">Create New Project</button>
             </div>
-
         </div>
         <h4 class="all-projects-title">All projects (0)</h4>
         <div class="row mt-3 "  id="draft-project-list">
@@ -77,8 +119,10 @@ kalau blm aku kasih ini ya
                 @endif
             </div>
         </div>
+        <div class="see-all-button" id="see-all-button">
+            <button onclick="showAllProjects()">See All</button>
+        </div>
     </div>
-
 
 <div class="container">
 
@@ -122,19 +166,20 @@ kalau blm aku kasih ini ya
 
     </div>
 
-    <h2 class="done-projects-titlee mt-5">Done Projects And Surveys</h2>
-    <div class="card mt-3 done-projects-card">
-        <div class="card-header d-flex justify-content-between align-items-center done-projects-header">
-            <span>Project Completed</span>
-            <div class="dropdown">
-                <button class="btn btn-outline-primary dropdown-toggle done-projects-dropdown-toggle" type="button"
-                    id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <span>Monthly</span> <i class="fas fa-calendar-alt ml-2"></i>
-                </button>
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                    <a class="dropdown-item" href="#">Daily</a>
-                    <a class="dropdown-item" href="#">Weekly</a>
-                    <a class="dropdown-item" href="#">Monthly</a>
+        <h2 class="project-title mb-5 mt-5">Done Projects</h2>
+        <div class="card mt-3 done-projects-card">
+            <div class="card-header d-flex justify-content-between align-items-center done-projects-header">
+                <span>Proyek Selesai</span>
+                <div class="dropdown">
+                    <button class="btn btn-outline-primary dropdown-toggle done-projects-dropdown-toggle" type="button"
+                        id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <span>Bulan</span> <i class="fas fa-calendar-alt ml-2"></i>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
+                        <a class="dropdown-item" href="#">Hari</a>
+                        <a class="dropdown-item" href="#">Minggu</a>
+                        <a class="dropdown-item" href="#">Bulan</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -283,12 +328,15 @@ kalau blm aku kasih ini ya
                 total: projectTemplates[selectedProject].total,
             };
 
+
             projects.push(newProject);
             displayProjects();
+
 
             // Close the modal
             $("#projectModal").modal("hide");
         }
+
 
         function updateProject(projectId, index) {
             const project = projects[index];
@@ -299,17 +347,24 @@ kalau blm aku kasih ini ya
             displayProjects();
         }
 
+
         function deleteProject(projectId, index) {
             projects.splice(index, 1);
             displayProjects();
         }
 
+
         function completeProject(projectId, index) {
             const project = projects[index];
             projects.splice(index, 1);
-            completedProjects.push(project);
+            completedProjects.push({
+                name: project.name,
+                completionDate: "Oct 17, 2023",
+                status: "SELESAI"
+            });
             displayProjects();
         }
+
 
         function updateProjectCount() {
             const projectCountElement = document.querySelector(".all-projects-title");
@@ -321,6 +376,7 @@ kalau blm aku kasih ini ya
             ongoingProjectCountElement.textContent = ${projects.length} of ${projects.length};
         }
 
+
         function renderCalendar() {
             const calendarBody = document.getElementById("calendar-body");
             calendarBody.innerHTML = "";
@@ -329,7 +385,9 @@ kalau blm aku kasih ini ya
             const status = ["Present", "Sick leave", "Absent", "Holiday"];
             const statusClasses = ["present", "sick-leave", "absent", "holiday"];
 
+
             let dayCounter = 1;
+
 
             for (let i = 0; i < 5; i++) {
                 // Assume 5 weeks in a month
@@ -354,6 +412,7 @@ kalau blm aku kasih ini ya
             }
         }
 
+
         // Initial display
         updateProjectCount();
         renderCalendar();
@@ -365,7 +424,7 @@ kalau blm aku kasih ini ya
                 loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
             }, 1000); // 3000 milidetik = 3 detik
         });
-        </script>
+    </script>
 </body>
 
 @endsection
