@@ -12,8 +12,8 @@
 
 <body>
 
-   
-    <section class="banner" style=""> <img class="banner-img" src="{{ env('APP_BACKEND_URL') . '/images/' . $event->cover_img }}"
+
+    <section class="banner" style=""> <img class="banner-img" src="{{ env('APP_BACKEND_URL') . '/images/' . $event->hero_img }}"
             class="w-100 h-auto" alt=""></section>
     <div class="container content">
         <div class="container">

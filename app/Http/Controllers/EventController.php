@@ -12,7 +12,7 @@ class EventController extends Controller
 {
     public function index()
     {
-        
+
         $currentDateTime = Carbon::now();
 
         // Filter events where the deadline is in the future
@@ -23,24 +23,25 @@ class EventController extends Controller
         foreach ($events as $event) {
             $event->content = \Illuminate\Support\Str::limit($event->content, 100, $end = '...');
             $event->cover_img = env('APP_BACKEND_URL') . '/images/' . $event->cover_img;
+            $event->hero_img = env('APP_BACKEND_URL') . '/images/' . $event->hero_img;
         }
 
         $backendUrl = env('APP_BACKEND_URL');
-        
+
         return view('event.event', compact('events', 'backendUrl'));
     }
 
-    
+
     public function hubungiSekarang(Request $request, $event_id)
     {
-        
+
         $message = urlencode("Saya tertarik untuk kerjasama dalam event dengan ID: {$event_id}");
         $whatsappUrl = "https://api.whatsapp.com/send?phone=6285785455575&text={$message}";
 
         return redirect()->away($whatsappUrl);
     }
 
-    
+
     public function create()
     {
         $users = User::all();

@@ -8,7 +8,7 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-   
+
 @endsection
 @section('content')
 
@@ -31,14 +31,11 @@
             <div class="input-group mb-3 d-flex justify-content-center">
                 <input type="text" class="form-control" placeholder="masukkan e-mail anda disini">
                 <button class="btnn btn-primary" type="button"><i class="fas fa-envelope"></i></button>
-    
+
             </div>
         </div>
     </div>
-
-
     
-
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
             integrity="sha512-mqKpeec0Hl6bZ7gTz04dVpW2uPtQ+rmJlKzUoeoaSY1Vp4iAAaYI+yMMYJqKQoJz4ygHji9m9ko96mMUpjMRZw=="
