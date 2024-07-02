@@ -170,7 +170,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="/home">
-                <img src="images/imm.png" width="100" height="55" alt=""></a>
+                <img src="/images/imm.png" width="100" height="55" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -182,7 +182,7 @@
                         <a class="nav-link {{ Request::is('homepage') ? 'active' : '' }}" href="{{ route('homepage') }}">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('myproject') ? 'active' : '' }}" href="{{ route('myproject') }}">Proyek Saya</a>
+                        <a class="nav-link {{ Request::is('myproject.myproject') ? 'active' : '' }}" href="{{ route('myproject.myproject') }}">Proyek Saya</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link {{ Request::is('event') ? 'active' : '' }}" href="/event">Event</a>
@@ -228,7 +228,7 @@
                             @auth
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <img src="{{ Auth::user()->img ? asset('images/' . Auth::user()->img) : asset('images/default_user.png') }}" alt="Profile Picture" class="profile-img">
+                                    <img src="{{ Auth::user()->img ? asset('/images/' . Auth::user()->img) : asset('/images/default_user.png') }}" alt="Profile Picture" class="profile-img">
                                     <span class="ml-2">{{ Auth::user()->nama_depan }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -255,7 +255,7 @@
         <div class="container footer mt-5 d-flex justify-content-center align-items-center">
             <div class="col-4 d-flex flex-column" style="gap: 20px">
                 <a class="d-flex justify-content-start" href="/home">
-                    <img src="images/imm.png" width="100" height="55" alt="">
+                    <img src="/images/imm.png" width="100" height="55" alt="">
                 </a>
                 <span class="span-footer text-left">Impact Measurement and Management
                     <br> (TBN INDONESIA X MAXY ACADEMY)</span>
@@ -268,7 +268,7 @@
                         <a class="text-white" href="{{ route('homepage') }}">Beranda</a>
                     </li>
                     <li class="text-white">
-                        <a class="text-white" href="{{ route('myproject') }}">Proyek Saya</a>
+                        <a class="text-white" href="{{ route('myproject.myproject') }}">Proyek Saya</a>
                     </li>
                     <li class="text-white">
                         <a class="text-white" href="/event">Event</a>

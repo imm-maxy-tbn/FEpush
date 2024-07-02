@@ -56,6 +56,7 @@ Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submi
 
 // Rute yang memerlukan autentikasi
 Route::middleware(['auth'])->group(function () {
+    Route::get('/myproject', [ProjectController::class, 'index'])->name('myproject.myproject');
     Route::get('/verifikasidiri', function () {
         return view('imm.verifikasidiri');
     })->name('verifikasidiri');
@@ -122,6 +123,8 @@ Route::middleware(['auth'])->group(function () {
         return view('myproject.creatproject.matrixreport');
     });
 
+
+    
     Route::get('/review', function () {
         return view('myproject.creatproject.review');
     });
