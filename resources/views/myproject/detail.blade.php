@@ -256,7 +256,7 @@
             <div class="card mb-4">
                 <div class="card-body d-flex justify-content-between align-items-center">
                     <h5 class="card-title">Survey Pendukung</h5>
-                    <button class="btn btn-purple">Mulai Survey</button>
+                    <a href="/edit-survey-new"><button class="btn btn-purple">Mulai Survey</button></a>
                 </div>
                 <ul class="list-group">
                     <li class="list-group-item">Survey Kesadaran CyberSecurity <span class="float-right"><i class="fas fa-trash-alt"></i></span></li>

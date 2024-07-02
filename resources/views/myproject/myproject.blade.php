@@ -61,7 +61,7 @@
             </div>
             <div class="col-md-4 text-right">
                 <a href="creatproject">
-                    <button class="btn btn-primary btn-create-project">Create New Project</button>
+                    <button class=" btn-primary btn-create-project">Create New Project</button>
                 </a>
             </div>
         </div>
@@ -102,11 +102,11 @@
         </div>
     
         <div class="container">
-            <h2 class="project-title mb-5 mt-5">On Going Project</h2>
+            <h2 class="project-title mb-5 mt-5">Proyek yang sedang dikerjakan</h2>
             <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
                 <div class="dropdown">
                     <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Today
+                        Hari ini
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                         <a class="dropdown-item" href="#">Today</a>
@@ -146,41 +146,49 @@
                     @endforeach
                 </tbody>
             </table>
-    
-            <h2 class="project-title mb-5 mt-5">Done Projects</h2>
-            <div class="card mt-3 done-projects-card">
-                <div class="card-header d-flex justify-content-between align-items-center done-projects-header">
-                    <span>Proyek Selesai</span>
-                    <div class="dropdown">
-                        <button class="btn btn-outline-primary dropdown-toggle done-projects-dropdown-toggle" type="button" id="dropdownMenuButton3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span>Bulan</span> <i class="fas fa-calendar-alt ml-2"></i>
-                        </button>
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton3">
-                            <a class="dropdown-item" href="#">Hari</a>
-                            <a class="dropdown-item" href="#">Minggu</a>
-                            <a class="dropdown-item" href="#">Bulan</a>
-                        </div>
+
+            <h2 class="project-title mb-5 mt-5">Proyek Selesai</h2>
+            <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
+                <div class="dropdown">
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Proyek Selesai
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <a class="dropdown-item" href="#">Today</a>
+                        <a class="dropdown-item" href="#">This Week</a>
+                        <a class="dropdown-item" href="#">This Month</a>
                     </div>
                 </div>
-                <table class="table mt-3 done-projects-table">
-                    <thead>
-                        <tr>
-                            <th>Nama Proyek</th>
-                            <th>Tanggal Penyelesaian</th>
-                            <th>Status</th>
-                        </tr>
-                    </thead>
-                    <tbody id="done-project-list">
-                        @foreach($completedProjects as $project)
-                            <tr>
-                                <td>{{ $project->nama }}</td>
-                                <td>{{ $project->tanggal_penyelesaian }}</td>
-                                <td><div class="span bg-success text-white" style="padding: 5px 0; border-radius:50px">{{ $project->status }}</div></td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <div class="dropdown">
+                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        0 of 0
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                        <a class="dropdown-item" href="#">0 of 0</a>
+                        <a class="dropdown-item" href="#">1 of 1</a>
+                    </div>
+                </div>
             </div>
+            <table class="table mt-3 done-projects-table">
+                <thead>
+                    <tr>
+                        <th>Nama Proyek</th>
+                        <th>Tanggal Penyelesaian</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody id="done-project-list">
+                    @foreach($completedProjects as $project)
+                        <tr>
+                            <td>{{ $project->nama }}</td>
+                            <td>{{ $project->tanggal_penyelesaian }}</td>
+                            <td><div class="span bg-success text-white" style="padding: 5px 0; border-radius:50px">{{ $project->status }}</div></td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+
+
         </div>
     </div>
     

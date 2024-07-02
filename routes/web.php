@@ -27,14 +27,24 @@ Route::get('/', function () {
 })->name('home'); 
 Route::get('/home', function () {
     return view('home');
-})->name('home');
-Route::get('/home', [HomeController::class, 'index'])->name('welcome');
+})->name('home'); 
+Route::get('/survey-tangapan', function () {
+    return view('survey.edit-survey.survey-tangapan');
+})->name('survey-tangapan'); 
+Route::get('/survey-tangapan-chart', function () {
+    return view('survey.edit-survey.survey-tangapan-chart');
+})->name('survey-tangapan-chart'); 
+Route::get('/survey-tangapan-diagram', function () {
+    return view('survey.edit-survey.survey-tangapan-diagram');
+})->name('survey-tangapan-diagram'); 
+
   Route::get('event', [EventController::class, 'index'])->name('events.index');
 
 Route::get('/register', function () {
     return view('auth.register');
 })->name('register'); 
 Route::get('event/{id}', [EventController::class, 'view'])->name('events.view');
+
 
 
 Route::get('responden/{id}', [SurveyController::class, 'view'])->name('surveys.view');
@@ -66,6 +76,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/tambah-penggunaan-dana/{project_id}', [CompanyOutcomeController::class, 'create'])->name('tambah.penggunaan.dana');
     Route::post('/store-company-outcome', [CompanyOutcomeController::class, 'store'])->name('store-company-outcome');
 
+    Route::get('/hubungi-sekarang/{event_id}', [EventController::class, 'hubungiSekarang'])->name('hubungi.sekarang');
+
     Route::get('/blog', function () {
         return view('blog.blog');
     });
@@ -82,9 +94,7 @@ Route::middleware(['auth'])->group(function () {
         return view('myproject.myproject');
     });
 
-    Route::get('/survey', function () {
-        return view('myproject.survey');
-    });
+
 
     Route::get('/blogarticle', function () {
         return view('blog.blogarticle');
@@ -106,14 +116,7 @@ Route::middleware(['auth'])->group(function () {
         return view('myproject.impact');
     })->name('impact.impact');
 
-    Route::get('/profile', function () {
-        $user = Auth::user();
-        if ($user) {
-            return view('profile.profile', ['user' => $user]);
-        } else {
-            return redirect('/login');
-        }
-    })->middleware('auth');
+
 
     Route::get('/matrixreport', function () {
         return view('myproject.creatproject.matrixreport');
@@ -178,7 +181,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('event-register/{id}', [EventController::class, 'edit'])->name('events.edit');
     Route::put('event/{id}', [EventController::class, 'update'])->name('events.update');
 
-    Route::post('survey', [SurveyController::class, 'store'])->name('surveys.store');
     Route::get('/profile', [ProfileController::class, 'index'])->name('profile')->middleware('auth');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
@@ -219,9 +221,7 @@ Route::get('/detail-kelas', function () {
     return view('kelas.detail-kelas');
 });
 
-Route::get('/survey', function () {
-    return view('myproject.survey');
-});
+
 
 Route::get('/blogarticle', function () {
     return view('blog.blogarticle');

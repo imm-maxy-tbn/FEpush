@@ -58,7 +58,7 @@
                     eventCard.className = "blog-card";
                     eventCard.innerHTML = `
                 <a href="/event/${event.id}">
-                    <div class="blog-image" style="background-image: url(${event.img});"></div>
+                    <div class="blog-image" style="background-image: url(${event.cover_img});"></div>
                     <h3>${event.title}</h3>
                     <p>${event.description}</p>
                 </a>
