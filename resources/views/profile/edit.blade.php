@@ -11,6 +11,9 @@
 @endsection
 
 @section('content')
+<form action="{{ route('profile.update', $user->id) }}" method="POST" id="profileForm" enctype="multipart/form-data">
+    @csrf
+    @method('PUT')
 <div class="container d-flex justify-content-center">
     <div class="profile-container" style="margin-top:130px">
         <div class="text-left">
@@ -18,14 +21,12 @@
             <p>Kelola pengaturan profil Anda</p>
         </div>
         <div class="profile-picture-container">
-            <img src="https://via.placeholder.com/150" alt="Profile Picture">
+            <img src="{{ $user->img ? asset('images/' . $user->img) : asset('images/default_user.png') }}" alt="Profile Picture">
             <div class="edit-icon">
                 <i class="fas fa-edit"></i>
             </div>
-            <input type="file" id="file-input" accept="image/*">
+            <input type="file" id="file-input" name="img" accept="image/*" style="display: none;">
         </div>
-        <form action="{{ route('profile.update') }}" method="POST" id="profileForm">
-            @csrf
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
