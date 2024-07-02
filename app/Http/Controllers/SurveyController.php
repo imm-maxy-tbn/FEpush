@@ -4,10 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use \Illuminate\Support\Facades\Log;
+use \Illuminate\Support\Facades\DB;
 use MattDaneshvar\Survey\Models\Survey;
 use Illuminate\Support\Facades\Auth;
 use MattDaneshvar\Survey\Models\Entry;
 use App\Models\User;
+use App\Models\Project;
 use Illuminate\Validation\ValidationException;
 
 class SurveyController extends Controller
@@ -18,9 +20,11 @@ class SurveyController extends Controller
         return view('surveys.index', compact('surveys'));
     }
 
-    public function create()
+    public function create($id)
     {
-        return view('surveys.create');
+        $project = Project::with(['tags', 'sdgs', 'metrics', 'targetPelanggan', 'dana'])->findOrFail($id);
+
+        return view('survey.edit-survey.create', compact('project'));
     }
 
     public function store(Request $request)
@@ -61,10 +65,9 @@ class SurveyController extends Controller
                 }
             }
 
-            return response()->json([
-                'success' => true,
-                'survey_id' => $survey->id,
-            ]);
+            DB::update('UPDATE surveys SET project_id = ? WHERE id = ?', [$request->project_id, $survey->id]);
+
+            return redirect()->route('myproject.myproject')->with('success', 'Survey created successfully');
         } catch (\Exception $e) {
             Log::error('Survey creation failed: ' . $e->getMessage());
             return response()->json([
@@ -95,7 +98,60 @@ class SurveyController extends Controller
 
     public function edit(Survey $survey)
     {
-        return view('surveys.edit', compact('survey'));
+        return view('survey.edit-survey.edit-survey-new', compact('survey'));
+    }
+
+    public function update(Request $request, Survey $survey)
+    {
+        try {
+            $request->validate([
+                'name' => 'required|string|max:255',
+                'settings.accept-guest-entries' => 'required',
+                'settings.limit-per-participant' => 'required',
+                'sections' => 'required|array',
+                'sections.*.name' => 'required|string',
+                'sections.*.questions' => 'required|array',
+                'sections.*.questions.*.content' => 'required|string',
+                'sections.*.questions.*.type' => 'required|string',
+                'sections.*.questions.*.rules' => 'nullable|string',
+            ]);
+
+            // Update Survey
+            $survey->update([
+                'name' => $request->name,
+                'settings' => [
+                    'accept-guest-entries' => filter_var($request->settings['accept-guest-entries'], FILTER_VALIDATE_BOOLEAN),
+                    'limit-per-participant' => (int) $request->settings['limit-per-participant'],
+                ]
+            ]);
+
+            // Loop through each section in the request
+            foreach ($request->sections as $sectionData) {
+                $section = $survey->sections()->updateOrCreate(
+                    ['name' => $sectionData['name']], // Find or create the section by name
+                    ['name' => $sectionData['name']] // Update the section's name
+                );
+
+                // Loop through each question in the section
+                foreach ($sectionData['questions'] as $questionData) {
+                    $options = isset($questionData['options']) ? implode(',', $questionData['options']) : null;
+
+                    $question = $section->questions()->updateOrCreate(
+                        ['content' => $questionData['content']], // Find or create the question by content
+                        [
+                            'type' => $questionData['type'], // Update the question's type
+                            'rules' => isset($questionData['rules']) ? $questionData['rules'] : '', // Update the question's rules
+                            'options' => $options, // Update the question's options as a comma-separated string
+                        ]
+                    );
+                }
+            }
+
+            return redirect()->route('myproject.myproject')->with('success', 'Survey updated successfully');
+        } catch (\Exception $e) {
+            Log::error('Survey update failed: ' . $e->getMessage());
+            return redirect()->back()->with('error', 'Failed to update survey. Please try again later.');
+        }
     }
 
     public function destroy(Survey $survey)
@@ -142,9 +198,9 @@ class SurveyController extends Controller
             $lastEntry = null;
         } else {
             $lastEntry = Entry::where('participant_id', $user->id)
-                  ->where('survey_id', $survey->id)
-                  ->latest()
-                  ->first();
+                ->where('survey_id', $survey->id)
+                ->latest()
+                ->first();
         }
 
         return $this->createEntry($survey, $user, $lastEntry);
@@ -157,9 +213,9 @@ class SurveyController extends Controller
 
             // Check if the user has already submitted the survey
             $lastEntry = Entry::where('participant_id', $user->id)
-                  ->where('survey_id', $survey->id)
-                  ->latest()
-                  ->first();
+                ->where('survey_id', $survey->id)
+                ->latest()
+                ->first();
             $alreadySubmitted = $lastEntry !== null;
 
             // Validate the request data against the survey's rules

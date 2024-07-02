@@ -368,13 +368,12 @@ Route::get('responden/{id}', [SurveyController::class, 'view'])->name('surveys.v
 Route::get('responden-data-diri/{id}', [SurveyController::class, 'dataDiri'])->name('surveys.data-diri');
 Route::post('responden/{id}', [SurveyController::class, 'registerUser'])->name('surveys.register-user');
 Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submit'])->name('surveys.submit');
+Route::get('create-survey/{id}', [SurveyController::class, 'create'])->name('surveys.create');
 Route::post('survey', [SurveyController::class, 'store'])->name('surveys.store');
 Route::get('/responden/{id}', [SurveyController::class, 'view'])->name('surveys.view');
-Route::get('/edit-survey-new/{project}', function () {
-    return view('survey.edit-survey.edit-survey-new');
-});
+Route::get('edit-survey/{survey}', [SurveyController::class, 'edit'])->name('surveys.edit');
+Route::put('surveys/{survey}', [SurveyController::class, 'update'])->name('surveys.update');
 Route::delete('survey/{survey}', [SurveyController::class, 'destroy'])->name('surveys.destroy');
 Route::get('survey-result/{survey}', [SurveyController::class, 'results'])->name('surveys.results');
 
 Route::get('/about', [HomeController::class, 'about']);
-Route::get('/edit-survey-new/{survey}', [SurveyController::class, 'edit'])->name('surveys.edit');
