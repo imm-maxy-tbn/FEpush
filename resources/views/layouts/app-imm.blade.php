@@ -249,10 +249,8 @@
                         @endguest
                         @auth
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
-                                    id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true"
-                                    aria-expanded="false">
-                                    <img src="https://via.placeholder.com/40" alt="Profile Picture" class="profile-img">
+                                <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <img src="{{ Auth::user()->img ? asset('images/' . Auth::user()->img) : asset('images/default_user.png') }}" alt="Profile Picture" class="profile-img">
                                     <span class="ml-2">{{ Auth::user()->nama_depan }}</span>
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">

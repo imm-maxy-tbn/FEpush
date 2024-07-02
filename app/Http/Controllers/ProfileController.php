@@ -55,11 +55,9 @@ class ProfileController extends Controller
         $request->validate([
             'nama_depan' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . Auth::user()->id,
-            'current_password' => 'nullable|required_with:new_password',
-            'new_password' => 'nullable|min:8|max:12|required_with:current_password',
-            'password_confirmation' => 'nullable|min:8|max:12|required_with:new_password|same:new_password'
-        ]);
-
+            'img' => 'image|mimes:jpeg,png,jpg,webp|max:10000' // Validasi untuk gambar
+        ]);        
+    
         $user = User::findOrFail(Auth::user()->id);
         $user->nama_depan = $request->input('nama_depan');
         $user->email = $request->input('email');
@@ -68,19 +66,20 @@ class ProfileController extends Controller
         $user->provinsi = $request->input('provinsi');
         $user->alamat = $request->input('alamat');
         $user->telepon = $request->input('telepon');
-
-        if (!is_null($request->input('current_password'))) {
-            if (Hash::check($request->input('current_password'), $user->password)) {
-                $user->password = bcrypt($request->input('new_password'));
-            } else {
-                return redirect()->back()->withInput()->withErrors(['current_password' => 'Password saat ini tidak sesuai.']);
-            }
+    
+        // Proses gambar baru jika diunggah
+        if ($request->hasFile('img')) {
+            $imageName = time() . '.' . $request->img->extension();
+            $request->img->move(public_path('images'), $imageName);
+            $user->img = $imageName;
         }
 
+    
         $user->save();
-
+    
         return redirect()->route('profile')->with('success', 'Profil berhasil diperbarui.');
     }
+    
 
     public function updateCompanyProfile(Request $request, $id)
     {
