@@ -12,25 +12,23 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
-        $tags = Tag::all();
-        $categories = Category::all();
+
         foreach ($posts as $post) {
             $post->content = \Illuminate\Support\Str::limit($post->content, 100, $end='...');
             $post->img = env('APP_BACKEND_URL') . '/images/' . $post->img;
         }
         $backendUrl = env('APP_BACKEND_URL');
         $frontendUrl = env('APP_URL');
-        return view('blog.blog', compact('posts', 'tags', 'categories','backendUrl'));
+        return view('blog.blog', compact('posts','backendUrl'));
     }
 
     public function create()
     {
-        $tags = Tag::all();
-        $categories = Category::all();
+
         $users = User::all();
         $currentUserId = Auth::id();
 
-        return view('posts.create', compact('tags', 'categories', 'users', 'currentUserId'));
+        return view('posts.create', compact('users', 'currentUserId'));
     }
 
     public function store(Request $request)
@@ -41,8 +39,7 @@ class PostController extends Controller
             'content' => 'required',
             'user_id' => 'required|exists:users,id',
             'published_at' => 'nullable|date',
-            'category_id' => 'required|exists:categories,id',
-            'tags.*' => 'required|exists:tags,id',
+
         ]);
 
 
@@ -55,12 +52,9 @@ class PostController extends Controller
             'content' => $request->input('content'),
             'user_id' => $request->input('user_id'),
             'published_at' => $request->input('published_at'),
-            'category_id' => $request->input('category_id'),
+  
         ]);
 
-        if ($request->has('tags')) {
-            $post->tags()->sync($request->input('tags'));
-        }
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
@@ -68,8 +62,7 @@ class PostController extends Controller
     public function view($id)
     {
         $post = Post::findOrFail($id);
-        $tags = Tag::all();
-        $categories = Category::all();
+
         $users = User::all();
         $currentUserId = Auth::id();
         return view('blog.blogarticle', compact('post', 'users', 'currentUserId'));
@@ -78,12 +71,10 @@ class PostController extends Controller
     public function edit($id)
     {
         $post = Post::findOrFail($id);
-        $tags = Tag::all();
-        $categories = Category::all();
         $users = User::all();
         $currentUserId = Auth::id();
 
-        return view('posts.edit', compact('post', 'tags', 'categories', 'users', 'currentUserId'));
+        return view('posts.edit', compact('post', 'users', 'currentUserId'));
     }
 
     public function update(Request $request, $id)
@@ -94,8 +85,7 @@ class PostController extends Controller
             'content' => 'required',
             'user_id' => 'required|exists:users,id',
             'published_at' => 'nullable|date',
-            'category_id' => 'required|exists:categories,id',
-            'tags.*' => 'required|exists:tags,id',
+
         ]);
 
         $post = Post::findOrFail($id);
@@ -114,12 +104,10 @@ class PostController extends Controller
         $post->content = $request->input('content');
         $post->user_id = $request->input('user_id');
         $post->published_at = $request->input('published_at');
-        $post->category_id = $request->input('category_id');
+   
         $post->save();
 
-        if ($request->has('tags')) {
-            $post->tags()->sync($request->input('tags'));
-        }
+
 
         return redirect()->route('posts.index')->with('success', 'Post updated successfully.');
     }
