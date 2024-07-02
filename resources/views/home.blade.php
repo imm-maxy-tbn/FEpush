@@ -68,6 +68,12 @@
                         <div class="col-2"><img src="/images/E-WEB-Goal-10.png" width="97" alt=""></div>
                         <div class="col-2"><img src="/images/E-WEB-Goal-11.png" width="97" alt=""></div>
                         <div class="col-2"><img src="/images/E-WEB-Goal-12.png" width="97" alt=""></div>
+                        <div class="col-2"><img src="/images/E-WEB-Goal-13.png" width="97" alt=""></div>
+                        <div class="col-2"><img src="/images/E-WEB-Goal-12.png" width="97" alt=""></div>
+                        <div class="col-2"><img src="/images/E-WEB-Goal-11.png" width="97" alt=""></div>
+                        <div class="col-2"><img src="/images/E-WEB-Goal-16.png" width="97" alt=""></div>
+                        <div class="col-2"><img src="/images/E-WEB-Goal-17.png" width="97" alt=""></div>
+
                     </div>
                 </div>
             </div>
