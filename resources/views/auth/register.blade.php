@@ -310,6 +310,10 @@
             }
         /* Media query for responsiveness */
         @media (max-width: 768px) {
+
+            body{
+                padding-top: 20px;
+            }
             .navbar {
                 position: relative;
             }
@@ -574,7 +578,7 @@
                 <div class="form-row">
                     <div class="form-group">
                         <label for="nik">NIK</label>
-                        <input type="text" id="nik" name="nik" placeholder="Masukkan disini" />
+                        <input type="number" id="nik" name="nik" placeholder="Masukkan disini" />
                     </div>
                     <div class="form-group">
                         <label for="province">Provinsi</label>

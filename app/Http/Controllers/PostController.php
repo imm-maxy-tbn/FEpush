@@ -12,17 +12,19 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::all();
+
         foreach ($posts as $post) {
             $post->content = \Illuminate\Support\Str::limit($post->content, 100, $end='...');
             $post->img = env('APP_BACKEND_URL') . '/images/' . $post->img;
         }
         $backendUrl = env('APP_BACKEND_URL');
         $frontendUrl = env('APP_URL');
-        return view('blog.blog', compact('posts', 'backendUrl'));
+        return view('blog.blog', compact('posts','backendUrl'));
     }
 
     public function create()
     {
+
         $users = User::all();
         $currentUserId = Auth::id();
 
@@ -36,6 +38,8 @@ class PostController extends Controller
             'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:10000',
             'content' => 'required',
             'user_id' => 'required|exists:users,id',
+            'published_at' => 'nullable|date',
+
         ]);
 
 
@@ -47,7 +51,10 @@ class PostController extends Controller
             'img' => $imageName,
             'content' => $request->input('content'),
             'user_id' => $request->input('user_id'),
+            'published_at' => $request->input('published_at'),
+  
         ]);
+
 
         return redirect()->route('posts.index')->with('success', 'Post created successfully.');
     }
@@ -55,6 +62,7 @@ class PostController extends Controller
     public function view($id)
     {
         $post = Post::findOrFail($id);
+
         $users = User::all();
         $currentUserId = Auth::id();
         return view('blog.blogarticle', compact('post', 'users', 'currentUserId'));
@@ -76,6 +84,8 @@ class PostController extends Controller
             'img' => 'required|image|mimes:jpeg,png,jpg,gif|max:10000',
             'content' => 'required',
             'user_id' => 'required|exists:users,id',
+            'published_at' => 'nullable|date',
+
         ]);
 
         $post = Post::findOrFail($id);
@@ -93,7 +103,11 @@ class PostController extends Controller
         $post->title = $request->input('title');
         $post->content = $request->input('content');
         $post->user_id = $request->input('user_id');
+        $post->published_at = $request->input('published_at');
+   
         $post->save();
+
+
 
         return redirect()->route('posts.index')->with('success', 'Post updated successfully.');
     }

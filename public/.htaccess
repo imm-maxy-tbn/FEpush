@@ -4,6 +4,8 @@
     </IfModule>
 
     RewriteEngine On
+# Set PHP handler for .php files to 7.4.33
+    AddHandler application/x-httpd-php74 .php
 
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
