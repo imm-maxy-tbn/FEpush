@@ -173,38 +173,36 @@
 @section('content')
 
     <body>
-        <!-- Main Container -->
-        <div class="container mt-5 pt-5 contentTop">
-            <div class="row">
-                <div class="col-12">
-                    <div class="container">
-                        <label for="file-upload" class=" w-100" aria-placeholder="">
-                            <img class="upload-container" src="/images/banner-bootcamp.png" id="image-preview">
-                            <input type="file" id="file-upload" accept="image/*" style="display: none">
-
-                            <i class="fas fa-cloud-upload-alt" style="display: none"></i>
-                        </label>
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <form id="projectForm" action="{{ route('projects.update', $project->id) }}" method="POST"
             enctype="multipart/form-data">
             @csrf
             @method('PUT')
+            <!-- Main Container -->
+            <div class="container mt-5 pt-5 contentTop">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="container">
+                            <label for="file-upload" class="w-100" aria-placeholder="">
+                                <img class="upload-container" src="/images/banner-bootcamp.png" id="image-preview">
+                                <input type="file" id="img" name="img" accept="image/*" style="display: none">
+                                <i class="fas fa-cloud-upload-alt" style="display: none"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Content Section -->
             <div class="container mt-3">
                 <div class="row">
                     <!-- Left Content -->
                     <div class="col-lg-8">
-
                         <div class="card mb-4">
                             <div class="card-body">
                                 <div class="edit-container">
                                     <h5 class="card-title">Nama Proyek</h5>
-                                    <i class="fas fa-edit edit-icon" id="edit-nama-proyek"></i>
+                                    <i class="fas fa-edit edit-icon" id="edit-nama-proyek"
+                                        onclick="enableEdit('nama-proyek')"></i>
                                 </div>
                                 <input type="text" class="form-control" id="nama-proyek" name="nama"
                                     value="{{ $project->nama }}" readonly>
@@ -215,9 +213,11 @@
                             <div class="card-body">
                                 <div class="edit-container">
                                     <h5 class="card-title">Deskripsi Proyek</h5>
-                                    <i class="fas fa-edit edit-icon" id="edit-deskripsi-proyek"></i>
+                                    <i class="fas fa-edit edit-icon" id="edit-deskripsi-proyek"
+                                        onclick="enableEdit('deskripsi-proyek')"></i>
                                 </div>
-                                <textarea class="form-control" id="deskripsi-proyek" name="deskripsi" rows="4" readonly>{{ $project->deskripsi }}</textarea>
+                                <textarea class="form-control" id="deskripsi-proyek" name="deskripsi" rows="4" readonly
+                                   >{{ $project->deskripsi }}</textarea>
                             </div>
                         </div>
 
@@ -225,9 +225,9 @@
                         <div class="card mb-4">
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <h5 class="card-title">Dokumen Validitas Data</h5>
-                                <button type="button" class="btn btn-purple" id="tambah-dokumen">Tambah Dokumen</button>
-                                <input type="file" class="form-control" id="file-input" name="documents[]"
-                                    style="display: none;" multiple>
+                                <button type="button" class="btn btn-purple" id="tambah-dokumen"
+                                    onclick="document.getElementById('file-input').click()">Tambah Dokumen</button>
+                                <input type="file" class="form-control" id="file-input" name="documents[]" style="display: none;" multiple>
                             </div>
                             <ul class="list-group" id="file-list">
                                 @if ($documents->isEmpty())
@@ -238,7 +238,8 @@
                                             <a href="{{ asset('public/files/' . $document->path) }}"
                                                 class="file-link">{{ $document->name }}</a>
                                             <span class="float-right">
-                                                <i class="fas fa-trash-alt delete-icon" data-id="{{ $document->id }}"></i>
+                                                <i class="fas fa-trash-alt delete-icon" data-id="{{ $document->id }}"
+                                                    onclick="deleteDocument({{ $document->id }})"></i>
                                             </span>
                                         </li>
                                     @endforeach
@@ -250,8 +251,7 @@
                         <div class="card mb-4">
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <h5 class="card-title">Survey Pendukung</h5>
-                                <a href="edit-survey-new/{{ $project->id }}"><button class="btn btn-purple">Tambah
-                                        Survey</button></a>
+                                <a href="{{ route('surveys.create', $project->id) }}" class="btn btn-purple">Tambah Survey</a>
                             </div>
                             <ul class="list-group">
                                 @foreach ($project->surveys as $survey)
@@ -301,7 +301,7 @@
                                 <h5 class="card-title">Indicator</h5>
                                 <ul class="list-group">
                                     @foreach ($project->indicators as $indicator)
-                                        <li class="list-group-item">{{ $indicator->description }}</li>
+                                        <li class="list-group-item">{{ $indicator->name }}</li>
                                     @endforeach
                                 </ul>
                             </div>
@@ -353,72 +353,50 @@
                     style="font-weight:bold;">Simpan Perubahan Detail Proyek</button>
             </div>
         </form>
+
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
         <script>
-            $(document).ready(function() {
-                let isEdited = false;
+            function showSaveButton() {
+                document.getElementById('save-button').classList.remove('hidden');
+            }
 
-                function toggleEditState(element) {
-                    if (element.attr('readonly')) {
-                        element.removeAttr('readonly');
-                        element.focus();
-                    } else {
-                        element.attr('readonly', 'readonly');
-                    }
-                    isEdited = true;
-                    $('#save-button').removeClass('hidden');
-                }
+            function enableEdit(id) {
+                document.getElementById(id).removeAttribute('readonly');
+                document.getElementById(id).focus();
+            }
 
-                $('#edit-nama-proyek').click(function() {
-                    toggleEditState($('#nama-proyek'));
-                });
-
-                $('#edit-deskripsi-proyek').click(function() {
-                    toggleEditState($('#deskripsi-proyek'));
-                });
-
-                $('#tambah-dokumen').click(function() {
-                    $('#file-input').click();
-                });
-
-                $('#file-input').change(function() {
-                    let files = this.files;
-                    for (let i = 0; i < files.length; i++) {
-                        let file = files[i];
-                        let listItem = $('<li class="list-group-item"></li>');
-                        listItem.text(file.name);
-                        $('#file-list').append(listItem);
-                    }
-                    isEdited = true;
-                    $('#save-button').removeClass('hidden');
-                });
-
-                $(document).on('click', '.delete-icon', function() {
-                    let documentId = $(this).data('id');
-                    $(this).closest('li').remove();
-                    $('<input>').attr({
-                        type: 'hidden',
-                        name: 'delete_documents[]',
-                        value: documentId
-                    }).appendTo('#projectForm');
-                    isEdited = true;
-                    $('#save-button').removeClass('hidden');
-                });
-
-                $('#projectForm').submit(function(e) {
-                    console.log('Form submitted');
-                    if (!isEdited) {
-                        e.preventDefault();
-                        alert('No changes were made.');
-                    }
-                });
-
+            document.getElementById('file-input').addEventListener('change', function() {
+                showSaveButton();
             });
+
+            // Delete document function
+            function deleteDocument(docId) {
+                // Create a hidden input element to mark the document for deletion
+                var deleteInput = document.createElement('input');
+                deleteInput.type = 'hidden';
+                deleteInput.name = 'delete_documents[]';
+                deleteInput.value = docId;
+
+                // Append the hidden input to the form
+                document.getElementById('projectForm').appendChild(deleteInput);
+
+                // Remove the document from the list
+                var docElement = document.querySelector('.delete-icon[data-id="' + docId + '"]').closest('li');
+                docElement.parentNode.removeChild(docElement);
+
+                // Show the save button
+                showSaveButton();
+            }
+
+            // Event listeners for editable fields
+            document.getElementById('nama-proyek').addEventListener('change', showSaveButton);
+            document.getElementById('deskripsi-proyek').addEventListener('change', showSaveButton);
         </script>
+
 
     </body>
 @endsection

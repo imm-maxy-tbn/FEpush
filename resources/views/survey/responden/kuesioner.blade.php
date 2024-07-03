@@ -13,96 +13,97 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap");
-body {
-    font-family: "Roboto", sans-serif;
-    /* Add padding to avoid content being hidden behind fixed navbar */
-    background-color: #ffffff;
-    font-family: "Quicksand", sans-serif;
-}
+        @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap");
 
-.content {
-    background-color: #f7f6fb;
-    height: 362px;
-    width: 1220px;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    padding: 0 50px;
-    text-align: justify;
-}
+        body {
+            font-family: "Roboto", sans-serif;
+            /* Add padding to avoid content being hidden behind fixed navbar */
+            background-color: #ffffff;
+            font-family: "Quicksand", sans-serif;
+        }
 
-label {
-    font-size: 16px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 400;
-}
+        .content {
+            background-color: #f7f6fb;
+            height: 362px;
+            width: 1220px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            padding: 0 50px;
+            text-align: justify;
+        }
 
-.form-control {
-    height: 47px;
-    width: 702px;
-    border: 2px solid #5940cb;
-}
+        label {
+            font-size: 16px;
+            font-family: "Poppins", sans-serif;
+            font-weight: 400;
+        }
 
-.content2 {
-    background-color: #f7f6fb;
-    width: 1220px;
-    border-radius: 20px;
-    display: flex;
-    padding: 50px 50px;
-    text-align: justify;
-}
+        .form-control {
+            height: 47px;
+            width: 702px;
+            border: 2px solid #5940cb;
+        }
 
-.sub-content {
-    background-color: #e5e2f2;
-    width: 100%;
-    height: 182px;
-    margin-top: 50px;
-    justify-content: center;
-    display: flex;
-    margin-bottom: 30px;
-    overflow: hidden;
-}
+        .content2 {
+            background-color: #f7f6fb;
+            width: 1220px;
+            border-radius: 20px;
+            display: flex;
+            padding: 50px 50px;
+            text-align: justify;
+        }
 
-img {
-    width: 100%;
-    height: auto;
-    background-size: cover;
-}
+        .sub-content {
+            background-color: #e5e2f2;
+            width: 100%;
+            height: 182px;
+            margin-top: 50px;
+            justify-content: center;
+            display: flex;
+            margin-bottom: 30px;
+            overflow: hidden;
+        }
 
-.angka {
-    height: 54px;
-    width: 35px;
-    background-color: #5940cb;
-    font-size: 20px;
-    font-family: "Poppins", sans-serif;
-    font-weight: 500;
-    color: white;
-}
+        img {
+            width: 100%;
+            height: auto;
+            background-size: cover;
+        }
 
-.btn-kembali {
-    width: 399px;
-    height: 49px;
-    background-color: white;
-    border: 3px solid #5940cb;
-    border-radius: 6px;
-    color: #5940cb;
-    font-size: 20px;
-    font-family: "Poppins", sans-serif;
-    font-weight: bold;
-}
+        .angka {
+            height: 54px;
+            width: 35px;
+            background-color: #5940cb;
+            font-size: 20px;
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+            color: white;
+        }
 
-.btn-selanjutnya {
-    width: 399px;
-    height: 49px;
-    background-color: #5940cb;
-    border: 3px solid #5940cb;
-    border-radius: 6px;
-    color: white;
-    font-size: 20px;
-    font-family: "Poppins", sans-serif;
-    font-weight: bold;
-}
+        .btn-kembali {
+            width: 399px;
+            height: 49px;
+            background-color: white;
+            border: 3px solid #5940cb;
+            border-radius: 6px;
+            color: #5940cb;
+            font-size: 20px;
+            font-family: "Poppins", sans-serif;
+            font-weight: bold;
+        }
+
+        .btn-selanjutnya {
+            width: 399px;
+            height: 49px;
+            background-color: #5940cb;
+            border: 3px solid #5940cb;
+            border-radius: 6px;
+            color: white;
+            font-size: 20px;
+            font-family: "Poppins", sans-serif;
+            font-weight: bold;
+        }
     </style>
 </head>
 
@@ -114,7 +115,7 @@ img {
                 <img src="/images/banner-detailkelas.png" alt="img">
             </div>
 
-            <p style="font-size: 40px;font-weight: bold;"> {{$survey->name}} </p>
+            <p style="font-size: 40px;font-weight: bold;"> {{ $survey->name }} </p>
 
         </div>
     </div>
@@ -125,7 +126,8 @@ img {
             <div class="container">
                 <div class="form-esay">
                     @foreach ($survey->sections as $section)
-                        <h3 class="px-4 py-3 mb-5 mt-5" style="background:#5940cb; color:white; border-top:solid 1px #dadada">
+                        <h3 class="px-4 py-3 mb-5 mt-5"
+                            style="background:#5940cb; color:white; border-top:solid 1px #dadada">
                             {{ $section->name }}</h3>
                         @foreach ($section->questions as $question)
                             <div class="row d-flex align-items-start">
@@ -155,7 +157,7 @@ img {
         <div class="container mb-5 mt-5 d-flex justify-content-center align-items-center  ">
             <h5 style="color: #5940cb; font-weight:bold">Konten di dalam survey ini tidak dibuat oleh Impact Mate</h5>
 
-     </div>
+        </div>
     </footer>
 
     {{-- <div class="container mt-5">

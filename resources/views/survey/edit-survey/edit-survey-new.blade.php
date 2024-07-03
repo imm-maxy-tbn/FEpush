@@ -23,7 +23,7 @@
 
                     <div class="sub-content d-flex justify-content-center align-items-center"><label for="gambar"
                             style="cursor: pointer;">
-                            <img src="images/upload.png" width="42">
+                            <img src="{{ asset('images/upload.png') }}" width="42">
                         </label>
                         <input type="file" id="gambar" name="gambar" accept="image/*" style="display: none;">
                     </div>
@@ -38,14 +38,17 @@
                     <div class="row d-flex justify-content-between mt-5">
                         <button type="submit" class="btn-simpan d-flex justify-content-around align-items-center">
                             <span class="text-white">Update Survey</span>
-                            <img src="images/simpan-icon.png" width="29" height="auto" alt="">
+                            <img src="{{ asset('images/simpan-icon.png') }}" width="29" height="auto" alt="">
                         </button>
-                        <button type="" class="btn-akhiri">Akhiri Survey</button>
-                        {{-- <a href="{{ route('responden', ['survey' => $survey->id]) }}"><button type="" class="btn-lihat-responden">Lihat Responden Survey</button></a> --}}
+                        {{-- <button type="" class="btn-akhiri">Akhiri Survey</button> --}}
+                        <a href="{{ route('surveys.results', $survey) }}"
+                            class="btn-lihat-responden d-flex align-items-center justify-content-center">
+                            <span>Lihat Responden Survey</span>
+                        </a>
                         <button type="" class="btn-lihat d-flex justify-content-around align-items-center">
-                            <a href="{{ route('surveys.results', $survey) }}" class="text-dark"><span>Lihat
+                            <a href="{{ route('surveys.view', $survey) }}" class="text-dark"><span>Lihat
                                     Survey</span></a>
-                            <img src="images/mata-icon.png" width="25" height="20" alt="">
+                            <img src="{{ asset('images/mata-icon.png') }}" width="25" height="20" alt="">
                         </button>
                     </div>
 
@@ -100,7 +103,9 @@
                                             @if ($question->type != 'radio' && $question->type != 'multiselect') style="display: none;" @endif>
                                             <label for="question-options">Opsi (untuk radio dan multiselect)</label>
                                             @php
-                                                $options = explode(',', $question->options);
+                                                $options = is_array($question->options)
+                                                    ? $question->options
+                                                    : explode(',', $question->options);
                                             @endphp
                                             @foreach ($options as $optionIndex => $option)
                                                 <input type="text"

@@ -67,7 +67,7 @@ class SurveyController extends Controller
 
             DB::update('UPDATE surveys SET project_id = ? WHERE id = ?', [$request->project_id, $survey->id]);
 
-            return redirect()->route('myproject.myproject')->with('success', 'Survey created successfully');
+            return redirect()->route('projects.view', $request->project_id)->with('success', 'Survey created successfully');
         } catch (\Exception $e) {
             Log::error('Survey creation failed: ' . $e->getMessage());
             return response()->json([
@@ -80,7 +80,10 @@ class SurveyController extends Controller
     public function view($id)
     {
         $survey = Survey::with('sections.questions')->findOrFail($id);
-        $lastEntry = Entry::where('participant_id', auth()->id())->latest()->first();
+        $lastEntry = Entry::where('participant_id', auth()->id())
+            ->where('survey_id', $survey->id)
+            ->latest()
+            ->first();
 
         return view('survey.responden.responden', compact('survey', 'lastEntry'));
     }
@@ -88,10 +91,13 @@ class SurveyController extends Controller
     public function dataDiri($id)
     {
         $survey = Survey::with('sections.questions')->findOrFail($id);
-        $lastEntry = Entry::where('participant_id', auth()->id())->latest()->first();
+        $lastEntry = Entry::where('participant_id', auth()->id())
+            ->where('survey_id', $survey->id)
+            ->latest()
+            ->first();
 
         if ($lastEntry) {
-            return view('survey.responden.responden-data-diri', compact('survey' . 'lastEntry'));
+            return view('survey.responden.responden-data-diri', compact('survey', 'lastEntry'));
         }
         return view('survey.responden.responden-data-diri', compact('survey'));
     }
@@ -134,19 +140,18 @@ class SurveyController extends Controller
 
                 // Loop through each question in the section
                 foreach ($sectionData['questions'] as $questionData) {
-                    $options = isset($questionData['options']) ? implode(',', $questionData['options']) : null;
-
-                    $question = $section->questions()->updateOrCreate(
+                    $section->questions()->updateOrCreate(
                         ['content' => $questionData['content']], // Find or create the question by content
                         [
                             'type' => $questionData['type'], // Update the question's type
-                            'options' => $options, // Update the question's options as a comma-separated string
+                            'rules' => isset($questionData['rules']) ? explode(',', $questionData['rules']) : [],
+                            'options' => isset($questionData['options']) ? $questionData['options'] : null, // Update the question's options
                         ]
                     );
                 }
             }
 
-            return redirect()->route('myproject.myproject')->with('success', 'Survey updated successfully');
+            return redirect()->route('projects.view', $request->project_id)->with('success', 'Survey updated successfully');
         } catch (\Exception $e) {
             Log::error('Survey update failed: ' . $e->getMessage());
             return redirect()->back()->with('error', 'Failed to update survey. Please try again later.');

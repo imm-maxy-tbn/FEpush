@@ -14,6 +14,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Log;
 
 class ProjectController extends Controller
 {
@@ -148,14 +149,27 @@ class ProjectController extends Controller
         return view('projects.edit', compact('project', 'companies', 'tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan'));
     }
 
+    function relationshipsToArray($model)
+    {
+        $data = $model->toArray();
+        foreach ($model->getRelations() as $relation => $value) {
+            $data[$relation] = $value->toArray();
+        }
+        return $data;
+    }
+
     public function view($id)
     {
         $project = Project::with('tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana', 'surveys')->findOrFail($id);
-        $documents = DB::table('project_dokumen')
-            ->where('project_id', $id)
-            ->get();
+        $documents = DB::table('project_dokumen')->where('project_id', $id)->get();
 
-        // Pass the project and documents to the view
+        // Prepare data for logging
+        $projectData = $this->relationshipsToArray($project);
+        $projectData['documents'] = $documents->toArray();
+
+        // Log the complete project data
+        Log::debug('Project Viewed (All Data):', $projectData);
+
         return view('myproject.detail', compact('project', 'documents'));
     }
 
@@ -163,16 +177,24 @@ class ProjectController extends Controller
     {
         $project = Project::findOrFail($id);
 
-        // Validate the request
         $request->validate([
             'nama' => 'required|string|max:255',
             'deskripsi' => 'required|string',
-            'documents.*' => 'file|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048', // Adjust mime types and max size as needed
+            'documents.*' => 'file|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // Update project details
         $project->nama = $request->nama;
         $project->deskripsi = $request->deskripsi;
+
+        // Handle image upload
+        if ($request->hasFile('image')) {
+            $imageName = time() . '.' . $request->image->extension();
+            $request->image->move(public_path('images'), $imageName);
+            $project->image = $imageName;
+        }
+
         $project->save();
 
         // Handle file uploads

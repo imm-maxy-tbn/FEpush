@@ -122,7 +122,7 @@ Route::middleware(['auth'])->group(function () {
     });
 
 
-    
+
     Route::get('/review', function () {
         return view('myproject.creatproject.review');
     });
