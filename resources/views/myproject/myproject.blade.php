@@ -81,7 +81,7 @@
                         @foreach($allProjects as $index => $project)
                             <div class="col-md-4 mb-4" id="project-{{ $project->id }}" @if($index >= 6) style="display: none;" @endif>
                                 <div class="card project-card" style="min-height: 300px">
-                                    <img height="150px" src="{{ $project->img ? asset('images/' . $project->img) : asset('images/default.jpeg') }}" class="card-img-top" alt="">
+                                    <img height="150px" src="{{ $project->img ? asset('images/' . $project->img) : asset('images/default_project.png') }}" class="card-img-top" alt="">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $project->nama }}</h5>
                                         <div class="d-flex">

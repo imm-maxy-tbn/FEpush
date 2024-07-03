@@ -21,7 +21,7 @@
             <p>Kelola pengaturan profil Anda</p>
         </div>
         <div class="profile-picture-container">
-            <img src="{{ $user->img ? asset('images/' . $user->img) : asset('images/default_user.png') }}" alt="Profile Picture">
+            <img src="{{ $user->img ? asset('images/' . $user->img) : asset('images/default_user.webp') }}" alt="Profile Picture">
             <div class="edit-icon">
                 <i class="fas fa-edit"></i>
             </div>

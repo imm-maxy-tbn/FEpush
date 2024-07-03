@@ -37,12 +37,15 @@ class CompanyOutcomeController extends Controller
     {
         $outcomes = CompanyOutcome::where('project_id', $project_id)->get();
         
+        $project = Project::findOrFail($project_id);
+    
         if ($outcomes->isEmpty()) {
-            return view('homepageimm.detailbiaya', ['project_id' => $project_id, 'outcomes' => collect()]);
+            return view('homepageimm.detailbiaya', ['project_id' => $project_id, 'outcomes' => collect(), 'project' => $project]);
         }
-
-        return view('homepageimm.detailbiaya', compact('outcomes', 'project_id'));
+    
+        return view('homepageimm.detailbiaya', compact('outcomes', 'project_id', 'project'));
     }
+    
 
     public function create($project_id)
     {

@@ -3,24 +3,23 @@
 
 @section('css')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="{{ asset('css/blog/blog.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
 
 @endsection
-@section('content')
 
+@section('content')
 <body>
     <div class="container mt-5">
-    <h5 class=" text-center mb-5">Temukan wawasan tentang dampak baru disini</h5>
-        <div class="search-container mt-4">
-            <input type="text" class="form-control" placeholder="cari disini" id="searchInput">
-            <button onclick="searchBlog()" class="btn-search"><i class="fas fa-search"></i></button>
+        <h5 class="text-center mb-5">Temukan wawasan tentang dampak baru disini</h5>
+        <div class="search-container">
+            <input type="text" class="form-control" placeholder="Cari disini" id="searchInput">
+            <button onclick="searchEvent()" class="btn-search"><i class="fas fa-search"></i></button>
         </div>
-        <div class="row" id="blogContainer">
-            <!-- Blog cards will be inserted here by JavaScript -->
+        <div class="row" id="eventContainer">
+            <!-- Event cards will be inserted here by JavaScript -->
         </div>
         <div class="pagination-container">
             <p>Halaman <span id="currentPage">1</span> dari 123</p>
@@ -35,7 +34,10 @@
             </div>
         </div>
     </div>
-    
+
+
+
+
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
             integrity="sha512-mqKpeec0Hl6bZ7gTz04dVpW2uPtQ+rmJlKzUoeoaSY1Vp4iAAaYI+yMMYJqKQoJz4ygHji9m9ko96mMUpjMRZw=="
@@ -47,40 +49,39 @@
             const backendUrl = @json($backendUrl);
             const events = @json($events);
 
-            document.addEventListener("DOMContentLoaded", function() {
-                const eventContainer = document.getElementById("blogContainer");
+        document.addEventListener("DOMContentLoaded", function() {
+            const eventContainer = document.getElementById("eventContainer");
 
-                events.forEach((event) => {
-                    const eventCard = document.createElement("div");
-                    eventCard.className = "blog-card";
-                    eventCard.innerHTML = `
-                <a href="/event/${event.id}">
-                    <div class="blog-image" style="background-image: url(${event.cover_img});"></div>
-                    <h3>${event.title}</h3>
-                    <p>${event.description}</p>
-                </a>
-            `;
-                    blogContainer.appendChild(eventCard);
-                });
-
-                document.getElementById("searchInput").addEventListener("input", searchBlog);
+            events.forEach((event) => {
+                const eventCard = document.createElement("div");
+                eventCard.className = "event-card";
+                eventCard.innerHTML = `
+                    <a href="/event/${event.id}" class="text-left">
+                        <div class="event-image" style="background-image: url(${event.cover_img});"></div>
+                        <h3>${event.title}</h3>
+                        <p>${event.description}</p>
+                    </a>
+                `;
+                eventContainer.appendChild(eventCard);
             });
 
-            function searchBlog() {
-                const input = document.getElementById("searchInput").value.toLowerCase();
-                const eventCards = document.querySelectorAll(".blog-card");
+            document.getElementById("searchInput").addEventListener("input", searchEvent);
+        });
 
-                eventCards.forEach((card) => {
-                    const title = card.querySelector("h3").textContent.toLowerCase();
-                    const content = card.querySelector("p").textContent.toLowerCase();
-                    if (title.includes(input) || content.includes(input)) {
-                        card.style.display = "block";
-                    } else {
-                        card.style.display = "none";
-                    }
-                });
-            }
-        </script>
+        function searchEvent() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const eventCards = document.querySelectorAll(".event-card");
 
-    </body>
+            eventCards.forEach((card) => {
+                const title = card.querySelector("h3").textContent.toLowerCase();
+                const content = card.querySelector("p").textContent.toLowerCase();
+                if (title.includes(input) || content.includes(input)) {
+                    card.style.display = "block";
+                } else {
+                    card.style.display = "none";
+                }
+            });
+        }
+    </script>
+</body>
 @endsection

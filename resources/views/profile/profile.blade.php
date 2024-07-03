@@ -126,7 +126,7 @@
 <div class="container mt-5 pt-5">
     <div class="row section">
         <div class="col-md-4 text-center">
-            <img src="{{ $user->img ? asset('images/' . $user->img) : asset('images/default_user.png') }}" class="rounded-circle img-fluid" alt="Profile Picture">
+            <img src="{{ $user->img ? asset('images/' . $user->img) : asset('images/default_user.webp') }}" class="rounded-circle img-fluid" alt="Profile Picture">
         </div>
         <div class="col-md-4 bio">
             <div class="biodata">
