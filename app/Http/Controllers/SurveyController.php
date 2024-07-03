@@ -140,7 +140,6 @@ class SurveyController extends Controller
                         ['content' => $questionData['content']], // Find or create the question by content
                         [
                             'type' => $questionData['type'], // Update the question's type
-                            'rules' => isset($questionData['rules']) ? $questionData['rules'] : '', // Update the question's rules
                             'options' => $options, // Update the question's options as a comma-separated string
                         ]
                     );
@@ -157,8 +156,9 @@ class SurveyController extends Controller
     public function destroy(Survey $survey)
     {
         $survey->delete();
-        return redirect()->route('surveys.index')->with('success', 'Survey deleted successfully!');
+        return redirect()->back()->with('success', 'Survey deleted successfully');
     }
+
     public function createEntry(Survey $survey, User $user, ?Entry $lastEntry = null)
     {
         $alreadySubmitted = $lastEntry !== null;

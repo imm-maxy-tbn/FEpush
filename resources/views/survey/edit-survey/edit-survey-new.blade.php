@@ -97,19 +97,19 @@
                                         </select>
 
                                         <div class="question-options-container mb-2"
-     @if ($question->type != 'radio' && $question->type != 'multiselect') style="display: none;" @endif>
-    <label for="question-options">Opsi (untuk radio dan multiselect)</label>
-    @php
-        $options = explode(',', $question->options);
-    @endphp
-    @foreach ($options as $optionIndex => $option)
-        <input type="text"
-               name="sections[{{ $sectionIndex }}][questions][{{ $questionIndex }}][options][{{ $optionIndex }}]"
-               class="form-control question-option mb-1"
-               placeholder="Opsi {{ $optionIndex + 1 }}" value="{{ $option }}"
-               @if ($question->type != 'radio' && $question->type != 'multiselect') disabled @endif>
-    @endforeach
-</div>
+                                            @if ($question->type != 'radio' && $question->type != 'multiselect') style="display: none;" @endif>
+                                            <label for="question-options">Opsi (untuk radio dan multiselect)</label>
+                                            @php
+                                                $options = explode(',', $question->options);
+                                            @endphp
+                                            @foreach ($options as $optionIndex => $option)
+                                                <input type="text"
+                                                    name="sections[{{ $sectionIndex }}][questions][{{ $questionIndex }}][options][{{ $optionIndex }}]"
+                                                    class="form-control question-option mb-1"
+                                                    placeholder="Opsi {{ $optionIndex + 1 }}" value="{{ $option }}"
+                                                    @if ($question->type != 'radio' && $question->type != 'multiselect') disabled @endif>
+                                            @endforeach
+                                        </div>
 
                                     </div>
                                 @endforeach

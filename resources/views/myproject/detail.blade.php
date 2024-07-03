@@ -169,15 +169,10 @@
         }
     </style>
 @endsection
+
 @section('content')
 
-
-
-
-
     <body>
-
-
         <!-- Main Container -->
         <div class="container mt-5 pt-5 contentTop">
             <div class="row">
@@ -190,21 +185,20 @@
                             <i class="fas fa-cloud-upload-alt" style="display: none"></i>
                         </label>
                     </div>
-
                 </div>
             </div>
         </div>
 
+        <form id="projectForm" action="{{ route('projects.update', $project->id) }}" method="POST"
+            enctype="multipart/form-data">
+            @csrf
+            @method('PUT')
 
-        <!-- Content Section -->
-        <div class="container mt-3">
-            <div class="row">
-                <!-- Left Content -->
-                <div class="col-lg-8">
-                    <form id="projectForm" action="{{ route('projects.update', $project->id) }}" method="POST"
-                        enctype="multipart/form-data">
-                        @csrf
-                        @method('PUT')
+            <!-- Content Section -->
+            <div class="container mt-3">
+                <div class="row">
+                    <!-- Left Content -->
+                    <div class="col-lg-8">
 
                         <div class="card mb-4">
                             <div class="card-body">
@@ -232,18 +226,23 @@
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <h5 class="card-title">Dokumen Validitas Data</h5>
                                 <button type="button" class="btn btn-purple" id="tambah-dokumen">Tambah Dokumen</button>
-                                <input type="file" id="file-input" name="documents[]" style="display: none;" multiple>
+                                <input type="file" class="form-control" id="file-input" name="documents[]"
+                                    style="display: none;" multiple>
                             </div>
                             <ul class="list-group" id="file-list">
-                                {{-- @foreach ($project->documents as $document)
-                                    <li class="list-group-item">
-                                        <a href="{{ asset('storage/' . $document->path) }}"
-                                            class="file-link">{{ $document->name }}</a>
-                                        <span class="float-right">
-                                            <i class="fas fa-trash-alt delete-icon" data-id="{{ $document->id }}"></i>
-                                        </span>
-                                    </li>
-                                @endforeach --}}
+                                @if ($documents->isEmpty())
+                                    <p>No documents found.</p>
+                                @else
+                                    @foreach ($documents as $document)
+                                        <li class="list-group-item">
+                                            <a href="{{ asset('public/files/' . $document->path) }}"
+                                                class="file-link">{{ $document->name }}</a>
+                                            <span class="float-right">
+                                                <i class="fas fa-trash-alt delete-icon" data-id="{{ $document->id }}"></i>
+                                            </span>
+                                        </li>
+                                    @endforeach
+                                @endif
                             </ul>
                         </div>
 
@@ -259,14 +258,17 @@
                                     <li class="list-group-item d-flex justify-content-between align-items-center">
                                         {{ $survey->name }}
                                         <div>
-                                            {{-- <a href="{{ route('survey.edit', $survey->id) }}"
-                                                class="btn btn-sm btn-info">Edit</a> --}}
+                                            <a href="{{ route('surveys.edit', $survey->id) }}" class="btn btn-sm"><i
+                                                    class="fas fa-edit"></i></a>
                                             <form action="{{ route('surveys.destroy', $survey->id) }}" method="POST"
+                                                class="delete-survey-form" id="delete-survey-{{ $survey->id }}"
                                                 style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-sm"><i
-                                                        class="fas fa-trash-alt"></i></button>
+                                                <button type="submit" class="btn btn-sm delete-survey-btn"
+                                                    onclick="return confirm('Are you sure you want to delete this survey?')">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
                                             </form>
                                         </div>
                                     </li>
@@ -275,88 +277,87 @@
                         </div>
 
                         <button class="btn btn-purple btn-block mb-5">Project Selesai</button>
-                </div>
-
-                <!-- Right Content -->
-                <div class="col-lg-4">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">Metrix Anda</h5>
-                            <input type="text" class="form-control" placeholder="Cari Matrix anda">
-                            <ul class="list-group mt-3 scrollable">
-                                @foreach ($project->metrics as $metric)
-                                    <li class="list-group-item">
-                                        <a href="impact" class="text-dark">({{ $metric->code }}) {{ $metric->name }}</a>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
                     </div>
 
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">Indicator</h5>
-                            <ul class="list-group">
-                                @foreach ($project->indicators as $indicator)
-                                    <li class="list-group-item">{{ $indicator->description }}</li>
-                                @endforeach
-                            </ul>
+                    <!-- Right Content -->
+                    <div class="col-lg-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Metrix Anda</h5>
+                                <input type="text" class="form-control" placeholder="Cari Metrics anda">
+                                <ul class="list-group mt-3 scrollable">
+                                    @foreach ($project->metrics as $metric)
+                                        <li class="list-group-item">
+                                            <a href="impact" class="text-dark">({{ $metric->code }})
+                                                {{ $metric->name }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
                         </div>
-                    </div>
 
-                    <!-- Penggunaan Dana section -->
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <h5 class="card-title">Penggunaan Dana</h5>
-                            @php
-                                $totalDana = $project->dana->sum('nominal');
-                            @endphp
-                            @foreach ($project->dana as $dana)
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Indicator</h5>
+                                <ul class="list-group">
+                                    @foreach ($project->indicators as $indicator)
+                                        <li class="list-group-item">{{ $indicator->description }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Penggunaan Dana section -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Penggunaan Dana</h5>
                                 @php
-                                    $percentage = $totalDana > 0 ? ($dana->nominal / $totalDana) * 100 : 0;
+                                    $totalDana = $project->dana->sum('nominal');
                                 @endphp
-                                <div class="mb-3">
+                                @foreach ($project->dana as $dana)
+                                    @php
+                                        $percentage = $totalDana > 0 ? ($dana->nominal / $totalDana) * 100 : 0;
+                                    @endphp
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between">
+                                            <span>{{ $dana->jenis_dana }}</span>
+                                            <span
+                                                class="font-weight-bold">{{ number_format($dana->nominal, 0, ',', '.') }}</span>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-primary" role="progressbar"
+                                                style="width: {{ $percentage }}%;" aria-valuenow="{{ $percentage }}"
+                                                aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                <div>
                                     <div class="d-flex justify-content-between">
-                                        <span>{{ $dana->jenis_dana }}</span>
-                                        <span
-                                            class="font-weight-bold">{{ number_format($dana->nominal, 0, ',', '.') }}</span>
+                                        <span>Total Dana</span>
+                                        <span class="font-weight-bold">{{ number_format($totalDana, 0, ',', '.') }}</span>
                                     </div>
                                     <div class="progress">
-                                        <div class="progress-bar bg-primary" role="progressbar"
-                                            style="width: {{ $percentage }}%;" aria-valuenow="{{ $percentage }}"
-                                            aria-valuemin="0" aria-valuemax="100"></div>
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;"
+                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                                     </div>
                                 </div>
-                            @endforeach
-                            <div>
-                                <div class="d-flex justify-content-between">
-                                    <span>Total Dana</span>
-                                    <span class="font-weight-bold">{{ number_format($totalDana, 0, ',', '.') }}</span>
-                                </div>
-                                <div class="progress">
-                                    <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;"
-                                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                                </div>
+                                <p class="mt-3 text-center">Total Dana Untuk Proyek Ini Telah Terpenuhi</p>
                             </div>
-                            <p class="mt-3 text-center">Total Dana Untuk Proyek Ini Telah Terpenuhi</p>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="container d-flex justify-content-center mt-5">
-            <a href="myproject" class="btn w-50 btn-purple px-4 py-2 btn-wide text-white hidden" id="save-button"
-                style="font-weight:bold;"><button type="submit">Simpan Perubahan Detail Proyek</button></a>
-        </div>
+            <div class="container d-flex justify-content-center mt-5">
+                <button type="submit" class="btn w-50 btn-purple px-4 py-2 btn-wide text-white hidden" id="save-button"
+                    style="font-weight:bold;">Simpan Perubahan Detail Proyek</button>
+            </div>
         </form>
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             $(document).ready(function() {
                 let isEdited = false;
@@ -409,12 +410,15 @@
                 });
 
                 $('#projectForm').submit(function(e) {
+                    console.log('Form submitted');
                     if (!isEdited) {
                         e.preventDefault();
                         alert('No changes were made.');
                     }
                 });
+
             });
         </script>
+
     </body>
 @endsection
