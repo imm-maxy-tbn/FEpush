@@ -128,7 +128,7 @@
         }
 
         .upload-container {
-      
+
             width: 100%;
             height: 200px;
             display: flex;
@@ -162,7 +162,7 @@
         }
         img{
             background-size: cover;
-            
+
         }
 
     </style>
@@ -170,7 +170,7 @@
 @section('content')
 
 
-   
+
 
 
 <body>
@@ -181,14 +181,14 @@
     <div class="row">
         <div class="col-12">
             <div class="container">
-                <label for="file-upload" class=" w-100" aria-placeholder=""> 
+                <label for="file-upload" class=" w-100" aria-placeholder="">
                     <img class="upload-container" src="/images/banner-bootcamp.png" id="image-preview"   >
                 <input type="file" id="file-upload" accept="image/*" style="display: none" >
-            
+
                     <i class="fas fa-cloud-upload-alt" style="display: none"></i>
                 </label>
             </div>
-    
+
         </div>
     </div>
 </div>
@@ -204,7 +204,7 @@
                         <h5 class="card-title">Nama Proyek</h5>
                         <i class="fas fa-edit edit-icon" id="edit-nama-proyek"></i>
                     </div>
-                    <input type="text" class="form-control" id="nama-proyek" value="Projek Anti-Phising" readonly>
+                    <input type="text" class="form-control" id="nama-proyek" value="{{ $project->nama }}" readonly>
                 </div>
             </div>
 
@@ -214,25 +214,15 @@
                         <h5 class="card-title">Deskripsi Proyek</h5>
                         <i class="fas fa-edit edit-icon" id="edit-deskripsi-proyek"></i>
                     </div>
-                    <textarea class="form-control" id="deskripsi-proyek" rows="4" readonly>Proyek komprehensif yang bertujuan untuk memanfaatkan teknologi dan ilmu komputer untuk mencapai berbagai Tujuan Pembangunan Berkelanjutan (SDGs).</textarea>
+                    <textarea class="form-control" id="deskripsi-proyek" rows="4" readonly>{{ $project->deskripsi }}</textarea>
                 </div>
-                
-                
             </div>
 
             <div class="card mb-4">
                 <div class="card-body">
                     <h5 class="card-title">SDG'S</h5>
                     <div class="row">
-                        <div class="col-4">
-                            <img src="{{ asset('images/ASVG/sdg1.svg') }}" class="img-fluid" alt="SDG 4">
-                        </div>
-                        <div class="col-4">
-                            <img src="{{ asset('images/ASVG/sdg2.svg') }}" class="img-fluid" alt="SDG 9">
-                        </div>
-                        <div class="col-4">
-                            <img src="{{ asset('images/ASVG/sdg3.svg') }}" class="img-fluid" alt="SDG 10">
-                        </div>
+
                     </div>
                 </div>
             </div>
@@ -244,12 +234,14 @@
                     <input type="file" id="file-input" style="display: none;">
                 </div>
                 <ul class="list-group" id="file-list">
-                    <li class="list-group-item">
-                        <a href="#" class="file-link">File a.csv</a>
-                        <span class="float-right">
-                            <i class="fas fa-trash-alt delete-icon"></i>
-                        </span>
-                    </li>
+                    @foreach($ProjectDokumen as $document)
+                        <li class="list-group-item">
+                            <a href="{{ asset('documents/' . $document->dokumen_validitas) }}" class="file-link">{{ $document->dokumen_validitas }}</a>
+                            <span class="float-right">
+                                <i class="fas fa-trash-alt delete-icon"></i>
+                            </span>
+                        </li>
+                    @endforeach
                 </ul>
             </div>
 
@@ -259,12 +251,10 @@
                     <a href="/edit-survey-new"><button class="btn btn-purple">Mulai Survey</button></a>
                 </div>
                 <ul class="list-group">
-                    <li class="list-group-item">Survey Kesadaran CyberSecurity <span class="float-right"><i class="fas fa-trash-alt"></i></span></li>
-                    <li class="list-group-item">Survey Korban Phising <span class="float-right"><i class="fas fa-trash-alt"></i></span></li>
-                    <li class="list-group-item">Survey Korban Phising <span class="float-right"><i class="fas fa-trash-alt"></i></span></li>
-                    <li class="list-group-item">Survey Korban Phising <span class="float-right"><i class="fas fa-trash-alt"></i></span></li>
+                    @foreach($Survey as $survey)
+                        <li class="list-group-item">{{ $survey->name }} <span class="float-right"><i class="fas fa-trash-alt"></i></span></li>
+                    @endforeach
                 </ul>
-                
             </div>
 
             <button class="btn btn-purple btn-block mb-5">Project Selesai</button>
@@ -277,33 +267,11 @@
                     <h5 class="card-title">Metrix Anda</h5>
                     <input type="text" class="form-control" placeholder="Cari Matrix anda">
                     <ul class="list-group mt-3 scrollable">
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Premi Penghematan Klien</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Bias-Reducing Investment Practices</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Bias-Reducing Investment Practices</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Bias-Reducing Investment Practices</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Bias-Reducing Investment Practices</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Bias-Reducing Investment Practices</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Bias-Reducing Investment Practices</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Lorem ipsum dolor sit amet</a>
-                        </li>
-                        <li class="list-group-item">
-                            <a href="impact" class="text-dark">Consectetur adipiscing elit</a>
-                        </li>
+                        @foreach($initialMetricProjects as $metricProject)
+                            <li class="list-group-item">
+                                <a href="{{ route('metric-projects.addReport', [$project->id, $metricProject->id]) }}" class="text-dark">{{ $metricProject->metric->name }}</a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
@@ -312,17 +280,20 @@
                 <div class="card-body">
                     <h5 class="card-title">Indicator</h5>
                     <ul class="list-group">
-                        <li class="list-group-item">4.1.1.(a) Proporsi anak-anak dan remaja di: (a) kelas 5 (b) kelas 8, dan (c) usia 15 tahun yang mencapai setidaknya tingkat kemahiran minimum dalam: (i) membaca, (ii) matematika.</li>
-                        <li class="list-group-item">4.4.1.(a) Proporsi remaja (usia 15-24 tahun) dan dewasa (usia 15-59 tahun) dengan keterampilan teknologi informasi dan komunikasi (TIK).</li>
-                        <li class="list-group-item">9.5.2 Jumlah sumber daya manusia bidang ilmu pengetahuan dan teknologi (peneliti, perekayasa, dan dosen) pada instansi pemerintah dan perguruan tinggi per satu juta penduduk.</li>
-                        <li class="list-group-item">10.4.1.(b) Proporsi peserta Program Jaminan Sosial Bidang Ketenagakerjaan.</li>
+                        @foreach($IndicatorProjects as $indicatorProject)
+                            <li class="list-group-item">
+                            <a>{{ $indicatorProject->indicator->name }} </a>
+                            </li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    
+
+
 </div>
 <div class="container d-flex justify-content-center mt-5">
     <a href="myproject" class="btn w-50 btn-purple px-4 py-2 btn-wide text-white hidden" id="save-button" style="font-weight:bold;">Simpan Perubahan Detail Proyek</a>

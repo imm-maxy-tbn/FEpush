@@ -25,7 +25,7 @@
     }
 
     .see-all-button {
-    
+
         text-align: center;
         margin-top: 20px;
     }
@@ -67,40 +67,41 @@
         </div>
         <div class="section d-flex justify-content-between justify-content-center">
             <h4 class="project-title mb-5 mt-5">Semua Proyek ({{ $allProjects->count() }})</h4>
-            @if($allProjects->count() > 6) 
+            @if($allProjects->count() > 6)
                 <h5 class="seeAll" id="show-all-btn">Lihat Semua</h5>
             @endif
         </div>
-    
+
         <div class="row mt-3" id="draft-project-list">
             <div class="col-md-12 no-projects mt-3">
                 @if($allProjects->isEmpty())
                     <p>Tidak ada proyek yang ditemukan.</p>
                 @else
-                    <div class="row">
-                        @foreach($allProjects as $index => $project)
-                            <div class="col-md-4 mb-4" id="project-{{ $project->id }}" @if($index >= 6) style="display: none;" @endif>
-                                <div class="card project-card" style="min-height: 300px">
-                                    <img height="150px" src="{{ $project->img ? asset('images/' . $project->img) : asset('images/default_project.png') }}" class="card-img-top" alt="">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $project->nama }}</h5>   
-                                        <div class="d-flex">
-                                            <a href="detail" class="btn btn-secondary btn-detail mt-2">Detail</a>
-                                            <form action="{{ route('projects.destroy', $project->id) }}" method="POST" style="display: inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger mt-2" onclick="return confirm('Are you sure you want to delete this project?')">Delete</button>
-                                            </form>
-                                        </div>
+                <div class="row">
+                    @foreach($allProjects as $index => $project)
+                        <div class="col-md-4 mb-4" id="project-{{ $project->id }}" @if($index >= 6) style="display: none;" @endif>
+                            <div class="card project-card" style="min-height: 300px">
+                                <img height="150px" src="{{ $project->img ? asset('images/' . $project->img) : asset('images/default_project.png') }}" class="card-img-top" alt="">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $project->nama }}</h5>
+                                    <div class="d-flex">
+                                        <!-- Update link to direct to the index function with project id -->
+                                        <a href="{{ route('metric-projects.index', $project->id) }}" class="btn btn-secondary btn-detail mt-2">Detail</a>
+                                        <form action="{{ route('projects.destroy', $project->id) }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-danger mt-2" onclick="return confirm('Are you sure you want to delete this project?')">Delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
+                        </div>
+                    @endforeach
+                </div>
                 @endif
             </div>
         </div>
-    
+
         <div class="container">
             <h2 class="project-title mb-5 mt-5">Proyek yang sedang dikerjakan</h2>
             <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
@@ -191,7 +192,7 @@
 
         </div>
     </div>
-    
+
 
 
     <!-- JavaScript Libraries -->
