@@ -22,11 +22,8 @@ class HomepageController extends Controller
         $user = Auth::user();
         $company = $user->companies;
     
-        // Menghitung total balance (total hibah)
         $totalBalance = CompanyIncome::where('company_id', $company->id)->sum('jumlah_hibah');
 
-    
-        // Menghitung total outcome (total biaya dari semua proyek)
         $totalOutcome = CompanyOutcome::whereHas('project', function ($query) use ($company) {
                 $query->where('company_id', $company->id);
             })

@@ -17,7 +17,7 @@
             <div class="row d-flex justify-content-between">
                 <a href="{{ route('kelola-pengeluaran') }}">
                     <h4 class=" d-flex align-items-center"><strong style="font-size: 40px;">
-                            <</strong> Detail penggunaan biaya proyek ramah anak</h4>
+                            <</strong> Detail penggunaan biaya proyek {{ $project->nama }}</h4>
                 </a>
                 <a href="{{ route('tambah.penggunaan.dana', ['project_id' => $project_id]) }}"><button
                         class="btn-tambahdana">Tambah Penggunaan Dana</button></a>
