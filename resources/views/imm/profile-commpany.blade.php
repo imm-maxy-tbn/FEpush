@@ -3,9 +3,102 @@
 
 @section('css')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="{{ asset('css/profile/profile-commpany.css') }}">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&family=Quicksand:wght@300..700&display=swap");
+html,
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+* {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.btn-keluar {
+    width: 183px;
+    height: 35px;
+    background-color: white;
+    border: 2px solid #5940cb;
+    border-radius: 7px;
+}
+
+.btn-masuk {
+    width: 183px;
+    height: 35px;
+    background-color: #5940cb;
+    color: white;
+    border: none;
+    border-radius: 7px;
+}
+
+.btn-masukkk {
+    width: 383px;
+    height: 35px;
+    background-color: #5940cb;
+    color: white;
+    border: none;
+    border-radius: 7px;
+}
+
+.btn-masukkk:hover {
+    background-color: #5e41de;
+}
+
+.modal-content {
+    width: 699px;
+    height: 253px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-body {
+    gap: 20px;
+    margin: 0 51px;
+    height: 100%;
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.btnn {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    width: 100%;
+}
+
+
+/* Navbar */
+
+.propil {
+    margin-top: 120px;
+}
+
+
+/* Footer */
+
+.bahasa {
+    background-color: #5940cb;
+}
+
+#preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1px solid #ccc;
+}
+
+#changeText {
+    cursor: pointer;
+    color: #5940cb;
+}
+</style>
 @endsection
 
 @section('content')
@@ -125,12 +218,6 @@
             </div>
         </div>
     </div>
-
-    <script src="{{ asset('js/script.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
         document.getElementById('editButton').addEventListener('click', function() {
             document.querySelectorAll('input').forEach(input => input.removeAttribute('readonly'));

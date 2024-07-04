@@ -66,6 +66,7 @@ class Kernel extends HttpKernel
         'check.company' => \App\Http\Middleware\CheckCompanyRegistration::class,
         
         
+        
       
     ];
     

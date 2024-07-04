@@ -3,10 +3,224 @@
 
 @section('css')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<link rel="stylesheet" href="{{ asset('css/homepageimm/homeimm.css') }}">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 <style>
+    @import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Quicksand:wght@300..700&display=swap");
+html,
+body {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+* {
+    text-decoration: none;
+    list-style-type: none;
+}
+
+.edit-icon {
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #007bff;
+}
+
+.btn-kelola {
+    width: 240px;
+    height: 43px;
+    background-color: #524eff;
+    color: white;
+    font-size: 20px;
+    border: none;
+    border-radius: 5px;
+}
+
+
+/* end footer */
+
+.boxx {
+    gap: 40px;
+}
+
+.box1 {
+    background-color: white;
+    padding: 10px;
+    border-radius: 17px;
+    text-align: center;
+    width: 100%;
+    border: 1px solid #d1d1d1;
+}
+
+.box2 {
+    border: 1px solid #d1d1d1;
+    background-color: white;
+    padding: 10px;
+    border-radius: 14px;
+    text-align: center;
+    width: 100%;
+}
+
+.balance-card,
+.outcome-card {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    margin-top: 20px;
+}
+
+.balance-card i,
+.outcome-card i {
+    font-size: 24px;
+}
+
+.balance-card {
+    color: #ffa500;
+}
+
+.outcome-card {
+    color: #ff6347;
+}
+
+span {
+    color: #acacac;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: 500;
+    color: black;
+}
+
+p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+    position: relative;
+    right: -17px;
+    top: -9px;
+}
+
+h4 {
+    font-size: 39px;
+    /* Ukuran font yang lebih besar */
+    color: #ffffff;
+    /* Warna teks putih untuk kontras yang baik pada latar belakang gelap */
+    /* Bayangan teks untuk meningkatkan keterbacaan */
+    font-weight: bold;
+    /* Membuat font tebal */
+    line-height: 1.2;
+    /* Menyesuaikan tinggi baris untuk penampilan yang lebih baik */
+}
+
+.notification-section {
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    position: relative;
+    width: 1130px;
+    cursor: pointer;
+}
+
+.row {
+    display: flex;
+    width: 100%;
+    /* Ensure the row takes full width */
+    justify-content: space-between;
+    align-items: center;
+}
+
+.col-6 {
+    flex: 0 0 50%;
+    max-width: 50%;
+}
+
+.sdg-container {
+    width: 100%;
+    padding: 35px;
+    background-color: #5940cb0f;
+    border-radius: 7px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.grid-item {
+    transition: opacity 0.3s;
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+.grid-item img {
+    width: 100%;
+    display: block;
+    border-radius: 4px;
+}
+
+.grid-item.active {
+    opacity: 1;
+}
+
+.submit-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #6c63ff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #524eff;
+}
+
+.map-container {
+    margin: 100px 0;
+}
+
+.map {
+    position: relative;
+    display: inline-block;
+}
+
+.map img {
+    width: 100%;
+}
+
+.city-overlay {
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background: rgba(255, 0, 0, 0.5);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+}
+
+#bandung {
+    top: 55%;
+    /* Sesuaikan posisi berdasarkan peta */
+    left: 43%;
+    /* Sesuaikan posisi berdasarkan peta */
+}
+
+.city-overlay.active {
+    transform: scale(5);
+    z-index: 10;
+}
+
+.location-info {
+    margin-top: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+
+/* Menambahkan transisi pada navbar */
     .map-container {
         margin-top: 20px;
         position: relative;
@@ -155,10 +369,8 @@
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
     google.charts.load('current', {
