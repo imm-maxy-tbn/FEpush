@@ -183,8 +183,8 @@
                     <div class="col-12">
                         <div class="container">
                             <label for="file-upload" class="w-100" aria-placeholder="">
-                                <img class="upload-container" src="/images/banner-bootcamp.png" id="image-preview">
-                                <input type="file" id="img" name="img" accept="image/*" style="display: none">
+                                <img class="upload-container" src="{{ $project->img ? asset('images/' . $project->img) : asset('images/default_project.png') }}" id="image-preview">
+                                <input type="file" class="form-control" id="img" name="img" accept="image/*" style="display: none">
                                 <i class="fas fa-cloud-upload-alt" style="display: none"></i>
                             </label>
                         </div>
@@ -216,8 +216,7 @@
                                     <i class="fas fa-edit edit-icon" id="edit-deskripsi-proyek"
                                         onclick="enableEdit('deskripsi-proyek')"></i>
                                 </div>
-                                <textarea class="form-control" id="deskripsi-proyek" name="deskripsi" rows="4" readonly
-                                   >{{ $project->deskripsi }}</textarea>
+                                <textarea class="form-control" id="deskripsi-proyek" name="deskripsi" rows="4" readonly>{{ $project->deskripsi }}</textarea>
                             </div>
                         </div>
 
@@ -227,7 +226,8 @@
                                 <h5 class="card-title">Dokumen Validitas Data</h5>
                                 <button type="button" class="btn btn-purple" id="tambah-dokumen"
                                     onclick="document.getElementById('file-input').click()">Tambah Dokumen</button>
-                                <input type="file" class="form-control" id="file-input" name="documents[]" style="display: none;" multiple>
+                                <input type="file" class="form-control" id="file-input" name="documents[]"
+                                    style="display: none;" multiple>
                             </div>
                             <ul class="list-group" id="file-list">
                                 @if ($documents->isEmpty())
@@ -251,7 +251,8 @@
                         <div class="card mb-4">
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <h5 class="card-title">Survey Pendukung</h5>
-                                <a href="{{ route('surveys.create', $project->id) }}" class="btn btn-purple">Tambah Survey</a>
+                                <a href="{{ route('surveys.create', $project->id) }}" class="btn btn-purple">Tambah
+                                    Survey</a>
                             </div>
                             <ul class="list-group">
                                 @foreach ($project->surveys as $survey)
@@ -358,7 +359,36 @@
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+            $(document).ready(function() {
+                $('#tambah-dokumen').on('click', function() {
+                    $('#file-input').click();
+                });
 
+                $('#file-input').on('change', function() {
+                    var file = this.files[0];
+                    if (file) {
+                        var fileName = file.name;
+                        var listItem = $('<li class="list-group-item"></li>');
+                        var fileLink = $('<a href="#" class="file-link"></a>').text(fileName);
+                        var deleteIcon = $('<i class="fas fa-trash-alt delete-icon"></i>');
+
+                        deleteIcon.on('click', function() {
+                            listItem.remove();
+                        });
+
+                        listItem.append(fileLink).append($('<span class="float-right"></span>').append(
+                            deleteIcon));
+                        $('#file-list').append(listItem);
+                    }
+                });
+
+                $('form').on('submit', function() {
+                    console.log('Form is submitting');
+                });
+
+            });
+        </script>
         <script>
             function showSaveButton() {
                 document.getElementById('save-button').classList.remove('hidden');
@@ -367,6 +397,7 @@
             function enableEdit(id) {
                 document.getElementById(id).removeAttribute('readonly');
                 document.getElementById(id).focus();
+                showSaveButton();
             }
 
             document.getElementById('file-input').addEventListener('change', function() {

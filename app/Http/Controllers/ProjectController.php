@@ -173,69 +173,69 @@ class ProjectController extends Controller
         return view('myproject.detail', compact('project', 'documents'));
     }
 
-    public function update(Request $request, $id)
-    {
-        $project = Project::findOrFail($id);
+public function update(Request $request, $id)
+{
+    $project = Project::findOrFail($id);
 
-        $request->validate([
-            'nama' => 'required|string|max:255',
-            'deskripsi' => 'required|string',
-            'documents.*' => 'file|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-        ]);
+    $request->validate([
+        'nama' => 'required|string|max:255',
+        'deskripsi' => 'required|string',
+        'documents.*' => 'file|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+        'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+    ]);
 
-        // Update project details
-        $project->nama = $request->nama;
-        $project->deskripsi = $request->deskripsi;
+    // Update project details
+    $project->nama = $request->nama;
+    $project->deskripsi = $request->deskripsi;
 
-        // Handle image upload
-        if ($request->hasFile('image')) {
-            $imageName = time() . '.' . $request->image->extension();
-            $request->image->move(public_path('images'), $imageName);
-            $project->image = $imageName;
-        }
-
-        $project->save();
-
-        // Handle file uploads
-        if ($request->hasFile('documents')) {
-            foreach ($request->file('documents') as $file) {
-                $filename = time() . '-' . $file->getClientOriginalName();
-                $file->move(public_path('files'), $filename);
-
-                // Check if the document already exists
-                $existingDocument = DB::table('project_dokumen')
-                    ->where('project_id', $project->id)
-                    ->where('dokumen_validitas', $filename)
-                    ->first();
-
-                // If the document does not exist, insert it
-                if (!$existingDocument) {
-                    DB::table('project_dokumen')->insert([
-                        'project_id' => $project->id,
-                        'dokumen_validitas' => $filename,
-                        'created_at' => now(),
-                        'updated_at' => now(),
-                    ]);
-                }
-            }
-        }
-
-        // Handle document deletions
-        if ($request->has('delete_documents')) {
-            foreach ($request->delete_documents as $docId) {
-                $document = DB::table('project_dokumen')->where('id', $docId)->first();
-                if ($document) {
-                    // Delete the file from the public/files directory
-                    File::delete(public_path('files') . '/' . $document->dokumen_validitas);
-                    // Delete the record from the database
-                    DB::table('project_dokumen')->where('id', $docId)->delete();
-                }
-            }
-        }
-
-        return redirect()->back()->with('success', 'Project updated successfully');
+    // Handle image upload
+    if ($request->hasFile('img')) {
+        $imageName = time() . '.' . $request->img->extension();
+        $request->img->move(public_path('images'), $imageName);
+        $project->image = $imageName;
     }
+
+    $project->save();
+
+    // Handle file uploads
+    if ($request->hasFile('documents')) {
+        foreach ($request->file('documents') as $file) {
+            $filename = time() . '-' . $file->getClientOriginalName();
+            $file->move(public_path('files'), $filename);
+
+            // Check if the document already exists
+            $existingDocument = DB::table('project_dokumen')
+                ->where('project_id', $project->id)
+                ->where('dokumen_validitas', $filename)
+                ->first();
+
+            // If the document does not exist, insert it
+            if (!$existingDocument) {
+                DB::table('project_dokumen')->insert([
+                    'project_id' => $project->id,
+                    'dokumen_validitas' => $filename,
+                    'created_at' => now(),
+                    'updated_at' => now(),
+                ]);
+            }
+        }
+    }
+
+    // Handle document deletions
+    if ($request->has('delete_documents')) {
+        foreach ($request->delete_documents as $docId) {
+            $document = DB::table('project_dokumen')->where('id', $docId)->first();
+            if ($document) {
+                // Delete the file from the public/files directory
+                File::delete(public_path('files') . '/' . $document->dokumen_validitas);
+                // Delete the record from the database
+                DB::table('project_dokumen')->where('id', $docId)->delete();
+            }
+        }
+    }
+
+    return redirect()->back()->with('success', 'Project updated successfully');
+}
 
 
     public function destroy($id)
