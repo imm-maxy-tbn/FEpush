@@ -17,6 +17,7 @@ use App\Http\Controllers\ProjectController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\SurveyController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\MetricProjectController;
 
 // Rute untuk autentikasi
 Auth::routes();
@@ -177,6 +178,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('companies', 'CompanyController');
     Route::post('/homepage', [CompanyController::class, 'store'])->name('companies.store');
 
+
+
     Route::get('event-register/{id}', [EventController::class, 'edit'])->name('events.edit');
     Route::put('event/{id}', [EventController::class, 'update'])->name('events.update');
 
@@ -184,7 +187,6 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
-Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
 
 Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
 Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -345,6 +347,16 @@ Route::get('/responden/{id}', 'SurveyController@view')->name('survey.responden.v
 // })->name('homepage')->middleware('check.company');
 
 Route::get('/homepage', [HomepageController::class, 'index'])->name('homepage')->middleware('check.company');
+
+Route::get('metric-projects/{id}', [MetricProjectController::class, 'index'])->name('metric-projects.index');
+Route::prefix('projects/{project}')->group(function () {
+    Route::get('metric-projects/{metricProject}/add-report', [MetricProjectController::class, 'addReport'])->name('metric-projects.addReport');
+    Route::post('metric-projects', [MetricProjectController::class, 'store'])->name('metric-projects.store');
+    Route::post('metric-projects/{metricProject}/store-report', [MetricProjectController::class, 'storeReport'])->name('metric-projects.storeReport');
+});
+
+
+Route::get('/detail/{id}', [ProjectController::class, 'vieww'])->name('projects.view');
 
 Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
 Route::get('/blogarticle/{id}/view', [PostController::class, 'view'])->name('blog.view');

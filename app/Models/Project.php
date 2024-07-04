@@ -39,6 +39,7 @@ class Project extends Model
         return $this->belongsToMany(Indicator::class);
     }
 
+
     public function targetPelanggan()
     {
         return $this->hasMany(TargetPelanggan::class);
@@ -55,6 +56,22 @@ class Project extends Model
     public function surveys()
     {
         return $this->hasMany(Survey::class);
+    }
+    public function indicatorProjects()
+    {
+        return $this->hasMany(IndicatorProject::class);
+    }
+    public function projectSdg()
+    {
+        return $this->hasMany(ProjectSdg::class);
+    }
+    public function survey()
+    {
+        return $this->hasMany(Survey::class);
+    }
+    public function projectDokumen()
+    {
+        return $this->hasMany(ProjectDokumen::class);
     }
     public function user()
     {

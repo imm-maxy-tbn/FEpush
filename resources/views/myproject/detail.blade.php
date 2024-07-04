@@ -172,25 +172,29 @@
 
 @section('content')
 
-    <body>
-        <form id="projectForm" action="{{ route('projects.update', $project->id) }}" method="POST"
-            enctype="multipart/form-data">
-            @csrf
-            @method('PUT')
-            <!-- Main Container -->
-            <div class="container mt-5 pt-5 contentTop">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="container">
-                            <label for="file-upload" class="w-100" aria-placeholder="">
-                                <img class="upload-container" src="{{ $project->img ? asset('images/' . $project->img) : asset('images/default_project.png') }}" id="image-preview">
-                                <input type="file" class="form-control" id="img" name="img" accept="image/*" style="display: none">
-                                <i class="fas fa-cloud-upload-alt" style="display: none"></i>
-                            </label>
-                        </div>
-                    </div>
-                </div>
+
+
+
+
+<body>
+
+
+<!-- Main Container -->
+<div class="container mt-5 pt-5 contentTop">
+    <div class="row">
+        <div class="col-12">
+            <div class="container">
+                <label for="file-upload" class=" w-100" aria-placeholder="">
+                    <img class="upload-container" src="/images/banner-bootcamp.png" id="image-preview"   >
+                <input type="file" id="file-upload" accept="image/*" style="display: none" >
+
+                    <i class="fas fa-cloud-upload-alt" style="display: none"></i>
+                </label>
             </div>
+
+        </div>
+    </div>
+</div>
 
             <!-- Content Section -->
             <div class="container mt-3">
@@ -209,16 +213,34 @@
                             </div>
                         </div>
 
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <div class="edit-container">
-                                    <h5 class="card-title">Deskripsi Proyek</h5>
-                                    <i class="fas fa-edit edit-icon" id="edit-deskripsi-proyek"
-                                        onclick="enableEdit('deskripsi-proyek')"></i>
-                                </div>
-                                <textarea class="form-control" id="deskripsi-proyek" name="deskripsi" rows="4" readonly>{{ $project->deskripsi }}</textarea>
-                            </div>
+            <div class="card mb-4">
+                <div class="card-body">
+                    <div class="edit-container">
+                        <h5 class="card-title">Deskripsi Proyek</h5>
+                        <i class="fas fa-edit edit-icon" id="edit-deskripsi-proyek"></i>
+                    </div>
+                    <textarea class="form-control" id="deskripsi-proyek" rows="4" readonly>Proyek komprehensif yang bertujuan untuk memanfaatkan teknologi dan ilmu komputer untuk mencapai berbagai Tujuan Pembangunan Berkelanjutan (SDGs).</textarea>
+                </div>
+
+
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">SDG'S</h5>
+                    <div class="row">
+                        <div class="col-4">
+                            <img src="{{ asset('images/ASVG/sdg1.svg') }}" class="img-fluid" alt="SDG 4">
                         </div>
+                        <div class="col-4">
+                            <img src="{{ asset('images/ASVG/sdg2.svg') }}" class="img-fluid" alt="SDG 9">
+                        </div>
+                        <div class="col-4">
+                            <img src="{{ asset('images/ASVG/sdg3.svg') }}" class="img-fluid" alt="SDG 10">
+                        </div>
+                    </div>
+                </div>
+            </div>
 
                         <!-- Dokumen Validitas Data section -->
                         <div class="card mb-4">
@@ -247,56 +269,49 @@
                             </ul>
                         </div>
 
-                        <!-- Survey Pendukung section -->
-                        <div class="card mb-4">
-                            <div class="card-body d-flex justify-content-between align-items-center">
-                                <h5 class="card-title">Survey Pendukung</h5>
-                                <a href="{{ route('surveys.create', $project->id) }}" class="btn btn-purple">Tambah
-                                    Survey</a>
-                            </div>
-                            <ul class="list-group">
-                                @foreach ($project->surveys as $survey)
-                                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                                        {{ $survey->name }}
-                                        <div>
-                                            <a href="{{ route('surveys.edit', $survey->id) }}" class="btn btn-sm"><i
-                                                    class="fas fa-edit"></i></a>
-                                            <form action="{{ route('surveys.destroy', $survey->id) }}" method="POST"
-                                                class="delete-survey-form" id="delete-survey-{{ $survey->id }}"
-                                                style="display: inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-sm delete-survey-btn"
-                                                    onclick="return confirm('Are you sure you want to delete this survey?')">
-                                                    <i class="fas fa-trash-alt"></i>
-                                                </button>
-                                            </form>
-                                        </div>
-                                    </li>
-                                @endforeach
-                            </ul>
-                        </div>
+            <div class="card mb-4">
+                <div class="card-body d-flex justify-content-between align-items-center">
+                    <h5 class="card-title">Survey Pendukung</h5>
+                    <a href="/edit-survey-new"><button class="btn btn-purple">Mulai Survey</button></a>
+                </div>
+                <ul class="list-group">
+                    <li class="list-group-item">Survey Kesadaran CyberSecurity <span class="float-right"><i class="fas fa-trash-alt"></i></span></li>
+                    <li class="list-group-item">Survey Korban Phising <span class="float-right"><i class="fas fa-trash-alt"></i></span></li>
+                    <li class="list-group-item">Survey Korban Phising <span class="float-right"><i class="fas fa-trash-alt"></i></span></li>
+                    <li class="list-group-item">Survey Korban Phising <span class="float-right"><i class="fas fa-trash-alt"></i></span></li>
+                </ul>
+
+            </div>
 
                         <button class="btn btn-purple btn-block mb-5">Project Selesai</button>
                     </div>
 
-                    <!-- Right Content -->
-                    <div class="col-lg-4">
-                        <div class="card mb-4">
-                            <div class="card-body">
-                                <h5 class="card-title">Metrix Anda</h5>
-                                <input type="text" class="form-control" placeholder="Cari Metrics anda">
-                                <ul class="list-group mt-3 scrollable">
-                                    @foreach ($project->metrics as $metric)
-                                        <li class="list-group-item">
-                                            <a href="impact" class="text-dark">({{ $metric->code }})
-                                                {{ $metric->name }}</a>
-                                        </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                        </div>
+        <!-- Right Content -->
+        <div class="col-lg-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Metrix Anda</h5>
+                    <input type="text" class="form-control" placeholder="Cari Matrix anda">
+                    <ul class="list-group mt-3 scrollable">
+                        @foreach($initialMetricProjects as $metricProject)
+                            <li class="list-group-item">
+                                <a href="{{ route('metric-projects.addReport', [$project->id, $metricProject->id]) }}" class="text-dark">{{ $metricProject->metric->name }}</a>
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
 
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Indicator</h5>
+                    <ul class="list-group">
+                        @foreach($IndicatorProjects as $indicatorProject)
+                            <li class="list-group-item">
+                            <a>{{ $indicatorProject->indicator->name }} </a>
+                            </li>
+                        @endforeach
+                    </ul>
                         <div class="card mb-4">
                             <div class="card-body">
                                 <h5 class="card-title">Indicator</h5>
@@ -348,12 +363,16 @@
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
-            <div class="container d-flex justify-content-center mt-5">
-                <button type="submit" class="btn w-50 btn-purple px-4 py-2 btn-wide text-white hidden" id="save-button"
-                    style="font-weight:bold;">Simpan Perubahan Detail Proyek</button>
-            </div>
-        </form>
+
+</div>
+<div class="container d-flex justify-content-center mt-5">
+    <a href="myproject" class="btn w-50 btn-purple px-4 py-2 btn-wide text-white hidden" id="save-button" style="font-weight:bold;">Simpan Perubahan Detail Proyek</a>
+</div>
+
+
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

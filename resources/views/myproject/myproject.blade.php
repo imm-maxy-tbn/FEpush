@@ -85,7 +85,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $project->nama }}</h5>
                                         <div class="d-flex">
-                                            <a href="detail/{{ $project->id }}" class="btn btn-secondary btn-detail mt-2">Detail</a>
+                                            <a href="detail" class="btn btn-secondary btn-detail mt-2">Detail</a>
                                             <form action="{{ route('projects.destroy', $project->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 @method('DELETE')
