@@ -25,7 +25,7 @@ Auth::routes();
 // Rute yang bisa diakses tanpa login (Login dan Register)
 Route::get('/', function () {
     return view('home');
-})->name('home');
+});
 Route::get('/home', function () {
     return view('home');
 })->name('home');
@@ -172,13 +172,11 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/myproject', [ProjectController::class, 'index'])->name('myproject.myproject');
     Route::get('/detail/{id}', [ProjectController::class, 'view'])->name('projects.view');
     Route::put('/projects/{id}', [ProjectController::class, 'update'])->name('projects.update');
+    Route::post('projects/{project}/complete', [ProjectController::class, 'complete'])->name('projects.complete');
 
     Route::get('/companies', [CompanyController::class, 'index']);
-
     Route::resource('companies', 'CompanyController');
     Route::post('/homepage', [CompanyController::class, 'store'])->name('companies.store');
-
-
 
     Route::get('event-register/{id}', [EventController::class, 'edit'])->name('events.edit');
     Route::put('event/{id}', [EventController::class, 'update'])->name('events.update');
@@ -188,9 +186,9 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update')->middleware('auth');
     Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit')->middleware('auth');
 
-Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
-Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
-Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile');
+    Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::post('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 
 
@@ -354,9 +352,6 @@ Route::prefix('projects/{project}')->group(function () {
     Route::post('metric-projects', [MetricProjectController::class, 'store'])->name('metric-projects.store');
     Route::post('metric-projects/{metricProject}/store-report', [MetricProjectController::class, 'storeReport'])->name('metric-projects.storeReport');
 });
-
-
-Route::get('/detail/{id}', [ProjectController::class, 'vieww'])->name('projects.view');
 
 Route::get('/blog', [PostController::class, 'index'])->name('blog.index');
 Route::get('/blogarticle/{id}/view', [PostController::class, 'view'])->name('blog.view');

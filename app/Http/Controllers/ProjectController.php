@@ -151,6 +151,7 @@ class ProjectController extends Controller
 
     function relationshipsToArray($model)
     {
+        // this function is jut to check log for debugging
         $data = $model->toArray();
         foreach ($model->getRelations() as $relation => $value) {
             $data[$relation] = $value->toArray();
@@ -162,81 +163,115 @@ class ProjectController extends Controller
     {
         $project = Project::with('tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana', 'surveys')->findOrFail($id);
         $documents = DB::table('project_dokumen')->where('project_id', $id)->get();
+        $initialMetricProjects = $project->metricProjects()->whereNull('report_month')->whereNull('report_year')->get();
 
-        // Prepare data for logging
+        // debug logging
         $projectData = $this->relationshipsToArray($project);
         $projectData['documents'] = $documents->toArray();
 
         // Log the complete project data
         Log::debug('Project Viewed (All Data):', $projectData);
 
-        return view('myproject.detail', compact('project', 'documents'));
+        return view('myproject.detail', compact('project', 'documents', 'initialMetricProjects'));
     }
 
-public function update(Request $request, $id)
-{
-    $project = Project::findOrFail($id);
+    public function update(Request $request, $id)
+    {
+        Log::debug('Starting update method', ['id' => $id]);
 
-    $request->validate([
-        'nama' => 'required|string|max:255',
-        'deskripsi' => 'required|string',
-        'documents.*' => 'file|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
-        'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-    ]);
+        $project = Project::findOrFail($id);
+        Log::debug('Project found', ['project' => $project]);
 
-    // Update project details
-    $project->nama = $request->nama;
-    $project->deskripsi = $request->deskripsi;
+        $validatedData = $request->validate([
+            'nama' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+            'documents.*' => 'file|mimes:pdf,doc,docx,jpg,jpeg,png|max:2048',
+            'img' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+        ]);
+        Log::debug('Request validated', ['validatedData' => $validatedData]);
 
-    // Handle image upload
-    if ($request->hasFile('img')) {
-        $imageName = time() . '.' . $request->img->extension();
-        $request->img->move(public_path('images'), $imageName);
-        $project->image = $imageName;
-    }
+        // Update project details
+        $project->nama = $request->nama;
+        $project->deskripsi = $request->deskripsi;
+        Log::debug('Project details updated', ['nama' => $project->nama, 'deskripsi' => $project->deskripsi]);
 
-    $project->save();
+        // Handle image upload
+        if ($request->hasFile('img')) {
+            $imageName = time() . '.' . $request->img->extension();
+            $request->img->move(public_path('images'), $imageName);
+            $project->image = $imageName;
+            Log::debug('Image uploaded', ['imageName' => $imageName]);
+        }
 
-    // Handle file uploads
-    if ($request->hasFile('documents')) {
-        foreach ($request->file('documents') as $file) {
-            $filename = time() . '-' . $file->getClientOriginalName();
-            $file->move(public_path('files'), $filename);
+        $project->save();
+        Log::debug('Project saved');
 
-            // Check if the document already exists
-            $existingDocument = DB::table('project_dokumen')
-                ->where('project_id', $project->id)
-                ->where('dokumen_validitas', $filename)
-                ->first();
+        // Handle file uploads
+        if ($request->hasFile('documents')) {
+            Log::debug('Handling document uploads');
+            foreach ($request->file('documents') as $file) {
+                $filename = time() . '-' . $file->getClientOriginalName();
+                $file->move(public_path('files'), $filename);
+                Log::debug('File uploaded', ['filename' => $filename]);
 
-            // If the document does not exist, insert it
-            if (!$existingDocument) {
-                DB::table('project_dokumen')->insert([
-                    'project_id' => $project->id,
-                    'dokumen_validitas' => $filename,
-                    'created_at' => now(),
-                    'updated_at' => now(),
-                ]);
+                // Check if the document already exists
+                $existingDocument = DB::table('project_dokumen')
+                    ->where('project_id', $project->id)
+                    ->where('dokumen_validitas', $filename)
+                    ->first();
+                Log::debug('Checked if document exists', ['existingDocument' => $existingDocument]);
+
+                // If the document does not exist, insert it
+                if (!$existingDocument) {
+                    DB::table('project_dokumen')->insert([
+                        'project_id' => $project->id,
+                        'dokumen_validitas' => $filename,
+                        'created_at' => now(),
+                        'updated_at' => now(),
+                    ]);
+                    Log::debug('Document inserted', ['filename' => $filename]);
+                }
             }
         }
-    }
 
-    // Handle document deletions
-    if ($request->has('delete_documents')) {
-        foreach ($request->delete_documents as $docId) {
-            $document = DB::table('project_dokumen')->where('id', $docId)->first();
-            if ($document) {
-                // Delete the file from the public/files directory
-                File::delete(public_path('files') . '/' . $document->dokumen_validitas);
-                // Delete the record from the database
-                DB::table('project_dokumen')->where('id', $docId)->delete();
+        // Handle document deletions
+        if ($request->has('delete_documents')) {
+            Log::debug('Handling document deletions', ['delete_documents' => $request->delete_documents]);
+            foreach ($request->delete_documents as $docId) {
+                $document = DB::table('project_dokumen')->where('id', $docId)->first();
+                if ($document) {
+                    // Delete the file from the public/files directory
+                    File::delete(public_path('files') . '/' . $document->dokumen_validitas);
+                    Log::debug('File deleted', ['filename' => $document->dokumen_validitas]);
+
+                    // Delete the record from the database
+                    DB::table('project_dokumen')->where('id', $docId)->delete();
+                    Log::debug('Document record deleted', ['docId' => $docId]);
+                }
             }
         }
+
+        Log::debug('Update method completed successfully');
+        return redirect()->back()->with('success', 'Project updated successfully');
     }
 
-    return redirect()->back()->with('success', 'Project updated successfully');
-}
+    public function complete(Request $request, $id)
+    {
+        // selesaikan project
+        $project = Project::findOrFail($id);
 
+        $request->validate([
+            'status' => 'required|string|max:255',
+            'tanggal_penyelesaian' => 'required|date',
+        ]);
+
+        $project->status = $request->status;
+        $project->tanggal_penyelesaian = $request->tanggal_penyelesaian;
+
+        $project->save();
+
+        return redirect()->back()->with('success', 'Project has been marked as completed.');
+    }
 
     public function destroy($id)
     {
