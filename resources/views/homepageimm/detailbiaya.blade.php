@@ -225,6 +225,6 @@ input[type="number"] {
 
 
         <script>
-            </body>
+            < /body>
 
         @endsection

@@ -1,0 +1,218 @@
+body,
+html {
+    font-family: "Roboto", sans-serif;
+    padding-top: 50px;
+}
+
+
+/* Navbar */
+
+.title {
+    color: #5940cb;
+    font-weight: bold;
+}
+
+.form-control {
+    width: 45%;
+}
+
+.btn-blog {
+    width: 189px;
+    height: 62px;
+    background-color: #5940cb;
+    color: white;
+    border-radius: 5px;
+    font-size: 28px;
+    font-weight: bold;
+    border: none;
+}
+
+.btn-event {
+    width: 189px;
+    height: 62px;
+    background-color: transparent;
+    border-radius: 5px;
+    font-size: 28px;
+    font-weight: bold;
+    border: none;
+}
+
+
+/* Footer */
+
+
+/* Media query for responsiveness */
+
+@media only screen and (max-width: 768px) {
+    .brand-info,
+    .footer-links,
+    .social-media {
+        flex-basis: 100%;
+        /* Set width to 100% on small screens */
+        text-align: center;
+    }
+    .footer {
+        background-color: #5940cb;
+        color: #ffffff;
+        padding: 48px 0;
+        text-align: center;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        left: 0%;
+        border-top-left-radius: 60px;
+        border-top-right-radius: 60px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+        z-index: 1000;
+    }
+    .social-media {
+        margin-right: auto;
+        position: absolute;
+        top: 29px;
+        right: 23px;
+    }
+    .social-media a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 20px;
+        margin-left: 10px;
+    }
+    .footer-nav ul {
+        list-style-type: none;
+        padding: 0px;
+        margin: 0;
+        position: absolute;
+        top: 30px;
+        right: 86px;
+    }
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 125px;
+    color: #333;
+    position: relative;
+    top: 106px;
+    font-size: 25px;
+}
+
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.search-container input {
+    padding: 10px;
+    border: 2px solid #5940cb;
+    border-radius: 5px 0 0 5px;
+    font-size: 16px;
+}
+
+.search-container button {
+    border: 2px solid #5940cb;
+    border-left: none;
+    padding: 0 35px;
+    background-color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    background-color: #5940cb;
+}
+
+.search-container button i {
+    font-size: 16px;
+    color: white;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.blog-card {
+    padding: 5px 15px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    text-align: center;
+    flex: 0 0 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.blog-card a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.blog-card .blog-image {
+    height: 200px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 5px;
+}
+
+.blog-card h3 {
+    text-align: left;
+    font-size: 1.2rem;
+    margin: 10px 0;
+    /* Ensure minimum height for uniformity */
+}
+
+.blog-card p {
+    text-align: left;
+    font-size: 1rem;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 7;
+    /* Maksimum baris yang ditampilkan */
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+    /* Efek titik-titik untuk konten yang lebih panjang */
+    /* Make the paragraph take remaining space */
+}
+
+.pagination-container {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+}
+
+.pagination-container p {
+    font-size: 16px;
+}
+
+.subscribe-container {
+    background: #f0f0ff;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.subscribe-container p {
+    font-size: 1.2rem;
+    color: #333;
+}
+
+.input-group {
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+
+/* Efek loading */
+
+
+/* Menambahkan transisi pada navbar */
+
+.navbar {
+    transition: background-color 0.3s ease;
+}
+
+.navbar:hover {
+    background-color: #e3e3e3;
+}
