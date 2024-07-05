@@ -11,25 +11,353 @@
 <meta name="description" content="Manage your projects efficiently with MyProject">
 <meta name="keywords" content="project management, task management, productivity">
 <meta name="author" content="Your Name">
-<style>
-    .navbar {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-    }
-
+<style>html,
     body {
-        padding-top: 56px;
-        /* Adjust this value according to the height of your navbar */
+        font-family: "Roboto", sans-serif;
+        margin: 0;
+        padding-top: 60px;
     }
-
+    
+    * {
+        text-decoration: none;
+        list-style-type: none;
+    }
+    
+    .project-title,
+    .project-titlee,
+    .done-projects-title,
+    .done-projects-titlee {
+        font-weight: bold;
+        border-left: 4px solid #6c63ff;
+        padding-left: 10px;
+        color: #333;
+        margin-bottom: 20px;
+        position: relative;
+    }
+    
+    .project-titlee,
+    .done-projects-titlee {
+        top: -33px;
+    }
+    
+    .input-group {
+        border-radius: 12px;
+        display: flex;
+        align-items: stretch;
+        width: 71%;
+        margin-top: 20px;
+    }
+    
+    .search-input {
+        border: 1px solid #c5c5f7;
+        border-right: none;
+        border-radius: 5px 0 0 5px;
+    }
+    
+    .search-icon {
+        background-color: #ffffff;
+        border: 1px solid #c5c5f7;
+        border-left: none;
+        color: #948d8d;
+        border-radius: 0 5px 5px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .btn-create-project {
+        background-color: #6c63ff;
+        border: none;
+        border-radius: 14px;
+        color: #fff;
+        font-weight: bold;
+        padding: 10px 20px;
+        margin-top: 20px;
+    }
+    
+    .btn-create-project:hover {
+        background-color: #574dcf;
+    }
+    
+    .no-projects {
+        background-color: #f6f6ff;
+        border: 1px solid #e2e2f7;
+        border-radius: 28px;
+        padding: 55px;
+        text-align: center;
+        color: #555;
+        width: 88%;
+        margin: 0 auto;
+    }
+    
+    .no-projects p {
+        margin: 0;
+        font-weight: bold;
+    }
+    
+    .see-all {
+        color: #333;
+        font-weight: bold;
+        text-decoration: none;
+        position: absolute;
+        top: -28px;
+        right: 145px;
+    }
+    
+    .see-all:hover {
+        text-decoration: underline;
+    }
+    
+    .all-projects-title,
+    .ongoing-projects-title {
+        font-weight: bold;
+        font-size: 20px;
+        margin-top: 100px;
+    }
+    
+    .table thead th,
+    .done-projects-table thead th {
+        background-color: #c5c5f7;
+        border: none;
+        color: #333;
+        font-weight: bold;
+        text-align: center;
+    }
+    
+    .table tbody tr td,
+    .done-projects-table tbody tr td {
+        background-color: #f6f6ff;
+    width: .55rem;
+        color: #555;
+        text-align: center;
+    }
+    
+    .pagination .page-item.active .page-link {
+        background-color: #6c63ff;
+        border-color: #6c63ff;
+        color: #fff;
+    }
+    
+    .pagination .page-link {
+        color: #6c63ff;
+    }
+    
+    .pagination .page-link:hover {
+        background-color: #f0f0f0;
+    }
+    
+    .done-projects-card {
+        width: 88%;
+        padding: 20px;
+        border-radius: 28px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        background-color: #f8f9fa;
+    }
+    
+    .done-projects-header {
+        background-color: #f8f9fa;
+        border-bottom: none;
+        font-weight: bold;
+        font-size: 18px;
+    }
+    
+    .done-projects-dropdown-toggle {
+        border-radius: 30px;
+        padding: 10px 20px;
+        color: #6c63ff;
+        border: 1px solid #6c63ff;
+        font-size: 18px;
+    }
+    
+    .stats-box {
+        border: 1px solid #e2e2f7;
+        border-radius: 10px;
+        padding: 20px;
+        background-color: #f8f9fa;
+    }
+    
+    .stats-box h4 {
+        font-size: 1.2rem;
+        color: #555;
+    }
+    
+    .stats-box .number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    
+    .text-success {
+        color: #28a745 !important;
+    }
+    
+    .text-warning {
+        color: #ffc107 !important;
+    }
+    
+    .stats-card {
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+    }
+    
+    .stats-header {
+        background-color: #3b6978;
+        color: white;
+        padding: 15px;
+        font-weight: bold;
+        display: flex;
+        justify-content: space-between;
+    }
+    
+    .stats-value {
+        font-size: 1.5rem;
+    }
+    
+    .completion-circle {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: #e0e0e0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+    }
+    
+    .total-responses {
+        font-size: 3rem;
+        color: #28a745;
+        margin-top: 103px;
+    }
+    
+    .responses-text {
+        font-size: 1.2rem;
+        color: #555;
+    }
+    
+    .responses-line {
+        width: 80%;
+        height: 2px;
+        background-color: #6c63ff;
+        margin: 10px auto 0;
+    }
+    
+    .start-survey-btn {
+        background-color: #6c63ff;
+        color: white;
+        padding: 15px 30px;
+        border-radius: 30px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: none;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        text-decoration: none;
+    }
+    
+    .start-survey-btn:hover {
+        background-color: #574dcf;
+    }
+    
+    .project-card {
+        margin-bottom: 20px;
+    }
+    
+    .project-card .card-title {
+        font-weight: bold;
+        color: #333;
+    }
+    
+    .project-card .progress {
+        height: 10px;
+        border-radius: 5px;
+        background-color: #e9ecef;
+    }
+    
+    .project-card .progress-bar {
+        background-color: #6c63ff;
+    }
+    
+    .btn-secondary {
+        background-color: #6c63ff;
+        border: none;
+        margin-right: 10px;
+    }
+    
+    .btn-secondary:hover {
+        background-color: #574dcf;
+    }
+    
+    .btn-danger {
+        background-color: #dc3545;
+    }
+    
+    .btn-danger:hover {
+        background-color: #c82333;
+    }
+    
+    .project-title {
+        font-size: 24px;
+        font-weight: bold;
+        color: #050505;
+    }
+    
+    .download-icon {
+        font-size: 20px;
+        color: #333;
+        cursor: pointer;
+    }
+    
+    .present {
+        background-color: #28a745;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    
+    .absent {
+        background-color: #dc3545;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-weight: bold;
+    }
+    
+    .btn-create-new-project{
+        background-color: #6c63ff;
+        border: none;
+        border-radius: 14px;
+        color: #fff;
+        font-weight: bold;
+        padding: 10px 20px;
+        margin: 5px;
+    }
+    
+    .btn-create-new-project:hover {
+        background-color: #574dcf;
+    }
+    
+    .btn-detail {
+        background-color: #6c757d;
+        border-color: #6c757d;
+        color: #ffffff;
+    }
+    
+    .btn-detail:hover {
+        background-color: #5a6268;
+        border-color: #545b62;
+    }
+    
+ 
+    
     .see-all-button {
-
         text-align: center;
         margin-top: 20px;
     }
-
+    
     .see-all-button button {
         background-color: #6c63ff;
         color: white;
@@ -37,11 +365,96 @@
         padding: 10px 20px;
         border-radius: 5px;
     }
-    .seeAll{
-         display: flex;
-         align-items: center;
-         cursor: pointer;
+    
+    .seeAll {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
     }
+    
+    @media (max-width: 768px) {
+
+        body{
+            padding-top: 40px;
+        }
+
+        .seeAll{
+            font-size: 10px;
+        }
+        .project-title,
+        .project-titlee,
+        .done-projects-title,
+        .done-projects-titlee {
+            font-size: 14px;
+
+        }
+    
+        .input-group {
+            width: 100%;
+            margin-top: 10px;
+        }
+    
+        .btn-create-project {
+            width: 50%;
+            margin-top: 10px;
+        }
+    
+        .no-projects {
+            width: 100%;
+        }
+    
+        .see-all {
+            top: -15px;
+            right: 10px;
+        }
+    
+        .project-card {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    
+        .see-all-button {
+            text-align:        center;
+        margin-top: 20px;
+    }
+
+    .stats-box,
+    .stats-card {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .table td, .table th {
+    padding: .55rem;
+    vertical-align: top;
+    border-top: 1px solid #dee2e6;
+}
+    .responses-text {
+        font-size: 1rem;
+    }
+
+    .project-title {
+        font-size: 15px;
+    }
+
+    .done-projects-card {
+        width: 100%;
+    }
+
+    .pagination {
+        justify-content: center;
+    }
+
+    .dropdown-menu {
+        width: 100%;
+    }
+
+    .done-projects-dropdown-toggle,
+    .stats-box .number {
+        font-size: 1rem;
+    }
+}
+    
 </style>
 @endsection
 @section('content')
@@ -80,11 +493,11 @@
                     <div class="row">
                         @foreach($allProjects as $index => $project)
                             <div class="col-md-4 mb-4" id="project-{{ $project->id }}" @if($index >= 6) style="display: none;" @endif>
-                                <div class="card project-card" style="min-height: 300px">
+                                <div class="card project-card" style="min-height: 150px">
                                     <img height="150px" src="{{ $project->img ? asset('images/' . $project->img) : asset('images/default_project.png') }}" class="card-img-top" alt="">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $project->nama }}</h5>
-                                        <div class="d-flex">
+                                        <div class="d-flex justify-content-center">
                                             <a href="detail/{{ $project->id }}" class="btn btn-secondary btn-detail mt-2">Detail</a>
                                             <form action="{{ route('projects.destroy', $project->id) }}" method="POST" style="display: inline;">
                                                 @csrf
