@@ -121,9 +121,9 @@ class MetricProjectController extends Controller
         // Create chart
         $chart = new MonthlyReportChart;
         $chart->labels($labels);
-        $chart->dataset('Total Values', 'line', $values)
-            ->color('rgba(75, 192, 192, 1)')
-            ->backgroundcolor('rgba(75, 192, 192, 0.2)');
+        $chart->dataset('Total Values', 'bar', $values)
+            ->color('#5940CB')
+            ->backgroundcolor('#5940CB');
 
         return view('myproject.impact', compact('project', 'metricProject', 'chart', 'reportMetricProjects'));
 
