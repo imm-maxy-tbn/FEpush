@@ -129,6 +129,7 @@
         }
 
         .upload-container {
+
             width: 100%;
             height: 200px;
             display: flex;
@@ -164,6 +165,7 @@
 
         img {
             background-size: cover;
+
         }
 
         .disabled {
@@ -185,13 +187,14 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="container">
-                            <label for="img-upload" class="w-100" aria-placeholder="">
+                            <label for="file-upload" class="w-100" aria-placeholder="">
                                 <img class="upload-container"
                                     src="{{ $project->img ? asset('images/' . $project->img) : asset('images/default_project.png') }}"
                                     id="image-preview">
+                                <input type="file" class="form-control" id="img" name="img" accept="image/*"
+                                    style="display: none">
+                                <i class="fas fa-cloud-upload-alt" style="display: none"></i>
                             </label>
-                            <input type="file" class="form-control" id="img-upload" name="img" accept="image/*"
-                                style="display: none">
                         </div>
                     </div>
                 </div>
@@ -225,6 +228,10 @@
                             </div>
                         </div>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> parent of 8f2aadd (detail udh mau done sisa perbaikan minor dri rafa)
                         <div class="card mb-4">
                             <div class="card-body">
                                 <h5 class="card-title">SDG'S</h5>
@@ -239,6 +246,7 @@
                             </div>
                         </div>
 
+                        <!-- Dokumen Validitas Data section -->
                         <div class="card mb-4">
                             <div class="card-body d-flex justify-content-between align-items-center">
                                 <h5 class="card-title">Dokumen Validitas Data</h5>
@@ -253,8 +261,8 @@
                                 @else
                                     @foreach ($documents as $document)
                                         <li class="list-group-item">
-                                            <a href="{{ asset('public/files/' . $document->dokumen_validitas) }}"
-                                                class="file-link">{{ $document->dokumen_validitas }}</a>
+                                            <a href="{{ asset('public/files/' . $document->path) }}"
+                                                class="file-link">{{ $document->name }}</a>
                                             <span class="float-right">
                                                 <i class="fas fa-trash-alt delete-icon" data-id="{{ $document->id }}"
                                                     onclick="deleteDocument({{ $document->id }})"></i>
@@ -265,28 +273,41 @@
                             </ul>
                         </div>
 
-                        {{-- <div class="container d-flex justify-content-center mt-5">
-                            <button type="submit" class="btn w-50 btn-purple px-4 py-2 btn-wide text-white hidden"
-                                id="save-button" style="font-weight:bold;">Simpan Perubahan Detail Proyek</button>
-                        </div> --}}
-        </form>
+                        <!-- Survey Pendukung section -->
+                        <div class="card mb-4">
+                            <div class="card-body d-flex justify-content-between align-items-center">
+                                <h5 class="card-title">Survey Pendukung</h5>
+                                <a href="{{ route('surveys.create', $project->id) }}" class="btn btn-purple">Tambah
+                                    Survey</a>
+                            </div>
+                            <ul class="list-group">
+                                @foreach ($project->surveys as $survey)
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        {{ $survey->name }}
+                                        <div>
+                                            <a href="{{ route('surveys.edit', $survey->id) }}" class="btn btn-sm"><i
+                                                    class="fas fa-edit"></i></a>
+                                            <form action="{{ route('surveys.destroy', $survey->id) }}" method="POST"
+                                                class="delete-survey-form" id="delete-survey-{{ $survey->id }}"
+                                                style="display: inline;">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-sm delete-survey-btn"
+                                                    onclick="return confirm('Are you sure you want to delete this survey?')">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </button>
+                                            </form>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
 
-        <!-- Survey Pendukung section -->
-        <div class="card mb-4">
-            <div class="card-body d-flex justify-content-between align-items-center">
-                <h5 class="card-title">Survey Pendukung</h5>
-                <a href="{{ route('surveys.create', $project->id) }}" class="btn btn-purple">Tambah Survey</a>
-            </div>
-            <ul class="list-group">
-                @foreach ($project->surveys as $survey)
-                    <li class="list-group-item d-flex justify-content-between align-items-center">
-                        {{ $survey->name }}
-                        <div>
-                            <a href="{{ route('surveys.edit', $survey->id) }}" class="btn btn-sm"><i
-                                    class="fas fa-edit"></i></a>
-                            <form action="{{ route('surveys.destroy', $survey->id) }}" method="POST"
-                                class="delete-survey-form" id="delete-survey-{{ $survey->id }}" style="display: inline;">
+                        <!-- Selesaikan Project Button -->
+                        <div class="container d-flex justify-content-center mt-5">
+                            <form action="{{ route('projects.complete', $project->id) }}" method="POST">
                                 @csrf
+<<<<<<< HEAD
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm delete-survey-btn"
                                     onclick="return confirm('Apakah anda yakin akan menghapus survey ini?')">
@@ -378,14 +399,97 @@
                             <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;"
                                 aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
                         </div>
+=======
+                                <input type="hidden" name="status" value="Selesai">
+                                <input type="hidden" name="tanggal_penyelesaian" value="{{ now()->toDateString() }}">
+                                <button type="submit" class="btn btn-purple btn-block mb-5">Project Selesai</button>
+                            </form>
+                        </div>
+>>>>>>> parent of 8f2aadd (detail udh mau done sisa perbaikan minor dri rafa)
                     </div>
-                    @if ($totalDana >= $totalPendanaan)
-                        <p class="mt-3 text-center">Total Dana Untuk Proyek Ini Telah Terpenuhi</p>
-                    @else
-                        <p class="mt-3 text-center">Total Dana Untuk Proyek Ini Belum Terpenuhi</p>
-                    @endif
+
+                    <!-- Right Content -->
+                    <div class="col-lg-4">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Metrix Anda</h5>
+                                <input type="text" class="form-control" placeholder="Cari Matrix anda">
+                                <ul class="list-group mt-3 scrollable">
+                                    @foreach ($initialMetricProjects as $metricProject)
+                                        <li class="list-group-item">
+                                            <a href="{{ route('metric-projects.addReport', [$project->id, $metricProject->id]) }}"
+                                                class="text-dark">{{ $metricProject->metric->name }}</a>
+                                        </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Indicator</h5>
+                                <ul class="list-group">
+                                    @foreach ($project->indicators as $indicator)
+                                        <li class="list-group-item">{{ $indicator->name }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Penggunaan Dana section -->
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <h5 class="card-title">Penggunaan Dana</h5>
+                                @php
+                                    $totalDana = $project->dana->sum('nominal');
+                                    $totalPendanaan = $project->jumlah_pendanaan;
+                                @endphp
+                                @foreach ($project->dana as $dana)
+                                    @php
+                                        $percentage =
+                                            $totalPendanaan > 0 ? ($dana->nominal / $totalPendanaan) * 100 : 0;
+                                    @endphp
+                                    <div class="mb-3">
+                                        <div class="d-flex justify-content-between">
+                                            <span>{{ $dana->jenis_dana }}</span>
+                                            <span
+                                                class="font-weight-bold">{{ number_format($dana->nominal, 0, ',', '.') }}</span>
+                                        </div>
+                                        <div class="progress">
+                                            <div class="progress-bar bg-primary" role="progressbar"
+                                                style="width: {{ $percentage }}%;" aria-valuenow="{{ $percentage }}"
+                                                aria-valuemin="0" aria-valuemax="100"> {{ $percentage }}%</div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                                <div>
+                                    <div class="d-flex justify-content-between">
+                                        <span>Total Dana</span>
+                                        <span class="font-weight-bold">{{ number_format($totalDana, 0, ',', '.') }}</span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <span>Total Pendanaan</span>
+                                        <span
+                                            class="font-weight-bold">{{ number_format($totalPendanaan, 0, ',', '.') }}</span>
+                                    </div>
+                                    <div class="progress">
+                                        <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;"
+                                            aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                </div>
+                                @if ($totalDana >= $totalPendanaan)
+                                    <p class="mt-3 text-center">Total Dana Untuk Proyek Ini Telah Terpenuhi</p>
+                                @else
+                                    <p class="mt-3 text-center">Total Dana Untuk Proyek Ini Belum Terpenuhi</p>
+                                @endif
+                            </div>
+                        </div>
+
+
+                    </div>
                 </div>
             </div>
+<<<<<<< HEAD
         </div>
         <div class="container d-flex justify-content-center mt-5">
             <button type="submit" class="btn w-50 btn-purple px-4 py-2 btn-wide text-white hidden" id="save-button"
@@ -393,6 +497,16 @@
         </div>
         </div>
         </div>
+=======
+
+
+            </div>
+            <div class="container d-flex justify-content-center mt-5">
+                <button type="submit" class="btn w-50 btn-purple px-4 py-2 btn-wide text-white hidden" id="save-button"
+                    style="font-weight:bold;">Simpan Perubahan Detail Proyek</button>
+            </div>
+        </form>
+>>>>>>> parent of 8f2aadd (detail udh mau done sisa perbaikan minor dri rafa)
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
@@ -400,84 +514,73 @@
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script>
             $(document).ready(function() {
-                function showSaveButton() {
-                    $('#save-button').removeClass('hidden');
-                }
-
-                $('#img-upload').on('change', function() {
-                    var reader = new FileReader();
-                    reader.onload = function(e) {
-                        $('#image-preview').attr('src', e.target.result);
-                    }
-                    reader.readAsDataURL(this.files[0]);
-                    showSaveButton();
-                });
-
                 $('#tambah-dokumen').on('click', function() {
                     $('#file-input').click();
                 });
 
                 $('#file-input').on('change', function() {
-                    var files = this.files;
-                    for (var i = 0; i < files.length; i++) {
-                        var file = files[i];
+                    var file = this.files[0];
+                    if (file) {
                         var fileName = file.name;
                         var listItem = $('<li class="list-group-item"></li>');
-                        var fileLink = $('<span class="file-link"></span>').text(fileName);
+                        var fileLink = $('<a href="#" class="file-link"></a>').text(fileName);
                         var deleteIcon = $('<i class="fas fa-trash-alt delete-icon"></i>');
 
                         deleteIcon.on('click', function() {
                             listItem.remove();
-                            showSaveButton();
                         });
 
                         listItem.append(fileLink).append($('<span class="float-right"></span>').append(
                             deleteIcon));
                         $('#file-list').append(listItem);
                     }
-                    showSaveButton();
                 });
 
                 $('form').on('submit', function() {
                     console.log('Form is submitting');
                 });
 
-                function enableEdit(id) {
-                    document.getElementById(id).removeAttribute('readonly');
-                    document.getElementById(id).focus();
-                    showSaveButton();
-                }
-
-                function deleteDocument(docId) {
-                    var deleteInput = document.createElement('input');
-                    deleteInput.type = 'hidden';
-                    deleteInput.name = 'delete_documents[]';
-                    deleteInput.value = docId;
-
-                    document.getElementById('projectForm').appendChild(deleteInput);
-
-                    var docElement = document.querySelector('.delete-icon[data-id="' + docId + '"]').closest('li');
-                    docElement.parentNode.removeChild(docElement);
-
-                    showSaveButton();
-                }
-
-                // Add event listeners for text inputs
-                $('#nama-proyek').on('input', showSaveButton);
-                $('#deskripsi-proyek').on('input', showSaveButton);
-
-                // Make the edit icons functional
-                $('.edit-icon').on('click', function() {
-                    var targetId = $(this).attr('id').replace('edit-', '');
-                    enableEdit(targetId);
-                });
-
-                // Add functionality to existing document delete icons
-                $('.delete-icon').on('click', function() {
-                    var docId = $(this).data('id');
-                    deleteDocument(docId);
-                });
             });
         </script>
+        <script>
+            function showSaveButton() {
+                document.getElementById('save-button').classList.remove('hidden');
+            }
+
+            function enableEdit(id) {
+                document.getElementById(id).removeAttribute('readonly');
+                document.getElementById(id).focus();
+                showSaveButton();
+            }
+
+            document.getElementById('file-input').addEventListener('change', function() {
+                showSaveButton();
+            });
+
+            // Delete document function
+            function deleteDocument(docId) {
+                // Create a hidden input element to mark the document for deletion
+                var deleteInput = document.createElement('input');
+                deleteInput.type = 'hidden';
+                deleteInput.name = 'delete_documents[]';
+                deleteInput.value = docId;
+
+                // Append the hidden input to the form
+                document.getElementById('projectForm').appendChild(deleteInput);
+
+                // Remove the document from the list
+                var docElement = document.querySelector('.delete-icon[data-id="' + docId + '"]').closest('li');
+                docElement.parentNode.removeChild(docElement);
+
+                // Show the save button
+                showSaveButton();
+            }
+
+            // Event listeners for editable fields
+            document.getElementById('nama-proyek').addEventListener('change', showSaveButton);
+            document.getElementById('deskripsi-proyek').addEventListener('change', showSaveButton);
+        </script>
+
+
     </body>
 @endsection
