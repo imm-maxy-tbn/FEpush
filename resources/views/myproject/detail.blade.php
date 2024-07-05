@@ -165,6 +165,11 @@
         img {
             background-size: cover;
         }
+
+        .disabled {
+            cursor: not-allowed !important;
+        }
+
     </style>
 @endsection
 
@@ -219,7 +224,7 @@
                                 <textarea class="form-control" id="deskripsi-proyek" name="deskripsi" rows="4" readonly>{{ $project->deskripsi }}</textarea>
                             </div>
                         </div>
-                        
+
                         <div class="card mb-4">
                             <div class="card-body">
                                 <h5 class="card-title">SDG'S</h5>
@@ -284,7 +289,7 @@
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="btn btn-sm delete-survey-btn"
-                                    onclick="return confirm('Are you sure you want to delete this survey?')">
+                                    onclick="return confirm('Apakah anda yakin akan menghapus survey ini?')">
                                     <i class="fas fa-trash-alt"></i>
                                 </button>
                             </form>
@@ -295,11 +300,16 @@
         </div>
 
         <!-- Selesaikan Project Button -->
-        <form action="{{ route('projects.complete', $project->id) }}" method="POST">
+        <form id="completeProjectForm" action="{{ route('projects.complete', $project->id) }}" method="POST">
             @csrf
             <input type="hidden" name="status" value="Selesai">
             <input type="hidden" name="tanggal_penyelesaian" value="{{ now()->toDateString() }}">
-            <button class="btn btn-purple btn-block mb-5">Project Selesai</button>
+            <button type="submit" id="completeProjectBtn"
+                onclick="return confirm('Apakah anda yakin akan menyelesaikan project ini?')"
+                class="btn btn-purple btn-block mb-5 {{ $project->status === 'Selesai' ? 'disabled' : '' }}"
+                {{ $project->status === 'Selesai' ? 'disabled' : '' }}>
+                {{ $project->status === 'Selesai' ? 'Project telah selesai' : 'Project Selesai' }}
+            </button>
         </form>
         </div>
 
@@ -378,8 +388,8 @@
             </div>
         </div>
         <div class="container d-flex justify-content-center mt-5">
-            <button type="submit" class="btn w-50 btn-purple px-4 py-2 btn-wide text-white hidden"
-                id="save-button" style="font-weight:bold;">Simpan Perubahan Detail Proyek</button>
+            <button type="submit" class="btn w-50 btn-purple px-4 py-2 btn-wide text-white hidden" id="save-button"
+                style="font-weight:bold;">Simpan Perubahan Detail Proyek</button>
         </div>
         </div>
         </div>
