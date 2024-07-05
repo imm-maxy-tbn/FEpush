@@ -37,7 +37,7 @@
                         <button type="submit" class="btn-simpan d-flex justify-content-around align-items-center">
 
                             <span class="text-white">Simpan Survey</span>
-                            <img src="images/simpan-icon.png" width="29" height="auto" alt="">
+                            <img src="{{ asset('images/simpan-icon.png') }}" width="29" height="auto" alt="">
                         </button>
                         {{-- <button type="" class="btn-akhiri">Akhiri Survey</button>
                         <a href="responden"><button type="" class="btn-lihat-responden">Lihat Responden
