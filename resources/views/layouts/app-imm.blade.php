@@ -7,7 +7,7 @@
     <title>IMM | @yield('title')</title>
     <link rel="icon" href="/images/imm.png" type="image/png">
     <!-- CSS Umum -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> -->
     <!-- CSS Khusus Halaman -->
     @yield('css')
     <style>
@@ -191,7 +191,8 @@
                         <a class="nav-link {{ Request::is('blog') ? 'active' : '' }}" href="/blog">Artikel</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('profile-commpany') ? 'active' : '' }}" href="{{ route('profile-commpany') }}">Perusahaan Saya</a>
+                        <a class="nav-link {{ Request::is('profile-commpany') ? 'active' : '' }}"
+                            href="{{ route('profile-commpany') }}">Perusahaan Saya</a>
                     </li>
                     @else
                     <!-- Navbar untuk user yang belum mendaftarkan perusahaan -->
@@ -208,8 +209,22 @@
                         <a class="nav-link {{ Request::is('blog') ? 'active' : '' }}" href="/blog">Artikel</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ Request::is('profile-commpany') ? 'active' : '' }}" href="{{ route('profile-commpany') }}">Perusahaan Saya</a>
+                        <a class="nav-link {{ Request::is('profile-commpany') ? 'active' : '' }}"
+                            href="{{ route('profile-commpany') }}">Perusahaan Saya</a>
                     </li>
+                @endif
+            </ul>
+
+            <!-- User is logged in -->
+
+            <!-- User is not logged in -->
+            <div class=" buton d-flex justify-content-center align-items-center">
+                {{-- <a href="{{ route('login') }}"><button  class=" btn-masukk">Masuk</button></a>
+                <a href="{{ route('register') }}"><button class=" btn-daftarr">Daftar</button></a> --}}
+
+                <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav ml-auto">
+                        @guest
                     @endif
                 </ul>
 

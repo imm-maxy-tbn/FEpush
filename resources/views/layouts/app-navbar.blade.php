@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IMM | @yield('title')</title>
     <!-- CSS Umum -->
-    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+    <!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> -->
     <link rel="stylesheet" href="{{ asset('css/event/event.css') }}">    <link rel="icon" href="/images/imm.png" type="image/png">
     <!-- CSS Khusus Halaman -->
     @yield('css')
@@ -84,7 +84,7 @@
         margin-left: 10px; /* Adjust margin between login/register buttons */
     }
 
-        
+
         .footer {
     background-color: #5940cb;
     color: #ffffff;
@@ -134,7 +134,7 @@
     display: flex;
     justify-content: center;
     align-items: center
-    
+
 }
 
 .btn-masukk{
@@ -207,9 +207,9 @@
                     </li>
                 @endif
             </ul>
-            
+
             <!-- User is logged in -->
-      
+
             <!-- User is not logged in -->
             <div class=" buton d-flex justify-content-center align-items-center">
                 {{-- <a href="{{ route('login') }}"><button  class=" btn-masukk">Masuk</button></a>
@@ -243,7 +243,7 @@
                         @endauth
                     </ul>
                 </div>
-     
+
 
         </div>
     </div>
@@ -264,7 +264,7 @@
                         <a href="{{ route('hubungi.sekarang', ['event_id' => $event->id]) }}" target="_blank"> <button class="btn-daftar ">Hubungi Sekarang</button></a>
                     </div>
                     <div class="col d-flex justify-content-between" style="">
-    
+
                         <div class="col d-flex justify-content-start" style="gap:50px">
                             <a href=""></a><img src="/images/icon-yt.png" alt=""></a>
                             <a href=""> <img src="/images/icon-ig.png" alt=""></a>
@@ -273,10 +273,10 @@
                         <div class="col-text">
                             <div class="row d-flex flex-column align-items-center " style="gap: 30px">
                                 <div class="col text-left  d-flex justify-content-start" style="gap: 30px">
-    
+
                                     <a href="" class="text-white">Term of Reference</a>
                                     <a href="" class="text-white">Contact</a>
-    
+
                                 </div>
                                 <a href="" class="text-white">Privacy Policy</a>
                             </div>
@@ -286,7 +286,7 @@
                 </div>
             </div>
         </footer>
-  
+
         <script>
             $(document).ready(function() {
     $('.navbar-button').click(function() {

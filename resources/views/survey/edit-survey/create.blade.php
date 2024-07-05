@@ -14,42 +14,39 @@
 
     <body>
 
-        <form action="{{ route('surveys.update', $survey) }}" method="POST">
+        <form action="{{ route('surveys.store') }}" method="POST">
             @csrf
-            @method('PUT')
-
+            <input name="project_id" value="{{ $project->id }}">
             <div class="container content mt-5 mb-5">
                 <div class="container">
 
                     <div class="sub-content d-flex justify-content-center align-items-center"><label for="gambar"
                             style="cursor: pointer;">
-                            <img src="{{ asset('images/upload.png') }}" width="42">
+                            <img src="images/upload.png" width="42">
                         </label>
                         <input type="file" id="gambar" name="gambar" accept="image/*" style="display: none;">
                     </div>
                     <div class="mb-2 mt-2">
                         <input type="text" name="name" class="form-control" placeholder="Judul Survey anda"
-                            style="border: none; background:transparent; font-size: 40px;font-weight: bold;"
-                            value="{{ $survey->name }}" required>
+                            style="border: none; background:transparent; font-size: 40px;font-weight: bold;" required>
                         {{-- <input type="text" name="deskripsi" class="form-control" placeholder="Deskripsi Survey anda"
-        style="border: none; background:transparent; font-size: 20px;font-weight: 400;" value="{{ $survey->deskripsi }}" required> --}}
+                            style="border: none; background:transparent; font-size: 20px;font-weight: 400;" required> --}}
                     </div>
 
                     <div class="row d-flex justify-content-between mt-5">
                         <button type="submit" class="btn-simpan d-flex justify-content-around align-items-center">
-                            <span class="text-white">Update Survey</span>
-                            <img src="{{ asset('images/simpan-icon.png') }}" width="29" height="auto" alt="">
+
+                            <span class="text-white">Simpan Survey</span>
+                            <img src="images/simpan-icon.png" width="29" height="auto" alt="">
                         </button>
-                        {{-- <button type="" class="btn-akhiri">Akhiri Survey</button> --}}
-                        <a href="{{ route('surveys.results', $survey) }}"
-                            class="btn-lihat-responden d-flex align-items-center justify-content-center">
-                            <span>Lihat Responden Survey</span>
-                        </a>
+                        {{-- <button type="" class="btn-akhiri">Akhiri Survey</button>
+                        <a href="responden"><button type="" class="btn-lihat-responden">Lihat Responden
+                                Survey</button></a>
                         <button type="" class="btn-lihat d-flex justify-content-around align-items-center">
-                            <a href="{{ route('surveys.view', $survey) }}" class="text-dark"><span>Lihat
-                                    Survey</span></a>
-                            <img src="{{ asset('images/mata-icon.png') }}" width="25" height="20" alt="">
-                        </button>
+                            <a href="survey-tangapan-diagram" class="text-dark"><span>Lihat Survey</span></a>
+                            <img src="images/mata-icon.png" width="25" height="20" alt="">
+                        </button> --}}
+
                     </div>
 
                     <div class="form-group" style="display: none;">
@@ -63,67 +60,14 @@
                             class="form-control" value="-1">
                     </div>
 
+                    {{-- <div id="sections-container">
+                <!-- Sections will be added dynamically here -->
+            </div> --}}
+
                 </div>
 
                 <div class="container mb-5" id="sections-container">
-                    @foreach ($survey->sections as $sectionIndex => $section)
-                        <div class="section-group container content mt-5">
-                            <div class="container d-flex align-items-center justify-content-between">
-                                <span>
-                                    <div class="mb-2 mt-2">
-                                        <input type="text" name="sections[{{ $sectionIndex }}][name]"
-                                            class="form-control section-number" placeholder="Judul bagian"
-                                            style="border: none; background:transparent; font-size: 40px;font-weight: bold;"
-                                            value="{{ $section->name }}" required>
-                                    </div>
-                                </span>
-                            </div>
-                            <div class="questions-container container mt-3">
-                                @foreach ($section->questions as $questionIndex => $question)
-                                    <div class="form-group question-group">
-                                        <span
-                                            class="angka d-flex justify-content-center align-items-center mt-2 mb-1">{{ $sectionIndex + 1 }}.{{ $questionIndex + 1 }}</span>
-                                        <label for="question-content">Tambahkan pertanyaan</label>
-                                        <input type="text"
-                                            name="sections[{{ $sectionIndex }}][questions][{{ $questionIndex }}][content]"
-                                            class="form-control mb-2" value="{{ $question->content }}" required>
 
-                                        <label for="question-type">Tipe pertanyaan</label>
-                                        <select
-                                            name="sections[{{ $sectionIndex }}][questions][{{ $questionIndex }}][type]"
-                                            class="form-control question-type mb-2" required>
-                                            @foreach (['text', 'number', 'radio', 'multiselect', 'range'] as $type)
-                                                <option value="{{ $type }}"
-                                                    {{ $question->type == $type ? 'selected' : '' }}>{{ ucfirst($type) }}
-                                                </option>
-                                            @endforeach
-                                        </select>
-
-                                        <div class="question-options-container mb-2"
-                                            @if ($question->type != 'radio' && $question->type != 'multiselect') style="display: none;" @endif>
-                                            <label for="question-options">Opsi (untuk radio dan multiselect)</label>
-                                            @php
-                                                $options = is_array($question->options)
-                                                    ? $question->options
-                                                    : explode(',', $question->options);
-                                            @endphp
-                                            @foreach ($options as $optionIndex => $option)
-                                                <input type="text"
-                                                    name="sections[{{ $sectionIndex }}][questions][{{ $questionIndex }}][options][{{ $optionIndex }}]"
-                                                    class="form-control question-option mb-1"
-                                                    placeholder="Opsi {{ $optionIndex + 1 }}" value="{{ $option }}"
-                                                    @if ($question->type != 'radio' && $question->type != 'multiselect') disabled @endif>
-                                            @endforeach
-                                        </div>
-
-                                    </div>
-                                @endforeach
-                            </div>
-                            <span>
-                                <button type="button" class="btn-tambah add-question ml-5">Tambah Pertanyaan</button>
-                            </span>
-                        </div>
-                    @endforeach
                 </div>
 
                 <div class="container d-flex justify-content-center mt-5">
@@ -131,6 +75,7 @@
                 </div>
             </div>
         </form>
+
 
         <template id="section-template">
             <div class="section-group container content mt-5">
@@ -141,6 +86,9 @@
                                 placeholder="Judul bagian"
                                 style="border: none; background:transparent; font-size: 40px;font-weight: bold;" required>
                         </div>
+
+                        {{-- <textarea name="sections[__INDEX__][description]" class="form-control"
+                        style="font-size: 20px; border: none; background:transparent;" placeholder="Tambahkan Desksipsi"></textarea> --}}
                     </span>
                 </div>
                 <div class="questions-container container mt-3"></div>
@@ -203,7 +151,7 @@
         </script>
         <script>
             document.addEventListener('DOMContentLoaded', function() {
-                let sectionIndex = {{ $survey->sections->count() }}; // Start with the number of existing sections
+                let sectionIndex = 0;
 
                 function updateQuestionOptions(selectElement) {
                     const type = selectElement.value;
@@ -264,16 +212,10 @@
                     }
                 });
 
-                // Initial setup for existing sections and questions
-                document.querySelectorAll('.question-type').forEach(selectElement => {
-                    updateQuestionOptions(selectElement);
-                    selectElement.addEventListener('change', function() {
-                        updateQuestionOptions(selectElement);
-                    });
-                });
+                // Initial setup if there are any existing sections (optional)
+                // addSection(); // Uncomment this if you want to start with one section by default
             });
         </script>
-
         <script src="{{ asset('js/imm/metrix.js') }}"></script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

@@ -1,84 +1,13 @@
 <?php
 
-// namespace App\Http\Controllers;
-
-// use Illuminate\Http\Request;
-// use App\Models\Project;
-// use App\Models\Metric;
-// use App\Models\MetricProject;
-
-// class MetricProjectController extends Controller
-// {
-//     public function selectProject()
-//     {
-//         $projects = Project::all();
-//         return view('metric_projects.select_project', compact('projects'));
-//     }
-
-//     public function index($id)
-//     {
-//         $project = Project::findOrFail($id);
-//         $metricProjects = $project->metricProjects()->whereNull('report_month')->whereNull('report_year')->get();
-//         return view('metric_projects.index', compact('project', 'metricProjects'));
-//     }
-
-//     public function create($id)
-//     {
-//         $project = Project::findOrFail($id);
-//         $metrics = $project->metrics;
-//         return view('metric_projects.create', compact('project', 'metrics'));
-//     }
-
-
-//     public function store(Request $request, $id)
-//     {
-//         $project = Project::findOrFail($id);
-//         $request->validate([
-//             'metric_id' => 'required|exists:metrics,id',
-//             'value' => 'nullable|string',
-//             'report_month' => 'nullable|integer',
-//             'report_year' => 'nullable|integer',
-//         ]);
-
-//         $metricProject = new MetricProject($request->all());
-//         $metricProject->project_id = $project->id;
-//         $metricProject->save();
-
-//         return redirect()->route('metric-projects.index', $project->id)->with('success', 'Metric project created successfully.');
-//     }
-
-//     public function edit($projectId, $metricProjectId)
-//     {
-//         $project = Project::findOrFail($projectId);
-//         $metricProject = MetricProject::findOrFail($metricProjectId);
-//         $metrics = Metric::all();
-//         return view('metric_projects.edit', compact('project', 'metricProject', 'metrics'));
-//     }
-
-//     public function update(Request $request, $projectId, $metricProjectId)
-//     {
-//         $project = Project::findOrFail($projectId);
-//         $metricProject = MetricProject::findOrFail($metricProjectId);
-
-//         $request->validate([
-//             'metric_id' => 'required|exists:metrics,id',
-//             'value' => 'nullable|string',
-//             'report_month' => 'nullable|integer',
-//             'report_year' => 'nullable|integer',
-//         ]);
-
-//         $metricProject->update($request->all());
-
-//         return redirect()->route('metric-projects.index', $project->id)->with('success', 'Metric project updated successfully.');
-//     }
-// }
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Project;
 use App\Models\Metric;
 use App\Models\MetricProject;
+use App\Charts\MonthlyReportChart;
+
 
 class MetricProjectController extends Controller
 {
@@ -89,17 +18,51 @@ class MetricProjectController extends Controller
     }
 
     public function index($id)
-{
-    $project = Project::findOrFail($id);
+    {
+        $project = Project::findOrFail($id);
 
-    // Fetch initial metrics (where report_month and report_year are null)
-    $initialMetricProjects = $project->metricProjects()->whereNull('report_month')->whereNull('report_year')->get();
+        // Fetch initial metrics (where report_month and report_year are null)
+        $initialMetricProjects = $project->metricProjects()->whereNull('report_month')->whereNull('report_year')->get();
 
-    // Fetch report metrics (where report_month and report_year are not null)
-    $reportMetricProjects = $project->metricProjects()->whereNotNull('report_month')->whereNotNull('report_year')->get();
+        $IndicatorProjects = $project->indicatorProjects()->get();
+        $ProjectSdg = $project->projectSdg()->get();
+        $Survey = $project->survey()->get();
+        $ProjectDokumen = $project->projectDokumen()->get();
 
-    return view('metric_projects.index', compact('project', 'initialMetricProjects', 'reportMetricProjects'));
-}
+        // Fetch report metrics (where report_month and report_year are not null)
+        $reportMetricProjects = $project->metricProjects()->whereNotNull('report_month')->whereNotNull('report_year')->get();
+
+        // Fetch monthly report data
+        $monthlyReports = MetricProject::selectRaw('report_month, report_year, SUM(value) as total_value')
+            ->where('project_id', $id)
+            ->whereNotNull('report_month')
+            ->whereNotNull('report_year')
+            ->groupBy('report_year', 'report_month')
+            ->orderBy('report_year')
+            ->orderBy('report_month')
+            ->get();
+
+        // Transform the data for the chart
+        $labels = $monthlyReports->map(function ($report) {
+            return $report->report_month . '/' . $report->report_year;
+        });
+
+        $values = $monthlyReports->pluck('total_value');
+
+        // Create chart
+        $chart = new MonthlyReportChart;
+        $chart->labels($labels);
+        $chart->dataset('Total Values', 'line', $values)
+            ->color('rgba(75, 192, 192, 1)')
+            ->backgroundcolor('rgba(75, 192, 192, 0.2)');
+
+
+
+        return view('myproject.detail', compact('project', 'initialMetricProjects', 'reportMetricProjects', 'chart', 'IndicatorProjects', 'ProjectSdg', 'Survey', 'ProjectDokumen'));
+
+        // return response()->json($ProjectDokumen);
+    }
+
 
 
     public function create($id)
@@ -115,7 +78,7 @@ class MetricProjectController extends Controller
         $request->validate([
             'metric_id' => 'required|exists:metrics,id',
             'value' => 'nullable|string',
-            'report_month' => 'nullable|integer',
+            'report_month' => 'nullable|integer|min:1|max:12',
             'report_year' => 'nullable|integer',
         ]);
 
@@ -128,37 +91,82 @@ class MetricProjectController extends Controller
             'metric_project_id' => null,
         ]);
 
-        return redirect()->route('metric-projects.index', $project->id)->with('success', 'Metric project created successfully.');
+        return redirect()->route('myproject.impact', $project->id)->with('success', 'Metric project created successfully.');
     }
 
     public function addReport($projectId, $metricProjectId)
     {
         $project = Project::findOrFail($projectId);
         $metricProject = MetricProject::findOrFail($metricProjectId);
-        return view('metric_projects.add_report', compact('project', 'metricProject'));
+
+        // Fetch report metrics (where report_month and report_year are not null)
+        $reportMetricProjects = $project->metricProjects()->whereNotNull('report_month')->whereNotNull('report_year')->get();
+
+        // Fetch monthly report data
+        $monthlyReports = MetricProject::selectRaw('report_month, report_year, SUM(value) as total_value')
+            ->where('project_id', $projectId)
+            ->whereNotNull('report_month')
+            ->whereNotNull('report_year')
+            ->groupBy('report_year', 'report_month')
+            ->orderBy('report_year')
+            ->orderBy('report_month')
+            ->get();
+
+        // Transform the data for the chart
+        $labels = $monthlyReports->map(function ($report) {
+            return $report->report_month . '/' . $report->report_year;
+        });
+
+        $values = $monthlyReports->pluck('total_value');
+        // Create chart
+        $chart = new MonthlyReportChart;
+        $chart->labels($labels);
+        $chart->dataset('Total Values', 'line', $values)
+            ->color('rgba(75, 192, 192, 1)')
+            ->backgroundcolor('rgba(75, 192, 192, 0.2)');
+
+        return view('myproject.impact', compact('project', 'metricProject', 'chart', 'reportMetricProjects'));
+
+        // return response()->json($chart, 201);
     }
 
     public function storeReport(Request $request, $projectId, $metricProjectId)
     {
-        $project = Project::findOrFail($projectId);
-        $metricProject = MetricProject::findOrFail($metricProjectId);
+        try {
+            $project = Project::findOrFail($projectId);
+            $metricProject = MetricProject::findOrFail($metricProjectId);
 
-        $request->validate([
-            'value' => 'required|string',
-            'report_month' => 'required|integer',
-            'report_year' => 'required|integer',
-        ]);
+            $validatedData = $request->validate([
+                'value' => 'required|string',
+                'report_month' => 'required|integer|min:1|max:12',
+                'report_year' => 'required|integer',
+            ]);
 
-        MetricProject::create([
-            'project_id' => $project->id,
-            'metric_id' => $metricProject->metric_id,
-            'value' => $request->value,
-            'report_month' => $request->report_month,
-            'report_year' => $request->report_year,
-            'metric_project_id' => $metricProject->id,
-        ]);
+            $newMetricProject = MetricProject::create([
+                'project_id' => $project->id,
+                'metric_id' => $metricProject->metric_id,
+                'value' => $validatedData['value'],
+                'report_month' => $validatedData['report_month'],
+                'report_year' => $validatedData['report_year'],
+                'metric_project_id' => $metricProject->id,
+            ]);
 
-        return redirect()->route('metric-projects.index', $project->id)->with('success', 'Metric report added successfully.');
+            // Return JSON response for debugging purposes
+            // return response()->json([
+            //     'success' => true,
+            //     'message' => 'Metric report added successfully.',
+            //     'data' => $newMetricProject
+            // ], 201);
+
+            // Optionally, if you want to redirect back to the project impact page with a success message
+            return redirect()->route('metric-projects.addReport', ['project' => $project->id, 'metricProject' => $metricProjectId])->with('success', 'Metric report added successfully.');
+        } catch (\Exception $e) {
+            // Return JSON response for debugging purposes
+            return response()->json([
+                'success' => false,
+                'message' => 'An error occurred: ' . $e->getMessage()
+            ], 500);
+        }
     }
 
     public function edit($projectId, $metricProjectId)
@@ -177,7 +185,7 @@ class MetricProjectController extends Controller
         $request->validate([
             'metric_id' => 'required|exists:metrics,id',
             'value' => 'nullable|string',
-            'report_month' => 'nullable|integer',
+            'report_month' => 'nullable|integer|min:1|max:12',
             'report_year' => 'nullable|integer',
         ]);
 
@@ -187,18 +195,15 @@ class MetricProjectController extends Controller
     }
 
     public function destroy($projectId, $metricProjectId)
-{
-    // Find the report metric project
-    $project = Project::findOrFail($projectId);
-    $metricProject = MetricProject::findOrFail($metricProjectId);
+    {
+        // Find the report metric project
+        $project = Project::findOrFail($projectId);
+        $metricProject = MetricProject::findOrFail($metricProjectId);
 
-    // Delete the report metric project
-    $metricProject->delete();
+        // Delete the report metric project
+        $metricProject->delete();
 
-    // Redirect back with success message
-    return redirect()->route('metric-projects.index', $project->id)->with('success', 'Metric project deleted successfully.');
-}
-
-
-
+        // Redirect back with success message
+        return redirect()->route('metric-projects.index', $project->id)->with('success', 'Metric project deleted successfully.');
+    }
 }
