@@ -3,19 +3,135 @@
 
 @section('css')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body,
+        html {
+            font-family: "Roboto", sans-serif;
+            height: 100%;
+            padding-top: 30px;
+        }
+
+        .search-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .form-control{
+    width: 60%;
+        }
+
+        .search-container input {
+            padding: 10px;
+            border: 2px solid #5940cb;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+        }
+
+        .search-container button {
+            border: 2px solid #5940cb;
+            border-left: none;
+            padding: 5px 20px;
+            background-color: #5940cb;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+            color: #fff;
+            font-size: 16px;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+        .event-card {
+            background: #4b00820f;
+            color: #010101;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            text-align: center;
+            flex: 0 0 30%; /* Three columns for desktop */
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .event-card a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .event-card .event-image {
+            height: 150px;
+            background-size: cover;
+            background-position: center;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .event-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            min-height: 3em;
+        }
+
+        .event-card p {
+            font-size: 1rem;
+            flex-grow: 1;
+        }
+
+        .pagination-container {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .pagination-container p {
+            font-size: 16px;
+        }
+
+        .subscribe-container {
+            background: #f0f0ff;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .subscribe-container p {
+            margin: 0;
+            font-size: 1.2rem;
+            color: #333;
+        }
+
+        @media only screen and (max-width: 992px) {
+            .event-card {
+                flex: 0 0 48%; /* Two columns for tablets */
+            }
+        }
+
+        @media only screen and (max-width: 768px) {
+            .event-card {
+                flex: 0 0 90%; /* Full width for mobile */
+                padding: 15px;
+            }
+        }
+    </style>
 
 
 @endsection
 
 @section('content')
 <body>
-    <div class="container mt-5">
-        <h5 class="text-center mb-5">Temukan wawasan tentang dampak baru disini</h5>
+    <div class="container mt-5" >
+        <h5 class="text-center mb-5"  style="margin-top: 70px; margin-bottom: 70px">Temukan wawasan tentang dampak baru disini</h5>
         <div class="search-container">
             <input type="text" class="form-control" placeholder="Cari disini" id="searchInput">
             <button onclick="searchEvent()" class="btn-search"><i class="fas fa-search"></i></button>
         </div>
-        <div class="row" id="eventContainer">
+        <div class="row mt-5" id="eventContainer">
             <!-- Event cards will be inserted here by JavaScript -->
         </div>
         <div class="pagination-container">
@@ -35,12 +151,7 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
-        integrity="sha512-mqKpeec0Hl6bZ7gTz04dVpW2uPtQ+rmJlKzUoeoaSY1Vp4iAAaYI+yMMYJqKQoJz4ygHji9m9ko96mMUpjMRZw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  
     <script>
         const backendUrl = @json($backendUrl);
         const events = @json($events);

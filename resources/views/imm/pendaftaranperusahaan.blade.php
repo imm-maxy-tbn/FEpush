@@ -8,6 +8,79 @@
     integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+<style>
+    body {
+    font-family: "Montserrat", sans-serif;
+}
+
+.register-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.register-container h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-bottom: 20px;
+}
+
+.register-form {
+    width: 100%;
+    max-width: 800px;
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-group label {
+    font-weight: 700;
+}
+
+.form-group input,
+.form-group select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 100%;
+}
+
+.form-group small {
+    font-size: 12px;
+    color: #6c757d;
+}
+
+.btn {
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: #5940cb;
+    color: #fff;
+    font-size: 16px;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #4737a8;
+}
+
+@media (max-width: 768px) {
+    .register-form {
+        padding: 15px;
+    }
+    .form-group input,
+    .form-group select {
+        padding: 8px;
+    }
+    .btn {
+        padding: 8px 16px;
+        font-size: 14px;
+    }
+}
+</style>
 @endsection
 @section('content')
 

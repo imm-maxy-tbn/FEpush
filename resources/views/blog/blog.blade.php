@@ -11,6 +11,10 @@
             padding-top: 30px;
         }
 
+        .form-control{
+    width: 60%;
+        }
+
         .search-container {
             display: flex;
             justify-content: center;
@@ -122,12 +126,12 @@
 <body>
 
     <div class="container mt-5">
-        <h5 class="text-center mb-5">Temukan wawasan tentang dampak baru disini</h5>
+        <h5 class="text-center mb-5"   style="margin-top: 70px">Temukan wawasan tentang dampak baru disini</h5>
         <div class="search-container">
             <input type="text" class="form-control" placeholder="Cari disini" id="searchInput">
             <button onclick="searchBlog()" class="btn-search"><i class="fas fa-search"></i></button>
         </div>
-        <div class="row" id="blogContainer">
+        <div class="row mt-5" id="blogContainer">
             <!-- Blog cards will be inserted here by JavaScript -->
         </div>
         <div class="pagination-container">
@@ -168,6 +172,9 @@
 
             document.getElementById("searchInput").addEventListener("input", searchBlog);
         });
+
+
+        
 
         function searchBlog() {
             const input = document.getElementById("searchInput").value.toLowerCase();
