@@ -58,13 +58,9 @@ Route::post('responden/{survey}/{user}/submit', [SurveyController::class, 'submi
 // Rute yang memerlukan autentikasi
 Route::middleware(['auth'])->group(function () {
     Route::get('/myproject', [ProjectController::class, 'index'])->name('myproject.myproject');
-    Route::get('/verifikasidiri', function () {
-        return view('imm.verifikasidiri');
-    })->name('verifikasidiri');
-
     Route::get('/imm', function () {
         return view('imm.imm');
-    })->middleware('check.company');
+    })->name('imm')->middleware('check.company');
     Route::get('/kelolapengeluaran', function (\Illuminate\Http\Request $request) {
         $companyIncomeController = app(CompanyIncomeController::class);
         $companyOutcomeController = app(CompanyOutcomeController::class);

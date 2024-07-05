@@ -22,22 +22,15 @@ class CheckCompanyRegistration
             // Jika pengguna tidak terautentikasi, arahkan ke halaman login
             return redirect()->route('login');
         }
-        
 
         if (!$user->companies) {
-            // Jika pengguna tidak memiliki perusahaan, arahkan ke halaman verifikasi diri
-            return redirect()->route('verifikasidiri');
+            // Jika pengguna tidak memiliki perusahaan, arahkan ke halaman imm
+            if ($request->route()->getName() !== 'imm') {
+                return redirect()->route('imm');
+            }
         }
 
- 
-        
-        if ($user && !$user->companies) { // Check if user is logged in and has no registered company
-            return redirect()->route('imm');
-        }
-
-    
         // Jika pengguna memiliki perusahaan, lanjutkan ke rute yang diminta
         return $next($request);
-
     }
 }
