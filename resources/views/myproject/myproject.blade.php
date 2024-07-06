@@ -84,7 +84,7 @@
                                     <img height="150px" src="{{ $project->img ? asset('images/' . $project->img) : asset('images/default_project.png') }}" class="card-img-top" alt="">
                                     <div class="card-body">
                                         <h5 class="card-title">{{ $project->nama }}</h5>
-                                        <div class="d-flex">
+                                        <div class="d-flex"> 
                                             <a href="detail/{{ $project->id }}" class="btn btn-secondary btn-detail mt-2">Detail</a>
                                             <form action="{{ route('projects.destroy', $project->id) }}" method="POST" style="display: inline;">
                                                 @csrf
@@ -195,10 +195,7 @@
 
 
     <!-- JavaScript Libraries -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" async></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js" async></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" async></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             setTimeout(function() {

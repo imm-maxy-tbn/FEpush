@@ -176,27 +176,7 @@ footer {
 
 
 /* Animasi umum untuk elemen lainnya */
-
-.content-container h1,
-.date-box,
-.chart-container,
-.analysis-matrix .content-box,
-.target-check .target-check-box,
-.icon-box .icon-item,
-.btn {
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-.content-container h1:hover,
-.date-box:hover,
-.chart-container:hover,
-.analysis-matrix .content-box:hover,
-.target-check .target-check-box:hover,
-.icon-box .icon-item:hover,
-.btn:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
+    
 </style>
 @endsection
 @section('content')

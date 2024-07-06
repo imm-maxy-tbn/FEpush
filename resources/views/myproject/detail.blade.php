@@ -129,16 +129,19 @@
         }
 
         .upload-container {
-            width: 100%;
-            height: 200px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            border: 2px solid #ccc;
-            color: #fff;
-            font-size: 1.2rem;
-        }
-
+    width: 100%;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid #ccc;
+    color: #fff;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-size: cover;
+    object-fit: cover; /* Ensure the image covers the entire container without distortion */
+    object-position: center; /* Center the image within the container */
+}
         .upload-container input[type="file"] {
             display: none;
         }
@@ -158,13 +161,8 @@
             display: none;
         }
 
-        .upload-container {
-            cursor: pointer;
-        }
 
-        img {
-            background-size: cover;
-        }
+
 
         .disabled {
             cursor: not-allowed !important;
@@ -312,81 +310,81 @@
             </button>
         </form>
         </div>
-
-        <!-- Right Content -->
-        <div class="col-lg-4">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">Metrix Anda</h5>
-                    <input type="text" class="form-control" placeholder="Cari Matrix anda">
-                    <ul class="list-group mt-3 scrollable">
-                        @foreach ($initialMetricProjects as $metricProject)
-                            <li class="list-group-item">
-                                <a href="{{ route('metric-projects.addReport', [$project->id, $metricProject->id]) }}"
-                                    class="text-dark">{{ $metricProject->metric->name }}</a>
-                            </li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">Indicator</h5>
-                    <ul class="list-group">
-                        @foreach ($project->indicators as $indicator)
-                            <li class="list-group-item">{{ $indicator->name }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-
-            <!-- Penggunaan Dana section -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">Penggunaan Dana</h5>
-                    @php
-                        $totalDana = $project->dana->sum('nominal');
-                        $totalPendanaan = $project->jumlah_pendanaan;
-                    @endphp
-                    @foreach ($project->dana as $dana)
-                        @php
-                            $percentage = $totalPendanaan > 0 ? ($dana->nominal / $totalPendanaan) * 100 : 0;
-                        @endphp
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between">
-                                <span>{{ $dana->jenis_dana }}</span>
-                                <span class="font-weight-bold">{{ number_format($dana->nominal, 0, ',', '.') }}</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar bg-primary" role="progressbar"
-                                    style="width: {{ $percentage }}%;" aria-valuenow="{{ $percentage }}"
-                                    aria-valuemin="0" aria-valuemax="100"> {{ $percentage }}%</div>
-                            </div>
-                        </div>
-                    @endforeach
-                    <div>
-                        <div class="d-flex justify-content-between">
-                            <span>Total Dana</span>
-                            <span class="font-weight-bold">{{ number_format($totalDana, 0, ',', '.') }}</span>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span>Total Pendanaan</span>
-                            <span class="font-weight-bold">{{ number_format($totalPendanaan, 0, ',', '.') }}</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;"
-                                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    @if ($totalDana >= $totalPendanaan)
-                        <p class="mt-3 text-center">Total Dana Untuk Proyek Ini Telah Terpenuhi</p>
-                    @else
-                        <p class="mt-3 text-center">Total Dana Untuk Proyek Ini Belum Terpenuhi</p>
-                    @endif
-                </div>
-            </div>
+<!-- Right Content -->
+<div class="col-lg-4">
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Metrix Anda</h5>
+            <input type="text" class="form-control" placeholder="Cari Matrix anda">
+            <ul class="list-group mt-3 scrollable">
+                @foreach ($initialMetricProjects as $metricProject)
+                    <li class="list-group-item">
+                        <a href="{{ route('metric-projects.addReport', [$project->id, $metricProject->id]) }}"
+                            class="text-dark">{{ $metricProject->metric->name }}</a>
+                    </li>
+                @endforeach
+            </ul>
         </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Indicator</h5>
+            <ul class="list-group scrollable">
+                @foreach ($project->indicators as $indicator)
+                    <li class="list-group-item">{{ $indicator->name }}</li>
+                @endforeach
+            </ul>
+        </div>
+    </div>
+
+    <!-- Penggunaan Dana section -->
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Penggunaan Dana</h5>
+            @php
+                $totalDana = $project->dana->sum('nominal');
+                $totalPendanaan = $project->jumlah_pendanaan;
+            @endphp
+            @foreach ($project->dana as $dana)
+                @php
+                    $percentage = $totalPendanaan > 0 ? ($dana->nominal / $totalPendanaan) * 100 : 0;
+                @endphp
+                <div class="mb-3">
+                    <div class="d-flex justify-content-between">
+                        <span>{{ $dana->jenis_dana }}</span>
+                        <span class="font-weight-bold">{{ number_format($dana->nominal, 0, ',', '.') }}</span>
+                    </div>
+                    <div class="progress">
+                        <div class="progress-bar bg-primary" role="progressbar"
+                            style="width: {{ $percentage }}%;" aria-valuenow="{{ $percentage }}"
+                            aria-valuemin="0" aria-valuemax="100"> {{ $percentage }}%</div>
+                    </div>
+                </div>
+            @endforeach
+            <div>
+                <div class="d-flex justify-content-between">
+                    <span>Total Dana</span>
+                    <span class="font-weight-bold">{{ number_format($totalDana, 0, ',', '.') }}</span>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <span>Total Pendanaan</span>
+                    <span class="font-weight-bold">{{ number_format($totalPendanaan, 0, ',', '.') }}</span>
+                </div>
+                <div class="progress">
+                    <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;"
+                        aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+            @if ($totalDana >= $totalPendanaan)
+                <p class="mt-3 text-center">Total Dana Untuk Proyek Ini Telah Terpenuhi</p>
+            @else
+                <p class="mt-3 text-center">Total Dana Untuk Proyek Ini Belum Terpenuhi</p>
+            @endif
+        </div>
+    </div>
+</div>
+
         <div class="container d-flex justify-content-center mt-5">
             <button type="submit" class="btn w-50 btn-purple px-4 py-2 btn-wide text-white hidden" id="save-button"
                 style="font-weight:bold;">Simpan Perubahan Detail Proyek</button>
@@ -394,10 +392,7 @@
         </div>
         </div>
 
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+       
         <script>
             $(document).ready(function() {
                 function showSaveButton() {
