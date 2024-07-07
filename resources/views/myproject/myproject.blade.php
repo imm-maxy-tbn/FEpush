@@ -111,10 +111,6 @@
                     <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ $ongoingProjects->count() }} of {{ $allProjects->count() }}
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                        <a class="dropdown-item" href="#">0 of 0</a>
-                        <a class="dropdown-item" href="#">1 of 1</a>
-                    </div>
                 </div>
             </div>
             <table class="table mt-3 ongoing-projects-table">
@@ -146,10 +142,6 @@
                     <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ $completedProjects->count() }} of {{ $allProjects->count() }}
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                        <a class="dropdown-item" href="#">0 of 0</a>
-                        <a class="dropdown-item" href="#">1 of 1</a>
-                    </div>
                 </div>
             </div>
             <table class="table mt-3 done-projects-table">
