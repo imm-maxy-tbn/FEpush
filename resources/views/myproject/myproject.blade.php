@@ -12,24 +12,44 @@
 <meta name="keywords" content="project management, task management, productivity">
 <meta name="author" content="Your Name">
 <style>
-    .navbar {
-        position: fixed;
-        top: 0;
-        width: 100%;
-        z-index: 1000;
-    }
 
     body {
-        padding-top: 56px;
+        padding-top: 115px;
         /* Adjust this value according to the height of your navbar */
+    }
+    .btn-create-project{
+        background-color: #5940CB;
+        color: white;
+        width: 200px;
+        height: 40px;
+        border: none;
+        border-radius: 5px;
+    }
+    thead{
+        background-color: #6c63ff;
+        color: white;
+    }
+.btn-delete,.btn-detail{
+    width: 140px;
+    height: 33px;
+border: 1px solid black;
+    font-weight: 500;
+}
+    .btn-delete{
+        background-color: rgba(255, 26, 26, 0.5);
+    }
+
+    .btn-detail{
+        background-color: rgba(217, 217, 217, 0.44);
     }
 
     .see-all-button {
-
         text-align: center;
         margin-top: 20px;
     }
-
+.card-body{
+    background-color: rgba(255, 250, 250, 0.5);
+}
     .see-all-button button {
         background-color: #6c63ff;
         color: white;
@@ -37,93 +57,103 @@
         padding: 10px 20px;
         border-radius: 5px;
     }
-    .seeAll{
-         display: flex;
-         align-items: center;
-         cursor: pointer;
+
+    .seeAll {
+        display: flex;
+        align-items: center;
+        cursor: pointer;
     }
 </style>
 @endsection
+
 @section('content')
-
-
-<body>
-    <div class="container">
-        <h2 class="project-title">Draft Project</h2>
-        <div class="row mt-5">
-            <div class="col-md-8">
-                <form id="search-form" method="GET" action="{{ route('projects.index') }}">
-                    <div class="input-group">
-                        <input type="text" name="search" class="form-control search-input" placeholder="Search..." aria-label="Search" value="{{ request('search') }}">
-                        <div class="input-group-append">
-                            <button type="submit" class="input-group-text search-icon" aria-label="Search Button"><i class="fas fa-search"></i></button>
-                        </div>
+<div class="container">
+    <h2 class="project-title">Draft Project</h2>
+    <div class="row mt-5">
+        <div class="col-md-8">
+            <form id="search-form" method="GET" action="{{ route('projects.index') }}">
+                <div class="input-group">
+                    <input type="text" name="search" class="form-control search-input" placeholder="Search..." aria-label="Search" value="{{ request('search') }}">
+                    <div class="input-group-append">
+                        <button type="submit" class="input-group-text search-icon" aria-label="Search Button"><i class="fas fa-search"></i></button>
                     </div>
-                </form>
-            </div>
-            <div class="col-md-4 text-right">
-                <a href="creatproject">
-                    <button class=" btn-primary btn-create-project">Create New Project</button>
-                </a>
-            </div>
+                </div>
+            </form>
         </div>
-
-        <div class="section d-flex justify-content-between justify-content-center">
-            <h4 class="project-title mb-5 mt-5">Semua Proyek ({{ $allProjects->count() }})</h4>
-            @if($allProjects->count() > 6)
-                <h5 class="seeAll" id="show-all-btn">Lihat Semua</h5>
-            @endif
+        <div class="col-md-4 text-right">
+            <a href="creatproject">
+                <button class="btn-primary btn-create-project">Create New Project</button>
+            </a>
         </div>
+    </div>
 
-        <div class="row mt-3" id="draft-project-list">
-            <div class="col-md-12 no-projects mt-3">
-                @if($allProjects->isEmpty())
+    <div class="section d-flex justify-content-between justify-content-center">
+        <h4 class="project-title mb-5 mt-5">Semua Proyek ({{ $allProjects->count() }})</h4>
+        @if($allProjects->count() > 6)
+            <h5 class="seeAll" id="show-all-btn">Lihat Semua</h5>
+        @endif
+    </div>
+
+    <div class="row mt-3" id="draft-project-list">
+        <div class="col-md-12 no-projects mt-3">
+            @if($allProjects->isEmpty())
+                <div class="container text-center py-3 border">
                     <p>Tidak ada proyek yang ditemukan.</p>
-                @else
-                    <div class="row">
-                        @foreach($allProjects as $index => $project)
-                            <div class="col-md-4 mb-4" id="project-{{ $project->id }}" @if($index >= 6) style="display: none;" @endif>
-                                <div class="card project-card" style="min-height: 300px">
-                                    <img height="150px" src="{{ $project->img ? asset('images/' . $project->img) : asset('images/default_project.png') }}" class="card-img-top" alt="">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $project->nama }}</h5>
-                                        <div class="d-flex"> 
-                                            <a href="detail/{{ $project->id }}" class="btn btn-secondary btn-detail mt-2">Detail</a>
-                                            <form action="{{ route('projects.destroy', $project->id) }}" method="POST" style="display: inline;">
-                                                @csrf
-                                                @method('DELETE')
-                                                <button class="btn btn-danger mt-2" onclick="return confirm('Are you sure you want to delete this project?')">Delete</button>
-                                            </form>
-                                        </div>
+                </div>
+            @else
+                <div class="row">
+                    @foreach($allProjects as $index => $project)
+                        <div class="col-md-4 mb-4" id="project-{{ $project->id }}" @if($index >= 6) style="display: none;" @endif>
+                            <div class="card project-card" style="min-height: 200px">
+                                <img height="150px" src="{{ $project->img ? asset('images/' . $project->img) : asset('images/default_project.png') }}" class="card-img-top" alt="">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ $project->nama }}</h5>
+                                    <div class="d-flex">
+                                        <a href="detail/{{ $project->id }}" class="btn btn-detail mt-2">Detail</a>
+                                        <form action="{{ route('projects.destroy', $project->id) }}" method="POST" style="display: inline;">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button class="btn btn-delete mt-2" onclick="return confirm('Are you sure you want to delete this project?')">Delete</button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>
-                        @endforeach
-                    </div>
-                @endif
+                        </div>
+                    @endforeach
+                </div>
+            @endif
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 class="project-title mb-5 mt-5">Proyek yang sedang dikerjakan</h2>
+        <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
+            <div class="dropdown">
+                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ $ongoingProjects->count() }} of {{ $allProjects->count() }}
+                </button>
             </div>
         </div>
-
-        <div class="container">
-            <h2 class="project-title mb-5 mt-5">Proyek yang sedang dikerjakan</h2>
-            <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
-                <div class="dropdown">
-                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ $ongoingProjects->count() }} of {{ $allProjects->count() }}
-                    </button>
-                </div>
-            </div>
-            <table class="table mt-3 ongoing-projects-table">
-                <thead>
+        <table class="table mt-3 ongoing-projects-table border text-center">
+            <thead>
+                <tr>
+                    <th>Project Name</th>
+                    <th>Tanggal Mulai</th>
+                    <th>Tenggat Waktu</th>
+                    <th>Tujuan SDGs</th>
+                    <th>Total</th>
+                </tr>
+            </thead>
+            <tbody id="ongoing-project-list">
+                @if($ongoingProjects->isEmpty())
                     <tr>
-                        <th>Project Name</th>
-                        <th>Tanggal Mulai</th>
-                        <th>Tenggat Waktu</th>
-                        <th>Tujuan SDGs</th>
-                        <th>Total</th>
+                        <td colspan="5" class="text-center">
+                            <div class="container border py-3">
+                                Tidak ada project yang sedang dikerjakan.
+                            </div>
+                        </td>
                     </tr>
-                </thead>
-                <tbody id="ongoing-project-list">
+                @else
                     @foreach($ongoingProjects as $project)
                         <tr>
                             <td>{{ $project->nama }}</td>
@@ -133,26 +163,36 @@
                             <td>{{ 'Rp' . number_format($project->jumlah_pendanaan, 0, ',', '.') }}</td>
                         </tr>
                     @endforeach
-                </tbody>
-            </table>
+                @endif
+            </tbody>
+        </table>
 
-            <h2 class="project-title mb-5 mt-5">Proyek Selesai</h2>
-            <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
-                <div class="dropdown">
-                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ $completedProjects->count() }} of {{ $allProjects->count() }}
-                    </button>
-                </div>
+        <h2 class="project-title mb-5 mt-5">Proyek Selesai</h2>
+        <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
+            <div class="dropdown">
+                <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ $completedProjects->count() }} of {{ $allProjects->count() }}
+                </button>
             </div>
-            <table class="table mt-3 done-projects-table">
-                <thead>
+        </div>
+        <table class="table mt-3 done-projects-table border text-center">
+            <thead>
+                <tr>
+                    <th>Nama Proyek</th>
+                    <th>Tanggal Penyelesaian</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody id="done-project-list">
+                @if($completedProjects->isEmpty())
                     <tr>
-                        <th>Nama Proyek</th>
-                        <th>Tanggal Penyelesaian</th>
-                        <th>Status</th>
+                        <td colspan="3" class="text-center">
+                            <div class="container border py-3">
+                                Tidak ada project yang terselesaikan.
+                            </div>
+                        </td>
                     </tr>
-                </thead>
-                <tbody id="done-project-list">
+                @else
                     @foreach($completedProjects as $project)
                         <tr>
                             <td>{{ $project->nama }}</td>
@@ -160,247 +200,22 @@
                             <td><div class="span bg-success text-white" style="padding: 5px 0; border-radius:50px">{{ $project->status }}</div></td>
                         </tr>
                     @endforeach
-                </tbody>
-            </table>
-
-
-        </div>
+                @endif
+            </tbody>
+        </table>
     </div>
+</div>
 
-
-
-    <!-- JavaScript Libraries -->
-    
-    <script>
-         document.addEventListener("DOMContentLoaded", function() {
-            const searchInput = document.querySelector('.search-input');
-            searchInput.addEventListener('keyup', function(event) {
-                if (event.key === 'Enter') {
-                    document.getElementById('search-form').submit();
-                }
-            });
-        });
-
-        document.querySelector('.seeAll').addEventListener('click', function() {
-            document.querySelectorAll('#draft-project-list .col-md-4').forEach(function(project, index) {
-                if (index >= 6) {
-                    project.style.display = 'block';
-                }
-            });
-            document.querySelector('.seeAll').style.display = 'none';
-        });
-
-        document.getElementById('show-all-btn').addEventListener('click', function() {
-            document.querySelectorAll('#draft-project-list .col-md-4').forEach(function(project) {
-                project.style.display = 'block';
-            });
-            document.getElementById('show-all-btn').style.display = 'none';
-        });
-        document.addEventListener("DOMContentLoaded", function() {
-            setTimeout(function() {
-                var loading = document.getElementById("loading");
-                loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
-            }, 1000); // 3000 milidetik = 3 detik
-        });
-        function displayProjects() {
-            const draftProjectList = document.getElementById("draft-project-list");
-            const ongoingProjectList = document.getElementById("ongoing-project-list");
-            const seeAllButton = document.getElementById("see-all-button");
-
-            draftProjectList.innerHTML = "";
-            ongoingProjectList.innerHTML = "";
-
-            if (projects.length === 0) {
-                draftProjectList.innerHTML = `
-                    <div class="col-md-12 no-projects mt-3">
-                        <p>Belum memiliki project apapun.</p>
-                    </div>
-                `;
-                ongoingProjectList.innerHTML = `
-                    <tr>
-                        <td colspan="5" class="text-center no-ongoing-projects">Tidak ada project yang sedang berjalan.</td>
-                    </tr>
-                `;
-                seeAllButton.style.display = "none";
-            } else {
-                projects.slice(0, 6).forEach((project, index) => {
-                    const newProjectId = `project-${index + 1}`;
-                    const draftProject = `
-                        <div class="col-md-4" id="${newProjectId}">
-                            <div class="card project-card">
-                                <img src="${project.imageUrl}" class="card-img-top" alt="${project.name}">
-                                <div class="card-body">
-                                    <h5 class="card-title">${project.name}</h5>
-                                    <button class="btn btn-danger mt-2" onclick="deleteProject('${newProjectId}', ${index})">Delete</button>
-                                    <a href="detail" class="btn btn-secondary btn-detail mt-2">Detail</a>
-                                    ${project.progress === 100 ? `<button class="btn btn-success mt-2" onclick="completeProject('${newProjectId}', ${index})">FINISHED</button>` : ""}
-                                </div>
-                            </div>
-                        </div>
-                    `;
-                    draftProjectList.innerHTML += draftProject;
-
-                    const ongoingProject = `
-                        <tr id="ongoing-${newProjectId}">
-                            <td>${project.name}</td>
-                            <td>Oct 17, 2023</td>
-                            <td>${project.impact}</td>
-                            <td>${project.tags}</td>
-                            <td>${project.total}</td>
-                        </tr>
-                    `;
-                    ongoingProjectList.innerHTML += ongoingProject;
-                });
-
-                if (projects.length > 6) {
-                    seeAllButton.style.display = "block";
-                } else {
-                    seeAllButton.style.display = "none";
-                }
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const searchInput = document.querySelector('.search-input');
+        searchInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                document.getElementById('search-form').submit();
             }
+        });
+    });
 
-            displayCompletedProjects();
-            updateProjectCount();
-        }
-
-        function showAllProjects() {
-            const draftProjectList = document.getElementById("draft-project-list");
-
-            draftProjectList.innerHTML = "";
-
-            projects.forEach((project, index) => {
-                const newProjectId = `project-${index + 1}`;
-                const draftProject = `
-                    <div class="col-md-4" id="${newProjectId}">
-                        <div class="card project-card">
-                            <img src="${project.imageUrl}" class="card-img-top" alt="${project.name}">
-                            <div class="card-body">
-                                <h5 class="card-title">${project.name}</h5>
-                                <div class="progress">
-                                    <div class="progress-bar" role="progressbar" style="width: ${project.progress}%;" aria-valuenow="${project.progress}" aria-valuemin="0" aria-valuemax="100">${project.progress}% completed</div>
-                                </div>
-                                <button class="btn btn-secondary mt-2" onclick="updateProject('${newProjectId}', ${index})">Update</button>
-                                <button class="btn btn-danger mt-2" onclick="deleteProject('${newProjectId}', ${index})">Delete</button>
-                                <a href="detail" class="btn btn-secondary btn-detail mt-2">Detail</a>
-                                ${project.progress === 100 ? `<button class="btn btn-success mt-2" onclick="completeProject('${newProjectId}', ${index})">FINISHED</button>` : ""}
-                            </div>
-                        </div>
-                    </div>
-                `;
-                draftProjectList.innerHTML += draftProject;
-            });
-        }
-
-        function displayCompletedProjects() {
-            const doneProjectList = document.getElementById("done-project-list");
-            doneProjectList.innerHTML = "";
-
-            if (completedProjects.length === 0) {
-                doneProjectList.innerHTML = `
-                    <tr>
-                        <td colspan="4" class="text-center no-done-projects">Tidak ada project yang terselesaikan.</td>
-                    </tr>
-                `;
-            } else {
-                completedProjects.forEach((project, index) => {
-                    const completedProject = `
-                        <tr id="done-project-${index + 1}">
-                            <td>${project.name}</td>
-                            <td>${project.completionDate}</td>
-                            <td><span class="badge badge-success">${project.status}</span></td>
-                        </tr>
-                    `;
-                    doneProjectList.innerHTML += completedProject;
-                });
-            }
-        }
-
-        function addSelectedProject() {
-            const selectedProject = document.getElementById("projectSelect").value;
-            const newProject = {
-                name: selectedProject,
-                imageUrl: projectTemplates[selectedProject].imageUrl,
-                progress: 0,
-                impact: projectTemplates[selectedProject].impact,
-                tags: projectTemplates[selectedProject].tags,
-                total: projectTemplates[selectedProject].total,
-            };
-
-            projects.push(newProject);
-            displayProjects();
-
-            // Close the modal
-            $("#projectModal").modal("hide");
-        }
-
-        function updateProject(projectId, index) {
-            const project = projects[index];
-            if (project.progress < 100) {
-                project.progress += 15;
-                if (project.progress > 100) project.progress = 100;
-            }
-            displayProjects();
-        }
-
-        function deleteProject(projectId, index) {
-            projects.splice(index, 1);
-            displayProjects();
-        }
-
-        function completeProject(projectId, index) {
-            const project = projects[index];
-            projects.splice(index, 1);
-            completedProjects.push({
-                name: project.name,
-                completionDate: "Oct 17, 2023",
-                status: "SELESAI"
-            });
-            displayProjects();
-        }
-
-        function updateProjectCount() {
-            const projectCountElement = document.querySelector(".project-title.mb-5.mt-5");
-            projectCountElement.textContent = `All projects (${projects.length})`;
-
-            const ongoingProjectCountElement = document.querySelector("#dropdownMenuButton2");
-            ongoingProjectCountElement.textContent = `${projects.length} of ${projects.length}`;
-        }
-
-        function renderCalendar() {
-            const calendarBody = document.getElementById("calendar-body");
-            calendarBody.innerHTML = "";
-            const daysInMonth = 31;
-            const startDayOfWeek = 3; // Assuming the month starts on Wednesday (index 3)
-            const status = ["Present", "Sick leave", "Absent", "Holiday"];
-            const statusClasses = ["present", "sick-leave", "absent", "holiday"];
-
-            let dayCounter = 1;
-
-            for (let i = 0; i < 5; i++) {
-                // Assume 5 weeks in a month
-                let row = "<tr>";
-                for (let j = 0; j < 7; j++) {
-                    if (i === 0 && j < startDayOfWeek) {
-                        row += "<td></td>";
-                    } else if (dayCounter <= daysInMonth) {
-                        const randomStatusIndex = Math.floor(
-                            Math.random() * status.length
-                        );
-                        const dayStatus = status[randomStatusIndex];
-                        const dayStatusClass = statusClasses[randomStatusIndex];
-                        row += `<td><div class="${dayStatusClass}">${dayStatus}</div><div>${dayCounter}</div></td>`;
-                        dayCounter++;
-                    } else {
-                        row += "<td></td>";
-                    }
-                }
-                row += "</tr>";
-                calendarBody.innerHTML += row;
-            }
-        }
-
-
-    </script><script>
     document.querySelector('.seeAll').addEventListener('click', function() {
         document.querySelectorAll('#draft-project-list .col-md-4').forEach(function(project, index) {
             if (index >= 6) {
@@ -417,6 +232,4 @@
         document.getElementById('show-all-btn').style.display = 'none';
     });
 </script>
-</body>
-
 @endsection

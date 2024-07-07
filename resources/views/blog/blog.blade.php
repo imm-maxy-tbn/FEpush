@@ -13,6 +13,9 @@
             height: 100%;
             padding-top: 30px;
         }
+        .btn:hover{
+            color: white;
+        }
 
         .form-control {
             width: 60%;
@@ -166,7 +169,7 @@
             const backendUrl = @json($backendUrl);
             const posts = @json($posts);
 
-        document.addEventListener("DOMContentLoaded", function () {
+            document.addEventListener("DOMContentLoaded", function () {
     const blogContainer = document.getElementById("blogContainer");
     const postsPerPage = 6; // Jumlah post per halaman
     const totalPages = Math.ceil(posts.length / postsPerPage); // Total halaman yang diperlukan
@@ -238,9 +241,7 @@
     // Fungsi untuk mengatur pagination
     const paginationContainer = document.querySelector(".pagination-container");
     for (let i = 1; i <= totalPages; i++) {
-       
-      
-        pageLink.textContent = i;
+        i;
         pageLink.addEventListener("click", function (event) {
             event.preventDefault();
             showPosts(i);
@@ -249,22 +250,22 @@
     }
 });
 
-function searchBlog() {
-    const input = document.getElementById("searchInput").value.toLowerCase();
-    const blogCards = document.querySelectorAll(".blog-card");
+            function searchBlog() {
+                const input = document.getElementById("searchInput").value.toLowerCase();
+                const blogCards = document.querySelectorAll(".blog-card");
+                const noBlogsMessage = document.getElementById("noBlogsMessage");
+                let found = false;
 
-    blogCards.forEach((card) => {
-        const title = card.querySelector("h3").textContent.toLowerCase();
-        const content = card.querySelector("p").textContent.toLowerCase();
-        if (title.includes(input) || content.includes(input)) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
-        }
-    });
-}
-
-
+                blogCards.forEach((card) => {
+                    const title = card.querySelector("h3").textContent.toLowerCase();
+                    const content = card.querySelector("p").textContent.toLowerCase();
+                    if (title.includes(input) || content.includes(input)) {
+                        card.style.display = "block";
+                        found = true;
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
 
                 if (found) {
                     noBlogsMessage.style.display = "none";

@@ -15,6 +15,16 @@
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+               .btn-ungu{
+            background-color: #5940cb;
+            color:white;
+        }
+
+        .btn:hover{
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
@@ -39,9 +49,9 @@
                     <p class="text-center text-muted">Belum menerima kode? tunggu <span id="seconds-remaining">60</span>
                     </p>
                     <div class="text-center mb-3">
-                        <button type="button" id="resend-otp" class="btn btn-link">Kirim ulang kode</button>
+                        <button type="button" id="resend-otp" class=" bg-transparent border-0 btn-link">Kirim ulang kode</button>
                     </div>
-                    <button type="submit" class="btn btn-primary btn-block">Verifikasi</button>
+                    <button type="submit" class="btn btn-ungu btn-block">Verifikasi</button>
                 </form>
             </div>
         </div>
