@@ -21,8 +21,9 @@
             justify-content: center;
             margin-bottom: 20px;
         }
-        .form-control{
-    width: 60%;
+
+        .form-control {
+            width: 60%;
         }
 
         .search-container input {
@@ -56,7 +57,8 @@
             border-radius: 5px;
             margin-bottom: 20px;
             text-align: center;
-            flex: 0 0 30%; /* Three columns for desktop */
+            flex: 0 0 30%;
+            /* Three columns for desktop */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -113,13 +115,15 @@
 
         @media only screen and (max-width: 992px) {
             .event-card {
-                flex: 0 0 48%; /* Two columns for tablets */
+                flex: 0 0 48%;
+                /* Two columns for tablets */
             }
         }
 
         @media only screen and (max-width: 768px) {
             .event-card {
-                flex: 0 0 90%; /* Full width for mobile */
+                flex: 0 0 90%;
+                /* Full width for mobile */
                 padding: 15px;
             }
         }
@@ -153,9 +157,31 @@
                 <input type="text" class="form-control" placeholder="masukkan e-mail anda disini">
                 <button class="btnn btn-primary" type="button"><i class="fas fa-envelope"></i></button>
 
+    <body>
+        <div class="container mt-5">
+            <h5 class="text-center mb-5" style="margin-top: 70px; margin-bottom: 70px">Temukan wawasan tentang dampak baru
+                disini</h5>
+            <div class="search-container">
+                <input type="text" class="form-control" placeholder="Cari disini" id="searchInput">
+                <button onclick="searchEvent()" class="btn-search"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="row mt-5" id="eventContainer">
+                <!-- Event cards will be inserted here by JavaScript -->
+            </div>
+            <p id="noEventsMessage" class="text-center mt-3" style="display: none;">Event tidak ditemukan</p>
+            <div class="pagination-container">
+                <p>Halaman <span id="currentPage">1</span> dari 123</p>
+            </div>
+            <div class="subscribe-container d-flex flex-column align-items-center justify-content-center">
+                <p>Jangan tertinggal artikel seputar gerakan berdampak!</p>
+                <p class=" mt-2 mb-2"><strong>Langganan melalui e-mail sekarang GRATIS</strong></p>
+                <div class="input-group mb-3 d-flex justify-content-center">
+                    <input type="text" class="form-control" placeholder="masukkan e-mail anda disini">
+                    <button class="btnn btn-primary" type="button"><i class="fas fa-envelope"></i></button>
+
+                </div>
             </div>
         </div>
-    </div>
 
 
 
@@ -253,16 +279,12 @@ function searchEvent() {
             const input = document.getElementById("searchInput").value.toLowerCase();
             const eventCards = document.querySelectorAll(".event-card");
 
-            eventCards.forEach((card) => {
-                const title = card.querySelector("h3").textContent.toLowerCase();
-                const content = card.querySelector("p").textContent.toLowerCase();
-                if (title.includes(input) || content.includes(input)) {
-                    card.style.display = "block";
+                if (found) {
+                    noEventsMessage.style.display = "none";
                 } else {
-                    card.style.display = "none";
+                    noEventsMessage.style.display = "block";
                 }
-            });
-        }
-    </script>
-</body>
+            }
+        </script>
+    </body>
 @endsection

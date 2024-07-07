@@ -180,10 +180,10 @@ input[type="number"] {
             </div>
             <div class="row mt-4">
                 <div class="col-3">
-                    <h5>Jumlah Biaya</h5>
+                    <h5>Jumlah Biaya(RP)</h5>
                 </div>
                 <div class="col-8">
-                    <input type="number" name="jumlah_biaya" class="form-control" placeholder="cth. Rp 100.000" required>
+                    <input type="number" name="jumlah_biaya" class="form-control" placeholder="1000000" required>
                 </div>
             </div>
             <div class="row mt-4">

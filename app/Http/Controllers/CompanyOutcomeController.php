@@ -27,9 +27,12 @@ class CompanyOutcomeController extends Controller
             })
             ->with(['dana' => function ($query) {
                 $query->where('jenis_dana', 'Hibah');
-            }])
-            ->get();
-        
+            }]);
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $projects->where('nama', 'like', '%' . $search . '%');
+        }
+        $projects = $projects->get();
         return $projects;
     }
 

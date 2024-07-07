@@ -3,7 +3,8 @@
 
 @section('css')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<style>* {
+<style>
+* {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -188,21 +189,20 @@ input[type="number"] {
         </table>
     </div>
 
-<div class="container my-4 d-flex justify-content-between align-items-center">
-    <span class="biaya">Biaya investasi proyek</span>
-    <input type="text" class="form-control" placeholder="Cari nama proyek anda">
+    <div class="container my-4 d-flex justify-content-between align-items-center">
+        <span class="biaya">Biaya investasi proyek</span>
+        <form id="search-form" class="form-inline" method="GET" action="{{ route('kelola-pengeluaran') }}">
+            <input type="text" name="search" class="form-control" placeholder="Cari nama proyek anda" value="{{ request('search') }}">
+        </form>
+    </div>
 
-</div>
-
-
-    <div class="container ">
+    <div class="container">
         <table class="table tabel mt-3 text-center ">
             <thead>
                 <tr>
                     <th>Nama Proyek</th>
                     <th>Rancangan Biaya Grant</th>
                     <th>Detail penggunaan biaya</th>
-                
                 </tr>
             </thead>
             <tbody>
@@ -215,12 +215,26 @@ input[type="number"] {
                     </td>
                 </tr>
                 @endforeach
+                @if ($projects->isEmpty())
+                    <tr>
+                        <td colspan="3">Tidak ada proyek yang ditemukan.</td>
+                    </tr>
+                @endif
             </tbody>
         </table>
     </div>
-
-
      
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const searchInput = document.querySelector('input[name="search"]');
+            searchInput.addEventListener('keypress', function(event) {
+                if (event.key === 'Enter') {
+                    event.preventDefault();
+                    document.getElementById('search-form').submit();
+                }
+            });
+        });
+    </script>
 </body>
 
 @endsection

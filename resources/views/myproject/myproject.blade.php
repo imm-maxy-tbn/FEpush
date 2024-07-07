@@ -52,12 +52,14 @@
         <h2 class="project-title">Draft Project</h2>
         <div class="row mt-5">
             <div class="col-md-8">
-                <div class="input-group">
-                    <input type="text" class="form-control search-input" placeholder="Search..." aria-label="Search">
-                    <div class="input-group-append">
-                        <span class="input-group-text search-icon" aria-label="Search Button"><i class="fas fa-search"></i></span>
+                <form id="search-form" method="GET" action="{{ route('projects.index') }}">
+                    <div class="input-group">
+                        <input type="text" name="search" class="form-control search-input" placeholder="Search..." aria-label="Search" value="{{ request('search') }}">
+                        <div class="input-group-append">
+                            <button type="submit" class="input-group-text search-icon" aria-label="Search Button"><i class="fas fa-search"></i></button>
+                        </div>
                     </div>
-                </div>
+                </form>
             </div>
             <div class="col-md-4 text-right">
                 <a href="creatproject">
@@ -65,6 +67,7 @@
                 </a>
             </div>
         </div>
+
         <div class="section d-flex justify-content-between justify-content-center">
             <h4 class="project-title mb-5 mt-5">Semua Proyek ({{ $allProjects->count() }})</h4>
             @if($allProjects->count() > 6)
@@ -105,23 +108,9 @@
             <h2 class="project-title mb-5 mt-5">Proyek yang sedang dikerjakan</h2>
             <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
                 <div class="dropdown">
-                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Hari ini
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Today</a>
-                        <a class="dropdown-item" href="#">This Week</a>
-                        <a class="dropdown-item" href="#">This Month</a>
-                    </div>
-                </div>
-                <div class="dropdown">
                     <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        0 of 0
+                        {{ $ongoingProjects->count() }} of {{ $allProjects->count() }}
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                        <a class="dropdown-item" href="#">0 of 0</a>
-                        <a class="dropdown-item" href="#">1 of 1</a>
-                    </div>
                 </div>
             </div>
             <table class="table mt-3 ongoing-projects-table">
@@ -150,23 +139,9 @@
             <h2 class="project-title mb-5 mt-5">Proyek Selesai</h2>
             <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
                 <div class="dropdown">
-                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Proyek Selesai
-                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Today</a>
-                        <a class="dropdown-item" href="#">This Week</a>
-                        <a class="dropdown-item" href="#">This Month</a>
-                    </div>
-                </div>
-                <div class="dropdown">
                     <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        0 of 0
+                        {{ $completedProjects->count() }} of {{ $allProjects->count() }}
                     </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
-                        <a class="dropdown-item" href="#">0 of 0</a>
-                        <a class="dropdown-item" href="#">1 of 1</a>
-                    </div>
                 </div>
             </div>
             <table class="table mt-3 done-projects-table">
@@ -197,6 +172,30 @@
     <!-- JavaScript Libraries -->
     
     <script>
+         document.addEventListener("DOMContentLoaded", function() {
+            const searchInput = document.querySelector('.search-input');
+            searchInput.addEventListener('keyup', function(event) {
+                if (event.key === 'Enter') {
+                    document.getElementById('search-form').submit();
+                }
+            });
+        });
+
+        document.querySelector('.seeAll').addEventListener('click', function() {
+            document.querySelectorAll('#draft-project-list .col-md-4').forEach(function(project, index) {
+                if (index >= 6) {
+                    project.style.display = 'block';
+                }
+            });
+            document.querySelector('.seeAll').style.display = 'none';
+        });
+
+        document.getElementById('show-all-btn').addEventListener('click', function() {
+            document.querySelectorAll('#draft-project-list .col-md-4').forEach(function(project) {
+                project.style.display = 'block';
+            });
+            document.getElementById('show-all-btn').style.display = 'none';
+        });
         document.addEventListener("DOMContentLoaded", function() {
             setTimeout(function() {
                 var loading = document.getElementById("loading");

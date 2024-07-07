@@ -18,20 +18,27 @@ use Illuminate\Support\Facades\Log;
 
 class ProjectController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $user = Auth::user();
-        $allProjects = Project::with('tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana')
+        $search = $request->input('search');
+    
+        $allProjectsQuery = Project::with('tags', 'sdgs', 'indicators', 'metrics', 'targetPelanggan', 'dana')
             ->whereHas('company', function ($query) use ($user) {
                 $query->where('user_id', $user->id);
-            })
-            ->get();
-
+            });
+    
+        if ($search) {
+            $allProjectsQuery->where('nama', 'like', '%' . $search . '%');
+        }
+    
+        $allProjects = $allProjectsQuery->get();
         $ongoingProjects = $allProjects->where('status', 'Belum selesai');
         $completedProjects = $allProjects->where('status', 'Selesai');
-
-        return view('myproject.myproject', compact('allProjects', 'ongoingProjects', 'completedProjects'));
+    
+        return view('myproject.myproject', compact('allProjects', 'ongoingProjects', 'completedProjects', 'search'));
     }
+    
 
 
     public function create()

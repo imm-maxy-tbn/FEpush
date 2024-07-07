@@ -3,10 +3,10 @@
 
 @section('css')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-   
 
 
-  <style>
+
+    <style>
         body,
         html {
             font-family: "Roboto", sans-serif;
@@ -14,8 +14,8 @@
             padding-top: 30px;
         }
 
-        .form-control{
-    width: 60%;
+        .form-control {
+            width: 60%;
         }
 
         .btn-ungu{
@@ -60,7 +60,8 @@
             border-radius: 5px;
             margin-bottom: 20px;
             text-align: center;
-            flex: 0 0 30%; /* Three columns for desktop */
+            flex: 0 0 30%;
+            /* Three columns for desktop */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -117,13 +118,15 @@
 
         @media only screen and (max-width: 992px) {
             .blog-card {
-                flex: 0 0 48%; /* Two columns for tablets */
+                flex: 0 0 48%;
+                /* Two columns for tablets */
             }
         }
 
         @media only screen and (max-width: 768px) {
             .blog-card {
-                flex: 0 0 90%; /* Full width for mobile */
+                flex: 0 0 90%;
+                /* Full width for mobile */
                 padding: 15px;
             }
         }
@@ -131,7 +134,6 @@
 @endsection
 
 @section('content')
-<body>
 
     <div class="container mt-5">
         <h5 class="text-center mb-5"   style="margin-top: 70px">Temukan wawasan tentang dampak baru disini</h5>
@@ -158,12 +160,11 @@
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <script>
-        const backendUrl = @json($backendUrl);
-        const posts = @json($posts);
+        <script>
+            const backendUrl = @json($backendUrl);
+            const posts = @json($posts);
 
         document.addEventListener("DOMContentLoaded", function () {
     const blogContainer = document.getElementById("blogContainer");
@@ -265,23 +266,13 @@ function searchBlog() {
 
 
 
-        
-
-        function searchBlog() {
-            const input = document.getElementById("searchInput").value.toLowerCase();
-            const blogCards = document.querySelectorAll(".blog-card");
-
-            blogCards.forEach((card) => {
-                const title = card.querySelector("h3").textContent.toLowerCase();
-                const content = card.querySelector("p").textContent.toLowerCase();
-                if (title.includes(input) || content.includes(input)) {
-                    card.style.display = "block";
+                if (found) {
+                    noBlogsMessage.style.display = "none";
                 } else {
-                    card.style.display = "none";
+                    noBlogsMessage.style.display = "block";
                 }
-            });
-        }
-    </script>
-</body>
+            }
+        </script>
+    </body>
 
 @endsection
