@@ -20,7 +20,9 @@
             text-decoration: none;
             list-style-type: none;
         }
-
+        .navbar-nav{
+        margin: 0 20px;
+    }
         .navbar {
             background-color: #ffffff;
             color: #000000;

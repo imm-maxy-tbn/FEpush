@@ -11,6 +11,11 @@
             padding-top: 30px;
         }
 
+        .btn-ungu{
+            background-color: #5940cb;
+            color:white;
+        }
+
         .search-container {
             display: flex;
             justify-content: center;
@@ -135,7 +140,11 @@
             <!-- Event cards will be inserted here by JavaScript -->
         </div>
         <div class="pagination-container">
-            <p>Halaman <span id="currentPage">1</span> dari 123</p>
+            <button id="prevPageBtn" class="btn btn-secondary mr-2" disabled>Sebelumnya</button>
+<button id="nextPageBtn" class="btn btn-ungu">Berikutnya</button>
+<p class="ml-2 mt-3">Halaman <span id="currentPage">1</span> dari <span id="totalPages"></span></p>
+
+
         </div>
         <div class="subscribe-container d-flex flex-column align-items-center justify-content-center">
             <p>Jangan tertinggal artikel seputar gerakan berdampak!</p>
@@ -151,34 +160,94 @@
 
 
 
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/js/all.min.js"
-        integrity="sha512-mqKpeec0Hl6bZ7gTz04dVpW2uPtQ+rmJlKzUoeoaSY1Vp4iAAaYI+yMMYJqKQoJz4ygHji9m9ko96mMUpjMRZw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    
     <script>
         const backendUrl = @json($backendUrl);
         const events = @json($events);
 
         document.addEventListener("DOMContentLoaded", function() {
-            const eventContainer = document.getElementById("eventContainer");
+    const eventContainer = document.getElementById("eventContainer");
+    const eventsPerPage = 6; // Jumlah acara per halaman
+    const totalPages = Math.ceil(events.length / eventsPerPage); // Total halaman yang diperlukan
+    let currentPage = 1; // Halaman saat ini, diinisialisasi dengan 1
 
-            events.forEach((event) => {
-                const eventCard = document.createElement("div");
-                eventCard.className = "event-card";
-                eventCard.innerHTML = `
-                    <a href="/event/${event.id}" class="text-left">
-                        <div class="event-image" style="background-image: url(${event.cover_img});"></div>
-                        <h3>${event.title}</h3>
-                        <p>${event.description}</p>
-                    </a>
-                `;
-                eventContainer.appendChild(eventCard);
-            });
+    function showEvents(page) {
+        const startIndex = (page - 1) * eventsPerPage;
+        const endIndex = startIndex + eventsPerPage;
+        const currentEvents = events.slice(startIndex, endIndex);
 
-            document.getElementById("searchInput").addEventListener("input", searchEvent);
+        eventContainer.innerHTML = ''; // Mengosongkan kontainer acara sebelum menambahkan acara baru
+
+        currentEvents.forEach((event) => {
+            const eventCard = document.createElement("div");
+            eventCard.className = "event-card";
+            eventCard.innerHTML = `
+                <a href="/event/${event.id}" class="text-left">
+                    <div class="event-image" style="background-image: url(${event.cover_img});"></div>
+                    <h3>${event.title}</h3>
+                    <p>${event.description}</p>
+                </a>
+            `;
+            eventContainer.appendChild(eventCard);
         });
+
+        document.getElementById("currentPage").textContent = page; // Update halaman saat ini
+        currentPage = page; // Simpan halaman saat ini ke variabel global
+        updatePaginationButtons(); // Update status tombol navigasi
+    }
+
+    function updatePaginationButtons() {
+        document.getElementById("totalPages").textContent = totalPages; // Update teks total halaman
+
+        // Mengatur status tombol "Sebelumnya"
+        if (currentPage > 1) {
+            document.getElementById("prevPageBtn").disabled = false;
+        } else {
+            document.getElementById("prevPageBtn").disabled = true;
+        }
+
+        // Mengatur status tombol "Berikutnya"
+        if (currentPage < totalPages) {
+            document.getElementById("nextPageBtn").disabled = false;
+        } else {
+            document.getElementById("nextPageBtn").disabled = true;
+        }
+    }
+
+    // Tampilkan halaman pertama saat halaman dimuat
+    showEvents(1);
+
+    // Event listener untuk tombol "Berikutnya"
+    document.getElementById("nextPageBtn").addEventListener("click", function() {
+        if (currentPage < totalPages) {
+            showEvents(currentPage + 1);
+        }
+    });
+
+    // Event listener untuk tombol "Sebelumnya"
+    document.getElementById("prevPageBtn").addEventListener("click", function() {
+        if (currentPage > 1) {
+            showEvents(currentPage - 1);
+        }
+    });
+
+    document.getElementById("searchInput").addEventListener("input", searchEvent);
+});
+
+function searchEvent() {
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const eventCards = document.querySelectorAll(".event-card");
+
+    eventCards.forEach((card) => {
+        const title = card.querySelector("h3").textContent.toLowerCase();
+        const content = card.querySelector("p").textContent.toLowerCase();
+        if (title.includes(input) || content.includes(input)) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
 
         function searchEvent() {
             const input = document.getElementById("searchInput").value.toLowerCase();

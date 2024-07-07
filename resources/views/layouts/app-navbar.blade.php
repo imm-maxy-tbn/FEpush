@@ -30,7 +30,9 @@
             left: 0;
             z-index: 1000;
             border-bottom: 3px solid #5940cb;
-        }
+        } .navbar-nav{
+        margin: 0 20px;
+    }
 
         .nav-item {
             margin-right: 10px; /* Adjust margin between nav items */

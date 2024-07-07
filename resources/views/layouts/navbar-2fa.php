@@ -7,7 +7,9 @@
     font-size: 20px; /* Adjust navbar brand font size */
     font-weight: bold; /* Make navbar brand text bold */
 }
-
+.navbar-nav{
+        margin: 0 20px;
+    }
 .nav-link,
 .navbar-button {
     color: #000000;

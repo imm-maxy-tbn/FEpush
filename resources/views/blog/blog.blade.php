@@ -18,6 +18,11 @@
     width: 60%;
         }
 
+        .btn-ungu{
+            background-color: #5940cb;
+            color:white;
+        }
+
         .search-container {
             display: flex;
             justify-content: center;
@@ -138,7 +143,10 @@
             <!-- Blog cards will be inserted here by JavaScript -->
         </div>
         <div class="pagination-container">
-            <p>Halaman <span id="currentPage">1</span> dari 123</p>
+            <button id="prevPageBtn" class="btn btn-secondary mr-2" disabled>Sebelumnya</button>
+            <button id="nextPageBtn" class="btn btn-ungu">Berikutnya</button>
+            <p class="ml-2 mt-3">Halaman <span id="currentPage">1</span> dari <span id="totalPages"></span></p>
+
         </div>
         <div class="subscribe-container">
             <p>Jangan lewatkan artikel berdampak lainnya!</p>
@@ -158,23 +166,103 @@
         const posts = @json($posts);
 
         document.addEventListener("DOMContentLoaded", function () {
-            const blogContainer = document.getElementById("blogContainer");
+    const blogContainer = document.getElementById("blogContainer");
+    const postsPerPage = 6; // Jumlah post per halaman
+    const totalPages = Math.ceil(posts.length / postsPerPage); // Total halaman yang diperlukan
+    let currentPage = 1; // Halaman saat ini, diinisialisasi dengan 1
 
-            posts.forEach((post) => {
-                const blogCard = document.createElement("div");
-                blogCard.className = "blog-card";
-                blogCard.innerHTML = `
-                    <a href="/blogarticle/${post.id}/view" class="text-left">
-                        <div class="blog-image" style="background-image: url(${post.img});"></div>
-                        <h3 class="title ">${post.title}</h3>
-                        <p>${post.content}</p>
-                    </a>
-                `;
-                blogContainer.appendChild(blogCard);
-            });
+    function showPosts(page) {
+        const startIndex = (page - 1) * postsPerPage;
+        const endIndex = startIndex + postsPerPage;
+        const currentPosts = posts.slice(startIndex, endIndex);
 
-            document.getElementById("searchInput").addEventListener("input", searchBlog);
+        blogContainer.innerHTML = ''; // Mengosongkan kontainer blog sebelum menambahkan post baru
+
+        currentPosts.forEach((post) => {
+            const blogCard = document.createElement("div");
+            blogCard.className = "blog-card";
+            blogCard.innerHTML = `
+                <a href="/blogarticle/${post.id}/view" class="text-left">
+                    <div class="blog-image" style="background-image: url(${post.img});"></div>
+                    <h3 class="title ">${post.title}</h3>
+                    <p>${post.content}</p>
+                </a>
+            `;
+            blogContainer.appendChild(blogCard);
         });
+
+        document.getElementById("currentPage").textContent = page; // Update halaman saat ini
+        currentPage = page; // Simpan halaman saat ini ke variabel global
+        updatePaginationButtons(); // Update status tombol navigasi
+    }
+
+    function updatePaginationButtons() {
+        const totalPages = Math.ceil(posts.length / postsPerPage); // Hitung kembali total halaman berdasarkan jumlah post yang ada
+        document.getElementById("totalPages").textContent = totalPages; // Update teks total halaman
+
+        // Mengatur status tombol "Sebelumnya"
+        if (currentPage > 1) {
+            document.getElementById("prevPageBtn").disabled = false;
+        } else {
+            document.getElementById("prevPageBtn").disabled = true;
+        }
+
+        // Mengatur status tombol "Berikutnya"
+        if (currentPage < totalPages) {
+            document.getElementById("nextPageBtn").disabled = false;
+        } else {
+            document.getElementById("nextPageBtn").disabled = true;
+        }
+    }
+
+    // Tampilkan halaman pertama saat halaman dimuat
+    showPosts(1);
+
+    // Event listener untuk tombol "Berikutnya"
+    document.getElementById("nextPageBtn").addEventListener("click", function () {
+        if (currentPage < Math.ceil(posts.length / postsPerPage)) {
+            showPosts(currentPage + 1);
+        }
+    });
+
+    // Event listener untuk tombol "Sebelumnya"
+    document.getElementById("prevPageBtn").addEventListener("click", function () {
+        if (currentPage > 1) {
+            showPosts(currentPage - 1);
+        }
+    });
+
+    document.getElementById("searchInput").addEventListener("input", searchBlog);
+
+    // Fungsi untuk mengatur pagination
+    const paginationContainer = document.querySelector(".pagination-container");
+    for (let i = 1; i <= totalPages; i++) {
+       
+      
+        pageLink.textContent = i;
+        pageLink.addEventListener("click", function (event) {
+            event.preventDefault();
+            showPosts(i);
+        });
+        paginationContainer.appendChild(pageLink);
+    }
+});
+
+function searchBlog() {
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    const blogCards = document.querySelectorAll(".blog-card");
+
+    blogCards.forEach((card) => {
+        const title = card.querySelector("h3").textContent.toLowerCase();
+        const content = card.querySelector("p").textContent.toLowerCase();
+        if (title.includes(input) || content.includes(input)) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
 
 
         

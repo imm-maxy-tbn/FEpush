@@ -26,6 +26,19 @@ html {
         /* Set width to 100% on small screens */
         text-align: center;
     }
+   .blog-title {
+    font-size: 20px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: bold;
+    margin: 0 auto;
+    color: #000;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+    .content{
+        margin: 30px;
+    }
     .footer {
         width: 100%;
         left: 0;

@@ -52,12 +52,48 @@
                             </div>
                             <div class="form-group">
                                 <label for="provinsi">Provinsi</label>
-                                <input type="text" class="form-control" name="provinsi" id="provinsi"
-                                    placeholder="Provinsi">
+                                <select class="form-control" name="provinsi" id="provinsi" required>
+                                    <option value="" disabled selected>Pilih Provinsi</option>
+                                    <option value="name1">Aceh</option>
+                                    <option value="name2">Sumatera Utara</option>
+                                    <option value="name3">Sumatera Barat</option>
+                                    <option value="name4">Riau</option>
+                                    <option value="name5">Jambi</option>
+                                    <option value="name6">Sumatera Selatan</option>
+                                    <option value="name7">Bengkulu</option>
+                                    <option value="name8">Lampung</option>
+                                    <option value="name9">Kepulauan Bangka Belitung</option>
+                                    <option value="name10">Kepulauan Riau</option>
+                                    <option value="name11">DKI Jakarta</option>
+                                    <option value="name12">Jawa Barat</option>
+                                    <option value="name13">Jawa Tengah</option>
+                                    <option value="name14">DI Yogyakarta</option>
+                                    <option value="name15">Jawa Timur</option>
+                                    <option value="name16">Banten</option>
+                                    <option value="name17">Bali</option>
+                                    <option value="name18">Nusa Tenggara Barat</option>
+                                    <option value="name19">Nusa Tenggara Timur</option>
+                                    <option value="name20">Kalimantan Barat</option>
+                                    <option value="name21">Kalimantan Tengah</option>
+                                    <option value="name22">Kalimantan Selatan</option>
+                                    <option value="name23">Kalimantan Timur</option>
+                                    <option value="name24">Kalimantan Utara</option>
+                                    <option value="name25">Sulawesi Utara</option>
+                                    <option value="name26">Sulawesi Tengah</option>
+                                    <option value="name27">Sulawesi Selatan</option>
+                                    <option value="name28">Sulawesi Tenggara</option>
+                                    <option value="name29">Gorontalo</option>
+                                    <option value="name30">Sulawesi Barat</option>
+                                    <option value="name31">Maluku</option>
+                                    <option value="name32">Maluku Utara</option>
+                                    <option value="name33">Papua</option>
+                                    <option value="name34">Papua Barat</option>
+                                </select>
                             </div>
+                            
                             <div class="form-group">
-                                <label for="kota">Kota</label>
-                                <input type="text" class="form-control" name="kota" id="kota" placeholder="Kota">
+                                <label for="kota">Kota / Kabupaten</label>
+                                <input type="text" class="form-control" name="kota" id="kota" placeholder="Kota / Kabupaten" required>
                             </div>
                             <div class="form-group">
                                 <label for="gmaps">Google Maps URL:</label>
@@ -71,7 +107,7 @@
                                 <div class="form-group mt-3">
                                     <label for="jumlah_pendanaan">Jumlah Dana Keseluruhan</label>
                                     <input type="number" class="form-control" name="jumlah_pendanaan"
-                                        id="jumlah_pendanaan">
+                                        id="jumlah_pendanaan" required>
                                 </div>
                                 <label for="otherFunds">Pendanaan Lainnya</label>
 
@@ -149,7 +185,7 @@
                                                         name="target_pelanggans[0][rentang_usia]">
                                                 </td>
                                                 <td>
-                                                    <textarea class="form-control" name="target_pelanggans[0][deskripsi_pelanggan]"></textarea>
+                                                    <textarea class="form-control" name="target_pelanggans[0][deskripsi_pelanggan]" ></textarea>
                                                 </td>
                                             </tr>
                                         </tbody>
@@ -340,6 +376,66 @@
         <script src="{{ asset('js/imm/indicator.js') }}"></script>
         <script src="{{ asset('js/script.js') }}"></script>
         <script src="{{ asset('js/imm/pemilihansdgs.js') }}"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', (event) => {
+                const kotaInput = document.getElementById('kota');
+        
+                kotaInput.addEventListener('input', (event) => {
+                    const formattedValue = formatName(event.target.value);
+                    event.target.value = formattedValue;
+                });
+        
+                function formatName(name) {
+                    // Convert the input string to lowercase
+                    const lowercaseName = name.toLowerCase();
+                    // Split the string into words using space as the delimiter
+                    const words = lowercaseName.split(' ');
+                    // Capitalize the first letter of each word
+                    const formattedWords = words.map(word => word.charAt(0).toUpperCase() + word.slice(1));
+                    // Join the words back into a single string with spaces
+                    const formattedName = formattedWords.join(' ');
+                    return formattedName;
+                }
+            });
+        </script>
+        <script>
+            document.getElementById('next-to-sdg-section').addEventListener('click', function(event) {
+                // Prevent default button action
+                event.preventDefault();
+    
+                // Collect form elements
+                const formElements = [
+                    document.getElementById('nama'),
+                    document.getElementById('deskripsi'),
+                    document.getElementById('start_date'),
+                    document.getElementById('end_date'),
+                    document.getElementById('gmaps'),
+                    document.querySelector('select[name="dana[0][jenis_dana]"]'),
+                    document.querySelector('input[name="dana[0][nominal]"]'),
+                    document.querySelector('input[name="target_pelanggans[0][status]"]')
+                ];
+    
+                // Initialize form validity
+                let isValid = true;
+    
+                // Check each form element for validity
+                formElements.forEach(function(element) {
+                    if (!element.value) {
+                        isValid = false;
+                        element.classList.add('is-invalid');
+                    } else {
+                        element.classList.remove('is-invalid');
+                    }
+                });
+    
+                // If form is valid, submit the form or proceed to the next step
+                if (isValid) {
+                    alert('Form is valid. Proceeding to the next step.');
+                } else {
+                    alert('Please fill in all required fields.');
+                }
+            });
+        </script>
 
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
         <script>
@@ -766,7 +862,7 @@
                                 });
 
                                 // Update total pages based on response
-                                totalPages = response.last_page;
+                                totalPages = response.metrics;
 
                                 // Update pagination links
                                 updatePagination();
