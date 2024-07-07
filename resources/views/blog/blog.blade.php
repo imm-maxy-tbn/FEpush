@@ -3,10 +3,10 @@
 
 @section('css')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-   
 
 
-  <style>
+
+    <style>
         body,
         html {
             font-family: "Roboto", sans-serif;
@@ -14,8 +14,8 @@
             padding-top: 30px;
         }
 
-        .form-control{
-    width: 60%;
+        .form-control {
+            width: 60%;
         }
 
         .search-container {
@@ -55,7 +55,8 @@
             border-radius: 5px;
             margin-bottom: 20px;
             text-align: center;
-            flex: 0 0 30%; /* Three columns for desktop */
+            flex: 0 0 30%;
+            /* Three columns for desktop */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -112,13 +113,15 @@
 
         @media only screen and (max-width: 992px) {
             .blog-card {
-                flex: 0 0 48%; /* Two columns for tablets */
+                flex: 0 0 48%;
+                /* Two columns for tablets */
             }
         }
 
         @media only screen and (max-width: 768px) {
             .blog-card {
-                flex: 0 0 90%; /* Full width for mobile */
+                flex: 0 0 90%;
+                /* Full width for mobile */
                 padding: 15px;
             }
         }
@@ -126,74 +129,82 @@
 @endsection
 
 @section('content')
-<body>
 
-    <div class="container mt-5">
-        <h5 class="text-center mb-5"   style="margin-top: 70px">Temukan wawasan tentang dampak baru disini</h5>
-        <div class="search-container">
-            <input type="text" class="form-control" placeholder="Cari disini" id="searchInput">
-            <button onclick="searchBlog()" class="btn-search"><i class="fas fa-search"></i></button>
-        </div>
-        <div class="row mt-5" id="blogContainer">
-            <!-- Blog cards will be inserted here by JavaScript -->
-        </div>
-        <div class="pagination-container">
-            <p>Halaman <span id="currentPage">1</span> dari 123</p>
-        </div>
-        <div class="subscribe-container">
-            <p>Jangan lewatkan artikel berdampak lainnya!</p>
-            <p class="mt-2 mb-2"><strong>Langganan melalui e-mail sekarang GRATIS</strong></p>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Masukkan e-mail anda disini">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button"><i class="fas fa-envelope"></i></button>
+    <body>
+
+        <div class="container mt-5">
+            <h5 class="text-center mb-5" style="margin-top: 70px">Temukan wawasan tentang dampak baru disini</h5>
+            <div class="search-container">
+                <input type="text" class="form-control" placeholder="Cari disini" id="searchInput">
+                <button onclick="searchBlog()" class="btn-search"><i class="fas fa-search"></i></button>
+            </div>
+            <div class="row mt-5" id="blogContainer">
+                <!-- Blog cards will be inserted here by JavaScript -->
+            </div>
+            <p id="noBlogsMessage" class="text-center mt-3" style="display: none;">Blog tidak ditemukan</p>
+            <div class="pagination-container">
+                <p>Halaman <span id="currentPage">1</span> dari 123</p>
+            </div>
+            <div class="subscribe-container">
+                <p>Jangan lewatkan artikel berdampak lainnya!</p>
+                <p class="mt-2 mb-2"><strong>Langganan melalui e-mail sekarang GRATIS</strong></p>
+                <div class="input-group mb-3">
+                    <input type="text" class="form-control" placeholder="Masukkan e-mail anda disini">
+                    <div class="input-group-append">
+                        <button class="btn btn-primary" type="button"><i class="fas fa-envelope"></i></button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <script>
-        const backendUrl = @json($backendUrl);
-        const posts = @json($posts);
+        <script>
+            const backendUrl = @json($backendUrl);
+            const posts = @json($posts);
 
-        document.addEventListener("DOMContentLoaded", function () {
-            const blogContainer = document.getElementById("blogContainer");
+            document.addEventListener("DOMContentLoaded", function() {
+                const blogContainer = document.getElementById("blogContainer");
 
-            posts.forEach((post) => {
-                const blogCard = document.createElement("div");
-                blogCard.className = "blog-card";
-                blogCard.innerHTML = `
+                posts.forEach((post) => {
+                    const blogCard = document.createElement("div");
+                    blogCard.className = "blog-card";
+                    blogCard.innerHTML = `
                     <a href="/blogarticle/${post.id}/view" class="text-left">
                         <div class="blog-image" style="background-image: url(${post.img});"></div>
                         <h3 class="title ">${post.title}</h3>
                         <p>${post.content}</p>
                     </a>
                 `;
-                blogContainer.appendChild(blogCard);
+                    blogContainer.appendChild(blogCard);
+                });
+
+                document.getElementById("searchInput").addEventListener("input", searchBlog);
             });
 
-            document.getElementById("searchInput").addEventListener("input", searchBlog);
-        });
+            function searchBlog() {
+                const input = document.getElementById("searchInput").value.toLowerCase();
+                const blogCards = document.querySelectorAll(".blog-card");
+                const noBlogsMessage = document.getElementById("noBlogsMessage");
+                let found = false;
 
+                blogCards.forEach((card) => {
+                    const title = card.querySelector("h3").textContent.toLowerCase();
+                    const content = card.querySelector("p").textContent.toLowerCase();
+                    if (title.includes(input) || content.includes(input)) {
+                        card.style.display = "block";
+                        found = true;
+                    } else {
+                        card.style.display = "none";
+                    }
+                });
 
-        
-
-        function searchBlog() {
-            const input = document.getElementById("searchInput").value.toLowerCase();
-            const blogCards = document.querySelectorAll(".blog-card");
-
-            blogCards.forEach((card) => {
-                const title = card.querySelector("h3").textContent.toLowerCase();
-                const content = card.querySelector("p").textContent.toLowerCase();
-                if (title.includes(input) || content.includes(input)) {
-                    card.style.display = "block";
+                if (found) {
+                    noBlogsMessage.style.display = "none";
                 } else {
-                    card.style.display = "none";
+                    noBlogsMessage.style.display = "block";
                 }
-            });
-        }
-    </script>
-</body>
+            }
+        </script>
+    </body>
 
 @endsection
