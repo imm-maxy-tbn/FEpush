@@ -141,7 +141,7 @@
             <div class="row mt-5" id="blogContainer">
                 <!-- Blog cards will be inserted here by JavaScript -->
             </div>
-            <p id="noBlogsMessage" class="text-center mt-3" style="display: none;">Blog tidak ditemukan</p>
+            <p id="noBlogsMessage" class="text-center mt-3" style="display: none;"> Artikel tidak ditemukan</p>
             <div class="pagination-container">
                 <p>Halaman <span id="currentPage">1</span> dari 123</p>
             </div>
