@@ -160,8 +160,8 @@ input[type="number"] {
 <body>
 
     <div class="container" style="padding-top: 120px"> 
-       <a href="homepage"> <h4 class=" d-flex align-items-center"><strong style="font-size: 40px;"><</strong>   Kelola Pengeluaran</h4></a>
-        <span class="biaya">Detail Biaya</span>
+       <a href="homepage"> <h4 class=" d-flex align-items-center"><strong style="font-size: 40px;"><</strong>   Pengelolaan Dana</h4></a>
+        <span class="biaya">Dana Hibah</span>
     </div>
 
     <div class="container">
@@ -190,7 +190,7 @@ input[type="number"] {
     </div>
 
     <div class="container my-4 d-flex justify-content-between align-items-center">
-        <span class="biaya">Biaya investasi proyek</span>
+        <span class="biaya">Rancangan pengeluaran Proyek</span>
         <form id="search-form" class="form-inline" method="GET" action="{{ route('kelola-pengeluaran') }}">
             <input type="text" name="search" class="form-control" placeholder="Cari nama proyek anda" value="{{ request('search') }}">
         </form>

@@ -178,6 +178,7 @@ input[type="number"] {
                     <tr>
                         <th>Tanggal</th>
                         <th>Jumlah Biaya</th>
+                        <th>Kategori</th>
                         <th>Keterangan</th>
                         <th>Bukti</th>
 
@@ -188,6 +189,7 @@ input[type="number"] {
                         <tr>
                             <td>{{ $outcome->date }}</td>
                             <td>Rp{{ number_format($outcome->jumlah_biaya, 0, ',', '.') }}</td>
+                            <td>{{ $outcome->category }}</td>
                             <td>{{ $outcome->keterangan }}</td>
                             <td>
                                 <span href="" data-toggle="modal" style="cursor: pointer"

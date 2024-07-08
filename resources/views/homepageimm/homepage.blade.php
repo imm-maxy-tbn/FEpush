@@ -363,8 +363,8 @@ h4 {
         <div class="box1">
             <div class="balance-card">
                 <i class="fas fa-wallet mb-3"></i>
-                <span class="total-text">Total Balance</span>
-                <span class="price" id="totalBalance">Rp.{{ number_format($totalBalance, 0, ',', '.') }}</span>
+                <span class="total-text">Total Hibah</span>
+                <span class="price" id="totalBalance">Rp{{ number_format($totalBalance, 0, ',', '.') }}</span>
             </div>
         </div>
         <div class="box2">
@@ -372,8 +372,8 @@ h4 {
                 <div class="w-100 d-flex justify-content-between">
                     <i class="fas fa-chart-line mb-3"></i>
                 </div>
-                <span>Total Outcome</span>
-                <span class="price" id="totalOutcome">Rp.{{ number_format($totalOutcome, 0, ',', '.') }}</span>
+                <span>Total Pengeluaran Hibah</span>
+                <span class="price" id="totalOutcome">Rp{{ number_format($totalOutcome, 0, ',', '.') }}</span>
             </div>
         </div>
     </div>
