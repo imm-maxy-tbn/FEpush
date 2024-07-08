@@ -528,7 +528,7 @@
                         </div>
                         <div class="form-group">
                             <label for="phone">Nomor Telepon</label>
-                            <input type="number" id="phone" name="telepon" placeholder="Isi disini" required />
+                            <input type="number" id="telepon" name="telepon" placeholder="Isi disini" required />
                         </div>
                     </div>
                     <div class="form-row">
@@ -627,7 +627,16 @@
             // Hanya memperbolehkan angka 0-9
             this.value = this.value.replace(/[^0-9]/g, '');
         });
-
+        document.getElementById('telepon').addEventListener('input', function (event) {
+            // Hanya memperbolehkan angka 0-9
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+        document.getElementById('telepon').addEventListener('keypress', function (event) {
+            // Mencegah masukan selain angka
+            if (!/\d/.test(event.key)) {
+                event.preventDefault();
+            }
+        });
         document.getElementById('nik').addEventListener('keypress', function (event) {
             // Mencegah masukan selain angka
             if (!/\d/.test(event.key)) {

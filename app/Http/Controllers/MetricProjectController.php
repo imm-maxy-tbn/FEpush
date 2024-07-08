@@ -96,47 +96,35 @@ class MetricProjectController extends Controller
     }
 
     public function addReport($projectId, $metricProjectId)
-    {
-        $project = Project::findOrFail($projectId);
-        $metricProject = MetricProject::findOrFail($metricProjectId);
-    
-        // Fetch report metrics (where report_month and report_year are not null)
-        $reportMetricProjects = $project->metricProjects()->whereNotNull('report_month')->whereNotNull('report_year')->get();
-    
-        // Fetch monthly report data
-        $monthlyReports = MetricProject::selectRaw('report_month, report_year, SUM(value) as total_value')
-            ->where('project_id', $projectId)
-            ->whereNotNull('report_month')
-            ->whereNotNull('report_year')
-            ->groupBy('report_year', 'report_month')
-            ->orderBy('report_year')
-            ->orderBy('report_month')
-            ->get();
-    
-        // Transform the data for the chart
-        $labels = $monthlyReports->map(function ($report) {
-            $months = [
-                1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April',
-                5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August',
-                9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December'
-            ];
-            $monthName = $months[$report->report_month];
-            return $monthName . '/' . $report->report_year;
-        });
-    
-        $values = $monthlyReports->pluck('total_value');
-        // Create chart
-        $chart = new MonthlyReportChart;
-        $chart->labels($labels);
-        $chart->dataset('Total Values', 'bar', $values)
-            ->color('#5940CB')
-            ->backgroundcolor('#5940CB');
-    
-        // Fetch matrix reports
-        $matrixReports = MatrixReport::where('project_id', $projectId)->get();
-    
-        return view('myproject.impact', compact('project', 'metricProject', 'chart', 'reportMetricProjects', 'matrixReports'));
+{
+    $project = Project::findOrFail($projectId);
+    $metricProject = MetricProject::findOrFail($metricProjectId);
+
+    // Fetch latest report for the metric project
+    $latestReport = MetricProject::where('metric_project_id', $metricProjectId)
+                                 ->orderBy('report_year', 'desc')
+                                 ->orderBy('report_month', 'desc')
+                                 ->first();
+
+    if ($latestReport) {
+        $nextMonth = $latestReport->report_month;
+        $nextYear = $latestReport->report_year;
+
+        // Increment month and adjust year if necessary
+        if ($nextMonth == 12) {
+            $nextMonth = 1;
+            $nextYear++;
+        } else {
+            $nextMonth++;
+        }
+    } else {
+        $nextMonth = $metricProject->created_at->month;
+        $nextYear = $metricProject->created_at->year;
     }
+
+    return view('myproject.impact', compact('project', 'metricProject', 'nextMonth', 'nextYear'));
+}
+
     
 
     public function storeReport(Request $request, $projectId, $metricProjectId)
@@ -159,10 +147,7 @@ class MetricProjectController extends Controller
                 'report_year' => $validatedData['report_year'],
                 'metric_project_id' => $metricProject->id,
             ]);
-
-
-            // Optionally, if you want to redirect back to the project impact page with a success message
-            return redirect()->route('metric-projects.addReport', ['project' => $project->id, 'metricProject' => $metricProjectId])->with('success', 'Metric report added successfully.');
+            return redirect()->route('myproject.detail', ['id' => $project->id])->with('success', 'Metric report added successfully.');
         } catch (\Exception $e) {
             // Return JSON response for debugging purposes
             return response()->json([
@@ -292,41 +277,41 @@ class MetricProjectController extends Controller
         return view('myproject.creatproject.matrixreport', compact('project', 'metricProject', 'chart', 'matrixReports'));
     }
 
-    public function createMatrixReport($projectId)
+
+    public function createMatrixReport($projectId, $metricId, $metricProjectId)
     {
         $project = Project::findOrFail($projectId);
-        $metricProject = MetricProject::where('project_id', $projectId)->firstOrFail();
-    
-        // Ambil data laporan bulanan
-        $monthlyReports = MetricProject::selectRaw('report_month, report_year, SUM(value) as total_value')
-            ->where('project_id', $projectId)
-            ->whereNotNull('report_month')
-            ->whereNotNull('report_year')
-            ->groupBy('report_year', 'report_month')
-            ->orderBy('report_year')
-            ->orderBy('report_month')
-            ->get();
-    
-        // Transformasi data untuk grafik
-        $labels = $monthlyReports->map(function ($report) {
-            $months = [
-                1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April',
-                5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August',
-                9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December'
-            ];
-            $monthName = $months[$report->report_month];
-            return $monthName . '/' . $report->report_year;
-        });
-    
-        $values = $monthlyReports->pluck('total_value');
-    
-        // Buat grafik
-        $chart = new MonthlyReportChart;
-        $chart->labels($labels);
-        $chart->dataset('Total Values', 'bar', $values)
-            ->color('#5940CB')
-            ->backgroundcolor('#5940CB');
-    
+
+        $metricProject = MetricProject::where('project_id', $projectId)
+                                      ->where('metric_id', $metricId)
+                                      ->where('id', $metricProjectId)
+                                      ->firstOrFail();
+ 
+        $dataPoints = MetricProject::where('project_id', $projectId)
+                                    ->where('metric_id', $metricId)
+                                    ->where('metric_project_id', $metricProjectId)
+                                    ->orderBy('report_year', 'asc')
+                                    ->orderBy('report_month', 'asc')
+                                    ->get();
+
+        $chart = new MonthlyReportChart();
+        if ($dataPoints->isNotEmpty()) {
+            $labels = $dataPoints->map(function ($data) {
+                return $this->formatMonth($data->report_month) . ' ' . $data->report_year;
+            });
+            $values = $dataPoints->pluck('value');
+
+            $chart->labels($labels);
+            $chart->dataset('Metric Values', 'line', $values)
+                  ->color('#007bff')
+                  ->backgroundcolor('rgba(0, 123, 255, 0.5)');
+        } else {
+            $chart->labels([]);
+            $chart->dataset('Metric Values', 'line', [])
+                  ->color('#007bff')
+                  ->backgroundcolor('rgba(0, 123, 255, 0.5)');
+        }
+
         return view('myproject.creatproject.add_matrixreport', compact('project', 'metricProject', 'chart'));
     }
     
@@ -337,60 +322,60 @@ class MetricProjectController extends Controller
             'evaluation' => 'required|string',
             'analysis' => 'required|string',
         ]);
-    
+
         MatrixReport::create([
             'project_id' => $projectId,
             'metric_id' => $validatedData['metric_id'],
             'evaluation' => $validatedData['evaluation'],
             'analysis' => $validatedData['analysis'],
         ]);
-    
-        return back()->with('success', 'Matrix report created successfully.');
+
+        return redirect()->route('myproject.detail', $projectId)->with('success', 'Matrix report created successfully.');
     }
     
-    public function showReport($projectId, $metricId, $reportId)
+    public function showReport($projectId, $metricId, $reportId, $metricProjectId)
     {
         $project = Project::findOrFail($projectId);
-        $metricProject = MetricProject::findOrFail($reportId);
     
-        // Ambil data laporan bulanan
-        $monthlyReports = MetricProject::selectRaw('report_month, report_year, SUM(value) as total_value')
-            ->where('project_id', $projectId)
-            ->whereNotNull('report_month')
-            ->whereNotNull('report_year')
-            ->groupBy('report_year', 'report_month')
-            ->orderBy('report_year')
-            ->orderBy('report_month')
-            ->get();
+        $metricProject = MetricProject::where('project_id', $projectId)
+                                      ->where('metric_id', $metricId)
+                                      ->where('id', $metricProjectId)
+                                      ->firstOrFail();
     
-        // Transformasi data untuk grafik
-        $labels = $monthlyReports->map(function ($report) {
-            $months = [
-                1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April',
-                5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August',
-                9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December'
-            ];
-            $monthName = $months[$report->report_month];
-            return $monthName . '/' . $report->report_year;
-        });
+        $dataPoints = MetricProject::where('project_id', $projectId)
+                                    ->where('metric_id', $metricId)
+                                    ->where('metric_project_id', $metricProjectId)
+                                    ->orderBy('report_year', 'asc')
+                                    ->orderBy('report_month', 'asc')
+                                    ->get();
     
-        $values = $monthlyReports->pluck('total_value');
+        $chart = new MonthlyReportChart();
+        if ($dataPoints->isNotEmpty()) {
+            $labels = $dataPoints->map(function ($data) {
+                return $this->formatMonth($data->report_month) . ' ' . $data->report_year;
+            });
+            $values = $dataPoints->pluck('value');
     
-        // Buat grafik
-        $chart = new MonthlyReportChart;
-        $chart->labels($labels);
-        $chart->dataset('Total Values', 'bar', $values)
-            ->color('#5940CB')
-            ->backgroundcolor('#5940CB');
+            $chart->labels($labels);
+            $chart->dataset('Metric Values', 'line', $values)
+                  ->color('#007bff')
+                  ->backgroundcolor('rgba(0, 123, 255, 0.5)');
+        } else {
+            $chart->labels([]);
+            $chart->dataset('Metric Values', 'line', [])
+                  ->color('#007bff')
+                  ->backgroundcolor('rgba(0, 123, 255, 0.5)');
+        }
     
-        // Ambil detail laporan matrix
         $matrixReport = MatrixReport::where('project_id', $projectId)
-            ->where('metric_id', $metricId)
-            ->where('id', $reportId)
-            ->first();
+                                    ->where('metric_id', $metricId)
+                                    ->where('id', $reportId)
+                                    ->firstOrFail();
     
         return view('myproject.creatproject.show_matrixreport', compact('project', 'metricProject', 'chart', 'matrixReport'));
     }
+    
+    
     
     public function updateMatrixReport(Request $request, $projectId, $reportId)
     {
@@ -417,4 +402,69 @@ class MetricProjectController extends Controller
         return view('myproject.impact', compact('project', 'matrixReports'));
     }
     
+
+public function showMetricImpact($projectId, $metricId, $metricProjectId)
+{
+    $project = Project::findOrFail($projectId);
+    $metricProject = MetricProject::where('project_id', $projectId)
+                                  ->where('metric_id', $metricId)
+                                  ->where('id', $metricProjectId)
+                                  ->firstOrFail();
+
+    // Fetching data to plot the chart
+    $dataPoints = MetricProject::where('project_id', $projectId)
+                               ->where('metric_id', $metricId)
+                               ->where('metric_project_id', $metricProjectId)
+                               ->orderBy('report_year', 'asc')
+                               ->orderBy('report_month', 'asc')
+                               ->get();
+
+    $chart = new MonthlyReportChart();
+    if ($dataPoints->isNotEmpty()) {
+        $labels = $dataPoints->map(function ($data) {
+            return $this->formatMonth($data->report_month) . ' ' . $data->report_year;
+        });
+        $values = $dataPoints->pluck('value');
+
+        $chart->labels($labels);
+        $chart->dataset('Metric Values', 'line', $values)
+              ->color('#007bff')
+              ->backgroundcolor('rgba(0, 123, 255, 0.5)');
+    } else {
+        // Ensure chart container is initialized even without data
+        $chart->labels([]);
+        $chart->dataset('Metric Values', 'line', [])
+              ->color('#007bff')
+              ->backgroundcolor('rgba(0, 123, 255, 0.5)');
+    }
+
+    // Determine the latest month and year
+    $latestEntry = $dataPoints->last();
+    $nextMonth = $latestEntry ? $latestEntry->report_month + 1 : now()->month;
+    $nextYear = $latestEntry ? $latestEntry->report_year : now()->year;
+
+    if ($nextMonth > 12) {
+        $nextMonth = 1;
+        $nextYear += 1;
+    }
+
+    // Pass the calculation method to the view
+    $calculation = $metricProject->metric->calculation;
+
+    $matrixReports = MatrixReport::where('project_id', $projectId)
+                                 ->where('metric_id', $metricId)
+                                 ->get();
+
+
+    return view('myproject.impact', compact('project', 'metricProject', 'chart', 'nextMonth', 'nextYear', 'calculation', 'matrixReports'));
+}
+
+    
+    private function formatMonth($month)
+    {
+        $months = [1 => 'January', 2 => 'February', 3 => 'March', 4 => 'April',
+                   5 => 'May', 6 => 'June', 7 => 'July', 8 => 'August',
+                   9 => 'September', 10 => 'October', 11 => 'November', 12 => 'December'];
+        return $months[$month] ?? 'Unknown';
+    }    
 }
