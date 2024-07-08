@@ -5,153 +5,148 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
     * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    text-decoration: none;
-    list-style-type: none;
-}
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        text-decoration: none;
+        list-style-type: none;
+    }
 
-.tabel {
-    background-color: #F7F6FB;
-    border-radius: 5px;
-}
+    .tabel {
+        background-color: #F7F6FB;
+        border-radius: 5px;
+    }
 
-.btn-unggah {
-    width: 136px;
-    height: 35px;
-    background-color: #5940CB;
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
+    .btn-unggah {
+        width: 136px;
+        height: 35px;
+        background-color: #5940CB;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
 
-.btn-tambah {
-    width: 156px;
-    height: 35px;
-    background-color: #5940CB;
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
+    .btn-tambah {
+        width: 156px;
+        height: 35px;
+        background-color: #5940CB;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
 
-.btn-tambahdana {
-    width: 246px;
-    height: 35px;
-    background-color: #5940CB;
-    color: white;
-    border: none;
-    border-radius: 5px;
-}
+    .btn-tambahdana {
+        width: 246px;
+        height: 35px;
+        background-color: #5940CB;
+        color: white;
+        border: none;
+        border-radius: 5px;
+    }
 
-.form-control {
-    width: 298px;
-}
+    .form-control {
+        width: 298px;
+    }
 
-.biaya {
-    font-size: 24px;
-}
+    .biaya {
+        font-size: 24px;
+    }
 
-a {
-    color: black;
-}
+    a {
+        color: black;
+    }
 
-a:hover {
-    color: black;
-    text-decoration: none;
-}
+    a:hover {
+        color: black;
+        text-decoration: none;
+    }
 
-input[type="date"] {
-    width: 274px;
-}
+    input[type="date"] {
+        width: 274px;
+    }
 
-input[type="number"] {
-    width: 274px;
-}
+    input[type="number"] {
+        width: 274px;
+    }
 
-.upload-container input[type="file"] {
-    display: none;
-}
+    .upload-container input[type="file"] {
+        display: none;
+    }
 
-.upload-container button {
-    margin-right: 10px;
-    padding: 10px 20px;
-    border: none;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    border-radius: 5px;
-}
+    .upload-container button {
+        margin-right: 10px;
+        padding: 10px 20px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        cursor: pointer;
+        border-radius: 5px;
+    }
 
-.upload-container .file-name {
-    font-size: 14px;
-    color: #333;
-}
+    .upload-container .file-name {
+        font-size: 14px;
+        color: #333;
+    }
 
-.btn-keluar {
-    width: 183px;
-    height: 35px;
-    background-color: white;
-    border: 2px solid #5940cb;
-    border-radius: 7px;
-}
+    .btn-keluar {
+        width: 183px;
+        height: 35px;
+        background-color: white;
+        border: 2px solid #5940cb;
+        border-radius: 7px;
+    }
 
-.btn-masuk {
-    width: 183px;
-    height: 35px;
-    background-color: #5940cb;
-    color: white;
-    border: none;
-    border-radius: 7px;
-}
+    .btn-masuk {
+        width: 183px;
+        height: 35px;
+        background-color: #5940cb;
+        color: white;
+        border: none;
+        border-radius: 7px;
+    }
 
-.modal-content {
-    width: 699px;
-    height: 253px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+    .modal-content {
+        width: 699px;
+        height: 253px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-.modal-body {
-    gap: 20px;
-    margin: 0 51px;
-    height: 100%;
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    flex-direction: column;
-}
+    .modal-body {
+        gap: 20px;
+        margin: 0 51px;
+        height: 100%;
+        display: flex;
+        align-items: start;
+        justify-content: center;
+        flex-direction: column;
+    }
 
-.btnn {
-    display: flex;
-    align-content: center;
-    justify-content: space-around;
-    width: 100%;
-}
+    .btnn {
+        display: flex;
+        align-content: center;
+        justify-content: space-around;
+        width: 100%;
+    }
 
+    /* Custom styles for the modal */
+    .modal-body {
+        max-height: 700px;
+        overflow-y: auto;
+    }
 
-/* Custom styles for the modal */
+    .list-group {
+        display: flex;
+        justify-content: center;
+        width: 400px;
+    }
 
-.modal-body {
-    max-height: 700px;
-    /* Adjust the height as needed */
-    overflow-y: auto;
-    ;
-}
-
-.list-group {
-    display: flex;
-    justify-content: center;
-    width: 400px;
-}
-
-.list-group-item {
-    display: flex;
-    justify-content: center;
-    font-size: 14px;
-    /* Adjust the font size as needed */
-}
+    .list-group-item {
+        display: flex;
+        justify-content: center;
+        font-size: 14px;
+    }
 </style>
 
 @endsection
@@ -181,7 +176,7 @@ input[type="number"] {
         </div>
     </div>
 
-    <table class="table mt-3 text-center">
+    <table class="table mt-3 text-center border">
         <thead>
             <tr>
                 <th>Tanggal</th>
@@ -191,7 +186,12 @@ input[type="number"] {
                 <th>Bukti</th>
             </tr>
         </thead>
-        <tbody id="outcome-list">
+        <tbody id="outcome-list ">
+            @if ($outcomes->isEmpty())
+            <tr>
+                <td colspan="5">Belum ada detail penggunaan dana.</td>
+            </tr>
+            @else
             @foreach ($outcomes as $outcome)
             <tr>
                 <td>{{ $outcome->date }}</td>
@@ -205,6 +205,7 @@ input[type="number"] {
                 </td>
             </tr>
             @endforeach
+            @endif
         </tbody>
     </table>
 
