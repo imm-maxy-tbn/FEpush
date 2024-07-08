@@ -322,7 +322,7 @@
                     <ul class="list-group mt-3 scrollable" id="metricsList">
                         @foreach ($initialMetricProjects as $metricProject)
                             <li class="list-group-item">
-                                <a href="{{ route('metric-projects.addReport', [$project->id, $metricProject->id]) }}"
+                                <a href="{{ route('metric-impact.show', ['projectId' => $project->id, 'metricId' => $metricProject->metric_id, 'metricProjectId' => $metricProject->id]) }}"
                                     class="text-dark metric-item">{{ $metricProject->metric->name }}</a>
                             </li>
                         @endforeach

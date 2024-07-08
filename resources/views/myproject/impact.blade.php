@@ -174,7 +174,7 @@
                 <div class="col-md-6">
                     <div class="section-title">Input Data Matrix</div>
                     <div class="form-section mt-2">
-                        <form action="{{ route('metric-projects.storeReport', [$project->id, $metricProject->id]) }}" method="POST">
+                        <form id="metricForm" action="{{ route('metric-projects.storeReport', [$project->id, $metricProject->id]) }}" method="POST">
                             @csrf
                             <div class="form-group">
                                 <label for="nilaiData">Nilai Data</label>
@@ -182,36 +182,55 @@
                                     value="{{ old('value') }}" placeholder="Masukkan nilai disini">
                             </div>
                             <div class="form-group">
-                                <label for="bulan">Bulan</label>
+                                <label for="report_month">Bulan</label>
                                 <input type="number" name="report_month" id="report_month" class="form-control"
-                                    value="{{ old('report_month') }}" placeholder="Masukan bulan disini">
+                                    value="{{ $nextMonth }}" readonly>
                             </div>
                             <div class="form-group">
-                                <label for="tahun">Tahun</label>
+                                <label for="report_year">Tahun</label>
                                 <input type="number" name="report_year" id="report_year" class="form-control"
-                                    value="{{ old('report_year') }}" placeholder="Masukkan tahun disini">
+                                    value="{{ $nextYear }}" readonly>
                             </div>
-                            <button type="submit" class="btn-save-custom" data-toggle="modal"
+                            <button type="button" class="btn-save-custom" data-toggle="modal"
                                 data-target="#confirmationModal">Simpan Data</button>
                         </form>
+                        <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content shadow">
+                                    <div class="modal-body">
+                                        <h5 class="modal-title" id="confirmationModalLabel">Apakah data sudah benar?</h5>
+                                        <p class="text-muted">Note: Data yang anda tambahkan tidak bisa diubah kembali, pastikan semua input
+                                            data sudah benar</p>
+                                        <div class="btnn">
+                                            <button type="button" class="btn btn-keluar" id="confirmUpdate">Belum, cek kembali</button>
+                                            <button type="submit" form="metricForm" class="btn btn-masuk">Ya, sudah benar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="section-title">Cara Hitung Matrix</div>
                     <div class="form-section mt-2">
-                        <p>Read the matrix description and calculate your value, fill in the order based on the month of your development, if there is no calculation there is no need to enter a value</p>
+                        @if(!empty($calculation))
+                            <p>{{ $calculation }}</p>
+                        @else
+                            <p>Silahkan baca deskripsi matrix. Masukkan value sesuai dengan arahan deskripsi matrix</p>
+                        @endif
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
 <div class="container mt-5">
     <h3 class="text-center mt-3">Perkembangan Matrix</h3>
-    <div>
-        {!! $chart->container() !!}
-    </div>
+    <div>{!! $chart->container() !!}</div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    {!! $chart->script() !!}
 </div>
 
 <div class="container mt-5 survey-support-container">
@@ -221,9 +240,9 @@
 
 <div class="container mt-5 matrix-report-container">
     <h3>Matrix Report</h3>
-    <a href="{{ route('metric-projects.createMatrixReport', $project->id) }}" class="btn add-report-btn">Tambah Laporan</a>
+    <a href="{{ route('metric-projects.createMatrixReport', ['projectId' => $project->id, 'metricId' => $metricProject->metric_id, 'metricProjectId' => $metricProject->id]) }}" class="btn add-report-btn">Tambah Laporan</a>
     @foreach($matrixReports as $report)
-        <a href="{{ route('metric-projects.showReport', ['projectId' => $project->id, 'metricId' => $report->metric_id, 'reportId' => $report->id]) }}">
+    <a href="{{ route('metric-projects.showReport', ['projectId' => $project->id, 'metricId' => $report->metric_id, 'reportId' => $report->id, 'metricProjectId' => $metricProject->id]) }}">
             <div class="file-report mt-4">
                 <div class="file-item-report text-center">
                     <i class="fas fa-file-alt fa-3x"></i>
@@ -235,27 +254,9 @@
 </div>
 
 
-<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
-    aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered">
-        <div class="modal-content shadow">
-            <div class="modal-body">
-                <h5 class="modal-title" id="confirmationModalLabel">Apakah data sudah benar?</h5>
-                <p class="text-muted">Note: Data yang anda tambahkan tidak bisa diubah kembali, pastikan semua input
-                    data sudah benar</p>
-                <div class="btnn">
-                    <button type="button" class="btn btn-keluar" id="confirmUpdate">Belum, cek kembali</button>
-                    <button type="button" class="btn btn-masuk" data-dismiss="modal">Ya, sudah benar</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-{!! $chart->script() !!}
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="{{ asset('js/myproject/impact.js') }}"></script>
+
 @endsection

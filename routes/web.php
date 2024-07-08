@@ -130,19 +130,20 @@ Route::middleware(['auth'])->group(function () {
 
 
 // Rute untuk menampilkan form kosong untuk menambahkan laporan baru
-Route::get('metric-projects/{projectId}/matrixreport/create', [MetricProjectController::class, 'createMatrixReport'])->name('metric-projects.createMatrixReport');
+Route::get('/metric-projects/{projectId}/matrixreport/create/{metricId}/{metricProjectId}', [MetricProjectController::class, 'createMatrixReport'])->name('metric-projects.createMatrixReport');
+Route::post('/metric-projects/{projectId}/matrixreport', [MetricProjectController::class, 'storeMatrixReport'])->name('metric-projects.storeMatrixReport');
 
-// Rute untuk menyimpan laporan baru
-Route::post('metric-projects/{projectId}/matrixreport', [MetricProjectController::class, 'storeMatrixReport'])->name('metric-projects.storeMatrixReport');
+Route::get('/metric-projects/{projectId}/matrixreport/{metricId}/{reportId}/{metricProjectId}', [MetricProjectController::class, 'showReport'])->name('metric-projects.showReport');
+Route::get('/projects/{id}', [ProjectController::class, 'view'])->name('myproject.detail');
 
+Route::get('/project/{projectId}/metric/{metricId}/metricProject/{metricProjectId}/impact', [MetricProjectController::class, 'showMetricImpact'])->name('metric-impact.show');
 // Rute untuk menampilkan laporan yang sudah ada
-Route::get('metric-projects/{projectId}/metric/{metricId}/report/{reportId}', [MetricProjectController::class, 'showReport'])->name('metric-projects.showReport');
 
 // Rute untuk menampilkan halaman matrixreport (menampilkan laporan yang sudah ada)
 Route::get('/metric-projects/{id}/matrixreport', [MetricProjectController::class, 'matrixReport'])->name('metric-projects.matrixreport');
 
 // Rute untuk memperbarui laporan yang sudah ada
-Route::put('metric-projects/{projectId}/updateMatrixReport/{reportId}', [MetricProjectController::class, 'updateMatrixReport'])->name('metric-projects.updateMatrixReport');
+Route::put('/metric-projects/{projectId}/matrixreport/{reportId}', [MetricProjectController::class, 'updateMatrixReport'])->name('metric-projects.updateMatrixReport');
 
 // Rute untuk menampilkan halaman impact setelah menambah atau memperbarui laporan
 Route::get('metric-projects/{projectId}/impact', [MetricProjectController::class, 'impact'])->name('metric-projects.impact');

@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="{{ asset('css/custom.css') }}">
 <style>
     .content-container h1 {
-        background-color: #5940CB; /* Updated Purple color */
+        background-color: #5940CB;
         color: #FFFFFF;
         padding: 10px;
         text-align: center;
@@ -33,7 +33,7 @@
         border-radius: 5px;
     }
     .content-box h2 {
-        background-color: #5940CB; /* Updated Purple color */
+        background-color: #5940CB;
         color: #FFFFFF;
         padding: 10px;
         margin: -20px -20px 20px -20px;
@@ -46,20 +46,20 @@
         margin: 10px 5px;
         font-weight: bold;
         border-radius: 5px;
-        border: 2px solid #5940CB; /* Updated Purple color */
+        border: 2px solid #5940CB;
         text-align: center;
-        line-height: 28px; /* Adjust line height for vertical centering */
+        line-height: 28px;
     }
     .btn.export-btn {
         background-color: white;
-        color: #5940CB; /* Updated Purple color */
+        color: #5940CB;
     }
     .btn.export-btn:hover {
         background-color: #5940CB;
         color: white;
     }
     .btn.save-btn {
-        background-color: #5940CB; /* Updated Purple color */
+        background-color: #5940CB;
         color: white;
     }
     .btn.save-btn:hover {
@@ -70,20 +70,19 @@
         justify-content: center;
         margin-top: 20px;
     }
-    input{
+    input {
         border: none;
     }
     .table-container {
         margin-top: 20px;
     }
-
 </style>
 @endsection
 
 @section('content')
 
 <div class="container mt-5 content-container">
-    <h1>Tambah Matrix: {{ $metricProject->metric ? $metricProject->metric->name : 'New Matrix' }}</h1> <!-- Dynamic title -->
+    <h1>Tambah Matrix: {{ $metricProject->metric ? $metricProject->metric->name : 'New Matrix' }}</h1>
     <h2>Perkembangan Matrix</h2>
     <div class="chart-container">
         {!! $chart->container() !!}
