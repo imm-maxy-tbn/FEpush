@@ -172,18 +172,6 @@ ul {
         <div class="content text-justify">{!! $post->content !!}</div>
     </div>
 
-    <div class="container mt-4">
-        <div class="subscribe-container">
-            <p>Jangan tertinggal artikel seputar gerakan berdampak!</p>
-            <p><strong>Langganan melalui e-mail sekarang GRATIS</strong></p>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="masukkan e-mail anda disini">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button"><i class="fas fa-envelope"></i></button>
-                </div>
-            </div>
-        </div>
-    </div>
 
 
 

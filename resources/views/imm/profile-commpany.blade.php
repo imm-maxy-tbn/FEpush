@@ -107,7 +107,7 @@ body {
         <form method="POST" action="{{ route('profile-commpany.update', ['id' => $company->id]) }}" id="companyForm">
             @csrf
             @method('PUT')
-            <section>
+            <section> 
                 <div class="row mt-5 d-flex justify-content-center">
                     <div class="col-12 col-md-10">
                         <div class="row mb-3">
@@ -134,32 +134,23 @@ body {
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput5" class="form-label">Nomor Telepon</label>
-                            <input type="number" name="telepon" class="form-control" id="formGroupExampleInput5" placeholder="Nomor Telepon" value="{{ $company->telepon }}" readonly>
+                            <input type="text" name="telepon" class="form-control" id="formGroupExampleInput5" placeholder="Nomor Telepon" value="{{ $company->telepon }}" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput8" class="form-label">Negara</label>
                             <input type="text" name="negara" class="form-control" id="formGroupExampleInput8" placeholder="Negara" value="{{ $company->negara }}" readonly>
                         </div>
-                   
-                        <div class="form-group">
-                            <label for="provinsi">Provinsi</label>
-                            <select class="form-control" name="provinsi" id="provinsi" required onchange="populateCities()">
-                                <!-- Placeholder option -->
-                                <option value="" disabled selected>Pilih Provinsi</option>
-                            </select>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput9" class="form-label">Provinsi</label>
+                            <input type="text" name="provinsi" class="form-control" id="formGroupExampleInput9" placeholder="Provinsi" value="{{ $company->provinsi }}" readonly>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="kota">Kota/Kabupaten</label>
-                            <select class="form-control" name="kota" id="kota" required>
-                                <!-- Placeholder option -->
-                                <option value="" disabled selected>Pilih Kota/Kabupaten</option>
-                            </select>
+                        <div class="mb-3">
+                            <label for="formGroupExampleInput10" class="form-label">Kabupaten</label>
+                            <input type="text" name="kabupaten" class="form-control" id="formGroupExampleInput10" placeholder="Kabupaten" value="{{ $company->kabupaten }}" readonly>
                         </div>
-                  
                         <div class="mb-3">
                             <label for="formGroupExampleInput6" class="form-label">Jumlah Pekerja</label>
-                            <input type="number" name="jumlah_karyawan" class="form-control" id="formGroupExampleInput6" placeholder="Jumlah Pekerja" value="{{ $company->jumlah_karyawan }}" readonly>
+                            <input type="text" name="jumlah_karyawan" class="form-control" id="formGroupExampleInput6" placeholder="Jumlah Pekerja" value="{{ $company->jumlah_karyawan }}" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput7" class="form-label">Tipe Perusahaan</label>
@@ -228,55 +219,8 @@ body {
         </div>
     </div>
     <script>
-        // Function to fetch provinces
-        function fetchProvinces() {
-            fetch('https://kanglerian.github.io/api-wilayah-indonesia/api/provinces.json')
-                .then(response => response.json())
-                .then(provinces => {
-                    const provinsiSelect = document.getElementById('provinsi');
-                    provinsiSelect.innerHTML = ''; // Clear existing options
-
-                    provinces.forEach(provinsi => {
-                        const option = document.createElement('option');
-                        option.textContent = provinsi.name;
-                        option.value = provinsi.name;
-                        provinsiSelect.appendChild(option);
-                    });
-
-                    fetchRegencies(); // Automatically fetch regencies after selecting province
-                });
-        }
-
-        // Function to fetch regencies based on selected province
-        function fetchRegencies() {
-            const selectedProvince = document.getElementById('provinsi').value;
-
-            fetch(`https://kanglerian.github.io/api-wilayah-indonesia/api/regencies/${selectedProvince}.json`)
-                .then(response => response.json())
-                .then(regencies => {
-                    const kabupatenSelect = document.getElementById('kabupaten');
-                    kabupatenSelect.innerHTML = ''; // Clear existing options
-
-                    regencies.forEach(regency => {
-                        const option = document.createElement('option');
-                        option.textContent = regency.name;
-                        option.value = regency.name;
-                        kabupatenSelect.appendChild(option);
-                    });
-                });
-        }
-
-        // Call fetchProvinces() initially to populate provinces
-        fetchProvinces();
-    </script>
-    <script>
         document.getElementById('editButton').addEventListener('click', function() {
-            document.querySelectorAll('input').forEach(input => {
-                input.removeAttribute('readonly');
-            });
-            document.querySelectorAll('select').forEach(select => {
-                select.removeAttribute('disabled');
-            });
+            document.querySelectorAll('input').forEach(input => input.removeAttribute('readonly'));
             document.getElementById('saveButton').style.display = 'block';
             document.getElementById('editButton').style.display = 'none';
         });
@@ -285,6 +229,5 @@ body {
             document.getElementById('companyForm').submit();
         });
     </script>
-    
 </div>
 @endsection

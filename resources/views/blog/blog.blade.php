@@ -4,8 +4,6 @@
 @section('css')
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-
-
     <style>
         body,
         html {
@@ -16,7 +14,9 @@
         .btn:hover{
             color: white;
         }
-
+.title{
+    
+}
         .form-control {
             width: 60%;
         }
@@ -55,45 +55,46 @@
             flex-wrap: wrap;
             justify-content: space-around;
         }
-
         .blog-card {
-            background: #4b00820f;
-            color: #010101;
-            padding: 20px;
-            border-radius: 5px;
-            margin-bottom: 20px;
-            text-align: center;
-            flex: 0 0 30%;
-            /* Three columns for desktop */
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
+    color: #010101;
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    min-height: 400px;
+    text-align: left;
+    flex: 0 0 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan untuk efek elevasi */
+}
 
-        .blog-card a {
-            text-decoration: none;
-            color: inherit;
-        }
+.blog-card a {
+    text-decoration: none;
+    color: inherit;
+}
 
-        .blog-card .blog-image {
-            height: 150px;
-            background-size: cover;
-            background-position: center;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
+.blog-card .blog-image {
+    height: 150px;
+    background-size: cover;
+    background-position: center;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
 
-        .blog-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 10px;
-            min-height: 3em;
-        }
+.blog-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    min-height: 3em;
+}
 
-        .blog-card p {
-            font-size: 1rem;
-            flex-grow: 1;
-        }
+.blog-card p {
+    font-size: 1rem;
+    line-height: 1.5;
+    flex-grow: 1;
+    margin-bottom: 15px; /* Jarak bawah antara paragraf dan judul */
+}
 
         .pagination-container {
             text-align: center;
@@ -133,13 +134,20 @@
                 padding: 15px;
             }
         }
+
+        .no-blogs-message {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #999;
+            margin-top: 50px;
+        }
     </style>
 @endsection
 
 @section('content')
 
     <div class="container mt-5">
-        <h5 class="text-center mb-5"   style="margin-top: 70px">Temukan wawasan tentang dampak baru disini</h5>
+        <h5 class="text-center mb-5" style="margin-top: 70px">Temukan wawasan tentang dampak baru disini</h5>
         <div class="search-container">
             <input type="text" class="form-control" placeholder="Cari disini" id="searchInput">
             <button onclick="searchBlog()" class="btn-search"><i class="fas fa-search"></i></button>
@@ -147,108 +155,90 @@
         <div class="row mt-5" id="blogContainer">
             <!-- Blog cards will be inserted here by JavaScript -->
         </div>
+        <div id="noBlogsMessage" class="no-blogs-message py-3 border" style="display: none;">
+            Belum ada artikel.
+        </div>
         <div class="pagination-container">
             <button id="prevPageBtn" class="btn btn-secondary mr-2" disabled>Sebelumnya</button>
             <button id="nextPageBtn" class="btn btn-ungu">Berikutnya</button>
             <p class="ml-2 mt-3">Halaman <span id="currentPage">1</span> dari <span id="totalPages"></span></p>
-
         </div>
-        <div class="subscribe-container">
-            <p>Jangan lewatkan artikel berdampak lainnya!</p>
-            <p class="mt-2 mb-2"><strong>Langganan melalui e-mail sekarang GRATIS</strong></p>
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" placeholder="Masukkan e-mail anda disini">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button"><i class="fas fa-envelope"></i></button>
-                </div>
-            </div>
-        </div>
-
 
         <script>
             const backendUrl = @json($backendUrl);
             const posts = @json($posts);
 
             document.addEventListener("DOMContentLoaded", function () {
-    const blogContainer = document.getElementById("blogContainer");
-    const postsPerPage = 6; // Jumlah post per halaman
-    const totalPages = Math.ceil(posts.length / postsPerPage); // Total halaman yang diperlukan
-    let currentPage = 1; // Halaman saat ini, diinisialisasi dengan 1
+                const blogContainer = document.getElementById("blogContainer");
+                const noBlogsMessage = document.getElementById("noBlogsMessage");
+                const postsPerPage = 6;
+                const totalPages = Math.ceil(posts.length / postsPerPage);
+                let currentPage = 1;
 
-    function showPosts(page) {
-        const startIndex = (page - 1) * postsPerPage;
-        const endIndex = startIndex + postsPerPage;
-        const currentPosts = posts.slice(startIndex, endIndex);
+                function showPosts(page) {
+                    const startIndex = (page - 1) * postsPerPage;
+                    const endIndex = startIndex + postsPerPage;
+                    const currentPosts = posts.slice(startIndex, endIndex);
 
-        blogContainer.innerHTML = ''; // Mengosongkan kontainer blog sebelum menambahkan post baru
+                    blogContainer.innerHTML = '';
 
-        currentPosts.forEach((post) => {
-            const blogCard = document.createElement("div");
-            blogCard.className = "blog-card";
-            blogCard.innerHTML = `
-                <a href="/blogarticle/${post.id}/view" class="text-left">
-                    <div class="blog-image" style="background-image: url(${post.img});"></div>
-                    <h3 class="title ">${post.title}</h3>
-                    <p>${post.content}</p>
-                </a>
-            `;
-            blogContainer.appendChild(blogCard);
-        });
+                    currentPosts.forEach((post) => {
+                        const blogCard = document.createElement("div");
+                        blogCard.className = "blog-card";
+                        blogCard.innerHTML = `
+                            <a href="/blogarticle/${post.id}/view" class="text-left">
+                                <div class="blog-image" style="background-image: url(${post.img});"></div>
+                                <h3 class="title ">${post.title}</h3>
+                                <p>${post.content}</p>
+                            </a>
+                        `;
+                        blogContainer.appendChild(blogCard);
+                    });
 
-        document.getElementById("currentPage").textContent = page; // Update halaman saat ini
-        currentPage = page; // Simpan halaman saat ini ke variabel global
-        updatePaginationButtons(); // Update status tombol navigasi
-    }
+                    if (currentPosts.length === 0) {
+                        noBlogsMessage.style.display = "block";
+                    } else {
+                        noBlogsMessage.style.display = "none";
+                    }
 
-    function updatePaginationButtons() {
-        const totalPages = Math.ceil(posts.length / postsPerPage); // Hitung kembali total halaman berdasarkan jumlah post yang ada
-        document.getElementById("totalPages").textContent = totalPages; // Update teks total halaman
+                    document.getElementById("currentPage").textContent = page;
+                    currentPage = page;
+                    updatePaginationButtons();
+                }
 
-        // Mengatur status tombol "Sebelumnya"
-        if (currentPage > 1) {
-            document.getElementById("prevPageBtn").disabled = false;
-        } else {
-            document.getElementById("prevPageBtn").disabled = true;
-        }
+                function updatePaginationButtons() {
+                    const totalPages = Math.ceil(posts.length / postsPerPage);
+                    document.getElementById("totalPages").textContent = totalPages;
 
-        // Mengatur status tombol "Berikutnya"
-        if (currentPage < totalPages) {
-            document.getElementById("nextPageBtn").disabled = false;
-        } else {
-            document.getElementById("nextPageBtn").disabled = true;
-        }
-    }
+                    if (currentPage > 1) {
+                        document.getElementById("prevPageBtn").disabled = false;
+                    } else {
+                        document.getElementById("prevPageBtn").disabled = true;
+                    }
 
-    // Tampilkan halaman pertama saat halaman dimuat
-    showPosts(1);
+                    if (currentPage < totalPages) {
+                        document.getElementById("nextPageBtn").disabled = false;
+                    } else {
+                        document.getElementById("nextPageBtn").disabled = true;
+                    }
+                }
 
-    // Event listener untuk tombol "Berikutnya"
-    document.getElementById("nextPageBtn").addEventListener("click", function () {
-        if (currentPage < Math.ceil(posts.length / postsPerPage)) {
-            showPosts(currentPage + 1);
-        }
-    });
+                showPosts(1);
 
-    // Event listener untuk tombol "Sebelumnya"
-    document.getElementById("prevPageBtn").addEventListener("click", function () {
-        if (currentPage > 1) {
-            showPosts(currentPage - 1);
-        }
-    });
+                document.getElementById("nextPageBtn").addEventListener("click", function () {
+                    if (currentPage < Math.ceil(posts.length / postsPerPage)) {
+                        showPosts(currentPage + 1);
+                    }
+                });
 
-    document.getElementById("searchInput").addEventListener("input", searchBlog);
+                document.getElementById("prevPageBtn").addEventListener("click", function () {
+                    if (currentPage > 1) {
+                        showPosts(currentPage - 1);
+                    }
+                });
 
-    // Fungsi untuk mengatur pagination
-    const paginationContainer = document.querySelector(".pagination-container");
-    for (let i = 1; i <= totalPages; i++) {
-        i;
-        pageLink.addEventListener("click", function (event) {
-            event.preventDefault();
-            showPosts(i);
-        });
-        paginationContainer.appendChild(pageLink);
-    }
-});
+                document.getElementById("searchInput").addEventListener("input", searchBlog);
+            });
 
             function searchBlog() {
                 const input = document.getElementById("searchInput").value.toLowerCase();
@@ -274,6 +264,5 @@
                 }
             }
         </script>
-    </body>
-
+    </div>
 @endsection

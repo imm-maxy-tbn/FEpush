@@ -45,7 +45,7 @@
     border: 5px solid #ddd;
     width: 150px;
     height: 150px;
-    border: 7px solid #6a0dad;
+    border: 7px solid #5940cb;
     background-size: cover;
 }
 
@@ -61,7 +61,7 @@
 }
 
 .edit-icon i {
-    color: #6a0dad;
+    color: #5940cb;
 }
 
 #file-input {
@@ -115,7 +115,7 @@ form {
 .btn-back {
     width: 154px;
     height: 42px;
-    background-color: #6a0dad;
+    background-color: #5940cb;
     color: white;
     border-radius: 5px;
     font-size: 20px;
@@ -227,8 +227,8 @@ form {
             <div class="row">
                 <div class="col-6">
                     <div class="form-group">
-                        <label for="nama_depan">Nama Depan</label>
-                        <input type="text" id="nama_depan" name="nama_depan" class="form-control" value="{{ $user->nama_depan }}">
+                        <label for="nama_depan">Nama Lengkap</label>
+                        <input type="text" id="nama_depan" name="nama_depan" required class="form-control" value="{{ $user->nama_depan }}">
                     </div>
                     <div class="form-group">
                         <label for="nik">NIK</label>
@@ -257,7 +257,7 @@ form {
                         <div class="phone-input">
                             <img src="https://flagcdn.com/id.svg" alt="ID Flag">
                             <span>(+62)</span>
-                            <input type="text" id="telepon" name="telepon" class="form-control" value="{{ $user->telepon }}">
+                            <input type="number" id="telepon" name="telepon" class="form-control" value="{{ $user->telepon }}">
                         </div>
                     </div>
                 </div>
@@ -270,11 +270,6 @@ form {
     </div>
 </div>
 
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="{{ asset('js/welcome/script.js') }}"></script>
-<script src="https://kit.fontawesome.com/a076d05399.js"></script>
 <script>
     document.querySelector('.edit-icon').addEventListener('click', function() {
         document.getElementById('file-input').click();

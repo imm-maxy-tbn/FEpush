@@ -53,19 +53,17 @@
                             
                             <div class="form-group">
                                 <label for="provinsi">Provinsi</label>
-                                <select class="form-control" name="provinsi" id="provinsi" required onchange="fetchRegencies()">
+                                <select class="form-control" name="provinsi" id="provinsi" required onchange="populateCities()">
                                     <!-- Placeholder option -->
                                     <option value="" disabled selected>Pilih Provinsi</option>
-                                    <!-- Options will be populated dynamically via JavaScript -->
                                 </select>
                             </div>
                             
                             <div class="form-group">
-                                <label for="kabupaten">Kota/Kabupaten</label>
-                                <select class="form-control" name="kabupaten" id="kabupaten" required>
+                                <label for="kota">Kota/Kabupaten</label>
+                                <select class="form-control" name="kota" id="kota" required>
                                     <!-- Placeholder option -->
                                     <option value="" disabled selected>Pilih Kota/Kabupaten</option>
-                                    <!-- Options will be populated dynamically via JavaScript -->
                                 </select>
                             </div>
                             <div class="form-group">
@@ -244,7 +242,7 @@
                                                     id="indicator-{{ $indicator->id }}" name="indicator_ids[]"
                                                     value="{{ $indicator->id }}"
                                                     data-target="sub-container-{{ $indicator->id }}">
-                                                <span>{{ $indicator->order }} </span><span>{{ $indicator->name }}</span>
+                                                <span class="ml-2">{{ $indicator->order }} </span><span class="ml-2">{{ $indicator->name }}</span>
                                             </label>
                                         </div>
                                     @endif
@@ -257,7 +255,7 @@
                                                 @foreach ($indicator->childIndicators as $childIndicator)
                                                     <div class=" d-flex">
                                                         <span>{{ $childIndicator->order }}
-                                                        </span><span>{{ $childIndicator->name }}</span><br>
+                                                        </span><span class="ml-2">{{ $childIndicator->name }}</span><br>
                                                     </div>
                                                 @endforeach
                                             </div>
@@ -351,50 +349,56 @@
         <script src="{{ asset('js/imm/pemilihansdgs.js') }}"></script>
         
         <script>
-            // Function to fetch provinces
-            function fetchProvinces() {
-                fetch('https://kanglerian.github.io/api-wilayah-indonesia/api/provinces.json')
-                    .then(response => response.json())
-                    .then(provinces => {
-                        const provinsiSelect = document.getElementById('provinsi');
-                        provinsiSelect.innerHTML = ''; // Clear existing options
+            // Ambil elemen select untuk provinsi dan kota/kabupaten
+            const provinsiSelect = document.getElementById('provinsi');
+            const kotaSelect = document.getElementById('kota');
+            let provincesData = []; // Simpan data provinsi yang di-fetch
         
-                        provinces.forEach(provinsi => {
-                            const option = document.createElement('option');
-                            option.textContent = provinsi.name;
-                            option.value = provinsi.name;
-                            provinsiSelect.appendChild(option);
-                        });
-        
-                        // Automatically fetch regencies after selecting province
-                        fetchRegencies();
+            // Fetch data provinsi saat halaman dimuat
+            fetch('https://kanglerian.github.io/api-wilayah-indonesia/api/provinces.json')
+                .then(response => response.json())
+                .then(provinces => {
+                    provincesData = provinces; // Simpan data provinsi
+                    // Iterasi setiap provinsi dan tambahkan sebagai option ke select provinsi
+                    provinces.forEach(provinsi => {
+                        const option = document.createElement('option');
+                        option.value = provinsi.name; // Menggunakan nama sebagai nilai
+                        option.textContent = provinsi.name;
+                        option.dataset.id = provinsi.id; // Simpan ID provinsi di dataset
+                        provinsiSelect.appendChild(option);
                     });
-            }
+                })
+                .catch(error => console.error('Error fetching provinces:', error));
         
-            // Function to fetch regencies based on selected province
-            function fetchRegencies() {
-                const selectedProvince = document.getElementById('provinsi').value;
+            // Fungsi untuk memanggil API kota/kabupaten berdasarkan ID provinsi
+            function populateCities() {
+                const selectedProvinsiName = provinsiSelect.value;
+                const selectedProvinsiId = getProvinsiIdByName(selectedProvinsiName);
+                const regenciesUrl = `https://kanglerian.github.io/api-wilayah-indonesia/api/regencies/${selectedProvinsiId}.json`;
         
-                fetch(`https://kanglerian.github.io/api-wilayah-indonesia/api/regencies/${selectedProvince}.json`)
+                // Kosongkan dropdown kota/kabupaten saat memilih provinsi baru
+                kotaSelect.innerHTML = '<option value="" disabled selected>Pilih Kota/Kabupaten</option>';
+        
+                // Fetch data kota/kabupaten berdasarkan ID provinsi yang dipilih
+                fetch(regenciesUrl)
                     .then(response => response.json())
                     .then(regencies => {
-                        const kabupatenSelect = document.getElementById('kabupaten');
-                        kabupatenSelect.innerHTML = ''; // Clear existing options
-        
+                        // Iterasi setiap kota/kabupaten dan tambahkan sebagai option ke select kota/kabupaten
                         regencies.forEach(regency => {
                             const option = document.createElement('option');
+                            option.value = regency.name; // Menggunakan nama sebagai nilai
                             option.textContent = regency.name;
-                            option.value = regency.name;
-                            kabupatenSelect.appendChild(option);
+                            kotaSelect.appendChild(option);
                         });
                     })
-                    .catch(error => {
-                        console.error('Error fetching regencies:', error);
-                    });
+                    .catch(error => console.error(`Error fetching regencies for provinsi ${selectedProvinsiId}:`, error));
             }
         
-            // Call fetchProvinces() initially to populate provinces
-            fetchProvinces();
+            // Fungsi untuk mendapatkan ID provinsi berdasarkan nama
+            function getProvinsiIdByName(name) {
+                const provinsi = provincesData.find(provinsi => provinsi.name === name);
+                return provinsi ? provinsi.id : null;
+            }
         </script>
 
         <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>

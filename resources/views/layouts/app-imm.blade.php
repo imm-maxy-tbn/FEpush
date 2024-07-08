@@ -21,6 +21,13 @@
             text-decoration: none;
             list-style-type: none;
         }
+        body{
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
 
         .navbar-nav {
             margin: 0 20px;
@@ -98,21 +105,33 @@
         .btn {
             margin-left: 10px;
             /* Adjust margin between login/register buttons */
+        }         .wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
+        /* CSS untuk footer */
         .footer {
             background-color: #5940cb;
             color: #ffffff;
-            height: 167px;
             text-align: center;
             border-top-left-radius: 40px;
             border-top-right-radius: 40px;
             width: 100%;
+        
+            bottom: 0;
+            height: 167px;  
         }
 
         .footer ul {
             text-decoration: none;
             list-style-type: none;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
         }
 
         .footer ul li {
@@ -132,8 +151,6 @@
 
         .sosmed a {
             color: #fff;
-            gap: 30px;
-            margin: 0 10px;
         }
 
         .col-footer {
@@ -143,6 +160,20 @@
             flex-direction: column;
         }
 
+        .sosmed {
+            gap: 15px;
+        }
+
+        .sosmed a {
+            color: #fff;
+        }
+
+        .col-footer {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
         .btn-masukk,
         .btn-daftarr {
             width: 115px;
@@ -323,67 +354,71 @@
                     </div>
         </nav>
 
+        <div class="wrapper">
+            <div style="padding: 20px;">
         @yield('content')
+        </div>
+        </div>
 
-        <footer>
-            <div class="container footer mt-5 d-flex justify-content-center align-items-center">
-                <div class="col-4 d-flex flex-column" style="gap: 20px">
-                    <a class="d-flex justify-content-start" href="/home">
-                        <img src="/images/imm.png" width="100" height="55" alt="">
-                    </a>
-                    <span class="span-footer text-left">Impact Measurement and Management
-                        <br> (TBN INDONESIA X MAXY ACADEMY)</span>
-                </div>
-                <div class="col-6 d-flex justify-content-center foterclose align-items-center">
-                    <ul class="d-flex" style="gap: 15px">
-                        @if (Auth::check() && Auth::user()->companies)
-                            <!-- Navbar untuk user yang sudah mendaftarkan perusahaan -->
-                            <li class="text-white">
-                                <a class="text-white" href="{{ route('homepage') }}">Beranda</a>
-                            </li>
-                            <li class="text-white">
-                                <a class="text-white" href="{{ route('myproject.myproject') }}">Proyek Saya</a>
-                            </li>
-                            <li class="text-white">
-                                <a class="text-white" href="/event">Event</a>
-                            </li>
-                            <li class="text-white">
-                                <a class="text-white" href="/blog">Artikel</a>
-                            </li>
-                            <li class="text-white">
-                                <a class="text-white" href="{{ route('profile-commpany') }}">Perusahaan Saya</a>
-                            </li>
-                        @else
-                            <!-- Navbar untuk user yang belum mendaftarkan perusahaan -->
-                            <li class="text-white">
-                                <a class="text-white" href="{{ route('home') }}">Beranda</a>
-                            </li>
-                            <li class="text-white">
-                                <a class="text-white" href="{{ route('homepage') }}">Proyek Saya</a>
-                            </li>
-                            <li class="text-white">
-                                <a class="text-white" href="/event">Event</a>
-                            </li>
-                            <li class="text-white">
-                                <a class="text-white" href="/blog">Artikel</a>
-                            </li>
-                            <li class="text-white">
-                                <a class="text-white" href="{{ route('profile-commpany') }}">Perusahaan Saya</a>
-                            </li>
-                        @endif
-                    </ul>
-                </div>
-                <div class="col-2 d-flex flex-column justify-content-center" style="gap: 30px">
-                    <span class="span-footer text-center">Sosial Media</span>
-                    <div class="sosmed d-flex justify-content-end">
-                        <a href=""><i class="fab fa-facebook-f"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
-                        <a href="https://www.instagram.com/imm.bootcamp"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
+       <footer">
+        <div class="container footer mt-5 d-flex justify-content-center align-items-center">
+            <div class="col-4 d-flex flex-column" style="gap: 20px">
+                <a class="d-flex justify-content-start" href="/home">
+                    <img src="/images/imm.png" width="100" height="55" alt="">
+                </a>
+                <span class="span-footer text-left">Impact Measurement and Management
+                    <br> (TBN INDONESIA X MAXY ACADEMY)</span>
+            </div>
+            <div class="col-6 d-flex justify-content-center foterclose align-items-center">
+                <ul class="d-flex">
+                    @if (Auth::check() && Auth::user()->companies)
+                        <!-- Navbar untuk user yang sudah mendaftarkan perusahaan -->
+                        <li class="text-white">
+                            <a class="text-white" href="{{ route('homepage') }}">Beranda</a>
+                        </li>
+                        <li class="text-white">
+                            <a class="text-white" href="{{ route('myproject.myproject') }}">Proyek Saya</a>
+                        </li>
+                        <li class="text-white">
+                            <a class="text-white" href="/event">Event</a>
+                        </li>
+                        <li class="text-white">
+                            <a class="text-white" href="/blog">Artikel</a>
+                        </li>
+                        <li class="text-white">
+                            <a class="text-white" href="{{ route('profile-commpany') }}">Perusahaan Saya</a>
+                        </li>
+                    @else
+                        <!-- Navbar untuk user yang belum mendaftarkan perusahaan -->
+                        <li class="text-white">
+                            <a class="text-white" href="{{ route('home') }}">Beranda</a>
+                        </li>
+                        <li class="text-white">
+                            <a class="text-white" href="{{ route('homepage') }}">Proyek Saya</a>
+                        </li>
+                        <li class="text-white">
+                            <a class="text-white" href="/event">Event</a>
+                        </li>
+                        <li class="text-white">
+                            <a class="text-white" href="/blog">Artikel</a>
+                        </li>
+                        <li class="text-white">
+                            <a class="text-white" href="{{ route('profile-commpany') }}">Perusahaan Saya</a>
+                        </li>
+                    @endif
+                </ul>
+            </div>
+            <div class="col-2 d-flex flex-column justify-content-center" style="gap: 30px">
+                <span class="span-footer text-center">Sosial Media</span>
+                <div class="sosmed d-flex justify-content-end">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/imm.bootcamp"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
                 </div>
             </div>
-        </footer>
+        </div>
+    </footer>
         <div class="container footerclose">
             <span class=" text-center">Impact Measurement and Management
                 <br> (TBN INDONESIA X MAXY ACADEMY)</span>

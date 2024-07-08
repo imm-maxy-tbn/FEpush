@@ -17,6 +17,13 @@
             /* Adjust this value according to the height of your navbar */
         }
 
+        .form-atas{
+            border: 2px solid #5940cb;
+        }
+        
+        .input-group{
+            width: 30%;
+        }
         .btn-create-project {
             background-color: #5940CB;
             color: white;
@@ -25,12 +32,22 @@
             border: none;
             border-radius: 5px;
         }
-
-        thead {
-            background-color: #6c63ff;
-            color: white;
+        .angka{
+            border: 2px solid #5940cb;
+            border-radius: 5px;
+        }
+        .input-group-append{
+            background-color: #5940cb;
         }
 
+        thead {
+            background-color: #5940cb;
+            color: white;
+        }
+        .tabel {
+    background-color: #F7F6FB;
+    border-radius: 5px;
+}
         .btn-delete,
         .btn-detail {
             width: 140px;
@@ -54,10 +71,13 @@
      
         .card-body {
             background-color: rgba(255, 250, 250, 0.5);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
 
         .see-all-button button {
-            background-color: #6c63ff;
+            background-color: #5940cb;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -76,13 +96,14 @@
         <h2 class="project-title">Draft Project</h2>
         <div class="row mt-5">
             <div class="col-md-8">
-                <div class="input-group">
-                    <input type="text" id="search-all-projects" class="form-control search-input"
-                        placeholder="Cari project anda" aria-label="Search">
+                <div class="input-group w-75">
                     <div class="input-group-append">
-                        <button type="button" class="input-group-text search-icon" aria-label="Search Button"><i
+                        <button type="button" class="input-group-text bg-transparent text-white form-atas" aria-label="Search Button"><i
                                 class="fas fa-search"></i></button>
                     </div>
+                    <input type="text" id="search-all-projects" class="form-control form-atas   search-input"
+                        placeholder="Cari project anda" aria-label="Search">
+                  
                 </div>
             </div>
             <div class="col-md-4 text-right">
@@ -93,7 +114,7 @@
         </div>
 
         <div class="section d-flex justify-content-between justify-content-center">
-            <h4 class="project-title mb-5 mt-5">Semua Proyek ({{ $allProjects->count() }})</h4>
+            <h4 class="project-title mt-5">Semua Proyek ({{ $allProjects->count() }})</h4>
             @if ($allProjects->count() > 6)
                 <h5 class="seeAll" id="show-all-btn">Lihat Semua</h5>
             @endif
@@ -110,7 +131,7 @@
                         @foreach ($allProjects as $index => $project)
                             <div class="col-md-4 mb-4" id="project-{{ $project->id }}"
                                 @if ($index >= 6) style="display: none;" @endif>
-                                <div class="card project-card" style="min-height: 200px">
+                                <div class="card project-card" style="min-height: 300px">
                                     <img height="150px"
                                         src="{{ $project->img ? asset('images/' . $project->img) : asset('images/default_project.png') }}"
                                         class="card-img-top" alt="">
@@ -140,21 +161,20 @@
 
             <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
                 <div class="dropdown">
-                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ $ongoingProjects->count() }} of {{ $allProjects->count() }}
-                    </button>
+                    <div class=" py-2 px-3 angka ">
+                        {{ $ongoingProjects->count() }} dari {{ $allProjects->count() }}
+                    </div>
                 </div>
                 <div class="input-group">
                     <input type="text" id="search-ongoing-projects" class="form-control search-input"
                         placeholder="Cari project berlangsung" aria-label="Search">
-                    <div class="input-group-append">
-                        <button type="button" class="input-group-text search-icon" aria-label="Search Button"><i
-                                class="fas fa-search"></i></button>
-                    </div>
+                        <div class="input-group-append">
+                            <button type="button" class="input-group-text bg-transparent text-white form-atas" aria-label="Search Button"><i
+                                    class="fas fa-search"></i></button>
+                        </div>
                 </div>
             </div>
-            <table class="table mt-3 ongoing-projects-table border text-center">
+            <table class="table mt-3 tabel ongoing-projects-table border text-center">
                 <thead>
                     <tr>
                         <th>Project Name</th>
@@ -189,25 +209,24 @@
         </div>
 
         <div class="container">
-            <h2 class="project-title mb-5 mt-5">Proyek Selesai</h2>
+            <h2 class="project-title  mb-5 mt-5">Proyek Selesai</h2>
 
             <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
-                <div class="dropdown">
-                    <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ $completedProjects->count() }} of {{ $allProjects->count() }}
-                    </button>
+              
+                    <div class="py-2 px-3 angka "  >
+                        {{ $completedProjects->count() }} dari {{ $allProjects->count() }}
+                    </div>
                     
-                </div> <div class="input-group d-flex ">
+                <div class="input-group d-flex ">
                     <input type="text" id="search-completed-projects" class="form-control search-input"
                         placeholder="Cari project selesai" aria-label="Search">
-                    <div class="input-group-append">
-                        <button type="button" class="input-group-text search-icon" aria-label="Search Button"><i
-                                class="fas fa-search"></i></button>
-                    </div>
+                        <div class="input-group-append">
+                            <button type="button" class="input-group-text bg-transparent text-white form-atas" aria-label="Search Button"><i
+                                    class="fas fa-search"></i></button>
+                        </div>
                 </div>
             </div>
-            <table class="table mt-3 done-projects-table border text-center">
+            <table class="table tabel mt-3 done-projects-table border text-center">
                 <thead>
                     <tr>
                         <th>Nama Proyek</th>
@@ -242,6 +261,24 @@
     </div>
 
     <script>
+        document.querySelector('.seeAll').addEventListener('click', function() {
+            document.querySelectorAll('#draft-project-list .col-md-4').forEach(function(project, index) {
+                if (index >= 6) {
+                    project.style.display = 'block';
+                }
+            });
+            document.querySelector('.seeAll').style.display = 'none';
+        });
+    
+        document.getElementById('show-all-btn').addEventListener('click', function() {
+            document.querySelectorAll('#draft-project-list .col-md-4').forEach(function(project) {
+                project.style.display = 'block';
+            });
+            document.getElementById('show-all-btn').style.display = 'none';
+        });
+    </script>
+    <script>
+        
         document.addEventListener("DOMContentLoaded", function() {
             // Function to handle search
             function handleSearch(inputId, listId, noResultsMessage, isTable) {
@@ -254,7 +291,7 @@
                 // Ensure no-results element exists
                 if (!noResultsElement) {
                     noResultsElement = document.createElement('div');
-                    noResultsElement.className = 'no-results col-12 text-center py-3 border';
+                    noResultsElement.className = 'no-results col-12 text-center py-5 border';
                     noResultsElement.textContent = noResultsMessage;
                     noResultsElement.hidden = true;
                     if (isTable) {

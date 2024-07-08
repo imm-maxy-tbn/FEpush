@@ -167,7 +167,7 @@ h4 {
 .submit-button {
     padding: 10px 20px;
     font-size: 16px;
-    background-color: #6c63ff;
+    background-color: #5940cb;
     color: white;
     border: none;
     border-radius: 5px;

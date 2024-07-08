@@ -10,6 +10,13 @@
             height: 100%;
             padding-top: 30px;
         }
+        .btn:hover{
+            color: white;
+        }
+
+        .form-control {
+            width: 60%;
+        }
 
         .btn-ungu{
             background-color: #5940cb;
@@ -20,10 +27,6 @@
             display: flex;
             justify-content: center;
             margin-bottom: 20px;
-        }
-
-        .form-control {
-            width: 60%;
         }
 
         .search-container input {
@@ -51,18 +54,18 @@
         }
 
         .event-card {
-            background: #4b00820f;
             color: #010101;
             padding: 20px;
             border-radius: 5px;
             margin-bottom: 20px;
-            text-align: center;
+            min-height: 400px;
+            text-align: left;
             flex: 0 0 30%;
-            /* Three columns for desktop */
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Menambahkan bayangan untuk efek elevasi */
         }
 
         .event-card a {
@@ -86,7 +89,9 @@
 
         .event-card p {
             font-size: 1rem;
+            line-height: 1.5;
             flex-grow: 1;
+            margin-bottom: 15px; /* Jarak bawah antara paragraf dan judul */
         }
 
         .pagination-container {
@@ -98,164 +103,134 @@
         .pagination-container p {
             font-size: 16px;
         }
-        .btn:hover{
-            color: white;
-        }
-        .subscribe-container {
-            background: #f0f0ff;
-            padding: 20px;
-            border-radius: 10px;
+
+        .no-events-message {
             text-align: center;
-            margin-top: 30px;
-        }
-
-        .subscribe-container p {
-            margin: 0;
             font-size: 1.2rem;
-            color: #333;
-        }
-
-        @media only screen and (max-width: 992px) {
-            .event-card {
-                flex: 0 0 48%;
-                /* Two columns for tablets */
-            }
-        }
-
-        @media only screen and (max-width: 768px) {
-            .event-card {
-                flex: 0 0 90%;
-                /* Full width for mobile */
-                padding: 15px;
-            }
+            color: #999;
+            margin-top: 50px;
         }
     </style>
-
-
 @endsection
 
 @section('content')
-<body>
-    <div class="container mt-5" >
-        <h5 class="text-center mb-5"  style="margin-top: 70px; margin-bottom: 70px">Temukan wawasan tentang dampak baru disini</h5>
+    <div class="container mt-5">
+        <h5 class="text-center mb-5" style="margin-top: 70px">Temukan wawasan tentang dampak baru disini</h5>
         <div class="search-container">
             <input type="text" class="form-control" placeholder="Cari disini" id="searchInput">
             <button onclick="searchEvent()" class="btn-search"><i class="fas fa-search"></i></button>
         </div>
         <div class="row mt-5" id="eventContainer">
-            <!-- Event cards will be inserted here by JavaScript -->
+            <!-- event cards will be inserted here by JavaScript -->
+        </div>
+        <div id="noEventsMessage" class="no-events-message py-3 border" style="display: none;">
+            Tidak ada acara yang cocok.
         </div>
         <div class="pagination-container">
             <button id="prevPageBtn" class="btn btn-secondary mr-2" disabled>Sebelumnya</button>
-<button id="nextPageBtn" class="btn btn-ungu">Berikutnya</button>
-<p class="ml-2 mt-3">Halaman <span id="currentPage">1</span> dari <span id="totalPages"></span></p>
-
-
+            <button id="nextPageBtn" class="btn btn-ungu">Berikutnya</button>
+            <p class="ml-2 mt-3">Halaman <span id="currentPage">1</span> dari <span id="totalPages"></span></p>
         </div>
-        
+    </div>
 
-
-
-
-    
     <script>
         const backendUrl = @json($backendUrl);
         const events = @json($events);
 
         document.addEventListener("DOMContentLoaded", function() {
-    const eventContainer = document.getElementById("eventContainer");
-    const eventsPerPage = 6; // Jumlah acara per halaman
-    const totalPages = Math.ceil(events.length / eventsPerPage); // Total halaman yang diperlukan
-    let currentPage = 1; // Halaman saat ini, diinisialisasi dengan 1
+            const eventContainer = document.getElementById("eventContainer");
+            const noEventsMessage = document.getElementById("noEventsMessage");
+            const eventsPerPage = 6;
+            const totalPages = Math.ceil(events.length / eventsPerPage);
+            let currentPage = 1;
 
-    function showEvents(page) {
-        const startIndex = (page - 1) * eventsPerPage;
-        const endIndex = startIndex + eventsPerPage;
-        const currentEvents = events.slice(startIndex, endIndex);
+            function showEvents(page) {
+                const startIndex = (page - 1) * eventsPerPage;
+                const endIndex = startIndex + eventsPerPage;
+                const currentEvents = events.slice(startIndex, endIndex);
 
-        eventContainer.innerHTML = ''; // Mengosongkan kontainer acara sebelum menambahkan acara baru
+                eventContainer.innerHTML = '';
 
-        currentEvents.forEach((event) => {
-            const eventCard = document.createElement("div");
-            eventCard.className = "event-card";
-            eventCard.innerHTML = `
-                <a href="/event/${event.id}" class="text-left">
-                    <div class="event-image" style="background-image: url(${event.cover_img});"></div>
-                    <h3>${event.title}</h3>
-                    <p>${event.description}</p>
-                </a>
-            `;
-            eventContainer.appendChild(eventCard);
-        });
+                currentEvents.forEach((event) => {
+                    const eventCard = document.createElement("div");
+                    eventCard.className = "event-card";
+                    eventCard.innerHTML = `
+                        <a href="/event/${event.id}" class="text-left">
+                            <div class="event-image" style="background-image: url(${event.cover_img});"></div>
+                            <h3>${event.title}</h3>
+                            <p>${event.description}</p>
+                        </a>
+                    `;
+                    eventContainer.appendChild(eventCard);
+                });
 
-        document.getElementById("currentPage").textContent = page; // Update halaman saat ini
-        currentPage = page; // Simpan halaman saat ini ke variabel global
-        updatePaginationButtons(); // Update status tombol navigasi
-    }
-
-    function updatePaginationButtons() {
-        document.getElementById("totalPages").textContent = totalPages; // Update teks total halaman
-
-        // Mengatur status tombol "Sebelumnya"
-        if (currentPage > 1) {
-            document.getElementById("prevPageBtn").disabled = false;
-        } else {
-            document.getElementById("prevPageBtn").disabled = true;
-        }
-
-        // Mengatur status tombol "Berikutnya"
-        if (currentPage < totalPages) {
-            document.getElementById("nextPageBtn").disabled = false;
-        } else {
-            document.getElementById("nextPageBtn").disabled = true;
-        }
-    }
-
-    // Tampilkan halaman pertama saat halaman dimuat
-    showEvents(1);
-
-    // Event listener untuk tombol "Berikutnya"
-    document.getElementById("nextPageBtn").addEventListener("click", function() {
-        if (currentPage < totalPages) {
-            showEvents(currentPage + 1);
-        }
-    });
-
-    // Event listener untuk tombol "Sebelumnya"
-    document.getElementById("prevPageBtn").addEventListener("click", function() {
-        if (currentPage > 1) {
-            showEvents(currentPage - 1);
-        }
-    });
-
-    document.getElementById("searchInput").addEventListener("input", searchEvent);
-});
-
-function searchEvent() {
-    const input = document.getElementById("searchInput").value.toLowerCase();
-    const eventCards = document.querySelectorAll(".event-card");
-
-    eventCards.forEach((card) => {
-        const title = card.querySelector("h3").textContent.toLowerCase();
-        const content = card.querySelector("p").textContent.toLowerCase();
-        if (title.includes(input) || content.includes(input)) {
-            card.style.display = "block";
-        } else {
-            card.style.display = "none";
-        }
-    });
-}
-
-        function searchEvent() {
-            const input = document.getElementById("searchInput").value.toLowerCase();
-            const eventCards = document.querySelectorAll(".event-card");
-
-                if (found) {
-                    noEventsMessage.style.display = "none";
-                } else {
+                if (currentEvents.length === 0) {
                     noEventsMessage.style.display = "block";
+                } else {
+                    noEventsMessage.style.display = "none";
+                }
+
+                document.getElementById("currentPage").textContent = page;
+                currentPage = page;
+                updatePaginationButtons();
+            }
+
+            function updatePaginationButtons() {
+                const totalPages = Math.ceil(events.length / eventsPerPage);
+                document.getElementById("totalPages").textContent = totalPages;
+
+                if (currentPage > 1) {
+                    document.getElementById("prevPageBtn").disabled = false;
+                } else {
+                    document.getElementById("prevPageBtn").disabled = true;
+                }
+
+                if (currentPage < totalPages) {
+                    document.getElementById("nextPageBtn").disabled = false;
+                } else {
+                    document.getElementById("nextPageBtn").disabled = true;
                 }
             }
-        </script>
-    </body>
+
+            showEvents(1);
+
+            document.getElementById("nextPageBtn").addEventListener("click", function() {
+                if (currentPage < totalPages) {
+                    showEvents(currentPage + 1);
+                }
+            });
+
+            document.getElementById("prevPageBtn").addEventListener("click", function() {
+                if (currentPage > 1) {
+                    showEvents(currentPage - 1);
+                }
+            });
+
+            document.getElementById("searchInput").addEventListener("input", searchEvent);
+        });
+
+        function searchEvent() {
+            const input = document.getElementById("searchInput").value.trim().toLowerCase();
+            const eventCards = document.querySelectorAll(".event-card");
+            const noEventsMessage = document.getElementById("noEventsMessage");
+            let found = false;
+
+            eventCards.forEach((card) => {
+                const title = card.querySelector("h3").textContent.toLowerCase();
+                const content = card.querySelector("p").textContent.toLowerCase();
+                if (title.includes(input) || content.includes(input)) {
+                    card.style.display = "block";
+                    found = true;
+                } else {
+                    card.style.display = "none";
+                }
+            });
+
+            if (found) {
+                noEventsMessage.style.display = "none";
+            } else {
+                noEventsMessage.style.display = "block";
+            }
+        }
+    </script>
 @endsection

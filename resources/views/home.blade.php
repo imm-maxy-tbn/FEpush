@@ -31,6 +31,7 @@
 
 .section-video {
     position: relative;
+    margin-top: 100px;
     width: 100%;
     padding-bottom: 56.25%;
     /* Aspect ratio 16:9 */

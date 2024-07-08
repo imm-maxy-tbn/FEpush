@@ -140,7 +140,7 @@
 
         .btn-register {
             padding: 10px 20px;
-            background-color: #6c63ff;
+            background-color: #5940cb;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -153,7 +153,7 @@
 
         .btn-register {
             padding: 10px 20px;
-            background-color: #6c63ff;
+            background-color: #5940cb;
             color: #fff;
             border: none;
             border-radius: 5px;
@@ -476,76 +476,89 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <body>
-        <div class="container">
-            <div class="register-container">
-                <form method="POST" action="{{ route('register') }}">
-                    @csrf
-                    <div class="register-form">
-                        <img src="images/imm.png" alt="Brand Logo" class="brand-logo">
-                        <h2>Daftarkan akun</h2>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="fullName">Nama Lengkap</label>
-                                <input type="text" id="fullName" name="nama" placeholder="Isi disini" required />
-                            </div>
-                            <div class="form-group">
-                                <label for="country">Negara</label>
-                                <select id="country" name="negara" class="form-control" required>
-                                    <option value="" selected disabled>Pilih Negara</option>
-                                    <!-- Options will be added dynamically by JavaScript -->
-                                </select>
-                            </div>
+<body>
+    <div class="container">
+        <div class="register-container">
+            <form method="POST" action="{{ route('register') }}" id="registerForm">
+                @csrf
+                <div class="register-form">
+                    <img src="images/imm.png" alt="Brand Logo" class="brand-logo">
+                    <h2>Daftarkan akun</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Nama Lengkap</label>
+                            <input type="text" id="fullName" name="nama" placeholder="Masukkan nama lengkap anda" required />
                         </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="nik">NIK</label>
-                                <input type="number" id="nik" name="nik" placeholder="Masukkan NIK" required />
-                            </div>
-                            <div class="form-group">
+                        <div class="form-group">
+                            <label for="country">Negara</label>
+                            <select id="country" name="negara" class="form-control" required>
+                                <option value="" selected disabled>Pilih Negara</option>
+                                <!-- Options will be added dynamically by JavaScript -->
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nik">NIK</label>
+                            <input type="text" id="nik" name="nik" placeholder="Masukkan NIK anda" required minlength="16" maxlength="16" />
+                                <div id="error-message" class="error"></div>
+                        </div>
+                         <div class="form-group">
                                 <label for="province">Provinsi</label>
                                 <select id="province" name="provinsi" class="form-control" required>
                                     <option value="" selected disabled>Pilih Provinsi</option>
                                     <!-- Options will be added dynamically by JavaScript -->
                                 </select>
                             </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="Isi disini" required />
-                            </div>
-                            <div class="form-group">
-                                <label for="address">Alamat Lengkap</label>
-                                <input type="text" id="address" name="alamat" placeholder="Masukkan alamat lengkap" required />
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" id="password" name="password" placeholder="Isi disini" required />
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Nomor Telepon</label>
-                                <input type="tel" id="phone" name="telepon" placeholder="Isi disini" required />
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="confirmPassword">Konfirmasi Password</label>
-                                <input type="password" id="confirmPassword" name="password_confirmation" placeholder="Isi disini" required />
-                            </div>
-                        </div>
-                        <button class="btn-register" type="submit" id="simpanBtn">Simpan Data</button>
-                        <div class="login-link">Sudah punya akun? <a href="login">Masuk</a></div>
                     </div>
-                </form>
-            </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Masukkan email anda" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Alamat Lengkap</label>
+                            <input type="text" id="address" name="alamat" placeholder="Masukkan alamat lengkap anda" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Kata Sandi</label>
+                            <input type="password" id="password" name="password" placeholder="Masukkan kata sandi anda" required minlength="8" />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Nomor Telepon</label>
+                            <input type="number" id="phone" name="telepon" placeholder="Isi disini" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="confirmPassword">Konfirmasi Kata Sandi</label>
+                            <input type="password" id="confirmPassword" name="password_confirmation" placeholder="Isi disini" required />
+                        </div>
+                    </div>
+                    <button class="btn-register" type="submit" id="simpanBtn">Simpan Data</button>
+                    <div class="login-link">Sudah punya akun? <a href="login">Masuk</a></div>
+                </div>
+            </form>
         </div>
-        
+    </div>
 
-        <script>
-            // Fetch data provinsi
+    <!-- SweetAlert2 Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script>
+          // Fetch data negara
+          fetch('https://restcountries.com/v3.1/all')
+                .then(response => response.json())
+                .then(countries => {
+                    const countrySelect = document.getElementById('country');
+                    countries.forEach(country => {
+                        const option = document.createElement('option');
+                        option.textContent = country.name.common;
+                        option.value = country.name.common;
+                        countrySelect.appendChild(option);
+                    });
+                });            // Fetch data provinsi
             fetch('https://kanglerian.github.io/api-wilayah-indonesia/api/provinces.json')
                 .then(response => response.json())
                 .then(provinces => {
@@ -557,52 +570,98 @@
                         provinceSelect.appendChild(option);
                     });
                 });
-        
-            // Fetch data negara
-            fetch('https://restcountries.com/v3.1/all')
-                .then(response => response.json())
-                .then(countries => {
-                    const countrySelect = document.getElementById('country');
-                    countries.forEach(country => {
-                        const option = document.createElement('option');
-                        option.textContent = country.name.common;
-                        option.value = country.name.common;
-                        countrySelect.appendChild(option);
-                    });
+    </script>
+
+    <script>
+        // Function to validate form and show SweetAlert2 popups
+        function validateForm(event) {
+            event.preventDefault(); // Prevent form submission initially
+
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const nik = document.getElementById('nik').value;
+
+            if (password.length < 8) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Password minimal 8 karakter.',
                 });
-        </script>
-    <!-- SweetAlert2 Library -->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-        <script>
-            // Fungsi untuk menampilkan notifikasi dan mengarahkan ke halaman login
-            function simpanData() {
-                // Tampilkan notifikasi
-                alert("Data berhasil disimpan!");
-
-                function simpanData() {
-                    // Tampilkan notifikasi
-                    alert("Data berhasil disimpan!");
-
-                    // Arahkan ke halaman login
-                    window.location.href = "/login"; // Ganti "halaman-login.html" dengan URL halaman login Anda
-                }
-
+                return;
             }
 
-            // Tambahkan event listener untuk tombol "Simpan Data"
-            document.getElementById("simpanBtn").addEventListener("click", simpanData);
-            // Tambahkan event listener untuk tombol "Simpan Data"
-            document.getElementById("simpanBtn").addEventListener("click", simpanData);
+            if (password !== confirmPassword) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Password dan konfirmasi password tidak sama.',
+                });
+                return;
+            }
 
-            document.addEventListener("DOMContentLoaded", function() {
-                setTimeout(function() {
-                    var loading = document.getElementById("loading");
-                    loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
-                }, 1000); // 3000 milidetik = 3 detik
+            if (nik.length !== 16) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'NIK harus 16 digit.',
+                });
+                return;
+            }
+
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: 'Pastikan NIK dan Email benar karena tidak bisa di edit nantinya.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, simpan!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('registerForm').submit();
+                    return false;
+                }
             });
-        </script>
-    </body>
+        }
+        document.getElementById('nik').addEventListener('input', function (event) {
+            // Hanya memperbolehkan angka 0-9
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        document.getElementById('nik').addEventListener('keypress', function (event) {
+            // Mencegah masukan selain angka
+            if (!/\d/.test(event.key)) {
+                event.preventDefault();
+            }
+        });
+
+        document.getElementById('nik').addEventListener('blur', function (event) {
+            // Validasi panjang input saat kehilangan fokus
+            const errorMessage = document.getElementById('error-message');
+            if (this.value.length !== 16) {
+                errorMessage.textContent = 'NIK harus terdiri dari 16 digit angka.';
+            } else {
+                errorMessage.textContent = '';
+            }
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', validateForm);
+
+        // Handle server-side validation errors
+        @if ($errors->any())
+            let errorMessage = '';
+            @foreach ($errors->all() as $error)
+                errorMessage += '{{ $error }}\n';
+            @endforeach
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: errorMessage,
+            });
+        @endif
+
+    </script>
+</body>
 
 </html>
 @endsection

@@ -14,7 +14,7 @@ class PostController extends Controller
         $posts = Post::all();
 
         foreach ($posts as $post) {
-            $post->content = \Illuminate\Support\Str::limit($post->content, 100, $end='...');
+            $post->content = \Illuminate\Support\Str::limit($post->content, 250, $end='...');
             $post->img = env('APP_BACKEND_URL') . '/images/' . $post->img;
         }
         $backendUrl = env('APP_BACKEND_URL');

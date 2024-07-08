@@ -178,7 +178,7 @@
 
 .btn-login {
     padding: 10px 20px;
-    background-color: #6c63ff;
+    background-color: #5940cb;
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -348,12 +348,12 @@
                         <div class="input-group">
                             <label for="email">Email</label>
                             <span class="input-icon"><i class="fas fa-envelope"></i></span>
-                            <input id="email" type="email" placeholder="email" name="email" required />
+                            <input id="email" type="email" placeholder="Masukkan email anda" name="email" required />
                         </div>
                         <div class="input-group">
                             <label for="password">Password</label>
                             <span class="input-icon"><i class="fas fa-lock"></i></span>
-                            <input id="password" type="password" placeholder='password' name="password" required />
+                            <input id="password" type="password" placeholder='Masukkan kata sandi anda' name="password" required />
                         </div>
 
                         <button class="btn-login" type="submit" id="masukBtn">Masuk</button>

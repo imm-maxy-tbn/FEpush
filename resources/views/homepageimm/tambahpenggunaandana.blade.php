@@ -106,23 +106,7 @@ input[type="number"] {
     border-radius: 7px;
 }
 
-.modal-content {
-    width: 699px;
-    height: 253px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
-.modal-body {
-    gap: 20px;
-    margin: 0 51px;
-    height: 100%;
-    display: flex;
-    align-items: start;
-    justify-content: center;
-    flex-direction: column;
-}
 
 .btnn {
     display: flex;
@@ -152,6 +136,16 @@ input[type="number"] {
     justify-content: center;
     font-size: 14px;
     /* Adjust the font size as needed */
+}
+.modal-content{
+    padding: 10px;
+    margin-top: -300px;
+}
+.btn-group {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
 }
     </style>
 @endsection
@@ -218,13 +212,12 @@ input[type="number"] {
             </div>
         </form>
     </div>
-
     <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
             <div class="modal-content shadow">
                 <div class="modal-body">
                     <h5 class="modal-title" id="confirmationModalLabel">Apakah data sudah benar?</h5>
-                    <span><strong>Note:</strong> Data yang anda tambahkan tidak bisa diubah kembali, pastikan semua input data sudah benar</span>
+                    <p><strong>Note:</strong> Data yang Anda tambahkan tidak bisa diubah kembali, pastikan semua input data sudah benar.</p>
                     <div class="btn-group mt-3">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Belum, cek kembali</button>
                         <button type="button" class="btn btn-primary" id="confirmUpdate">Ya, sudah benar</button>
@@ -233,7 +226,7 @@ input[type="number"] {
             </div>
         </div>
     </div>
-
+    
 
 
     <script>

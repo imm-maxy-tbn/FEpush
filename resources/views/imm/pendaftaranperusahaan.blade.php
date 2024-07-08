@@ -51,7 +51,7 @@
                     </div>
                     <div class="form-group">
                         <label for="posisi_pic">Provinsi</label>
-                        <input type="text" class="form-control" id="posisi_pic" name="provinsi" placeholder="Provinsi" required>
+                        <input type="text"  class="form-control" id="posisi_pic" name="provinsi" placeholder="Provinsi" required>
                     </div>
                     <div class="form-group">
                         <label for="posisi_pic">Kabupaten</label>

@@ -61,9 +61,7 @@
             border-radius: 50rem;
         }
 
-        .progress-bar {
-            background-color: #007bff;
-        }
+
 
         .footer {
             background-color: #343a40;
@@ -110,12 +108,12 @@
         }
 
         .btn-purple {
-            background-color: #5e42a6;
+            background-color: #5940cb;
             color: white;
         }
 
         .btn-purple:hover {
-            background-color: #4e3690;
+            background-color: #562dc7;
             color: white;
         }
 
@@ -124,7 +122,7 @@
         }
 
         .scrollable {
-            max-height: 200px;
+            max-height: 308px;
             overflow-y: auto;
         }
 
@@ -341,60 +339,13 @@
                     </ul>
                 </div>
             </div>
-
-            <!-- Penggunaan Dana section -->
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">Penggunaan Dana</h5>
-                    @php
-                        $totalDana = $project->dana->sum('nominal');
-                        $totalPendanaan = $project->jumlah_pendanaan;
-                    @endphp
-                    @foreach ($project->dana as $dana)
-                        @php
-                            $percentage = $totalPendanaan > 0 ? ($dana->nominal / $totalPendanaan) * 100 : 0;
-                        @endphp
-                        <div class="mb-3">
-                            <div class="d-flex justify-content-between">
-                                <span>{{ $dana->jenis_dana }}</span>
-                                <span class="font-weight-bold">{{ number_format($dana->nominal, 0, ',', '.') }}</span>
-                            </div>
-                            <div class="progress">
-                                <div class="progress-bar bg-primary" role="progressbar"
-                                    style="width: {{ $percentage }}%;" aria-valuenow="{{ $percentage }}"
-                                    aria-valuemin="0" aria-valuemax="100"> {{ $percentage }}%</div>
-                            </div>
-                        </div>
-                    @endforeach
-                    <div>
-                        <div class="d-flex justify-content-between">
-                            <span>Total Dana</span>
-                            <span class="font-weight-bold">{{ number_format($totalDana, 0, ',', '.') }}</span>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <span>Total Pendanaan</span>
-                            <span class="font-weight-bold">{{ number_format($totalPendanaan, 0, ',', '.') }}</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 100%;"
-                                aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    @if ($totalDana >= $totalPendanaan)
-                        <p class="mt-3 text-center">Total Dana Untuk Proyek Ini Telah Terpenuhi</p>
-                    @else
-                        <p class="mt-3 text-center">Total Dana Untuk Proyek Ini Belum Terpenuhi</p>
-                    @endif
-                </div>
             </div>
-        </div>
 
         <div class="container d-flex justify-content-center mt-5">
             <button type="submit" class="btn w-50 btn-purple px-4 py-2 btn-wide text-white hidden" id="save-button"
                 style="font-weight:bold;">Simpan Perubahan Detail Proyek</button>
         </div>
-        </div>
-        </div>
+    
 
  
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
