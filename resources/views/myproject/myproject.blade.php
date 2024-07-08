@@ -78,7 +78,7 @@
             <div class="col-md-8">
                 <div class="input-group">
                     <input type="text" id="search-all-projects" class="form-control search-input"
-                        placeholder="Search All Projects..." aria-label="Search">
+                        placeholder="Cari project anda" aria-label="Search">
                     <div class="input-group-append">
                         <button type="button" class="input-group-text search-icon" aria-label="Search Button"><i
                                 class="fas fa-search"></i></button>
@@ -141,7 +141,7 @@
                 <div class="col-md-8">
                     <div class="input-group">
                         <input type="text" id="search-ongoing-projects" class="form-control search-input"
-                            placeholder="Search Ongoing Projects..." aria-label="Search">
+                            placeholder="Cari project berlangsung" aria-label="Search">
                         <div class="input-group-append">
                             <button type="button" class="input-group-text search-icon" aria-label="Search Button"><i
                                     class="fas fa-search"></i></button>
@@ -197,7 +197,7 @@
                 <div class="col-md-8">
                     <div class="input-group">
                         <input type="text" id="search-completed-projects" class="form-control search-input"
-                            placeholder="Search Completed Projects..." aria-label="Search">
+                            placeholder="Cari project selesai" aria-label="Search">
                         <div class="input-group-append">
                             <button type="button" class="input-group-text search-icon" aria-label="Search Button"><i
                                     class="fas fa-search"></i></button>
