@@ -154,14 +154,23 @@ input[type="number"] {
 }</style>
 
 @endsection
+
 @section('content')
 <body>
     <div class="container" style="padding-top: 120px">
-       <a href="homepage"> <h4 class=" d-flex align-items-center"><strong style="font-size: 40px;"><</strong>   Pengelolaan Dana</h4></a>
-        <span class="biaya">Dana Hibah</span>
+        <a href="homepage">
+            <h4 class=" d-flex align-items-center"><strong style="font-size: 40px;"><</strong> Pengelolaan Dana</h4>
+        </a>
+        <div class="container my-4 d-flex justify-content-between align-items-center">
+            <span class="biaya">Dana Hibah</span>
+            <div class="form-inline">
+                <input type="text" id="search-income" class="form-control search-input" placeholder="Cari detail biaya">
+            </div>
+        </div>
     </div>
+
     <div class="container">
-        <table class="table tabel mt-3 text-center ">
+        <table class="table mt-3 text-center">
             <thead>
                 <tr>
                     <th>Tanggal</th>
@@ -171,27 +180,34 @@ input[type="number"] {
                     <th>Jumlah (Rp)</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="income-list">
                 @foreach ($companyIncomes as $income)
-                    <tr>
-                        <td>{{ $income->date }}</td>
-                        <td>{{ $income->pengirim }}</td>
-                        <td>{{ $income->bank_asal }}</td>
-                        <td>{{ $income->bank_tujuan }}</td>
-                        <td>Rp{{ number_format($income->jumlah_hibah, 0, ',', '.') }}</td>
-                    </tr>
+                <tr>
+                    <td>{{ $income->date }}</td>
+                    <td>{{ $income->pengirim }}</td>
+                    <td>{{ $income->bank_asal }}</td>
+                    <td>{{ $income->bank_tujuan }}</td>
+                    <td>Rp{{ number_format($income->jumlah_hibah, 0, ',', '.') }}</td>
+                </tr>
                 @endforeach
             </tbody>
         </table>
+
+        <!-- "Detail biaya tidak ditemukan" message -->
+        <div id="income-no-results" class="text-center py-3" style="display: none;">
+            Detail biaya tidak ditemukan.
+        </div>
     </div>
+
     <div class="container my-4 d-flex justify-content-between align-items-center">
         <span class="biaya">Rancangan pengeluaran Proyek</span>
         <div class="form-inline">
             <input type="text" id="search-input" class="form-control" placeholder="Cari Pengeluaran">
         </div>
     </div>
+
     <div class="container">
-        <table class="table tabel mt-3 text-center ">
+        <table class="table tabel mt-3 text-center">
             <thead>
                 <tr>    
                     <th>Nama Proyek</th>
@@ -211,38 +227,70 @@ input[type="number"] {
                 @endforeach
             </tbody>
         </table>
-        <div id="no-results" style="display: none;" class="text-center">
+
+        <!-- "Tidak ada proyek yang ditemukan" message -->
+        <div id="project-no-results" style="display: none;" class="text-center py-3">
             Tidak ada proyek yang ditemukan.
         </div>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.getElementById('search-input');
-            const tableBody = document.getElementById('project-table-body');
-            const noResults = document.getElementById('no-results');
-            const rows = tableBody.getElementsByTagName('tr');
+            // Function to handle search for income details
+            const searchIncomeInput = document.getElementById('search-income');
+            const incomeList = document.getElementById('income-list');
+            const incomeNoResults = document.getElementById('income-no-results');
+            const incomeRows = incomeList.getElementsByTagName('tr');
 
-            searchInput.addEventListener('input', function() {
+            searchIncomeInput.addEventListener('input', function() {
                 const searchTerm = this.value.toLowerCase();
-                let visibleRows = 0;
+                let visibleIncomeRows = 0;
 
-                for (let row of rows) {
-                    const projectName = row.cells[0].textContent.toLowerCase();
-                    if (projectName.includes(searchTerm)) {
+                for (let row of incomeRows) {
+                    const rowText = row.textContent.trim().toLowerCase();
+                    if (rowText.includes(searchTerm)) {
                         row.style.display = '';
-                        visibleRows++;
+                        visibleIncomeRows++;
                     } else {
                         row.style.display = 'none';
                     }
                 }
 
-                if (visibleRows === 0) {
-                    tableBody.style.display = 'none';
-                    noResults.style.display = 'block';
+                // Show or hide "Detail biaya tidak ditemukan" message for income details
+                if (visibleIncomeRows === 0) {
+                    incomeList.style.display = 'none';
+                    incomeNoResults.style.display = 'block';
                 } else {
-                    tableBody.style.display = '';
-                    noResults.style.display = 'none';
+                    incomeList.style.display = '';
+                    incomeNoResults.style.display = 'none';
+                }
+            });
+
+            // Function to handle search for project names
+            const searchProjectInput = document.getElementById('search-input');
+            const projectTableBody = document.getElementById('project-table-body');
+            const projectNoResults = document.getElementById('project-no-results');
+            const projectRows = projectTableBody.getElementsByTagName('tr');
+
+            searchProjectInput.addEventListener('input', function() {
+                const searchProjectTerm = this.value.toLowerCase();
+                let visibleProjectRows = 0;
+
+                for (let row of projectRows) {
+                    const projectName = row.cells[0].textContent.toLowerCase();
+                    if (projectName.includes(searchProjectTerm)) {
+                        row.style.display = '';
+                        visibleProjectRows++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+
+                // Show or hide "Tidak ada proyek yang ditemukan" message for project names
+                if (visibleProjectRows === 0) {
+                    projectNoResults.style.display = 'block';
+                } else {
+                    projectNoResults.style.display = 'none';
                 }
             });
         });

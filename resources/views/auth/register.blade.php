@@ -497,7 +497,8 @@
                     <div class="form-row">
                         <div class="form-group">
                             <label for="nik">NIK</label>
-                            <input type="number" id="nik" name="nik" placeholder="Masukkan disini" required minlength="16" maxlength="16" />
+                            <input type="text" id="nik" name="nik" placeholder="Masukkan disini" required minlength="16" maxlength="16" />
+                                <div id="error-message" class="error"></div>
                         </div>
                         <div class="form-group">
                             <label for="province">Provinsi</label>
@@ -591,6 +592,27 @@
                 }
             });
         }
+        document.getElementById('nik').addEventListener('input', function (event) {
+            // Hanya memperbolehkan angka 0-9
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        document.getElementById('nik').addEventListener('keypress', function (event) {
+            // Mencegah masukan selain angka
+            if (!/\d/.test(event.key)) {
+                event.preventDefault();
+            }
+        });
+
+        document.getElementById('nik').addEventListener('blur', function (event) {
+            // Validasi panjang input saat kehilangan fokus
+            const errorMessage = document.getElementById('error-message');
+            if (this.value.length !== 16) {
+                errorMessage.textContent = 'NIK harus terdiri dari 16 digit angka.';
+            } else {
+                errorMessage.textContent = '';
+            }
+        });
 
         document.getElementById('registerForm').addEventListener('submit', validateForm);
 
