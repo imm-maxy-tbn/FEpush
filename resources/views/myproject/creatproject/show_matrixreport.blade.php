@@ -82,9 +82,7 @@
 @section('content')
 <div class="container mt-5 content-container">
     <h1>Matrix: {{ $metricProject->metric ? $metricProject->metric->name : 'Matrix Report' }}</h1> <!-- Dynamic title -->
-    <div class="date-box">
-        <input type="date" name="" id="">
-    </div>
+    <h2>Perkembangan Matrix</h2>
     <div class="chart-container">
         {!! $chart->container() !!}
     </div>
@@ -108,7 +106,8 @@
                     </div>
                     <input type="hidden" name="metric_id" value="{{ $metricProject->metric ? $metricProject->metric->id : '' }}">
                     <div class="btn-container">
-                        <button type="submit" class="btn save-btn">Save</button>
+                        <a href="{{ route('metric-projects.createMatrixReport', $project->id) }}" class="btn save-btn">Save</a>
+                        <button id="export-btn" class="btn export-btn">Export PDF</button>
                     </div>
                 </form>
             </div>
@@ -122,4 +121,48 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="{{ asset('js/myproject/impact.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+    document.getElementById('export-btn').addEventListener('click', function () {
+        var elementHTML = document.querySelector('.content-container');
+
+        // Periksa apakah elemen ada
+        if (!elementHTML) {
+            console.error("Element .content-container tidak ditemukan.");
+            return;
+        }
+
+        html2canvas(elementHTML, {
+            useCORS: true,
+            scale: 2
+        }).then(function (canvas) {
+            var imgData = canvas.toDataURL('image/png');
+            var doc = new jspdf.jsPDF('p', 'mm', 'a4');
+            var imgWidth = 210; // Lebar halaman A4 dalam mm
+            var pageHeight = 295; // Tinggi halaman A4 dalam mm
+            var imgHeight = canvas.height * imgWidth / canvas.width;
+            var heightLeft = imgHeight;
+            var position = 0;
+
+            // Tambahkan gambar ke halaman pertama
+            doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+            heightLeft -= pageHeight;
+
+            // Tambahkan halaman baru jika konten lebih dari satu halaman
+            while (heightLeft >= 0) {
+                position = heightLeft - imgHeight;
+                doc.addPage();
+                doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
+                heightLeft -= pageHeight;
+            }
+
+            // Simpan PDF
+            doc.save('matrix-report.pdf');
+        }).catch(function (error) {
+            console.error("html2canvas error: ", error);
+        });
+    });
+</script>
+
 @endsection

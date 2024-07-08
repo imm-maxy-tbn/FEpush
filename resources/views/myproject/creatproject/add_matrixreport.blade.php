@@ -84,9 +84,7 @@
 
 <div class="container mt-5 content-container">
     <h1>Tambah Matrix: {{ $metricProject->metric ? $metricProject->metric->name : 'New Matrix' }}</h1> <!-- Dynamic title -->
-    <div class="date-box">
-        <input type="date" name="" id="">
-    </div>
+    <h2>Perkembangan Matrix</h2>
     <div class="chart-container">
         {!! $chart->container() !!}
     </div>
