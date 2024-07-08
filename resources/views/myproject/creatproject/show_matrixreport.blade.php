@@ -149,11 +149,9 @@
             var heightLeft = imgHeight;
             var position = 20; // Starting position, 4 cm from the top
 
-            // Add image to first page
             doc.addImage(imgData, 'PNG', 0, position, imgWidth, imgHeight);
             heightLeft -= pageHeight - 20;
 
-            // Add new pages if content is more than one page
             while (heightLeft >= 0) {
                 position = heightLeft - imgHeight;
                 doc.addPage();
@@ -161,7 +159,6 @@
                 heightLeft -= pageHeight;
             }
 
-            // Save the PDF
             doc.save('matrix-report.pdf');
         }).catch(function (error) {
             console.error("html2canvas error: ", error);
