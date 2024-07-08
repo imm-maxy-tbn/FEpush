@@ -226,11 +226,11 @@
                         </div>
 
                         <div class="card mb-4">
-                            <div class="card-body">
+                            <div class="card-body ">
                                 <h5 class="card-title">SDG'S</h5>
-                                <div class="row">
+                                <div class="row d-flex justify-content-start ">
                                     @foreach ($project->sdgs as $sdg)
-                                        <div class="col-4">
+                                        <div class="col-3 d-flex justify-content-center align-items-center mt-3" >
                                             <img src="{{ env('APP_BACKEND_URL') . '/images/' . $sdg->img }}"
                                                 class="img-fluid" alt="{{ $sdg->order }}. {{ $sdg->name }}">
                                         </div>
@@ -396,6 +396,8 @@
         </div>
         </div>
 
+ 
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 
         <script>
             $(document).ready(function() {

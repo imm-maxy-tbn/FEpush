@@ -183,7 +183,7 @@
                                                         name="target_pelanggans[0][status]" required>
                                                 </td>
                                                 <td>
-                                                    <input type="text" class="form-control"
+                                                    <input type="number" class="form-control"
                                                         name="target_pelanggans[0][rentang_usia]">
                                                 </td>
                                                 <td>

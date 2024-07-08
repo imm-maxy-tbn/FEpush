@@ -204,7 +204,7 @@
     <div class="container section-ukur d-flex justify-content-center">
         <div class="section-content1 text-center">
             <h5 id="title">Ukur dampak anda dengan <strong>percaya diri</strong></h5>
-            <button class="btn btn-primary btn-mulai">Mulai Sekarang</button>
+            <a href="{{ route('myproject.myproject') }}"><button class="btn btn-primary btn-mulai">Mulai Sekarang</button></a>
         </div>
     </div>
 

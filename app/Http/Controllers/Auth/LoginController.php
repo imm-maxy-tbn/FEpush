@@ -37,7 +37,7 @@ class LoginController extends Controller
      * @return void
      */
 
-     
+
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
@@ -57,7 +57,6 @@ class LoginController extends Controller
     // Check for user existence and complete profile ONLY for 'USER' role
     if ($user && $user->role === 'USER') {
         if (is_null($user->nik) || is_null($user->negara) || is_null($user->provinsi)) {
-            Log::info('User with incomplete profile tried to log in.', ['user_id' => $user->id]);
             return false;
         }
     }
@@ -86,23 +85,44 @@ protected function authenticated(Request $request, $user)
 }
 
 protected function sendFailedLoginResponse(Request $request)
-{
-    $user = \App\Models\User::where('email', $request->email)->first();
+    {
+        $user = \App\Models\User::where('email', $request->email)->first();
 
-    if ($user && $user->role === 'USER') {
-        if (is_null($user->nik) || is_null($user->negara) || is_null($user->provinsi)) {
+        if ($user && $user->role === 'USER') {
+            if (is_null($user->nik) || is_null($user->negara) || is_null($user->provinsi)) {
+                return redirect()->back()
+                    ->withInput($request->only($this->username(), 'remember'))
+                    ->withErrors([
+                        $this->username() => 'These credentials do not match our records.',
+                    ])->with('error', 'These credentials do not match our records.');
+            }
+        }
+
         return redirect()->back()
             ->withInput($request->only($this->username(), 'remember'))
             ->withErrors([
-                $this->username() => 'Your profile is incomplete. Please contact support to complete your profile before logging in.',
-            ]);
-    }}
+                $this->username() => trans('auth.failed'),
+            ])->with('error', trans('auth.failed'));
+    }
 
-    return redirect()->back()
-        ->withInput($request->only($this->username(), 'remember'))
-        ->withErrors([
-            $this->username() => trans('auth.failed'),
-        ]);
-}
+    public function login(Request $request)
+    {
+        $this->validateLogin($request);
+
+        if (method_exists($this, 'hasTooManyLoginAttempts') &&
+            $this->hasTooManyLoginAttempts($request)) {
+            $this->fireLockoutEvent($request);
+
+            return $this->sendLockoutResponse($request);
+        }
+
+        if ($this->attemptLogin($request)) {
+            return $this->sendLoginResponse($request)->with('success', 'Login successful!');
+        }
+
+        $this->incrementLoginAttempts($request);
+
+        return $this->sendFailedLoginResponse($request);
+    }
 
 }

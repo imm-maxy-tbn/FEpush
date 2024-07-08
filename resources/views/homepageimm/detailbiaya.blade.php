@@ -159,19 +159,18 @@ input[type="number"] {
 
 
     <body>
-
         <div class="container" style="padding-top: 120px">
             <div class="row d-flex justify-content-between">
                 <a href="{{ route('kelola-pengeluaran') }}">
-                    <h4 class=" d-flex align-items-center"><strong style="font-size: 40px;">
-                            <</strong> Detail penggunaan biaya proyek {{ $project->nama }}</h4>
+                    <h4 class="d-flex align-items-center"><strong style="font-size: 40px;">
+                        <</strong> Detail penggunaan biaya proyek {{ $project->nama }}</h4>
                 </a>
                 <a href="{{ route('tambah.penggunaan.dana', ['project_id' => $project_id]) }}"><button
                         class="btn-tambahdana">Tambah Penggunaan Dana</button></a>
             </div>
             <h5>Detail Biaya</h5>
         </div>
-
+        
         <div class="container">
             <table class="table tabel mt-3 text-center ">
                 <thead>
@@ -180,11 +179,10 @@ input[type="number"] {
                         <th>Jumlah Biaya</th>
                         <th>Keterangan</th>
                         <th>Bukti</th>
-
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($outcomes as $outcome)
+                    @forelse ($outcomes as $outcome)
                         <tr>
                             <td>{{ $outcome->date }}</td>
                             <td>Rp{{ number_format($outcome->jumlah_biaya, 0, ',', '.') }}</td>
@@ -196,12 +194,15 @@ input[type="number"] {
                                 </span>
                             </td>
                         </tr>
-                    @endforeach
-
+                    @empty
+                        <tr>
+                            <td colspan="4">Tidak ada detail biaya yang ditemukan.</td>
+                        </tr>
+                    @endforelse
                 </tbody>
             </table>
         </div>
-
+        
         <!-- Modal for Each Outcome -->
         @foreach ($outcomes as $outcome)
             <div class="modal fade" id="notificationModal{{ $outcome->id }}" tabindex="-1"
@@ -223,8 +224,7 @@ input[type="number"] {
             </div>
         @endforeach
 
-
         <script>
-            < /body>
+            </body>
 
         @endsection

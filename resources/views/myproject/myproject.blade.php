@@ -104,9 +104,9 @@ border: 1px solid black;
                 <div class="row">
                     @foreach($allProjects as $index => $project)
                         <div class="col-md-4 mb-4" id="project-{{ $project->id }}" @if($index >= 6) style="display: none;" @endif>
-                            <div class="card project-card" style="min-height: 200px">
+                            <div class="card project-card" style="min-height: 315px">
                                 <img height="150px" src="{{ $project->img ? asset('images/' . $project->img) : asset('images/default_project.png') }}" class="card-img-top" alt="">
-                                <div class="card-body">
+                                <div class="card-body d-flex flex-column justify-content-between">
                                     <h5 class="card-title">{{ $project->nama }}</h5>
                                     <div class="d-flex">
                                         <a href="detail/{{ $project->id }}" class="btn btn-detail mt-2">Detail</a>
@@ -133,6 +133,8 @@ border: 1px solid black;
                     {{ $ongoingProjects->count() }} of {{ $allProjects->count() }}
                 </button>
             </div>
+
+            <input type="text" class="form-control" id="searchMetrics" placeholder="Cari Proyek anda" style="width:40%;">
         </div>
         <table class="table mt-3 ongoing-projects-table border text-center">
             <thead>
@@ -174,6 +176,7 @@ border: 1px solid black;
                     {{ $completedProjects->count() }} of {{ $allProjects->count() }}
                 </button>
             </div>
+            <input type="text" class="form-control" id="searchMetrics" placeholder="Cari Proyek anda" style="width:40%;">
         </div>
         <table class="table mt-3 done-projects-table border text-center">
             <thead>
