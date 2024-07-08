@@ -473,268 +473,142 @@
 @endsection
 
 @section('content')
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
-    <body>
-        <div class="container">
-            <div class="register-container">
-                <form method="POST" action="{{ route('register') }}" id="registerForm">
-                    @csrf
-                    <div class="register-form">
-                        <img src="images/imm.png" alt="Brand Logo" class="brand-logo">
-                        <h2>Daftarkan akun</h2>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="fullName">Nama Lengkap</label>
-                                <input type="text" id="fullName" name="nama" placeholder="Nama lengkap" required />
-                            </div>
-                            <div class="form-group">
-                                <label for="country">Negara</label>
-                                <select id="country" name="negara" required>
-                                    <option value="">Pilih Negara</option>
-                                </select>
-                            </div>
+<body>
+    <div class="container">
+        <div class="register-container">
+            <form method="POST" action="{{ route('register') }}" id="registerForm">
+                @csrf
+                <div class="register-form">
+                    <img src="images/imm.png" alt="Brand Logo" class="brand-logo">
+                    <h2>Daftarkan akun</h2>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="fullName">Nama Lengkap</label>
+                            <input type="text" id="fullName" name="nama" placeholder="isi disini" required />
                         </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="nik">NIK</label>
-                                <input type="number" id="nik" name="nik" placeholder="NIK (16 digit)" required
-                                    minlength="16" maxlength="16" />
-                            </div>
-                            <div class="form-group">
-                                <label for="province">Provinsi</label>
-                                <select id="province" name="provinsi" required>
-                                    <option value="">Pilih Provinsi</option>
-                                </select>
-                            </div>
+                        <div class="form-group">
+                            <label for="country">Negara</label>
+                            <input type="text" id="country" name="negara" placeholder="isi disini" required />
                         </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="email@gmail.com"
-                                    required />
-                            </div>
-                            <div class="form-group">
-                                <label for="address">Alamat Lengkap</label>
-                                <input type="text" id="address" name="alamat" placeholder="Alamat lengkap" required />
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" id="password" name="password" placeholder="password" required
-                                    minlength="8" />
-                            </div>
-                            <div class="form-group">
-                                <label for="phone">Nomor Telepon</label>
-                                <input type="number" id="phone" name="telepon" placeholder="0812345678" required />
-                            </div>
-                        </div>
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="confirmPassword">Konfirmasi Password</label>
-                                <input type="password" id="confirmPassword" name="password_confirmation"
-                                    placeholder="Konfirmasi password" required />
-                            </div>
-                        </div>
-                        <button class="btn-register" type="submit" id="simpanBtn">Daftarkan akun</button>
-                        <div class="login-link">Sudah punya akun? <a href="login">Masuk</a></div>
                     </div>
-                </form>
-            </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="nik">NIK</label>
+                            <input type="number" id="nik" name="nik" placeholder="Masukkan disini" required minlength="16" maxlength="16" />
+                        </div>
+                        <div class="form-group">
+                            <label for="province">Provinsi</label>
+                            <input type="text" id="province" name="provinsi" placeholder="isi disini" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" placeholder="Isi disini" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Alamat Lengkap</label>
+                            <input type="text" id="address" name="alamat" placeholder="Masukkan alamat lengkap" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" id="password" name="password" placeholder="Isi disini" required minlength="8" />
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Nomor Telepon</label>
+                            <input type="number" id="phone" name="telepon" placeholder="Isi disini" required />
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="confirmPassword">Konfirmasi Password</label>
+                            <input type="password" id="confirmPassword" name="password_confirmation" placeholder="Isi disini" required />
+                        </div>
+                    </div>
+                    <button class="btn-register" type="submit" id="simpanBtn">Simpan Data</button>
+                    <div class="login-link">Sudah punya akun? <a href="login">Masuk</a></div>
+                </div>
+            </form>
         </div>
+    </div>
 
-        <!-- SweetAlert2 Library -->
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- SweetAlert2 Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-        <script>
-            // Function to validate form and show SweetAlert2 popups
-            function validateForm(event) {
-                event.preventDefault(); // Prevent form submission initially
+    <script>
+        // Function to validate form and show SweetAlert2 popups
+        function validateForm(event) {
+            event.preventDefault(); // Prevent form submission initially
 
-                const password = document.getElementById('password').value;
-                const confirmPassword = document.getElementById('confirmPassword').value;
-                const nik = document.getElementById('nik').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const nik = document.getElementById('nik').value;
 
-                if (password.length < 8) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Password minimal 8 karakter.',
-                    });
-                    return;
-                }
-
-                if (password !== confirmPassword) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'Password dan konfirmasi password tidak sama.',
-                    });
-                    return;
-                }
-
-                if (nik.length !== 16) {
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Oops...',
-                        text: 'NIK harus 16 digit.',
-                    });
-                    return;
-                }
-
-                Swal.fire({
-                    title: 'Konfirmasi',
-                    text: 'Pastikan NIK dan Email benar karena tidak bisa di edit nantinya.',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Ya, simpan!'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById('registerForm').submit();
-                        return false;
-                    }
-                });
-            }
-
-            document.getElementById('registerForm').addEventListener('submit', validateForm);
-
-            // Handle server-side validation errors
-            @if ($errors->any())
-                let errorMessage = '';
-                @foreach ($errors->all() as $error)
-                    errorMessage += '{{ $error }}\n';
-                @endforeach
+            if (password.length < 8) {
                 Swal.fire({
                     icon: 'error',
                     title: 'Oops...',
-                    text: errorMessage,
+                    text: 'Password minimal 8 karakter.',
                 });
-            @endif
-        </script>
-        <script>
-            const apiKey = 'YOUR_API_KEY_HERE'; // Replace with your actual API key
-            const countrySelect = document.getElementById('country');
-            const provinceSelect = document.getElementById('province');
+                return;
+            }
 
-            // Fetch countries
-            fetch('https://api.countrystatecity.in/v1/countries', {
-                    headers: {
-                        'X-CSCAPI-KEY': apiKey
-                    }
-                })
-                .then(response => response.json())
-                .then(countries => {
-                    countries.forEach(country => {
-                        const option = document.createElement('option');
-                        option.value = country.iso2;
-                        option.textContent = country.name;
-                        countrySelect.appendChild(option);
-                    });
-                })
-                .catch(error => console.error('Error fetching countries:', error));
+            if (password !== confirmPassword) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'Password dan konfirmasi password tidak sama.',
+                });
+                return;
+            }
 
-            // Fetch states/provinces when a country is selected
-            countrySelect.addEventListener('change', function() {
-                const selectedCountry = this.value;
-                provinceSelect.innerHTML = '<option value="">Pilih Provinsi</option>'; // Reset provinces
+            if (nik.length !== 16) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: 'NIK harus 16 digit.',
+                });
+                return;
+            }
 
-                if (selectedCountry) {
-                    fetch(`https://api.countrystatecity.in/v1/countries/${selectedCountry}/states`, {
-                            headers: {
-                                'X-CSCAPI-KEY': apiKey
-                            }
-                        })
-                        .then(response => response.json())
-                        .then(states => {
-                            states.forEach(state => {
-                                const option = document.createElement('option');
-                                option.value = state.iso2;
-                                option.textContent = state.name;
-                                provinceSelect.appendChild(option);
-                            });
-                        })
-                        .catch(error => console.error('Error fetching states:', error));
+            Swal.fire({
+                title: 'Konfirmasi',
+                text: 'Pastikan NIK dan Email benar karena tidak bisa di edit nantinya.',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya, simpan!'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    document.getElementById('registerForm').submit();
+                    return false;
                 }
             });
+        }
 
-            function showLoading(select) {
-                select.disabled = true;
-                select.innerHTML = '<option>Loading...</option>';
-            }
+        document.getElementById('registerForm').addEventListener('submit', validateForm);
 
-            function hideLoading(select) {
-                select.disabled = false;
-            }
-
-            function showError(select, message) {
-                select.innerHTML = `<option>${message}</option>`;
-            }
-
-            // Fetch countries
-            showLoading(countrySelect);
-            fetch('https://api.countrystatecity.in/v1/countries', {
-                    headers: {
-                        'X-CSCAPI-KEY': apiKey
-                    }
-                })
-                .then(response => {
-                    if (!response.ok) throw new Error('Network response was not ok');
-                    return response.json();
-                })
-                .then(countries => {
-                    hideLoading(countrySelect);
-                    countrySelect.innerHTML = '<option value="">Pilih Negara</option>';
-                    countries.forEach(country => {
-                        const option = document.createElement('option');
-                        option.value = country.iso2;
-                        option.textContent = country.name;
-                        countrySelect.appendChild(option);
-                    });
-                })
-                .catch(error => {
-                    console.error('Error fetching countries:', error);
-                    showError(countrySelect, 'Error loading countries');
-                });
-
-            // Fetch states/provinces when a country is selected
-            countrySelect.addEventListener('change', function() {
-                const selectedCountry = this.value;
-                showLoading(provinceSelect);
-
-                if (selectedCountry) {
-                    fetch(`https://api.countrystatecity.in/v1/countries/${selectedCountry}/states`, {
-                            headers: {
-                                'X-CSCAPI-KEY': apiKey
-                            }
-                        })
-                        .then(response => {
-                            if (!response.ok) throw new Error('Network response was not ok');
-                            return response.json();
-                        })
-                        .then(states => {
-                            hideLoading(provinceSelect);
-                            provinceSelect.innerHTML = '<option value="">Pilih Provinsi</option>';
-                            states.forEach(state => {
-                                const option = document.createElement('option');
-                                option.value = state.iso2;
-                                option.textContent = state.name;
-                                provinceSelect.appendChild(option);
-                            });
-                        })
-                        .catch(error => {
-                            console.error('Error fetching states:', error);
-                            showError(provinceSelect, 'Error loading provinces');
-                        });
-                } else {
-                    provinceSelect.innerHTML = '<option value="">Pilih Provinsi</option>';
-                }
+        // Handle server-side validation errors
+        @if ($errors->any())
+            let errorMessage = '';
+            @foreach ($errors->all() as $error)
+                errorMessage += '{{ $error }}\n';
+            @endforeach
+            Swal.fire({
+                icon: 'error',
+                title: 'Oops...',
+                text: errorMessage,
             });
-        </script>
-    </body>
+        @endif
 
-    </html>
+    </script>
+</body>
+
+</html>
 @endsection
