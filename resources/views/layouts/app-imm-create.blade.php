@@ -164,6 +164,43 @@
         .buton {
             gap: 10px
         }
+
+        
+        .footerclose{
+            background-color: #5940cb;
+            color: #ffffff;
+            height: 77px;
+            text-align: center;
+            border-top-left-radius: 40px;
+            border-top-right-radius: 40px;
+            width: 100%;
+ 
+            display: none;
+        }
+
+        @media (max-width: 768px) {
+            footer {
+                display: none;
+                
+            }
+            .navbar-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .navbar-actions .btn {
+            margin-left: 0;
+            /* Remove margin between login and register buttons */
+        }
+            .footerclose{
+          
+                display: flex;
+            align-items: center;
+            justify-content: center;
+            }
+            
+        }
     </style>
 </head>
 
@@ -326,7 +363,10 @@
             </div>
         </div>
     </footer>
-
+    <div class="container footerclose">
+        <span class=" text-center">Impact Measurement and Management
+            <br> (TBN INDONESIA X MAXY ACADEMY)</span>
+    </div>
     <script>
         $(document).ready(function() {
             $('.navbar-button').click(function() {

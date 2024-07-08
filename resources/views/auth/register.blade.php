@@ -476,161 +476,103 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<body>
-    <div class="container">
-        <div class="register-container">
-            <form method="POST" action="{{ route('register') }}" id="registerForm">
-                @csrf
-                <div class="register-form">
-                    <img src="images/imm.png" alt="Brand Logo" class="brand-logo">
-                    <h2>Daftarkan akun</h2>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="fullName">Nama Lengkap</label>
-                            <input type="text" id="fullName" name="nama" placeholder="isi disini" required />
+    <body>
+
+
+
+        <div class="container">
+            <div class="register-container">
+                <form method="POST" action="{{ route('register') }}">
+                    @csrf
+                    <div class="register-form">
+                        <img src="images/imm.png" alt="Brand Logo" class="brand-logo">
+                        <h2>Daftarkan akun</h2>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Nama Lengkap</label>
+                                <input type="text" id="fullName" name="nama" placeholder="isi disini" />
+                            </div>
+                            <div class="form-group">
+                                <label for="country">Negara</label>
+                                <input type="text" id="country" name="negara" placeholder="isi disini" />
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="country">Negara</label>
-                            <input type="text" id="country" name="negara" placeholder="isi disini" required />
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="nik">NIK</label>
+                                <input type="number" id="nik" name="nik" placeholder="Masukkan disini" />
+                            </div>
+                            <div class="form-group">
+                                <label for="province">Provinsi</label>
+                                <input type="text" id="province" name="provinsi" placeholder="isi disini" />
+                            </div>
                         </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email</label>
+                                <input type="email" id="email" name="email" placeholder="Isi disini" />
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Alamat Lengkap</label>
+                                <input type="text" id="address" name="alamat" placeholder="Masukkan alamat lengkap" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" id="password" name="password" placeholder="Isi disini" />
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Nomor Telepon</label>
+                                <input type="number" id="phone" name="telepon" placeholder="Isi disini" />
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="confirmPassword">Konfirmasi Password</label>
+                                <input type="password" id="confirmPassword" name="password_confirmation"
+                                    placeholder="Isi disini" />
+                            </div>
+                        </div>
+                        <button class="btn-register" type="submit" id="simpanBtn">Simpan Data</button>
+                        <div class="login-link">Sudah punya akun? <a href="login">Masuk</a></div>
                     </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="nik">NIK</label>
-                            <input type="text" id="nik" name="nik" placeholder="Masukkan disini" required minlength="16" maxlength="16" />
-                                <div id="error-message" class="error"></div>
-                        </div>
-                        <div class="form-group">
-                            <label for="province">Provinsi</label>
-                            <input type="text" id="province" name="provinsi" placeholder="isi disini" required />
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" placeholder="Isi disini" required />
-                        </div>
-                        <div class="form-group">
-                            <label for="address">Alamat Lengkap</label>
-                            <input type="text" id="address" name="alamat" placeholder="Masukkan alamat lengkap" required />
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="password">Password</label>
-                            <input type="password" id="password" name="password" placeholder="Isi disini" required minlength="8" />
-                        </div>
-                        <div class="form-group">
-                            <label for="phone">Nomor Telepon</label>
-                            <input type="number" id="phone" name="telepon" placeholder="Isi disini" required />
-                        </div>
-                    </div>
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label for="confirmPassword">Konfirmasi Password</label>
-                            <input type="password" id="confirmPassword" name="password_confirmation" placeholder="Isi disini" required />
-                        </div>
-                    </div>
-                    <button class="btn-register" type="submit" id="simpanBtn">Simpan Data</button>
-                    <div class="login-link">Sudah punya akun? <a href="login">Masuk</a></div>
-                </div>
-            </form>
+                </form>
+            </div>
         </div>
-    </div>
 
     <!-- SweetAlert2 Library -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    <script>
-        // Function to validate form and show SweetAlert2 popups
-        function validateForm(event) {
-            event.preventDefault(); // Prevent form submission initially
+        <script>
+            // Fungsi untuk menampilkan notifikasi dan mengarahkan ke halaman login
+            function simpanData() {
+                // Tampilkan notifikasi
+                alert("Data berhasil disimpan!");
 
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const nik = document.getElementById('nik').value;
+                function simpanData() {
+                    // Tampilkan notifikasi
+                    alert("Data berhasil disimpan!");
 
-            if (password.length < 8) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Password minimal 8 karakter.',
-                });
-                return;
-            }
-
-            if (password !== confirmPassword) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'Password dan konfirmasi password tidak sama.',
-                });
-                return;
-            }
-
-            if (nik.length !== 16) {
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Oops...',
-                    text: 'NIK harus 16 digit.',
-                });
-                return;
-            }
-
-            Swal.fire({
-                title: 'Konfirmasi',
-                text: 'Pastikan NIK dan Email benar karena tidak bisa di edit nantinya.',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya, simpan!'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    document.getElementById('registerForm').submit();
-                    return false;
+                    // Arahkan ke halaman login
+                    window.location.href = "/login"; // Ganti "halaman-login.html" dengan URL halaman login Anda
                 }
-            });
-        }
-        document.getElementById('nik').addEventListener('input', function (event) {
-            // Hanya memperbolehkan angka 0-9
-            this.value = this.value.replace(/[^0-9]/g, '');
-        });
 
-        document.getElementById('nik').addEventListener('keypress', function (event) {
-            // Mencegah masukan selain angka
-            if (!/\d/.test(event.key)) {
-                event.preventDefault();
             }
-        });
 
-        document.getElementById('nik').addEventListener('blur', function (event) {
-            // Validasi panjang input saat kehilangan fokus
-            const errorMessage = document.getElementById('error-message');
-            if (this.value.length !== 16) {
-                errorMessage.textContent = 'NIK harus terdiri dari 16 digit angka.';
-            } else {
-                errorMessage.textContent = '';
-            }
-        });
+            // Tambahkan event listener untuk tombol "Simpan Data"
+            document.getElementById("simpanBtn").addEventListener("click", simpanData);
+            // Tambahkan event listener untuk tombol "Simpan Data"
+            document.getElementById("simpanBtn").addEventListener("click", simpanData);
 
-        document.getElementById('registerForm').addEventListener('submit', validateForm);
-
-        // Handle server-side validation errors
-        @if ($errors->any())
-            let errorMessage = '';
-            @foreach ($errors->all() as $error)
-                errorMessage += '{{ $error }}\n';
-            @endforeach
-            Swal.fire({
-                icon: 'error',
-                title: 'Oops...',
-                text: errorMessage,
+            document.addEventListener("DOMContentLoaded", function() {
+                setTimeout(function() {
+                    var loading = document.getElementById("loading");
+                    loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
+                }, 1000); // 3000 milidetik = 3 detik
             });
-        @endif
-
-    </script>
-</body>
+        </script>
+    </body>
 
 </html>
 @endsection

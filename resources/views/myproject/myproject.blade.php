@@ -51,7 +51,7 @@
             text-align: center;
             margin-top: 20px;
         }
-
+     
         .card-body {
             background-color: rgba(255, 250, 250, 0.5);
         }
@@ -135,26 +135,23 @@
             </div>
         </div>
 
-        <div class="container">
+        <div class="container ">
             <h2 class="project-title mb-5 mt-5">Proyek yang sedang dikerjakan</h2>
-            <div class="row mt-5">
-                <div class="col-md-8">
-                    <div class="input-group">
-                        <input type="text" id="search-ongoing-projects" class="form-control search-input"
-                            placeholder="Cari project berlangsung" aria-label="Search">
-                        <div class="input-group-append">
-                            <button type="button" class="input-group-text search-icon" aria-label="Search Button"><i
-                                    class="fas fa-search"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
                 <div class="dropdown">
                     <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ $ongoingProjects->count() }} of {{ $allProjects->count() }}
                     </button>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="search-ongoing-projects" class="form-control search-input"
+                        placeholder="Cari project berlangsung" aria-label="Search">
+                    <div class="input-group-append">
+                        <button type="button" class="input-group-text search-icon" aria-label="Search Button"><i
+                                class="fas fa-search"></i></button>
+                    </div>
                 </div>
             </div>
             <table class="table mt-3 ongoing-projects-table border text-center">
@@ -193,24 +190,21 @@
 
         <div class="container">
             <h2 class="project-title mb-5 mt-5">Proyek Selesai</h2>
-            <div class="row mt-5">
-                <div class="col-md-8">
-                    <div class="input-group">
-                        <input type="text" id="search-completed-projects" class="form-control search-input"
-                            placeholder="Cari project selesai" aria-label="Search">
-                        <div class="input-group-append">
-                            <button type="button" class="input-group-text search-icon" aria-label="Search Button"><i
-                                    class="fas fa-search"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="d-flex justify-content-between align-items-center mt-3 ongoing-projects-filters">
                 <div class="dropdown">
                     <button class="btn btn-outline-primary dropdown-toggle" type="button" id="dropdownMenuButton2"
                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ $completedProjects->count() }} of {{ $allProjects->count() }}
                     </button>
+                    
+                </div> <div class="input-group d-flex ">
+                    <input type="text" id="search-completed-projects" class="form-control search-input"
+                        placeholder="Cari project selesai" aria-label="Search">
+                    <div class="input-group-append">
+                        <button type="button" class="input-group-text search-icon" aria-label="Search Button"><i
+                                class="fas fa-search"></i></button>
+                    </div>
                 </div>
             </div>
             <table class="table mt-3 done-projects-table border text-center">

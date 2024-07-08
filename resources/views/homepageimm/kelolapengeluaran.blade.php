@@ -170,7 +170,7 @@ input[type="number"] {
     </div>
 
     <div class="container">
-        <table class="table mt-3 text-center">
+        <table class="table mt-3 text-center border">
             <thead>
                 <tr>
                     <th>Tanggal</th>
@@ -181,6 +181,11 @@ input[type="number"] {
                 </tr>
             </thead>
             <tbody id="income-list">
+                @if ($companyIncomes->isEmpty())
+                <tr>
+                    <td colspan="5">Detail biaya tidak ditemukan.</td>
+                </tr>
+                @else
                 @foreach ($companyIncomes as $income)
                 <tr>
                     <td>{{ $income->date }}</td>
@@ -190,6 +195,7 @@ input[type="number"] {
                     <td>Rp{{ number_format($income->jumlah_hibah, 0, ',', '.') }}</td>
                 </tr>
                 @endforeach
+                @endif
             </tbody>
         </table>
 
@@ -207,7 +213,7 @@ input[type="number"] {
     </div>
 
     <div class="container">
-        <table class="table tabel mt-3 text-center">
+        <table class="table tabel mt-3 text-center border">
             <thead>
                 <tr>    
                     <th>Nama Proyek</th>
@@ -216,6 +222,11 @@ input[type="number"] {
                 </tr>
             </thead>
             <tbody id="project-table-body">
+                @if ($projects->isEmpty())
+                <tr>
+                    <td colspan="3">Tidak ada proyek yang ditemukan.</td>
+                </tr>
+                @else
                 @foreach ($projects as $project)
                 <tr>
                     <td>{{ $project->nama }}</td>
@@ -225,6 +236,7 @@ input[type="number"] {
                     </td>
                 </tr>
                 @endforeach
+                @endif
             </tbody>
         </table>
 
