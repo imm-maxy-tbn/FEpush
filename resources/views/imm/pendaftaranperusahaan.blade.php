@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <div class="col-12 text-center">
-                    <button class="btn btn-primary" type="submit" id="simpanBtn">Simpan Data</button>
+                    <button class="btn btn-primary" type="submit" id="simpanBtn">Daftarkan Perusahaan</button>
                 </div>
             </div>
         </form>
