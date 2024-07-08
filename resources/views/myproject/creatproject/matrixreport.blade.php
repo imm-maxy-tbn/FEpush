@@ -369,7 +369,9 @@
 
 <div class="container mt-5 content-container">
     <h1>Matrix Report</h1> <!-- Dynamic title -->
-    <h2>Perkembangan Matrix</h2>
+    <div class="date-box">
+        <input type="date" name="" id="">
+    </div>
     <div class="chart-container">
         {!! $chart->container() !!}
     </div>
@@ -394,10 +396,6 @@
             </div>
         </div>
     </div>
-    <div class="btn-container">
-        <a href="{{ route('metric-projects.createMatrixReport', $project->id) }}" class="btn save-btn">Save</a>
-        <button id="export-btn" class="btn export-btn">Export PDF</button>
-    </div>
 </div>
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -406,42 +404,5 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="{{ asset('js/myproject/impact.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
-<script>
-    document.getElementById('export-btn').addEventListener('click', function () {
-        var doc = new jsPDF();
-        var elementHTML = document.querySelector('.content-container');
-        var margins = {
-            top: 10,
-            bottom: 10,
-            left: 10,
-            width: 190
-        };
-
-        html2canvas(elementHTML, {
-            useCORS: true,
-            scale: 2
-        }).then(function (canvas) {
-            var imgData = canvas.toDataURL('image/png');
-            var imgWidth = 210;
-            var pageHeight = 295;
-            var imgHeight = canvas.height * imgWidth / canvas.width;
-            var heightLeft = imgHeight;
-            var position = 0;
-
-            doc.addImage(imgData, 'PNG', margins.left, position, imgWidth - margins.left, imgHeight);
-            heightLeft -= pageHeight;
-
-            while (heightLeft >= 0) {
-                position = heightLeft - imgHeight;
-                doc.addPage();
-                doc.addImage(imgData, 'PNG', margins.left, position, imgWidth - margins.left, imgHeight);
-                heightLeft -= pageHeight;
-            }
-            doc.save('matrix-report.pdf');
-        });
-    });
-</script>
 
 @endsection
