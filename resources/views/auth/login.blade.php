@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Masuk')
- 
+
 @section('css')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
 <style>
@@ -329,17 +329,18 @@
         transform: rotate(360deg);
     }
 }
-    </style>  
+    </style>
 @endsection
+
+@extends('layouts.app')
+
 @section('content')
 
 <body>
-
-
     <div class="container-fluid d-flex justify-content-between" style="height: 100vh">
         <div class="col-6 w-100 d-flex justify-content-center align-items-center">
             <div class="container d-flex justify-content-center ">
-                <form method="POST" action="{{ route('login') }}">
+                <form method="POST" action="{{ route('login') }}" id="loginForm">
                     @csrf
                     <div class="login-form">
                         <img src="images/imm.png" alt="Brand Logo" class="brand-logo">
@@ -353,14 +354,8 @@
                             <label for="password">Password</label>
                             <span class="input-icon"><i class="fas fa-lock"></i></span>
                             <input id="password" type="password" placeholder='password' name="password" required />
-        
-                            @error('password')
-                                <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $message }}</strong>
-                                </span>
-                            @enderror
                         </div>
-                        
+
                         <button class="btn-login" type="submit" id="masukBtn">Masuk</button>
                         @if (Route::has('password.request'))
                             <div class="register-link">
@@ -379,39 +374,26 @@
         </div>
     </div>
 
-
+    <!-- SweetAlert2 Library -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <script>
-        // Fungsi untuk menampilkan notifikasi jika pengguna belum terdaftar
-function periksaPendaftaran() {
-    // Lakukan pemeriksaan apakah pengguna sudah terdaftar atau tidak
-    var terdaftar = false; // Ganti ini dengan logika pemeriksaan pendaftaran Anda
+        // Check for session messages and display SweetAlert2 popups
+        @if (session('error'))
+            Swal.fire({
+                icon: 'error',
+                title: 'Kredensial tidak valid',
+                text: '{{ session('error') }}',
+            });
+        @endif
 
-    // Jika pengguna belum terdaftar, tampilkan notifikasi
-    if (!terdaftar) {
-        alert("Login Berhasil");
-    }
-}
-
-// Fungsi untuk menangani klik tombol "Masuk"
-function masuk() {
-    // Panggil fungsi untuk memeriksa pendaftaran
-    periksaPendaftaran();
-
-    // Lakukan tindakan masuk jika pengguna terdaftar
-    // Ganti ini dengan logika masuk Anda
-}
-
-// Tambahkan event listener untuk tombol "Masuk"
-document.getElementById("masukBtn").addEventListener("click", masuk);
-
-document.addEventListener("DOMContentLoaded", function () {
-    setTimeout(function () {
-        var loading = document.getElementById("loading");
-        loading.style.display = "none"; // Menghilangkan efek loading setelah waktu tunggu
-    }, 1000); // 3000 milidetik = 3 detik
-});
-
+        @if (session('success'))
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: '{{ session('success') }}',
+            });
+        @endif
     </script>
 </body>
 

@@ -152,18 +152,14 @@ input[type="number"] {
     font-size: 14px;
     /* Adjust the font size as needed */
 }</style>
-    
+
 @endsection
 @section('content')
-
-
 <body>
-
-    <div class="container" style="padding-top: 120px"> 
+    <div class="container" style="padding-top: 120px">
        <a href="homepage"> <h4 class=" d-flex align-items-center"><strong style="font-size: 40px;"><</strong>   Pengelolaan Dana</h4></a>
         <span class="biaya">Dana Hibah</span>
     </div>
-
     <div class="container">
         <table class="table tabel mt-3 text-center ">
             <thead>
@@ -188,24 +184,22 @@ input[type="number"] {
             </tbody>
         </table>
     </div>
-
     <div class="container my-4 d-flex justify-content-between align-items-center">
         <span class="biaya">Rancangan pengeluaran Proyek</span>
-        <form id="search-form" class="form-inline" method="GET" action="{{ route('kelola-pengeluaran') }}">
-            <input type="text" name="search" class="form-control" placeholder="Cari nama proyek anda" value="{{ request('search') }}">
-        </form>
+        <div class="form-inline">
+            <input type="text" id="search-input" class="form-control" placeholder="Cari Pengeluaran">
+        </div>
     </div>
-
     <div class="container">
         <table class="table tabel mt-3 text-center ">
             <thead>
-                <tr>
+                <tr>    
                     <th>Nama Proyek</th>
                     <th>Rancangan Biaya Grant</th>
                     <th>Detail penggunaan biaya</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="project-table-body">
                 @foreach ($projects as $project)
                 <tr>
                     <td>{{ $project->nama }}</td>
@@ -215,26 +209,43 @@ input[type="number"] {
                     </td>
                 </tr>
                 @endforeach
-                @if ($projects->isEmpty())
-                    <tr>
-                        <td colspan="3">Tidak ada proyek yang ditemukan.</td>
-                    </tr>
-                @endif
             </tbody>
         </table>
+        <div id="no-results" style="display: none;" class="text-center">
+            Tidak ada proyek yang ditemukan.
+        </div>
     </div>
-     
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const searchInput = document.querySelector('input[name="search"]');
-            searchInput.addEventListener('keypress', function(event) {
-                if (event.key === 'Enter') {
-                    event.preventDefault();
-                    document.getElementById('search-form').submit();
+            const searchInput = document.getElementById('search-input');
+            const tableBody = document.getElementById('project-table-body');
+            const noResults = document.getElementById('no-results');
+            const rows = tableBody.getElementsByTagName('tr');
+
+            searchInput.addEventListener('input', function() {
+                const searchTerm = this.value.toLowerCase();
+                let visibleRows = 0;
+
+                for (let row of rows) {
+                    const projectName = row.cells[0].textContent.toLowerCase();
+                    if (projectName.includes(searchTerm)) {
+                        row.style.display = '';
+                        visibleRows++;
+                    } else {
+                        row.style.display = 'none';
+                    }
+                }
+
+                if (visibleRows === 0) {
+                    tableBody.style.display = 'none';
+                    noResults.style.display = 'block';
+                } else {
+                    tableBody.style.display = '';
+                    noResults.style.display = 'none';
                 }
             });
         });
     </script>
 </body>
-
 @endsection

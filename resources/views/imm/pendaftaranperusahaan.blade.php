@@ -13,7 +13,7 @@
 
 <body>
 
-   
+
 
 
     <div class="register-container">
@@ -24,50 +24,50 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="nama">Nama Perusahaan</label>
-                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Isi disini" required>
+                        <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama perusahaan" required>
                     </div>
                     <div class="form-group">
                         <label for="profile">Profil Perusahaan</label>
-                        <input type="text" class="form-control" id="profile" name="profile" placeholder="Masukkan link disini" required>
+                        <input type="text" class="form-control" id="profile" name="profile" placeholder="Masukkan link profile disini" required>
                         <small class="form-text text-muted">Dalam bentuk website, media sosial, atau lainnya</small>
                     </div>
                     <div class="form-group">
                         <label for="nama_pic">Nama PIC</label>
-                        <input type="text" class="form-control" id="nama_pic" name="nama_pic" placeholder="Isi disini" required>
+                        <input type="text" class="form-control" id="nama_pic" name="nama_pic" placeholder="Nama Person in Charge" required>
                     </div>
                     <div class="form-group">
                         <label for="posisi_pic">Posisi PIC</label>
-                        <input type="text" class="form-control" id="posisi_pic" name="posisi_pic" placeholder="Isi disini" required>
+                        <input type="text" class="form-control" id="posisi_pic" name="posisi_pic" placeholder="Posisi Person in Charge" required>
                     </div>
                     <div class="form-group">
                         <label for="telepon">Nomor Telepon PIC</label>
-                        <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Isi disini" required>
+                        <input type="text" class="form-control" id="telepon" name="telepon" placeholder="Nomor telepon Person in Charge required>
                     </div>
                 </div>
                 <div class="col-md-6">
                     <div class="form-group">
                         <label for="posisi_pic">Negara</label>
-                        <input type="text" class="form-control" id="posisi_pic" name="negara" placeholder="Isi disini" required>
+                        <input type="text" class="form-control" id="posisi_pic" name="negara" placeholder="Negara" required>
                     </div>
                     <div class="form-group">
                         <label for="posisi_pic">Provinsi</label>
-                        <input type="text" class="form-control" id="posisi_pic" name="provinsi" placeholder="Isi disini" required>
+                        <input type="text" class="form-control" id="posisi_pic" name="provinsi" placeholder="Provinsi" required>
                     </div>
                     <div class="form-group">
                         <label for="posisi_pic">Kabupaten</label>
-                        <input type="text" class="form-control" id="posisi_pic" name="kabupaten" placeholder="Isi disini" required>
+                        <input type="text" class="form-control" id="posisi_pic" name="kabupaten" placeholder="Kota/Kabupaten" required>
                     </div>
                     <div class="form-group">
                         <label for="jumlah_karyawan">Jumlah Karyawan</label>
-                        <input type="number" class="form-control" id="jumlah_karyawan" name="jumlah_karyawan" placeholder="Isi disini" required>
+                        <input type="number" class="form-control" id="jumlah_karyawan" name="jumlah_karyawan" placeholder="Jumlah karyawan" required>
                     </div>
                     <div class="form-group">
                         <label for="tipe">Tipe Perusahaan</label>
-                        <input type="text" class="form-control" id="tipe" name="tipe" placeholder="Isi disini" required>
+                        <input type="text" class="form-control" id="tipe" name="tipe" placeholder="Tipe perusahaan" required>
                     </div>
                 </div>
                 <div class="col-12 text-center">
-                    <button class="btn btn-primary" type="submit" id="simpanBtn">Simpan Data</button>
+                    <button class="btn btn-primary" type="submit" id="simpanBtn">Daftarkan Perusahaan</button>
                 </div>
             </div>
         </form>

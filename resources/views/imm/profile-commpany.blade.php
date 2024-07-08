@@ -107,7 +107,7 @@ body {
         <form method="POST" action="{{ route('profile-commpany.update', ['id' => $company->id]) }}" id="companyForm">
             @csrf
             @method('PUT')
-            <section> 
+            <section>
                 <div class="row mt-5 d-flex justify-content-center">
                     <div class="col-12 col-md-10">
                         <div class="row mb-3">
@@ -150,7 +150,7 @@ body {
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput6" class="form-label">Jumlah Pekerja</label>
-                            <input type="text" name="jumlah_karyawan" class="form-control" id="formGroupExampleInput6" placeholder="Jumlah Pekerja" value="{{ $company->jumlah_karyawan }}" readonly>
+                            <input type="number" name="jumlah_karyawan" class="form-control" id="formGroupExampleInput6" placeholder="Jumlah Pekerja" value="{{ $company->jumlah_karyawan }}" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="formGroupExampleInput7" class="form-label">Tipe Perusahaan</label>
