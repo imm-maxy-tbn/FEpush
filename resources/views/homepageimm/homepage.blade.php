@@ -396,16 +396,16 @@ h4 {
 
 
 
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-        google.charts.load('current', {
-            'packages': ['geochart'],
-        });
-        google.charts.setOnLoadCallback(drawRegionsMap);
-    
-        function drawRegionsMap() {
-            var projects = @json($allProjects);
-            var provinceToISO = {
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+    google.charts.load('current', {
+        'packages': ['geochart'],
+    });
+    google.charts.setOnLoadCallback(drawRegionsMap);
+
+    function drawRegionsMap() {
+        var projects = @json($allProjects);
+        var provinceToISO = {
                 "Aceh": "ID-AC",
                 "Sumatera Utara": "ID-SU",
                 "Sumatera Barat": "ID-SB",
@@ -445,84 +445,114 @@ h4 {
                 "Papua Pegunungan": "ID-PP",
                 "Papua Tengah": "ID-PT"
             };
-    
-            var isoToProvince = {};
-            for (var province in provinceToISO) {
-                isoToProvince[provinceToISO[province]] = province;
-            }
-    
-            // Combine project names and other details for each province
-            var provinceProjects = projects.reduce((acc, project) => {
-                var provinceCode = provinceToISO[project.provinsi];
-                if (!acc[provinceCode]) {
-                    acc[provinceCode] = [];
-                }
-                acc[provinceCode].push({
-                    name: project.nama,
-                    city: project.kota,
-                    gmaps: project.gmaps
-                });
-                return acc;
-            }, {});
-    
-            var data = google.visualization.arrayToDataTable([
-                ['Province', 'Projects', { role: 'tooltip', p: { html: true } }],
-                ...Object.entries(provinceProjects).map(([province, projectDetails]) => [
-                    {v: province, f: ''},
-                    projectDetails.length,
-                    `<div style="padding:5px"><strong>${isoToProvince[province]}</strong><ul>${projectDetails.map(detail => `<li>${detail.name}</li>`).join('')}</ul></div>`
-                ])
-            ]);
-    
-            var options = {
-                region: 'ID',  // Focus on Indonesia
-                displayMode: 'regions',
-                resolution: 'provinces',  // Show the provinces within Indonesia
-                backgroundColor: 'transparent',  // Background color
-                datalessRegionColor: 'rgb(89, 64, 203)',  // Color for regions with no data
-                colorAxis: {colors: ['rgb(57, 197, 44)', 'rgb(57, 197, 44)']},  // Fixed color for regions with data
-                enableRegionInteractivity: true,
-                legend: 'none',  // Hide the color legend
-                tooltip: { isHtml: true }  // Enable HTML tooltips
-            };
-    
-            var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
-    
-            google.visualization.events.addListener(chart, 'regionClick', function(event) {
-                var province = isoToProvince[event.region];
-                if (province && provinceProjects[event.region]) {
-                    var projectDetails = provinceProjects[event.region];
-                    var modalContent = `<h5>Proyek di ${province}</h5><ul>`;
-                    projectDetails.forEach(detail => {
-                        modalContent += `<li><strong>${detail.name}</strong><br>Kota: ${detail.city}<br><a href="${detail.gmaps}" target="_blank">Lihat di Google Maps</a></li>`;
-                    });
-                    modalContent += `</ul>`;
-                    document.getElementById('modal-content').innerHTML = modalContent;
-                    $('#provinceModal').modal('show');
-                }
-            });
-    
-            chart.draw(data, options);
+
+        var isoToProvince = {};
+        for (var province in provinceToISO) {
+            isoToProvince[provinceToISO[province]] = province;
         }
-    
-        document.addEventListener('DOMContentLoaded', function() {
-            var projects = @json($allProjects);
-            var gridItems = document.querySelectorAll('.grid-item');
-    
-            gridItems.forEach(function(item) {
-                var sdgId = item.getAttribute('data-index');
-                var isActive = projects.some(function(project) {
-                    return project.sdgs.some(function(sdg) {
-                        return sdg.id == sdgId;
-                    });
-                });
-    
-                if (isActive) {
-                    item.classList.add('active');
-                }
+
+        var provinceProjects = projects.reduce((acc, project) => {
+            var provinceCode = provinceToISO[project.provinsi];
+            if (!acc[provinceCode]) {
+                acc[provinceCode] = [];
+            }
+
+            // Menemukan target pelanggan proyek berdasarkan id proyek
+            var targetPelanggan = project.target_pelanggan.find(tp => tp.id_proyek === project.id_proyek);
+
+            // Menambahkan informasi proyek ke dalam akumulator
+            acc[provinceCode].push({
+                name: project.nama,
+                city: project.kota,
+                gmaps: project.gmaps,
+                status: targetPelanggan ? targetPelanggan.status : '-',
+                rentang_usia: targetPelanggan ? targetPelanggan.rentang_usia : '-',
+                deskripsi_pelanggan: targetPelanggan ? targetPelanggan.deskripsi_pelanggan : '-',
             });
+
+            return acc;
+        }, {});
+
+        var data = google.visualization.arrayToDataTable([
+            ['Province', 'Projects', { role: 'tooltip', p: { html: true } }],
+            ...Object.entries(provinceProjects).map(([province, projectDetails]) => [
+                { v: province, f: '' },
+                projectDetails.length,
+                `<div style="padding:5px"><strong>${isoToProvince[province]}</strong><ul>${projectDetails.map(detail => `
+                    <li>${detail.name}</li>`).join('')}</ul></div>`
+            ])
+        ]);
+
+        var options = {
+            region: 'ID',
+            displayMode: 'regions',
+            resolution: 'provinces',
+            backgroundColor: 'transparent',
+            datalessRegionColor: 'rgb(89, 64, 203)',
+            colorAxis: { colors: ['rgb(57, 197, 44)', 'rgb(57, 197, 44)'] },
+            enableRegionInteractivity: true,
+            legend: 'none',
+            tooltip: { isHtml: true }
+        };
+
+        var chart = new google.visualization.GeoChart(document.getElementById('regions_div'));
+
+        google.visualization.events.addListener(chart, 'regionClick', function (event) {
+            var province = isoToProvince[event.region];
+            if (province && provinceProjects[event.region]) {
+                var projectDetails = provinceProjects[event.region];
+                var modalContent = `<h5>Proyek di ${province}</h5><ul>`;
+                projectDetails.forEach(detail => {
+                    modalContent += `<li><strong>${detail.name}</strong><br>
+                        Kota: ${detail.city}<br>
+                        <a href="${detail.gmaps}" target="_blank">Lihat di Google Maps</a><br>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Status</th>
+                                    <th>Rentang Usia</th>
+                                    <th>Deskripsi Pelanggan</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>${detail.status}</td>
+                                    <td>${detail.rentang_usia}</td>
+                                    <td>${detail.deskripsi_pelanggan}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </li>`;
+                });
+
+                modalContent += `</ul>`;
+                document.getElementById('modal-content').innerHTML = modalContent;
+                $('#provinceModal').modal('show');
+            }
         });
-    </script>
+
+        chart.draw(data, options);
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+        var projects = @json($allProjects);
+        var gridItems = document.querySelectorAll('.grid-item');
+
+        gridItems.forEach(function (item) {
+            var sdgId = item.getAttribute('data-index');
+            var isActive = projects.some(function (project) {
+                return project.sdgs.some(function (sdg) {
+                    return sdg.id == sdgId;
+                });
+            });
+
+            if (isActive) {
+                item.classList.add('active');
+            }
+        });
+    });
+</script>
+
     
 </body>
 

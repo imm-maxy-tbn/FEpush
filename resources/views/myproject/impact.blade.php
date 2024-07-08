@@ -161,154 +161,101 @@
 </style>
 @endsection
 @section('content')
-
-<body>
-
-    <div class="container mt-5 detail-matrix-section">
-        <h2>Detail Matrix</h2>
-        <div class="card-header">Matrix : {{ $metricProject->metric->name }}</div>
-        <div class="card">
-            <div class="card-body">
-                <div class="section-title">Deskripsi Matrix</div>
-                <div class="form-section mt-2">
-                    <p>{{ $metricProject->metric->definition }}</p>
-                </div>
-                <div class="row mt-4">
-                    <div class="col-md-6">
-                        <div class="section-title">Input Data Matrix</div>
-                        <div class="form-section mt-2">
-                            <form
-                                action="{{ route('metric-projects.storeReport', [$project->id, $metricProject->id]) }}"
-                                method="POST">
-                                @csrf
-                                <div class="form-group">
-                                    <label for="nilaiData">Nilai Data</label>
-                                    <input type="text" name="value" id="value" class="form-control"
-                                        value="{{ old('value') }}" placeholder="Masukkan nilai disini">
-                                </div>
-                                <div class="form-group">
-                                    <label for="bulan">Bulan</label>
-                                    <input type="number" name="report_month" id="report_month" class="form-control"
-                                        value="{{ old('report_month') }}" placeholder="Masukan bulan disini">
-                                </div>
-                                <div class="form-group">
-                                    <label for="tahun">Tahun</label>
-                                    <input type="number" name="report_year" id="report_year" class="form-control"
-                                        value="{{ old('report_year') }}" placeholder="Masukkan tahun disini">
-                                </div>
-                                <button type="submit" class="btn-save-custom" data-toggle="modal"
-                                    data-target="#confirmationModal">Simpan Data</button>
-                            </form>
-                        </div>
+<div class="container mt-5 detail-matrix-section">
+    <h2>Detail Matrix</h2>
+    <div class="card-header">Matrix : {{ $metricProject->metric->name }}</div>
+    <div class="card">
+        <div class="card-body">
+            <div class="section-title">Deskripsi Matrix</div>
+            <div class="form-section mt-2">
+                <p>{{ $metricProject->metric->definition }}</p>
+            </div>
+            <div class="row mt-4">
+                <div class="col-md-6">
+                    <div class="section-title">Input Data Matrix</div>
+                    <div class="form-section mt-2">
+                        <form action="{{ route('metric-projects.storeReport', [$project->id, $metricProject->id]) }}" method="POST">
+                            @csrf
+                            <div class="form-group">
+                                <label for="nilaiData">Nilai Data</label>
+                                <input type="text" name="value" id="value" class="form-control"
+                                    value="{{ old('value') }}" placeholder="Masukkan nilai disini">
+                            </div>
+                            <div class="form-group">
+                                <label for="bulan">Bulan</label>
+                                <input type="number" name="report_month" id="report_month" class="form-control"
+                                    value="{{ old('report_month') }}" placeholder="Masukan bulan disini">
+                            </div>
+                            <div class="form-group">
+                                <label for="tahun">Tahun</label>
+                                <input type="number" name="report_year" id="report_year" class="form-control"
+                                    value="{{ old('report_year') }}" placeholder="Masukkan tahun disini">
+                            </div>
+                            <button type="submit" class="btn-save-custom" data-toggle="modal"
+                                data-target="#confirmationModal">Simpan Data</button>
+                        </form>
                     </div>
-                    <div class="col-md-6">
-                        <div class="section-title">Cara Hitung Matrix</div>
-                        <div class="form-section mt-2">
-                            <p>Persentase penghematan harga yang didapat klien dengan membeli produk atau layanan dari
-                                suatu organisasi dibandingkan dengan harga rata-rata yang seharusnya mereka bayarkan
-                                untuk produk atau layanan serupa di pasar lokal.</p>
-                        </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="section-title">Cara Hitung Matrix</div>
+                    <div class="form-section mt-2">
+                        <p>Read the matrix description and calculate your value, fill in the order based on the month of your development, if there is no calculation there is no need to enter a value</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-    <div class="container mt-5">
-        <div>
-            {!! $chart->container() !!}
-        </div>
-        <p class="text-center mt-3">Perkembangan Metrix</p>
+<div class="container mt-5">
+    <h3 class="text-center mt-3">Perkembangan Matrix</h3>
+    <div>
+        {!! $chart->container() !!}
     </div>
+</div>
 
-    <div class="container mt-5 survey-support-container">
-        <div class="months-new d-flex justify-content-between">
-            <span>Januari</span>
-            <span>Februari</span>
-            <span>Maret</span>
-            <span>April</span>
-            <span>Mei</span>
-            <span>Juni</span>
-            <span>Juli</span>
-            <span>Agustus</span>
-            <span>September</span>
-            <span>Oktober</span>
-            <span>November</span>
-            <span>Desember</span>
-        </div>
+<div class="container mt-5 survey-support-container">
+    <div class="months-new d-flex justify-content-between">
     </div>
+</div>
 
-    <div class="container mt-5 matrix-report-container">
-        <h3>Matrix Report</h3>
-        <a href="matrixreport" class="btn add-report-btn">Tambah Laporan</a>
-        <a href="matrixreport">
+<div class="container mt-5 matrix-report-container">
+    <h3>Matrix Report</h3>
+    <a href="{{ route('metric-projects.createMatrixReport', $project->id) }}" class="btn add-report-btn">Tambah Laporan</a>
+    @foreach($matrixReports as $report)
+        <a href="{{ route('metric-projects.showReport', ['projectId' => $project->id, 'metricId' => $report->metric_id, 'reportId' => $report->id]) }}">
             <div class="file-report mt-4">
                 <div class="file-item-report text-center">
                     <i class="fas fa-file-alt fa-3x"></i>
-                    <p>10/06/24</p>
+                    <p>{{ \Carbon\Carbon::parse($report->created_at)->format('d/m/y') }}</p>
                 </div>
             </div>
         </a>
-    </div>
+    @endforeach
+</div>
 
 
-    <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content shadow">
-                <div class="modal-body">
-                    <h5 class="modal-title" id="confirmationModalLabel">Apakah data sudah benar?</h5>
-                    <p class="text-muted">Note: Data yang anda tambahkan tidak bisa diubah kembali, pastikan semua input
-                        data sudah benar</p>
-                    <div class="btnn">
-                        <button type="button" class="btn btn-keluar" id="confirmUpdate">Belum, cek kembali</button>
-                        <button type="button" class="btn btn-masuk" data-dismiss="modal">Ya, sudah benar</button>
-                    </div>
+<div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content shadow">
+            <div class="modal-body">
+                <h5 class="modal-title" id="confirmationModalLabel">Apakah data sudah benar?</h5>
+                <p class="text-muted">Note: Data yang anda tambahkan tidak bisa diubah kembali, pastikan semua input
+                    data sudah benar</p>
+                <div class="btnn">
+                    <button type="button" class="btn btn-keluar" id="confirmUpdate">Belum, cek kembali</button>
+                    <button type="button" class="btn btn-masuk" data-dismiss="modal">Ya, sudah benar</button>
                 </div>
             </div>
         </div>
     </div>
+</div>
 
-   
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    {!! $chart->script() !!}
-    <!-- <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var chart = {!! $chart->script() !!};
-
-            chart.options = {
-                responsive: true,
-                maintainAspectRatio: false,
-                plugins: {
-                    legend: {
-                        display: true,
-                        position: 'top',
-                    },
-                    tooltip: {
-                        mode: 'index',
-                        intersect: false,
-                    },
-                },
-                scales: {
-                    x: {
-                        display: true,
-                        title: {
-                            display: true,
-                            text: 'Month/Year'
-                        }
-                    },
-                    y: {
-                        display: true,
-                        title: {
-                            display: true,
-                            text: 'Total Value'
-                        }
-                    }
-                }
-            };
-
-            chart.update();
-        });
-    </script> -->
-</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{!! $chart->script() !!}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="{{ asset('js/myproject/impact.js') }}"></script>
 @endsection
