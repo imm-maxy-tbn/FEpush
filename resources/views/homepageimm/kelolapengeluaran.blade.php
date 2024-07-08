@@ -170,7 +170,7 @@ input[type="number"] {
     </div>
 
     <div class="container">
-        <table class="table mt-3 text-center border">
+        <table class="table tabel mt-3 text-center border">
             <thead>
                 <tr>
                     <th>Tanggal</th>

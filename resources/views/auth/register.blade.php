@@ -477,9 +477,6 @@
 <html lang="en">
 
     <body>
-
-
-
         <div class="container">
             <div class="register-container">
                 <form method="POST" action="{{ route('register') }}">
@@ -490,48 +487,53 @@
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="fullName">Nama Lengkap</label>
-                                <input type="text" id="fullName" name="nama" placeholder="isi disini" />
+                                <input type="text" id="fullName" name="nama" placeholder="Isi disini" required />
                             </div>
                             <div class="form-group">
                                 <label for="country">Negara</label>
-                                <input type="text" id="country" name="negara" placeholder="isi disini" />
+                                <select id="country" name="negara" class="form-control" required>
+                                    <option value="" selected disabled>Pilih Negara</option>
+                                    <!-- Options will be added dynamically by JavaScript -->
+                                </select>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="nik">NIK</label>
-                                <input type="number" id="nik" name="nik" placeholder="Masukkan disini" />
+                                <input type="number" id="nik" name="nik" placeholder="Masukkan NIK" required />
                             </div>
                             <div class="form-group">
                                 <label for="province">Provinsi</label>
-                                <input type="text" id="province" name="provinsi" placeholder="isi disini" />
+                                <select id="province" name="provinsi" class="form-control" required>
+                                    <option value="" selected disabled>Pilih Provinsi</option>
+                                    <!-- Options will be added dynamically by JavaScript -->
+                                </select>
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" name="email" placeholder="Isi disini" />
+                                <input type="email" id="email" name="email" placeholder="Isi disini" required />
                             </div>
                             <div class="form-group">
                                 <label for="address">Alamat Lengkap</label>
-                                <input type="text" id="address" name="alamat" placeholder="Masukkan alamat lengkap" />
+                                <input type="text" id="address" name="alamat" placeholder="Masukkan alamat lengkap" required />
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" id="password" name="password" placeholder="Isi disini" />
+                                <input type="password" id="password" name="password" placeholder="Isi disini" required />
                             </div>
                             <div class="form-group">
                                 <label for="phone">Nomor Telepon</label>
-                                <input type="number" id="phone" name="telepon" placeholder="Isi disini" />
+                                <input type="tel" id="phone" name="telepon" placeholder="Isi disini" required />
                             </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="confirmPassword">Konfirmasi Password</label>
-                                <input type="password" id="confirmPassword" name="password_confirmation"
-                                    placeholder="Isi disini" />
+                                <input type="password" id="confirmPassword" name="password_confirmation" placeholder="Isi disini" required />
                             </div>
                         </div>
                         <button class="btn-register" type="submit" id="simpanBtn">Simpan Data</button>
@@ -540,7 +542,35 @@
                 </form>
             </div>
         </div>
+        
 
+        <script>
+            // Fetch data provinsi
+            fetch('https://kanglerian.github.io/api-wilayah-indonesia/api/provinces.json')
+                .then(response => response.json())
+                .then(provinces => {
+                    const provinceSelect = document.getElementById('province');
+                    provinces.forEach(province => {
+                        const option = document.createElement('option');
+                        option.textContent = province.name;
+                        option.value = province.name;
+                        provinceSelect.appendChild(option);
+                    });
+                });
+        
+            // Fetch data negara
+            fetch('https://restcountries.com/v3.1/all')
+                .then(response => response.json())
+                .then(countries => {
+                    const countrySelect = document.getElementById('country');
+                    countries.forEach(country => {
+                        const option = document.createElement('option');
+                        option.textContent = country.name.common;
+                        option.value = country.name.common;
+                        countrySelect.appendChild(option);
+                    });
+                });
+        </script>
     <!-- SweetAlert2 Library -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
