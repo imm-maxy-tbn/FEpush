@@ -188,6 +188,14 @@ input[type="number"] {
             </div>
             <div class="row mt-4">
                 <div class="col-3">
+                    <h5>Kategori</h5>
+                </div>
+                <div class="col-8">
+                    <input name="category" class="form-control" placeholder="cth. Perlengkapan" required></textarea>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <div class="col-3">
                     <h5>Keterangan</h5>
                 </div>
                 <div class="col-8">

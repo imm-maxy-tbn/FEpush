@@ -382,7 +382,7 @@
         @if (session('error'))
             Swal.fire({
                 icon: 'error',
-                title: 'Kredensial tidak valid',
+                title: 'Email atau Password Salah',
                 text: '{{ session('error') }}',
             });
         @endif

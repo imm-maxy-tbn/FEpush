@@ -62,7 +62,8 @@ class CompanyOutcomeController extends Controller
         $validatedData = $request->validate([
             'date' => 'required|date',
             'jumlah_biaya' => 'required|numeric',
-            'keterangan' => 'required|string|max:255',
+            'category' => 'required|string|max:255',
+            'keterangan' => 'required|string|max:1000',
             'bukti' => 'nullable|file|mimes:pdf,jpeg,jpg,png|max:5000',
             'project_id' => 'required|exists:projects,id',
         ]);
@@ -77,6 +78,7 @@ class CompanyOutcomeController extends Controller
 
         CompanyOutcome::create([
             'date' => $validatedData['date'],
+            'category' => $validatedData['category'],
             'jumlah_biaya' => $validatedData['jumlah_biaya'],
             'keterangan' => $validatedData['keterangan'],
             'bukti' => $buktiFileName,
