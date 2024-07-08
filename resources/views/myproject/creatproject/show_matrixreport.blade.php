@@ -1,5 +1,5 @@
 @extends('layouts.app-imm')
-@section('title', 'Laporan Matric')
+@section('title', 'Laporan Matrix')
 
 @section('css')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -76,15 +76,12 @@
     .table-container {
         margin-top: 20px;
     }
-
 </style>
 @endsection
 
-
 @section('content')
-
 <div class="container mt-5 content-container">
-    <h1>Matrix Report</h1> <!-- Dynamic title -->
+    <h1>Matrix: {{ $metricProject->metric ? $metricProject->metric->name : 'Matrix Report' }}</h1> <!-- Dynamic title -->
     <div class="date-box">
         <input type="date" name="" id="">
     </div>
@@ -97,18 +94,23 @@
     <div class="row">
         <div class="col-md-12">
             <div class="content-box">
-                <h2>Matrix Reports</h2>
-                <a href="{{ route('metric-projects.createMatrixReport', $project->id) }}" class="btn add-report-btn">Tambah Laporan</a>
-                @foreach($matrixReports as $report)
-                    <a href="{{ route('metric-projects.showReport', ['projectId' => $project->id, 'metricId' => $report->metric_id, 'reportId' => $report->id]) }}">
-                        <div class="file-report mt-4">
-                            <div class="file-item-report text-center">
-                                <i class="fas fa-file-alt fa-3x"></i>
-                                <p>{{ \Carbon\Carbon::parse($report->created_at)->format('d/m/y') }}</p>
-                            </div>
-                        </div>
-                    </a>
-                @endforeach
+                <h2>Evaluasi Matrix</h2>
+                <form action="{{ route('metric-projects.updateMatrixReport', [$project->id, $matrixReport->id]) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
+                        <label for="evaluation">Evaluation</label>
+                        <textarea class="form-control" name="evaluation" id="evaluation" rows="3" required>{{ $matrixReport->evaluation }}</textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="analysis">Analysis</label>
+                        <textarea class="form-control" name="analysis" id="analysis" rows="3" required>{{ $matrixReport->analysis }}</textarea>
+                    </div>
+                    <input type="hidden" name="metric_id" value="{{ $metricProject->metric ? $metricProject->metric->id : '' }}">
+                    <div class="btn-container">
+                        <button type="submit" class="btn save-btn">Save</button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>
@@ -120,5 +122,4 @@
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="{{ asset('js/myproject/impact.js') }}"></script>
-
 @endsection
