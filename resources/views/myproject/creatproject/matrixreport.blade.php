@@ -357,21 +357,21 @@
     input{
         border: none;
     }
+    .table-container {
+        margin-top: 20px;
+    }
 
 </style>
 @endsection
+
+
 @section('content')
 
-<body>
- 
-
 <div class="container mt-5 content-container">
-    <h1>Matrix : Premi Penghematan Klien</h1>
-    <div class="date-box">
-        <input type="date" name="" id="">
-    </div>
+    <h1>Matrix Report</h1> <!-- Dynamic title -->
+    <h2>Perkembangan Matrix</h2>
     <div class="chart-container">
-        <canvas id="myChart"></canvas>
+        {!! $chart->container() !!}
     </div>
 </div>
 
@@ -379,28 +379,69 @@
     <div class="row">
         <div class="col-md-12">
             <div class="content-box">
-                <h2>Evaluasi Matrix</h2>
-                <textarea class=" w-100" name="" id="" cols="30" placeholder="Isi evaluasi matric anda disini" rows="10"></textarea>
-            </div>
-            <div class="content-box">
-                <h2>Analysis Matrix</h2>
-                <textarea class=" w-100" name="" id="" cols="30" placeholder="Isi Analysis matric anda disini" rows="10"></textarea>
-            </div>
-            <div class="btn-container">
-                <button type="button" class="btn export-btn">Export</button>
-                <a href="detail"><button type="button" class="btn save-btn">Save</button></a>
+                <h2>Matrix Reports</h2>
+                <a href="{{ route('metric-projects.createMatrixReport', $project->id) }}" class="btn add-report-btn">Tambah Laporan</a>
+                @foreach($matrixReports as $report)
+                    <a href="{{ route('metric-projects.showReport', ['projectId' => $project->id, 'metricId' => $report->metric_id, 'reportId' => $report->id]) }}">
+                        <div class="file-report mt-4">
+                            <div class="file-item-report text-center">
+                                <i class="fas fa-file-alt fa-3x"></i>
+                                <p>{{ \Carbon\Carbon::parse($report->created_at)->format('d/m/y') }}</p>
+                            </div>
+                        </div>
+                    </a>
+                @endforeach
             </div>
         </div>
     </div>
+    <div class="btn-container">
+        <a href="{{ route('metric-projects.createMatrixReport', $project->id) }}" class="btn save-btn">Save</a>
+        <button id="export-btn" class="btn export-btn">Export PDF</button>
+    </div>
 </div>
 
-
-
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+{!! $chart->script() !!}
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="{{ asset('js/myproject/impact.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
+<script>
+    document.getElementById('export-btn').addEventListener('click', function () {
+        var doc = new jsPDF();
+        var elementHTML = document.querySelector('.content-container');
+        var margins = {
+            top: 10,
+            bottom: 10,
+            left: 10,
+            width: 190
+        };
 
-</body>
+        html2canvas(elementHTML, {
+            useCORS: true,
+            scale: 2
+        }).then(function (canvas) {
+            var imgData = canvas.toDataURL('image/png');
+            var imgWidth = 210;
+            var pageHeight = 295;
+            var imgHeight = canvas.height * imgWidth / canvas.width;
+            var heightLeft = imgHeight;
+            var position = 0;
+
+            doc.addImage(imgData, 'PNG', margins.left, position, imgWidth - margins.left, imgHeight);
+            heightLeft -= pageHeight;
+
+            while (heightLeft >= 0) {
+                position = heightLeft - imgHeight;
+                doc.addPage();
+                doc.addImage(imgData, 'PNG', margins.left, position, imgWidth - margins.left, imgHeight);
+                heightLeft -= pageHeight;
+            }
+            doc.save('matrix-report.pdf');
+        });
+    });
+</script>
+
 @endsection
