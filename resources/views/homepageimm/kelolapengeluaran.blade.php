@@ -3,6 +3,7 @@
 
 @section('css')
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
 <style>
 * {
     margin: 0;
@@ -15,6 +16,14 @@
 .tabel {
     background-color: #F7F6FB;
     border-radius: 5px;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    width: 300px; /* Adjust width for search input */
+    margin-left: 0.5em;
+    display: inline-block;
+    float: right;
+    margin-right: 15px;
 }
 
 .btn-unggah {
@@ -151,161 +160,105 @@ input[type="number"] {
     justify-content: center;
     font-size: 14px;
     /* Adjust the font size as needed */
-}</style>
+}
+</style>
 
 @endsection
 
 @section('content')
-<body>
-    <div class="container" style="padding-top: 120px">
-        <a href="homepage">
-            <h4 class=" d-flex align-items-center"><strong style="font-size: 40px;"><</strong> Pengelolaan Dana</h4>
-        </a>
-        <div class="container my-4 d-flex justify-content-between align-items-center">
-            <span class="biaya">Dana Hibah</span>
-            <div class="form-inline">
-                <input type="text" id="search-income" class="form-control search-input" placeholder="Cari detail biaya">
-            </div>
-        </div>
-    </div>
+<div class="container" style="padding-top: 120px">
+    <a href="homepage">
+        <h4 class="d-flex align-items-center"><strong style="font-size: 40px;">&lt;</strong> Pengelolaan Dana</h4>
+    </a>
+</div>
 
-    <div class="container">
-        <table class="table tabel mt-3 text-center border">
-            <thead>
-                <tr>
-                    <th>Tanggal</th>
-                    <th>Pengirim</th>
-                    <th>Bank Asal</th>
-                    <th>Bank Tujuan</th>
-                    <th>Jumlah (Rp)</th>
-                </tr>
-            </thead>
-            <tbody id="income-list">
-                @if ($companyIncomes->isEmpty())
-                <tr>
-                    <td colspan="5">Detail biaya tidak ditemukan.</td>
-                </tr>
-                @else
-                @foreach ($companyIncomes as $income)
-                <tr>
-                    <td>{{ $income->date }}</td>
-                    <td>{{ $income->pengirim }}</td>
-                    <td>{{ $income->bank_asal }}</td>
-                    <td>{{ $income->bank_tujuan }}</td>
-                    <td>Rp{{ number_format($income->jumlah_hibah, 0, ',', '.') }}</td>
-                </tr>
-                @endforeach
-                @endif
-            </tbody>
-        </table>
+<div class="container">
+    <span class="biaya">Dana Hibah</span>
 
-        <!-- "Detail biaya tidak ditemukan" message -->
-        <div id="income-no-results" class="text-center py-3" style="display: none;">
-            Detail biaya tidak ditemukan.
-        </div>
-    </div>
+    <table id="income-table" class="table tabel mt-3 text-center border">
+        <thead>
+            <tr>
+                <th>Tanggal</th>
+                <th>Pengirim</th>
+                <th>Bank Asal</th>
+                <th>Bank Tujuan</th>
+                <th>Jumlah (Rp)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($companyIncomes as $income)
+            <tr>
+                <td>{{ $income->date }}</td>
+                <td>{{ $income->pengirim }}</td>
+                <td>{{ $income->bank_asal }}</td>
+                <td>{{ $income->bank_tujuan }}</td>
+                <td>Rp{{ number_format($income->jumlah_hibah, 0, ',', '.') }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 
-    <div class="container my-4 d-flex justify-content-between align-items-center">
-        <span class="biaya">Rancangan pengeluaran Proyek</span>
-        <div class="form-inline">
-            <input type="text" id="search-input" class="form-control" placeholder="Cari Pengeluaran">
-        </div>
-    </div>
+<div class="container my-4 d-flex justify-content-between align-items-center">
+    <span class="biaya">Rancangan pengeluaran Proyek</span>
+</div>
 
-    <div class="container">
-        <table class="table tabel mt-3 text-center border">
-            <thead>
-                <tr>    
-                    <th>Nama Proyek</th>
-                    <th>Rancangan Biaya Grant</th>
-                    <th>Detail penggunaan biaya</th>
-                </tr>
-            </thead>
-            <tbody id="project-table-body">
-                @if ($projects->isEmpty())
-                <tr>
-                    <td colspan="3">Tidak ada proyek yang ditemukan.</td>
-                </tr>
-                @else
-                @foreach ($projects as $project)
-                <tr>
-                    <td>{{ $project->nama }}</td>
-                    <td>Rp{{ number_format($project->dana->first()->nominal, 0, ',', '.') }}</td>
-                    <td>
-                        <a href="{{ route('homepageimm.detailbiaya', ['project_id' => $project->id]) }}" style="text-decoration: underline">cek disini</a>
-                    </td>
-                </tr>
-                @endforeach
-                @endif
-            </tbody>
-        </table>
+<div class="container">
+    <table id="project-table" class="table tabel mt-3 text-center border">
+        <thead>
+            <tr>
+                <th>Nama Proyek</th>
+                <th>Rancangan Biaya Grant</th>
+                <th>Detail penggunaan biaya</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach ($projects as $project)
+            <tr>
+                <td>{{ $project->nama }}</td>
+                <td>Rp{{ number_format($project->dana->first()->nominal, 0, ',', '.') }}</td>
+                <td>
+                    <a href="{{ route('homepageimm.detailbiaya', ['project_id' => $project->id]) }}" style="text-decoration: underline">cek disini</a>
+                </td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+</div>
 
-        <!-- "Tidak ada proyek yang ditemukan" message -->
-        <div id="project-no-results" style="display: none;" class="text-center py-3">
-            Tidak ada proyek yang ditemukan.
-        </div>
-    </div>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+<script>
+jQuery(document).ready(function($) {
+    // Initialize DataTables for income table
+    $('#income-table').DataTable({
+        "paging": true,
+        "searching": true,
+        "info": false,
+        "lengthChange": false,
+        "pageLength": 5,
+        "order": [[0, "desc"]]
+    });
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Function to handle search for income details
-            const searchIncomeInput = document.getElementById('search-income');
-            const incomeList = document.getElementById('income-list');
-            const incomeNoResults = document.getElementById('income-no-results');
-            const incomeRows = incomeList.getElementsByTagName('tr');
+    // Initialize DataTables for project table
+    $('#project-table').DataTable({
+        "paging": true,
+        "searching": true,
+        "info": false,
+        "lengthChange": false,
+        "pageLength": 5,
+        "order": [[0, "desc"]]
+    });
 
-            searchIncomeInput.addEventListener('input', function() {
-                const searchTerm = this.value.toLowerCase();
-                let visibleIncomeRows = 0;
+    // Handle search input for income table
+    $('#search-income').on('keyup', function() {
+        $('#income-table').DataTable().search($(this).val()).draw();
+    });
 
-                for (let row of incomeRows) {
-                    const rowText = row.textContent.trim().toLowerCase();
-                    if (rowText.includes(searchTerm)) {
-                        row.style.display = '';
-                        visibleIncomeRows++;
-                    } else {
-                        row.style.display = 'none';
-                    }
-                }
-
-                // Show or hide "Detail biaya tidak ditemukan" message for income details
-                if (visibleIncomeRows === 0) {
-                    incomeList.style.display = 'none';
-                    incomeNoResults.style.display = 'block';
-                } else {
-                    incomeList.style.display = '';
-                    incomeNoResults.style.display = 'none';
-                }
-            });
-
-            // Function to handle search for project names
-            const searchProjectInput = document.getElementById('search-input');
-            const projectTableBody = document.getElementById('project-table-body');
-            const projectNoResults = document.getElementById('project-no-results');
-            const projectRows = projectTableBody.getElementsByTagName('tr');
-
-            searchProjectInput.addEventListener('input', function() {
-                const searchProjectTerm = this.value.toLowerCase();
-                let visibleProjectRows = 0;
-
-                for (let row of projectRows) {
-                    const projectName = row.cells[0].textContent.toLowerCase();
-                    if (projectName.includes(searchProjectTerm)) {
-                        row.style.display = '';
-                        visibleProjectRows++;
-                    } else {
-                        row.style.display = 'none';
-                    }
-                }
-
-                // Show or hide "Tidak ada proyek yang ditemukan" message for project names
-                if (visibleProjectRows === 0) {
-                    projectNoResults.style.display = 'block';
-                } else {
-                    projectNoResults.style.display = 'none';
-                }
-            });
-        });
-    </script>
-</body>
+    // Handle search input for project table
+    $('#search-project').on('keyup', function() {
+        $('#project-table').DataTable().search($(this).val()).draw();
+    });
+});
+</script>
 @endsection
