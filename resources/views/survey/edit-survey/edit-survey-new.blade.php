@@ -197,7 +197,7 @@
                     };
                     reader.readAsDataURL(file);
                 } else {
-                    previewImg.src = 'images/upload.png'; // Default image if no file selected
+                    previewImg.src = '{{ asset("images/upload.png") }}';
                 }
             });
         </script>

@@ -189,8 +189,8 @@
     <div class="container contentt mt-5 d-flex justify-content-between">
      <h1>2 Tanggapan</h1>
   
-     <button class=" d-flex justify-content-around align-items-center"><img src="/images/unduh.png" class="unduhimg" alt="">Unduh Tanggapan</button>
-  
+     <button class=" d-flex justify-content-around align-items-center">
+        <img src="{{ asset('images/unduh.png') }}" class="unduhimg" alt="">Unduh Tanggapan</button>
     </div>
     <div class="container content mt-5 pb-5">
        <div class="container mt-5">

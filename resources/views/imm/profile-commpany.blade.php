@@ -113,7 +113,7 @@ body {
                         <div class="row mb-3">
                             <div class="d-flex align-items-center">
                                 <h5 class="mr-5">Edit Data Perusahaan</h5>
-                                <img style="cursor: pointer" id="editButton" src="images/icon-edit.svg" width="20" alt="">
+                                <img style="cursor: pointer" id="editButton" src="{{ asset('images/icon-edit.svg') }}" width="20" alt="">
                             </div>
                         </div>
                         <div class="mb-3">
@@ -164,7 +164,7 @@ body {
                     <button type="button" id="saveButton" class="btn-masukkk" style="display: none;" data-toggle="modal" data-target="#confirmModal">
                         <div class="out d-flex justify-content-center align-items-center" style="gap: 10px">
                             <span>Simpan Perubahan Data Perusahaan</span>
-                            <img src="images/icon-save.svg" width="20" alt="">
+                            <img src="{{ asset('images/icon-save.svg') }}" width="20" alt="">
                         </div>
                     </button>
                 </div>

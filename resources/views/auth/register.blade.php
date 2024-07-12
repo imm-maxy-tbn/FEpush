@@ -482,7 +482,7 @@
             <form method="POST" action="{{ route('register') }}" id="registerForm">
                 @csrf
                 <div class="register-form">
-                    <img src="images/imm.png" alt="Brand Logo" class="brand-logo">
+                    <img src="{{ asset('images/imm.png') }}" alt="Brand Logo" class="brand-logo">
                     <h2>Daftarkan akun</h2>
                     <div class="form-row">
                         <div class="form-group">

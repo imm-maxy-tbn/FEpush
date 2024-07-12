@@ -13,7 +13,7 @@
 <body style="">
  
 <div class="container content">
-    <img src="images/6.png" alt="Your Image" class="content-image">
+    <img src="{{ asset('images/6.png') }}" alt="Your Image" class="content-image">
     <div class="content-text">
         <h1>Selamat Datang di IMM</h1>
         <!-- <p>IMM (Impact Mate) adalah platform yang...</p> -->

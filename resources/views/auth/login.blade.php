@@ -343,7 +343,7 @@
                 <form method="POST" action="{{ route('login') }}" id="loginForm">
                     @csrf
                     <div class="login-form">
-                        <img src="images/imm.png" alt="Brand Logo" class="brand-logo">
+                        <img src="{{ asset('images/imm.png') }}" alt="Brand Logo" class="brand-logo">
                         <h2>Masuk ke akun anda</h2>
                         <div class="input-group">
                             <label for="email">Email</label>
@@ -370,7 +370,7 @@
             </div>
         </div>
         <div class="col-6 d-flex justify-content-end">
-            <img src="images/6.png" style="height: 100vh" alt="Your Image" />
+            <img src="{{ asset('images/6.png') }}" style="height: 100vh" alt="Your Image" />
         </div>
     </div>
 

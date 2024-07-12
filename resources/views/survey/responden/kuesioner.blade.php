@@ -112,7 +112,7 @@
     <div class="container content mt-5">
         <div class="container">
             <div class="sub-content  d-flex justify-content-center align-items-center">
-                <img src="/images/banner-detailkelas.png" alt="img">
+                <img src="{{ asset('images/banner-detailkelas.png') }}" alt="img">
             </div>
 
             <p style="font-size: 40px;font-weight: bold;"> {{ $survey->name }} </p>

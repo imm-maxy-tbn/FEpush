@@ -387,7 +387,7 @@ h4 {
             <div class="grid">
                 @foreach ($sdgs as $sdg)
                     <div class="grid-item" data-index="{{ $sdg->id }}">
-                        <img src="images/E-WEB-Goal-{{ $sdg->id }}.png" alt="Goal {{ $sdg->id }}">
+                        <img src="{{ asset('images/E-WEB-Goal-' . $sdg->id . '.png') }}" alt="Goal {{ $sdg->id }}">
                     </div>
                 @endforeach
             </div>

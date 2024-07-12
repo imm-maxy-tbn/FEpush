@@ -22,7 +22,7 @@
 
                     <div class="sub-content d-flex justify-content-center align-items-center"><label for="gambar"
                             style="cursor: pointer;">
-                            <img src="images/upload.png" width="42">
+                            <img src="{{ asset('images/upload.png') }}" width="42">
                         </label>
                         <input type="file" id="gambar" name="gambar" accept="image/*" style="display: none;">
                     </div>
@@ -37,7 +37,7 @@
                         <button type="submit" class="btn-simpan d-flex justify-content-around align-items-center">
 
                             <span class="text-white">Simpan Survey</span>
-                            <img src="images/simpan-icon.png" width="29" height="auto" alt="">
+                            <img src="{{ asset('images/simpan-icon.png') }}" width="29" height="auto" alt="">
                         </button>
                         {{-- <button type="" class="btn-akhiri">Akhiri Survey</button>
                         <a href="responden"><button type="" class="btn-lihat-responden">Lihat Responden
@@ -145,7 +145,7 @@
                     };
                     reader.readAsDataURL(file);
                 } else {
-                    previewImg.src = 'images/upload.png'; // Default image if no file selected
+                    previewImg.src = '{{ asset("images/upload.png") }}';
                 }
             });
         </script>

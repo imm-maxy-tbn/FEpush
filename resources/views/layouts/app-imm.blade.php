@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>IMM | @yield('title')</title>
-    <link rel="icon" href="/images/imm.png" type="image/png">
+    <link rel="icon" href="{{ asset('images/imm.png') }}" type="image/png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-xxxxx" crossorigin="anonymous" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
@@ -174,7 +174,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="/home">
-                <img src="/images/imm.png" width="100" height="55" alt=""></a>
+                <img src="{{ asset('images/imm.png') }}" width="100" height="55" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -274,7 +274,7 @@
         <div class="container footer mt-5 d-flex justify-content-center align-items-center">
             <div class="col-4 d-flex flex-column" style="gap: 20px">
                 <a class="d-flex justify-content-start" href="/home">
-                    <img src="/images/imm.png" width="100" height="55" alt="">
+                    <img src="{{ asset('images/imm.png') }}" width="100" height="55" alt="">
                 </a>
                 <span class="span-footer text-left">Impact Measurement and Management
                     <br> (TBN INDONESIA X MAXY ACADEMY)</span>

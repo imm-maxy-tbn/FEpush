@@ -7,7 +7,8 @@
     <title>IMM | @yield('title')</title>
     <!-- CSS Umum -->
     <!-- <link rel="stylesheet" href="{{ asset('css/app.css') }}"> -->
-    <link rel="stylesheet" href="{{ asset('css/event/event.css') }}">    <link rel="icon" href="/images/imm.png" type="image/png">
+    <link rel="stylesheet" href="{{ asset('css/event/event.css') }}"> 
+    <link rel="icon" href="{{ asset('images/imm.png') }}" type="image/png">
     <!-- CSS Khusus Halaman -->
     @yield('css')
     <style>
@@ -130,7 +131,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container">
             <a class="navbar-brand" href="/home">
-                <img src="/images/imm.png" width="100" height="55" alt=""></a>
+                <img src="{{ asset('images/imm.png') }}" width="100" height="55" alt=""></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -240,9 +241,9 @@
                     <div class="col d-flex justify-content-between" style="">
 
                         <div class="col d-flex justify-content-start" style="gap:50px">
-                            <a href=""></a><img src="/images/icon-yt.png" alt=""></a>
-                            <a href=""> <img src="/images/icon-ig.png" alt=""></a>
-                            <a href=""> <img src="/images/icon-fb.png" alt=""></a>
+                            <a href=""><img src="{{ asset('images/icon-yt.png') }}" alt=""></a>
+                            <a href=""><img src="{{ asset('images/icon-ig.png') }}" alt=""></a>
+                            <a href=""><img src="{{ asset('images/icon-fb.png') }}" alt=""></a>
                         </div>
                         <div class="col-text">
                             <div class="row d-flex flex-column align-items-center " style="gap: 30px">
